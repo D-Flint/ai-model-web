@@ -49,6 +49,10 @@ After each implementation, run the relevant local tests and create a local Git c
 
 Do not use emoji as icons. Use an appropriate icon asset or icon library when an interface icon is needed.
 
+## Session-End Protocol
+
+Before ending a session, append an entry to `SESSION_LOG.md` containing the date, objective, files changed, attempt count, failures and causes, tests and results, commit hash, current state, and the exact next step. Record failed approaches once so future agents do not repeat them. Keep entries concise and preserve prior history. If implementation is complete, stop after the local commit and wait for user verification.
+
 ## Repository-Local Skills
 
 Project-scoped design skills are stored in `.agents/skills/` so compatible agents can discover them from the repository. Available skills include `ui-ux-pro-max`, `frontend-design`, `emil-design-eng`, `design-taste-frontend`, and `impeccable`. Apply them when designing or reviewing the interface, while keeping the product brief and repository conventions authoritative.
