@@ -66,6 +66,12 @@
       "goal": "Add more of the newest models from 2025/late-2024",
       "lastHeartbeat": "2026-09-05T12:28:45.000Z",
       "status": "completed"
+    },
+    "catalog-expander": {
+      "role": "Data & Pipeline Engineer",
+      "goal": "Expand catalog with more verified models in newest-to-oldest order",
+      "lastHeartbeat": "2026-09-05T12:34:15.000Z",
+      "status": "completed"
     }
   },
   "claims": {},

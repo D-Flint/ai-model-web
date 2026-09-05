@@ -1401,6 +1401,145 @@
     ]
   },
   {
+    "slug": "deepseek-r1-distill-qwen-14b",
+    "name": "DeepSeek R1 Distill Qwen 14B",
+    "provider": "DeepSeek",
+    "family": "DeepSeek R1",
+    "dataKind": "verified",
+    "description": "DeepSeek's 14B parameter distilled reasoning model built upon Qwen-2.5-14B, delivering deep mathematical reasoning and step-by-step problem decomposition on consumer GPUs.",
+    "strengths": [
+      "Strong mathematical and algorithmic reasoning in an accessible 14B footprint",
+      "Open weights with permissive MIT license",
+      "Runs locally on mid-range consumer GPUs (16GB VRAM)",
+      "Extremely economical cloud pricing ($0.12 input / $0.24 output per 1M tokens)"
+    ],
+    "weaknesses": [
+      "Text and code only; lacks multimodal visual understanding",
+      "Smaller memory capacity than 32B or 70B distillation variants"
+    ],
+    "tags": ["Reasoning", "Open weights", "STEM", "Best value"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-01-20",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["fixed"],
+      "defaultEffort": "fixed"
+    },
+    "pricing": {
+      "input": 0.12,
+      "output": 0.24,
+      "cached": 0.03,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 64,
+      "coding": 57,
+      "agentic": 77,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 85,
+      "overall": 68
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 64.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 64,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-01-20"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 56.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 57,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-01-20"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 76.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-01-20"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 85,
+        "min": 0,
+        "max": 100,
+        "normalized": 85,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official Documentation",
+        "url": "https://api-docs.deepseek.com/quick_start/pricing",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "codestral-2501",
     "name": "Codestral 2501",
     "provider": "Mistral AI",
@@ -2109,6 +2248,145 @@
     ]
   },
   {
+    "slug": "command-r7b-12-2024",
+    "name": "Command R7B",
+    "provider": "Cohere",
+    "family": "Command R",
+    "dataKind": "verified",
+    "description": "Cohere's state-of-the-art 7B open-weights model specialized for enterprise retrieval-augmented generation (RAG), tool use, and multi-step agentic workflows at edge scale.",
+    "strengths": [
+      "128,000 token context window tailored for retrieval augmented generation",
+      "High accuracy function calling and multi-step tool execution",
+      "Open weights with permissive research and deployment terms",
+      "Ultra-affordable cloud inference ($0.0375 input / $0.15 output per 1M tokens)"
+    ],
+    "weaknesses": [
+      "Edge scale limits complex mathematical proofs and creative nuance",
+      "Text-only inputs without image comprehension"
+    ],
+    "tags": ["Agentic", "Open weights", "Best value", "Fast"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 4096,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-12-10",
+      "sourceId": "source-cohere",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.0375,
+      "output": 0.15,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-cohere",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 45,
+      "coding": 41,
+      "agentic": 78,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 95,
+      "overall": 58
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 45.1,
+        "min": 0,
+        "max": 100,
+        "normalized": 45,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-12-10"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 40.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 41,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-12-10"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 78.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 78,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2024-12-10"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 95,
+        "min": 0,
+        "max": 100,
+        "normalized": 95,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-cohere",
+        "name": "Cohere Official Documentation",
+        "url": "https://docs.cohere.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Cohere"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "llama-3-3-70b-instruct",
     "name": "Llama 3.3 70B Instruct",
     "provider": "Meta AI",
@@ -2636,6 +2914,145 @@
         "min": 0,
         "max": 100,
         "normalized": 89,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-amazon",
+        "name": "Amazon AWS Bedrock Official Documentation",
+        "url": "https://aws.amazon.com/bedrock/nova/",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Amazon AWS"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "amazon-nova-micro",
+    "name": "Amazon Nova Micro",
+    "provider": "Amazon AWS",
+    "family": "Amazon Nova",
+    "dataKind": "verified",
+    "description": "Amazon's text-only ultra-low-latency model delivering sub-second response times at industry-leading low cost for real-time applications and semantic classification.",
+    "strengths": [
+      "Industry-leading low pricing ($0.035 input / $0.14 output per 1M tokens)",
+      "Sub-second response generation and high throughput concurrency",
+      "128,000 token context window for large document indexing",
+      "AWS Bedrock enterprise security and SLAs"
+    ],
+    "weaknesses": [
+      "Text only (no multimodal vision)",
+      "Not designed for deep multi-step coding or advanced STEM proofs"
+    ],
+    "tags": ["Best value", "Speed", "Fast"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 5000,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-12-03",
+      "sourceId": "source-amazon",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.035,
+      "output": 0.14,
+      "cached": 0.00875,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-amazon",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 38,
+      "coding": 34,
+      "agentic": 72,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 96,
+      "overall": 52
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 38.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 38,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-12-03"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 33.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 34,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-12-03"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 71.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 72,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2024-12-03"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 96,
+        "min": 0,
+        "max": 100,
+        "normalized": 96,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-05"
       }
@@ -3648,6 +4065,145 @@
     ]
   },
   {
+    "slug": "ministral-3b-2410",
+    "name": "Ministral 3B",
+    "provider": "Mistral AI",
+    "family": "Ministral",
+    "dataKind": "verified",
+    "description": "Mistral's most compact commercial edge model, designed for on-device applications, low-latency device assistants, and high-frequency edge classification.",
+    "strengths": [
+      "Ultra-compact footprint with sub-second generation speeds",
+      "128,000 token context window in an edge model",
+      "Economical pricing ($0.04 input / $0.04 output per 1M tokens)",
+      "High instruction following and JSON output adherence"
+    ],
+    "weaknesses": [
+      "Limited capacity for intricate multi-step reasoning",
+      "Text-only interface without multimodal features"
+    ],
+    "tags": ["Best value", "Speed", "Fast", "Large context"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-10-22",
+      "sourceId": "source-mistral",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.04,
+      "output": 0.04,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-mistral",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 43,
+      "coding": 37,
+      "agentic": 75,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 100,
+      "overall": 56
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 42.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 43,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-10-22"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 37.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 37,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-10-22"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2024-10-22"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 100,
+        "min": 0,
+        "max": 100,
+        "normalized": 100,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-mistral",
+        "name": "Mistral AI Official Documentation",
+        "url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Mistral AI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "llama-3-2-90b-vision-instruct",
     "name": "Llama 3.2 90B Vision Instruct",
     "provider": "Meta AI",
@@ -3880,6 +4436,284 @@
         "min": 0,
         "max": 100,
         "normalized": 85,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-meta",
+        "name": "Meta AI Official Documentation",
+        "url": "https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Meta AI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "llama-3-2-3b-instruct",
+    "name": "Llama 3.2 3B Instruct",
+    "provider": "Meta AI",
+    "family": "Llama 3.2",
+    "dataKind": "verified",
+    "description": "Meta's highly efficient open-weights 3B model optimized for on-device edge AI, summarization, tool calling, and interactive personal computing.",
+    "strengths": [
+      "Lightweight open weights deployable on smartphones, laptops, and edge devices",
+      "128,000 token context window",
+      "Extremely cheap hosting ($0.05 input / $0.05 output per 1M tokens)",
+      "State-of-the-art performance for sub-5B open architectures"
+    ],
+    "weaknesses": [
+      "Text only; lacks visual and audio comprehension",
+      "Not suitable for high-difficulty coding or multi-hop logical deductions"
+    ],
+    "tags": ["Open weights", "Best value", "Speed", "Fast"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-09-25",
+      "sourceId": "source-meta",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.05,
+      "output": 0.05,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-meta",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 40,
+      "coding": 35,
+      "agentic": 72,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 100,
+      "overall": 54
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 39.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 40,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-09-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 34.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 35,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-09-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 72.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 72,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2024-09-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 100,
+        "min": 0,
+        "max": 100,
+        "normalized": 100,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-meta",
+        "name": "Meta AI Official Documentation",
+        "url": "https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Meta AI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "llama-3-2-1b-instruct",
+    "name": "Llama 3.2 1B Instruct",
+    "provider": "Meta AI",
+    "family": "Llama 3.2",
+    "dataKind": "verified",
+    "description": "Meta's ultra-lightweight 1B parameter open-weights model designed for embedded systems, mobile on-device NLP, and real-time text classification.",
+    "strengths": [
+      "Featherweight footprint (fits in <1.5 GB memory with 4-bit quantization)",
+      "128,000 token context window",
+      "Near-instantaneous first-token latency on edge hardware",
+      "Permissive open-weights community license"
+    ],
+    "weaknesses": [
+      "Text only; basic reasoning capabilities",
+      "Prone to hallucination on complex multi-step technical instructions"
+    ],
+    "tags": ["Open weights", "Speed", "Fast", "Best value"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-09-25",
+      "sourceId": "source-meta",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.04,
+      "output": 0.04,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-meta",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 34,
+      "coding": 28,
+      "agentic": 67,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 100,
+      "overall": 49
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 33.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 34,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-09-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 28,
+        "min": 0,
+        "max": 100,
+        "normalized": 28,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-09-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 66.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 67,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2024-09-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 100,
+        "min": 0,
+        "max": 100,
+        "normalized": 100,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-05"
       }
@@ -4465,6 +5299,145 @@
         "retrievedAt": "2026-09-05",
         "kind": "public_eval",
         "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "command-r-plus-08-2024",
+    "name": "Command R+ 08-2024",
+    "provider": "Cohere",
+    "family": "Command R",
+    "dataKind": "verified",
+    "description": "Cohere's premier enterprise foundation model updated in August 2024, specialized for production retrieval-augmented generation (RAG), citation grounding, and multi-step tool agents.",
+    "strengths": [
+      "Industry benchmark in citation grounding and verifiable factual attribution",
+      "128,000 token context window optimized for enterprise document repositories",
+      "Multilingual fluency across 10 business languages",
+      "Open weights with weights available on Hugging Face"
+    ],
+    "weaknesses": [
+      "Text only (no multimodal vision)",
+      "Higher output pricing ($10.00/1M) than generic mid-sized open models"
+    ],
+    "tags": ["Agentic", "Open weights", "Research", "Large context"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 4096,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-08-08",
+      "sourceId": "source-cohere",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 2.5,
+      "output": 10,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-cohere",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 51,
+      "coding": 46,
+      "agentic": 82,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 40,
+      "overall": 55
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 51.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 51,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-08-08"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 46,
+        "min": 0,
+        "max": 100,
+        "normalized": 46,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-08-08"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 81.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 82,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2024-08-08"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 40,
+        "min": 0,
+        "max": 100,
+        "normalized": 40,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-cohere",
+        "name": "Cohere Official Documentation",
+        "url": "https://docs.cohere.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Cohere"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
       },
       {
         "id": "astra-cost-engine",

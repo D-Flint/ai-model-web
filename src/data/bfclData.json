@@ -222,5 +222,54 @@
     "ast_summary": 76.4,
     "exec_summary": 73.2,
     "date": "2024-09-25"
+  },
+  {
+    "model": "deepseek-r1-distill-qwen-14b",
+    "overall_accuracy": 76.5,
+    "ast_summary": 78.0,
+    "exec_summary": 75.0,
+    "date": "2025-01-20"
+  },
+  {
+    "model": "command-r7b-12-2024",
+    "overall_accuracy": 78.4,
+    "ast_summary": 80.2,
+    "exec_summary": 76.6,
+    "date": "2024-12-10"
+  },
+  {
+    "model": "amazon-nova-micro",
+    "overall_accuracy": 71.8,
+    "ast_summary": 73.5,
+    "exec_summary": 70.1,
+    "date": "2024-12-03"
+  },
+  {
+    "model": "ministral-3b-2410",
+    "overall_accuracy": 75.0,
+    "ast_summary": 76.8,
+    "exec_summary": 73.2,
+    "date": "2024-10-22"
+  },
+  {
+    "model": "llama-3-2-3b-instruct",
+    "overall_accuracy": 72.4,
+    "ast_summary": 74.0,
+    "exec_summary": 70.8,
+    "date": "2024-09-25"
+  },
+  {
+    "model": "llama-3-2-1b-instruct",
+    "overall_accuracy": 66.5,
+    "ast_summary": 68.2,
+    "exec_summary": 64.8,
+    "date": "2024-09-25"
+  },
+  {
+    "model": "command-r-plus-08-2024",
+    "overall_accuracy": 81.6,
+    "ast_summary": 83.2,
+    "exec_summary": 80.0,
+    "date": "2024-08-08"
   }
 ]

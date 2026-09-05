@@ -363,4 +363,32 @@
 - Current state: All 35 foundation models are strictly ordered from the newest (`gpt-4-5-preview` - Feb 27, 2025) to the oldest (`claude-3-opus-20240229` - Feb 29, 2024).
 - Exact next step: User verifies the 35 models locally at `http://localhost:4321`.
 
+## 2026-09-05 — Expand Catalog to 42 Models in Strict Newest-to-Oldest Sequence
+
+- Objective: Expand catalog from 35 to 42 verified models with official documentation and approved external benchmarks, adhering strictly to descending release date order.
+- Added models:
+  1. `deepseek-r1-distill-qwen-14b` (DeepSeek — Jan 20, 2025, open weights, 128k context, $0.12/$0.24)
+  2. `command-r7b-12-2024` (Cohere — Dec 10, 2024, open weights, 128k context, $0.0375/$0.15)
+  3. `amazon-nova-micro` (Amazon AWS — Dec 3, 2024, 128k context, sub-second latency, $0.035/$0.14)
+  4. `ministral-3b-2410` (Mistral AI — Oct 22, 2024, 128k context, edge assistant, $0.04/$0.04)
+  5. `llama-3-2-3b-instruct` (Meta AI — Sep 25, 2024, open weights, 128k context, $0.05/$0.05)
+  6. `llama-3-2-1b-instruct` (Meta AI — Sep 25, 2024, open weights, 128k context, $0.04/$0.04)
+  7. `command-r-plus-08-2024` (Cohere — Aug 8, 2024, open weights, 128k context, $2.50/$10.00)
+- Files changed:
+  - `src/data/canonicalModels.ts`: Added provider `provider-cohere` to `PROVIDERS_CONFIG` and registered canonical definitions for the 7 new models.
+  - `src/data/officialProviders.ts`: Added verified official specs and documentation pricing for all 7 models.
+  - `src/data/livebenchData.json`: Added verified LiveBench evaluation records.
+  - `src/data/bfclData.json`: Added verified BFCL tool use accuracy records.
+  - `src/data/verifiedModels.json`: Refreshed pipeline output to 42 models sorted strictly descending by release date (`2025-02-27` to `2024-02-29`).
+  - `.agents/registry.json`: Updated `catalog-expander` status to `completed` and released all claims.
+- Attempts: 1 full iteration with verified build and lint passes.
+- Tests and results:
+  - `npm test`: 35/35 passing across all unit test suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 52 Astro and TypeScript files.
+  - `npm run lint`: Clean, 0 errors.
+  - `npm run build`: Production static build generated 921 pages in 24.35s with 0 errors.
+- Current state: All 42 foundation models are strictly ordered from the newest (`gpt-4-5-preview` - Feb 27, 2025) to the oldest (`claude-3-opus-20240229` - Feb 29, 2024).
+- Exact next step: User verifies the 42 models locally at `http://localhost:4321`.
+
+
 
