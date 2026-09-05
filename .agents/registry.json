@@ -40,8 +40,8 @@
     "speed-agent": {
       "role": "Data & Frontend Engineer",
       "goal": "Ensure AI model speed is measured and displayed in tokens/sec",
-      "lastHeartbeat": "2026-09-05T08:47:31.163Z",
-      "status": "active"
+      "lastHeartbeat": "2026-09-05T09:15:30.000Z",
+      "status": "completed"
     }
   },
   "claims": {},
