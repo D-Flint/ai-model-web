@@ -576,4 +576,40 @@
 - Current state: The new logo is cleanly integrated across header, footer, and favicons with smooth hover animations and responsive styling.
 - Exact next step: User verifies the logo on `http://localhost:4321` and confirms appearance across light and dark modes.
 
+## 2026-09-05 — Synapse Brand Identity & Dark Mode Color Palette System
+
+- Objective: Apply the official brand identity "SYNAPSE" and the dark mode color palette from the user-provided brand board (`ChatGPT Image Sep 5, 2026, 09_49_25 PM.png`).
+- Files changed:
+  - `src/styles/global.css`:
+    - Updated dark mode tokens: `--canvas: #080b08`, `--surface: #121612`, `--subtle: #1a2018`, `--border: #253023`, `--text: #f4f2eb`, `--muted: #92998e`, `--accent: #afd97c` (luminous pistachio sage), `--accent-hover: #bee68d`, `--accent-text: #090e08`, `--soft: #172115`, `--glow: rgba(175, 217, 124, 0.20)`.
+    - Updated light mode tokens matching the brand card swatch: `--canvas: #eceae1`, `--surface: #f7f5ee`, `--subtle: #dedad0`, `--border: #cbc6b8`, `--accent: #445536` (moss olive), `--accent-text: #f7f5ee`, `--muted: #5c6457`, `--text: #141813`.
+    - Upgraded `.button.primary` with dynamic variables `var(--accent)`, `var(--accent-text)`, `var(--accent-hover)`, and `var(--glow)` for high contrast and luminous hover glow.
+    - Updated `.brand` and `.brand-text` with geometric wide-tracked uppercase styling (`letter-spacing: 0.18em`).
+    - Replaced all legacy hardcoded purple `#5146d9` / `rgba(81, 70, 217, ...)` with palette tokens and `var(--glow)`.
+  - `src/layouts/RootLayout.astro`:
+    - Changed default theme to `dark` as requested for the darkmode identity.
+    - Updated title default to `Synapse | Find the right AI model`, meta theme-color to `#080B08`, theme storage key to `synapse-theme`.
+    - Integrated `synapse-mark.png` and `SYNAPSE` wordmark in header and footer.
+    - Updated footer copy and copyright to `© 2026 Synapse. Built for better decisions.`
+  - `src/pages/index.astro`:
+    - Updated hero eyebrow to `COMPARE · UNDERSTAND · CHOOSE` and hero copy to the brand board message: "Synapse helps you compare AI models with clear, reliable data — so you can understand faster and choose with confidence."
+  - `src/pages/`:
+    - Updated all page titles across `404.astro`, `models/index.astro`, `models/[slug].astro`, `compare/index.astro`, `compare/[pair].astro`, `find.astro`, `rankings/index.astro`, `rankings/[category].astro`, `cost.astro`, and `methodology.astro` to reference `Synapse`.
+  - `src/data/models.ts`: Updated fixture catalog source name to `Synapse fictional fixture catalog`.
+  - `public/`:
+    - `public/logo.png`: 512x512 high-resolution dark squircle app icon matching the brand board.
+    - `public/apple-touch-icon.png`: 512x512 apple touch icon.
+    - `public/synapse-mark.png`: Clean transparent high-resolution folded ribbon S mark for navigation and branding.
+    - `public/favicon.svg`: Modern vector SVG squircle favicon with the green Synapse folded ribbon S.
+- Attempts: 1 iteration with full verification.
+- Failures and causes: None.
+- Tests and results:
+  - `npm test`: 37/37 passed across all test suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 62 Astro and TypeScript files.
+  - `npm run build`: Production static site build generated 2,944 pages in 1m 19s with 0 errors.
+- Commit hash: `2905aff` (local commit; no remote push).
+- Current state: The entire application is fully rebranded to Synapse with the dark mode pistachio/obsidian palette as the primary experience, plus cream/moss light mode support.
+- Exact next step: User verifies the new branding, logo, and dark mode color scheme locally.
+
+
 

@@ -6,7 +6,7 @@ interface Props {
   description?: string;
 }
 const {
-  title = 'Astra | Find the right AI model',
+  title = 'Synapse | Find the right AI model',
   description = 'Find an AI model that fits your work. Explore capabilities, compare tradeoffs, and estimate costs with an explainable model guide.',
 } = Astro.props;
 const links = [
@@ -38,16 +38,15 @@ const canonical = Astro.site ? new URL(path, Astro.site).href : undefined;
       content={description}
     /><meta property="og:type" content="website" />
     {canonical && <meta property="og:url" content={canonical} />}
-    <meta name="theme-color" content="#5146d9" />
+    <meta name="theme-color" content="#080B08" />
     <script is:inline>
       try {
         document.documentElement.dataset.theme =
+          localStorage.getItem('synapse-theme') ||
           localStorage.getItem('astra-theme') ||
-          (matchMedia('(prefers-color-scheme: dark)').matches
-            ? 'dark'
-            : 'light');
+          'dark';
       } catch {
-        document.documentElement.dataset.theme = 'light';
+        document.documentElement.dataset.theme = 'dark';
       }
     </script>
   </head>
@@ -55,14 +54,14 @@ const canonical = Astro.site ? new URL(path, Astro.site).href : undefined;
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="container nav-row">
-        <a href="/" class="brand" aria-label="Astra home">
+        <a href="/" class="brand" aria-label="Synapse home">
           <img
-            src="/logo.png"
-            alt="Astra Logo"
+            src="/synapse-mark.png"
+            alt="Synapse Logo"
             class="brand-logo"
-            width="34"
-            height="34"
-          /><span>astra<span class="brand-period">.</span></span></a
+            width="30"
+            height="30"
+          /><span class="brand-text">SYNAPSE</span></a
         >
         <nav class="desktop-nav" aria-label="Main navigation">
           {
@@ -116,23 +115,23 @@ const canonical = Astro.site ? new URL(path, Astro.site).href : undefined;
     <footer class="site-footer">
       <div class="container footer-top">
         <div>
-          <a href="/" class="brand" aria-label="Astra home">
+          <a href="/" class="brand" aria-label="Synapse home">
             <img
-              src="/logo.png"
-              alt="Astra Logo"
+              src="/synapse-mark.png"
+              alt="Synapse Logo"
               class="brand-logo brand-logo--footer"
-              width="26"
-              height="26"
+              width="24"
+              height="24"
               loading="lazy"
-            /><span>astra<span class="brand-period">.</span></span></a
-          ><p>A little clarity in a world of models.</p>
+            /><span class="brand-text">SYNAPSE</span></a
+          ><p>Synapse helps you compare AI models with clear, reliable data — so you can understand faster and choose with confidence.</p>
         </div><div class="footer-links">
           <a href="/models">Explore models</a><a href="/methodology"
             >Our methodology</a
           ><a href="/cost">Understand costs</a>
         </div>
       </div><div class="container footer-bottom">
-        <span>© 2026 Astra. Built for better decisions.</span><span
+        <span>© 2026 Synapse. Built for better decisions.</span><span
           >Transparent scores. Clear tradeoffs. No sponsored rankings.</span
         >
       </div>
@@ -143,7 +142,7 @@ const canonical = Astro.site ? new URL(path, Astro.site).href : undefined;
           document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
         document.documentElement.dataset.theme = theme;
         try {
-          localStorage.setItem('astra-theme', theme);
+          localStorage.setItem('synapse-theme', theme);
         } catch {
           /* Theme works without storage. */
         }

@@ -237,7 +237,7 @@ export const mockModels: CatalogModel[] = validateCatalog(
       sources: [
         {
           id: 'sample-catalog',
-          name: 'Astra fictional fixture catalog',
+          name: 'Synapse fictional fixture catalog',
           url: '/methodology#sample-data',
           kind: 'mock',
           publisher: 'Local test fixtures',
