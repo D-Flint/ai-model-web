@@ -336,3 +336,31 @@
 - Current state: All 29 foundation models are strictly ordered from the newest (`gpt-4-5-preview` - Feb 27, 2025) to the oldest (`claude-3-opus-20240229` - Feb 29, 2024).
 - Exact next step: User verifies the newest-to-oldest ordering and release date badges locally at `http://localhost:4321`.
 
+## 2026-09-05 — Add 6 Additional Newer Models (35 Models Total) in Strict Newest-to-Oldest Sequence
+
+- Objective: Add more of the newest foundation models from 2025 and late 2024 adhering strictly to the approved external data sources guidelines and preserving strict descending release date sequence.
+- Added models:
+  1. `mistral-small-2501` (Mistral Small 3 — Jan 29, 2025, open weights 24B, Apache 2.0, 32k context, $0.10/$0.30)
+  2. `deepseek-r1-distill-llama-70b` (DeepSeek — Jan 20, 2025, open weights 70B, MIT, 128k context, $0.23/$0.40)
+  3. `amazon-nova-pro` (Amazon AWS — Dec 3, 2024, 300k context, vision multimodal, $0.80/$3.20)
+  4. `amazon-nova-lite` (Amazon AWS — Dec 3, 2024, 300k context, vision multimodal, $0.06/$0.24)
+  5. `ministral-8b-2410` (Mistral AI — Oct 22, 2024, 128k context, $0.10/$0.10)
+  6. `llama-3-2-11b-vision-instruct` (Meta AI — Sep 25, 2024, open weights 11B, 128k context, $0.16/$0.16)
+- Files changed:
+  - `src/data/canonicalModels.ts`: Added provider `provider-amazon` to `PROVIDERS_CONFIG` and registered canonical definitions for the 6 new models.
+  - `src/data/officialProviders.ts`: Added verified official specs and documentation pricing for all 6 models.
+  - `src/components/ProviderLogo.tsx`: Added Amazon AWS SVG brand logo support.
+  - `src/data/livebenchData.json`: Added verified LiveBench evaluation records.
+  - `src/data/bfclData.json`: Added verified BFCL tool use accuracy records.
+  - `src/data/verifiedModels.json`: Refreshed pipeline output to 35 models sorted strictly descending by release date (`2025-02-27` to `2024-02-29`).
+  - `.agents/registry.json`: Updated `newest-agent` status to `completed` and released all claims.
+- Attempts: 1 full iteration with verified build and lint passes.
+- Tests and results:
+  - `npm test`: 35/35 passing across all unit test suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 52 Astro and TypeScript files.
+  - `npm run lint`: Clean, 0 errors.
+  - `npm run build`: Production static build generated 648 pages in 17.49s with 0 errors.
+- Current state: All 35 foundation models are strictly ordered from the newest (`gpt-4-5-preview` - Feb 27, 2025) to the oldest (`claude-3-opus-20240229` - Feb 29, 2024).
+- Exact next step: User verifies the 35 models locally at `http://localhost:4321`.
+
+
