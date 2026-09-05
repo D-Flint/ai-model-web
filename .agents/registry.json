@@ -1,6 +1,13 @@
 {
   "version": "1.0.0",
-  "activeAgents": {},
+  "activeAgents": {
+    "codex-session-end": {
+      "role": "Session Coordinator",
+      "goal": "Finalize session log",
+      "lastHeartbeat": "2026-09-05T04:51:02.287Z",
+      "status": "active"
+    }
+  },
   "claims": {},
   "recentTasks": []
 }
