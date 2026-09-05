@@ -18,6 +18,6 @@
 - Failures: None.
 - Verification: `npm test` (6/6 passed), `npm run check` (0 errors, 0 warnings), `npm run lint` (passed), `npm run agent:status` (verified). Tested conflict blocking between competing agent claims.
 - Current state: Registry, audit stream, and CLI helper scripts (`npm run agent:status`, `agent:claim`, `agent:release`, `agent:register`) are active and verified.
-- Commit: `6ba2f07` (local commit; no remote push).
+- Commit: `26f2d04` (local commit; no remote push).
 - Next step: Await user verification of local setup before proceeding to Phase 2 model fixtures.
 
