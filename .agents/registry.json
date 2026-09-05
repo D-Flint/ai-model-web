@@ -24,6 +24,12 @@
       "goal": "Remove duplicated pro reasoning mode models from catalog",
       "lastHeartbeat": "2026-09-05T08:20:30.000Z",
       "status": "completed"
+    },
+    "session-closer": {
+      "role": "Session Closer",
+      "goal": "Conclude session and verify clean repository state",
+      "lastHeartbeat": "2026-09-05T08:26:30.000Z",
+      "status": "completed"
     }
   },
   "claims": {},
