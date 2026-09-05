@@ -532,3 +532,28 @@
   - `npm run build`: Production static site build generated 2944 pages in 2m 2s with zero errors.
 - Current state: Clicking anywhere on a model table row (name, scores, cost, speed, whitespace) toggles its subtask and specification dropdown smoothly.
 - Exact next step: User verifies the row click dropdown interaction locally at `http://localhost:4321/models`.
+
+## 2026-09-05 — Add Subtle, High-Taste Animations & Micro-Interactions to Landing Page
+
+- Objective: Add simple, tasteful, Emil Kowalski-inspired animations to the landing page (`/`) that enhance responsiveness, spatial rhythm, and tactile feedback without sluggish delays or jarring motion.
+- Files changed:
+  - `src/styles/global.css`:
+    - Added custom cubic-bezier timing curves (`--ease-out: cubic-bezier(0.23, 1, 0.32, 1)`, `cubic-bezier(0.16, 1, 0.3, 1)`).
+    - Hero entry animations: staggered `heroFadeInUp` keyframes across eyebrow (delay 0ms), h1 title (70ms), description paragraph (130ms), search box (190ms), and shortcuts (250ms), avoiding `scale(0)` and using subtle 14px upward translation.
+    - Hero comparison card: entrance animation with gentle 0.98 scale and settling tilt (`rotate(-1deg)`), interactive hover transition that smoothly straightens to 0deg and lifts (`translateY(-3px)`) with expanded ambient shadow, plus hover styling for model selects and `translateX` nudges on links.
+    - Button micro-interactions: added tactile active state `transform: scale(0.97)` on `:active` for `.button`, `scale(0.95)` for `.icon-button`, and hover lifts (`translateY(-1px)`).
+    - Card micro-interactions: smooth lift (`translateY(-3px)`) and soft shadow on `.use-case-grid > a`, `.model-card`, and `.comparison-links > a`, with micro-translations on arrows (`translate(2px, -2px)`), rotating/scaling finder icon (`scale(1.06) rotate(4deg)`), and active state damping.
+    - Staggered scroll-reveal: added `reveal-section` with progressive card cascading (`cardFadeInUp` with 30-40ms step delays) when sections enter the viewport.
+    - Accessibility: configured comprehensive `@media (prefers-reduced-motion: reduce)` disabling all animations, transitions, and transforms for users requesting reduced motion.
+  - `src/pages/index.astro`:
+    - Added `reveal-section` classes to below-the-fold content sections.
+    - Added a lightweight, universal `IntersectionObserver` client script that enables `reveal-enabled` on `<html>` and observes sections for smooth on-scroll entrance.
+  - `.agents/registry.json`: Updated `animation-agent` status to `completed` and released file locks.
+- Attempts: 1 full iteration with complete test, check, and static build validation.
+- Tests and results:
+  - `npm test`: 37/37 passed across all test suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 62 Astro and TypeScript files.
+  - `npm run build`: Production static site build generated 2,944 pages in 1m 56s with 0 errors.
+- Current state: Landing page features high-taste, performant animations and micro-interactions on load, scroll, hover, and click.
+- Exact next step: User verifies the landing page animations locally at `http://localhost:4321`.
+

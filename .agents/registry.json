@@ -114,6 +114,12 @@
       "goal": "Allow clicking anywhere on model row to trigger dropdown",
       "lastHeartbeat": "2026-09-05T14:17:00.000Z",
       "status": "completed"
+    },
+    "animation-agent": {
+      "role": "UI/UX Design Engineer",
+      "goal": "Add subtle, high-taste animations to the landing page",
+      "lastHeartbeat": "2026-09-05T14:23:27.287Z",
+      "status": "active"
     }
   },
   "claims": {},
