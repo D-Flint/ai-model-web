@@ -399,6 +399,10 @@ export async function runIngestionPipeline(
         availability: 'Production API',
         releaseDate: officialSpec.releaseDate,
         sourceId: `source-${canonical.providerSlug}`,
+        reasoningEffort: officialSpec.reasoningEffort ??
+          canonical.reasoningEffort ?? ['none'],
+        defaultEffort:
+          officialSpec.defaultEffort ?? canonical.defaultEffort ?? 'none',
       },
       pricing,
       scores,

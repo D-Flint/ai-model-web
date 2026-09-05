@@ -10,6 +10,7 @@ import {
   taskCost,
 } from '../lib/decision';
 import { ModelMark } from './ModelCard';
+import { ProviderLogo } from './ProviderLogo';
 const groups: { name: string; metrics: Metric[] }[] = [
   {
     name: 'Performance',
@@ -63,6 +64,17 @@ export default function ComparisonBuilder({
     }
   }
   const facts: { label: string; value: (m: CatalogModel) => string }[] = [
+    {
+      label: 'Reasoning effort',
+      value: (m) =>
+        m.facts.reasoningEffort &&
+        m.facts.reasoningEffort.length > 0 &&
+        !m.facts.reasoningEffort.includes('none')
+          ? m.facts.reasoningEffort.includes('fixed')
+            ? 'Fixed CoT'
+            : `Selectable (${m.facts.reasoningEffort.join(', ')})`
+          : 'Standard (Instant)',
+    },
     {
       label: 'Context window',
       value: (m) => contextSize(m.facts.context) + ' tokens',
@@ -164,9 +176,27 @@ export default function ComparisonBuilder({
                   <th scope="col">At a glance</th>
                   {selected.map((m) => (
                     <th scope="col" key={m.slug}>
-                      <ModelMark model={m} />
+                      <div
+                        className="provider-badge"
+                        style={{ marginBottom: '4px' }}
+                      >
+                        <ProviderLogo provider={m.provider} size={15} />
+                        <span className="micro">{m.provider}</span>
+                      </div>
                       <a href={`/models/${m.slug}`}>{m.name}</a>
-                      <div className="micro">{m.provider}</div>
+                      {m.facts.reasoningEffort &&
+                        m.facts.reasoningEffort.length > 0 &&
+                        !m.facts.reasoningEffort.includes('none') && (
+                          <div style={{ marginTop: '4px' }}>
+                            <span
+                              className={`effort-badge ${m.facts.reasoningEffort.includes('fixed') ? 'effort-fixed' : ''}`}
+                            >
+                              {m.facts.reasoningEffort.includes('fixed')
+                                ? 'Fixed CoT'
+                                : `Effort: ${m.facts.defaultEffort !== 'none' ? m.facts.defaultEffort : 'Selectable'}`}
+                            </span>
+                          </div>
+                        )}
                     </th>
                   ))}
                 </tr>

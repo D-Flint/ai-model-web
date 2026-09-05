@@ -1,6 +1,7 @@
 ---
 import RootLayout from '../../layouts/RootLayout.astro';
-import ModelCard, { ModelMark } from '../../components/ModelCard';
+import ModelCard from '../../components/ModelCard';
+import ProviderLogo from '../../components/ProviderLogo.astro';
 import { models } from '../../data/models';
 import { metricLabels, overallWeights, type Metric } from '../../data/config';
 import { money, contextSize, taskCost, rankModels } from '../../lib/decision';
@@ -44,13 +45,32 @@ const alternatives = [
       <a href="/models">Models</a><span>/</span><span>{model.name}</span>
     </div><div class="detail-header">
       <div>
-        <ModelMark model={model} /><div class="micro">
-          {model.provider} · {
-            model.dataKind === 'verified'
-              ? 'Verified model'
-              : 'Fictional sample model'
+        <div class="provider-badge" style="margin-bottom: 8px;">
+          <ProviderLogo provider={model.provider} size={20} />
+          <span class="micro" style="font-weight: 600;">{model.provider}</span>
+          <span class="micro"
+            >· {
+              model.dataKind === 'verified'
+                ? 'Verified model'
+                : 'Fictional sample model'
+            }</span
+          >
+          {
+            model.facts.reasoningEffort &&
+              model.facts.reasoningEffort.length > 0 &&
+              !model.facts.reasoningEffort.includes('none') && (
+                <span
+                  class={`effort-badge ${model.facts.reasoningEffort.includes('fixed') ? 'effort-fixed' : ''}`}
+                  style="margin-left: 6px;"
+                >
+                  {model.facts.reasoningEffort.includes('fixed')
+                    ? 'Fixed CoT'
+                    : `Effort: ${model.facts.defaultEffort !== 'none' ? model.facts.defaultEffort : 'Selectable'}`}
+                </span>
+              )
           }
-        </div><h1>{model.name}</h1><p>{model.description}</p><div
+        </div>
+        <h1>{model.name}</h1><p>{model.description}</p><div
           class="detail-actions"
         >
           <a class="button primary" href={`/compare?models=${model.slug}`}
@@ -200,6 +220,24 @@ const alternatives = [
           </div><div>
             <dt>Maximum output</dt><dd>
               {contextSize(model.facts.maxOutput)} tokens
+            </dd>
+          </div><div>
+            <dt>Reasoning effort</dt><dd>
+              {
+                model.facts.reasoningEffort &&
+                model.facts.reasoningEffort.length > 0 &&
+                !model.facts.reasoningEffort.includes('none') ? (
+                  <span
+                    class={`effort-badge ${model.facts.reasoningEffort.includes('fixed') ? 'effort-fixed' : ''}`}
+                  >
+                    {model.facts.reasoningEffort.includes('fixed')
+                      ? 'Fixed Reasoning CoT'
+                      : `Selectable (${model.facts.reasoningEffort.join(', ')})`}
+                  </span>
+                ) : (
+                  'Standard (Instant)'
+                )
+              }
             </dd>
           </div><div><dt>Family</dt><dd>{model.family}</dd></div><div>
             <dt>Status</dt><dd>

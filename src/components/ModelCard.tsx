@@ -1,6 +1,8 @@
 import { ArrowUpRight, Plus, Check } from 'lucide-react';
 import type { CatalogModel } from '../lib/catalogSchema';
 import { contextSize, money } from '../lib/decision';
+import { ProviderLogo } from './ProviderLogo';
+
 export function ModelMark({ model }: { model: CatalogModel }) {
   return (
     <span
@@ -20,12 +22,32 @@ export default function ModelCard({
   selected?: boolean;
   onSelect?: () => void;
 }) {
+  const isReasoning =
+    model.facts.reasoningEffort &&
+    model.facts.reasoningEffort.length > 0 &&
+    !model.facts.reasoningEffort.includes('none');
+
   return (
     <article className="model-card">
       <div className="card-top">
-        <ModelMark model={model} />
-        <span className="micro">{model.provider}</span>
-        <span className="sample-label">Sample</span>
+        <div className="provider-badge">
+          <ProviderLogo provider={model.provider} size={16} />
+          <span className="micro">{model.provider}</span>
+        </div>
+        {isReasoning ? (
+          <span
+            className={`effort-badge ${model.facts.reasoningEffort?.includes('fixed') ? 'effort-fixed' : ''}`}
+            title={`Reasoning effort tiers: ${model.facts.reasoningEffort?.join(', ')}`}
+          >
+            {model.facts.reasoningEffort?.includes('fixed')
+              ? 'Fixed CoT'
+              : `Effort: ${model.facts.defaultEffort !== 'none' ? model.facts.defaultEffort : 'Selectable'}`}
+          </span>
+        ) : model.dataKind === 'verified' ? (
+          <span className="sample-label verified-label">Verified</span>
+        ) : (
+          <span className="sample-label">Sample</span>
+        )}
       </div>
       <div className="model-title">
         <h3>

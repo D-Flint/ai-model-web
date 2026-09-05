@@ -8,9 +8,9 @@
       "status": "completed"
     },
     "data-agent": {
-      "role": "Data Engineer",
-      "goal": "Expand catalog to 50+ newer models",
-      "lastHeartbeat": "2026-09-05T06:31:18.056Z",
+      "role": "Data & Frontend Engineer",
+      "goal": "Add missing newer models, reasoning effort levels, and AI company provider logos",
+      "lastHeartbeat": "2026-09-05T06:39:19.214Z",
       "status": "active"
     }
   },

@@ -137,6 +137,8 @@ export interface CanonicalModelConfig {
   strengths: string[];
   weaknesses: string[];
   tags: string[];
+  reasoningEffort?: ('none' | 'low' | 'medium' | 'high' | 'max' | 'fixed')[];
+  defaultEffort?: 'none' | 'low' | 'medium' | 'high' | 'max' | 'fixed';
 }
 
 export interface OfficialProviderSpec {
@@ -154,6 +156,8 @@ export interface OfficialProviderSpec {
     output: number;
     cached: number | null;
   };
+  reasoningEffort?: ('none' | 'low' | 'medium' | 'high' | 'max' | 'fixed')[];
+  defaultEffort?: 'none' | 'low' | 'medium' | 'high' | 'max' | 'fixed';
   lastVerifiedAt: string;
   sourceUrl: string;
   sourceName: string;

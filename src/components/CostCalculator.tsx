@@ -2,9 +2,22 @@ import { useEffect, useState } from 'react';
 import type { CatalogModel } from '../lib/catalogSchema';
 import { workloads } from '../data/config';
 import { money, selectionFromSearch, taskCost } from '../lib/decision';
+import { ProviderLogo } from './ProviderLogo';
+
+const reasoningTokenMap: Record<string, number> = {
+  none: 0,
+  low: 1000,
+  medium: 4000,
+  high: 16000,
+  max: 32000,
+};
+
 export default function CostCalculator({ models }: { models: CatalogModel[] }) {
   const [advanced, setAdvanced] = useState(false);
   const [work, setWork] = useState<keyof typeof workloads>('chat');
+  const [effort, setEffort] = useState<
+    'none' | 'low' | 'medium' | 'high' | 'max'
+  >('medium');
   const [requests, setRequests] = useState('20');
   const [days, setDays] = useState('30');
   const [input, setInput] = useState('500');
@@ -45,17 +58,28 @@ export default function CostCalculator({ models }: { models: CatalogModel[] }) {
   const rows = valid
     ? models
         .filter((m) => selected.includes(m.slug))
-        .map((model) => ({
-          model,
-          cost: taskCost(
+        .map((model) => {
+          const isReasoning =
+            model.facts.reasoningEffort &&
+            model.facts.reasoningEffort.length > 0 &&
+            !model.facts.reasoningEffort.includes('none');
+          const extraReasoningTokens = isReasoning
+            ? (reasoningTokenMap[effort] ?? 0)
+            : 0;
+          const effectiveOutputTokens = outputTokens + extraReasoningTokens;
+          return {
             model,
-            inputTokens,
-            outputTokens,
-            Number(success) / 100,
-            Number(tools),
-            Number(toolPrice),
-          ),
-        }))
+            extraReasoningTokens,
+            cost: taskCost(
+              model,
+              inputTokens,
+              effectiveOutputTokens,
+              Number(success) / 100,
+              Number(tools),
+              Number(toolPrice),
+            ),
+          };
+        })
         .sort((a, b) => a.cost - b.cost)
     : [];
   return (
@@ -109,6 +133,30 @@ export default function CostCalculator({ models }: { models: CatalogModel[] }) {
             </label>
           </>
         )}
+        <label className="field">
+          Reasoning effort level
+          <select
+            value={effort}
+            onChange={(e) =>
+              setEffort(
+                e.target.value as 'none' | 'low' | 'medium' | 'high' | 'max',
+              )
+            }
+          >
+            <option value="none">None / Instant (0 extra tokens)</option>
+            <option value="low">Low (+1,000 reasoning tokens)</option>
+            <option value="medium">Medium (+4,000 reasoning tokens)</option>
+            <option value="high">High (+16,000 reasoning tokens)</option>
+            <option value="max">Max (+32,000 reasoning tokens)</option>
+          </select>
+          <span
+            className="micro muted"
+            style={{ display: 'block', marginTop: '2px' }}
+          >
+            Applies to reasoning models (o1/o3/GPT-6, Claude Thinking, Gemini
+            Thinking, DeepSeek R1).
+          </span>
+        </label>
         <label className="field">
           {advanced ? 'Requests' : 'Messages or tasks'} per day
           {advanced ? (
@@ -206,7 +254,10 @@ export default function CostCalculator({ models }: { models: CatalogModel[] }) {
                     )
                   }
                 />
-                {m.name}
+                <span className="provider-badge">
+                  <ProviderLogo provider={m.provider} size={14} />
+                  <span>{m.name}</span>
+                </span>
               </label>
             ))}
           </div>
@@ -226,8 +277,11 @@ export default function CostCalculator({ models }: { models: CatalogModel[] }) {
           <>
             <div className="notice">
               Illustrative estimate: {inputTokens.toLocaleString()} input and{' '}
-              {outputTokens.toLocaleString()} output tokens per attempt;{' '}
-              {requests} tasks per day for {days} days. Success rate: {success}
+              {outputTokens.toLocaleString()} output tokens per attempt
+              {effort !== 'none' &&
+                ` (+${reasoningTokenMap[effort].toLocaleString()} reasoning tokens for thinking models)`}
+              ; {requests} tasks per day for {days} days. Success rate:{' '}
+              {success}
               %.
             </div>
             <div
@@ -252,7 +306,29 @@ export default function CostCalculator({ models }: { models: CatalogModel[] }) {
                   {rows.map(({ model, cost }, i) => (
                     <tr key={model.slug}>
                       <th scope="row">
-                        <a href={`/models/${model.slug}`}>{model.name}</a>
+                        <div
+                          className="provider-badge"
+                          style={{ marginBottom: '2px' }}
+                        >
+                          <ProviderLogo provider={model.provider} size={14} />
+                          <a href={`/models/${model.slug}`}>{model.name}</a>
+                        </div>
+                        {model.facts.reasoningEffort &&
+                          model.facts.reasoningEffort.length > 0 &&
+                          !model.facts.reasoningEffort.includes('none') && (
+                            <span
+                              className={`effort-badge ${model.facts.reasoningEffort.includes('fixed') ? 'effort-fixed' : ''}`}
+                              style={{
+                                display: 'inline-block',
+                                marginTop: '2px',
+                                fontSize: '10px',
+                              }}
+                            >
+                              {model.facts.reasoningEffort.includes('fixed')
+                                ? 'Fixed CoT'
+                                : `Effort: ${model.facts.defaultEffort !== 'none' ? model.facts.defaultEffort : 'Selectable'}`}
+                            </span>
+                          )}
                         {i === 0 && (
                           <span className="winner-label accent">
                             Lowest estimated cost

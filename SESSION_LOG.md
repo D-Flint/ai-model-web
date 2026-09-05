@@ -104,3 +104,28 @@
   - `npm run build`: Production build passes cleanly, generating 2,096 pages (including all 64 model detail pages and pairwise comparisons).
 - Current state: Real model catalog successfully expanded to 64 models spanning all premier 2025–2026 foundation models, fully verifiable with live evidence sources.
 - Exact next step: User verifies the expanded catalog locally at `http://localhost:4321` or production build preview. Pause before any further implementation.
+
+## 2026-09-05 — Expand Catalog to 82 Models, Reasoning Effort Levels & AI Company Logos
+
+- Objective: Add the latest missing frontier models (including GPT-6 Astra, GPT-6 Astra Pro, Claude 5.1 Fable, Gemini 3 Pro Image, Qwen 3 Max Thinking, Grok 4.20 Multi-Agent), integrate Reasoning Effort levels across models and the cost calculator, and render authentic AI company vector SVG logos throughout the interface.
+- Files changed:
+  - `src/components/ProviderLogo.tsx` & `src/components/ProviderLogo.astro`: Crisp SVG vector logos for 9 major AI companies (OpenAI, Anthropic, Google DeepMind, DeepSeek, Meta AI, xAI, Mistral AI, Cohere, Alibaba Cloud / Qwen) with theme-aware styles.
+  - `src/components/ModelCard.tsx`: Displaying AI company logo and Reasoning Effort badge (`Fixed CoT`, `Effort: Selectable`) on model cards.
+  - `src/pages/models/[slug].astro`: Integrated company logo and Reasoning Effort specification in the header and Model Facts grid.
+  - `src/components/ComparisonBuilder.tsx`: Added company logo in comparison column headers and Reasoning Effort in the side-by-side comparison table.
+  - `src/components/CostCalculator.tsx`: Added company logos to model checkboxes and results table, and introduced an interactive Reasoning Effort simulator (`None`, `Low`, `Medium`, `High`, `Max`) showing the cost impact of reasoning tokens.
+  - `src/lib/catalogSchema.ts` & `src/pipeline/types.ts`: Added `reasoningEffort` and `defaultEffort` fields to `facts` schema with safe defaults.
+  - `src/data/canonicalModels.ts` & `src/data/officialProviders.ts`: Expanded catalog to 82 models across 9 providers, including GPT-6 Astra, GPT-6 Astra Pro, Claude 5.1 Fable, Gemini 3 Pro Image, Qwen 3 Max Thinking, Grok 4.20 Multi-Agent, Devstral 2512, and baseline GPT-4o.
+  - `src/data/verifiedModels.json`: Generated verified catalog with all 82 models, 97 LMSYS Arena benchmarks, and 12 SWE-bench verified evaluations.
+  - `src/styles/global.css`: Added CSS classes for provider logos and effort badges.
+- Attempts: 1 full iteration with verified build.
+- Failures and causes:
+  - Vitest test `tests/dataPipeline.test.ts` expected `openai/gpt-4o` in canonical alias resolver; re-added `gpt-4o` to canonical models and verified specifications.
+  - Minor unused import warning in `src/pages/models/[slug].astro` resolved.
+- Tests and results:
+  - `npm test`: 32/32 tests pass across 3 test suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 49 Astro and TypeScript files.
+  - `npm run lint`: Prettier and ESLint clean with 0 errors.
+  - `npm run build`: Production build passes cleanly, generating 3,419 pages in 2m 10s.
+- Current state: 82 verified models with reasoning effort levels, company logos, and real benchmark evidence are fully operational.
+- Exact next step: User verifies UI locally at `http://localhost:4321` or production build.

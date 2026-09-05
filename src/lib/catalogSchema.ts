@@ -45,6 +45,12 @@ export const catalogModelSchema = z
       availability: z.string().min(1),
       releaseDate: date,
       sourceId: z.string().min(1),
+      reasoningEffort: z
+        .array(z.enum(['none', 'low', 'medium', 'high', 'max', 'fixed']))
+        .default(['none']),
+      defaultEffort: z
+        .enum(['none', 'low', 'medium', 'high', 'max', 'fixed'])
+        .default('none'),
     }),
     pricing: z.object({
       input: z.number().nonnegative(),
