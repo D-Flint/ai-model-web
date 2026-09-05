@@ -1,7 +1,12 @@
 ---
 import { models } from '../data/models';
 import { categories, metricLabels, type Metric } from '../data/config';
-import { rankModels, taskCost, money } from '../lib/decision';
+import {
+  rankModels,
+  taskCost,
+  money,
+  getSpeedTokensPerSec,
+} from '../lib/decision';
 import { ModelMark } from './ModelCard';
 interface Props {
   metric?: Metric;
@@ -34,7 +39,9 @@ const ranked =
   Sample ranking, not a market recommendation. {
     slug === 'cheap'
       ? 'Sorted by estimated cost for 1,000 input and 500 output tokens.'
-      : `Sorted by ${metricLabels[metric].toLowerCase()} score, with alphabetical ordering for ties.`
+      : metric === 'speed'
+        ? 'Sorted by generation throughput in tokens/sec.'
+        : `Sorted by ${metricLabels[metric].toLowerCase()} score, with alphabetical ordering for ties.`
   }
   <a href="/methodology">How scoring works</a>.
 </div>
@@ -73,11 +80,15 @@ const ranked =
           >
             {slug === 'cheap'
               ? money(taskCost(model), 4)
-              : model.scores[metric]}
+              : metric === 'speed'
+                ? getSpeedTokensPerSec(model)
+                : model.scores[metric]}
             <small>
               {slug === 'cheap'
                 ? 'estimated / task'
-                : `${metricLabels[metric]} / 100`}
+                : metric === 'speed'
+                  ? 'tokens/sec'
+                  : `${metricLabels[metric]} / 100`}
             </small>
           </a>
         </>

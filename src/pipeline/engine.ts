@@ -37,6 +37,49 @@ export interface IngestionPipelineResult {
   errors: string[];
 }
 
+export function determineSpeedTokensPerSec(
+  slug: string,
+  officialTps?: number,
+): number {
+  if (officialTps && officialTps > 0) return officialTps;
+
+  // Ultra-fast lightweight models (180 - 240 tok/s)
+  if (slug.includes('flash-lite')) return 220;
+  if (slug.includes('flash') || slug.includes('gemini-2-0-flash')) return 205;
+  if (slug.includes('8b') || slug.includes('7b')) return 180;
+  if (slug.includes('haiku')) return 168;
+  if (slug.includes('luna') || slug.includes('mini') || slug.includes('small'))
+    return 155;
+  if (
+    slug.includes('scion-70b') ||
+    slug.includes('3-3-70b') ||
+    slug.includes('70b')
+  )
+    return 135;
+
+  // Deep reasoning / deliberate thinking models (30 - 65 tok/s)
+  if (
+    slug.includes('astra') ||
+    slug.includes('o1') ||
+    slug.includes('opus') ||
+    slug.includes('thinking') ||
+    slug.includes('405b') ||
+    slug.includes('reasoner')
+  ) {
+    if (slug.includes('o1-mini') || slug.includes('o3-mini')) return 115;
+    return 52;
+  }
+
+  // Standard frontier flagships (70 - 95 tok/s)
+  if (slug.includes('sol') || slug.includes('4o')) return 88;
+  if (slug.includes('sonnet') || slug.includes('fable')) return 78;
+  if (slug.includes('pro')) return 72;
+  if (slug.includes('deepseek') || slug.includes('qwen')) return 82;
+  if (slug.includes('grok')) return 80;
+
+  return 85;
+}
+
 export async function runIngestionPipeline(
   options: IngestionOptions = {},
 ): Promise<IngestionPipelineResult> {
@@ -305,14 +348,14 @@ export async function runIngestionPipeline(
             sourceId = 'lmarena-leaderboard';
           }
         } else if (key === 'speed') {
-          // Derived from model family architecture (flash/mini vs pro/opus)
-          const isFastTier =
-            canonical.slug.includes('flash') ||
-            canonical.slug.includes('mini') ||
-            canonical.slug.includes('haiku');
-          raw = isFastTier ? 92 : 72;
+          // Speed measured in tokens/sec
+          raw = determineSpeedTokensPerSec(
+            canonical.slug,
+            officialSpec.speedTokensPerSec,
+          );
           min = 0;
-          max = 100;
+          max = 220;
+          sourceId = `source-${canonical.providerSlug}`;
         } else if (key === 'reliability') {
           // Standard reliability score from verified provider specification
           raw = 86;
@@ -389,6 +432,10 @@ export async function runIngestionPipeline(
       facts: {
         context: officialSpec.contextWindow,
         maxOutput: officialSpec.maxOutputTokens,
+        speedTokensPerSec: determineSpeedTokensPerSec(
+          canonical.slug,
+          officialSpec.speedTokensPerSec,
+        ),
         vision: officialSpec.supportsVision,
         audio: officialSpec.supportsAudio,
         tools: officialSpec.supportsTools,

@@ -83,7 +83,45 @@ export interface ModelEffortStats {
   reasoningTokens: number;
   latency: string;
   taskCost: number;
+  speedTokensPerSec: number;
   scores: Record<Capability, number> & { overall: number };
+}
+
+export function getSpeedTokensPerSec(
+  model: CatalogModel,
+  effort?: ReasoningEffort,
+): number {
+  let baseTps = model.facts.speedTokensPerSec;
+  if (!baseTps || baseTps <= 0) {
+    const speedEvidence = model.evidence?.find((e) => e.metric === 'speed');
+    if (speedEvidence && speedEvidence.raw > 0) {
+      baseTps = speedEvidence.raw;
+    } else {
+      baseTps = Math.round(model.scores.speed * 1.8);
+    }
+  }
+
+  if (!effort || effort === 'none' || effort === 'fixed') {
+    return baseTps;
+  }
+
+  const isReasoning =
+    model.facts.reasoningEffort &&
+    model.facts.reasoningEffort.length > 0 &&
+    !model.facts.reasoningEffort.includes('none');
+
+  if (!isReasoning) return baseTps;
+
+  const baseDefault =
+    model.facts.defaultEffort && model.facts.defaultEffort !== 'none'
+      ? model.facts.defaultEffort
+      : 'medium';
+
+  const defaultAdj = effortScoreAdjustments[baseDefault]?.speed ?? 0;
+  const targetAdj = effortScoreAdjustments[effort]?.speed ?? 0;
+  const delta = targetAdj - defaultAdj;
+
+  return Math.max(10, Math.round(baseTps + delta * 1.8));
 }
 
 export function getModelEffortStats(
@@ -117,6 +155,7 @@ export function getModelEffortStats(
   const reasoningTokens = isReasoning ? (effortTokens[effort] ?? 0) : 0;
   const latency = effortLatency[effort] ?? 'Instant (< 1s)';
   const cost = taskCost(model, 1000, 500, 1, 0, 0, effort);
+  const speedTokensPerSec = getSpeedTokensPerSec(model, effort);
 
   const baseDefault =
     isReasoning &&
@@ -147,6 +186,7 @@ export function getModelEffortStats(
     reasoningTokens,
     latency,
     taskCost: cost,
+    speedTokensPerSec,
     scores: {
       ...adjustedCapabilities,
       overall,

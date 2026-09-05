@@ -35,6 +35,7 @@ export const catalogModelSchema = z
     facts: z.object({
       context: z.number().int().positive(),
       maxOutput: z.number().int().positive(),
+      speedTokensPerSec: z.number().int().positive().optional(),
       vision: z.boolean(),
       audio: z.boolean(),
       tools: z.boolean(),

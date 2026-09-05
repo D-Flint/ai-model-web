@@ -206,7 +206,12 @@ describe('Verified Catalog Integrity', () => {
       expect(model.confidence).toBeGreaterThan(0);
       expect(model.sources.length).toBeGreaterThanOrEqual(3);
       expect(model.facts.context).toBeGreaterThan(0);
+      expect(model.facts.speedTokensPerSec).toBeGreaterThan(0);
       expect(model.scores.overall).toBeGreaterThan(0);
+
+      const speedEvidence = model.evidence.find((e) => e.metric === 'speed');
+      expect(speedEvidence).toBeDefined();
+      expect(speedEvidence?.raw).toBe(model.facts.speedTokensPerSec);
     }
   });
 

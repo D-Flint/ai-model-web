@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ArrowRight, ArrowLeftRight } from 'lucide-react';
 import type { CatalogModel } from '../lib/catalogSchema';
-import { money } from '../lib/decision';
+import { money, getSpeedTokensPerSec } from '../lib/decision';
 import { ModelMark } from './ModelCard';
 export default function HeroCompare({ models }: { models: CatalogModel[] }) {
   const [left, setLeft] = useState(models[0].slug);
@@ -73,11 +73,13 @@ export default function HeroCompare({ models }: { models: CatalogModel[] }) {
         </div>
         <div>
           <strong className={a.scores.speed >= b.scores.speed ? 'accent' : ''}>
-            {a.scores.speed}
+            {getSpeedTokensPerSec(a)}{' '}
+            <small className="micro muted">tok/s</small>
           </strong>
           <span>Speed</span>
           <strong className={b.scores.speed >= a.scores.speed ? 'accent' : ''}>
-            {b.scores.speed}
+            {getSpeedTokensPerSec(b)}{' '}
+            <small className="micro muted">tok/s</small>
           </strong>
         </div>
         <div>

@@ -413,19 +413,23 @@ export default function ComparisonBuilder({
                   })}
                 </tr>
                 <tr>
-                  <th scope="row">Speed / 100</th>
+                  <th scope="row">Speed (tokens/sec)</th>
                   {selectedItems.map((item) => {
-                    const score = item.stats.scores.speed;
-                    const maxScore = Math.max(
-                      ...selectedItems.map((x) => x.stats.scores.speed),
+                    const tps = item.stats.speedTokensPerSec;
+                    const maxTps = Math.max(
+                      ...selectedItems.map((x) => x.stats.speedTokensPerSec),
                     );
-                    const isWinner = score === maxScore;
+                    const isWinner = tps === maxTps;
                     return (
                       <td key={item.id} className={isWinner ? 'winner' : ''}>
                         <a href={`/models/${item.model.slug}#score-speed`}>
-                          <strong>{score}</strong>
+                          <strong>{tps}</strong>{' '}
+                          <small className="micro muted">tok/s</small>
                         </a>
-                        <div className="micro muted">{item.stats.latency}</div>
+                        <div className="micro muted">
+                          {item.stats.scores.speed}/100 rating ·{' '}
+                          {item.stats.latency}
+                        </div>
                         {isWinner && (
                           <span className="winner-label">Fastest</span>
                         )}
@@ -590,7 +594,8 @@ export default function ComparisonBuilder({
                     b.stats.scores.intelligence - a.stats.scores.intelligence,
                 )[0];
                 const bestSpeed = [...selectedItems].sort(
-                  (a, b) => b.stats.scores.speed - a.stats.scores.speed,
+                  (a, b) =>
+                    b.stats.speedTokensPerSec - a.stats.speedTokensPerSec,
                 )[0];
                 const lowestPrice = [...selectedItems].sort(
                   (a, b) => a.stats.taskCost - b.stats.taskCost,
@@ -608,7 +613,7 @@ export default function ComparisonBuilder({
                   {
                     title: 'Fastest Speed',
                     item: bestSpeed,
-                    detail: `${bestSpeed.stats.scores.speed}/100 speed score (${bestSpeed.stats.latency}).`,
+                    detail: `${bestSpeed.stats.speedTokensPerSec} tokens/sec throughput (${bestSpeed.stats.scores.speed}/100 rating, ${bestSpeed.stats.latency}).`,
                   },
                   {
                     title: 'Lowest Price',

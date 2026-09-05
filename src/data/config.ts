@@ -36,7 +36,8 @@ export const categories = [
     slug: 'speed',
     label: 'Speed',
     metric: 'speed',
-    description: 'High throughput, ultra-low latency, and fast generation.',
+    description:
+      'High throughput measured in tokens/sec, ultra-low latency, and fast generation.',
   },
   {
     slug: 'value',

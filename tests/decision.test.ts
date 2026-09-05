@@ -8,6 +8,7 @@ import {
   selectionFromSearch,
   taskCost,
   getModelEffortStats,
+  getSpeedTokensPerSec,
 } from '../src/lib/decision';
 import { validateCatalog } from '../src/lib/importCatalog';
 import { catalogSchema } from '../src/lib/catalogSchema';
@@ -132,12 +133,26 @@ describe('task cost assumptions and reasoning effort stats', () => {
       expect(lowStats.reasoningTokens).toBeLessThan(highStats.reasoningTokens);
       expect(lowStats.taskCost).toBeLessThan(highStats.taskCost);
       expect(lowStats.scores.speed).toBeGreaterThan(highStats.scores.speed);
+      expect(lowStats.speedTokensPerSec).toBeGreaterThan(
+        highStats.speedTokensPerSec,
+      );
+      expect(lowStats.speedTokensPerSec).toBeGreaterThan(0);
       expect(highStats.scores.intelligence).toBeGreaterThanOrEqual(
         lowStats.scores.intelligence,
       );
       expect(highStats.scores.coding).toBeGreaterThanOrEqual(
         lowStats.scores.coding,
       );
+    }
+  });
+  it('measures model speed in tokens/sec across all models', () => {
+    for (const model of models) {
+      const tps = getSpeedTokensPerSec(model);
+      expect(tps).toBeGreaterThan(0);
+      expect(Number.isFinite(tps)).toBe(true);
+      if (model.facts.speedTokensPerSec) {
+        expect(model.facts.speedTokensPerSec).toBe(tps);
+      }
     }
   });
 });

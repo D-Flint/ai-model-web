@@ -1,6 +1,6 @@
 import { ArrowUpRight, Plus, Check } from 'lucide-react';
 import type { CatalogModel } from '../lib/catalogSchema';
-import { contextSize, money } from '../lib/decision';
+import { contextSize, money, getSpeedTokensPerSec } from '../lib/decision';
 import { ProviderLogo } from './ProviderLogo';
 
 export function ModelMark({ model }: { model: CatalogModel }) {
@@ -22,6 +22,7 @@ export default function ModelCard({
   selected?: boolean;
   onSelect?: () => void;
 }) {
+  const speedTps = getSpeedTokensPerSec(model);
   const isReasoning =
     model.facts.reasoningEffort &&
     model.facts.reasoningEffort.length > 0 &&
@@ -72,8 +73,10 @@ export default function ModelCard({
         </div>
         <div>
           <span>Speed</span>
-          <strong title={`Speed: ${model.scores.speed}/100`}>
-            {model.scores.speed}
+          <strong
+            title={`Generation speed: ${speedTps} tokens/sec (${model.scores.speed}/100 rating)`}
+          >
+            {speedTps} <small className="micro muted">tok/s</small>
           </strong>
         </div>
         <div>

@@ -197,6 +197,7 @@ export const mockModels: CatalogModel[] = validateCatalog(
       facts: {
         context,
         maxOutput: index % 3 === 0 ? 32000 : 16000,
+        speedTokensPerSec: Math.round(scores.speed * 1.8),
         vision: scores.vision > 0,
         audio: provider === 'Orbit AI',
         tools: true,

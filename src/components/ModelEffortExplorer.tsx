@@ -38,7 +38,8 @@ export default function ModelEffortExplorer({
     currentStats.scores.overall - baselineStats.scores.overall;
   const intelligenceDelta =
     currentStats.scores.intelligence - baselineStats.scores.intelligence;
-  const speedDelta = currentStats.scores.speed - baselineStats.scores.speed;
+  const speedDeltaTps =
+    currentStats.speedTokensPerSec - baselineStats.speedTokensPerSec;
   const costDelta = currentStats.taskCost - baselineStats.taskCost;
 
   // Comparison link comparing available effort levels of this model
@@ -109,13 +110,19 @@ export default function ModelEffortExplorer({
         </div>
 
         <div className="effort-stat-card">
-          <span className="label">Speed Rating</span>
-          <div className="value">{currentStats.scores.speed}/100</div>
-          {speedDelta !== 0 && (
+          <span className="label">Speed (Throughput)</span>
+          <div className="value">
+            {currentStats.speedTokensPerSec}{' '}
+            <small className="micro muted">tok/s</small>
+          </div>
+          <div className="micro muted">
+            {currentStats.scores.speed}/100 rating
+          </div>
+          {speedDeltaTps !== 0 && (
             <div
-              className={`delta ${speedDelta > 0 ? 'delta-positive' : 'delta-negative'}`}
+              className={`delta ${speedDeltaTps > 0 ? 'delta-positive' : 'delta-negative'}`}
             >
-              {speedDelta > 0 ? `+${speedDelta}` : speedDelta} pts
+              {speedDeltaTps > 0 ? `+${speedDeltaTps}` : speedDeltaTps} tok/s
             </div>
           )}
         </div>

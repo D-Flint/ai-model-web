@@ -36,6 +36,12 @@
       "goal": "Elevate Intelligence, Speed, and Price as the 3 primary model pillars",
       "lastHeartbeat": "2026-09-05T08:42:00.000Z",
       "status": "completed"
+    },
+    "speed-agent": {
+      "role": "Data & Frontend Engineer",
+      "goal": "Ensure AI model speed is measured and displayed in tokens/sec",
+      "lastHeartbeat": "2026-09-05T08:47:31.163Z",
+      "status": "active"
     }
   },
   "claims": {},

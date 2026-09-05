@@ -5,7 +5,13 @@ import ProviderLogo from '../../components/ProviderLogo.astro';
 import ModelEffortExplorer from '../../components/ModelEffortExplorer';
 import { models } from '../../data/models';
 import { metricLabels, overallWeights, type Metric } from '../../data/config';
-import { money, contextSize, taskCost, rankModels } from '../../lib/decision';
+import {
+  money,
+  contextSize,
+  taskCost,
+  rankModels,
+  getSpeedTokensPerSec,
+} from '../../lib/decision';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 export function getStaticPaths() {
   return models.map((model) => ({
@@ -14,6 +20,7 @@ export function getStaticPaths() {
   }));
 }
 const { model } = Astro.props;
+const speedTps = getSpeedTokensPerSec(model);
 const alternatives = [
   ...new Map(
     [
@@ -134,9 +141,11 @@ const orderedMetrics: Metric[] = [
     <div class="pillar-summary-card">
       <span class="pillar-summary-label">Speed</span>
       <strong class="pillar-summary-value"
-        >{model.scores.speed}<small>/100</small></strong
+        >{speedTps}<small>tok/s</small></strong
       >
-      <span class="micro muted">Token throughput & latency tier</span>
+      <span class="micro muted">
+        Rating: {model.scores.speed}/100 · Latency tier
+      </span>
     </div>
     <div class="pillar-summary-card">
       <span class="pillar-summary-label">Price</span>
@@ -183,6 +192,17 @@ const orderedMetrics: Metric[] = [
                     )
                     .join(', ')}
                   . Rounded to the nearest integer.
+                </p>
+              ) : metric === 'speed' ? (
+                <p>
+                  Measured generation speed:{' '}
+                  <strong>{evidence?.raw} tokens/sec</strong>. Normalized
+                  rating: {evidence?.normalized} / 100 on a {evidence?.min}–
+                  {evidence?.max} tokens/sec scale. Evaluation method:{' '}
+                  {evidence?.kind === 'benchmark'
+                    ? 'Provider throughput benchmark'
+                    : 'Internal evaluation'}
+                  .
                 </p>
               ) : model.dataKind === 'verified' ? (
                 <p>
@@ -271,6 +291,11 @@ const orderedMetrics: Metric[] = [
           </div><div>
             <dt>Maximum output</dt><dd>
               {contextSize(model.facts.maxOutput)} tokens
+            </dd>
+          </div><div>
+            <dt>Speed (Throughput)</dt><dd>
+              <strong>{speedTps} tokens/sec</strong>{' '}
+              <span class="micro muted">({model.scores.speed}/100 rating)</span>
             </dd>
           </div><div>
             <dt>Reasoning effort</dt><dd>

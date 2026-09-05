@@ -139,6 +139,7 @@ export interface CanonicalModelConfig {
   tags: string[];
   reasoningEffort?: ('none' | 'low' | 'medium' | 'high' | 'max' | 'fixed')[];
   defaultEffort?: 'none' | 'low' | 'medium' | 'high' | 'max' | 'fixed';
+  speedTokensPerSec?: number;
 }
 
 export interface OfficialProviderSpec {
@@ -156,6 +157,7 @@ export interface OfficialProviderSpec {
     output: number;
     cached: number | null;
   };
+  speedTokensPerSec?: number;
   reasoningEffort?: ('none' | 'low' | 'medium' | 'high' | 'max' | 'fixed')[];
   defaultEffort?: 'none' | 'low' | 'medium' | 'high' | 'max' | 'fixed';
   lastVerifiedAt: string;

@@ -3,7 +3,7 @@ import { ArrowRight, X } from 'lucide-react';
 import ModelCard from './ModelCard';
 import type { CatalogModel } from '../lib/catalogSchema';
 import { metricLabels, type Metric } from '../data/config';
-import { selectionFromSearch } from '../lib/decision';
+import { selectionFromSearch, getSpeedTokensPerSec } from '../lib/decision';
 export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
   const [query, setQuery] = useState('');
   const [provider, setProvider] = useState('');
@@ -28,9 +28,10 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
         (!provider || m.provider === provider) &&
         (!price || m.pricing.input <= Number(price)) &&
         m.facts.context >= Number(context) &&
-        Object.entries(minimum).every(
-          ([key, value]) => m.scores[key as Metric] >= value,
-        ) &&
+        (!minimum.speed || getSpeedTokensPerSec(m) >= minimum.speed) &&
+        Object.entries(minimum)
+          .filter(([k]) => k !== 'speed')
+          .every(([key, value]) => m.scores[key as Metric] >= value) &&
         capabilities.every((key) =>
           Boolean(m.facts[key as 'vision' | 'api' | 'openWeights']),
         ),
@@ -40,7 +41,9 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
         ? a.pricing.input - b.pricing.input
         : sort === 'context'
           ? b.facts.context - a.facts.context
-          : b.scores[sort as Metric] - a.scores[sort as Metric],
+          : sort === 'speed'
+            ? getSpeedTokensPerSec(b) - getSpeedTokensPerSec(a)
+            : b.scores[sort as Metric] - a.scores[sort as Metric],
     );
   function reset() {
     setQuery('');
@@ -78,7 +81,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
           <select value={sort} onChange={(e) => setSort(e.target.value)}>
             <optgroup label="Core Pillars">
               <option value="intelligence">Highest Intelligence</option>
-              <option value="speed">Fastest Speed</option>
+              <option value="speed">Fastest Speed (tokens/sec)</option>
               <option value="price">Lowest Input Price</option>
             </optgroup>
             <optgroup label="General">
@@ -136,12 +139,12 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
             </label>
 
             <label className="field">
-              Min Speed: {minimum.speed ?? 0}
+              Min Speed: {minimum.speed ? `${minimum.speed} tokens/sec` : 'Any'}
               <input
                 type="range"
                 min="0"
-                max="100"
-                step="5"
+                max="220"
+                step="10"
                 value={minimum.speed ?? 0}
                 onChange={(e) =>
                   setMinimum({ ...minimum, speed: Number(e.target.value) })

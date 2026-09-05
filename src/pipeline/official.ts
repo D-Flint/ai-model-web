@@ -54,6 +54,7 @@ export function verifyAgainstOfficialSpecs(options: {
           output: reportedPricing?.output ?? 2,
           cached: null,
         },
+        speedTokensPerSec: 80,
         lastVerifiedAt: new Date().toISOString().split('T')[0],
         sourceUrl: '',
         sourceName: 'Unknown',
