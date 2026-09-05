@@ -35,11 +35,19 @@ export default function ModelEffortExplorer({
   const baselineStats = getModelEffortStats(model, defaultEffort);
 
   const overallDelta =
-    currentStats.scores.overall - baselineStats.scores.overall;
+    currentStats.scores.overall !== null &&
+    baselineStats.scores.overall !== null
+      ? currentStats.scores.overall - baselineStats.scores.overall
+      : 0;
   const intelligenceDelta =
-    currentStats.scores.intelligence - baselineStats.scores.intelligence;
+    currentStats.scores.intelligence !== null &&
+    baselineStats.scores.intelligence !== null
+      ? currentStats.scores.intelligence - baselineStats.scores.intelligence
+      : 0;
   const speedDeltaTps =
-    currentStats.speedTokensPerSec - baselineStats.speedTokensPerSec;
+    currentStats.speedTokensPerSec > 0 && baselineStats.speedTokensPerSec > 0
+      ? currentStats.speedTokensPerSec - baselineStats.speedTokensPerSec
+      : 0;
   const costDelta = currentStats.taskCost - baselineStats.taskCost;
 
   // Comparison link comparing available effort levels of this model
@@ -84,7 +92,11 @@ export default function ModelEffortExplorer({
       <div className="effort-stats-grid">
         <div className="effort-stat-card">
           <span className="label">Overall Score</span>
-          <div className="value">{currentStats.scores.overall}/100</div>
+          <div className="value">
+            {currentStats.scores.overall !== null
+              ? `${currentStats.scores.overall}/100`
+              : '—'}
+          </div>
           {overallDelta !== 0 && (
             <div
               className={`delta ${overallDelta > 0 ? 'delta-positive' : 'delta-negative'}`}
@@ -96,7 +108,11 @@ export default function ModelEffortExplorer({
 
         <div className="effort-stat-card">
           <span className="label">Intelligence</span>
-          <div className="value">{currentStats.scores.intelligence}/100</div>
+          <div className="value">
+            {currentStats.scores.intelligence !== null
+              ? `${currentStats.scores.intelligence}/100`
+              : '—'}
+          </div>
           {intelligenceDelta !== 0 && (
             <div
               className={`delta ${intelligenceDelta > 0 ? 'delta-positive' : 'delta-negative'}`}
@@ -112,11 +128,19 @@ export default function ModelEffortExplorer({
         <div className="effort-stat-card">
           <span className="label">Speed (Throughput)</span>
           <div className="value">
-            {currentStats.speedTokensPerSec}{' '}
-            <small className="micro muted">tok/s</small>
+            {currentStats.speedTokensPerSec > 0 ? (
+              <>
+                {currentStats.speedTokensPerSec}{' '}
+                <small className="micro muted">tok/s</small>
+              </>
+            ) : (
+              '—'
+            )}
           </div>
           <div className="micro muted">
-            {currentStats.scores.speed}/100 rating
+            {currentStats.scores.speed !== null
+              ? `${currentStats.scores.speed}/100 rating`
+              : currentStats.latency}
           </div>
           {speedDeltaTps !== 0 && (
             <div

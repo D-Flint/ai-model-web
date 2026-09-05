@@ -1,0 +1,152 @@
+[
+  {
+    "model": "DeepSeek-R1",
+    "global_average": 74.6,
+    "reasoning": 88.4,
+    "math": 87.1,
+    "coding": 64.6,
+    "data_analysis": 72.8,
+    "instruction_following": 68.2,
+    "date": "2025-01-20"
+  },
+  {
+    "model": "o1-2024-12-17",
+    "global_average": 74.1,
+    "reasoning": 89.2,
+    "math": 86.4,
+    "coding": 65.2,
+    "data_analysis": 71.5,
+    "instruction_following": 65.8,
+    "date": "2024-12-17"
+  },
+  {
+    "model": "o3-mini",
+    "global_average": 72.3,
+    "reasoning": 87.5,
+    "math": 85.0,
+    "coding": 63.8,
+    "data_analysis": 68.4,
+    "instruction_following": 64.0,
+    "date": "2025-01-31"
+  },
+  {
+    "model": "claude-3-5-sonnet-20241022",
+    "global_average": 66.8,
+    "reasoning": 74.2,
+    "math": 69.8,
+    "coding": 60.1,
+    "data_analysis": 63.4,
+    "instruction_following": 68.5,
+    "date": "2024-10-22"
+  },
+  {
+    "model": "DeepSeek-V3",
+    "global_average": 65.8,
+    "reasoning": 73.1,
+    "math": 68.4,
+    "coding": 58.5,
+    "data_analysis": 61.2,
+    "instruction_following": 67.8,
+    "date": "2024-12-26"
+  },
+  {
+    "model": "gemini-2.0-flash",
+    "global_average": 63.1,
+    "reasoning": 68.5,
+    "math": 65.2,
+    "coding": 56.0,
+    "data_analysis": 61.0,
+    "instruction_following": 64.8,
+    "date": "2024-12-11"
+  },
+  {
+    "model": "gpt-4o-2024-11-20",
+    "global_average": 62.5,
+    "reasoning": 67.2,
+    "math": 64.1,
+    "coding": 55.3,
+    "data_analysis": 60.5,
+    "instruction_following": 65.4,
+    "date": "2024-11-20"
+  },
+  {
+    "model": "gemini-1.5-pro-002",
+    "global_average": 61.2,
+    "reasoning": 65.4,
+    "math": 63.0,
+    "coding": 54.3,
+    "data_analysis": 59.2,
+    "instruction_following": 64.1,
+    "date": "2024-09-24"
+  },
+  {
+    "model": "Qwen2.5-72B-Instruct",
+    "global_average": 58.2,
+    "reasoning": 62.1,
+    "math": 60.5,
+    "coding": 51.8,
+    "data_analysis": 56.4,
+    "instruction_following": 62.2,
+    "date": "2024-09-19"
+  },
+  {
+    "model": "Llama-3.3-70B-Instruct",
+    "global_average": 55.5,
+    "reasoning": 59.4,
+    "math": 57.2,
+    "coding": 49.0,
+    "data_analysis": 54.1,
+    "instruction_following": 60.8,
+    "date": "2024-12-06"
+  },
+  {
+    "model": "Mistral-Large-Instruct-2411",
+    "global_average": 54.2,
+    "reasoning": 58.1,
+    "math": 55.8,
+    "coding": 47.8,
+    "data_analysis": 52.9,
+    "instruction_following": 59.4,
+    "date": "2024-11-18"
+  },
+  {
+    "model": "claude-3-5-haiku-20241022",
+    "global_average": 53.4,
+    "reasoning": 56.8,
+    "math": 55.0,
+    "coding": 47.6,
+    "data_analysis": 51.2,
+    "instruction_following": 58.4,
+    "date": "2024-11-04"
+  },
+  {
+    "model": "gpt-4o-mini-2024-07-18",
+    "global_average": 49.8,
+    "reasoning": 52.4,
+    "math": 50.8,
+    "coding": 43.5,
+    "data_analysis": 48.1,
+    "instruction_following": 56.2,
+    "date": "2024-07-18"
+  },
+  {
+    "model": "claude-3-opus-20240229",
+    "global_average": 48.0,
+    "reasoning": 50.2,
+    "math": 48.6,
+    "coding": 42.9,
+    "data_analysis": 46.8,
+    "instruction_following": 54.5,
+    "date": "2024-02-29"
+  },
+  {
+    "model": "gemini-1.5-flash-002",
+    "global_average": 46.5,
+    "reasoning": 48.5,
+    "math": 47.0,
+    "coding": 40.0,
+    "data_analysis": 45.2,
+    "instruction_following": 53.8,
+    "date": "2024-09-24"
+  }
+]

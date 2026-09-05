@@ -236,3 +236,35 @@
 - Current state: All foundation models have speed measured in tokens/sec across data fixtures, pipeline, and user interface.
 - Exact next step: User verifies the tokens/sec speed display locally at `http://localhost:4321` or production build preview.
 
+## 2026-09-05 — Implement Approved External Data Sources Pipeline & Frontier Model Integrity
+
+- Objective: Replace fabricated/unverified model data and heuristics with the strict methodology specified in `gemini-approved-external-data-sources.md`. Enforce official provider specs for pricing/limits, integrate LiveBench and BFCL alongside SWE-bench and LMArena, support nullable capability scores (leaving unbenchmarked metrics as `null`/`—` rather than guessing), purge fictional models, and prioritize newer frontier models (late 2024 to early 2025).
+- Files changed:
+  - `src/data/canonicalModels.ts`: Defined 15 canonical frontier models (`o3-mini`, `deepseek-r1`, `gemini-2-0-flash`, `o1`, `claude-3-5-sonnet-20241022`, `deepseek-v3`, `llama-3-3-70b-instruct`, `gpt-4o`, `mistral-large-2411`, `claude-3-5-haiku-20241022`, `gemini-1-5-pro`, `gemini-1-5-flash`, `qwen-2-5-72b-instruct`, `gpt-4o-mini`, `claude-3-opus-20240229`) with official documentation links and alias mappings.
+  - `src/data/officialProviders.ts`: Authoritative pricing ($/1M tokens), context limits, max output tokens, and modalities directly from OpenAI, Anthropic, Google DeepMind, DeepSeek, Meta, Mistral, and Alibaba.
+  - `src/data/livebenchData.json` & `src/data/bfclData.json`: Added verified LiveBench (Intelligence & secondary Coding) and Berkeley Function Calling Leaderboard (Agentic) data.
+  - `src/pipeline/livebench.ts` & `src/pipeline/bfcl.ts`: Implemented ingestion adapters for LiveBench and BFCL.
+  - `src/pipeline/aliasResolver.ts`: Extended alias resolver with LiveBench and BFCL identifiers.
+  - `src/pipeline/engine.ts`: Refactored ingestion engine to strictly use approved external sources, removed regex throughput heuristics, and left unclaimed metrics (`speed`, `reliability`, `writing`) as `null`.
+  - `src/pipeline/dbPersist.ts` & `src/db/schema/index.ts`: Made capability score columns nullable in Drizzle database schema.
+  - `src/lib/catalogSchema.ts`: Made capability scores and overall score nullable; evidence is strictly validated only when scores exist.
+  - `src/lib/importCatalog.ts`: Added validation ensuring unbenchmarked capabilities stay `null`.
+  - `src/data/config.ts`: Updated methodology to `v1-external-only` and set capability weights matching guidelines (Intelligence 25%, Coding 20%, Agentic 15%, Daily Use 15%, Research 10%, Vision 5%, Cost Efficiency 10%).
+  - `src/lib/decision.ts`: Handled null capability scores in dynamic composite scoring, ranking, recommendations, and effort stats.
+  - `src/data/verifiedModels.json`: Generated 15 verified frontier models with 100% authoritative external provenance.
+  - UI components (`ModelCard.tsx`, `HeroCompare.tsx`, `ComparisonBuilder.tsx`, `[slug].astro`, `ModelExplorer.tsx`, `ModelEffortExplorer.tsx`, `ModelFinder.tsx`): Gracefully render `—` ("Not enough approved benchmark data") when metrics are unavailable.
+  - `tests/`: Updated unit and pipeline tests to assert external-only benchmarks and nullable capabilities.
+- Attempts: 1 full iteration with data refresh, type checking, test suite verification, linting, and build verification.
+- Failures and causes:
+  - Initial `drizzle-orm` insert failed because DB schema columns were `.notNull()`; resolved by relaxing columns to nullable.
+  - Initial `catalogSchema` `superRefine` rejected models with null scores lacking evidence; updated to check `score !== null`.
+  - `composite()` in `decision.ts` previously assumed all scores were numeric, causing NaN when weights summed over nulls; refactored to dynamically normalize weights over available scores.
+- Tests and results:
+  - `npm test`: 35/35 passing across all 3 test suites.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 52 Astro and TypeScript files.
+  - `npm run lint`: ESLint and Prettier check passed with 0 errors.
+  - `npm run build`: Production static site build generated 138 pages in 12.07s with zero errors.
+- Commit: `35030bd` (local commit; no remote push).
+- Current state: Catalog contains 15 verified frontier models strictly adhering to `gemini-approved-external-data-sources.md`, with zero fictional models, zero guessed numbers, and full provenance transparency.
+- Exact next step: User verifies the updated frontier model catalog and comparison data locally.
+

@@ -10,16 +10,16 @@ const factSource = z.object({
   publisher: z.string().min(1),
 });
 export const capabilitySchema = z.object({
-  intelligence: score,
-  coding: score,
-  agentic: score,
-  dailyUse: score,
-  research: score,
-  writing: score,
-  vision: score,
-  speed: score,
-  reliability: score,
-  costEfficiency: score,
+  intelligence: score.nullable(),
+  coding: score.nullable(),
+  agentic: score.nullable(),
+  dailyUse: score.nullable(),
+  research: score.nullable(),
+  writing: score.nullable(),
+  vision: score.nullable(),
+  speed: score.nullable(),
+  reliability: score.nullable(),
+  costEfficiency: score.nullable(),
 });
 export const catalogModelSchema = z
   .object({
@@ -35,14 +35,14 @@ export const catalogModelSchema = z
     facts: z.object({
       context: z.number().int().positive(),
       maxOutput: z.number().int().positive(),
-      speedTokensPerSec: z.number().int().positive().optional(),
+      speedTokensPerSec: z.number().int().positive().nullable().optional(),
       vision: z.boolean(),
       audio: z.boolean(),
       tools: z.boolean(),
       structured: z.boolean(),
       api: z.boolean(),
       openWeights: z.boolean(),
-      easeOfUse: score,
+      easeOfUse: score.nullable().optional(),
       availability: z.string().min(1),
       releaseDate: date,
       sourceId: z.string().min(1),
@@ -62,7 +62,7 @@ export const catalogModelSchema = z
       sourceId: z.string().min(1),
       updatedAt: date,
     }),
-    scores: capabilitySchema.extend({ overall: score }),
+    scores: capabilitySchema.extend({ overall: score.nullable() }),
     evidence: z
       .array(
         z.object({
@@ -105,12 +105,23 @@ export const catalogModelSchema = z
       if (!ids.has(id))
         ctx.addIssue({ code: 'custom', message: `Unresolved source: ${id}` });
     }
-    for (const metric of Object.keys(capabilitySchema.shape)) {
-      if (!model.evidence.some((e) => e.metric === metric))
+    for (const metric of Object.keys(
+      capabilitySchema.shape,
+    ) as (keyof typeof capabilitySchema.shape)[]) {
+      const hasEvidence = model.evidence.some((e) => e.metric === metric);
+      const hasScore = model.scores[metric] !== null;
+      if (hasScore && !hasEvidence) {
         ctx.addIssue({
           code: 'custom',
           message: `Missing evidence for ${metric}`,
         });
+      }
+      if (!hasScore && hasEvidence) {
+        ctx.addIssue({
+          code: 'custom',
+          message: `Evidence present for null score: ${metric}`,
+        });
+      }
     }
     if (
       model.dataKind === 'verified' &&

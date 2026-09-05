@@ -42,6 +42,12 @@
       "goal": "Ensure AI model speed is measured and displayed in tokens/sec",
       "lastHeartbeat": "2026-09-05T09:15:30.000Z",
       "status": "completed"
+    },
+    "pipeline-agent": {
+      "role": "Data & Pipeline Engineer",
+      "goal": "Implement strict approved external data sources pipeline prioritizing newer models",
+      "lastHeartbeat": "2026-09-05T11:32:30.000Z",
+      "status": "completed"
     }
   },
   "claims": {},

@@ -18,13 +18,23 @@ export function normalize(raw: number, min: number, max: number): number {
     Math.max(0, Math.min(100, ((raw - min) / (max - min)) * 100)),
   );
 }
-export function composite(scores: Record<Capability, number>): number {
-  return Math.round(
-    Object.entries(overallWeights).reduce(
-      (sum, [key, weight]) => sum + scores[key as Capability] * weight,
-      0,
-    ),
-  );
+export function composite(
+  scores: Partial<Record<Capability, number | null>>,
+): number {
+  const entries = Object.entries(overallWeights) as [Capability, number][];
+  let totalWeight = 0;
+  let weightedSum = 0;
+
+  for (const [key, weight] of entries) {
+    const val = scores[key];
+    if (val !== null && val !== undefined && Number.isFinite(val)) {
+      weightedSum += val * weight;
+      totalWeight += weight;
+    }
+  }
+
+  if (totalWeight === 0) return 0;
+  return Math.round(weightedSum / totalWeight);
 }
 export function confidence(input: {
   independentSources: number;
@@ -84,19 +94,19 @@ export interface ModelEffortStats {
   latency: string;
   taskCost: number;
   speedTokensPerSec: number;
-  scores: Record<Capability, number> & { overall: number };
+  scores: Record<Capability, number | null> & { overall: number | null };
 }
 
 export function getSpeedTokensPerSec(
   model: CatalogModel,
   effort?: ReasoningEffort,
 ): number {
-  let baseTps = model.facts.speedTokensPerSec;
+  let baseTps = model.facts.speedTokensPerSec ?? 0;
   if (!baseTps || baseTps <= 0) {
     const speedEvidence = model.evidence?.find((e) => e.metric === 'speed');
     if (speedEvidence && speedEvidence.raw > 0) {
       baseTps = speedEvidence.raw;
-    } else {
+    } else if (model.scores.speed !== null) {
       baseTps = Math.round(model.scores.speed * 1.8);
     }
   }
@@ -169,9 +179,13 @@ export function getModelEffortStats(
     : {};
   const targetAdj = isReasoning ? (effortScoreAdjustments[effort] ?? {}) : {};
 
-  const adjustedCapabilities = {} as Record<Capability, number>;
+  const adjustedCapabilities = {} as Record<Capability, number | null>;
   for (const key of Object.keys(overallWeights) as Capability[]) {
     const baseScore = model.scores[key];
+    if (baseScore === null) {
+      adjustedCapabilities[key] = null;
+      continue;
+    }
     const delta = (targetAdj[key] ?? 0) - (defaultAdj[key] ?? 0);
     adjustedCapabilities[key] = Math.max(
       0,
@@ -204,10 +218,14 @@ export const money = (value: number, digits = 2) =>
 export const contextSize = (value: number) =>
   value >= 1_000_000 ? `${value / 1_000_000}M` : `${Math.round(value / 1000)}K`;
 export function rankModels(models: CatalogModel[], metric: Metric = 'overall') {
-  return [...models].sort(
-    (a, b) =>
-      b.scores[metric] - a.scores[metric] || a.slug.localeCompare(b.slug),
-  );
+  return [...models].sort((a, b) => {
+    const aScore = a.scores[metric];
+    const bScore = b.scores[metric];
+    if (aScore === null && bScore === null) return a.slug.localeCompare(b.slug);
+    if (aScore === null) return 1;
+    if (bScore === null) return -1;
+    return bScore - aScore || a.slug.localeCompare(b.slug);
+  });
 }
 export type Budget = keyof typeof recommendationConfig.budgetLimits;
 export type Priority =
@@ -232,16 +250,21 @@ export function recommend(
         taskCost(m) <= recommendationConfig.budgetLimits[budget] &&
         (metric !== 'vision' || m.facts.vision),
     )
-    .map((model) => ({
-      model,
-      score: Math.round(
-        model.scores[metric] * recommendationConfig.task +
-          model.scores[priorityMetric[priority]] *
-            recommendationConfig.priority +
-          model.scores.reliability * recommendationConfig.reliability,
-      ),
-      reason: `${metricLabels[metric]} contributes 55%, ${metricLabels[priorityMetric[priority]].toLowerCase()} contributes 30%, and reliability contributes 15%.`,
-    }))
+    .map((model) => {
+      const taskVal = model.scores[metric] ?? 0;
+      const prioKey = priorityMetric[priority];
+      const prioVal = model.scores[prioKey] ?? taskVal;
+      const relVal = model.scores.reliability ?? 75;
+      return {
+        model,
+        score: Math.round(
+          taskVal * recommendationConfig.task +
+            prioVal * recommendationConfig.priority +
+            relVal * recommendationConfig.reliability,
+        ),
+        reason: `${metricLabels[metric]} contributes 55%, ${metricLabels[prioKey].toLowerCase()} contributes 30%, and reliability contributes 15%.`,
+      };
+    })
     .sort(
       (a, b) =>
         b.score - a.score ||

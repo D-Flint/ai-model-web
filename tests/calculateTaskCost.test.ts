@@ -23,7 +23,7 @@ describe('Scoring Logic', () => {
     const overall = calculateOverallScore(scores);
     expect(overall).toBeGreaterThanOrEqual(0);
     expect(overall).toBeLessThanOrEqual(100);
-    expect(overall).toBe(89);
+    expect(overall).toBe(88);
   });
 
   it('scoring weights sum to 1.0 (100%)', () => {

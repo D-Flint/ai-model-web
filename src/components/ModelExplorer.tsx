@@ -31,7 +31,11 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
         (!minimum.speed || getSpeedTokensPerSec(m) >= minimum.speed) &&
         Object.entries(minimum)
           .filter(([k]) => k !== 'speed')
-          .every(([key, value]) => m.scores[key as Metric] >= value) &&
+          .every(
+            ([key, value]) =>
+              m.scores[key as Metric] !== null &&
+              (m.scores[key as Metric] as number) >= value,
+          ) &&
         capabilities.every((key) =>
           Boolean(m.facts[key as 'vision' | 'api' | 'openWeights']),
         ),
@@ -43,7 +47,8 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
           ? b.facts.context - a.facts.context
           : sort === 'speed'
             ? getSpeedTokensPerSec(b) - getSpeedTokensPerSec(a)
-            : b.scores[sort as Metric] - a.scores[sort as Metric],
+            : (b.scores[sort as Metric] ?? -1) -
+              (a.scores[sort as Metric] ?? -1),
     );
   function reset() {
     setQuery('');

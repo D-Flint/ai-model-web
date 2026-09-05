@@ -120,6 +120,33 @@ export const sweBenchLeaderboardSchema = z.object({
 export type SweBenchResult = z.infer<typeof sweBenchResultSchema>;
 
 // ---------------------------------------------------------------------------
+// LiveBench Payload Schemas
+// ---------------------------------------------------------------------------
+export const liveBenchRowSchema = z.object({
+  model: z.string().min(1),
+  global_average: z.number().min(0).max(100),
+  reasoning: z.number().min(0).max(100).optional(),
+  math: z.number().min(0).max(100).optional(),
+  coding: z.number().min(0).max(100).optional(),
+  data_analysis: z.number().min(0).max(100).optional(),
+  instruction_following: z.number().min(0).max(100).optional(),
+  date: z.string().optional(),
+});
+export type LiveBenchRow = z.infer<typeof liveBenchRowSchema>;
+
+// ---------------------------------------------------------------------------
+// Berkeley Function Calling Leaderboard (BFCL) Payload Schemas
+// ---------------------------------------------------------------------------
+export const bfclRowSchema = z.object({
+  model: z.string().min(1),
+  overall_accuracy: z.number().min(0).max(100),
+  ast_summary: z.number().min(0).max(100).optional(),
+  exec_summary: z.number().min(0).max(100).optional(),
+  date: z.string().optional(),
+});
+export type BfclRow = z.infer<typeof bfclRowSchema>;
+
+// ---------------------------------------------------------------------------
 // Canonical & Internal Types
 // ---------------------------------------------------------------------------
 export interface CanonicalModelConfig {
@@ -132,6 +159,8 @@ export interface CanonicalModelConfig {
   openRouterId: string;
   lmarenaAliases: string[];
   swebenchAliases: string[];
+  livebenchAliases?: string[];
+  bfclAliases?: string[];
   officialDocsUrl: string;
   description: string;
   strengths: string[];

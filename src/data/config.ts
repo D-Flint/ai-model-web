@@ -15,15 +15,15 @@ export type Metric = keyof typeof metricLabels;
 export type Capability = Exclude<Metric, 'overall'>;
 export const overallWeights: Record<Capability, number> = {
   intelligence: 0.25,
-  coding: 0.18,
+  coding: 0.2,
   agentic: 0.15,
-  dailyUse: 0.12,
+  dailyUse: 0.15,
   research: 0.1,
-  reliability: 0.08,
-  writing: 0.05,
-  vision: 0.03,
-  speed: 0.02,
-  costEfficiency: 0.02,
+  vision: 0.05,
+  costEfficiency: 0.1,
+  writing: 0,
+  speed: 0,
+  reliability: 0,
 };
 export const categories = [
   {
@@ -177,5 +177,5 @@ export const effortScoreAdjustments: Record<
   fixed: {},
 };
 
-export const methodologyVersion = 'sample-1.0';
+export const methodologyVersion = 'v1-external-only';
 export const fixtureDate = '2026-09-05';

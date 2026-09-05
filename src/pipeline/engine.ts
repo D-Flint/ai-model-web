@@ -7,10 +7,12 @@ import {
   LMARENA_CONFIGS,
 } from './lmarena';
 import { fetchSweBenchLeaderboard, processSweBenchResults } from './swebench';
+import { fetchLiveBenchData, processLiveBenchResults } from './livebench';
+import { fetchBfclLeaderboard, processBfclResults } from './bfcl';
 import { calculateCostEfficiencyScore } from './normalization';
 import { calculateConfidence } from './confidence';
 import { defaultAliasResolver } from './aliasResolver';
-import { composite, normalize } from '../lib/decision';
+import { composite } from '../lib/decision';
 import { validateCatalog } from '../lib/importCatalog';
 import type { CatalogModel } from '../lib/catalogSchema';
 import type { Capability } from '../data/config';
@@ -21,6 +23,8 @@ export interface IngestionOptions {
   skipOpenRouter?: boolean;
   skipLMArena?: boolean;
   skipSweBench?: boolean;
+  skipLiveBench?: boolean;
+  skipBfcl?: boolean;
   dryRun?: boolean;
   openRouterApiKey?: string;
   hfToken?: string;
@@ -33,51 +37,10 @@ export interface IngestionPipelineResult {
     openrouterCount: number;
     lmarenaCount: number;
     swebenchCount: number;
+    livebenchCount: number;
+    bfclCount: number;
   };
   errors: string[];
-}
-
-export function determineSpeedTokensPerSec(
-  slug: string,
-  officialTps?: number,
-): number {
-  if (officialTps && officialTps > 0) return officialTps;
-
-  // Ultra-fast lightweight models (180 - 240 tok/s)
-  if (slug.includes('flash-lite')) return 220;
-  if (slug.includes('flash') || slug.includes('gemini-2-0-flash')) return 205;
-  if (slug.includes('8b') || slug.includes('7b')) return 180;
-  if (slug.includes('haiku')) return 168;
-  if (slug.includes('luna') || slug.includes('mini') || slug.includes('small'))
-    return 155;
-  if (
-    slug.includes('scion-70b') ||
-    slug.includes('3-3-70b') ||
-    slug.includes('70b')
-  )
-    return 135;
-
-  // Deep reasoning / deliberate thinking models (30 - 65 tok/s)
-  if (
-    slug.includes('astra') ||
-    slug.includes('o1') ||
-    slug.includes('opus') ||
-    slug.includes('thinking') ||
-    slug.includes('405b') ||
-    slug.includes('reasoner')
-  ) {
-    if (slug.includes('o1-mini') || slug.includes('o3-mini')) return 115;
-    return 52;
-  }
-
-  // Standard frontier flagships (70 - 95 tok/s)
-  if (slug.includes('sol') || slug.includes('4o')) return 88;
-  if (slug.includes('sonnet') || slug.includes('fable')) return 78;
-  if (slug.includes('pro')) return 72;
-  if (slug.includes('deepseek') || slug.includes('qwen')) return 82;
-  if (slug.includes('grok')) return 80;
-
-  return 85;
 }
 
 export async function runIngestionPipeline(
@@ -86,11 +49,11 @@ export async function runIngestionPipeline(
   const errors: string[] = [];
   const today = new Date().toISOString().split('T')[0];
 
-  // 1. Ingest OpenRouter data
+  // 1. OpenRouter (Fallback / Discovery only)
   let openRouterExtracted: ReturnType<typeof processOpenRouterModels> = [];
   if (!options.skipOpenRouter) {
     try {
-      console.log('Fetching OpenRouter models...');
+      console.log('Fetching OpenRouter models for discovery & fallback...');
       const orRaw = await fetchOpenRouterModels({
         apiKey: options.openRouterApiKey,
       });
@@ -110,7 +73,64 @@ export async function runIngestionPipeline(
     }
   }
 
-  // 2. Ingest LMArena categories
+  // 2. Ingest LiveBench (Primary source for Intelligence, secondary for Coding)
+  let liveBenchMeasurements: BenchmarkMeasurement[] = [];
+  if (!options.skipLiveBench) {
+    try {
+      console.log('Ingesting LiveBench dataset...');
+      const liveBenchRows = await fetchLiveBenchData();
+      liveBenchMeasurements = processLiveBenchResults(
+        liveBenchRows,
+        defaultAliasResolver,
+      );
+      console.log(
+        `LiveBench: extracted ${liveBenchMeasurements.length} verified benchmark records.`,
+      );
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
+      console.warn(`LiveBench ingestion warning: ${msg}. Continuing.`);
+      errors.push(`LiveBench: ${msg}`);
+    }
+  }
+
+  // 3. Ingest BFCL (Berkeley Function Calling Leaderboard for Agentic)
+  let bfclMeasurements: BenchmarkMeasurement[] = [];
+  if (!options.skipBfcl) {
+    try {
+      console.log('Ingesting BFCL dataset...');
+      const bfclRows = await fetchBfclLeaderboard();
+      bfclMeasurements = processBfclResults(bfclRows, defaultAliasResolver);
+      console.log(
+        `BFCL: extracted ${bfclMeasurements.length} verified agentic records.`,
+      );
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
+      console.warn(`BFCL ingestion warning: ${msg}. Continuing.`);
+      errors.push(`BFCL: ${msg}`);
+    }
+  }
+
+  // 4. Ingest SWE-bench Verified (Primary source for Coding)
+  let sweBenchMeasurements: BenchmarkMeasurement[] = [];
+  if (!options.skipSweBench) {
+    try {
+      console.log('Fetching SWE-bench Verified leaderboard...');
+      const sweRaw = await fetchSweBenchLeaderboard();
+      sweBenchMeasurements = processSweBenchResults(
+        sweRaw,
+        defaultAliasResolver,
+      );
+      console.log(
+        `SWE-bench: extracted ${sweBenchMeasurements.length} matching model runs.`,
+      );
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
+      console.warn(`SWE-bench ingestion warning: ${msg}. Continuing.`);
+      errors.push(`SWE-bench: ${msg}`);
+    }
+  }
+
+  // 5. Ingest LMArena categories (Daily Use: text, Research: search, Vision: vision, Agentic: agent, WebDev: webdev)
   const allLMArenaMeasurements: BenchmarkMeasurement[] = [];
   if (!options.skipLMArena) {
     for (const cfg of LMARENA_CONFIGS) {
@@ -136,28 +156,13 @@ export async function runIngestionPipeline(
     }
   }
 
-  // 3. Ingest SWE-bench
-  let sweBenchMeasurements: BenchmarkMeasurement[] = [];
-  if (!options.skipSweBench) {
-    try {
-      console.log('Fetching SWE-bench Verified leaderboard...');
-      const sweRaw = await fetchSweBenchLeaderboard();
-      sweBenchMeasurements = processSweBenchResults(
-        sweRaw,
-        defaultAliasResolver,
-      );
-      console.log(
-        `SWE-bench: extracted ${sweBenchMeasurements.length} matching model runs.`,
-      );
-    } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : String(err);
-      console.warn(`SWE-bench ingestion warning: ${msg}. Continuing.`);
-      errors.push(`SWE-bench: ${msg}`);
-    }
-  }
-
-  // 4. Combine all evidence
-  const allMeasurements = [...allLMArenaMeasurements, ...sweBenchMeasurements];
+  // 6. Combine all external measurements
+  const allMeasurements = [
+    ...liveBenchMeasurements,
+    ...bfclMeasurements,
+    ...sweBenchMeasurements,
+    ...allLMArenaMeasurements,
+  ];
 
   // Group measurements by model
   const measurementsByModel = new Map<string, BenchmarkMeasurement[]>();
@@ -167,43 +172,43 @@ export async function runIngestionPipeline(
     measurementsByModel.set(m.modelSlug, list);
   }
 
-  // Map OpenRouter data by model slug
+  // Map OpenRouter data by model slug for discovery fallback
   const openRouterByModel = new Map<string, (typeof openRouterExtracted)[0]>();
   for (const o of openRouterExtracted) {
     openRouterByModel.set(o.canonicalModel.slug, o);
   }
 
-  // 5. Construct verified CatalogModel objects
+  // 7. Construct verified CatalogModel objects
   const rawCatalog: unknown[] = [];
 
   for (const canonical of CANONICAL_MODELS) {
     const officialSpec = OFFICIAL_PROVIDER_SPECS[canonical.slug];
-    const openRouterData = openRouterByModel.get(canonical.slug);
+    if (!officialSpec) {
+      console.warn(
+        `Missing official provider spec for canonical model: ${canonical.slug}`,
+      );
+      continue;
+    }
+
     const modelMeasurements = measurementsByModel.get(canonical.slug) ?? [];
 
-    // Determine Pricing (OpenRouter verified against official, official as fallback)
+    // Official provider documentation WINS for pricing
     const pricing = {
-      input:
-        openRouterData?.pricing.inputPerMillion ??
-        officialSpec.officialPricing.input,
-      output:
-        openRouterData?.pricing.outputPerMillion ??
-        officialSpec.officialPricing.output,
+      input: officialSpec.officialPricing.input,
+      output: officialSpec.officialPricing.output,
       cached: officialSpec.officialPricing.cached,
       currency: 'USD' as const,
       unit: 'per-million-tokens' as const,
-      sourceId: openRouterData
-        ? 'source-openrouter'
-        : `source-${canonical.providerSlug}`,
-      updatedAt: today,
+      sourceId: `source-${canonical.providerSlug}`,
+      updatedAt: officialSpec.lastVerifiedAt || today,
     };
 
-    // Calculate Cost Efficiency Evidence
+    // Calculate Cost Efficiency (Value Score)
     const costEff = calculateCostEfficiencyScore(pricing.input, pricing.output);
     const costEvidence: BenchmarkMeasurement = {
       id: `cost-efficiency-${canonical.slug}`,
       modelSlug: canonical.slug,
-      benchmarkName: 'Calculated Cost Efficiency',
+      benchmarkName: 'API Cost Efficiency',
       category: 'costEfficiency',
       rawScore: costEff.raw,
       minScale: costEff.min,
@@ -218,52 +223,69 @@ export async function runIngestionPipeline(
 
     const combinedMeasurements = [...modelMeasurements, costEvidence];
 
-    // Determine Sources list
-    const sources = [
+    // Master sources repository
+    const availableSources = new Map<
+      string,
       {
-        id: `source-${canonical.providerSlug}`,
-        name: officialSpec.sourceName,
-        url: officialSpec.sourceUrl,
-        retrievedAt: officialSpec.lastVerifiedAt,
-        kind: 'provider_doc' as const,
-        publisher: canonical.provider,
-      },
-      {
-        id: 'source-openrouter',
-        name: 'OpenRouter Model API',
-        url: 'https://openrouter.ai/api/v1/models',
-        retrievedAt: today,
-        kind: 'provider_doc' as const,
-        publisher: 'OpenRouter',
-      },
-      {
-        id: 'lmarena-leaderboard',
-        name: 'LMSYS Chatbot Arena Leaderboard',
-        url: 'https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset',
-        retrievedAt: today,
-        kind: 'public_eval' as const,
-        publisher: 'Large Model Systems Organization (LMSYS)',
-      },
-      {
-        id: 'swebench-verified',
-        name: 'SWE-bench Verified Leaderboard',
-        url: 'https://www.swebench.com',
-        retrievedAt: today,
-        kind: 'public_eval' as const,
-        publisher: 'Princeton NLP / SWE-bench',
-      },
-      {
-        id: 'astra-cost-engine',
-        name: 'Astra Cost Efficiency Evaluation',
-        url: 'https://github.com/D-Flint/ai-model-web',
-        retrievedAt: today,
-        kind: 'public_eval' as const,
-        publisher: 'Astra Methodology',
-      },
-    ];
+        id: string;
+        name: string;
+        url: string;
+        retrievedAt: string;
+        kind: 'provider_doc' | 'public_eval' | 'internal_test';
+        publisher: string;
+      }
+    >();
 
-    // Construct evidence for catalog schema
-    // Capability keys: intelligence, coding, agentic, dailyUse, research, writing, vision, speed, reliability, costEfficiency
+    // Primary official provider doc
+    availableSources.set(`source-${canonical.providerSlug}`, {
+      id: `source-${canonical.providerSlug}`,
+      name: officialSpec.sourceName,
+      url: officialSpec.sourceUrl,
+      retrievedAt: officialSpec.lastVerifiedAt || today,
+      kind: 'provider_doc',
+      publisher: canonical.provider,
+    });
+
+    // Add benchmark sources if this model has evidence from them
+    for (const m of combinedMeasurements) {
+      if (!availableSources.has(m.sourceId)) {
+        availableSources.set(m.sourceId, {
+          id: m.sourceId,
+          name: m.sourceName,
+          url: m.sourceUrl,
+          retrievedAt: m.retrievedAt,
+          kind: 'public_eval',
+          publisher: m.sourceName,
+        });
+      }
+    }
+
+    // Capability evidence array
+    const evidenceList: Array<{
+      metric: Capability;
+      kind: 'benchmark' | 'internal_test';
+      raw: number;
+      min: number;
+      max: number;
+      normalized: number;
+      sourceId: string;
+      updatedAt: string;
+    }> = [];
+
+    // Capability scores object
+    const scores: Record<Capability, number | null> = {
+      intelligence: null,
+      coding: null,
+      agentic: null,
+      dailyUse: null,
+      research: null,
+      writing: null,
+      vision: null,
+      speed: null,
+      reliability: null,
+      costEfficiency: null,
+    };
+
     const capabilityKeys: Capability[] = [
       'intelligence',
       'coding',
@@ -277,139 +299,46 @@ export async function runIngestionPipeline(
       'costEfficiency',
     ];
 
-    // Baseline evidence generator for metrics that don't have direct external benchmark runs yet
-    // Ensuring raw, min, max, normalized consistency
-    const evidenceList: Array<{
-      metric: Capability;
-      kind: 'benchmark' | 'internal_test';
-      raw: number;
-      min: number;
-      max: number;
-      normalized: number;
-      sourceId: string;
-      updatedAt: string;
-    }> = [];
-
-    // Check evidence for each capability
     for (const key of capabilityKeys) {
-      const direct = combinedMeasurements.filter((m) => m.category === key);
-      if (direct.length > 0) {
-        for (const d of direct) {
+      const items = combinedMeasurements.filter((m) => m.category === key);
+
+      // If vision is false in official facts, never add vision evidence
+      if (key === 'vision' && !officialSpec.supportsVision) {
+        scores.vision = null;
+        continue;
+      }
+
+      if (items.length > 0) {
+        for (const item of items) {
           evidenceList.push({
             metric: key,
             kind: 'benchmark',
-            raw: d.rawScore,
-            min: d.minScale,
-            max: d.maxScale,
-            normalized: d.normalizedScore,
-            sourceId: d.sourceId,
-            updatedAt: d.evaluationDate,
+            raw: item.rawScore,
+            min: item.minScale,
+            max: item.maxScale,
+            normalized: item.normalizedScore,
+            sourceId: item.sourceId,
+            updatedAt: item.evaluationDate,
           });
         }
+        const avg = Math.round(
+          items.reduce((sum, item) => sum + item.normalizedScore, 0) /
+            items.length,
+        );
+        scores[key] = avg;
       } else {
-        // If no direct benchmark is available for this category:
-        // Use verified provider facts or derived public evaluations without fake scores
-        let raw = 75;
-        let min = 0;
-        let max = 100;
-        let sourceId = `source-${canonical.providerSlug}`;
-
-        if (key === 'intelligence') {
-          // Derived from dailyUse (LMArena text) if available
-          const textEval = combinedMeasurements.find(
-            (m) => m.category === 'dailyUse',
-          );
-          raw = textEval ? textEval.rawScore : 1400;
-          min = textEval ? textEval.minScale : 1000;
-          max = textEval ? textEval.maxScale : 1600;
-          sourceId = textEval
-            ? textEval.sourceId
-            : `source-${canonical.providerSlug}`;
-        } else if (key === 'writing') {
-          // Correlates with text preference
-          const textEval = combinedMeasurements.find(
-            (m) => m.category === 'dailyUse',
-          );
-          raw = textEval ? textEval.rawScore : 1350;
-          min = textEval ? textEval.minScale : 1000;
-          max = textEval ? textEval.maxScale : 1600;
-          sourceId = textEval
-            ? textEval.sourceId
-            : `source-${canonical.providerSlug}`;
-        } else if (key === 'vision') {
-          if (!officialSpec.supportsVision) {
-            raw = 0;
-            min = 0;
-            max = 100;
-          } else {
-            raw = 1250;
-            min = 1000;
-            max = 1600;
-            sourceId = 'lmarena-leaderboard';
-          }
-        } else if (key === 'speed') {
-          // Speed measured in tokens/sec
-          raw = determineSpeedTokensPerSec(
-            canonical.slug,
-            officialSpec.speedTokensPerSec,
-          );
-          min = 0;
-          max = 220;
-          sourceId = `source-${canonical.providerSlug}`;
-        } else if (key === 'reliability') {
-          // Standard reliability score from verified provider specification
-          raw = 86;
-          min = 0;
-          max = 100;
-        } else if (key === 'agentic') {
-          // If no agent leaderboard row, derive from coding / SWE-bench
-          const sweEval = combinedMeasurements.find(
-            (m) => m.category === 'coding',
-          );
-          raw = sweEval ? sweEval.rawScore : 60;
-          min = 0;
-          max = 100;
-          sourceId = sweEval
-            ? sweEval.sourceId
-            : `source-${canonical.providerSlug}`;
-        }
-
-        const normalized = normalize(raw, min, max);
-        evidenceList.push({
-          metric: key,
-          kind: 'benchmark',
-          raw,
-          min,
-          max,
-          normalized,
-          sourceId,
-          updatedAt: today,
-        });
+        // No approved evidence exists -> store null!
+        scores[key] = null;
       }
     }
 
-    // Calculate capability scores as exact averages of their evidence
-    const scores: Record<string, number> = {};
-    for (const key of capabilityKeys) {
-      const matches = evidenceList.filter((e) => e.metric === key);
-      const avg = Math.round(
-        matches.reduce((s, e) => s + e.normalized, 0) / matches.length,
-      );
-      scores[key] = avg;
-    }
-    const overall = composite(scores as Record<Capability, number>);
-    scores.overall = overall;
+    const overall = composite(scores);
 
-    // Calculate Confidence
-    const directCategories = new Set(
-      combinedMeasurements.map((m) => m.category),
-    );
+    // Confidence calculation based on verified external evidence
+    const distinctCategories = new Set(evidenceList.map((e) => e.metric));
     const confidenceVal = calculateConfidence({
-      independentSourcesCount: Math.min(
-        4,
-        new Set(combinedMeasurements.map((m) => m.sourceId)).size + 1,
-      ),
-      coveredCategoriesCount: directCategories.size,
+      independentSourcesCount: availableSources.size,
+      coveredCategoriesCount: distinctCategories.size,
       totalCategoriesCount: 10,
       totalSampleCount: combinedMeasurements.reduce(
         (sum, m) => sum + (m.sampleCount ?? 100),
@@ -432,10 +361,7 @@ export async function runIngestionPipeline(
       facts: {
         context: officialSpec.contextWindow,
         maxOutput: officialSpec.maxOutputTokens,
-        speedTokensPerSec: determineSpeedTokensPerSec(
-          canonical.slug,
-          officialSpec.speedTokensPerSec,
-        ),
+        speedTokensPerSec: officialSpec.speedTokensPerSec ?? null,
         vision: officialSpec.supportsVision,
         audio: officialSpec.supportsAudio,
         tools: officialSpec.supportsTools,
@@ -452,18 +378,21 @@ export async function runIngestionPipeline(
           officialSpec.defaultEffort ?? canonical.defaultEffort ?? 'none',
       },
       pricing,
-      scores,
+      scores: {
+        ...scores,
+        overall,
+      },
       evidence: evidenceList,
       confidence: confidenceVal,
       methodology: methodologyVersion,
       scoreUpdatedAt: today,
-      lastVerifiedAt: today,
+      lastVerifiedAt: officialSpec.lastVerifiedAt || today,
       sourceUpdatedAt: today,
-      sources,
+      sources: Array.from(availableSources.values()),
     });
   }
 
-  // Validate the resulting catalog with Zod
+  // 8. Validate catalog
   const validatedCatalog = validateCatalog(rawCatalog);
 
   return {
@@ -473,6 +402,8 @@ export async function runIngestionPipeline(
       openrouterCount: openRouterExtracted.length,
       lmarenaCount: allLMArenaMeasurements.length,
       swebenchCount: sweBenchMeasurements.length,
+      livebenchCount: liveBenchMeasurements.length,
+      bfclCount: bfclMeasurements.length,
     },
     errors,
   };

@@ -5,6 +5,8 @@ export class ModelAliasResolver {
   private openRouterMap = new Map<string, CanonicalModelConfig>();
   private lmarenaMap = new Map<string, CanonicalModelConfig>();
   private swebenchMap = new Map<string, CanonicalModelConfig>();
+  private livebenchMap = new Map<string, CanonicalModelConfig>();
+  private bfclMap = new Map<string, CanonicalModelConfig>();
   private slugMap = new Map<string, CanonicalModelConfig>();
 
   constructor(models: CanonicalModelConfig[] = CANONICAL_MODELS) {
@@ -23,6 +25,14 @@ export class ModelAliasResolver {
       for (const alias of model.swebenchAliases) {
         this.swebenchMap.set(alias.toLowerCase().trim(), model);
       }
+
+      for (const alias of model.livebenchAliases ?? []) {
+        this.livebenchMap.set(alias.toLowerCase().trim(), model);
+      }
+
+      for (const alias of model.bfclAliases ?? []) {
+        this.bfclMap.set(alias.toLowerCase().trim(), model);
+      }
     }
   }
 
@@ -31,7 +41,13 @@ export class ModelAliasResolver {
    * Does NOT use fuzzy/fragile guessing. Only exact or explicit normalized aliases.
    */
   resolve(
-    source: 'openrouter' | 'lmarena' | 'swebench' | 'canonical',
+    source:
+      | 'openrouter'
+      | 'lmarena'
+      | 'swebench'
+      | 'livebench'
+      | 'bfcl'
+      | 'canonical',
     identifier: string,
   ): CanonicalModelConfig | null {
     if (!identifier || typeof identifier !== 'string') return null;
@@ -45,11 +61,26 @@ export class ModelAliasResolver {
       case 'swebench': {
         const direct = this.swebenchMap.get(normalized);
         if (direct) return direct;
-        // Check if normalized identifier matches any alias directly
         for (const [alias, model] of this.swebenchMap.entries()) {
           if (alias === normalized) return model;
         }
         return null;
+      }
+      case 'livebench': {
+        const direct = this.livebenchMap.get(normalized);
+        if (direct) return direct;
+        for (const [alias, model] of this.livebenchMap.entries()) {
+          if (alias === normalized) return model;
+        }
+        return this.slugMap.get(normalized) ?? null;
+      }
+      case 'bfcl': {
+        const direct = this.bfclMap.get(normalized);
+        if (direct) return direct;
+        for (const [alias, model] of this.bfclMap.entries()) {
+          if (alias === normalized) return model;
+        }
+        return this.slugMap.get(normalized) ?? null;
       }
       case 'canonical':
         return this.slugMap.get(normalized) ?? null;

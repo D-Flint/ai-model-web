@@ -394,17 +394,23 @@ export default function ComparisonBuilder({
                   <th scope="row">Intelligence / 100</th>
                   {selectedItems.map((item) => {
                     const score = item.stats.scores.intelligence;
-                    const maxScore = Math.max(
-                      ...selectedItems.map((x) => x.stats.scores.intelligence),
-                    );
-                    const isWinner = score === maxScore;
+                    const validScores = selectedItems
+                      .map((x) => x.stats.scores.intelligence)
+                      .filter((s): s is number => s !== null);
+                    const maxScore =
+                      validScores.length > 0 ? Math.max(...validScores) : null;
+                    const isWinner = score !== null && score === maxScore;
                     return (
                       <td key={item.id} className={isWinner ? 'winner' : ''}>
-                        <a
-                          href={`/models/${item.model.slug}#score-intelligence`}
-                        >
-                          <strong>{score}</strong>
-                        </a>
+                        {score !== null ? (
+                          <a
+                            href={`/models/${item.model.slug}#score-intelligence`}
+                          >
+                            <strong>{score}</strong>
+                          </a>
+                        ) : (
+                          <span className="muted">—</span>
+                        )}
                         {isWinner && (
                           <span className="winner-label">Highest</span>
                         )}
@@ -416,20 +422,33 @@ export default function ComparisonBuilder({
                   <th scope="row">Speed (tokens/sec)</th>
                   {selectedItems.map((item) => {
                     const tps = item.stats.speedTokensPerSec;
-                    const maxTps = Math.max(
-                      ...selectedItems.map((x) => x.stats.speedTokensPerSec),
-                    );
-                    const isWinner = tps === maxTps;
+                    const validTps = selectedItems
+                      .map((x) => x.stats.speedTokensPerSec)
+                      .filter((s): s is number => s > 0);
+                    const maxTps =
+                      validTps.length > 0 ? Math.max(...validTps) : null;
+                    const isWinner = tps > 0 && tps === maxTps;
                     return (
                       <td key={item.id} className={isWinner ? 'winner' : ''}>
-                        <a href={`/models/${item.model.slug}#score-speed`}>
-                          <strong>{tps}</strong>{' '}
-                          <small className="micro muted">tok/s</small>
-                        </a>
-                        <div className="micro muted">
-                          {item.stats.scores.speed}/100 rating ·{' '}
-                          {item.stats.latency}
-                        </div>
+                        {tps > 0 ? (
+                          <>
+                            <a href={`/models/${item.model.slug}#score-speed`}>
+                              <strong>{tps}</strong>{' '}
+                              <small className="micro muted">tok/s</small>
+                            </a>
+                            <div className="micro muted">
+                              {item.stats.scores.speed !== null
+                                ? `${item.stats.scores.speed}/100 rating · `
+                                : ''}
+                              {item.stats.latency}
+                            </div>
+                          </>
+                        ) : (
+                          <div className="micro muted">
+                            <span>—</span>
+                            <div>Not yet claimed</div>
+                          </div>
+                        )}
                         {isWinner && (
                           <span className="winner-label">Fastest</span>
                         )}
@@ -512,17 +531,25 @@ export default function ComparisonBuilder({
                     <th scope="row">{metricLabels[metric]}</th>
                     {selectedItems.map((item) => {
                       const score = item.stats.scores[metric];
-                      const maxScore = Math.max(
-                        ...selectedItems.map((x) => x.stats.scores[metric]),
-                      );
-                      const isWinner = score === maxScore;
+                      const validScores = selectedItems
+                        .map((x) => x.stats.scores[metric])
+                        .filter((s): s is number => s !== null);
+                      const maxScore =
+                        validScores.length > 0
+                          ? Math.max(...validScores)
+                          : null;
+                      const isWinner = score !== null && score === maxScore;
                       return (
                         <td key={item.id} className={isWinner ? 'winner' : ''}>
-                          <a
-                            href={`/models/${item.model.slug}#score-${metric}`}
-                          >
-                            {score}
-                          </a>
+                          {score !== null ? (
+                            <a
+                              href={`/models/${item.model.slug}#score-${metric}`}
+                            >
+                              {score}
+                            </a>
+                          ) : (
+                            <span className="muted">—</span>
+                          )}
                           {isWinner && (
                             <span className="winner-label">Best</span>
                           )}
@@ -558,22 +585,16 @@ export default function ComparisonBuilder({
                   ))}
                 </tr>
                 <tr>
-                  <th scope="row">Ease of use / 100</th>
+                  <th scope="row">Speed latency tier</th>
                   {selectedItems.map((item) => (
-                    <td key={item.id}>{item.model.facts.easeOfUse}</td>
+                    <td key={item.id}>{item.stats.latency}</td>
                   ))}
                 </tr>
-                <tr>
-                  <th scope="row">Availability</th>
-                  {selectedItems.map((item) => (
-                    <td key={item.id}>{item.model.facts.availability}</td>
-                  ))}
-                </tr>
-                {technicalFacts.map((f) => (
-                  <tr key={f.label}>
-                    <th scope="row">{f.label}</th>
+                {technicalFacts.map((row) => (
+                  <tr key={row.label}>
+                    <th scope="row">{row.label}</th>
                     {selectedItems.map((item) => (
-                      <td key={item.id}>{f.value(item)}</td>
+                      <td key={item.id}>{row.value(item)}</td>
                     ))}
                   </tr>
                 ))}
@@ -591,7 +612,8 @@ export default function ComparisonBuilder({
               {(() => {
                 const bestIntel = [...selectedItems].sort(
                   (a, b) =>
-                    b.stats.scores.intelligence - a.stats.scores.intelligence,
+                    (b.stats.scores.intelligence ?? -1) -
+                    (a.stats.scores.intelligence ?? -1),
                 )[0];
                 const bestSpeed = [...selectedItems].sort(
                   (a, b) =>
@@ -601,19 +623,27 @@ export default function ComparisonBuilder({
                   (a, b) => a.stats.taskCost - b.stats.taskCost,
                 )[0];
                 const bestOverall = [...selectedItems].sort(
-                  (a, b) => b.stats.scores.overall - a.stats.scores.overall,
+                  (a, b) =>
+                    (b.stats.scores.overall ?? -1) -
+                    (a.stats.scores.overall ?? -1),
                 )[0];
 
                 const verdictCards = [
                   {
                     title: 'Highest Intelligence',
                     item: bestIntel,
-                    detail: `${bestIntel.stats.scores.intelligence}/100 intelligence score. Peak reasoning and benchmark quality.`,
+                    detail:
+                      bestIntel.stats.scores.intelligence !== null
+                        ? `${bestIntel.stats.scores.intelligence}/100 intelligence score from verified LiveBench evaluations.`
+                        : 'Intelligence benchmark unavailable.',
                   },
                   {
                     title: 'Fastest Speed',
                     item: bestSpeed,
-                    detail: `${bestSpeed.stats.speedTokensPerSec} tokens/sec throughput (${bestSpeed.stats.scores.speed}/100 rating, ${bestSpeed.stats.latency}).`,
+                    detail:
+                      bestSpeed.stats.speedTokensPerSec > 0
+                        ? `${bestSpeed.stats.speedTokensPerSec} tokens/sec throughput (${bestSpeed.stats.latency}).`
+                        : 'Speed measurements not claimed yet without approved independent benchmark.',
                   },
                   {
                     title: 'Lowest Price',
@@ -623,7 +653,10 @@ export default function ComparisonBuilder({
                   {
                     title: 'Best Overall',
                     item: bestOverall,
-                    detail: `${bestOverall.stats.scores.overall}/100 overall composite across all evaluated tasks.`,
+                    detail:
+                      bestOverall.stats.scores.overall !== null
+                        ? `${bestOverall.stats.scores.overall}/100 overall composite across available verified metrics.`
+                        : 'Overall score pending.',
                   },
                 ];
 

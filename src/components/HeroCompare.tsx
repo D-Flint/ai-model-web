@@ -44,12 +44,12 @@ export default function HeroCompare({ models }: { models: CatalogModel[] }) {
       </div>
       <div className="preview-score">
         <div>
-          <strong>{a.scores.overall}</strong>
+          <strong>{a.scores.overall !== null ? a.scores.overall : '—'}</strong>
           <span>Overall score</span>
         </div>
         <span className="versus">vs</span>
         <div>
-          <strong>{b.scores.overall}</strong>
+          <strong>{b.scores.overall !== null ? b.scores.overall : '—'}</strong>
           <span>Overall score</span>
         </div>
       </div>
@@ -57,29 +57,61 @@ export default function HeroCompare({ models }: { models: CatalogModel[] }) {
         <div>
           <strong
             className={
-              a.scores.intelligence >= b.scores.intelligence ? 'accent' : ''
+              (a.scores.intelligence ?? -1) >= (b.scores.intelligence ?? -1) &&
+              a.scores.intelligence !== null
+                ? 'accent'
+                : ''
             }
           >
-            {a.scores.intelligence}
+            {a.scores.intelligence !== null ? a.scores.intelligence : '—'}
           </strong>
           <span>Intelligence</span>
           <strong
             className={
-              b.scores.intelligence >= a.scores.intelligence ? 'accent' : ''
+              (b.scores.intelligence ?? -1) >= (a.scores.intelligence ?? -1) &&
+              b.scores.intelligence !== null
+                ? 'accent'
+                : ''
             }
           >
-            {b.scores.intelligence}
+            {b.scores.intelligence !== null ? b.scores.intelligence : '—'}
           </strong>
         </div>
         <div>
-          <strong className={a.scores.speed >= b.scores.speed ? 'accent' : ''}>
-            {getSpeedTokensPerSec(a)}{' '}
-            <small className="micro muted">tok/s</small>
+          <strong
+            className={
+              getSpeedTokensPerSec(a) >= getSpeedTokensPerSec(b) &&
+              getSpeedTokensPerSec(a) > 0
+                ? 'accent'
+                : ''
+            }
+          >
+            {getSpeedTokensPerSec(a) > 0 ? (
+              <>
+                {getSpeedTokensPerSec(a)}{' '}
+                <small className="micro muted">tok/s</small>
+              </>
+            ) : (
+              '—'
+            )}
           </strong>
           <span>Speed</span>
-          <strong className={b.scores.speed >= a.scores.speed ? 'accent' : ''}>
-            {getSpeedTokensPerSec(b)}{' '}
-            <small className="micro muted">tok/s</small>
+          <strong
+            className={
+              getSpeedTokensPerSec(b) >= getSpeedTokensPerSec(a) &&
+              getSpeedTokensPerSec(b) > 0
+                ? 'accent'
+                : ''
+            }
+          >
+            {getSpeedTokensPerSec(b) > 0 ? (
+              <>
+                {getSpeedTokensPerSec(b)}{' '}
+                <small className="micro muted">tok/s</small>
+              </>
+            ) : (
+              '—'
+            )}
           </strong>
         </div>
         <div>

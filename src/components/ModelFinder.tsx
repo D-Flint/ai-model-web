@@ -112,7 +112,9 @@ export default function ModelFinder({ models }: { models: CatalogModel[] }) {
   const value = [...results]
     .filter((r) => r.model.slug !== best?.model.slug)
     .sort(
-      (a, b) => b.model.scores.costEfficiency - a.model.scores.costEfficiency,
+      (a, b) =>
+        (b.model.scores.costEfficiency ?? -1) -
+        (a.model.scores.costEfficiency ?? -1),
     )[0];
   const alternative = results.find(
     (r) =>

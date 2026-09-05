@@ -57,9 +57,9 @@ export default function ModelCard({
         <a
           href={`/models/${model.slug}#scores`}
           className="score-number"
-          aria-label={`${model.name} overall score ${model.scores.overall}, see explanation`}
+          aria-label={`${model.name} overall score ${model.scores.overall ?? 'unavailable'}, see explanation`}
         >
-          {model.scores.overall}
+          {model.scores.overall !== null ? model.scores.overall : '—'}
           <small>/100</small>
         </a>
       </div>
@@ -67,16 +67,34 @@ export default function ModelCard({
       <div className="mini-metrics">
         <div>
           <span>Intelligence</span>
-          <strong title={`Intelligence: ${model.scores.intelligence}/100`}>
-            {model.scores.intelligence}
+          <strong
+            title={
+              model.scores.intelligence !== null
+                ? `Intelligence: ${model.scores.intelligence}/100`
+                : 'Intelligence benchmark unavailable'
+            }
+          >
+            {model.scores.intelligence !== null
+              ? model.scores.intelligence
+              : '—'}
           </strong>
         </div>
         <div>
           <span>Speed</span>
           <strong
-            title={`Generation speed: ${speedTps} tokens/sec (${model.scores.speed}/100 rating)`}
+            title={
+              speedTps > 0
+                ? `Generation speed: ${speedTps} tokens/sec`
+                : 'Speed benchmark not yet claimed'
+            }
           >
-            {speedTps} <small className="micro muted">tok/s</small>
+            {speedTps > 0 ? (
+              <>
+                {speedTps} <small className="micro muted">tok/s</small>
+              </>
+            ) : (
+              <span className="muted">—</span>
+            )}
           </strong>
         </div>
         <div>

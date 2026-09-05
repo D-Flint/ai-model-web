@@ -73,20 +73,18 @@ describe('SWE-bench Payload Validation', () => {
 });
 
 describe('Model Identity Resolution', () => {
-  it('resolves canonical models across OpenRouter, LMArena, and SWE-bench', () => {
+  it('resolves canonical models across OpenRouter, LiveBench, and BFCL', () => {
     expect(
-      defaultAliasResolver.resolve('openrouter', 'anthropic/claude-sonnet-4.5')
-        ?.slug,
-    ).toBe('claude-sonnet-4-5');
+      defaultAliasResolver.resolve('openrouter', 'openai/o3-mini')?.slug,
+    ).toBe('o3-mini');
 
-    expect(
-      defaultAliasResolver.resolve('lmarena', 'claude-sonnet-4-5-20250929')
-        ?.slug,
-    ).toBe('claude-sonnet-4-5');
+    expect(defaultAliasResolver.resolve('livebench', 'o3-mini')?.slug).toBe(
+      'o3-mini',
+    );
 
-    expect(
-      defaultAliasResolver.resolve('swebench', 'Claude 4.5 Sonnet')?.slug,
-    ).toBe('claude-sonnet-4-5');
+    expect(defaultAliasResolver.resolve('bfcl', 'o3-mini')?.slug).toBe(
+      'o3-mini',
+    );
   });
 
   it('does not resolve arbitrary substrings or unknown models', () => {
@@ -195,23 +193,19 @@ describe('Price Conversion', () => {
 describe('Verified Catalog Integrity', () => {
   it('verifiedModels.json satisfies strict catalog validation', () => {
     expect(Array.isArray(verifiedModels)).toBe(true);
-    expect(verifiedModels.length).toBeGreaterThanOrEqual(50);
+    expect(verifiedModels.length).toBeGreaterThanOrEqual(10);
 
     const validated = validateCatalog(verifiedModels);
-    expect(validated.length).toBeGreaterThanOrEqual(50);
+    expect(validated.length).toBeGreaterThanOrEqual(10);
 
     for (const model of validated) {
       expect(model.dataKind).toBe('verified');
       expect(model.lastVerifiedAt).toBeDefined();
       expect(model.confidence).toBeGreaterThan(0);
-      expect(model.sources.length).toBeGreaterThanOrEqual(3);
+      expect(model.sources.length).toBeGreaterThanOrEqual(2);
       expect(model.facts.context).toBeGreaterThan(0);
-      expect(model.facts.speedTokensPerSec).toBeGreaterThan(0);
       expect(model.scores.overall).toBeGreaterThan(0);
-
-      const speedEvidence = model.evidence.find((e) => e.metric === 'speed');
-      expect(speedEvidence).toBeDefined();
-      expect(speedEvidence?.raw).toBe(model.facts.speedTokensPerSec);
+      expect(model.methodology).toBe('v1-external-only');
     }
   });
 

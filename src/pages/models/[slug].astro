@@ -107,14 +107,16 @@ const orderedMetrics: Metric[] = [
           >
         </div>
       </div><a class="score-number" href="#score-overall"
-        >{model.scores.overall}<small>Overall / 100</small></a
+        >{model.scores.overall !== null ? model.scores.overall : '—'}<small
+          >Overall / 100</small
+        ></a
       >
     </div>
   </div>
   {
     model.dataKind === 'verified' ? (
       <div class="notice">
-        Verified real data tracking {model.sources.length} authoritative
+        Verified external data tracking {model.sources.length} authoritative
         sources. Last verified: {model.lastVerifiedAt}.
       </div>
     ) : (
@@ -134,17 +136,45 @@ const orderedMetrics: Metric[] = [
     <div class="pillar-summary-card">
       <span class="pillar-summary-label">Intelligence</span>
       <strong class="pillar-summary-value"
-        >{model.scores.intelligence}<small>/100</small></strong
+        >{
+          model.scores.intelligence !== null ? (
+            <>
+              {model.scores.intelligence}
+              <small>/100</small>
+            </>
+          ) : (
+            '—'
+          )
+        }</strong
       >
-      <span class="micro muted">Frontier reasoning & benchmark quality</span>
+      <span class="micro muted">
+        {
+          model.scores.intelligence !== null
+            ? 'Frontier reasoning & benchmark quality'
+            : 'Benchmark pending external evaluation'
+        }
+      </span>
     </div>
     <div class="pillar-summary-card">
       <span class="pillar-summary-label">Speed</span>
       <strong class="pillar-summary-value"
-        >{speedTps}<small>tok/s</small></strong
+        >{
+          speedTps > 0 ? (
+            <>
+              {speedTps}
+              <small>tok/s</small>
+            </>
+          ) : (
+            '—'
+          )
+        }</strong
       >
       <span class="micro muted">
-        Rating: {model.scores.speed}/100 · Latency tier
+        {
+          speedTps > 0
+            ? `Measured throughput · ${model.scores.speed !== null ? `${model.scores.speed}/100 rating` : ''}`
+            : 'Speed measurements not yet claimed'
+        }
       </span>
     </div>
     <div class="pillar-summary-card">
@@ -168,6 +198,7 @@ const orderedMetrics: Metric[] = [
           const sourceObj = model.sources.find(
             (s) => s.id === evidence?.sourceId,
           );
+          const scoreVal = model.scores[metric];
           return (
             <details class="score-details" id={`score-${metric}`}>
               <summary>
@@ -177,15 +208,24 @@ const orderedMetrics: Metric[] = [
                     <ChevronDown size={13} />
                   </span>
                   <strong>
-                    {model.scores[metric]}
+                    {scoreVal !== null ? scoreVal : '—'}
                     <small class="micro"> / 100</small>
                   </strong>
                 </>
               </summary>
-              {metric === 'overall' ? (
+              {scoreVal === null ? (
+                <p class="muted">
+                  Not enough approved benchmark data currently available for{' '}
+                  {label.toLowerCase()} under methodology {model.methodology}.
+                </p>
+              ) : metric === 'overall' ? (
                 <p>
-                  Weighted composite:{' '}
+                  Weighted composite of available verified metrics:{' '}
                   {Object.entries(overallWeights)
+                    .filter(
+                      ([k]) =>
+                        model.scores[k as keyof typeof model.scores] !== null,
+                    )
                     .map(
                       ([k, w]) =>
                         `${metricLabels[k as Metric]} ${Math.round(w * 100)}%`,

@@ -212,6 +212,7 @@ export async function persistIngestionToDatabase(options: {
 
       // 6. Score History
       for (const [metric, value] of Object.entries(model.scores)) {
+        if (value === null) continue;
         await connection.db.insert(scoreHistory).values({
           id: `${model.slug}-${metric}-${Date.now()}`,
           modelId: model.slug,
