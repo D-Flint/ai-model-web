@@ -286,7 +286,28 @@
   - `npm run check`: 0 errors, 0 warnings, 0 hints across 52 Astro and TypeScript files.
   - `npm run lint`: ESLint and Prettier pass cleanly with 0 errors.
   - `npm run build`: Production build generated 249 static pages in 7.67s with 0 errors.
-- Commit: `6d61c4d` (local commit; no remote push).
+- Commit: `b185e57` (local commit; no remote push).
 - Current state: The catalog now contains 21 verified foundation models with the newest frontier models from Anthropic, Google, and OpenAI prioritized at the forefront.
 - Exact next step: User verifies the new frontier models across cards, comparison builder, and detail pages locally.
+
+## 2026-09-05 — Add Newer Models: Grok 2, Qwen 2.5 Max/Coder, Codestral, Pixtral Large, Llama 3.2 90B
+
+- Objective: Expand the verified models catalog with 6 newer major models from xAI (`grok-2`), Alibaba (`qwen-2-5-max`, `qwen-2-5-coder-32b-instruct`), Mistral (`codestral-2501`, `pixtral-large-2411`), and Meta (`llama-3-2-90b-vision-instruct`), adhering strictly to official provider specs, LiveBench, BFCL, and SWE-bench Verified.
+- Files changed:
+  - `src/data/canonicalModels.ts`: Added `provider-xai` to `PROVIDERS_CONFIG` and added 6 new canonical model definitions with aliases and official URLs.
+  - `src/data/officialProviders.ts`: Added official provider specs (pricing, context window, output limits, modalities, docs URLs) for the 6 new models.
+  - `src/data/livebenchData.json`: Added verified LiveBench records across reasoning, math, coding, data analysis, and instruction following.
+  - `src/data/bfclData.json`: Added verified Berkeley Function Calling Leaderboard accuracy entries.
+  - `src/data/verifiedModels.json`: Ingestion pipeline regenerated catalog from 21 to 27 models with complete provenance evidence.
+  - `.agents/registry.json` & `.agents/activity.jsonl`: Handled agent registration, claims, and session logs.
+- Attempts: 1 full iteration with data refresh, type check, test suite, linting, and build verification.
+- Failures and causes: None. Prettier formatted all changed files cleanly.
+- Tests and results:
+  - `npm test`: 35/35 passing across all test suites.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 52 Astro and TypeScript files.
+  - `npm run lint`: Clean, 0 errors.
+  - `npm run build`: Production static build generated 396 pages in 11.15s with 0 errors.
+- Commit: `bda6f38` (local commit; no remote push).
+- Current state: Catalog now contains 27 verified foundation models spanning OpenAI, Anthropic, Google DeepMind, DeepSeek, xAI, Mistral, Meta, and Alibaba.
+- Exact next step: User verifies the expanded catalog locally at `http://localhost:4321` or production build preview.
 

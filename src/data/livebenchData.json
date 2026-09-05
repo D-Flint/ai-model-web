@@ -1,5 +1,65 @@
 [
   {
+    "model": "qwen-2.5-max",
+    "global_average": 72.4,
+    "reasoning": 81.5,
+    "math": 78.2,
+    "coding": 66.8,
+    "data_analysis": 68.5,
+    "instruction_following": 74.0,
+    "date": "2025-01-27"
+  },
+  {
+    "model": "grok-2-1212",
+    "global_average": 68.4,
+    "reasoning": 76.5,
+    "math": 71.0,
+    "coding": 62.4,
+    "data_analysis": 65.2,
+    "instruction_following": 71.8,
+    "date": "2024-12-12"
+  },
+  {
+    "model": "pixtral-large-2411",
+    "global_average": 67.2,
+    "reasoning": 74.8,
+    "math": 68.5,
+    "coding": 61.2,
+    "data_analysis": 63.8,
+    "instruction_following": 69.5,
+    "date": "2024-11-18"
+  },
+  {
+    "model": "codestral-2501",
+    "global_average": 64.5,
+    "reasoning": 66.2,
+    "math": 62.8,
+    "coding": 72.8,
+    "data_analysis": 60.5,
+    "instruction_following": 65.0,
+    "date": "2025-01-14"
+  },
+  {
+    "model": "Qwen2.5-Coder-32B-Instruct",
+    "global_average": 62.1,
+    "reasoning": 64.0,
+    "math": 60.5,
+    "coding": 70.2,
+    "data_analysis": 58.2,
+    "instruction_following": 63.8,
+    "date": "2024-11-12"
+  },
+  {
+    "model": "Llama-3.2-90B-Vision-Instruct",
+    "global_average": 61.8,
+    "reasoning": 67.5,
+    "math": 62.0,
+    "coding": 54.2,
+    "data_analysis": 59.8,
+    "instruction_following": 67.4,
+    "date": "2024-09-25"
+  },
+  {
     "model": "claude-3-7-sonnet-20250219",
     "global_average": 75.2,
     "reasoning": 85.6,

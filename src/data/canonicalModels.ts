@@ -56,6 +56,14 @@ export const PROVIDERS_CONFIG = [
     description:
       'Alibaba Cloud AI team building the Qwen series of open foundation models.',
   },
+  {
+    id: 'provider-xai',
+    slug: 'xai',
+    name: 'xAI',
+    website: 'https://x.ai',
+    description:
+      'AI company developing the Grok series of frontier models and vision systems.',
+  },
 ];
 
 export const CANONICAL_MODELS: CanonicalModelConfig[] = [
@@ -148,6 +156,211 @@ export const CANONICAL_MODELS: CanonicalModelConfig[] = [
     tags: ['Vision', 'Research', 'Agentic', 'Knowledge'],
     reasoningEffort: ['fixed'],
     defaultEffort: 'fixed',
+  },
+  {
+    slug: 'qwen-2-5-max',
+    name: 'Qwen 2.5 Max',
+    provider: 'Alibaba Cloud / Qwen',
+    providerSlug: 'qwen',
+    family: 'Qwen 2.5',
+    openWeights: false,
+    openRouterId: 'qwen/qwen-2.5-max',
+    lmarenaAliases: ['qwen-2.5-max', 'qwen-2.5-max-0127', 'qwen/qwen-2.5-max'],
+    swebenchAliases: ['qwen-2.5-max', 'qwen-2.5-max-0127'],
+    livebenchAliases: ['qwen-2.5-max', 'qwen-2.5-max-0127'],
+    bfclAliases: ['qwen-2.5-max', 'qwen-2.5-max-0127'],
+    officialDocsUrl:
+      'https://help.aliyun.com/zh/model-studio/developer-reference/what-is-qwen-llm',
+    description:
+      "Alibaba Cloud's flagship proprietary frontier model, delivering frontier reasoning, broad knowledge synthesis, and complex instruction following.",
+    strengths: [
+      'State-of-the-art multilingual and STEM reasoning',
+      '131,072 token context window with reliable 8k output generation',
+      'Strong function calling and structured JSON schema compliance',
+    ],
+    weaknesses: [
+      'Proprietary hosted API (not available as open weights)',
+      'Text-only interface without native visual inputs',
+    ],
+    tags: ['Research', 'STEM', 'Coding', 'Multilingual'],
+    reasoningEffort: ['none'],
+    defaultEffort: 'none',
+  },
+  {
+    slug: 'codestral-2501',
+    name: 'Codestral 2501',
+    provider: 'Mistral AI',
+    providerSlug: 'mistral',
+    family: 'Codestral',
+    openWeights: false,
+    openRouterId: 'mistralai/codestral-2501',
+    lmarenaAliases: [
+      'codestral-2501',
+      'mistral-codestral-2501',
+      'mistralai/codestral-2501',
+    ],
+    swebenchAliases: ['codestral-2501', 'Codestral-2501'],
+    livebenchAliases: ['codestral-2501', 'Codestral-2501'],
+    bfclAliases: ['codestral-2501', 'Codestral-2501'],
+    officialDocsUrl: 'https://docs.mistral.ai/getting-started/models/',
+    description:
+      "Mistral's dedicated generative coding model with an expansive 256k context window, designed for fill-in-the-middle code completion and repository synthesis.",
+    strengths: [
+      'Expansive 256,000 token context window tailored for entire codebases',
+      'Fast fill-in-the-middle (FIM) and code completion latency',
+      'Economical API pricing ($0.30 input / $0.90 output per 1M tokens)',
+    ],
+    weaknesses: [
+      'Specialized for coding; less versatile on generic prose or creative writing',
+      'Text and code only (no multimodal vision)',
+    ],
+    tags: ['Coding', 'Large context', 'Fast', 'Best value'],
+    reasoningEffort: ['none'],
+    defaultEffort: 'none',
+  },
+  {
+    slug: 'grok-2',
+    name: 'Grok 2',
+    provider: 'xAI',
+    providerSlug: 'xai',
+    family: 'Grok',
+    openWeights: false,
+    openRouterId: 'x-ai/grok-2-1212',
+    lmarenaAliases: [
+      'grok-2-1212',
+      'grok-2-vision-1212',
+      'grok-2',
+      'x-ai/grok-2',
+    ],
+    swebenchAliases: ['grok-2-1212', 'grok-2'],
+    livebenchAliases: ['grok-2-1212', 'grok-2', 'grok-2-vision-1212'],
+    bfclAliases: ['grok-2-1212', 'grok-2'],
+    officialDocsUrl: 'https://docs.x.ai/docs/overview#models',
+    description:
+      "xAI's flagship frontier model, featuring state-of-the-art visual understanding, real-time factual knowledge, and high-accuracy tool use.",
+    strengths: [
+      'High conversational responsiveness and candid factual clarity',
+      'Multimodal vision comprehension with diagram and chart extraction',
+      'Robust function calling and structured outputs compliance',
+    ],
+    weaknesses: [
+      'Higher output pricing ($10.00/1M tokens) than mid-tier open models',
+      'Rate limits on specialized enterprise tiers',
+    ],
+    tags: ['Vision', 'Research', 'Agentic', 'Daily use'],
+    reasoningEffort: ['none'],
+    defaultEffort: 'none',
+  },
+  {
+    slug: 'pixtral-large-2411',
+    name: 'Pixtral Large',
+    provider: 'Mistral AI',
+    providerSlug: 'mistral',
+    family: 'Mistral Large',
+    openWeights: true,
+    openRouterId: 'mistralai/pixtral-large-2411',
+    lmarenaAliases: [
+      'pixtral-large-2411',
+      'pixtral-large',
+      'mistralai/pixtral-large-2411',
+    ],
+    swebenchAliases: ['pixtral-large-2411', 'pixtral-large'],
+    livebenchAliases: ['pixtral-large-2411', 'pixtral-large'],
+    bfclAliases: ['pixtral-large-2411', 'pixtral-large'],
+    officialDocsUrl: 'https://docs.mistral.ai/getting-started/models/',
+    description:
+      "Mistral's 124B frontier multimodal model, combining Mistral Large reasoning with high-resolution image analysis and document comprehension.",
+    strengths: [
+      'Frontier multimodal reasoning over complex documents, charts, and technical figures',
+      '131,072 token context window with open weights availability',
+      'Top-tier multi-lingual translation and structured data extraction',
+    ],
+    weaknesses: [
+      'Requires multi-GPU infrastructure (e.g. 4-8x H100) for local self-hosting',
+      'Higher latency on large batches of high-resolution images',
+    ],
+    tags: ['Vision', 'Multimodal', 'Open weights', 'Research'],
+    reasoningEffort: ['none'],
+    defaultEffort: 'none',
+  },
+  {
+    slug: 'qwen-2-5-coder-32b-instruct',
+    name: 'Qwen 2.5 Coder 32B Instruct',
+    provider: 'Alibaba Cloud / Qwen',
+    providerSlug: 'qwen',
+    family: 'Qwen 2.5',
+    openWeights: true,
+    openRouterId: 'qwen/qwen-2.5-coder-32b-instruct',
+    lmarenaAliases: [
+      'qwen-2.5-coder-32b-instruct',
+      'qwen2.5-coder-32b-instruct',
+      'qwen/qwen-2.5-coder-32b-instruct',
+    ],
+    swebenchAliases: [
+      'Qwen2.5-Coder-32B-Instruct',
+      'qwen-2.5-coder-32b-instruct',
+    ],
+    livebenchAliases: [
+      'Qwen2.5-Coder-32B-Instruct',
+      'qwen-2.5-coder-32b-instruct',
+    ],
+    bfclAliases: ['Qwen2.5-Coder-32B-Instruct', 'qwen-2.5-coder-32b-instruct'],
+    officialDocsUrl: 'https://qwenlm.github.io/blog/qwen2.5-coder-family/',
+    description:
+      "Alibaba's open-weights coding champion, matching closed frontier models on SWE-bench Verified and code synthesis at an accessible 32B size.",
+    strengths: [
+      'Outstanding coding performance rivaling frontier models at open weights',
+      '131,072 token context window with strong repository-scale refactoring',
+      'Accessible deployment on a single consumer GPU (with quantization) or dual GPUs',
+    ],
+    weaknesses: [
+      'Code and text only (no image or audio comprehension)',
+      'Requires fine-tuning for non-coding specialized domains',
+    ],
+    tags: ['Coding', 'Open weights', 'Best value', 'STEM'],
+    reasoningEffort: ['none'],
+    defaultEffort: 'none',
+  },
+  {
+    slug: 'llama-3-2-90b-vision-instruct',
+    name: 'Llama 3.2 90B Vision Instruct',
+    provider: 'Meta AI',
+    providerSlug: 'meta',
+    family: 'Llama 3.2',
+    openWeights: true,
+    openRouterId: 'meta-llama/llama-3.2-90b-vision-instruct',
+    lmarenaAliases: [
+      'llama-3.2-90b-vision-instruct',
+      'meta-llama/llama-3.2-90b-vision-instruct',
+    ],
+    swebenchAliases: [
+      'Llama-3.2-90B-Vision-Instruct',
+      'llama-3.2-90b-vision-instruct',
+    ],
+    livebenchAliases: [
+      'Llama-3.2-90B-Vision-Instruct',
+      'llama-3.2-90b-vision-instruct',
+    ],
+    bfclAliases: [
+      'Llama-3.2-90B-Vision-Instruct',
+      'llama-3.2-90b-vision-instruct',
+    ],
+    officialDocsUrl:
+      'https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/',
+    description:
+      "Meta's flagship open multimodal model, integrating visual recognition with Llama 3 language capabilities for document reasoning and visual question answering.",
+    strengths: [
+      'High-quality visual recognition, chart reading, and image grounding',
+      '131,072 token context window with open model weights',
+      'Cost-effective hosting rates across public cloud endpoints ($0.70/1M)',
+    ],
+    weaknesses: [
+      'Lower code generation accuracy compared to dedicated coding models',
+      'Text outputs capped at 8,192 tokens per response',
+    ],
+    tags: ['Vision', 'Multimodal', 'Open weights', 'Research'],
+    reasoningEffort: ['none'],
+    defaultEffort: 'none',
   },
   {
     slug: 'gemini-2-0-pro-exp',

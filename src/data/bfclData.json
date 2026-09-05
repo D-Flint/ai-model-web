@@ -1,5 +1,47 @@
 [
   {
+    "model": "qwen-2.5-max",
+    "overall_accuracy": 88.5,
+    "ast_summary": 90.2,
+    "exec_summary": 86.8,
+    "date": "2025-01-27"
+  },
+  {
+    "model": "grok-2-1212",
+    "overall_accuracy": 88.2,
+    "ast_summary": 90.0,
+    "exec_summary": 86.4,
+    "date": "2024-12-12"
+  },
+  {
+    "model": "pixtral-large-2411",
+    "overall_accuracy": 86.8,
+    "ast_summary": 88.5,
+    "exec_summary": 85.1,
+    "date": "2024-11-18"
+  },
+  {
+    "model": "codestral-2501",
+    "overall_accuracy": 84.1,
+    "ast_summary": 85.6,
+    "exec_summary": 82.6,
+    "date": "2025-01-14"
+  },
+  {
+    "model": "Llama-3.2-90B-Vision-Instruct",
+    "overall_accuracy": 82.8,
+    "ast_summary": 84.2,
+    "exec_summary": 81.4,
+    "date": "2024-09-25"
+  },
+  {
+    "model": "Qwen2.5-Coder-32B-Instruct",
+    "overall_accuracy": 82.5,
+    "ast_summary": 83.8,
+    "exec_summary": 81.2,
+    "date": "2024-11-12"
+  },
+  {
     "model": "claude-3-7-sonnet-20250219",
     "overall_accuracy": 90.4,
     "ast_summary": 92.8,
