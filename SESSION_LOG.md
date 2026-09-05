@@ -157,3 +157,22 @@
 - Current state: Users can select and compare different reasoning effort levels for any reasoning model, compare multiple effort levels of the same model side-by-side, and inspect dynamic stats (scores, tokens, latency, cost) across both `/compare` and `/models/[slug]`.
 - Exact next step: Pause and await user verification of the new effort selection and comparison features locally.
 
+## 2026-09-05 — Remove Duplicated Pro Reasoning Models from Catalog
+
+- Objective: Remove redundant pseudo-model entries (`GPT-6 Astra Pro`, `GPT-5.6 Sol Pro`, `GPT-5.6 Luna Pro`, `GPT-5.6 Terra Pro`) that are merely `reasoning.mode: pro` configurations of the base models, consolidating their benchmark aliases into the base models and regenerating the verified catalog.
+- Files changed:
+  - `src/data/canonicalModels.ts`: Removed 4 duplicate `-pro` models and merged their `openRouterId`, `lmarenaAliases`, and `swebenchAliases` into `gpt-6-astra`, `gpt-5-6-sol`, `gpt-5-6-luna`, and `gpt-5-6-terra`. Enabled selectable reasoning effort across all 4 base models.
+  - `src/data/officialProviders.ts`: Removed duplicate specifications for `gpt-6-astra-pro`, `gpt-5-6-sol-pro`, `gpt-5-6-luna-pro`, and `gpt-5-6-terra-pro`.
+  - `src/data/verifiedModels.json`: Regenerated verified catalog via `data:refresh`, streamlining catalog from 82 to 78 clean, unique frontier foundation models.
+  - `.agents/registry.json`, `.agents/activity.jsonl`: Multi-agent collaboration state and claims updated.
+- Attempts: 1 iteration.
+- Failures and causes: None.
+- Tests and results:
+  - `npm test`: 34/34 tests pass across all 3 test suites.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 50 Astro and TypeScript files.
+  - `npm run data:refresh`: Successfully ingested 78 canonical models, 97 LMSYS Arena benchmarks, and 12 SWE-bench verified runs in 4.9s.
+- Commit hash: Pending local commit.
+- Current state: The catalog now cleanly lists base models (`GPT-6 Astra`, `GPT-5.6 Sol`, `GPT-5.6 Luna`, `GPT-5.6 Terra`) with full reasoning effort controls (`Low`, `Medium`, `High`, `Max`), eliminating duplicate cards while preserving all benchmark attribution.
+- Exact next step: User verifies the streamlined catalog and comparison interface locally.
+
+
