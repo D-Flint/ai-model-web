@@ -1,0 +1,195 @@
+import type { CanonicalModelConfig } from '../../pipeline/types';
+
+export const DEEPSEEK_MODELS: CanonicalModelConfig[] = [
+  {
+    slug: 'deepseek-r1-distill-qwen-32b',
+    name: 'DeepSeek R1 Distill Qwen 32B',
+    provider: 'DeepSeek',
+    providerSlug: 'deepseek',
+    family: 'DeepSeek',
+    openWeights: true,
+    openRouterId: 'deepseek/deepseek-r1-distill-qwen-32b',
+    lmarenaAliases: [
+      'deepseek-r1-distill-qwen-32b',
+      'deepseek/deepseek-r1-distill-qwen-32b',
+      'DeepSeek-R1-Distill-Qwen-32B',
+    ],
+    swebenchAliases: [
+      'DeepSeek-R1-Distill-Qwen-32B',
+      'deepseek-r1-distill-qwen-32b',
+    ],
+    livebenchAliases: [
+      'DeepSeek-R1-Distill-Qwen-32B',
+      'deepseek-r1-distill-qwen-32b',
+    ],
+    bfclAliases: [
+      'DeepSeek-R1-Distill-Qwen-32B',
+      'deepseek-r1-distill-qwen-32b',
+    ],
+    officialDocsUrl: 'https://api-docs.deepseek.com/quick_start/pricing',
+    description:
+      "DeepSeek's distilled open-weights reasoning model, transferring R1 reasoning behaviors into Qwen-2.5-32B for efficient math and code inference.",
+    strengths: [
+      'Distilled chain-of-thought reasoning matching frontier reasoning benchmarks',
+      'Deployable on a single high-end GPU or standard cloud instance',
+      'Open weights with permissive licensing for enterprise self-hosting',
+    ],
+    weaknesses: [
+      'Text-only reasoning without multimodal vision capabilities',
+      'Narrower general world knowledge compared to 671B full R1',
+    ],
+    tags: ['Reasoning', 'Open weights', 'STEM', 'Best value'],
+    reasoningEffort: ['fixed'],
+    defaultEffort: 'fixed',
+  },
+  {
+    slug: 'deepseek-r1',
+    name: 'DeepSeek R1',
+    provider: 'DeepSeek',
+    providerSlug: 'deepseek',
+    family: 'DeepSeek',
+    openWeights: true,
+    openRouterId: 'deepseek/deepseek-r1',
+    lmarenaAliases: [
+      'deepseek-r1',
+      'deepseek/deepseek-r1',
+      'deepseek-reasoner',
+      'deepseek r1',
+    ],
+    swebenchAliases: ['DeepSeek-R1', 'deepseek-r1', 'deepseek-reasoner'],
+    livebenchAliases: ['DeepSeek-R1', 'deepseek-r1'],
+    bfclAliases: ['DeepSeek-R1', 'deepseek-r1'],
+    officialDocsUrl: 'https://api-docs.deepseek.com/quick_start/pricing',
+    description:
+      "DeepSeek's open-weights reasoning model, using large-scale reinforcement learning for complex multi-step reasoning, math, and code generation.",
+    strengths: [
+      'State-of-the-art open reasoning performance matching frontier closed models',
+      'Exceptional performance-to-price ratio for complex STEM workloads',
+      'Open weights available for local deployment and research',
+    ],
+    weaknesses: [
+      'Text-only model with no native image or audio support',
+      'API rate limits and peak-hour queue delays on official hosted endpoints',
+    ],
+    tags: ['Reasoning', 'Open weights', 'Coding', 'Best value'],
+    reasoningEffort: ['fixed'],
+    defaultEffort: 'fixed',
+  },
+  {
+    slug: 'deepseek-v3',
+    name: 'DeepSeek V3',
+    provider: 'DeepSeek',
+    providerSlug: 'deepseek',
+    family: 'DeepSeek',
+    openWeights: true,
+    openRouterId: 'deepseek/deepseek-chat',
+    lmarenaAliases: [
+      'deepseek-v3',
+      'deepseek/deepseek-chat',
+      'deepseek-chat',
+      'deepseek v3',
+    ],
+    swebenchAliases: ['DeepSeek-V3', 'deepseek-v3', 'deepseek-chat'],
+    livebenchAliases: ['DeepSeek-V3', 'deepseek-v3'],
+    bfclAliases: ['DeepSeek-V3', 'deepseek-v3'],
+    officialDocsUrl: 'https://api-docs.deepseek.com/quick_start/pricing',
+    description:
+      "DeepSeek's flagship Mixture-of-Experts (MoE) foundation model, providing premier intelligence at an exceptionally competitive price point.",
+    strengths: [
+      'Remarkable price-to-performance ($0.14 input / $0.28 output per 1M tokens)',
+      'Strong multilingual capabilities and solid code completion',
+      'Open weights with detailed architecture documentation',
+    ],
+    weaknesses: [
+      'Text-only model without vision or audio processing',
+      'Context window limited to 64,000 tokens on official API',
+    ],
+    tags: ['Best value', 'Open weights', 'Coding', 'Daily use'],
+    reasoningEffort: ['none'],
+    defaultEffort: 'none',
+  },
+  {
+    slug: 'deepseek-r1-distill-llama-70b',
+    name: 'DeepSeek R1 Distill Llama 70B',
+    provider: 'DeepSeek',
+    providerSlug: 'deepseek',
+    family: 'DeepSeek R1',
+    openWeights: true,
+    openRouterId: 'deepseek/deepseek-r1-distill-llama-70b',
+    lmarenaAliases: [
+      'deepseek-r1-distill-llama-70b',
+      'DeepSeek-R1-Distill-Llama-70B',
+      'deepseek/deepseek-r1-distill-llama-70b',
+    ],
+    swebenchAliases: [
+      'deepseek-r1-distill-llama-70b',
+      'DeepSeek-R1-Distill-Llama-70B',
+    ],
+    livebenchAliases: [
+      'deepseek-r1-distill-llama-70b',
+      'DeepSeek-R1-Distill-Llama-70B',
+    ],
+    bfclAliases: [
+      'deepseek-r1-distill-llama-70b',
+      'DeepSeek-R1-Distill-Llama-70B',
+    ],
+    officialDocsUrl: 'https://api-docs.deepseek.com/quick_start/pricing',
+    description:
+      "DeepSeek's distilled open-weights reasoning model based on Llama-3.3-70B-Instruct, fine-tuned with R1 reasoning data to deliver frontier mathematical and algorithmic reasoning.",
+    strengths: [
+      'Frontier mathematical and chain-of-thought reasoning from 70B base',
+      'Open weights with permissive MIT licensing',
+      '128,000 token context window supporting expansive reasoning traces',
+      'Highly competitive API pricing across cloud providers ($0.23 / $0.40)',
+    ],
+    weaknesses: [
+      'Text-only reasoning without image or audio support',
+      'Requires dual-GPU or 4-bit quantization for self-hosting',
+    ],
+    tags: ['Reasoning', 'Open weights', 'STEM', 'Coding'],
+    reasoningEffort: ['fixed'],
+    defaultEffort: 'fixed',
+  },
+  {
+    slug: 'deepseek-r1-distill-qwen-14b',
+    name: 'DeepSeek R1 Distill Qwen 14B',
+    provider: 'DeepSeek',
+    providerSlug: 'deepseek',
+    family: 'DeepSeek R1',
+    openWeights: true,
+    openRouterId: 'deepseek/deepseek-r1-distill-qwen-14b',
+    lmarenaAliases: [
+      'deepseek-r1-distill-qwen-14b',
+      'DeepSeek-R1-Distill-Qwen-14B',
+      'deepseek/deepseek-r1-distill-qwen-14b',
+    ],
+    swebenchAliases: [
+      'deepseek-r1-distill-qwen-14b',
+      'DeepSeek-R1-Distill-Qwen-14B',
+    ],
+    livebenchAliases: [
+      'deepseek-r1-distill-qwen-14b',
+      'DeepSeek-R1-Distill-Qwen-14B',
+    ],
+    bfclAliases: [
+      'deepseek-r1-distill-qwen-14b',
+      'DeepSeek-R1-Distill-Qwen-14B',
+    ],
+    officialDocsUrl: 'https://api-docs.deepseek.com/quick_start/pricing',
+    description:
+      "DeepSeek's 14B parameter distilled reasoning model built upon Qwen-2.5-14B, delivering deep mathematical reasoning and step-by-step problem decomposition on consumer GPUs.",
+    strengths: [
+      'Strong mathematical and algorithmic reasoning in an accessible 14B footprint',
+      'Open weights with permissive MIT license',
+      'Runs locally on mid-range consumer GPUs (16GB VRAM)',
+      'Extremely economical cloud pricing ($0.12 input / $0.24 output per 1M tokens)',
+    ],
+    weaknesses: [
+      'Text and code only; lacks multimodal visual understanding',
+      'Smaller memory capacity than 32B or 70B distillation variants',
+    ],
+    tags: ['Reasoning', 'Open weights', 'STEM', 'Best value'],
+    reasoningEffort: ['fixed'],
+    defaultEffort: 'fixed',
+  },
+];

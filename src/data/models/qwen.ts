@@ -1,0 +1,131 @@
+import type { CanonicalModelConfig } from '../../pipeline/types';
+
+export const QWEN_MODELS: CanonicalModelConfig[] = [
+  {
+    slug: 'qwen-2-5-max',
+    name: 'Qwen 2.5 Max',
+    provider: 'Alibaba Cloud / Qwen',
+    providerSlug: 'qwen',
+    family: 'Qwen 2.5',
+    openWeights: false,
+    openRouterId: 'qwen/qwen-2.5-max',
+    lmarenaAliases: ['qwen-2.5-max', 'qwen-2.5-max-0127', 'qwen/qwen-2.5-max'],
+    swebenchAliases: ['qwen-2.5-max', 'qwen-2.5-max-0127'],
+    livebenchAliases: ['qwen-2.5-max', 'qwen-2.5-max-0127'],
+    bfclAliases: ['qwen-2.5-max', 'qwen-2.5-max-0127'],
+    officialDocsUrl:
+      'https://help.aliyun.com/zh/model-studio/developer-reference/what-is-qwen-llm',
+    description:
+      "Alibaba Cloud's flagship proprietary frontier model, delivering frontier reasoning, broad knowledge synthesis, and complex instruction following.",
+    strengths: [
+      'State-of-the-art multilingual and STEM reasoning',
+      '131,072 token context window with reliable 8k output generation',
+      'Strong function calling and structured JSON schema compliance',
+    ],
+    weaknesses: [
+      'Proprietary hosted API (not available as open weights)',
+      'Text-only interface without native visual inputs',
+    ],
+    tags: ['Research', 'STEM', 'Coding', 'Multilingual'],
+    reasoningEffort: ['none'],
+    defaultEffort: 'none',
+  },
+  {
+    slug: 'qwen-2-5-coder-32b-instruct',
+    name: 'Qwen 2.5 Coder 32B Instruct',
+    provider: 'Alibaba Cloud / Qwen',
+    providerSlug: 'qwen',
+    family: 'Qwen 2.5',
+    openWeights: true,
+    openRouterId: 'qwen/qwen-2.5-coder-32b-instruct',
+    lmarenaAliases: [
+      'qwen-2.5-coder-32b-instruct',
+      'qwen2.5-coder-32b-instruct',
+      'qwen/qwen-2.5-coder-32b-instruct',
+    ],
+    swebenchAliases: [
+      'Qwen2.5-Coder-32B-Instruct',
+      'qwen-2.5-coder-32b-instruct',
+    ],
+    livebenchAliases: [
+      'Qwen2.5-Coder-32B-Instruct',
+      'qwen-2.5-coder-32b-instruct',
+    ],
+    bfclAliases: ['Qwen2.5-Coder-32B-Instruct', 'qwen-2.5-coder-32b-instruct'],
+    officialDocsUrl: 'https://qwenlm.github.io/blog/qwen2.5-coder-family/',
+    description:
+      "Alibaba's open-weights coding champion, matching closed frontier models on SWE-bench Verified and code synthesis at an accessible 32B size.",
+    strengths: [
+      'Outstanding coding performance rivaling frontier models at open weights',
+      '131,072 token context window with strong repository-scale refactoring',
+      'Accessible deployment on a single consumer GPU (with quantization) or dual GPUs',
+    ],
+    weaknesses: [
+      'Code and text only (no image or audio comprehension)',
+      'Requires fine-tuning for non-coding specialized domains',
+    ],
+    tags: ['Coding', 'Open weights', 'Best value', 'STEM'],
+    reasoningEffort: ['none'],
+    defaultEffort: 'none',
+  },
+  {
+    slug: 'qwq-32b-preview',
+    name: 'QwQ 32B Preview',
+    provider: 'Alibaba Cloud / Qwen',
+    providerSlug: 'qwen',
+    family: 'Qwen 2.5',
+    openWeights: true,
+    openRouterId: 'qwen/qwq-32b-preview',
+    lmarenaAliases: ['qwq-32b-preview', 'qwq-32b', 'qwen/qwq-32b-preview'],
+    swebenchAliases: ['qwq-32b-preview', 'QwQ-32B-Preview'],
+    livebenchAliases: ['qwq-32b-preview', 'QwQ-32B-Preview'],
+    bfclAliases: ['qwq-32b-preview', 'QwQ-32B-Preview'],
+    officialDocsUrl: 'https://qwenlm.github.io/blog/qwq-32b-preview/',
+    description:
+      "Alibaba's experimental open reasoning model capable of thoughtful step-by-step thinking for mathematics, programming, and complex logic puzzles.",
+    strengths: [
+      'Detailed visible thinking traces for complex problem decomposition',
+      'High open-weights competitive math and reasoning scores',
+      'Compact 32B footprint optimized for developer research',
+    ],
+    weaknesses: [
+      'Preview release with potential repetition on recursive open-ended prompts',
+      '32k token context window (smaller than standard Qwen 2.5 128k)',
+    ],
+    tags: ['Reasoning', 'STEM', 'Open weights', 'Coding'],
+    reasoningEffort: ['fixed'],
+    defaultEffort: 'fixed',
+  },
+  {
+    slug: 'qwen-2-5-72b-instruct',
+    name: 'Qwen 2.5 72B Instruct',
+    provider: 'Alibaba Cloud / Qwen',
+    providerSlug: 'qwen',
+    family: 'Qwen 2.5',
+    openWeights: true,
+    openRouterId: 'qwen/qwen-2.5-72b-instruct',
+    lmarenaAliases: [
+      'qwen-2.5-72b-instruct',
+      'qwen/qwen-2.5-72b-instruct',
+      'qwen2.5-72b-instruct',
+    ],
+    swebenchAliases: ['Qwen2.5-72B-Instruct', 'qwen-2.5-72b-instruct'],
+    livebenchAliases: ['Qwen2.5-72B-Instruct', 'qwen-2.5-72b-instruct'],
+    bfclAliases: ['Qwen2.5-72B-Instruct', 'qwen-2.5-72b-instruct'],
+    officialDocsUrl: 'https://qwenlm.github.io/blog/qwen2.5/',
+    description:
+      "Alibaba Cloud's open-weights flagship, excelling across coding, mathematics, structured JSON extraction, and multilingual comprehension.",
+    strengths: [
+      'Competitive with leading proprietary models on coding and mathematics',
+      'Supports 131,072 token context window with strong 8k output generation',
+      'Open weights with commercial-friendly Apache 2.0 licensing',
+    ],
+    weaknesses: [
+      'Text-only model without vision understanding',
+      'Self-hosting requires high-capacity multi-GPU hardware',
+    ],
+    tags: ['Open weights', 'Coding', 'Daily use', 'Best value'],
+    reasoningEffort: ['none'],
+    defaultEffort: 'none',
+  },
+];

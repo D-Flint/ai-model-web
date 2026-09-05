@@ -421,6 +421,33 @@
 - Current state: Catalog contains 47 verified foundation models (with all 11 OpenAI models fully covered) strictly sorted from newest to oldest.
 - Exact next step: User verifies the complete OpenAI models catalog locally at `http://localhost:4321`.
 
+## 2026-09-05 — Split canonicalModels.ts by AI Company into src/data/models/
+
+- Objective: Refactor `src/data/canonicalModels.ts` (which grew to >1,700 lines) by extracting models into modular provider files under `src/data/models/`, keeping `canonicalModels.ts` as a concise aggregator and maintaining backwards compatibility.
+- Files created:
+  - `src/data/models/openai.ts`: 11 OpenAI models
+  - `src/data/models/anthropic.ts`: 4 Anthropic models
+  - `src/data/models/google.ts`: 6 Google DeepMind models
+  - `src/data/models/deepseek.ts`: 5 DeepSeek models
+  - `src/data/models/meta.ts`: 5 Meta AI models
+  - `src/data/models/mistral.ts`: 6 Mistral AI models
+  - `src/data/models/qwen.ts`: 4 Alibaba Cloud / Qwen models
+  - `src/data/models/amazon.ts`: 3 Amazon AWS models
+  - `src/data/models/cohere.ts`: 2 Cohere models
+  - `src/data/models/xai.ts`: 1 xAI model
+- Files modified:
+  - `src/data/canonicalModels.ts`: Streamlined from 1,772 lines down to 120 lines by re-exporting the company modules and aggregating `CANONICAL_MODELS`.
+  - `.agents/registry.json`: Updated `modular-agent` to `completed` and released claims.
+- Attempts: 1 full iteration with verified build and lint passes.
+- Tests and results:
+  - `npm test`: 35/35 passing across all unit test suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 62 Astro and TypeScript files.
+  - `npm run lint`: Clean, 0 errors.
+  - `npm run build`: Production static build generated 1,146 pages in 34.51s with 0 errors.
+- Current state: `canonicalModels.ts` is modular, clean, and easily maintainable per company.
+- Exact next step: User verifies code structure and local server at `http://localhost:4321`.
+
+
 
 
 

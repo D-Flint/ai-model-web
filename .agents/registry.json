@@ -78,6 +78,12 @@
       "goal": "Add all OpenAI models with official specs in newest-to-oldest order",
       "lastHeartbeat": "2026-09-05T12:38:00.000Z",
       "status": "completed"
+    },
+    "modular-agent": {
+      "role": "Refactoring Specialist",
+      "goal": "Split canonicalModels.ts by company into modular provider files",
+      "lastHeartbeat": "2026-09-05T12:41:50.000Z",
+      "status": "completed"
     }
   },
   "claims": {},
