@@ -1,0 +1,2915 @@
+[
+  {
+    "slug": "claude-sonnet-4-5",
+    "name": "Claude 4.5 Sonnet",
+    "provider": "Anthropic",
+    "family": "Claude",
+    "dataKind": "verified",
+    "description": "High-intelligence flagship model balancing deep reasoning, coding capabilities, and execution speed.",
+    "strengths": [
+      "State-of-the-art software engineering and agentic workflows",
+      "Long context retention across 1M tokens",
+      "Reliable instruction following and tool use"
+    ],
+    "weaknesses": [
+      "Higher output token price than flash-tier models",
+      "Rate limits during peak enterprise demand"
+    ],
+    "tags": ["Coding", "Agents", "Research", "Flagship"],
+    "facts": {
+      "context": 1000000,
+      "maxOutput": 64000,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": 63,
+      "availability": "Production API",
+      "releaseDate": "2025-09-29",
+      "sourceId": "source-anthropic"
+    },
+    "pricing": {
+      "input": 3,
+      "output": 15,
+      "cached": 0.3,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openrouter",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 63,
+      "coding": 62,
+      "agentic": 100,
+      "dailyUse": 63,
+      "research": 75,
+      "writing": 63,
+      "vision": 42,
+      "speed": 72,
+      "reliability": 86,
+      "costEfficiency": 36,
+      "overall": 70
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 1438,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 63,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1393,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 56,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1386,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 55,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 74.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2025-11-03"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 1393,
+        "min": 0,
+        "max": 100,
+        "normalized": 100,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 1438,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 63,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 1434,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 62,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "research",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-anthropic",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "writing",
+        "kind": "benchmark",
+        "raw": 1438,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 63,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1250,
+        "min": 1000,
+        "max": 1600,
+        "normalized": 42,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 72,
+        "min": 0,
+        "max": 100,
+        "normalized": 72,
+        "sourceId": "source-anthropic",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "reliability",
+        "kind": "benchmark",
+        "raw": 86,
+        "min": 0,
+        "max": 100,
+        "normalized": 86,
+        "sourceId": "source-anthropic",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 36,
+        "min": 0,
+        "max": 100,
+        "normalized": 36,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 79,
+    "methodology": "sample-1.0",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "source-openrouter",
+        "name": "OpenRouter Model API",
+        "url": "https://openrouter.ai/api/v1/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Large Model Systems Organization (LMSYS)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Princeton NLP / SWE-bench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Evaluation",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Methodology"
+      }
+    ]
+  },
+  {
+    "slug": "claude-opus-4-5",
+    "name": "Claude 4.5 Opus",
+    "provider": "Anthropic",
+    "family": "Claude",
+    "dataKind": "verified",
+    "description": "Top-tier reasoning model built for complex open-ended problems, intricate coding, and rigorous analysis.",
+    "strengths": [
+      "Exceptional performance on complex reasoning tasks",
+      "Nuanced writing style and deep contextual synthesis",
+      "Top-tier reliability for critical tasks"
+    ],
+    "weaknesses": [
+      "Slower generation time than Sonnet or Haiku",
+      "Premium pricing per million tokens"
+    ],
+    "tags": ["Intelligence", "Coding", "Writing", "Research"],
+    "facts": {
+      "context": 200000,
+      "maxOutput": 32000,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": 64,
+      "availability": "Production API",
+      "releaseDate": "2025-11-01",
+      "sourceId": "source-anthropic"
+    },
+    "pricing": {
+      "input": 5,
+      "output": 25,
+      "cached": 0.5,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openrouter",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 64,
+      "coding": 72,
+      "agentic": 100,
+      "dailyUse": 64,
+      "research": 75,
+      "writing": 64,
+      "vision": 42,
+      "speed": 72,
+      "reliability": 86,
+      "costEfficiency": 29,
+      "overall": 73
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 1450,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 64,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1495,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 71,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1468,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 67,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 79.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 79,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2025-12-05"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 1495,
+        "min": 0,
+        "max": 100,
+        "normalized": 100,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 1450,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 64,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 1447,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 64,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "research",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-anthropic",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "writing",
+        "kind": "benchmark",
+        "raw": 1450,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 64,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1250,
+        "min": 1000,
+        "max": 1600,
+        "normalized": 42,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 72,
+        "min": 0,
+        "max": 100,
+        "normalized": 72,
+        "sourceId": "source-anthropic",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "reliability",
+        "kind": "benchmark",
+        "raw": 86,
+        "min": 0,
+        "max": 100,
+        "normalized": 86,
+        "sourceId": "source-anthropic",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 29,
+        "min": 0,
+        "max": 100,
+        "normalized": 29,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 79,
+    "methodology": "sample-1.0",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "source-openrouter",
+        "name": "OpenRouter Model API",
+        "url": "https://openrouter.ai/api/v1/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Large Model Systems Organization (LMSYS)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Princeton NLP / SWE-bench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Evaluation",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Methodology"
+      }
+    ]
+  },
+  {
+    "slug": "claude-haiku-4-5",
+    "name": "Claude 4.5 Haiku",
+    "provider": "Anthropic",
+    "family": "Claude",
+    "dataKind": "verified",
+    "description": "Ultra-fast and cost-effective compact model for everyday chat, summarization, and lightweight coding.",
+    "strengths": [
+      "Near-instant response latency",
+      "Very affordable token pricing",
+      "High accuracy for structured tasks and extraction"
+    ],
+    "weaknesses": [
+      "Less depth on multi-step novel reasoning",
+      "Smaller maximum completion length"
+    ],
+    "tags": ["Daily use", "Best value", "Speed"],
+    "facts": {
+      "context": 200000,
+      "maxOutput": 8192,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": 75,
+      "availability": "Production API",
+      "releaseDate": "2025-10-15",
+      "sourceId": "source-anthropic"
+    },
+    "pricing": {
+      "input": 1,
+      "output": 5,
+      "cached": 0.1,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openrouter",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 67,
+      "coding": 67,
+      "agentic": 67,
+      "dailyUse": 75,
+      "research": 75,
+      "writing": 58,
+      "vision": 42,
+      "speed": 92,
+      "reliability": 86,
+      "costEfficiency": 50,
+      "overall": 69
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 1400,
+        "min": 1000,
+        "max": 1600,
+        "normalized": 67,
+        "sourceId": "source-anthropic",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 66.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 67,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2026-02-17"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 66.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 67,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-anthropic",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "research",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-anthropic",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "writing",
+        "kind": "benchmark",
+        "raw": 1350,
+        "min": 1000,
+        "max": 1600,
+        "normalized": 58,
+        "sourceId": "source-anthropic",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1250,
+        "min": 1000,
+        "max": 1600,
+        "normalized": 42,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 92,
+        "min": 0,
+        "max": 100,
+        "normalized": 92,
+        "sourceId": "source-anthropic",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "reliability",
+        "kind": "benchmark",
+        "raw": 86,
+        "min": 0,
+        "max": 100,
+        "normalized": 86,
+        "sourceId": "source-anthropic",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 50,
+        "min": 0,
+        "max": 100,
+        "normalized": 50,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 60,
+    "methodology": "sample-1.0",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "source-openrouter",
+        "name": "OpenRouter Model API",
+        "url": "https://openrouter.ai/api/v1/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Large Model Systems Organization (LMSYS)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Princeton NLP / SWE-bench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Evaluation",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Methodology"
+      }
+    ]
+  },
+  {
+    "slug": "gemini-2-5-pro",
+    "name": "Gemini 2.5 Pro",
+    "provider": "Google",
+    "family": "Gemini",
+    "dataKind": "verified",
+    "description": "Multimodal workhorse with a native 1M+ token context window, strong cross-modal understanding, and deep tool calling.",
+    "strengths": [
+      "Huge 1M token context for whole codebases and video analysis",
+      "Strong multimodal reasoning (audio, video, images, pdfs)",
+      "Competitive mid-tier pricing"
+    ],
+    "weaknesses": [
+      "Can be verbose on simple inquiries",
+      "Output generation speeds vary under high load"
+    ],
+    "tags": ["Vision", "Research", "Agents", "Multimodal"],
+    "facts": {
+      "context": 1048576,
+      "maxOutput": 65536,
+      "vision": true,
+      "audio": true,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": 65,
+      "availability": "Production API",
+      "releaseDate": "2025-05-06",
+      "sourceId": "source-google"
+    },
+    "pricing": {
+      "input": 1.25,
+      "output": 10,
+      "cached": 0.3125,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openrouter",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 65,
+      "coding": 54,
+      "agentic": 54,
+      "dailyUse": 65,
+      "research": 75,
+      "writing": 65,
+      "vision": 37,
+      "speed": 92,
+      "reliability": 86,
+      "costEfficiency": 43,
+      "overall": 63
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 1458,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 65,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 53.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 54,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2025-07-26"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 53.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 54,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 1458,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 65,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "research",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-google",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "writing",
+        "kind": "benchmark",
+        "raw": 1458,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 65,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1262,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 37,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 92,
+        "min": 0,
+        "max": 100,
+        "normalized": 92,
+        "sourceId": "source-google",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "reliability",
+        "kind": "benchmark",
+        "raw": 86,
+        "min": 0,
+        "max": 100,
+        "normalized": 86,
+        "sourceId": "source-google",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 43,
+        "min": 0,
+        "max": 100,
+        "normalized": 43,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 82,
+    "methodology": "sample-1.0",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-google",
+        "name": "Google AI Developer Documentation",
+        "url": "https://ai.google.dev/gemini-api/docs/models/gemini",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Google"
+      },
+      {
+        "id": "source-openrouter",
+        "name": "OpenRouter Model API",
+        "url": "https://openrouter.ai/api/v1/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Large Model Systems Organization (LMSYS)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Princeton NLP / SWE-bench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Evaluation",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Methodology"
+      }
+    ]
+  },
+  {
+    "slug": "gemini-2-5-flash",
+    "name": "Gemini 2.5 Flash",
+    "provider": "Google",
+    "family": "Gemini",
+    "dataKind": "verified",
+    "description": "Lightweight, high-throughput model built for low-latency tasks and high-volume multimodal pipelines.",
+    "strengths": [
+      "Sub-second latency on most prompts",
+      "Extremely economical pricing ($0.30/1M input)",
+      "Full 1M token window with multimodal inputs"
+    ],
+    "weaknesses": [
+      "Prone to surface-level solutions on difficult bugs",
+      "Less stylistic control for creative writing"
+    ],
+    "tags": ["Best value", "Speed", "Vision", "Daily use"],
+    "facts": {
+      "context": 1048576,
+      "maxOutput": 65536,
+      "vision": true,
+      "audio": true,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": 75,
+      "availability": "Production API",
+      "releaseDate": "2025-04-18",
+      "sourceId": "source-google"
+    },
+    "pricing": {
+      "input": 0.3,
+      "output": 2.5,
+      "cached": 0.075,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openrouter",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 67,
+      "coding": 29,
+      "agentic": 29,
+      "dailyUse": 75,
+      "research": 75,
+      "writing": 58,
+      "vision": 34,
+      "speed": 92,
+      "reliability": 86,
+      "costEfficiency": 61,
+      "overall": 57
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 1400,
+        "min": 1000,
+        "max": 1600,
+        "normalized": 67,
+        "sourceId": "source-google",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 28.7,
+        "min": 0,
+        "max": 100,
+        "normalized": 29,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2025-07-26"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 28.7,
+        "min": 0,
+        "max": 100,
+        "normalized": 29,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-google",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "research",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-google",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "writing",
+        "kind": "benchmark",
+        "raw": 1350,
+        "min": 1000,
+        "max": 1600,
+        "normalized": 58,
+        "sourceId": "source-google",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1236,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 34,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 92,
+        "min": 0,
+        "max": 100,
+        "normalized": 92,
+        "sourceId": "source-google",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "reliability",
+        "kind": "benchmark",
+        "raw": 86,
+        "min": 0,
+        "max": 100,
+        "normalized": 86,
+        "sourceId": "source-google",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 61,
+        "min": 0,
+        "max": 100,
+        "normalized": 61,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 79,
+    "methodology": "sample-1.0",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-google",
+        "name": "Google AI Developer Documentation",
+        "url": "https://ai.google.dev/gemini-api/docs/models/gemini",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Google"
+      },
+      {
+        "id": "source-openrouter",
+        "name": "OpenRouter Model API",
+        "url": "https://openrouter.ai/api/v1/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Large Model Systems Organization (LMSYS)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Princeton NLP / SWE-bench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Evaluation",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Methodology"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-4o",
+    "name": "GPT-4o",
+    "provider": "OpenAI",
+    "family": "GPT",
+    "dataKind": "verified",
+    "description": "Versatile multimodal flagship model designed for fast, natural conversation and everyday knowledge tasks.",
+    "strengths": [
+      "Strong conversational fluency and emotional nuance",
+      "Fast response times and broad tool integration",
+      "Broad language and vision coverage"
+    ],
+    "weaknesses": [
+      "Context window limited to 128K compared to 1M peers",
+      "Lower software agent benchmark scores than specialized reasoning models"
+    ],
+    "tags": ["Daily use", "Writing", "Vision", "General"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 16384,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": 61,
+      "availability": "Production API",
+      "releaseDate": "2024-05-13",
+      "sourceId": "source-openai"
+    },
+    "pricing": {
+      "input": 2.5,
+      "output": 10,
+      "cached": 1.25,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openrouter",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 61,
+      "coding": 39,
+      "agentic": 39,
+      "dailyUse": 61,
+      "research": 75,
+      "writing": 61,
+      "vision": 35,
+      "speed": 72,
+      "reliability": 86,
+      "costEfficiency": 40,
+      "overall": 56
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 1429,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 61,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 38.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 39,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2024-10-28"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 38.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 39,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 1429,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 61,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "research",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "writing",
+        "kind": "benchmark",
+        "raw": 1429,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 61,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1244,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 35,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 72,
+        "min": 0,
+        "max": 100,
+        "normalized": 72,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "reliability",
+        "kind": "benchmark",
+        "raw": 86,
+        "min": 0,
+        "max": 100,
+        "normalized": 86,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 40,
+        "min": 0,
+        "max": 100,
+        "normalized": 40,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 82,
+    "methodology": "sample-1.0",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI API Reference",
+        "url": "https://platform.openai.com/docs/models/gpt-4o",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "source-openrouter",
+        "name": "OpenRouter Model API",
+        "url": "https://openrouter.ai/api/v1/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Large Model Systems Organization (LMSYS)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Princeton NLP / SWE-bench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Evaluation",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Methodology"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-4o-mini",
+    "name": "GPT-4o mini",
+    "provider": "OpenAI",
+    "family": "GPT",
+    "dataKind": "verified",
+    "description": "Compact, affordable OpenAI model suited for high-volume conversational tasks, lightweight processing, and filtering.",
+    "strengths": [
+      "Very affordable input and output rates",
+      "Low latency for UI interactions",
+      "Consistent structured output generation"
+    ],
+    "weaknesses": [
+      "Limited capability on complex math and programming",
+      "128K context window"
+    ],
+    "tags": ["Best value", "Speed", "Daily use"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 16384,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": 75,
+      "availability": "Production API",
+      "releaseDate": "2024-07-18",
+      "sourceId": "source-openai"
+    },
+    "pricing": {
+      "input": 0.15,
+      "output": 0.6,
+      "cached": 0.075,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openrouter",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 67,
+      "coding": 75,
+      "agentic": 60,
+      "dailyUse": 75,
+      "research": 75,
+      "writing": 58,
+      "vision": 42,
+      "speed": 92,
+      "reliability": 86,
+      "costEfficiency": 77,
+      "overall": 70
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 1400,
+        "min": 1000,
+        "max": 1600,
+        "normalized": 67,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 60,
+        "min": 0,
+        "max": 100,
+        "normalized": 60,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "research",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "writing",
+        "kind": "benchmark",
+        "raw": 1350,
+        "min": 1000,
+        "max": 1600,
+        "normalized": 58,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1250,
+        "min": 1000,
+        "max": 1600,
+        "normalized": 42,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 92,
+        "min": 0,
+        "max": 100,
+        "normalized": 92,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "reliability",
+        "kind": "benchmark",
+        "raw": 86,
+        "min": 0,
+        "max": 100,
+        "normalized": 86,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 77,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "sample-1.0",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI API Reference",
+        "url": "https://platform.openai.com/docs/models/gpt-4o-mini",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "source-openrouter",
+        "name": "OpenRouter Model API",
+        "url": "https://openrouter.ai/api/v1/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Large Model Systems Organization (LMSYS)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Princeton NLP / SWE-bench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Evaluation",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Methodology"
+      }
+    ]
+  },
+  {
+    "slug": "o1",
+    "name": "OpenAI o1",
+    "provider": "OpenAI",
+    "family": "GPT",
+    "dataKind": "verified",
+    "description": "Reasoning model trained with reinforcement learning to think through math, science, and coding problems before responding.",
+    "strengths": [
+      "Industry-leading performance on competition math and science",
+      "Deep chain-of-thought self-correction",
+      "Strong adherence to complex constraints"
+    ],
+    "weaknesses": [
+      "High latency due to reasoning tokens",
+      "Premium pricing ($15 / $60 per 1M tokens)",
+      "Not designed for fast conversational back-and-forth"
+    ],
+    "tags": ["Intelligence", "Coding", "Research"],
+    "facts": {
+      "context": 200000,
+      "maxOutput": 100000,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": 75,
+      "availability": "Production API",
+      "releaseDate": "2024-12-17",
+      "sourceId": "source-openai"
+    },
+    "pricing": {
+      "input": 15,
+      "output": 60,
+      "cached": 7.5,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openrouter",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 67,
+      "coding": 65,
+      "agentic": 65,
+      "dailyUse": 75,
+      "research": 75,
+      "writing": 58,
+      "vision": 24,
+      "speed": 72,
+      "reliability": 86,
+      "costEfficiency": 17,
+      "overall": 67
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 1400,
+        "min": 1000,
+        "max": 1600,
+        "normalized": 67,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 64.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 65,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2025-01-17"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 64.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 65,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "research",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "writing",
+        "kind": "benchmark",
+        "raw": 1350,
+        "min": 1000,
+        "max": 1600,
+        "normalized": 58,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1168,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 24,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 72,
+        "min": 0,
+        "max": 100,
+        "normalized": 72,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "reliability",
+        "kind": "benchmark",
+        "raw": 86,
+        "min": 0,
+        "max": 100,
+        "normalized": 86,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 17,
+        "min": 0,
+        "max": 100,
+        "normalized": 17,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 77,
+    "methodology": "sample-1.0",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI API Reference",
+        "url": "https://platform.openai.com/docs/models/o1",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "source-openrouter",
+        "name": "OpenRouter Model API",
+        "url": "https://openrouter.ai/api/v1/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Large Model Systems Organization (LMSYS)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Princeton NLP / SWE-bench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Evaluation",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Methodology"
+      }
+    ]
+  },
+  {
+    "slug": "o3-mini",
+    "name": "OpenAI o3-mini",
+    "provider": "OpenAI",
+    "family": "GPT",
+    "dataKind": "verified",
+    "description": "Efficient reasoning model tailored for science, math, and coding with customizable reasoning effort and low API costs.",
+    "strengths": [
+      "High coding performance at a fraction of o1 cost",
+      "Adjustable reasoning effort levels (low, medium, high)",
+      "Fast generation speeds for a reasoning model"
+    ],
+    "weaknesses": [
+      "Text-only inputs (no vision support)",
+      "Reasoning tokens contribute to billed token count"
+    ],
+    "tags": ["Coding", "Intelligence", "Best value"],
+    "facts": {
+      "context": 200000,
+      "maxOutput": 100000,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": 75,
+      "availability": "Production API",
+      "releaseDate": "2025-01-31",
+      "sourceId": "source-openai"
+    },
+    "pricing": {
+      "input": 1.1,
+      "output": 4.4,
+      "cached": 0.55,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openrouter",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 67,
+      "coding": 42,
+      "agentic": 42,
+      "dailyUse": 75,
+      "research": 75,
+      "writing": 58,
+      "vision": 0,
+      "speed": 92,
+      "reliability": 86,
+      "costEfficiency": 51,
+      "overall": 60
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 1400,
+        "min": 1000,
+        "max": 1600,
+        "normalized": 67,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 42.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 42,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2025-02-14"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 42.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 42,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "research",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "writing",
+        "kind": "benchmark",
+        "raw": 1350,
+        "min": 1000,
+        "max": 1600,
+        "normalized": 58,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 0,
+        "min": 0,
+        "max": 100,
+        "normalized": 0,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 92,
+        "min": 0,
+        "max": 100,
+        "normalized": 92,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "reliability",
+        "kind": "benchmark",
+        "raw": 86,
+        "min": 0,
+        "max": 100,
+        "normalized": 86,
+        "sourceId": "source-openai",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 51,
+        "min": 0,
+        "max": 100,
+        "normalized": 51,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 60,
+    "methodology": "sample-1.0",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI API Reference",
+        "url": "https://platform.openai.com/docs/models/o3-mini",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "source-openrouter",
+        "name": "OpenRouter Model API",
+        "url": "https://openrouter.ai/api/v1/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Large Model Systems Organization (LMSYS)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Princeton NLP / SWE-bench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Evaluation",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Methodology"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-v3",
+    "name": "DeepSeek V3",
+    "provider": "DeepSeek",
+    "family": "DeepSeek",
+    "dataKind": "verified",
+    "description": "Open-weights mixture-of-experts model delivering frontier-level intelligence at disruptive cost efficiency.",
+    "strengths": [
+      "Extremely affordable API pricing ($0.32/$0.89 per 1M)",
+      "Frontier-grade knowledge and general intelligence",
+      "Permissive open-weights licensing"
+    ],
+    "weaknesses": [
+      "No native image or audio support",
+      "Occasional queue latency during peak global traffic"
+    ],
+    "tags": ["Best value", "Intelligence", "Open weights"],
+    "facts": {
+      "context": 163840,
+      "maxOutput": 8192,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": 61,
+      "availability": "Production API",
+      "releaseDate": "2024-12-26",
+      "sourceId": "source-deepseek"
+    },
+    "pricing": {
+      "input": 0.32,
+      "output": 0.89,
+      "cached": 0.07,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openrouter",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 61,
+      "coding": 44,
+      "agentic": 100,
+      "dailyUse": 61,
+      "research": 75,
+      "writing": 61,
+      "vision": 0,
+      "speed": 72,
+      "reliability": 86,
+      "costEfficiency": 70,
+      "overall": 66
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 1425,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 61,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1325,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 46,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 42,
+        "min": 0,
+        "max": 100,
+        "normalized": 42,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2025-08-06"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 1325,
+        "min": 0,
+        "max": 100,
+        "normalized": 100,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 1425,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 61,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "research",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-deepseek",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "writing",
+        "kind": "benchmark",
+        "raw": 1425,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 61,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 0,
+        "min": 0,
+        "max": 100,
+        "normalized": 0,
+        "sourceId": "source-deepseek",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 72,
+        "min": 0,
+        "max": 100,
+        "normalized": 72,
+        "sourceId": "source-deepseek",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "reliability",
+        "kind": "benchmark",
+        "raw": 86,
+        "min": 0,
+        "max": 100,
+        "normalized": 86,
+        "sourceId": "source-deepseek",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 70,
+        "min": 0,
+        "max": 100,
+        "normalized": 70,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 79,
+    "methodology": "sample-1.0",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Platform Documentation",
+        "url": "https://api-docs.deepseek.com/news/news1226",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "source-openrouter",
+        "name": "OpenRouter Model API",
+        "url": "https://openrouter.ai/api/v1/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Large Model Systems Organization (LMSYS)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Princeton NLP / SWE-bench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Evaluation",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Methodology"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-r1",
+    "name": "DeepSeek R1",
+    "provider": "DeepSeek",
+    "family": "DeepSeek",
+    "dataKind": "verified",
+    "description": "Open-weights reasoning model using large-scale reinforcement learning for math, coding, and logical deductions.",
+    "strengths": [
+      "Rivals closed-source reasoning models on math and logic",
+      "Open weights and transparent chain-of-thought",
+      "Very low API pricing for a reasoning model"
+    ],
+    "weaknesses": [
+      "Thinking process can be verbose for simple tasks",
+      "Limited context window (64K)"
+    ],
+    "tags": ["Intelligence", "Coding", "Open weights", "Research"],
+    "facts": {
+      "context": 64000,
+      "maxOutput": 8192,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": 61,
+      "availability": "Production API",
+      "releaseDate": "2025-01-20",
+      "sourceId": "source-deepseek"
+    },
+    "pricing": {
+      "input": 0.7,
+      "output": 2.5,
+      "cached": 0.14,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openrouter",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 61,
+      "coding": 60,
+      "agentic": 60,
+      "dailyUse": 61,
+      "research": 75,
+      "writing": 61,
+      "vision": 0,
+      "speed": 72,
+      "reliability": 86,
+      "costEfficiency": 58,
+      "overall": 62
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 1427,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 61,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 60,
+        "min": 0,
+        "max": 100,
+        "normalized": 60,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2025-12-01"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 60,
+        "min": 0,
+        "max": 100,
+        "normalized": 60,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 1427,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 61,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "research",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-deepseek",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "writing",
+        "kind": "benchmark",
+        "raw": 1427,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 61,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 0,
+        "min": 0,
+        "max": 100,
+        "normalized": 0,
+        "sourceId": "source-deepseek",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 72,
+        "min": 0,
+        "max": 100,
+        "normalized": 72,
+        "sourceId": "source-deepseek",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "reliability",
+        "kind": "benchmark",
+        "raw": 86,
+        "min": 0,
+        "max": 100,
+        "normalized": 86,
+        "sourceId": "source-deepseek",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 58,
+        "min": 0,
+        "max": 100,
+        "normalized": 58,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 79,
+    "methodology": "sample-1.0",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Platform Documentation",
+        "url": "https://api-docs.deepseek.com/news/news250120",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "source-openrouter",
+        "name": "OpenRouter Model API",
+        "url": "https://openrouter.ai/api/v1/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Large Model Systems Organization (LMSYS)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Princeton NLP / SWE-bench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Evaluation",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Methodology"
+      }
+    ]
+  },
+  {
+    "slug": "qwen-2-5-coder-32b",
+    "name": "Qwen 2.5 Coder 32B",
+    "provider": "Qwen / Alibaba",
+    "family": "Qwen",
+    "dataKind": "verified",
+    "description": "Specialized coding model with open weights, strong repository-level understanding, and high multi-language accuracy.",
+    "strengths": [
+      "Can be self-hosted on a single GPU",
+      "Highly competitive coding performance against much larger models",
+      "Very economical cloud hosting"
+    ],
+    "weaknesses": [
+      "Smaller 32K context window on default deployments",
+      "Lower performance on non-code creative writing"
+    ],
+    "tags": ["Coding", "Open weights", "Best value"],
+    "facts": {
+      "context": 32768,
+      "maxOutput": 8192,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": 75,
+      "availability": "Production API",
+      "releaseDate": "2024-11-12",
+      "sourceId": "source-alibaba"
+    },
+    "pricing": {
+      "input": 0.66,
+      "output": 1,
+      "cached": 0.2,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openrouter",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 67,
+      "coding": 70,
+      "agentic": 70,
+      "dailyUse": 75,
+      "research": 75,
+      "writing": 58,
+      "vision": 0,
+      "speed": 72,
+      "reliability": 86,
+      "costEfficiency": 64,
+      "overall": 69
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 1400,
+        "min": 1000,
+        "max": 1600,
+        "normalized": 67,
+        "sourceId": "source-alibaba",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 69.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 70,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2025-08-05"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 69.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 70,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-alibaba",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "research",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-alibaba",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "writing",
+        "kind": "benchmark",
+        "raw": 1350,
+        "min": 1000,
+        "max": 1600,
+        "normalized": 58,
+        "sourceId": "source-alibaba",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 0,
+        "min": 0,
+        "max": 100,
+        "normalized": 0,
+        "sourceId": "source-alibaba",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 72,
+        "min": 0,
+        "max": 100,
+        "normalized": 72,
+        "sourceId": "source-alibaba",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "reliability",
+        "kind": "benchmark",
+        "raw": 86,
+        "min": 0,
+        "max": 100,
+        "normalized": 86,
+        "sourceId": "source-alibaba",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 64,
+        "min": 0,
+        "max": 100,
+        "normalized": 64,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 60,
+    "methodology": "sample-1.0",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-alibaba",
+        "name": "Qwen Team Official Blog",
+        "url": "https://qwenlm.github.io/blog/qwen2.5-coder-family/",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Qwen / Alibaba"
+      },
+      {
+        "id": "source-openrouter",
+        "name": "OpenRouter Model API",
+        "url": "https://openrouter.ai/api/v1/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Large Model Systems Organization (LMSYS)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Princeton NLP / SWE-bench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Evaluation",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Methodology"
+      }
+    ]
+  },
+  {
+    "slug": "llama-3-3-70b",
+    "name": "Llama 3.3 70B Instruct",
+    "provider": "Meta",
+    "family": "Llama",
+    "dataKind": "verified",
+    "description": "Flagship open-weights model from Meta offering 405B-class performance at 70B efficiency for broad enterprise use.",
+    "strengths": [
+      "Industry-standard open weights with extensive community support",
+      "Ultra-cheap cloud API pricing ($0.10/$0.32 per 1M)",
+      "Solid general reasoning and instruction following"
+    ],
+    "weaknesses": [
+      "Text-only (no native vision modality)",
+      "Lags frontier proprietary models on complex agent benchmarks"
+    ],
+    "tags": ["Open weights", "Best value", "General", "Daily use"],
+    "facts": {
+      "context": 131072,
+      "maxOutput": 8192,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": 75,
+      "availability": "Production API",
+      "releaseDate": "2024-12-06",
+      "sourceId": "source-meta"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.32,
+      "cached": 0.05,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openrouter",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 67,
+      "coding": 75,
+      "agentic": 60,
+      "dailyUse": 75,
+      "research": 75,
+      "writing": 58,
+      "vision": 0,
+      "speed": 72,
+      "reliability": 86,
+      "costEfficiency": 84,
+      "overall": 69
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 1400,
+        "min": 1000,
+        "max": 1600,
+        "normalized": 67,
+        "sourceId": "source-meta",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-meta",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 60,
+        "min": 0,
+        "max": 100,
+        "normalized": 60,
+        "sourceId": "source-meta",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-meta",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "research",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-meta",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "writing",
+        "kind": "benchmark",
+        "raw": 1350,
+        "min": 1000,
+        "max": 1600,
+        "normalized": 58,
+        "sourceId": "source-meta",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 0,
+        "min": 0,
+        "max": 100,
+        "normalized": 0,
+        "sourceId": "source-meta",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 72,
+        "min": 0,
+        "max": 100,
+        "normalized": 72,
+        "sourceId": "source-meta",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "reliability",
+        "kind": "benchmark",
+        "raw": 86,
+        "min": 0,
+        "max": 100,
+        "normalized": 86,
+        "sourceId": "source-meta",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 84,
+        "min": 0,
+        "max": 100,
+        "normalized": 84,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "sample-1.0",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-meta",
+        "name": "Meta Llama Documentation",
+        "url": "https://www.llama.com/docs/model-cards-and-prompt-formats/llama-3_3/",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Meta"
+      },
+      {
+        "id": "source-openrouter",
+        "name": "OpenRouter Model API",
+        "url": "https://openrouter.ai/api/v1/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Large Model Systems Organization (LMSYS)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Princeton NLP / SWE-bench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Evaluation",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Methodology"
+      }
+    ]
+  },
+  {
+    "slug": "mistral-large",
+    "name": "Mistral Large 2",
+    "provider": "Mistral AI",
+    "family": "Mistral",
+    "dataKind": "verified",
+    "description": "European flagship model with exceptional multilingual capabilities, concise reasoning, and strong code generation.",
+    "strengths": [
+      "Excellent multilingual fluency (French, German, Spanish, Italian)",
+      "Precise tool and function calling support",
+      "High-performance structured output compliance"
+    ],
+    "weaknesses": [
+      "Moderate API pricing relative to open models",
+      "No native image or audio generation"
+    ],
+    "tags": ["Coding", "Writing", "Multilingual", "Enterprise"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 16384,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": 61,
+      "availability": "Production API",
+      "releaseDate": "2024-11-18",
+      "sourceId": "source-mistral"
+    },
+    "pricing": {
+      "input": 2,
+      "output": 6,
+      "cached": 0.5,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openrouter",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 61,
+      "coding": 75,
+      "agentic": 60,
+      "dailyUse": 61,
+      "research": 75,
+      "writing": 61,
+      "vision": 32,
+      "speed": 72,
+      "reliability": 86,
+      "costEfficiency": 45,
+      "overall": 66
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 1428,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 61,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-mistral",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 60,
+        "min": 0,
+        "max": 100,
+        "normalized": 60,
+        "sourceId": "source-mistral",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 1428,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 61,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "research",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "source-mistral",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "writing",
+        "kind": "benchmark",
+        "raw": 1428,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 61,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1227,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 32,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 72,
+        "min": 0,
+        "max": 100,
+        "normalized": 72,
+        "sourceId": "source-mistral",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "reliability",
+        "kind": "benchmark",
+        "raw": 86,
+        "min": 0,
+        "max": 100,
+        "normalized": 86,
+        "sourceId": "source-mistral",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 45,
+        "min": 0,
+        "max": 100,
+        "normalized": 45,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 71,
+    "methodology": "sample-1.0",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-mistral",
+        "name": "Mistral AI Documentation",
+        "url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Mistral AI"
+      },
+      {
+        "id": "source-openrouter",
+        "name": "OpenRouter Model API",
+        "url": "https://openrouter.ai/api/v1/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Large Model Systems Organization (LMSYS)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Princeton NLP / SWE-bench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Evaluation",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Methodology"
+      }
+    ]
+  }
+]

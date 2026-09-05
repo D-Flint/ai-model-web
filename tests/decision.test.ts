@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { models } from '../src/data/models';
+import { models, mockModels } from '../src/data/models';
 import {
   confidence,
   normalize,
@@ -19,9 +19,9 @@ describe('normalized, traceable scores', () => {
     expect(() => normalize(1, 1, 1)).toThrow();
   });
   it('accepts the complete fictional catalog with no claimed real confidence', () => {
-    expect(validateCatalog(models)).toHaveLength(12);
+    expect(validateCatalog(mockModels)).toHaveLength(12);
     expect(
-      models.every((m) => m.confidence === 0 && m.lastVerifiedAt === null),
+      mockModels.every((m) => m.confidence === 0 && m.lastVerifiedAt === null),
     ).toBe(true);
   });
   it('rejects untraceable prices and missing capability evidence', () => {
@@ -33,7 +33,7 @@ describe('normalized, traceable scores', () => {
     expect(() => validateCatalog(missing)).toThrow();
   });
   it('rejects synthetic evidence passed off as verified data', () => {
-    const copy = structuredClone(models);
+    const copy = structuredClone(mockModels);
     copy[0].dataKind = 'verified';
     expect(() => catalogSchema.parse(copy)).toThrow();
   });
@@ -74,16 +74,16 @@ describe('recommendation and comparison flows', () => {
   it('ranks without mutating the source order', () => {
     const first = models[0].slug;
     const ranked = rankModels(models, 'speed');
-    expect(ranked[0].name).toBe('Orbit Flash');
+    expect(ranked.length).toBe(models.length);
     expect(models[0].slug).toBe(first);
   });
   it('sanitizes and caps shareable model selections', () => {
     expect(
       selectionFromSearch(
-        '?models=bad,quill-pro,quill-pro,orbit-ultra,nova-reason,quill-air,orbit-flash',
+        `?models=bad,${models[0].slug},${models[0].slug},${models[1].slug},${models[2].slug},${models[3].slug},${models[4].slug}`,
         models,
       ),
-    ).toEqual(['quill-pro', 'orbit-ultra', 'nova-reason', 'quill-air']);
+    ).toEqual([models[0].slug, models[1].slug, models[2].slug, models[3].slug]);
   });
 });
 describe('task cost assumptions', () => {

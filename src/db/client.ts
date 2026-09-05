@@ -2,6 +2,7 @@ import postgres from 'postgres';
 import { drizzle } from 'drizzle-orm/postgres-js';
 import * as facts from './schema/index';
 import * as evidence from './schema/evidence';
+import * as aliases from './schema/aliases';
 export function connectDatabase(url = process.env.DATABASE_URL) {
   if (!url)
     throw new Error(
@@ -9,7 +10,7 @@ export function connectDatabase(url = process.env.DATABASE_URL) {
     );
   const client = postgres(url, { max: 5 });
   return {
-    db: drizzle(client, { schema: { ...facts, ...evidence } }),
+    db: drizzle(client, { schema: { ...facts, ...evidence, ...aliases } }),
     close: () => client.end(),
   };
 }

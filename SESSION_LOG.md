@@ -42,3 +42,44 @@
 - Commit: `0707dd5` — `feat: complete Astra model decision experience` (local only; no push).
 - Current state: Complete sample-data experience with 12 fictional models and explicit mock provenance. No live verified provider feed, actual evaluation runs, deployed site, or configured PostgreSQL instance is claimed. Four moderate advisories remain in the existing Drizzle Kit development dependency chain, documented in README. Dev server available at `http://localhost:4321`; production preview at `http://127.0.0.1:4322`.
 - Exact next step: User opens `http://127.0.0.1:4322`, verifies the finished browse/compare/find/cost experience locally, and reports any desired changes. Pause implementation until that verification arrives.
+
+## 2026-09-05 — Real AI Model Data Pipeline Implementation
+
+- Objective: Build a maintainable, source-tracked real-data pipeline connecting the application to real, verifiable AI model data from OpenRouter, LMSYS Chatbot Arena, SWE-bench Verified, and official provider specs.
+- Files changed:
+  - `src/pipeline/types.ts`: Zod validation schemas and internal data contracts.
+  - `src/pipeline/aliasResolver.ts`: Deterministic identity resolution across source model IDs and aliases.
+  - `src/pipeline/normalization.ts`: Bounded normalization functions for Elo, SWE-bench, agent scores, and logarithmic cost efficiency.
+  - `src/pipeline/confidence.ts`: Multi-factor confidence score calculation.
+  - `src/pipeline/openrouter.ts`: OpenRouter adapter for pricing, context windows, and modalities.
+  - `src/pipeline/lmarena.ts`: LMSYS Chatbot Arena Hugging Face Serverless Dataset API adapter for text, webdev, agent, vision, and search.
+  - `src/pipeline/swebench.ts`: SWE-bench Verified official leaderboard adapter.
+  - `src/pipeline/official.ts`: Official provider ground truth verification.
+  - `src/pipeline/engine.ts`: Master ingestion orchestrator and evidence cross-referencer.
+  - `src/pipeline/dbPersist.ts`: PostgreSQL persistence layer for Drizzle ORM.
+  - `src/data/canonicalModels.ts`: Allowlist of 14 current models across 7 major providers with alias mappings.
+  - `src/data/officialProviders.ts`: Authoritative specifications from official provider documentation.
+  - `src/data/verifiedModels.json`: Generated catalog of 14 validated verified models.
+  - `src/data/models.ts`: Updated to serve verified real model catalog with fallback to mock fixtures.
+  - `src/db/schema/index.ts`, `src/db/schema/evidence.ts`, `src/db/schema/aliases.ts`: Enhanced Drizzle schemas with model_aliases and provenance fields.
+  - `src/db/migrations/0002_whole_alex_power.sql`: Migration for schema updates.
+  - `scripts/`: Refresh scripts (`ingest-openrouter.ts`, `ingest-lmarena.ts`, `ingest-swebench.ts`, `verify-official-data.ts`, `calculate-scores.ts`, `refresh-all-data.ts`).
+  - `package.json`: Added `data:*` refresh commands.
+  - `.env.example`: Documented environment variables.
+  - `docs/data-pipeline.md`: Developer guide for pipeline, scoring, and source extensions.
+  - `tests/dataPipeline.test.ts`: Vitest test suite for validation, normalization, and confidence.
+  - `src/pages/models/[slug].astro`, `src/pages/index.astro`, `src/components/ModelExplorer.tsx`: UI integration for verified models and source attribution.
+- Attempts: 1 end-to-end implementation with iterative lint and validation adjustments.
+- Failures and causes:
+  - SWE-bench payload initially rejected an array `site` property; fixed by allowing `z.union([z.string(), z.array(z.string())])`.
+  - Normalization check in `validateCatalog` failed due to rounding difference in raw scores; resolved by applying `normalize(raw, min, max)` to rounded raw measurements.
+  - Minor ESLint unused variable warnings resolved.
+- Tests and results:
+  - `npm test`: 32/32 tests pass across 3 test suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings across 47 Astro and TypeScript files.
+  - `npm run lint`: All matched files pass ESLint and Prettier formatting.
+  - `npm run build`: Production build passes cleanly, generating 121 pages.
+- Current state: Real-data pipeline is functional and populated with 14 verified current models across Anthropic, Google, OpenAI, DeepSeek, Alibaba/Qwen, Meta, and Mistral.
+- Commit: (Pending local commit).
+- Exact next step: User verifies local testing and live model comparison, then decides whether to connect PostgreSQL via `DATABASE_URL` for persistent multi-snapshot storage.
+

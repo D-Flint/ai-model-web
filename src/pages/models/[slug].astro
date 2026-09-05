@@ -45,7 +45,11 @@ const alternatives = [
     </div><div class="detail-header">
       <div>
         <ModelMark model={model} /><div class="micro">
-          {model.provider} · Fictional sample model
+          {model.provider} · {
+            model.dataKind === 'verified'
+              ? 'Verified model'
+              : 'Fictional sample model'
+          }
         </div><h1>{model.name}</h1><p>{model.description}</p><div
           class="detail-actions"
         >
@@ -60,10 +64,19 @@ const alternatives = [
       >
     </div>
   </div>
-  <div class="notice">
-    Sample data created September 5, 2026. No real model evaluations or provider
-    verification are claimed.
-  </div>
+  {
+    model.dataKind === 'verified' ? (
+      <div class="notice">
+        Verified real data tracking {model.sources.length} authoritative
+        sources. Last verified: {model.lastVerifiedAt}.
+      </div>
+    ) : (
+      <div class="notice">
+        Sample data created September 5, 2026. No real model evaluations or
+        provider verification are claimed.
+      </div>
+    )
+  }
   <div class="detail-grid">
     <section class="panel" id="scores">
       <h2>Capabilities, explained.</h2><p class="micro">
@@ -72,6 +85,9 @@ const alternatives = [
         Object.entries(metricLabels).map(([key, label]) => {
           const metric = key as Metric;
           const evidence = model.evidence.find((e) => e.metric === metric);
+          const sourceObj = model.sources.find(
+            (s) => s.id === evidence?.sourceId,
+          );
           return (
             <details class="score-details" id={`score-${metric}`}>
               <summary>
@@ -97,6 +113,16 @@ const alternatives = [
                     .join(', ')}
                   . Rounded to the nearest integer.
                 </p>
+              ) : model.dataKind === 'verified' ? (
+                <p>
+                  Normalized score: {evidence?.normalized} / 100 derived from
+                  raw measurement {evidence?.raw} on a {evidence?.min}–
+                  {evidence?.max} scale. Evaluation method:{' '}
+                  {evidence?.kind === 'benchmark'
+                    ? 'Public benchmark dataset'
+                    : 'Internal evaluation'}
+                  .
+                </p>
               ) : (
                 <p>
                   Synthetic fixture input {evidence?.raw} on a {evidence?.min}-
@@ -108,13 +134,30 @@ const alternatives = [
               <p>
                 Methodology: {model.methodology}. Score date:{' '}
                 {model.scoreUpdatedAt}. Evidence confidence: {model.confidence}%
-                (no real evidence).
+                {model.dataKind === 'verified'
+                  ? ' (source-backed confidence).'
+                  : ' (no real evidence).'}
               </p>
               <p>
-                <a href="/methodology#sample-data">
-                  Source: Astra fictional fixture catalog
-                </a>{' '}
-                · <a href="/methodology">Full methodology</a>
+                {model.dataKind === 'verified' && sourceObj ? (
+                  <>
+                    <a
+                      href={sourceObj.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Source: {sourceObj.name}
+                    </a>{' '}
+                    · <a href="/methodology">Full methodology</a>
+                  </>
+                ) : (
+                  <>
+                    <a href="/methodology#sample-data">
+                      Source: Astra fictional fixture catalog
+                    </a>{' '}
+                    · <a href="/methodology">Full methodology</a>
+                  </>
+                )}
               </p>
             </details>
           );
@@ -159,7 +202,13 @@ const alternatives = [
               {contextSize(model.facts.maxOutput)} tokens
             </dd>
           </div><div><dt>Family</dt><dd>{model.family}</dd></div><div>
-            <dt>Status</dt><dd>Sample fixture</dd>
+            <dt>Status</dt><dd>
+              {
+                model.dataKind === 'verified'
+                  ? 'Active / Production'
+                  : 'Sample fixture'
+              }
+            </dd>
           </div>{
             (
               [
@@ -191,7 +240,12 @@ const alternatives = [
             ))
           }
         </dl><p class="micro">
-          Fixture release date: {model.facts.releaseDate}. Available through: {
+          {
+            model.dataKind === 'verified'
+              ? 'Release date: '
+              : 'Fixture release date: '
+          }
+          {model.facts.releaseDate}. Available through: {
             model.facts.availability
           }.
         </p>

@@ -59,7 +59,8 @@ const costs = [models[0], models[1], models[4]];
   </section>
   <div class="catalog-strip">
     <span>A common language for comparing models</span><div>
-      <strong>{models.length}</strong> sample models
+      <strong>{models.length}</strong>{' '}
+      {models[0]?.dataKind === 'verified' ? 'verified models' : 'sample models'}
     </div><div><strong>11</strong> capability scores</div><a href="/methodology"
       >Every score explained <ArrowUpRight size={14} /></a
     >

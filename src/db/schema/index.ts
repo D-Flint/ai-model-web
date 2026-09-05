@@ -50,6 +50,7 @@ export const modelPricing = pgTable('model_pricing', {
   modelId: text('model_id')
     .references(() => models.id)
     .notNull(),
+  providerName: text('provider_name'),
   inputPerMillion: numeric('input_per_million', {
     precision: 10,
     scale: 4,
@@ -69,6 +70,8 @@ export const modelPricing = pgTable('model_pricing', {
   unit: text('unit').notNull().default('per-million-tokens'),
   effectiveFrom: text('effective_from').notNull(),
   lastVerifiedAt: timestamp('last_verified_at').notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });
 
 export const modelScores = pgTable(
@@ -111,7 +114,10 @@ export const sources = pgTable('sources', {
   url: text('url').notNull(),
   sourceType: text('source_type').notNull(),
   publisher: text('publisher').notNull(),
+  licenseNotes: text('license_notes'),
   retrievedAt: timestamp('retrieved_at').notNull(),
+  publishedAt: timestamp('published_at'),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
 });
 
 export const taskProfiles = pgTable('task_profiles', {

@@ -164,7 +164,10 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
         </aside>
         <div>
           <p className="result-count" role="status">
-            {visible.length} of {models.length} sample models
+            {visible.length} of {models.length}{' '}
+            {models[0]?.dataKind === 'verified'
+              ? 'verified models'
+              : 'sample models'}
           </p>
           {visible.length ? (
             <div className="model-grid explorer-grid">
