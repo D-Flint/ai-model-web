@@ -80,6 +80,6 @@
   - `npm run lint`: All matched files pass ESLint and Prettier formatting.
   - `npm run build`: Production build passes cleanly, generating 121 pages.
 - Current state: Real-data pipeline is functional and populated with 14 verified current models across Anthropic, Google, OpenAI, DeepSeek, Alibaba/Qwen, Meta, and Mistral.
-- Commit: (Pending local commit).
+- Commit: `d96c7e2` — `feat: implement real AI model data pipeline with multi-source ingestion` (local only; no push).
 - Exact next step: User verifies local testing and live model comparison, then decides whether to connect PostgreSQL via `DATABASE_URL` for persistent multi-snapshot storage.
 
