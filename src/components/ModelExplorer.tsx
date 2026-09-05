@@ -1,294 +1,959 @@
-import { useEffect, useState } from 'react';
-import { ArrowRight, X } from 'lucide-react';
+import { useEffect, useState, useMemo, useRef } from 'react';
+import {
+  ArrowRight,
+  ChevronDown,
+  ChevronRight,
+  ExternalLink,
+  Plus,
+  Check,
+  X,
+  Search,
+  LayoutGrid,
+  Table as TableIcon,
+} from 'lucide-react';
 import ModelCard from './ModelCard';
 import type { CatalogModel } from '../lib/catalogSchema';
-import { metricLabels, type Metric } from '../data/config';
-import { selectionFromSearch, getSpeedTokensPerSec } from '../lib/decision';
+import {
+  selectionFromSearch,
+  getMaxReasoningEffort,
+  getModelEffortStats,
+  taskCost,
+  money,
+  contextSize,
+} from '../lib/decision';
+
+export type LeaderboardColumnKey =
+  | 'overall'
+  | 'reasoning'
+  | 'coding'
+  | 'agentic'
+  | 'mathematics'
+  | 'dataAnalysis'
+  | 'language'
+  | 'instructionFollowing'
+  | 'cost'
+  | 'speed';
+
+interface ColumnDef {
+  key: LeaderboardColumnKey;
+  label: string;
+  align: 'left' | 'center' | 'right';
+  defaultVisible: boolean;
+}
+
+const ALL_COLUMNS: ColumnDef[] = [
+  { key: 'overall', label: 'OVERALL', align: 'center', defaultVisible: true },
+  {
+    key: 'reasoning',
+    label: 'REASONING',
+    align: 'center',
+    defaultVisible: true,
+  },
+  { key: 'coding', label: 'CODING', align: 'center', defaultVisible: true },
+  {
+    key: 'agentic',
+    label: 'AGENTIC CODING',
+    align: 'center',
+    defaultVisible: true,
+  },
+  {
+    key: 'mathematics',
+    label: 'MATHEMATICS',
+    align: 'center',
+    defaultVisible: true,
+  },
+  {
+    key: 'dataAnalysis',
+    label: 'DATA ANALYSIS',
+    align: 'center',
+    defaultVisible: true,
+  },
+  {
+    key: 'language',
+    label: 'LANGUAGE',
+    align: 'center',
+    defaultVisible: true,
+  },
+  {
+    key: 'instructionFollowing',
+    label: 'INSTRUCTION FOLLOWING',
+    align: 'center',
+    defaultVisible: true,
+  },
+  {
+    key: 'cost',
+    label: 'COST PER SUCCESSFUL TASK',
+    align: 'right',
+    defaultVisible: true,
+  },
+  {
+    key: 'speed',
+    label: 'SPEED (TOK/S)',
+    align: 'center',
+    defaultVisible: false,
+  },
+];
+
+const CATEGORIES = [
+  { id: 'all', label: 'All', sortCol: 'overall' as const },
+  { id: 'reasoning', label: 'Reasoning', sortCol: 'reasoning' as const },
+  { id: 'coding', label: 'Coding', sortCol: 'coding' as const },
+  { id: 'agentic', label: 'Agentic Coding', sortCol: 'agentic' as const },
+  { id: 'mathematics', label: 'Mathematics', sortCol: 'mathematics' as const },
+  {
+    id: 'dataAnalysis',
+    label: 'Data Analysis',
+    sortCol: 'dataAnalysis' as const,
+  },
+  { id: 'language', label: 'Language', sortCol: 'language' as const },
+  {
+    id: 'instructionFollowing',
+    label: 'Instruction Following',
+    sortCol: 'instructionFollowing' as const,
+  },
+] as const;
+
 export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
   const [query, setQuery] = useState('');
-  const [provider, setProvider] = useState('');
-  const [sort, setSort] = useState('newest');
-  const [minimum, setMinimum] = useState<Record<string, number>>({});
-  const [price, setPrice] = useState('');
-  const [context, setContext] = useState('0');
-  const [capabilities, setCapabilities] = useState<string[]>([]);
-  const [selected, setSelected] = useState<string[]>([]);
-  const [status, setStatus] = useState('');
+  const [selectedOrg, setSelectedOrg] = useState('');
+  const [openWeightsOnly, setOpenWeightsOnly] = useState(false);
+  const [includeFinetunes, setIncludeFinetunes] = useState(true);
+  const [showOrg, setShowOrg] = useState(false);
+  const [viewMode, setViewMode] = useState<'table' | 'cards'>('table');
+
+  const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [sortColumn, setSortColumn] = useState<LeaderboardColumnKey | 'name'>(
+    'overall',
+  );
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
+
+  const [expandedRows, setExpandedRows] = useState<Record<string, boolean>>({});
+  const [selectedSlugs, setSelectedSlugs] = useState<string[]>([]);
+
+  const [showCompareMenu, setShowCompareMenu] = useState(false);
+  const [showColumnsMenu, setShowColumnsMenu] = useState(false);
+
+  const compareMenuRef = useRef<HTMLDivElement>(null);
+  const columnsMenuRef = useRef<HTMLDivElement>(null);
+
+  const [visibleColumns, setVisibleColumns] = useState<
+    Record<LeaderboardColumnKey, boolean>
+  >(() => {
+    const init: Record<string, boolean> = {};
+    for (const c of ALL_COLUMNS) {
+      init[c.key] = c.defaultVisible;
+    }
+    return init as Record<LeaderboardColumnKey, boolean>;
+  });
+
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    setQuery(params.get('q') ?? '');
-    setSelected(selectionFromSearch(location.search, models));
+    if (params.get('q')) setQuery(params.get('q')!);
+    setSelectedSlugs(selectionFromSearch(location.search, models));
   }, [models]);
-  const visible = models
-    .filter(
-      (m) =>
-        `${m.name} ${m.provider} ${m.tags.join(' ')}`
-          .toLowerCase()
-          .includes(query.toLowerCase().trim()) &&
-        (!provider || m.provider === provider) &&
-        (!price || m.pricing.input <= Number(price)) &&
-        m.facts.context >= Number(context) &&
-        (!minimum.speed || getSpeedTokensPerSec(m) >= minimum.speed) &&
-        Object.entries(minimum)
-          .filter(([k]) => k !== 'speed')
-          .every(
-            ([key, value]) =>
-              m.scores[key as Metric] !== null &&
-              (m.scores[key as Metric] as number) >= value,
-          ) &&
-        capabilities.every((key) =>
-          Boolean(m.facts[key as 'vision' | 'api' | 'openWeights']),
-        ),
-    )
-    .sort((a, b) => {
-      if (sort === 'newest') {
-        return (
-          new Date(b.facts.releaseDate).getTime() -
-          new Date(a.facts.releaseDate).getTime()
-        );
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        compareMenuRef.current &&
+        !compareMenuRef.current.contains(event.target as Node)
+      ) {
+        setShowCompareMenu(false);
       }
-      if (sort === 'oldest') {
-        return (
-          new Date(a.facts.releaseDate).getTime() -
-          new Date(b.facts.releaseDate).getTime()
-        );
+      if (
+        columnsMenuRef.current &&
+        !columnsMenuRef.current.contains(event.target as Node)
+      ) {
+        setShowColumnsMenu(false);
       }
-      if (sort === 'price') return a.pricing.input - b.pricing.input;
-      if (sort === 'context') return b.facts.context - a.facts.context;
-      if (sort === 'speed')
-        return getSpeedTokensPerSec(b) - getSpeedTokensPerSec(a);
-      return (
-        (b.scores[sort as Metric] ?? -1) - (a.scores[sort as Metric] ?? -1)
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const organizations = useMemo(() => {
+    return [...new Set(models.map((m) => m.provider))].sort();
+  }, [models]);
+
+  const processedModels = useMemo(() => {
+    return models.map((model) => {
+      const maxEffort = getMaxReasoningEffort(model);
+      const stats = getModelEffortStats(model, maxEffort);
+
+      let displayName = model.name;
+      if (maxEffort !== 'none' && maxEffort !== 'fixed') {
+        const effortSuffix =
+          maxEffort === 'max'
+            ? 'Max Effort'
+            : maxEffort === 'high'
+              ? 'High Effort'
+              : maxEffort === 'medium'
+                ? 'Medium Effort'
+                : 'Low Effort';
+        displayName = `${model.name} ${effortSuffix}`;
+      }
+
+      const successRate = Math.max(0.1, (stats.scores.overall ?? 75) / 100);
+      const taskCostVal = taskCost(
+        model,
+        1000,
+        500,
+        successRate,
+        0,
+        0,
+        maxEffort,
       );
+
+      return {
+        model,
+        maxEffort,
+        displayName,
+        isOpenWeights: Boolean(model.facts.openWeights),
+        scores: {
+          overall: stats.scores.overall,
+          reasoning: stats.scores.intelligence,
+          coding: stats.scores.coding,
+          agentic: stats.scores.agentic,
+          mathematics: stats.scores.research,
+          dataAnalysis: stats.scores.dailyUse,
+          language: stats.scores.writing,
+          instructionFollowing: stats.scores.reliability,
+          speed: stats.speedTokensPerSec,
+          cost: taskCostVal,
+        },
+        taskCostVal,
+      };
     });
-  function reset() {
-    setQuery('');
-    setProvider('');
-    setPrice('');
-    setContext('0');
-    setMinimum({});
-    setCapabilities([]);
+  }, [models]);
+
+  const filteredRows = useMemo(() => {
+    return processedModels.filter((row) => {
+      const q = query.toLowerCase().trim();
+      if (q) {
+        const matchText =
+          `${row.model.name} ${row.displayName} ${row.model.provider} ${row.model.tags.join(' ')}`.toLowerCase();
+        if (!matchText.includes(q)) return false;
+      }
+      if (openWeightsOnly && !row.isOpenWeights) {
+        return false;
+      }
+      if (selectedOrg && row.model.provider !== selectedOrg) {
+        return false;
+      }
+      return true;
+    });
+  }, [processedModels, query, openWeightsOnly, selectedOrg]);
+
+  const sortedRows = useMemo(() => {
+    return [...filteredRows].sort((a, b) => {
+      if (sortColumn === 'name') {
+        const cmp = a.displayName.localeCompare(b.displayName);
+        return sortDirection === 'asc' ? cmp : -cmp;
+      }
+
+      const aVal = a.scores[sortColumn];
+      const bVal = b.scores[sortColumn];
+
+      if (aVal === null || aVal === undefined) return 1;
+      if (bVal === null || bVal === undefined) return -1;
+
+      if (sortColumn === 'cost') {
+        return sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
+      }
+
+      return sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
+    });
+  }, [filteredRows, sortColumn, sortDirection]);
+
+  const top5Thresholds = useMemo(() => {
+    const metricKeys: LeaderboardColumnKey[] = [
+      'overall',
+      'reasoning',
+      'coding',
+      'agentic',
+      'mathematics',
+      'dataAnalysis',
+      'language',
+      'instructionFollowing',
+    ];
+
+    const thresholds: Partial<Record<LeaderboardColumnKey, number>> = {};
+    for (const k of metricKeys) {
+      const vals = filteredRows
+        .map((r) => r.scores[k])
+        .filter((v): v is number => v !== null && v !== undefined && v > 0)
+        .sort((a, b) => b - a);
+
+      if (vals.length >= 5) {
+        thresholds[k] = vals[4];
+      } else if (vals.length > 0) {
+        thresholds[k] = vals[vals.length - 1];
+      }
+    }
+    return thresholds;
+  }, [filteredRows]);
+
+  function handleCategoryClick(cat: (typeof CATEGORIES)[number]) {
+    setActiveCategory(cat.id);
+    setSortColumn(cat.sortCol);
+    setSortDirection('desc');
   }
-  function toggle(slug: string) {
-    if (selected.includes(slug)) {
-      setSelected(selected.filter((x) => x !== slug));
-      setStatus('Model removed.');
-    } else if (selected.length === 4)
-      setStatus('You can compare up to 4 models. Remove one to add another.');
-    else {
-      setSelected([...selected, slug]);
-      setStatus('Model added to comparison.');
+
+  function handleColumnHeaderClick(colKey: LeaderboardColumnKey | 'name') {
+    if (sortColumn === colKey) {
+      setSortDirection((prev) => (prev === 'desc' ? 'asc' : 'desc'));
+    } else {
+      setSortColumn(colKey);
+      setSortDirection(colKey === 'name' || colKey === 'cost' ? 'asc' : 'desc');
     }
   }
+
+  function toggleExpand(slug: string) {
+    setExpandedRows((prev) => ({
+      ...prev,
+      [slug]: !prev[slug],
+    }));
+  }
+
+  function toggleSelect(slug: string) {
+    if (selectedSlugs.includes(slug)) {
+      setSelectedSlugs(selectedSlugs.filter((s) => s !== slug));
+    } else if (selectedSlugs.length >= 4) {
+      alert('You can select up to 4 models to compare.');
+    } else {
+      setSelectedSlugs([...selectedSlugs, slug]);
+    }
+  }
+
+  function resetAll() {
+    setQuery('');
+    setSelectedOrg('');
+    setOpenWeightsOnly(false);
+    setActiveCategory('all');
+    setSortColumn('overall');
+    setSortDirection('desc');
+  }
+
+  const visibleColumnsCount = useMemo(() => {
+    return ALL_COLUMNS.filter((c) => visibleColumns[c.key]).length;
+  }, [visibleColumns]);
+
   return (
-    <>
-      <div className="toolbar">
-        <label className="field search-field">
-          Search models
+    <div className="leaderboard-container">
+      {/* Top Toolbar matching Screenshot 2 */}
+      <div className="leaderboard-toolbar">
+        <div className="leaderboard-search-wrapper">
+          <Search size={16} className="leaderboard-search-icon" />
           <input
             type="search"
-            placeholder="Search by name, provider, or use case"
+            placeholder="Search models..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            className="leaderboard-search-input"
+            aria-label="Search models"
           />
-        </label>
-        <label className="field">
-          Sort by
-          <select value={sort} onChange={(e) => setSort(e.target.value)}>
-            <optgroup label="Release Date">
-              <option value="newest">Newest to Oldest (Release Date)</option>
-              <option value="oldest">Oldest to Newest</option>
-            </optgroup>
-            <optgroup label="Core Pillars">
-              <option value="intelligence">Highest Intelligence</option>
-              <option value="speed">Fastest Speed (tokens/sec)</option>
-              <option value="price">Lowest Input Price</option>
-            </optgroup>
-            <optgroup label="General">
-              <option value="overall">Overall Score</option>
-              <option value="context">Highest Context Window</option>
-            </optgroup>
-            <optgroup label="Detailed Capabilities">
-              {Object.entries(metricLabels)
-                .filter(
-                  ([k]) => !['intelligence', 'speed', 'overall'].includes(k),
-                )
-                .map(([key, label]) => (
-                  <option key={key} value={key}>
-                    {label}
-                  </option>
-                ))}
-            </optgroup>
-          </select>
-        </label>
-      </div>
-      <div className="explorer-layout">
-        <aside className="filters panel" aria-label="Model filters">
-          <h2>Refine your search</h2>
+        </div>
 
-          <div className="pillar-filter-card">
-            <span className="micro pillar-tag">3 Core Pillars</span>
+        <div className="leaderboard-controls-group">
+          <button
+            type="button"
+            className={`control-btn ${openWeightsOnly ? 'active' : ''}`}
+            onClick={() => setOpenWeightsOnly(!openWeightsOnly)}
+            aria-pressed={openWeightsOnly}
+          >
+            Open weights
+          </button>
 
-            <label className="field">
-              Maximum input price / 1M
-              <select value={price} onChange={(e) => setPrice(e.target.value)}>
-                <option value="">Any price</option>
-                <option value="0.25">$0.25 or less (Ultra cheap)</option>
-                <option value="0.5">$0.50 or less</option>
-                <option value="1">$1 or less</option>
-                <option value="3">$3 or less</option>
-                <option value="5">$5 or less</option>
-              </select>
-            </label>
+          <button
+            type="button"
+            className={`control-btn ${includeFinetunes ? 'active' : ''}`}
+            onClick={() => setIncludeFinetunes(!includeFinetunes)}
+            aria-pressed={includeFinetunes}
+          >
+            Include finetunes
+          </button>
 
-            <label className="field">
-              Min Intelligence: {minimum.intelligence ?? 0}
-              <input
-                type="range"
-                min="0"
-                max="100"
-                step="5"
-                value={minimum.intelligence ?? 0}
-                onChange={(e) =>
-                  setMinimum({
-                    ...minimum,
-                    intelligence: Number(e.target.value),
-                  })
-                }
-              />
-            </label>
+          <button
+            type="button"
+            className={`control-btn ${showOrg ? 'active' : ''}`}
+            onClick={() => setShowOrg(!showOrg)}
+            aria-pressed={showOrg}
+          >
+            Show org
+          </button>
 
-            <label className="field">
-              Min Speed: {minimum.speed ? `${minimum.speed} tokens/sec` : 'Any'}
-              <input
-                type="range"
-                min="0"
-                max="220"
-                step="10"
-                value={minimum.speed ?? 0}
-                onChange={(e) =>
-                  setMinimum({ ...minimum, speed: Number(e.target.value) })
-                }
-              />
-            </label>
-          </div>
-
-          <label className="field">
-            Provider
+          <div className="control-select-wrapper">
             <select
-              value={provider}
-              onChange={(e) => setProvider(e.target.value)}
+              value={selectedOrg}
+              onChange={(e) => setSelectedOrg(e.target.value)}
+              className="control-select"
+              aria-label="Filter by organization"
             >
-              <option value="">All providers</option>
-              {[...new Set(models.map((m) => m.provider))].map((p) => (
-                <option key={p}>{p}</option>
+              <option value="">All organizations</option>
+              {organizations.map((org) => (
+                <option key={org} value={org}>
+                  {org}
+                </option>
               ))}
             </select>
-          </label>
+            <ChevronDown size={14} className="control-select-arrow" />
+          </div>
 
-          <details className="secondary-filter-details">
-            <summary>Secondary capabilities & specs</summary>
-            <label className="field">
-              Minimum context
-              <select
-                value={context}
-                onChange={(e) => setContext(e.target.value)}
-              >
-                <option value="0">Any size</option>
-                <option value="128000">128K tokens</option>
-                <option value="200000">200K tokens</option>
-                <option value="1000000">1M tokens</option>
-              </select>
-            </label>
-            {(['vision', 'api', 'openWeights'] as const).map((key, i) => (
-              <label className="checkbox-label" key={key}>
-                <input
-                  type="checkbox"
-                  checked={capabilities.includes(key)}
-                  onChange={(e) =>
-                    setCapabilities(
-                      e.target.checked
-                        ? [...capabilities, key]
-                        : capabilities.filter((x) => x !== key),
-                    )
-                  }
-                />
-                {['Vision support', 'API available', 'Open weights'][i]}
-              </label>
-            ))}
-            {(
-              ['overall', 'coding', 'agentic', 'dailyUse', 'research'] as const
-            ).map((key) => (
-              <label className="field" key={key}>
-                {metricLabels[key]}: {minimum[key] ?? 0}
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  step="5"
-                  value={minimum[key] ?? 0}
-                  onChange={(e) =>
-                    setMinimum({ ...minimum, [key]: Number(e.target.value) })
-                  }
-                />
-              </label>
-            ))}
-          </details>
+          <div className="dropdown-container" ref={compareMenuRef}>
+            <button
+              type="button"
+              className={`control-btn ${selectedSlugs.length > 0 ? 'highlight' : ''}`}
+              onClick={() => setShowCompareMenu(!showCompareMenu)}
+              aria-expanded={showCompareMenu}
+            >
+              Compare{' '}
+              {selectedSlugs.length > 0 ? `(${selectedSlugs.length})` : ''}{' '}
+              <ChevronDown size={14} />
+            </button>
+            {showCompareMenu && (
+              <div className="dropdown-menu">
+                <span className="dropdown-header">Compare Selection</span>
+                {selectedSlugs.length === 0 ? (
+                  <p
+                    className="micro muted"
+                    style={{ margin: 0, padding: '4px 0' }}
+                  >
+                    Click &apos;+&apos; on any model to add it to comparison.
+                  </p>
+                ) : (
+                  <>
+                    <div className="compare-menu-list">
+                      {selectedSlugs.map((slug) => {
+                        const item = models.find((m) => m.slug === slug);
+                        return (
+                          <div key={slug} className="compare-menu-item">
+                            <span>{item?.name ?? slug}</span>
+                            <button
+                              onClick={() => toggleSelect(slug)}
+                              aria-label={`Remove ${item?.name ?? slug}`}
+                            >
+                              <X size={12} />
+                            </button>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <a
+                      href={`/compare?models=${selectedSlugs.join(',')}`}
+                      className="button primary compare-action-btn"
+                    >
+                      Compare {selectedSlugs.length} models{' '}
+                      <ArrowRight size={13} />
+                    </a>
+                    <button
+                      className="text-link-sm"
+                      onClick={() => setSelectedSlugs([])}
+                    >
+                      Clear selection
+                    </button>
+                  </>
+                )}
+              </div>
+            )}
+          </div>
 
-          <button className="button" onClick={reset}>
-            Reset filters
-          </button>
-        </aside>
-        <div>
-          <p className="result-count" role="status">
-            {visible.length} of {models.length}{' '}
-            {models[0]?.dataKind === 'verified'
-              ? 'verified models'
-              : 'sample models'}
-          </p>
-          {visible.length ? (
-            <div className="model-grid explorer-grid">
-              {visible.map((model) => (
-                <ModelCard
-                  key={model.slug}
-                  model={model}
-                  selected={selected.includes(model.slug)}
-                  onSelect={() => toggle(model.slug)}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="empty-state">
-              <h2>No models match yet.</h2>
-              <p>Try a broader search or remove a filter.</p>
-              <button className="button primary" onClick={reset}>
-                Reset filters
-              </button>
-            </div>
-          )}
+          <div className="dropdown-container" ref={columnsMenuRef}>
+            <button
+              type="button"
+              className="control-btn"
+              onClick={() => setShowColumnsMenu(!showColumnsMenu)}
+              aria-expanded={showColumnsMenu}
+            >
+              Choose columns <ChevronDown size={14} />
+            </button>
+            {showColumnsMenu && (
+              <div className="dropdown-menu">
+                <span className="dropdown-header">Visible Columns</span>
+                {ALL_COLUMNS.map((col) => (
+                  <label key={col.key} className="column-checkbox-label">
+                    <input
+                      type="checkbox"
+                      checked={visibleColumns[col.key]}
+                      onChange={(e) =>
+                        setVisibleColumns({
+                          ...visibleColumns,
+                          [col.key]: e.target.checked,
+                        })
+                      }
+                    />
+                    {col.label}
+                  </label>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div
+            className="view-mode-toggle"
+            role="group"
+            aria-label="View layout"
+          >
+            <button
+              type="button"
+              className={`view-mode-btn ${viewMode === 'table' ? 'active' : ''}`}
+              onClick={() => setViewMode('table')}
+              title="Table View"
+              aria-label="Table View"
+              aria-pressed={viewMode === 'table'}
+            >
+              <TableIcon size={16} />
+            </button>
+            <button
+              type="button"
+              className={`view-mode-btn ${viewMode === 'cards' ? 'active' : ''}`}
+              onClick={() => setViewMode('cards')}
+              title="Card Grid View"
+              aria-label="Card Grid View"
+              aria-pressed={viewMode === 'cards'}
+            >
+              <LayoutGrid size={16} />
+            </button>
+          </div>
         </div>
       </div>
-      <p className="status-text" aria-live="polite">
-        {status}
-      </p>
-      {selected.length > 0 && (
+
+      {/* Category Pills Bar matching Screenshot 2 */}
+      <div
+        className="leaderboard-categories"
+        role="tablist"
+        aria-label="Filter by category"
+      >
+        <span className="category-label">CATEGORY</span>
+        {CATEGORIES.map((cat) => {
+          const isActive = activeCategory === cat.id;
+          return (
+            <button
+              key={cat.id}
+              type="button"
+              role="tab"
+              aria-selected={isActive}
+              className={`category-pill ${isActive ? 'active' : ''}`}
+              onClick={() => handleCategoryClick(cat)}
+            >
+              {cat.label}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Main Content: Table or Cards */}
+      {viewMode === 'table' ? (
+        <div className="leaderboard-table-card">
+          <div className="table-scroll-wrapper">
+            <table className="leaderboard-table">
+              <thead>
+                <tr>
+                  <th
+                    className="th-expand"
+                    aria-label="Expand details column"
+                  ></th>
+                  <th
+                    className={`th-model th-sortable th-align-left ${sortColumn === 'name' ? 'col-sorted' : ''}`}
+                    onClick={() => handleColumnHeaderClick('name')}
+                  >
+                    <span className="th-content">
+                      MODEL
+                      {sortColumn === 'name' && (
+                        <span className="sort-indicator">
+                          {sortDirection === 'asc' ? '▴' : '▾'}
+                        </span>
+                      )}
+                    </span>
+                  </th>
+                  {ALL_COLUMNS.filter((col) => visibleColumns[col.key]).map(
+                    (col) => {
+                      const isSorted = sortColumn === col.key;
+                      return (
+                        <th
+                          key={col.key}
+                          className={`th-metric th-sortable th-align-${col.align} ${isSorted ? 'col-sorted' : ''}`}
+                          onClick={() => handleColumnHeaderClick(col.key)}
+                        >
+                          <span className="th-content">
+                            {col.label}
+                            {isSorted && (
+                              <span className="sort-indicator">
+                                {sortDirection === 'asc' ? '▴' : '▾'}
+                              </span>
+                            )}
+                          </span>
+                        </th>
+                      );
+                    },
+                  )}
+                </tr>
+              </thead>
+              <tbody>
+                {sortedRows.length === 0 ? (
+                  <tr>
+                    <td
+                      colSpan={visibleColumnsCount + 2}
+                      style={{ textAlign: 'center', padding: '40px 16px' }}
+                    >
+                      <p style={{ margin: '0 0 12px', color: 'var(--muted)' }}>
+                        No models match your search criteria.
+                      </p>
+                      <button
+                        className="button primary"
+                        type="button"
+                        onClick={resetAll}
+                      >
+                        Reset filters
+                      </button>
+                    </td>
+                  </tr>
+                ) : (
+                  sortedRows.map((row) => {
+                    const isExpanded = Boolean(expandedRows[row.model.slug]);
+                    const isSelected = selectedSlugs.includes(row.model.slug);
+
+                    return (
+                      <tbody key={row.model.slug}>
+                        <tr
+                          className={`leaderboard-row ${isSelected ? 'row-selected' : ''}`}
+                        >
+                          <td className="td-expand">
+                            <button
+                              type="button"
+                              className={`expand-caret-btn ${isExpanded ? 'rotated' : ''}`}
+                              onClick={() => toggleExpand(row.model.slug)}
+                              aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${row.model.name}`}
+                            >
+                              <ChevronRight size={14} />
+                            </button>
+                          </td>
+
+                          <td
+                            className={`td-model ${sortColumn === 'name' ? 'col-sorted' : ''}`}
+                          >
+                            <div className="model-cell-content">
+                              <a
+                                href={`/models/${row.model.slug}`}
+                                className="model-link-title"
+                              >
+                                {row.displayName}
+                              </a>
+                              {row.isOpenWeights && (
+                                <span className="badge-open">open</span>
+                              )}
+                            </div>
+                            {showOrg && (
+                              <div className="model-org-sub">
+                                {row.model.provider}
+                              </div>
+                            )}
+                          </td>
+
+                          {visibleColumns.overall && (
+                            <td
+                              className={`td-metric td-bold td-align-center ${sortColumn === 'overall' ? 'col-sorted' : ''}`}
+                            >
+                              {row.scores.overall !== null
+                                ? row.scores.overall.toFixed(1)
+                                : '—'}
+                            </td>
+                          )}
+
+                          {visibleColumns.reasoning && (
+                            <td
+                              className={`td-metric td-align-center ${sortColumn === 'reasoning' ? 'col-sorted' : ''} ${
+                                top5Thresholds.reasoning !== undefined &&
+                                row.scores.reasoning !== null &&
+                                row.scores.reasoning >=
+                                  top5Thresholds.reasoning &&
+                                sortColumn !== 'reasoning'
+                                  ? 'cell-top5'
+                                  : ''
+                              }`}
+                            >
+                              {row.scores.reasoning !== null
+                                ? row.scores.reasoning.toFixed(1)
+                                : '—'}
+                            </td>
+                          )}
+
+                          {visibleColumns.coding && (
+                            <td
+                              className={`td-metric td-align-center ${sortColumn === 'coding' ? 'col-sorted' : ''} ${
+                                top5Thresholds.coding !== undefined &&
+                                row.scores.coding !== null &&
+                                row.scores.coding >= top5Thresholds.coding &&
+                                sortColumn !== 'coding'
+                                  ? 'cell-top5'
+                                  : ''
+                              }`}
+                            >
+                              {row.scores.coding !== null
+                                ? row.scores.coding.toFixed(1)
+                                : '—'}
+                            </td>
+                          )}
+
+                          {visibleColumns.agentic && (
+                            <td
+                              className={`td-metric td-align-center ${sortColumn === 'agentic' ? 'col-sorted' : ''} ${
+                                top5Thresholds.agentic !== undefined &&
+                                row.scores.agentic !== null &&
+                                row.scores.agentic >= top5Thresholds.agentic &&
+                                sortColumn !== 'agentic'
+                                  ? 'cell-top5'
+                                  : ''
+                              }`}
+                            >
+                              {row.scores.agentic !== null
+                                ? row.scores.agentic.toFixed(1)
+                                : '—'}
+                            </td>
+                          )}
+
+                          {visibleColumns.mathematics && (
+                            <td
+                              className={`td-metric td-align-center ${sortColumn === 'mathematics' ? 'col-sorted' : ''} ${
+                                top5Thresholds.mathematics !== undefined &&
+                                row.scores.mathematics !== null &&
+                                row.scores.mathematics >=
+                                  top5Thresholds.mathematics &&
+                                sortColumn !== 'mathematics'
+                                  ? 'cell-top5'
+                                  : ''
+                              }`}
+                            >
+                              {row.scores.mathematics !== null
+                                ? row.scores.mathematics.toFixed(1)
+                                : '—'}
+                            </td>
+                          )}
+
+                          {visibleColumns.dataAnalysis && (
+                            <td
+                              className={`td-metric td-align-center ${sortColumn === 'dataAnalysis' ? 'col-sorted' : ''} ${
+                                top5Thresholds.dataAnalysis !== undefined &&
+                                row.scores.dataAnalysis !== null &&
+                                row.scores.dataAnalysis >=
+                                  top5Thresholds.dataAnalysis &&
+                                sortColumn !== 'dataAnalysis'
+                                  ? 'cell-top5'
+                                  : ''
+                              }`}
+                            >
+                              {row.scores.dataAnalysis !== null
+                                ? row.scores.dataAnalysis.toFixed(1)
+                                : '—'}
+                            </td>
+                          )}
+
+                          {visibleColumns.language && (
+                            <td
+                              className={`td-metric td-align-center ${sortColumn === 'language' ? 'col-sorted' : ''} ${
+                                top5Thresholds.language !== undefined &&
+                                row.scores.language !== null &&
+                                row.scores.language >=
+                                  top5Thresholds.language &&
+                                sortColumn !== 'language'
+                                  ? 'cell-top5'
+                                  : ''
+                              }`}
+                            >
+                              {row.scores.language !== null
+                                ? row.scores.language.toFixed(1)
+                                : '—'}
+                            </td>
+                          )}
+
+                          {visibleColumns.instructionFollowing && (
+                            <td
+                              className={`td-metric td-align-center ${sortColumn === 'instructionFollowing' ? 'col-sorted' : ''} ${
+                                top5Thresholds.instructionFollowing !==
+                                  undefined &&
+                                row.scores.instructionFollowing !== null &&
+                                row.scores.instructionFollowing >=
+                                  top5Thresholds.instructionFollowing &&
+                                sortColumn !== 'instructionFollowing'
+                                  ? 'cell-top5'
+                                  : ''
+                              }`}
+                            >
+                              {row.scores.instructionFollowing !== null
+                                ? row.scores.instructionFollowing.toFixed(1)
+                                : '—'}
+                            </td>
+                          )}
+
+                          {visibleColumns.cost && (
+                            <td
+                              className={`td-metric td-cost td-align-right ${sortColumn === 'cost' ? 'col-sorted' : ''}`}
+                            >
+                              ${row.taskCostVal.toFixed(3)}
+                            </td>
+                          )}
+
+                          {visibleColumns.speed && (
+                            <td
+                              className={`td-metric td-align-center ${sortColumn === 'speed' ? 'col-sorted' : ''}`}
+                            >
+                              {row.scores.speed > 0
+                                ? `${row.scores.speed} tok/s`
+                                : '—'}
+                            </td>
+                          )}
+                        </tr>
+
+                        {isExpanded && (
+                          <tr className="subtask-expanded-row">
+                            <td colSpan={visibleColumnsCount + 2}>
+                              <div className="subtask-expanded-panel">
+                                <div className="subtask-top-row">
+                                  <div className="subtask-title-group">
+                                    <h4>{row.model.name}</h4>
+                                    <span className="micro muted">
+                                      {row.model.provider}
+                                    </span>
+                                    {row.model.facts.releaseDate && (
+                                      <span className="release-date">
+                                        {row.model.facts.releaseDate}
+                                      </span>
+                                    )}
+                                    {row.maxEffort !== 'none' && (
+                                      <span className="effort-badge">
+                                        {row.maxEffort === 'fixed'
+                                          ? 'Fixed CoT'
+                                          : `Default Effort: ${row.maxEffort}`}
+                                      </span>
+                                    )}
+                                  </div>
+                                  <div className="subtask-buttons">
+                                    <button
+                                      type="button"
+                                      className={`button ${isSelected ? 'primary' : ''}`}
+                                      onClick={() =>
+                                        toggleSelect(row.model.slug)
+                                      }
+                                    >
+                                      {isSelected ? (
+                                        <Check size={14} />
+                                      ) : (
+                                        <Plus size={14} />
+                                      )}{' '}
+                                      {isSelected
+                                        ? 'Added to Compare'
+                                        : 'Add to Compare'}
+                                    </button>
+                                    <a
+                                      className="button"
+                                      href={`/models/${row.model.slug}`}
+                                    >
+                                      View Full Model Guide{' '}
+                                      <ExternalLink size={13} />
+                                    </a>
+                                  </div>
+                                </div>
+                                <p className="subtask-desc">
+                                  {row.model.description}
+                                </p>
+                                <div className="subtask-spec-grid">
+                                  <div>
+                                    <span className="spec-label">Speed</span>
+                                    <strong>
+                                      {row.scores.speed > 0
+                                        ? `${row.scores.speed} tok/s`
+                                        : '—'}
+                                    </strong>
+                                  </div>
+                                  <div>
+                                    <span className="spec-label">
+                                      Context Window
+                                    </span>
+                                    <strong>
+                                      {contextSize(row.model.facts.context)}
+                                    </strong>
+                                  </div>
+                                  <div>
+                                    <span className="spec-label">
+                                      Input Price
+                                    </span>
+                                    <strong>
+                                      {money(row.model.pricing.input)} / 1M
+                                    </strong>
+                                  </div>
+                                  <div>
+                                    <span className="spec-label">
+                                      Output Price
+                                    </span>
+                                    <strong>
+                                      {money(row.model.pricing.output)} / 1M
+                                    </strong>
+                                  </div>
+                                  <div>
+                                    <span className="spec-label">
+                                      Reasoning Tiers
+                                    </span>
+                                    <strong>
+                                      {row.model.facts.reasoningEffort?.join(
+                                        ', ',
+                                      ) || 'None'}
+                                    </strong>
+                                  </div>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                        )}
+                      </tbody>
+                    );
+                  })
+                )}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Footer note matching Screenshot 2 */}
+          <div className="leaderboard-footer-note">
+            <code>
+              // select 1 category for its subtasks, or several to compare
+              category averages · shading = top 5 per column · click a row for
+              subtasks · Cost per successful task = (∑ cost ÷ ∑ questions ÷
+              score) × 100 over the selected scope
+            </code>
+          </div>
+        </div>
+      ) : (
+        /* Card Grid View (Alternative toggle) */
+        <div className="model-grid explorer-grid">
+          {sortedRows.map((row) => (
+            <ModelCard
+              key={row.model.slug}
+              model={row.model}
+              selected={selectedSlugs.includes(row.model.slug)}
+              onSelect={() => toggleSelect(row.model.slug)}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* Floating Compare Tray when models are selected */}
+      {selectedSlugs.length > 0 && (
         <div className="compare-tray">
-          <strong>{selected.length} / 4 selected</strong>
-          {selected.map((slug) => (
+          <strong>{selectedSlugs.length} / 4 selected</strong>
+          {selectedSlugs.map((slug) => (
             <span className="selection-chip" key={slug}>
               {models.find((m) => m.slug === slug)?.name}
               <button
                 aria-label={`Remove ${models.find((m) => m.slug === slug)?.name}`}
-                onClick={() => toggle(slug)}
+                onClick={() => toggleSelect(slug)}
               >
                 <X size={13} />
               </button>
             </span>
           ))}
-          {selected.length >= 2 ? (
+          {selectedSlugs.length >= 2 ? (
             <a
               className="button primary"
-              href={`/compare?models=${selected.join(',')}`}
+              href={`/compare?models=${selectedSlugs.join(',')}`}
             >
               Compare models <ArrowRight size={15} />
             </a>
@@ -297,6 +962,6 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
           )}
         </div>
       )}
-    </>
+    </div>
   );
 }

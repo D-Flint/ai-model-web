@@ -483,6 +483,22 @@
 - Current state: All model cards in browse, home, and detail views display models at their maximum possible effort with corresponding scores and speeds.
 - Exact next step: User verifies the updated model cards locally at `http://localhost:4321`.
 
+## 2026-09-05 — Transform Model Explorer into Interactive Benchmark Leaderboard Table
+
+- Objective: Transform `/models` from a grid of cards into a clean, comprehensive benchmark leaderboard table matching Screenshot 201152.png with top search & filters bar, category navigation pills, dynamic top 5 score shading, expandable subtask accordions, and cost calculations.
+- Files changed:
+  - `src/components/ModelExplorer.tsx`: Rebuilt ModelExplorer component with search bar, `Open weights` toggle, `Include finetunes` toggle, `Show org` toggle, `All organizations` filter dropdown, `Compare (N)` dropdown, `Choose columns` selector, `CATEGORY` horizontal pills (`All`, `Reasoning`, `Coding`, `Agentic Coding`, `Mathematics`, `Data Analysis`, `Language`, `Instruction Following`), dynamic Top 5 shading per column, full column active sort highlight, expandable `▸` row subtasks with specs & comparison actions, formatted decimal scores (`82.2`, `92.7`, etc.), 3-decimal cost per successful task, and alternative View Mode switcher (`Table` / `Cards`, default `Table`).
+  - `src/styles/global.css`: Added comprehensive styling for `.leaderboard-container`, `.leaderboard-toolbar`, `.control-btn`, `.category-pill`, `.leaderboard-table`, `.col-sorted`, `.cell-top5`, `.badge-open`, `.subtask-expanded-row`, and footer formula note.
+  - `.agents/registry.json`: Registered and completed `table-leaderboard-agent` with released locks.
+- Attempts: 1 full iteration with verified tests, check, lint, and build.
+- Tests and results:
+  - `npm test`: 37/37 passed across all test suites.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 62 Astro and TypeScript files.
+  - `npm run lint`: Clean, 0 errors.
+- Current state: Model explorer on `/models` is rendered as an interactive benchmark leaderboard table matching the user's reference screenshot with maximum reasoning effort integration.
+- Exact next step: User verifies the new leaderboard table locally at `http://localhost:4321/models`.
+
+
 
 
 

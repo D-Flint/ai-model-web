@@ -96,6 +96,12 @@
       "goal": "Set default effort of AI models shown on card to maximum possible effort",
       "lastHeartbeat": "2026-09-05T13:06:00.000Z",
       "status": "completed"
+    },
+    "table-leaderboard-agent": {
+      "role": "Frontend Design Engineer",
+      "goal": "Convert model explorer from card list to interactive benchmark leaderboard table",
+      "lastHeartbeat": "2026-09-05T13:19:00.000Z",
+      "status": "completed"
     }
   },
   "claims": {},
