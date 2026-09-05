@@ -88,12 +88,14 @@ describe('recommendation and comparison flows', () => {
 });
 describe('task cost assumptions', () => {
   it('includes tool overhead in every retried attempt', () => {
-    expect(taskCost(models[0], 1000, 500, 0.5, 2, 0.005)).toBeCloseTo(0.041);
+    expect(taskCost(mockModels[0], 1000, 500, 0.5, 2, 0.005)).toBeCloseTo(
+      0.041,
+    );
   });
   it('accepts zero usage and rejects invalid success and token values', () => {
-    expect(taskCost(models[0], 0, 0)).toBe(0);
+    expect(taskCost(mockModels[0], 0, 0)).toBe(0);
     for (const bad of [0, -1, 1.1, NaN])
-      expect(() => taskCost(models[0], 1, 1, bad)).toThrow();
-    expect(() => taskCost(models[0], -1, 10)).toThrow();
+      expect(() => taskCost(mockModels[0], 1, 1, bad)).toThrow();
+    expect(() => taskCost(mockModels[0], -1, 10)).toThrow();
   });
 });

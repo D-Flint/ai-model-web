@@ -81,5 +81,26 @@
   - `npm run build`: Production build passes cleanly, generating 121 pages.
 - Current state: Real-data pipeline is functional and populated with 14 verified current models across Anthropic, Google, OpenAI, DeepSeek, Alibaba/Qwen, Meta, and Mistral.
 - Commit: `d96c7e2` — `feat: implement real AI model data pipeline with multi-source ingestion` (local only; no push).
-- Exact next step: User verifies local testing and live model comparison, then decides whether to connect PostgreSQL via `DATABASE_URL` for persistent multi-snapshot storage.
+## 2026-09-05 — Expand Real AI Model Catalog to 64 Models
 
+- Objective: Expand the real model catalog from 14 models to 50+ newer foundation models (2025–2026 era) across major providers, ingesting live benchmark evidence from OpenRouter, LMSYS Chatbot Arena, SWE-bench Verified, and official provider documentation.
+- Files changed:
+  - `src/data/canonicalModels.ts`: Expanded canonical definitions to 64 models across 9 providers (Anthropic, Google DeepMind, OpenAI, DeepSeek, Alibaba Qwen, Meta AI, xAI, Mistral AI, Cohere).
+  - `src/data/officialProviders.ts`: Added verified specifications, context limits, and pricing bounds for all 64 models.
+  - `src/data/verifiedModels.json`: Generated full verified catalog with 64 models, 93 LMSYS Arena benchmarks, and 12 SWE-bench verified evaluations.
+  - `src/pipeline/aliasResolver.ts`: Deduplicated database alias rows by ID to prevent collisions during schema export and added dated LMSYS aliases.
+  - `tests/dataPipeline.test.ts`: Updated catalog size assertions from 14 to >= 50 models.
+  - `tests/decision.test.ts`: Stabilized `taskCost` unit test against deterministic fixture `mockModels[0]`.
+  - `.agents/activity.jsonl`, `.agents/registry.json`: Updated multi-agent collaboration state and claims.
+- Attempts: 1 full iteration with alias deduplication and test stabilization.
+- Failures and causes:
+  - `tests/dataPipeline.test.ts` alias resolution expected dated alias for Claude Sonnet 4.5; added release-date-based alias generation in canonical model configs.
+  - Duplicate alias IDs occurred in `getDatabaseAliasRows()` for models with both hyphenated and dot-notated aliases; resolved by adding ID deduplication via a `Set`.
+  - `tests/decision.test.ts` asserted taskCost against `models[0]` which dynamically pointed to the new first model in the expanded catalog; switched to `mockModels[0]` to ensure deterministic unit testing of the calculation formula.
+- Tests and results:
+  - `npm test`: 32/32 tests pass across 3 test suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 47 Astro/TypeScript files.
+  - `npm run lint`: 0 ESLint errors, Prettier formatting clean across entire codebase.
+  - `npm run build`: Production build passes cleanly, generating 2,096 pages (including all 64 model detail pages and pairwise comparisons).
+- Current state: Real model catalog successfully expanded to 64 models spanning all premier 2025–2026 foundation models, fully verifiable with live evidence sources.
+- Exact next step: User verifies the expanded catalog locally at `http://localhost:4321` or production build preview. Pause before any further implementation.

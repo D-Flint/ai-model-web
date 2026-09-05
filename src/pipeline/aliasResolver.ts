@@ -75,11 +75,25 @@ export class ModelAliasResolver {
       sourceModelId: string;
       alias: string;
     }> = [];
+    const seenIds = new Set<string>();
+
+    const addRow = (row: {
+      id: string;
+      modelId: string;
+      sourceName: string;
+      sourceModelId: string;
+      alias: string;
+    }) => {
+      if (!seenIds.has(row.id)) {
+        seenIds.add(row.id);
+        rows.push(row);
+      }
+    };
 
     for (const model of CANONICAL_MODELS) {
       // OpenRouter alias
       if (model.openRouterId) {
-        rows.push({
+        addRow({
           id: `${model.slug}-openrouter-${model.openRouterId.replace(/[^a-zA-Z0-9_-]/g, '_')}`,
           modelId: model.slug,
           sourceName: 'openrouter',
@@ -90,7 +104,7 @@ export class ModelAliasResolver {
 
       // LMArena aliases
       for (const alias of model.lmarenaAliases) {
-        rows.push({
+        addRow({
           id: `${model.slug}-lmarena-${alias.replace(/[^a-zA-Z0-9_-]/g, '_')}`,
           modelId: model.slug,
           sourceName: 'lmarena',
@@ -101,7 +115,7 @@ export class ModelAliasResolver {
 
       // SWE-bench aliases
       for (const alias of model.swebenchAliases) {
-        rows.push({
+        addRow({
           id: `${model.slug}-swebench-${alias.replace(/[^a-zA-Z0-9_-]/g, '_')}`,
           modelId: model.slug,
           sourceName: 'swebench',

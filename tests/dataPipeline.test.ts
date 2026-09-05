@@ -195,10 +195,10 @@ describe('Price Conversion', () => {
 describe('Verified Catalog Integrity', () => {
   it('verifiedModels.json satisfies strict catalog validation', () => {
     expect(Array.isArray(verifiedModels)).toBe(true);
-    expect(verifiedModels.length).toBe(14);
+    expect(verifiedModels.length).toBeGreaterThanOrEqual(50);
 
     const validated = validateCatalog(verifiedModels);
-    expect(validated.length).toBe(14);
+    expect(validated.length).toBeGreaterThanOrEqual(50);
 
     for (const model of validated) {
       expect(model.dataKind).toBe('verified');
