@@ -1,0 +1,59 @@
+---
+import RootLayout from '../layouts/RootLayout.astro';
+---
+
+<RootLayout title="Astra - Find the Right AI Model">
+  <div class="space-y-16">
+    <section class="text-center max-w-3xl mx-auto pt-8 pb-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-xs font-medium text-[var(--text-secondary)] mb-6">
+        <span>Transparent Consumer Decision Engine</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-[var(--text-primary)] mb-4">
+        Find the right AI model.
+      </h1>
+      <p class="text-lg text-[var(--text-secondary)] mb-8">
+        Compare intelligence, coding, agents, speed, pricing, and real-world cost per task without benchmark jargon.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-2 text-xs">
+        <span class="text-[var(--text-muted)]">Popular shortcuts:</span>
+        <a href="/rankings/coding" class="px-3 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] hover:border-[var(--accent)] transition-colors">
+          Coding Models
+        </a>
+        <a href="/rankings/agents" class="px-3 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] hover:border-[var(--accent)] transition-colors">
+          Agentic Workflows
+        </a>
+        <a href="/rankings/daily-use" class="px-3 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] hover:border-[var(--accent)] transition-colors">
+          Daily Use & Chat
+        </a>
+        <a href="/rankings/value" class="px-3 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] hover:border-[var(--accent)] transition-colors">
+          Best Value
+        </a>
+      </div>
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-6 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
+        <h3 class="text-base font-semibold mb-2">Model Explorer</h3>
+        <p class="text-sm text-[var(--text-secondary)] mb-4">
+          Browse verified models with standardized 0-100 scores across key capability dimensions.
+        </p>
+        <a href="/models" class="text-xs font-semibold text-[var(--accent)] hover:underline">Browse models &rarr;</a>
+      </div>
+      <div class="p-6 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
+        <h3 class="text-base font-semibold mb-2">Side-by-Side Comparison</h3>
+        <p class="text-sm text-[var(--text-secondary)] mb-4">
+          Directly compare 2 to 4 models with highlighted tradeoffs, specs, and actionable verdicts.
+        </p>
+        <a href="/compare" class="text-xs font-semibold text-[var(--accent)] hover:underline">Start comparing &rarr;</a>
+      </div>
+      <div class="p-6 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
+        <h3 class="text-base font-semibold mb-2">Cost Per Task</h3>
+        <p class="text-sm text-[var(--text-secondary)] mb-4">
+          Estimate realistic operational costs factoring in retries, success rate, and agentic tool overhead.
+        </p>
+        <a href="/cost" class="text-xs font-semibold text-[var(--accent)] hover:underline">Calculate costs &rarr;</a>
+      </div>
+    </section>
+  </div>
+</RootLayout>
