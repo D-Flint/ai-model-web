@@ -2,6 +2,7 @@
 import RootLayout from '../../layouts/RootLayout.astro';
 import ModelCard from '../../components/ModelCard';
 import ProviderLogo from '../../components/ProviderLogo.astro';
+import ModelEffortExplorer from '../../components/ModelEffortExplorer';
 import { models } from '../../data/models';
 import { metricLabels, overallWeights, type Metric } from '../../data/config';
 import { money, contextSize, taskCost, rankModels } from '../../lib/decision';
@@ -70,12 +71,22 @@ const alternatives = [
               )
           }
         </div>
-        <h1>{model.name}</h1><p>{model.description}</p><div
-          class="detail-actions"
-        >
+        <h1>{model.name}</h1><p>{model.description}</p>        <div class="detail-actions">
           <a class="button primary" href={`/compare?models=${model.slug}`}
             >Add to comparison <ArrowRight size={15} /></a
-          ><a class="button" href={`/cost?models=${model.slug}`}
+          >
+          {
+            model.facts.reasoningEffort &&
+              model.facts.reasoningEffort.filter((e) => e !== 'none').length > 1 && (
+                <a
+                  class="button"
+                  href={`/compare?models=${model.slug}:low,${model.slug}:high`}
+                >
+                  Compare effort levels
+                </a>
+              )
+          }
+          <a class="button" href={`/cost?models=${model.slug}`}
             >Estimate my cost</a
           >
         </div>
@@ -96,6 +107,12 @@ const alternatives = [
         provider verification are claimed.
       </div>
     )
+  }
+  {
+    model.facts.reasoningEffort &&
+      model.facts.reasoningEffort.filter((e) => e !== 'none').length > 1 && (
+        <ModelEffortExplorer model={model} client:load />
+      )
   }
   <div class="detail-grid">
     <section class="panel" id="scores">

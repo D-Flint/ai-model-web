@@ -7,6 +7,7 @@ import {
   rankModels,
   selectionFromSearch,
   taskCost,
+  getModelEffortStats,
 } from '../src/lib/decision';
 import { validateCatalog } from '../src/lib/importCatalog';
 import { catalogSchema } from '../src/lib/catalogSchema';
@@ -85,8 +86,27 @@ describe('recommendation and comparison flows', () => {
       ),
     ).toEqual([models[0].slug, models[1].slug, models[2].slug, models[3].slug]);
   });
+  it('supports comparing different reasoning effort levels for the same or different models', () => {
+    const reasoningModel = models.find(
+      (m) =>
+        m.facts.reasoningEffort &&
+        m.facts.reasoningEffort.length > 1 &&
+        !m.facts.reasoningEffort.includes('none'),
+    );
+    expect(reasoningModel).toBeDefined();
+    if (reasoningModel) {
+      const selections = selectionFromSearch(
+        `?models=${reasoningModel.slug}:low,${reasoningModel.slug}:high`,
+        models,
+      );
+      expect(selections).toEqual([
+        `${reasoningModel.slug}:low`,
+        `${reasoningModel.slug}:high`,
+      ]);
+    }
+  });
 });
-describe('task cost assumptions', () => {
+describe('task cost assumptions and reasoning effort stats', () => {
   it('includes tool overhead in every retried attempt', () => {
     expect(taskCost(mockModels[0], 1000, 500, 0.5, 2, 0.005)).toBeCloseTo(
       0.041,
@@ -98,4 +118,27 @@ describe('task cost assumptions', () => {
       expect(() => taskCost(mockModels[0], 1, 1, bad)).toThrow();
     expect(() => taskCost(mockModels[0], -1, 10)).toThrow();
   });
+  it('computes differential stats for different reasoning effort levels', () => {
+    const reasoningModel = models.find(
+      (m) =>
+        m.facts.reasoningEffort?.includes('low') &&
+        m.facts.reasoningEffort?.includes('high'),
+    );
+    expect(reasoningModel).toBeDefined();
+    if (reasoningModel) {
+      const lowStats = getModelEffortStats(reasoningModel, 'low');
+      const highStats = getModelEffortStats(reasoningModel, 'high');
+
+      expect(lowStats.reasoningTokens).toBeLessThan(highStats.reasoningTokens);
+      expect(lowStats.taskCost).toBeLessThan(highStats.taskCost);
+      expect(lowStats.scores.speed).toBeGreaterThan(highStats.scores.speed);
+      expect(highStats.scores.intelligence).toBeGreaterThanOrEqual(
+        lowStats.scores.intelligence,
+      );
+      expect(highStats.scores.coding).toBeGreaterThanOrEqual(
+        lowStats.scores.coding,
+      );
+    }
+  });
 });
+

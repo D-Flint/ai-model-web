@@ -1,16 +1,9 @@
 import { useEffect, useState } from 'react';
 import type { CatalogModel } from '../lib/catalogSchema';
-import { workloads } from '../data/config';
+import { effortTokens, workloads } from '../data/config';
 import { money, selectionFromSearch, taskCost } from '../lib/decision';
 import { ProviderLogo } from './ProviderLogo';
 
-const reasoningTokenMap: Record<string, number> = {
-  none: 0,
-  low: 1000,
-  medium: 4000,
-  high: 16000,
-  max: 32000,
-};
 
 export default function CostCalculator({ models }: { models: CatalogModel[] }) {
   const [advanced, setAdvanced] = useState(false);
@@ -64,7 +57,7 @@ export default function CostCalculator({ models }: { models: CatalogModel[] }) {
             model.facts.reasoningEffort.length > 0 &&
             !model.facts.reasoningEffort.includes('none');
           const extraReasoningTokens = isReasoning
-            ? (reasoningTokenMap[effort] ?? 0)
+            ? (effortTokens[effort] ?? 0)
             : 0;
           const effectiveOutputTokens = outputTokens + extraReasoningTokens;
           return {
@@ -279,7 +272,7 @@ export default function CostCalculator({ models }: { models: CatalogModel[] }) {
               Illustrative estimate: {inputTokens.toLocaleString()} input and{' '}
               {outputTokens.toLocaleString()} output tokens per attempt
               {effort !== 'none' &&
-                ` (+${reasoningTokenMap[effort].toLocaleString()} reasoning tokens for thinking models)`}
+                ` (+${effortTokens[effort].toLocaleString()} reasoning tokens for thinking models)`}
               ; {requests} tasks per day for {days} days. Success rate:{' '}
               {success}
               %.

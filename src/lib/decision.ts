@@ -1,9 +1,13 @@
 import {
+  effortLatency,
+  effortScoreAdjustments,
+  effortTokens,
   metricLabels,
   overallWeights,
   recommendationConfig,
   type Capability,
   type Metric,
+  type ReasoningEffort,
 } from '../data/config';
 import type { CatalogModel } from './catalogSchema';
 
@@ -50,6 +54,7 @@ export function taskCost(
   success = 1,
   toolCalls = 0,
   toolPrice = 0,
+  effort?: ReasoningEffort,
 ): number {
   if (
     ![input, output, toolCalls, toolPrice].every(
@@ -62,12 +67,93 @@ export function taskCost(
     throw new Error(
       'Enter non-negative amounts and a success rate greater than 0 and at most 100%.',
     );
+  const extraReasoningTokens =
+    effort !== undefined ? (effortTokens[effort] ?? 0) : 0;
   return (
-    ((input * model.pricing.input + output * model.pricing.output) / 1_000_000 +
+    ((input * model.pricing.input +
+      (output + extraReasoningTokens) * model.pricing.output) /
+      1_000_000 +
       toolCalls * toolPrice) /
     success
   );
 }
+
+export interface ModelEffortStats {
+  effort: ReasoningEffort;
+  reasoningTokens: number;
+  latency: string;
+  taskCost: number;
+  scores: Record<Capability, number> & { overall: number };
+}
+
+export function getModelEffortStats(
+  model: CatalogModel,
+  requestedEffort?: ReasoningEffort,
+): ModelEffortStats {
+  const isReasoning =
+    model.facts.reasoningEffort &&
+    model.facts.reasoningEffort.length > 0 &&
+    !model.facts.reasoningEffort.includes('none');
+
+  let effort: ReasoningEffort = 'none';
+  if (isReasoning) {
+    if (model.facts.reasoningEffort.includes('fixed')) {
+      effort = 'fixed';
+    } else if (
+      requestedEffort &&
+      model.facts.reasoningEffort.includes(requestedEffort)
+    ) {
+      effort = requestedEffort;
+    } else if (
+      model.facts.defaultEffort &&
+      model.facts.defaultEffort !== 'none'
+    ) {
+      effort = model.facts.defaultEffort;
+    } else {
+      effort = model.facts.reasoningEffort[0] ?? 'medium';
+    }
+  }
+
+  const reasoningTokens = isReasoning ? (effortTokens[effort] ?? 0) : 0;
+  const latency = effortLatency[effort] ?? 'Instant (< 1s)';
+  const cost = taskCost(model, 1000, 500, 1, 0, 0, effort);
+
+  const baseDefault =
+    isReasoning &&
+    model.facts.defaultEffort &&
+    model.facts.defaultEffort !== 'none'
+      ? model.facts.defaultEffort
+      : 'medium';
+
+  const defaultAdj = isReasoning
+    ? (effortScoreAdjustments[baseDefault] ?? {})
+    : {};
+  const targetAdj = isReasoning ? (effortScoreAdjustments[effort] ?? {}) : {};
+
+  const adjustedCapabilities = {} as Record<Capability, number>;
+  for (const key of Object.keys(overallWeights) as Capability[]) {
+    const baseScore = model.scores[key];
+    const delta = (targetAdj[key] ?? 0) - (defaultAdj[key] ?? 0);
+    adjustedCapabilities[key] = Math.max(
+      0,
+      Math.min(100, Math.round(baseScore + delta)),
+    );
+  }
+
+  const overall = composite(adjustedCapabilities);
+
+  return {
+    effort,
+    reasoningTokens,
+    latency,
+    taskCost: cost,
+    scores: {
+      ...adjustedCapabilities,
+      overall,
+    },
+  };
+}
+
 export const money = (value: number, digits = 2) =>
   new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -127,6 +213,10 @@ export function selectionFromSearch(search: string, models: CatalogModel[]) {
   return [
     ...new Set(new URLSearchParams(search).get('models')?.split(',') ?? []),
   ]
-    .filter((slug) => models.some((m) => m.slug === slug))
+    .filter((item) => {
+      const slug = item.split(':')[0];
+      return models.some((m) => m.slug === slug);
+    })
     .slice(0, 4);
 }
+

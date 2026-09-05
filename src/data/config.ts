@@ -89,5 +89,86 @@ export const recommendationConfig = {
   reliability: 0.15,
   budgetLimits: { free: 0, cheap: 0.005, moderate: 0.03, any: Infinity },
 } as const;
+
+export type ReasoningEffort =
+  | 'none'
+  | 'low'
+  | 'medium'
+  | 'high'
+  | 'max'
+  | 'fixed';
+
+export const effortLabels: Record<ReasoningEffort, string> = {
+  none: 'Instant / Standard',
+  low: 'Low effort',
+  medium: 'Medium effort',
+  high: 'High effort',
+  max: 'Max effort',
+  fixed: 'Fixed CoT',
+};
+
+export const effortTokens: Record<ReasoningEffort, number> = {
+  none: 0,
+  low: 1000,
+  medium: 4000,
+  high: 16000,
+  max: 32000,
+  fixed: 4000,
+};
+
+export const effortLatency: Record<ReasoningEffort, string> = {
+  none: 'Instant (< 1s)',
+  low: 'Fast (1 - 3s)',
+  medium: 'Moderate (4 - 10s)',
+  high: 'Extended (15 - 35s)',
+  max: 'Deep Thinking (40 - 90s)',
+  fixed: 'Standard CoT (3 - 8s)',
+};
+
+export const effortScoreAdjustments: Record<
+  ReasoningEffort,
+  Partial<Record<Capability, number>>
+> = {
+  none: {},
+  low: {
+    intelligence: -4,
+    coding: -3,
+    agentic: -3,
+    research: -2,
+    speed: 8,
+    costEfficiency: 6,
+    reliability: -1,
+  },
+  medium: {
+    intelligence: 0,
+    coding: 0,
+    agentic: 0,
+    research: 0,
+    speed: 0,
+    costEfficiency: 0,
+    reliability: 0,
+  },
+  high: {
+    intelligence: 4,
+    coding: 4,
+    agentic: 4,
+    research: 3,
+    speed: -16,
+    costEfficiency: -14,
+    reliability: 2,
+  },
+  max: {
+    intelligence: 7,
+    coding: 6,
+    agentic: 6,
+    research: 5,
+    speed: -30,
+    costEfficiency: -24,
+    reliability: 3,
+  },
+  fixed: {},
+};
+
 export const methodologyVersion = 'sample-1.0';
 export const fixtureDate = '2026-09-05';
+

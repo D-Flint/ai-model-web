@@ -130,3 +130,30 @@
 - Current state: 82 verified models with reasoning effort levels, company logos, and real benchmark evidence are fully operational.
 - Commit: `d81fc45` — `feat: add missing newer models, reasoning effort levels, and AI company logos` (local only; no push).
 - Exact next step: User verifies UI locally at `http://localhost:4321` or production build.
+
+## 2026-09-05 — Model Reasoning Effort Selection, Comparison & Dynamic Stats
+
+- Objective: Allow users to select and compare different reasoning effort levels of models (including comparing multiple effort levels of the same model side-by-side) with dynamic stats reflecting performance, tokens, latency, and cost for that effort.
+- Files changed:
+  - `src/data/config.ts`: Added `ReasoningEffort`, `effortLabels`, `effortTokens`, `effortLatency`, and `effortScoreAdjustments` configuration.
+  - `src/lib/decision.ts`: Enhanced `taskCost` to support reasoning effort token additions, implemented `getModelEffortStats` for deterministic effort-adjusted capabilities and latency, and updated `selectionFromSearch` to parse `slug:effort` query parameters.
+  - `src/components/ComparisonBuilder.tsx`: Supported effort level selection dropdown per column with real-time stat recalculation, comparing multiple effort levels of the same model (e.g., `o3-mini:low` vs `o3-mini:high`), "+ Compare another effort" quick action button, and effort-adjusted performance, latency, tokens, and cost metrics.
+  - `src/components/ModelEffortExplorer.tsx`: Created interactive effort explorer component for model detail pages showing live scores, latency profile, thinking tokens, and cost deltas with a 1-click comparison action.
+  - `src/pages/models/[slug].astro`: Integrated `ModelEffortExplorer` on model detail pages and added a "Compare effort levels" direct action button.
+  - `src/components/CostCalculator.tsx`: Replaced hardcoded map with centralized `effortTokens` from config.
+  - `src/styles/global.css`: Added styles for effort dropdown selectors, compare pills, explorer tabs, and metric delta badges.
+  - `tests/decision.test.ts`: Added unit tests verifying multi-effort comparison selection parsing and differential stats calculation across effort levels.
+  - `.agents/registry.json`, `.agents/activity.jsonl`: Multi-agent collaboration state and claims updated.
+- Attempts: 1 iteration with iterative verification.
+- Failures and causes:
+  - Initial `write_to_file` call with `ArtifactMetadata` targeting source directory failed because `ArtifactMetadata` is reserved for artifacts; resolved by writing normal project file without `ArtifactMetadata`.
+  - Reference to removed local `reasoningTokenMap` in `CostCalculator.tsx` caught by `astro check`; resolved with `effortTokens[effort]`.
+  - Unused icon imports in `ModelEffortExplorer.tsx` caught by TypeScript check; cleaned up.
+- Tests and results:
+  - `npm test`: 34/34 tests pass across all 3 test suites.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 50 Astro and TypeScript files.
+  - `npm run build`: Production build passes cleanly, generating 3,419 static pages in 3m 7s.
+- Commit hash: Pending local commit.
+- Current state: Users can select and compare different reasoning effort levels for any reasoning model, compare multiple effort levels of the same model side-by-side, and inspect dynamic stats (scores, tokens, latency, cost) across both `/compare` and `/models/[slug]`.
+- Exact next step: Pause and await user verification of the new effort selection and comparison features locally.
+

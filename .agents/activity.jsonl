@@ -28,3 +28,15 @@
 {"timestamp":"2026-09-05T06:50:18.097Z","agentId":"data-agent","action":"RELEASE","target":"src/components","details":"Released lock"}
 {"timestamp":"2026-09-05T06:50:18.098Z","agentId":"data-agent","action":"RELEASE","target":"src/data","details":"Released lock"}
 {"timestamp":"2026-09-05T06:50:22.240Z","agentId":"data-agent","action":"COMPLETE","target":"SESSION","details":"Added 18 premier frontier models including GPT-6 Astra, added Reasoning Effort levels across UI/calculator/comparison, and integrated vector SVG AI company logos"}
+{"timestamp":"2026-09-05T07:57:06.149Z","agentId":"effort-agent","action":"REGISTER","target":"Comparison & Stats Specialist","details":"Enable selecting and comparing different effort levels of models with dynamic stats"}
+{"timestamp":"2026-09-05T07:57:12.285Z","agentId":"effort-agent","action":"CLAIM","target":"src/lib/decision.ts","details":"Add effort-adjusted stat calculation logic"}
+{"timestamp":"2026-09-05T07:57:15.671Z","agentId":"effort-agent","action":"CLAIM","target":"src/components","details":"Support effort selection and comparison with dynamic stats"}
+{"timestamp":"2026-09-05T07:58:01.913Z","agentId":"effort-agent","action":"CLAIM","target":"src/data/config.ts","details":"Add effort levels, tokens, latencies, and score adjustment configuration"}
+{"timestamp":"2026-09-05T07:59:21.483Z","agentId":"effort-agent","action":"CLAIM","target":"src/styles/global.css","details":"Add styles for effort controls and model effort explorer"}
+{"timestamp":"2026-09-05T08:00:33.599Z","agentId":"effort-agent","action":"CLAIM","target":"src/pages/models/[slug].astro","details":"Add ModelEffortExplorer component and effort compare actions"}
+{"timestamp":"2026-09-05T08:06:17.085Z","agentId":"effort-agent","action":"RELEASE","target":"src/lib/decision.ts","details":"Released lock"}
+{"timestamp":"2026-09-05T08:06:17.086Z","agentId":"effort-agent","action":"RELEASE","target":"src/components","details":"Released lock"}
+{"timestamp":"2026-09-05T08:06:17.086Z","agentId":"effort-agent","action":"RELEASE","target":"src/data/config.ts","details":"Released lock"}
+{"timestamp":"2026-09-05T08:06:17.087Z","agentId":"effort-agent","action":"RELEASE","target":"src/styles/global.css","details":"Released lock"}
+{"timestamp":"2026-09-05T08:06:17.087Z","agentId":"effort-agent","action":"RELEASE","target":"src/pages/models/[slug].astro","details":"Released lock"}
+{"timestamp":"2026-09-05T08:06:38.019Z","agentId":"effort-agent","action":"COMPLETE","target":"SESSION","details":"Successfully enabled selecting and comparing different effort levels with dynamic stats"}
