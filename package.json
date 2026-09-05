@@ -21,11 +21,7 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "test:browser": "python tests/browser_flows.py",
-    "test": "vitest run",
-    "agent:status": "node scripts/agent-collab.mjs status",
-    "agent:register": "node scripts/agent-collab.mjs register",
-    "agent:claim": "node scripts/agent-collab.mjs claim",
-    "agent:release": "node scripts/agent-collab.mjs release"
+    "test": "vitest run"
   },
   "repository": {
     "type": "git",

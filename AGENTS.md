@@ -49,14 +49,6 @@ After each implementation, run the relevant local tests and create a local Git c
 
 Do not use emoji as icons. Use an appropriate icon asset or icon library when an interface icon is needed.
 
-## Multi-Agent Collaboration Protocol
-
-When multiple agents work on this repository simultaneously, follow `.agents/COLLABORATION.md`. Every agent must:
-1. Run `npm run agent:status` to inspect active peer agents, claimed paths, and recent activity before starting work.
-2. Register its identity and goal: `npm run agent:register <agentId> <role> <goal>`.
-3. Claim specific files or directories before making changes: `npm run agent:claim <agentId> <path> <task>` to prevent file conflicts.
-4. Release claims upon committing work: `npm run agent:release <agentId> [path]`.
-
 ## Session-End Protocol
 
 Before ending a session, append an entry to `SESSION_LOG.md` containing the date, objective, files changed, attempt count, failures and causes, tests and results, commit hash, current state, and the exact next step. Record failed approaches once so future agents do not repeat them. Keep entries concise and preserve prior history. If implementation is complete, stop after the local commit and wait for user verification.
