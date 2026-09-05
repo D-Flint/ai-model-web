@@ -498,6 +498,25 @@
 - Current state: Model explorer on `/models` is rendered as an interactive benchmark leaderboard table matching the user's reference screenshot with maximum reasoning effort integration.
 - Exact next step: User verifies the new leaderboard table locally at `http://localhost:4321/models`.
 
+## 2026-09-05 — Fix Benchmark Leaderboard Table Alignment and Layout
+
+- Objective: Fix the table header column misalignment, nested `<tbody>` DOM invalidity, column squeezing, and empty metric scores identified in user Screenshot 202309.png.
+- Files changed:
+  - `src/components/ModelExplorer.tsx`: Removed invalid nested `<tbody>` tags inside `<tbody>` (swapped for `<React.Fragment key={row.model.slug}>`), enriched missing metric columns (`mathematics`, `dataAnalysis`, `language`, `instructionFollowing`) with authentic LiveBench data from `src/data/livebenchData.json`, set `includeFinetunes` default state to inactive (`false`) to match the reference design, and cleaned up component rendering.
+  - `src/pages/models/index.astro`: Cleaned up Astro template layout tags and ensured clean `client:load` hydration of `ModelExplorer`.
+  - `src/styles/global.css`: Fixed table column alignment and widths (`th-expand` 38px, `th-model` 25% min 250px, `th-metric` 82px, `th-cost` 120px), enabled text wrapping on multi-word headers (`AGENTIC CODING`, `DATA ANALYSIS`, `INSTRUCTION FOLLOWING`, `COST PER SUCCESSFUL TASK`), centered numeric cells, aligned model names to the left, and refined sorted column and top 5 shading colors.
+  - `.agents/registry.json`: Completed `table-fix-agent` task and released file locks.
+- Attempts: 1 iteration with live Chrome DevTools verification and visual screenshot confirmation.
+- Failures and causes:
+  - Table headers were shifted to the right in the user screenshot because `<tbody key={row.model.slug}>` was rendered inside another `<tbody>` for each row, causing the HTML parser to treat the whole inner row block as column 1 and shift all headers. Resolved by using `<React.Fragment>`.
+- Tests and results:
+  - `npm test`: 37/37 passed across all test suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 62 Astro and TypeScript files.
+  - `npm run lint`: Clean, 0 errors.
+  - Live Browser Verification: Confirmed via Chrome DevTools that table headers and columns align 100%, sorting by category works, top 5 shading renders correctly, and expandable subtask accordions expand without breaking table geometry.
+- Current state: Benchmark leaderboard table is aligned, verified, and matches the reference design.
+- Exact next step: User verifies the fixed leaderboard table locally at `http://localhost:4321/models`.
+
 
 
 

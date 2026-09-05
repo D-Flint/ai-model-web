@@ -4,12 +4,13 @@ import ModelExplorer from '../../components/ModelExplorer';
 import { models } from '../../data/models';
 ---
 
-<RootLayout title="Explore AI models | Astra"
-  ><div class="page-heading">
-    <span class="eyebrow">THE MODEL EXPLORER</span><h1>
-      Meet your next AI model.
-    </h1><p>
+<RootLayout title="Explore AI models | Astra">
+  <div class="page-heading">
+    <span class="eyebrow">THE MODEL EXPLORER</span>
+    <h1>Meet your next AI model.</h1>
+    <p>
       Explore capabilities, compare prices, and find a fit for the way you work.
     </p>
-  </div><ModelExplorer models={models} client:load /></RootLayout
->
+  </div>
+  <ModelExplorer models={models} client:load />
+</RootLayout>

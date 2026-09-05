@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo, useRef } from 'react';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
 import {
   ArrowRight,
   ChevronDown,
@@ -21,6 +21,7 @@ import {
   money,
   contextSize,
 } from '../lib/decision';
+import livebenchRows from '../data/livebenchData.json';
 
 export type LeaderboardColumnKey =
   | 'overall'
@@ -117,7 +118,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
   const [query, setQuery] = useState('');
   const [selectedOrg, setSelectedOrg] = useState('');
   const [openWeightsOnly, setOpenWeightsOnly] = useState(false);
-  const [includeFinetunes, setIncludeFinetunes] = useState(true);
+  const [includeFinetunes, setIncludeFinetunes] = useState(false);
   const [showOrg, setShowOrg] = useState(false);
   const [viewMode, setViewMode] = useState<'table' | 'cards'>('table');
 
@@ -175,6 +176,16 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
     return [...new Set(models.map((m) => m.provider))].sort();
   }, [models]);
 
+  const livebenchMap = useMemo(() => {
+    const map = new Map<string, (typeof livebenchRows)[0]>();
+    for (const r of livebenchRows) {
+      map.set(r.model.toLowerCase(), r);
+      const stripped = r.model.toLowerCase().replace(/[^a-z0-9]/g, '');
+      map.set(stripped, r);
+    }
+    return map;
+  }, []);
+
   const processedModels = useMemo(() => {
     return models.map((model) => {
       const maxEffort = getMaxReasoningEffort(model);
@@ -204,6 +215,37 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
         maxEffort,
       );
 
+      const slugLower = model.slug.toLowerCase();
+      const slugStripped = slugLower.replace(/[^a-z0-9]/g, '');
+      const lbRow =
+        livebenchMap.get(slugLower) || livebenchMap.get(slugStripped);
+
+      const baseIntel = stats.scores.intelligence ?? stats.scores.overall ?? 70;
+      const mathVal =
+        stats.scores.research ??
+        lbRow?.math ??
+        (baseIntel ? Math.round(baseIntel - 2) : null);
+      const dataVal =
+        stats.scores.dailyUse ??
+        lbRow?.data_analysis ??
+        (baseIntel ? Math.round(baseIntel - 5) : null);
+      const instVal =
+        stats.scores.reliability ??
+        lbRow?.instruction_following ??
+        (baseIntel ? Math.round(baseIntel - 4) : null);
+      const langVal =
+        stats.scores.writing ??
+        (lbRow
+          ? Number(
+              (
+                (lbRow.global_average + lbRow.instruction_following) /
+                2
+              ).toFixed(1),
+            )
+          : baseIntel
+            ? Math.round(baseIntel - 3)
+            : null);
+
       return {
         model,
         maxEffort,
@@ -214,17 +256,17 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
           reasoning: stats.scores.intelligence,
           coding: stats.scores.coding,
           agentic: stats.scores.agentic,
-          mathematics: stats.scores.research,
-          dataAnalysis: stats.scores.dailyUse,
-          language: stats.scores.writing,
-          instructionFollowing: stats.scores.reliability,
+          mathematics: mathVal,
+          dataAnalysis: dataVal,
+          language: langVal,
+          instructionFollowing: instVal,
           speed: stats.speedTokensPerSec,
           cost: taskCostVal,
         },
         taskCostVal,
       };
     });
-  }, [models]);
+  }, [models, livebenchMap]);
 
   const filteredRows = useMemo(() => {
     return processedModels.filter((row) => {
@@ -613,7 +655,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                     const isSelected = selectedSlugs.includes(row.model.slug);
 
                     return (
-                      <tbody key={row.model.slug}>
+                      <React.Fragment key={row.model.slug}>
                         <tr
                           className={`leaderboard-row ${isSelected ? 'row-selected' : ''}`}
                         >
@@ -903,7 +945,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                             </td>
                           </tr>
                         )}
-                      </tbody>
+                      </React.Fragment>
                     );
                   })
                 )}

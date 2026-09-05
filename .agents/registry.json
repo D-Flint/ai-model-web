@@ -102,6 +102,12 @@
       "goal": "Convert model explorer from card list to interactive benchmark leaderboard table",
       "lastHeartbeat": "2026-09-05T13:19:00.000Z",
       "status": "completed"
+    },
+    "table-fix-agent": {
+      "role": "UI/UX Fix Specialist",
+      "goal": "Fix leaderboard table alignment, layout, and visual fidelity",
+      "lastHeartbeat": "2026-09-05T13:24:07.325Z",
+      "status": "active"
     }
   },
   "claims": {},

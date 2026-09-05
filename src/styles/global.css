@@ -2527,12 +2527,12 @@ th {
 table.leaderboard-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 13px;
+  font-size: 13.5px;
   text-align: left;
 }
 
 table.leaderboard-table thead th {
-  padding: 12px 14px;
+  padding: 12px 10px;
   font-size: 11px;
   font-weight: 700;
   color: var(--muted);
@@ -2540,8 +2540,8 @@ table.leaderboard-table thead th {
   text-transform: uppercase;
   border-bottom: 1px solid var(--border);
   user-select: none;
-  white-space: nowrap;
   background: var(--surface);
+  vertical-align: middle;
 }
 
 table.leaderboard-table thead th.th-sortable {
@@ -2555,7 +2555,18 @@ table.leaderboard-table thead th.th-sortable:hover {
 .th-content {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 4px;
+  line-height: 1.25;
+  text-align: inherit;
+}
+
+.th-model .th-content {
+  justify-content: flex-start;
+}
+
+.th-align-right .th-content {
+  justify-content: flex-end;
 }
 
 .sort-indicator {
@@ -2566,9 +2577,25 @@ table.leaderboard-table thead th.th-sortable:hover {
 
 .th-expand,
 .td-expand {
-  width: 36px;
-  padding: 8px 6px 8px 14px !important;
+  width: 38px;
+  min-width: 38px;
+  max-width: 38px;
+  padding: 10px 4px 10px 14px !important;
   text-align: center;
+}
+
+.th-model,
+.td-model {
+  min-width: 250px;
+  width: 25%;
+  text-align: left;
+  padding: 12px 14px;
+}
+
+.th-metric,
+.td-metric {
+  min-width: 82px;
+  padding: 12px 8px;
 }
 
 .th-align-center,
@@ -2579,6 +2606,7 @@ table.leaderboard-table thead th.th-sortable:hover {
 .th-align-right,
 .td-align-right {
   text-align: right;
+  padding-right: 18px;
 }
 
 .th-align-left,
@@ -2589,6 +2617,7 @@ table.leaderboard-table thead th.th-sortable:hover {
 /* Sorted column & top 5 cells */
 table.leaderboard-table td.col-sorted {
   background-color: #eff6ff;
+  font-weight: 600;
 }
 
 table.leaderboard-table th.col-sorted {
@@ -2598,6 +2627,7 @@ table.leaderboard-table th.col-sorted {
 
 :root[data-theme='dark'] table.leaderboard-table td.col-sorted {
   background-color: rgba(59, 130, 246, 0.12);
+  font-weight: 600;
 }
 
 :root[data-theme='dark'] table.leaderboard-table th.col-sorted {
@@ -2609,7 +2639,6 @@ table.leaderboard-table th.col-sorted {
   background-color: #ede9fe;
   color: #4338ca;
   font-weight: 600;
-  border-radius: 4px;
 }
 
 :root[data-theme='dark'] .cell-top5 {
@@ -2618,7 +2647,7 @@ table.leaderboard-table th.col-sorted {
 }
 
 table.leaderboard-table tbody td {
-  padding: 10px 14px;
+  padding: 12px 8px;
   border-bottom: 1px solid var(--border);
   font-variant-numeric: tabular-nums;
   vertical-align: middle;
