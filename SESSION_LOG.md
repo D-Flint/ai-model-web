@@ -198,6 +198,6 @@
   - `npm run check`: 0 errors, 0 warnings, 0 hints across 50 Astro and TypeScript files.
   - `npm run lint`: ESLint and Prettier pass cleanly with 0 errors.
   - `npm run build`: Production build passes cleanly, generating 3,099 static pages (including new ranking routes).
-- Current state: The entire application is focused squarely on Intelligence, Speed, and Price as the primary triad of model metrics.
-- Commit: Pending local commit.
+- Current state: The entire application is focused squarely on Intelligence, Speed, and Price as the primary triad of model metrics. All locks released and working tree verified.
+- Commit: `77857e0` (local commit; no remote push).
 - Exact next step: User verifies the 3-state experience locally at `http://localhost:4321` or production build preview. Pause before any further implementation.
