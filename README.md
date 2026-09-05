@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 <div align="center">
 
-# ⚡ Astra — AI Model Guide & Decision Engine
+# Astra — AI Model Guide & Decision Engine
 
 **The clear, transparent, consumer-first decision engine for AI models.**  
 *Because nobody should need a PhD in benchmark metrics just to pick the right AI tool.*
@@ -14,20 +13,20 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 <p align="center">
-  <a href="#-the-vision">Vision</a> •
-  <a href="#-user-journey">User Journey</a> •
-  <a href="#-flagship-features">Features</a> •
-  <a href="#-scoring--methodology">Scoring System</a> •
-  <a href="#-tech-stack--architecture">Architecture</a> •
-  <a href="#-design-system">Design</a> •
-  <a href="#-getting-started">Getting Started</a>
+  <a href="#the-vision">Vision</a> •
+  <a href="#user-journey">User Journey</a> •
+  <a href="#flagship-features">Features</a> •
+  <a href="#scoring--methodology">Scoring System</a> •
+  <a href="#tech-stack--architecture">Architecture</a> •
+  <a href="#design-system-soft-utility">Design</a> •
+  <a href="#getting-started">Getting Started</a>
 </p>
 
 ---
 
 </div>
 
-## 🎯 The Vision
+## The Vision
 
 Choosing an AI model today feels like reading research papers. Standard leaderboards are overloaded with acronyms like **SWE-bench**, **GPQA**, **MMLU**, **TTFT**, and **ELO**, leaving everyday users, students, writers, and software builders asking the same simple question:
 
@@ -37,46 +36,46 @@ Choosing an AI model today feels like reading research papers. Standard leaderbo
 
 ---
 
-## 🗺️ User Journey
+## User Journey
 
 Astra guides visitors through an intuitive decision funnel rather than a static leaderboard wall:
 
-```
-  ┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐
-  │   1. DISCOVER   │ ───►  │   2. COMPARE    │ ───►  │  3. UNDERSTAND  │ ───►  │    4. CHOOSE    │
-  │ Search & filter │       │ Head-to-head    │       │ Traceable data  │       │ Confident, best │
-  │ by capability   │       │ 2–4 models      │       │ & task costs    │       │ model selection │
-  └─────────────────┘       └─────────────────┘       └─────────────────┘       └─────────────────┘
+```text
+  +-----------------+       +-----------------+       +-----------------+       +-----------------+
+  |   1. DISCOVER   | ----> |   2. COMPARE    | ----> |  3. UNDERSTAND  | ----> |    4. CHOOSE    |
+  | Search & filter |       | Head-to-head    |       | Traceable data  |       | Confident, best |
+  | by capability   |       | 2-4 models      |       | & task costs    |       | model selection |
+  +-----------------+       +-----------------+       +-----------------+       +-----------------+
 ```
 
 ---
 
-## 🚀 Flagship Features
+## Flagship Features
 
-### 1. 🔍 Consumer-First Model Explorer
+### 1. Consumer-First Model Explorer
 * **Filter with plain terms**: Filter by Provider, Coding ability, Agentic readiness, Daily use, Pricing, Modality, and Context size.
 * **Unified 0–100 Scores**: Clean, standardized numerical ratings across Intelligence, Coding, Agents, Writing, Research, Speed, and Reliability.
-* **Context at a glance**: Instant badges for open-weights, API availability, audio/vision support, and context limits.
+* **Context at a glance**: Clear badges for open-weights, API availability, audio/vision support, and context limits.
 
-### 2. ⚖️ Head-to-Head Comparison Engine
+### 2. Head-to-Head Comparison Engine
 * Compare **2 to 4 models simultaneously** with synchronous row alignments.
-* **Smart Verdicts**: Instant bottom-line guidance (*"Choose Claude 3.7 Sonnet if you need autonomous coding loops; choose Gemini 2.5 Pro if you require a 2M token context window"*).
+* **Smart Verdicts**: Direct bottom-line guidance (*"Choose Claude 3.7 Sonnet if you need autonomous coding loops; choose Gemini 2.5 Pro if you require a 2M token context window"*).
 * **Tradeoff Spotlights**: Highlights strengths, price differentials, and trade-offs without misleading binary red/green color traps.
 
-### 3. 🧙 Deterministic Model Finder (Wizard)
+### 3. Deterministic Model Finder (Wizard)
 * An interactive 3-step recommendation flow for undecided users:
   1. *What do you mainly want to accomplish?* (Coding, Research, Casual Chat, Writing, Agents...)
   2. *What matters most to you?* (Peak Quality, Low Latency, Lowest Price, Value Balance...)
   3. *What is your operational budget?* (Free, Budget-conscious, High-volume production...)
 * Yields **Top Pick**, **Best Value Alternative**, and **High-Performance Option** with detailed rationales.
 
-### 4. 💸 "Effective Cost Per Task" Engine
+### 4. "Effective Cost Per Task" Engine
 * **Beyond raw token rates**: Cheaper models that hallucinate or require multiple retries often cost *more* in production than a smarter, higher-priced model.
 * **Formula**:
   $$\text{Effective Cost Per Task} = \frac{\text{Average Cost Per Attempt}}{\text{Task Success Probability}} + \text{Agentic Tool Overhead}$$
 * Calculates real-world task tiers: *Fix a bug*, *Summarize a 50-page PDF*, *Draft customer emails*, or *Execute a multi-file coding agent task*.
 
-### 5. 🏆 Dedicated Use-Case Rankings
+### 5. Dedicated Use-Case Rankings
 * Standalone rankings with editorial commentary and context:
   * **Best for Coding & Software Development**
   * **Best for Autonomous Agent Workflows**
@@ -84,9 +83,9 @@ Astra guides visitors through an intuitive decision funnel rather than a static 
   * **Best Value & Cost Efficiency**
   * **Best for In-Depth Research & Synthesis**
 
-### 6. 🔬 Radical Transparency & Provenance
+### 6. Radical Transparency & Provenance
 * **Zero black-box scores**: Every single metric can be expanded to reveal:
-  * Raw benchmark inputs & weights
+  * Raw benchmark inputs and weights
   * First-party testing results
   * Normalization methodology
   * Source links, verification dates, and sample sizes
@@ -94,7 +93,7 @@ Astra guides visitors through an intuitive decision funnel rather than a static 
 
 ---
 
-## 📊 Scoring & Methodology
+## Scoring & Methodology
 
 Astra scores are composite, deterministic evaluations designed to avoid benchmark gaming:
 
@@ -107,7 +106,7 @@ Astra scores are composite, deterministic evaluations designed to avoid benchmar
 | **Daily Use** | Tone, conciseness, instruction following, chat | Preference evaluations, summary fidelity, daily prompt suite |
 | **Research** | Synthesis, factual retrieval, citation discipline | Long-document comprehension, hallucination rate tests |
 | **Reliability** | Consistent formatting, uptime, low refusal rate | Schema compliance rate, response variance across identical seeds |
-| **Cost Efficiency**| Quality delivered per dollar spent | Task completion rate / Effective task cost |
+| **Cost Efficiency** | Quality delivered per dollar spent | Task completion rate / Effective task cost |
 
 ### Data Provenance Hierarchy
 1. **Tier 1 — Provider Truth**: Official documentation for pricing, context windows, modalities, and limits.
@@ -117,11 +116,11 @@ Astra scores are composite, deterministic evaluations designed to avoid benchmar
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+## Tech Stack & Architecture
 
 Astra follows a **Content-First, Islands Architecture**:
 
-```
+```text
 ai-model-web/
 ├── public/                 # Static assets, fonts, icons
 ├── src/
@@ -139,7 +138,7 @@ ai-model-web/
 └── .agents/skills/         # Project-scoped design & engineering skills
 ```
 
-* **Core Engine**: [Astro 5](https://astro.build) for blazing-fast SSR, SSG, and zero-JS default pages.
+* **Core Engine**: [Astro 5](https://astro.build) for fast SSR, SSG, and zero-JS default pages.
 * **Interactive Islands**: [React 19](https://react.dev) for real-time sliders, comparison trays, and dynamic filters.
 * **Styling**: [Tailwind CSS 4](https://tailwindcss.com) with CSS custom variables for instant Dark/Light mode switching.
 * **Data Layer**: [Drizzle ORM](https://orm.drizzle.team) with PostgreSQL for strict typed entity relations.
@@ -147,17 +146,17 @@ ai-model-web/
 
 ---
 
-## 🎨 Design System: Soft Utility
+## Design System: Soft Utility
 
 Astra adopts a **Soft Data / Modern Utility** aesthetic inspired by *Linear*, *Vercel*, and *Raycast*:
 * **No AI Clichés**: No gratuitous purple lasers, neon circuit boards, or heavy blur artifacts.
-* **Data Legibility**: High typographic hierarchy (Geist / Inter), comfortable density, and clear numerical callouts.
+* **Data Legibility**: Strong typographic hierarchy (Geist / Inter), comfortable density, and clear numerical callouts.
 * **Calm Palettes**:
   * **Light**: Clean canvas (`#F8F9FB`), crisp cards (`#FFFFFF`), subtle borders (`#E5E7EB`).
   * **Dark**: Deep obsidian (`#0B0D10`), elevated panels (`#12151A`), crisp borders (`#252932`).
-* **Motion with Purpose**: Responsive physics (150–250ms), smooth number ticks, and respect for `prefers-reduced-motion`.
+* **Motion with Purpose**: Responsive physics (150–250ms), smooth number transitions, and respect for `prefers-reduced-motion`.
 
-### 🧠 Project-Local Agent Skills
+### Project-Local Agent Skills
 The repository incorporates 5 specialized local design skills in `.agents/skills/`:
 * `ui-ux-pro-max` — Design rules, color scales, and stack heuristics.
 * `emil-design-eng` — Fluid interaction physics and micro-animations.
@@ -167,7 +166,7 @@ The repository incorporates 5 specialized local design skills in `.agents/skills
 
 ---
 
-## 💻 Getting Started
+## Getting Started
 
 ### Prerequisites
 * **Node.js**: `v20.0.0` or higher
@@ -177,7 +176,7 @@ The repository incorporates 5 specialized local design skills in `.agents/skills
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/ai-model-web.git
+git clone https://github.com/D-Flint/ai-model-web.git
 cd ai-model-web
 
 # 2. Install dependencies
@@ -193,26 +192,23 @@ npm run dev
 | :--- | :--- |
 | `npm run dev` | Start local Astro development server with HMR |
 | `npm run build` | Compile static output & SSR server entrypoints |
-| `npm run preview`| Preview production build locally |
+| `npm run preview` | Preview production build locally |
 | `npm run check` | Run Astro template and strict TypeScript checks |
 | `npm run lint` | Execute code formatting and ESLint validations |
 | `npm test` | Run Vitest unit tests on scoring and cost engines |
 
 ---
 
-## 🛡️ Repository & Contribution Rules
+## Repository & Contribution Rules
 
 1. **Product Truth**: Always treat [`ai-model-guide-gpt6-astra-brief.md`](ai-model-guide-gpt6-astra-brief.md) and [`AGENTS.md`](AGENTS.md) as the authoritative product reference.
 2. **Strict Data Honesty**: Never guess or invent pricing, scores, or benchmarks. All unverified fixture data must be labeled as mock data with explicit verification timestamps.
-3. **Island Discipline**: Keep marketing and SEO content server-rendered in Astro; isolate React to interactive stateful widgets.
-4. **Conventional Commits**: Use imperative commit messages (`feat: add side-by-side comparison grid`, `test: verify cost per task formula`).
+3. **No Emojis as Icons**: Absolutely do not use emojis or icons in the product, interface, copy, documentation, or implementation unless explicitly requested.
+4. **Island Discipline**: Keep marketing and SEO content server-rendered in Astro; isolate React to interactive stateful widgets.
+5. **Conventional Commits**: Use imperative commit messages (`feat: add side-by-side comparison grid`, `test: verify cost per task formula`).
 
 ---
 
 <div align="center">
   <sub>Designed and engineered for clarity, transparency, and confidence.</sub>
 </div>
-=======
-# ai-model-web
-A consumer friendly AI models comparison platform design for less technical people. This site compare models on factor such as pricing, capability,  cost-per-task, real-world performance, and real-world use case.
->>>>>>> origin/main

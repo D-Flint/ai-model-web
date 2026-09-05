@@ -47,6 +47,8 @@ Inspect the repository before editing. Preserve existing work, keep Astro conten
 
 After each implementation, run the relevant local tests and create a local Git commit. Pause before starting the next implementation until the user verifies the result through local testing. Never push to GitHub unless the user explicitly instructs it.
 
+Do not use emoji as icons. Use an appropriate icon asset or icon library when an interface icon is needed.
+
 ## Repository-Local Skills
 
 Project-scoped design skills are stored in `.agents/skills/` so compatible agents can discover them from the repository. Available skills include `ui-ux-pro-max`, `frontend-design`, `emil-design-eng`, `design-taste-frontend`, and `impeccable`. Apply them when designing or reviewing the interface, while keeping the product brief and repository conventions authoritative.
