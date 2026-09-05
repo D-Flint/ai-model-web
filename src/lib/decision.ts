@@ -115,10 +115,11 @@ export function getSpeedTokensPerSec(
     return baseTps;
   }
 
-  const isReasoning =
+  const isReasoning = Boolean(
     model.facts.reasoningEffort &&
     model.facts.reasoningEffort.length > 0 &&
-    !model.facts.reasoningEffort.includes('none');
+    model.facts.reasoningEffort.some((e) => e !== 'none'),
+  );
 
   if (!isReasoning) return baseTps;
 
@@ -134,14 +135,34 @@ export function getSpeedTokensPerSec(
   return Math.max(10, Math.round(baseTps + delta * 1.8));
 }
 
+export function getMaxReasoningEffort(model: CatalogModel): ReasoningEffort {
+  const isReasoning = Boolean(
+    model.facts.reasoningEffort &&
+    model.facts.reasoningEffort.length > 0 &&
+    model.facts.reasoningEffort.some((e) => e !== 'none'),
+  );
+
+  if (!isReasoning) return 'none';
+  if (model.facts.reasoningEffort.includes('fixed')) return 'fixed';
+
+  const tiers: ReasoningEffort[] = ['max', 'high', 'medium', 'low'];
+  for (const tier of tiers) {
+    if (model.facts.reasoningEffort.includes(tier)) {
+      return tier;
+    }
+  }
+  return 'none';
+}
+
 export function getModelEffortStats(
   model: CatalogModel,
   requestedEffort?: ReasoningEffort,
 ): ModelEffortStats {
-  const isReasoning =
+  const isReasoning = Boolean(
     model.facts.reasoningEffort &&
     model.facts.reasoningEffort.length > 0 &&
-    !model.facts.reasoningEffort.includes('none');
+    model.facts.reasoningEffort.some((e) => e !== 'none'),
+  );
 
   let effort: ReasoningEffort = 'none';
   if (isReasoning) {
@@ -152,13 +173,8 @@ export function getModelEffortStats(
       model.facts.reasoningEffort.includes(requestedEffort)
     ) {
       effort = requestedEffort;
-    } else if (
-      model.facts.defaultEffort &&
-      model.facts.defaultEffort !== 'none'
-    ) {
-      effort = model.facts.defaultEffort;
     } else {
-      effort = model.facts.reasoningEffort[0] ?? 'medium';
+      effort = getMaxReasoningEffort(model);
     }
   }
 

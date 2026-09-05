@@ -77,3 +77,31 @@
 {"timestamp":"2026-09-05T12:12:56.822Z","agentId":"frontier-agent","action":"RELEASE","target":"tests","details":"Released lock"}
 {"timestamp":"2026-09-05T12:13:00.520Z","agentId":"frontier-agent","action":"COMPLETE","target":"SESSION","details":"Added 6 newer models: Grok 2, Qwen 2.5 Max, Qwen 2.5 Coder, Codestral, Pixtral Large, Llama 3.2 90B"}
 {"timestamp":"2026-09-05T12:20:43.967Z","agentId":"frontier-agent","action":"COMPLETE","target":"SESSION","details":"Rebuilt catalog with strict chronological newest-to-oldest ordering and release date badges"}
+{"timestamp":"2026-09-05T12:23:21.976Z","agentId":"newest-agent","action":"REGISTER","target":"Data & Pipeline Engineer","details":"Add more of the newest models from 2025/late-2024"}
+{"timestamp":"2026-09-05T12:23:27.031Z","agentId":"newest-agent","action":"CLAIM","target":"src","details":"Add newest models"}
+{"timestamp":"2026-09-05T12:23:27.744Z","agentId":"newest-agent","action":"CLAIM","target":"tests","details":"Update tests"}
+{"timestamp":"2026-09-05T12:28:50.684Z","agentId":"newest-agent","action":"RELEASE","target":"src","details":"Released lock"}
+{"timestamp":"2026-09-05T12:28:50.686Z","agentId":"newest-agent","action":"RELEASE","target":"tests","details":"Released lock"}
+{"timestamp":"2026-09-05T12:31:54.218Z","agentId":"catalog-expander","action":"REGISTER","target":"Data & Pipeline Engineer","details":"Expand catalog with more verified models in newest-to-oldest order"}
+{"timestamp":"2026-09-05T12:31:57.671Z","agentId":"catalog-expander","action":"CLAIM","target":"src","details":"Add verified models"}
+{"timestamp":"2026-09-05T12:32:01.563Z","agentId":"catalog-expander","action":"CLAIM","target":"tests","details":"Update tests"}
+{"timestamp":"2026-09-05T12:34:16.907Z","agentId":"catalog-expander","action":"RELEASE","target":"src","details":"Released lock"}
+{"timestamp":"2026-09-05T12:34:16.908Z","agentId":"catalog-expander","action":"RELEASE","target":"tests","details":"Released lock"}
+{"timestamp":"2026-09-05T12:35:31.677Z","agentId":"openai-agent","action":"REGISTER","target":"Data Engineer","details":"Add all OpenAI models with official specs in newest-to-oldest order"}
+{"timestamp":"2026-09-05T12:35:35.957Z","agentId":"openai-agent","action":"CLAIM","target":"src","details":"Add OpenAI models"}
+{"timestamp":"2026-09-05T12:35:40.231Z","agentId":"openai-agent","action":"CLAIM","target":"tests","details":"Update tests"}
+{"timestamp":"2026-09-05T12:38:03.015Z","agentId":"openai-agent","action":"RELEASE","target":"src","details":"Released lock"}
+{"timestamp":"2026-09-05T12:38:03.016Z","agentId":"openai-agent","action":"RELEASE","target":"tests","details":"Released lock"}
+{"timestamp":"2026-09-05T12:39:17.321Z","agentId":"modular-agent","action":"REGISTER","target":"Refactoring Specialist","details":"Split canonicalModels.ts by company into modular provider files"}
+{"timestamp":"2026-09-05T12:39:21.005Z","agentId":"modular-agent","action":"CLAIM","target":"src/data","details":"Split canonicalModels.ts"}
+{"timestamp":"2026-09-05T12:41:49.525Z","agentId":"modular-agent","action":"RELEASE","target":"src/data","details":"Released lock"}
+{"timestamp":"2026-09-05T12:44:24.312Z","agentId":"openai-deep-agent","action":"REGISTER","target":"Data Engineer","details":"Add all specified OpenAI models with mock/verified labeling as required"}
+{"timestamp":"2026-09-05T12:44:32.052Z","agentId":"openai-deep-agent","action":"CLAIM","target":"src/data","details":"Add missing OpenAI models"}
+{"timestamp":"2026-09-05T12:52:10.487Z","agentId":"openai-deep-agent","action":"RELEASE","target":"src/data","details":"Released lock"}
+{"timestamp":"2026-09-05T12:59:00.800Z","agentId":"effort-default-agent","action":"REGISTER","target":"Frontend Engineer","details":"Set default effort of AI models shown on card to maximum possible effort"}
+{"timestamp":"2026-09-05T13:01:31.835Z","agentId":"effort-default-agent","action":"CLAIM","target":"src/components/ModelCard.tsx","details":"Set default effort shown on card to maximum possible effort"}
+{"timestamp":"2026-09-05T13:01:35.478Z","agentId":"effort-default-agent","action":"CLAIM","target":"src/lib/decision.ts","details":"Add getMaxReasoningEffort helper and ensure effort defaults"}
+{"timestamp":"2026-09-05T13:03:06.951Z","agentId":"effort-default-agent","action":"CLAIM","target":"tests/decision.test.ts","details":"Add tests for getMaxReasoningEffort and max effort default"}
+{"timestamp":"2026-09-05T13:05:56.316Z","agentId":"effort-default-agent","action":"RELEASE","target":"src/components/ModelCard.tsx","details":"Released lock"}
+{"timestamp":"2026-09-05T13:05:56.317Z","agentId":"effort-default-agent","action":"RELEASE","target":"src/lib/decision.ts","details":"Released lock"}
+{"timestamp":"2026-09-05T13:05:56.318Z","agentId":"effort-default-agent","action":"RELEASE","target":"tests/decision.test.ts","details":"Released lock"}

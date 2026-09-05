@@ -1,6 +1,11 @@
 import { ArrowUpRight, Plus, Check } from 'lucide-react';
 import type { CatalogModel } from '../lib/catalogSchema';
-import { contextSize, money, getSpeedTokensPerSec } from '../lib/decision';
+import {
+  contextSize,
+  money,
+  getMaxReasoningEffort,
+  getModelEffortStats,
+} from '../lib/decision';
 import { ProviderLogo } from './ProviderLogo';
 
 export function ModelMark({ model }: { model: CatalogModel }) {
@@ -22,11 +27,10 @@ export default function ModelCard({
   selected?: boolean;
   onSelect?: () => void;
 }) {
-  const speedTps = getSpeedTokensPerSec(model);
-  const isReasoning =
-    model.facts.reasoningEffort &&
-    model.facts.reasoningEffort.length > 0 &&
-    !model.facts.reasoningEffort.includes('none');
+  const maxEffort = getMaxReasoningEffort(model);
+  const isReasoning = maxEffort !== 'none';
+  const stats = getModelEffortStats(model, maxEffort);
+  const speedTps = stats.speedTokensPerSec;
 
   return (
     <article className="model-card">
@@ -45,12 +49,10 @@ export default function ModelCard({
         </div>
         {isReasoning ? (
           <span
-            className={`effort-badge ${model.facts.reasoningEffort?.includes('fixed') ? 'effort-fixed' : ''}`}
-            title={`Reasoning effort tiers: ${model.facts.reasoningEffort?.join(', ')}`}
+            className={`effort-badge ${maxEffort === 'fixed' ? 'effort-fixed' : ''}`}
+            title={`Reasoning effort tiers: ${model.facts.reasoningEffort?.join(', ')} (Card effort: ${maxEffort})`}
           >
-            {model.facts.reasoningEffort?.includes('fixed')
-              ? 'Fixed CoT'
-              : `Effort: ${model.facts.defaultEffort !== 'none' ? model.facts.defaultEffort : 'Selectable'}`}
+            {maxEffort === 'fixed' ? 'Fixed CoT' : `Effort: ${maxEffort}`}
           </span>
         ) : model.dataKind === 'verified' ? (
           <span className="sample-label verified-label">Verified</span>
@@ -65,9 +67,9 @@ export default function ModelCard({
         <a
           href={`/models/${model.slug}#scores`}
           className="score-number"
-          aria-label={`${model.name} overall score ${model.scores.overall ?? 'unavailable'}, see explanation`}
+          aria-label={`${model.name} overall score ${stats.scores.overall ?? 'unavailable'}, see explanation`}
         >
-          {model.scores.overall !== null ? model.scores.overall : '—'}
+          {stats.scores.overall !== null ? stats.scores.overall : '—'}
           <small>/100</small>
         </a>
       </div>
@@ -77,13 +79,13 @@ export default function ModelCard({
           <span>Intelligence</span>
           <strong
             title={
-              model.scores.intelligence !== null
-                ? `Intelligence: ${model.scores.intelligence}/100`
+              stats.scores.intelligence !== null
+                ? `Intelligence: ${stats.scores.intelligence}/100${isReasoning && maxEffort !== 'fixed' ? ` (${maxEffort} effort)` : ''}`
                 : 'Intelligence benchmark unavailable'
             }
           >
-            {model.scores.intelligence !== null
-              ? model.scores.intelligence
+            {stats.scores.intelligence !== null
+              ? stats.scores.intelligence
               : '—'}
           </strong>
         </div>
@@ -92,7 +94,7 @@ export default function ModelCard({
           <strong
             title={
               speedTps > 0
-                ? `Generation speed: ${speedTps} tokens/sec`
+                ? `Generation speed: ${speedTps} tokens/sec${isReasoning && maxEffort !== 'fixed' ? ` (${maxEffort} effort)` : ''}`
                 : 'Speed benchmark not yet claimed'
             }
           >
@@ -140,7 +142,10 @@ export default function ModelCard({
             {selected ? 'Added' : 'Compare'}
           </button>
         ) : (
-          <a className="compare-add" href={`/compare?models=${model.slug}`}>
+          <a
+            className="compare-add"
+            href={`/compare?models=${model.slug}${isReasoning && maxEffort !== 'fixed' ? `:${maxEffort}` : ''}`}
+          >
             <Plus size={14} /> Compare
           </a>
         )}

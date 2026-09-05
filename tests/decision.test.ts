@@ -8,6 +8,7 @@ import {
   selectionFromSearch,
   taskCost,
   getModelEffortStats,
+  getMaxReasoningEffort,
   getSpeedTokensPerSec,
 } from '../src/lib/decision';
 import { validateCatalog } from '../src/lib/importCatalog';
@@ -155,6 +156,56 @@ describe('task cost assumptions and reasoning effort stats', () => {
       if (model.facts.speedTokensPerSec) {
         expect(model.facts.speedTokensPerSec).toBe(tps);
       }
+    }
+  });
+  it('determines the maximum possible effort for any model', () => {
+    const multiEffortModel = models.find(
+      (m) =>
+        m.facts.reasoningEffort?.includes('max') &&
+        m.facts.reasoningEffort?.includes('low'),
+    );
+    if (multiEffortModel) {
+      expect(getMaxReasoningEffort(multiEffortModel)).toBe('max');
+    }
+
+    const highOnlyModel = models.find(
+      (m) =>
+        m.facts.reasoningEffort?.includes('high') &&
+        !m.facts.reasoningEffort?.includes('max'),
+    );
+    if (highOnlyModel) {
+      expect(getMaxReasoningEffort(highOnlyModel)).toBe('high');
+    }
+
+    const fixedModel = models.find((m) =>
+      m.facts.reasoningEffort?.includes('fixed'),
+    );
+    if (fixedModel) {
+      expect(getMaxReasoningEffort(fixedModel)).toBe('fixed');
+    }
+
+    const nonReasoning = models.find(
+      (m) =>
+        !m.facts.reasoningEffort ||
+        m.facts.reasoningEffort.every((e) => e === 'none'),
+    );
+    if (nonReasoning) {
+      expect(getMaxReasoningEffort(nonReasoning)).toBe('none');
+    }
+  });
+  it('defaults getModelEffortStats to maximum possible effort when unspecified', () => {
+    const multiEffortModel = models.find(
+      (m) =>
+        m.facts.reasoningEffort?.includes('max') &&
+        m.facts.reasoningEffort?.includes('low'),
+    );
+    if (multiEffortModel) {
+      const defaultStats = getModelEffortStats(multiEffortModel);
+      const maxStats = getModelEffortStats(multiEffortModel, 'max');
+      expect(defaultStats.effort).toBe('max');
+      expect(defaultStats.scores.intelligence).toBe(
+        maxStats.scores.intelligence,
+      );
     }
   });
 });

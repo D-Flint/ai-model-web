@@ -466,6 +466,24 @@
 - Current state: All 40 requested OpenAI models are fully operational in the catalog, strictly ordered by release date descending.
 - Exact next step: User verifies the full OpenAI model suite locally at `http://localhost:4321`.
 
+## 2026-09-05 — Set Maximum Possible Reasoning Effort as Default on Model Cards
+
+- Objective: Ensure the default effort of AI models shown on cards (`ModelCard`) is the maximum possible effort, including effort badge display, effort-adjusted capability and overall scores, throughput speed in tokens/sec, and comparison links.
+- Files changed:
+  - `src/lib/decision.ts`: Added `getMaxReasoningEffort(model)` helper resolving the highest available tier (`max` > `high` > `medium` > `low`, or `fixed`), updated `getModelEffortStats` to default to the maximum possible effort when unspecified, and improved reasoning detection for hybrid models.
+  - `src/components/ModelCard.tsx`: Updated `ModelCard` to resolve `maxEffort = getMaxReasoningEffort(model)`, calculate dynamic effort stats (`stats.scores.overall`, `stats.scores.intelligence`, `stats.speedTokensPerSec`), show the maximum effort in the effort badge (`Effort: max` / `Effort: high` / `Fixed CoT`), and pre-populate the compare link with the maximum effort level.
+  - `tests/decision.test.ts`: Added unit tests verifying `getMaxReasoningEffort` correctly determines the maximum effort across multi-effort, single-effort, fixed CoT, and non-reasoning models, and verifying that `getModelEffortStats` defaults to the maximum effort when unspecified.
+  - `.agents/registry.json`: Updated `effort-default-agent` status to `completed` and released all claims.
+- Attempts: 1 full iteration with verified tests, check, lint, and build.
+- Tests and results:
+  - `npm test`: 37/37 passing across all unit test suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 62 Astro and TypeScript files.
+  - `npm run lint`: Clean, 0 errors.
+  - `npm run build`: Production static build generated 2,944 pages in 1m 16s with 0 errors.
+- Current state: All model cards in browse, home, and detail views display models at their maximum possible effort with corresponding scores and speeds.
+- Exact next step: User verifies the updated model cards locally at `http://localhost:4321`.
+
+
 
 
 

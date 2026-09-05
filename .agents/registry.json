@@ -90,6 +90,12 @@
       "goal": "Add all specified OpenAI models with mock/verified labeling as required",
       "lastHeartbeat": "2026-09-05T12:52:10.000Z",
       "status": "completed"
+    },
+    "effort-default-agent": {
+      "role": "Frontend Engineer",
+      "goal": "Set default effort of AI models shown on card to maximum possible effort",
+      "lastHeartbeat": "2026-09-05T13:06:00.000Z",
+      "status": "completed"
     }
   },
   "claims": {},
