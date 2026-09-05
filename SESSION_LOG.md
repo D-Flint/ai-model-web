@@ -447,6 +447,26 @@
 - Current state: `canonicalModels.ts` is modular, clean, and easily maintainable per company.
 - Exact next step: User verifies code structure and local server at `http://localhost:4321`.
 
+## 2026-09-05 — Ingest All Frontier, Reasoning, Multimodal & Open-Weights Models from OpenAI (Catalog: 76 Models)
+
+- Objective: Ingest all requested models from OpenAI across Frontier & Reasoning (`GPT-6 Astra`, `GPT-5.6 Sol/Terra/Luna`, `GPT-5.4 nano`, `GPT-5.3-Codex`, `GPT-5.2/Pro`, `GPT-5/Pro/mini/nano`, `o4-mini/deep-research`, `o3/pro/deep-research`, `o1-pro`), Multimodal (`GPT-4.1/mini/nano`, `GPT-4-1106-preview`, `gpt-4-0125-preview`, `gpt-4-0314`, `gpt-4-32k`), and Open-Weights (`gpt-oss-120b`, `gpt-oss-20b`, `gpt-oss-safeguard-120b`, `gpt-oss-safeguard-20b`), bringing total OpenAI models to 40 and overall catalog to 76 models.
+- Files changed:
+  - `src/data/models/openai.ts`: Added 29 new OpenAI model configurations with complete metadata, strengths, weaknesses, tags, and effort levels.
+  - `src/data/officialProviders.ts`: Added official provider specs and documentation URLs for all 29 models.
+  - `src/data/livebenchData.json`: Added verified LiveBench benchmark evaluation entries.
+  - `src/data/bfclData.json`: Added verified Berkeley Function Calling tool accuracy records.
+  - `src/data/verifiedModels.json`: Refreshed pipeline output to 76 verified models strictly sorted from newest (`2026-09-02`) to oldest (`2023-03-01`).
+  - `.agents/registry.json`: Updated `openai-deep-agent` status to `completed` and released all claims.
+- Attempts: 1 full iteration with verified build and lint passes.
+- Tests and results:
+  - `npm test`: 35/35 passing across all unit test suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 62 Astro and TypeScript files.
+  - `npm run lint`: Clean, 0 errors.
+  - `npm run build`: Production static build generated 2,944 pages in 1m 21s with 0 errors.
+- Current state: All 40 requested OpenAI models are fully operational in the catalog, strictly ordered by release date descending.
+- Exact next step: User verifies the full OpenAI model suite locally at `http://localhost:4321`.
+
+
 
 
 

@@ -84,6 +84,12 @@
       "goal": "Split canonicalModels.ts by company into modular provider files",
       "lastHeartbeat": "2026-09-05T12:41:50.000Z",
       "status": "completed"
+    },
+    "openai-deep-agent": {
+      "role": "Data Engineer",
+      "goal": "Add all specified OpenAI models with mock/verified labeling as required",
+      "lastHeartbeat": "2026-09-05T12:52:10.000Z",
+      "status": "completed"
     }
   },
   "claims": {},

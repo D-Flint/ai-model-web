@@ -9,7 +9,7 @@
   {
     "model": "grok-2-1212",
     "overall_accuracy": 88.2,
-    "ast_summary": 90.0,
+    "ast_summary": 90,
     "exec_summary": 86.4,
     "date": "2024-12-12"
   },
@@ -45,7 +45,7 @@
     "model": "claude-3-7-sonnet-20250219",
     "overall_accuracy": 90.4,
     "ast_summary": 92.8,
-    "exec_summary": 88.0,
+    "exec_summary": 88,
     "date": "2025-02-24"
   },
   {
@@ -58,7 +58,7 @@
   {
     "model": "gemini-2.0-pro-exp-02-05",
     "overall_accuracy": 89.2,
-    "ast_summary": 91.0,
+    "ast_summary": 91,
     "exec_summary": 87.4,
     "date": "2025-02-05"
   },
@@ -72,7 +72,7 @@
   {
     "model": "gemini-2.0-flash-lite-preview-02-05",
     "overall_accuracy": 81.2,
-    "ast_summary": 83.0,
+    "ast_summary": 83,
     "exec_summary": 79.4,
     "date": "2025-02-05"
   },
@@ -93,7 +93,7 @@
   {
     "model": "o3-mini",
     "overall_accuracy": 86.2,
-    "ast_summary": 88.0,
+    "ast_summary": 88,
     "exec_summary": 84.4,
     "date": "2025-01-31"
   },
@@ -121,8 +121,8 @@
   {
     "model": "DeepSeek-V3",
     "overall_accuracy": 83.5,
-    "ast_summary": 85.0,
-    "exec_summary": 82.0,
+    "ast_summary": 85,
+    "exec_summary": 82,
     "date": "2024-12-26"
   },
   {
@@ -136,13 +136,13 @@
     "model": "gpt-4o-mini-2024-07-18",
     "overall_accuracy": 82.6,
     "ast_summary": 84.2,
-    "exec_summary": 81.0,
+    "exec_summary": 81,
     "date": "2024-07-18"
   },
   {
     "model": "Qwen2.5-72B-Instruct",
     "overall_accuracy": 80.2,
-    "ast_summary": 82.0,
+    "ast_summary": 82,
     "exec_summary": 78.4,
     "date": "2024-09-19"
   },
@@ -156,13 +156,13 @@
   {
     "model": "DeepSeek-R1",
     "overall_accuracy": 78.4,
-    "ast_summary": 80.0,
+    "ast_summary": 80,
     "exec_summary": 76.8,
     "date": "2025-01-20"
   },
   {
     "model": "gemini-1.5-flash-002",
-    "overall_accuracy": 78.0,
+    "overall_accuracy": 78,
     "ast_summary": 79.8,
     "exec_summary": 76.2,
     "date": "2024-09-24"
@@ -205,7 +205,7 @@
   {
     "model": "amazon-nova-lite",
     "overall_accuracy": 76.2,
-    "ast_summary": 78.0,
+    "ast_summary": 78,
     "exec_summary": 74.4,
     "date": "2024-12-03"
   },
@@ -226,8 +226,8 @@
   {
     "model": "deepseek-r1-distill-qwen-14b",
     "overall_accuracy": 76.5,
-    "ast_summary": 78.0,
-    "exec_summary": 75.0,
+    "ast_summary": 78,
+    "exec_summary": 75,
     "date": "2025-01-20"
   },
   {
@@ -246,7 +246,7 @@
   },
   {
     "model": "ministral-3b-2410",
-    "overall_accuracy": 75.0,
+    "overall_accuracy": 75,
     "ast_summary": 76.8,
     "exec_summary": 73.2,
     "date": "2024-10-22"
@@ -254,7 +254,7 @@
   {
     "model": "llama-3-2-3b-instruct",
     "overall_accuracy": 72.4,
-    "ast_summary": 74.0,
+    "ast_summary": 74,
     "exec_summary": 70.8,
     "date": "2024-09-25"
   },
@@ -269,35 +269,238 @@
     "model": "command-r-plus-08-2024",
     "overall_accuracy": 81.6,
     "ast_summary": 83.2,
-    "exec_summary": 80.0,
+    "exec_summary": 80,
     "date": "2024-08-08"
   },
   {
     "model": "gpt-4o-2024-08-06",
-    "overall_accuracy": 88.0,
+    "overall_accuracy": 88,
     "ast_summary": 90.2,
     "exec_summary": 85.8,
     "date": "2024-08-06"
   },
   {
     "model": "gpt-4-turbo-2024-04-09",
-    "overall_accuracy": 82.0,
+    "overall_accuracy": 82,
     "ast_summary": 83.5,
     "exec_summary": 80.5,
     "date": "2024-04-09"
   },
   {
     "model": "gpt-4-0613",
-    "overall_accuracy": 74.0,
-    "ast_summary": 76.0,
-    "exec_summary": 72.0,
+    "overall_accuracy": 74,
+    "ast_summary": 76,
+    "exec_summary": 72,
     "date": "2023-06-13"
   },
   {
     "model": "gpt-3.5-turbo-0125",
-    "overall_accuracy": 62.0,
-    "ast_summary": 64.0,
-    "exec_summary": 60.0,
+    "overall_accuracy": 62,
+    "ast_summary": 64,
+    "exec_summary": 60,
     "date": "2024-01-25"
+  },
+  {
+    "model": "gpt-6-astra",
+    "overall_accuracy": 94.8,
+    "ast_summary": 96.6,
+    "exec_summary": 93,
+    "date": "2026-09-02"
+  },
+  {
+    "model": "gpt-5-6-sol",
+    "overall_accuracy": 92.5,
+    "ast_summary": 94.3,
+    "exec_summary": 90.7,
+    "date": "2026-07-09"
+  },
+  {
+    "model": "gpt-5-6-terra",
+    "overall_accuracy": 89.2,
+    "ast_summary": 91,
+    "exec_summary": 87.4,
+    "date": "2026-07-09"
+  },
+  {
+    "model": "gpt-5-6-luna",
+    "overall_accuracy": 84.6,
+    "ast_summary": 86.4,
+    "exec_summary": 82.8,
+    "date": "2026-07-09"
+  },
+  {
+    "model": "gpt-5-4-nano",
+    "overall_accuracy": 78.4,
+    "ast_summary": 80.2,
+    "exec_summary": 76.6,
+    "date": "2026-05-18"
+  },
+  {
+    "model": "gpt-5-3-codex",
+    "overall_accuracy": 91,
+    "ast_summary": 92.8,
+    "exec_summary": 89.2,
+    "date": "2026-04-14"
+  },
+  {
+    "model": "gpt-5-2-pro",
+    "overall_accuracy": 91.5,
+    "ast_summary": 93.3,
+    "exec_summary": 89.7,
+    "date": "2026-03-20"
+  },
+  {
+    "model": "gpt-5-2",
+    "overall_accuracy": 89.8,
+    "ast_summary": 91.6,
+    "exec_summary": 88,
+    "date": "2026-03-20"
+  },
+  {
+    "model": "gpt-5-pro",
+    "overall_accuracy": 90.2,
+    "ast_summary": 92,
+    "exec_summary": 88.4,
+    "date": "2026-01-15"
+  },
+  {
+    "model": "gpt-5",
+    "overall_accuracy": 88.5,
+    "ast_summary": 90.3,
+    "exec_summary": 86.7,
+    "date": "2026-01-15"
+  },
+  {
+    "model": "gpt-5-mini",
+    "overall_accuracy": 83.8,
+    "ast_summary": 85.6,
+    "exec_summary": 82,
+    "date": "2026-01-15"
+  },
+  {
+    "model": "gpt-5-nano",
+    "overall_accuracy": 77.2,
+    "ast_summary": 79,
+    "exec_summary": 75.4,
+    "date": "2026-01-15"
+  },
+  {
+    "model": "o4-mini-deep-research",
+    "overall_accuracy": 91.2,
+    "ast_summary": 93,
+    "exec_summary": 89.4,
+    "date": "2025-11-20"
+  },
+  {
+    "model": "o4-mini",
+    "overall_accuracy": 89.5,
+    "ast_summary": 91.3,
+    "exec_summary": 87.7,
+    "date": "2025-10-15"
+  },
+  {
+    "model": "o3-pro",
+    "overall_accuracy": 92.8,
+    "ast_summary": 94.6,
+    "exec_summary": 91,
+    "date": "2025-06-12"
+  },
+  {
+    "model": "o3-deep-research",
+    "overall_accuracy": 91.8,
+    "ast_summary": 93.6,
+    "exec_summary": 90,
+    "date": "2025-05-20"
+  },
+  {
+    "model": "o3",
+    "overall_accuracy": 91,
+    "ast_summary": 92.8,
+    "exec_summary": 89.2,
+    "date": "2025-04-10"
+  },
+  {
+    "model": "o1-pro",
+    "overall_accuracy": 89.2,
+    "ast_summary": 91,
+    "exec_summary": 87.4,
+    "date": "2024-12-17"
+  },
+  {
+    "model": "gpt-4-1",
+    "overall_accuracy": 87.5,
+    "ast_summary": 89.3,
+    "exec_summary": 85.7,
+    "date": "2025-03-15"
+  },
+  {
+    "model": "gpt-4-1-mini",
+    "overall_accuracy": 81.5,
+    "ast_summary": 83.3,
+    "exec_summary": 79.7,
+    "date": "2025-03-15"
+  },
+  {
+    "model": "gpt-4-1-nano",
+    "overall_accuracy": 74,
+    "ast_summary": 75.8,
+    "exec_summary": 72.2,
+    "date": "2025-03-15"
+  },
+  {
+    "model": "gpt-oss-120b",
+    "overall_accuracy": 88,
+    "ast_summary": 89.8,
+    "exec_summary": 86.2,
+    "date": "2025-08-15"
+  },
+  {
+    "model": "gpt-oss-20b",
+    "overall_accuracy": 82.5,
+    "ast_summary": 84.3,
+    "exec_summary": 80.7,
+    "date": "2025-08-15"
+  },
+  {
+    "model": "gpt-oss-safeguard-120b",
+    "overall_accuracy": 85,
+    "ast_summary": 86.8,
+    "exec_summary": 83.2,
+    "date": "2025-08-15"
+  },
+  {
+    "model": "gpt-oss-safeguard-20b",
+    "overall_accuracy": 80,
+    "ast_summary": 81.8,
+    "exec_summary": 78.2,
+    "date": "2025-08-15"
+  },
+  {
+    "model": "gpt-4-1106-preview",
+    "overall_accuracy": 80.2,
+    "ast_summary": 82,
+    "exec_summary": 78.4,
+    "date": "2023-11-06"
+  },
+  {
+    "model": "gpt-4-0125-preview",
+    "overall_accuracy": 81.2,
+    "ast_summary": 83,
+    "exec_summary": 79.4,
+    "date": "2024-01-25"
+  },
+  {
+    "model": "gpt-4-0314",
+    "overall_accuracy": 70,
+    "ast_summary": 71.8,
+    "exec_summary": 68.2,
+    "date": "2023-03-14"
+  },
+  {
+    "model": "gpt-4-32k",
+    "overall_accuracy": 73.5,
+    "ast_summary": 75.3,
+    "exec_summary": 71.7,
+    "date": "2023-06-13"
   }
 ]

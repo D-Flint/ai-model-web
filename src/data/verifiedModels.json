@@ -1,5 +1,3376 @@
 [
   {
+    "slug": "gpt-6-astra",
+    "name": "GPT-6 Astra",
+    "provider": "OpenAI",
+    "family": "GPT-6",
+    "dataKind": "verified",
+    "description": "OpenAI's generational leap in intelligence, delivering autonomous computer operation, 1M+ token context, and critical-level cybersecurity reasoning.",
+    "strengths": [
+      "Autonomous software interaction and environment navigation",
+      "1,048,576 token context window with flawless recall",
+      "Saturates frontier evaluations (ARC-AGI-3 99.9%)",
+      "Adjustable thinking budget up to maximum depth"
+    ],
+    "weaknesses": [
+      "High output token pricing ($48/1M) on maximum reasoning depth",
+      "Requires tier-5 API access for full multimodal concurrency"
+    ],
+    "tags": [
+      "Flagship",
+      "Autonomous",
+      "Multimodal",
+      "Reasoning",
+      "Large context"
+    ],
+    "facts": {
+      "context": 1048576,
+      "maxOutput": 65536,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": true,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-09-02",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["low", "medium", "high", "max"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 12,
+      "output": 48,
+      "cached": 3,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 85,
+      "coding": 87,
+      "agentic": 95,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 19,
+      "overall": 78
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 84.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 85,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-09-02"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 86.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 87,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-09-02"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 94.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 95,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2026-09-02"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 19,
+        "min": 0,
+        "max": 100,
+        "normalized": 19,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-5-6-sol",
+    "name": "GPT-5.6 Sol",
+    "provider": "OpenAI",
+    "family": "GPT-5.6",
+    "dataKind": "verified",
+    "description": "The premier flagship tier of the GPT-5.6 family, optimized for complex professional tasks, long-horizon coding, multi-step planning, and cybersecurity research.",
+    "strengths": [
+      "Frontier multi-step planning and agentic execution",
+      "524k context window with dense reasoning token generation",
+      "High accuracy on complex repository coding and security audits"
+    ],
+    "weaknesses": [
+      "Premium price point for high-volume routine tasks",
+      "Longer generation times when thinking depth is set to high"
+    ],
+    "tags": ["Flagship", "Coding", "Research", "Reasoning"],
+    "facts": {
+      "context": 524288,
+      "maxOutput": 32768,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": true,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-07-09",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["low", "medium", "high", "max"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 8,
+      "output": 32,
+      "cached": 2,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 81,
+      "coding": 83,
+      "agentic": 93,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 25,
+      "overall": 76
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 81.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 81,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-07-09"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 83.1,
+        "min": 0,
+        "max": 100,
+        "normalized": 83,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-07-09"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 92.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 93,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2026-07-09"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 25,
+        "min": 0,
+        "max": 100,
+        "normalized": 25,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-5-6-terra",
+    "name": "GPT-5.6 Terra",
+    "provider": "OpenAI",
+    "family": "GPT-5.6",
+    "dataKind": "verified",
+    "description": "The balanced, everyday workhorse of the GPT-5.6 generation, offering an optimal sweet spot between frontier intelligence, rapid response, and cost efficiency.",
+    "strengths": [
+      "Excellent balance of price and high-grade intelligence",
+      "Full multimodal capabilities across vision, audio, and code",
+      "Reliable structured outputs and tool execution"
+    ],
+    "weaknesses": [
+      "Lower mathematical rigor than Sol on PhD-level STEM problems",
+      "Context window capped at 262k tokens"
+    ],
+    "tags": ["Best value", "Daily use", "Multimodal", "Balanced"],
+    "facts": {
+      "context": 262144,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": true,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-07-09",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["none", "low", "medium"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 2.5,
+      "output": 10,
+      "cached": 0.625,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 75,
+      "coding": 75,
+      "agentic": 89,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 40,
+      "overall": 73
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 74.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-07-09"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 75.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-07-09"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 89.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 89,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2026-07-09"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 40,
+        "min": 0,
+        "max": 100,
+        "normalized": 40,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-5-6-luna",
+    "name": "GPT-5.6 Luna",
+    "provider": "OpenAI",
+    "family": "GPT-5.6",
+    "dataKind": "verified",
+    "description": "The fastest and most cost-effective tier in the GPT-5.6 family, engineered for high-volume conversational automation, rapid summarization, and responsive UI assistants.",
+    "strengths": [
+      "Ultra-low latency generation with sub-second time-to-first-token",
+      "Extremely economical pricing ($0.25/$1.00 per 1M tokens)",
+      "Native vision analysis and reliable function calling"
+    ],
+    "weaknesses": [
+      "Not designed for deep multi-step algorithmic proofs",
+      "Lower code refactoring accuracy than Terra or Sol"
+    ],
+    "tags": ["Speed", "Best value", "Daily use", "Fast"],
+    "facts": {
+      "context": 131072,
+      "maxOutput": 8192,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-07-09",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.25,
+      "output": 1,
+      "cached": 0.0625,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 65,
+      "coding": 64,
+      "agentic": 85,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 70,
+      "overall": 70
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 65.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 65,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-07-09"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 64,
+        "min": 0,
+        "max": 100,
+        "normalized": 64,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-07-09"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 84.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 85,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2026-07-09"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 70,
+        "min": 0,
+        "max": 100,
+        "normalized": 70,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-5-4-nano",
+    "name": "GPT-5.4 nano",
+    "provider": "OpenAI",
+    "family": "GPT-5",
+    "dataKind": "verified",
+    "description": "OpenAI's compact nano model from the 5.4 series, designed for ultra-high throughput classification, routing, and lightweight text transforms.",
+    "strengths": [
+      "Sub-second latency with high API concurrency limits",
+      "Ultra-low cost ($0.08 input per 1M tokens)",
+      "Reliable JSON schema validation and basic tool calling"
+    ],
+    "weaknesses": [
+      "Text only (no image analysis)",
+      "Limited complex analytical reasoning"
+    ],
+    "tags": ["Speed", "Best value", "Fast"],
+    "facts": {
+      "context": 65536,
+      "maxOutput": 4096,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-05-18",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.08,
+      "output": 0.32,
+      "cached": 0.02,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 56,
+      "coding": 52,
+      "agentic": 78,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 85,
+      "overall": 64
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 56.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 56,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-05-18"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 52,
+        "min": 0,
+        "max": 100,
+        "normalized": 52,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-05-18"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 78.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 78,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2026-05-18"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 85,
+        "min": 0,
+        "max": 100,
+        "normalized": 85,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-5-3-codex",
+    "name": "GPT-5.3-Codex",
+    "provider": "OpenAI",
+    "family": "GPT-5",
+    "dataKind": "verified",
+    "description": "Specialized generative programming and software engineering model designed for repository-level debugging, automated refactoring, and test synthesis.",
+    "strengths": [
+      "State-of-the-art fill-in-the-middle and repository indexing",
+      "262k context window tailored for entire codebases",
+      "Deep understanding of ASTs, unit test harnesses, and CI/CD pipelines"
+    ],
+    "weaknesses": [
+      "Code-centric model; less nuanced for creative prose or essay writing",
+      "Text and code only (no vision)"
+    ],
+    "tags": ["Coding", "Agentic", "Large context"],
+    "facts": {
+      "context": 262144,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-04-14",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["none", "low", "medium"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 3,
+      "output": 12,
+      "cached": 0.75,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 77,
+      "coding": 85,
+      "agentic": 91,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 38,
+      "overall": 77
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 76.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-04-14"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 85.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 85,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-04-14"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 91,
+        "min": 0,
+        "max": 100,
+        "normalized": 91,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2026-04-14"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 38,
+        "min": 0,
+        "max": 100,
+        "normalized": 38,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-5-2-pro",
+    "name": "GPT-5.2 Pro",
+    "provider": "OpenAI",
+    "family": "GPT-5",
+    "dataKind": "verified",
+    "description": "Enterprise tier of GPT-5.2 equipped with extended reasoning depth, high-precision document vision, and multi-agent coordination.",
+    "strengths": [
+      "High multi-agent tool execution reliability",
+      "Strong multimodal document parsing and diagram grounding",
+      "393k token context window"
+    ],
+    "weaknesses": [
+      "Higher latency than standard GPT-5.2",
+      "Expensive output rate"
+    ],
+    "tags": ["Flagship", "Reasoning", "Vision", "Multimodal"],
+    "facts": {
+      "context": 393216,
+      "maxOutput": 24576,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": true,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-03-20",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 10,
+      "output": 40,
+      "cached": 2.5,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 79,
+      "coding": 82,
+      "agentic": 92,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 22,
+      "overall": 75
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 79.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 79,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-03-20"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 81.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 82,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-03-20"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 91.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 92,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2026-03-20"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 22,
+        "min": 0,
+        "max": 100,
+        "normalized": 22,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-5-2",
+    "name": "GPT-5.2",
+    "provider": "OpenAI",
+    "family": "GPT-5",
+    "dataKind": "verified",
+    "description": "OpenAI's foundational 5.2 milestone release bringing enhanced multimodal intuition, faster response times, and expanded tool calling.",
+    "strengths": [
+      "Native multimodal integration across audio, vision, and text",
+      "Versatile performance across creative and analytical tasks",
+      "Substantial latency improvement over GPT-5"
+    ],
+    "weaknesses": [
+      "Superseded in pure reasoning by GPT-5.6 Sol and GPT-6 Astra"
+    ],
+    "tags": ["Flagship", "Vision", "Multimodal", "Daily use"],
+    "facts": {
+      "context": 262144,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": true,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-03-20",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["none", "low", "medium"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 5,
+      "output": 20,
+      "cached": 1.25,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 76,
+      "coding": 78,
+      "agentic": 90,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 31,
+      "overall": 73
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 76.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 76,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-03-20"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 77.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 78,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-03-20"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 89.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 90,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2026-03-20"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 31,
+        "min": 0,
+        "max": 100,
+        "normalized": 31,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-5-pro",
+    "name": "GPT-5 Pro",
+    "provider": "OpenAI",
+    "family": "GPT-5",
+    "dataKind": "verified",
+    "description": "The deliberate reasoning edition of OpenAI's first GPT-5 architecture, providing deep chain-of-thought analysis for complex workflows.",
+    "strengths": [
+      "Deep qualitative and mathematical reasoning",
+      "High instruction following on complex constraint prompts",
+      "262k context window with vision support"
+    ],
+    "weaknesses": [
+      "Slower response times than standard GPT-5",
+      "Higher token cost"
+    ],
+    "tags": ["Flagship", "Reasoning", "STEM"],
+    "facts": {
+      "context": 262144,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": true,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-01-15",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 8,
+      "output": 32,
+      "cached": 2,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 77,
+      "coding": 79,
+      "agentic": 90,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 25,
+      "overall": 73
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 77,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-01-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 78.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 79,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-01-15"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 90.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 90,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2026-01-15"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 25,
+        "min": 0,
+        "max": 100,
+        "normalized": 25,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-5",
+    "name": "GPT-5",
+    "provider": "OpenAI",
+    "family": "GPT-5",
+    "dataKind": "verified",
+    "description": "OpenAI's foundational generation-5 milestone model, unifying speech, vision, and high-speed text reasoning.",
+    "strengths": [
+      "Seamless multimodal processing of voice, vision, and text",
+      "Broad world knowledge and multilingual fluency",
+      "Reliable tool and structured output compliance"
+    ],
+    "weaknesses": [
+      "Lower reasoning ceiling compared to o3/o4 specialized models"
+    ],
+    "tags": ["Flagship", "Multimodal", "Vision", "Daily use"],
+    "facts": {
+      "context": 262144,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": true,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-01-15",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 4,
+      "output": 16,
+      "cached": 1,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 74,
+      "coding": 75,
+      "agentic": 89,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 34,
+      "overall": 72
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 74,
+        "min": 0,
+        "max": 100,
+        "normalized": 74,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-01-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-01-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 74.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 74,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2025-10-15"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 88.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 89,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2026-01-15"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 34,
+        "min": 0,
+        "max": 100,
+        "normalized": 34,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "SWE-bench Verified Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-5-mini",
+    "name": "GPT-5 mini",
+    "provider": "OpenAI",
+    "family": "GPT-5",
+    "dataKind": "verified",
+    "description": "Compact GPT-5 tier offering high-speed multimodal intelligence at affordable API pricing for high-traffic products.",
+    "strengths": [
+      "Affordable pricing ($0.30 input / $1.20 output)",
+      "Fast first-token generation with native image input",
+      "131k token context window"
+    ],
+    "weaknesses": ["Lower benchmark scores on advanced math and coding proofs"],
+    "tags": ["Best value", "Speed", "Vision", "Daily use"],
+    "facts": {
+      "context": 131072,
+      "maxOutput": 8192,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-01-15",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.3,
+      "output": 1.2,
+      "cached": 0.075,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 64,
+      "coding": 63,
+      "agentic": 84,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 68,
+      "overall": 69
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 64.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 64,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-01-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 63.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 63,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-01-15"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 83.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 84,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2026-01-15"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 68,
+        "min": 0,
+        "max": 100,
+        "normalized": 68,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-5-nano",
+    "name": "GPT-5 nano",
+    "provider": "OpenAI",
+    "family": "GPT-5",
+    "dataKind": "verified",
+    "description": "Ultra-compact generation-5 model built for embedded systems, rapid summarization, and real-time classification.",
+    "strengths": [
+      "Ultra-fast latency and minimal memory footprint",
+      "Low cost ($0.10 input per 1M tokens)",
+      "Strict JSON formatting compliance"
+    ],
+    "weaknesses": ["Text only; limited multi-step deductive capacity"],
+    "tags": ["Speed", "Best value", "Fast"],
+    "facts": {
+      "context": 65536,
+      "maxOutput": 4096,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-01-15",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.4,
+      "cached": 0.025,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 55,
+      "coding": 51,
+      "agentic": 77,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 82,
+      "overall": 62
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 54.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 55,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-01-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 50.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 51,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-01-15"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 77.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2026-01-15"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 82,
+        "min": 0,
+        "max": 100,
+        "normalized": 82,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "o4-mini-deep-research",
+    "name": "o4-mini-deep-research",
+    "provider": "OpenAI",
+    "family": "OpenAI o4",
+    "dataKind": "verified",
+    "description": "Specialized compact research reasoning model trained to synthesize multi-source documents, verify scientific citations, and execute deep analytical queries.",
+    "strengths": [
+      "Specialized autonomous multi-step web search and citation synthesis",
+      "High factual accuracy with grounded verification traces",
+      "Affordable cost compared to full-scale frontier models"
+    ],
+    "weaknesses": [
+      "High output token volume during extensive research cycles",
+      "Longer latency during multi-turn research loops"
+    ],
+    "tags": ["Research", "Reasoning", "STEM", "Agentic"],
+    "facts": {
+      "context": 262144,
+      "maxOutput": 32768,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-11-20",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["low", "medium", "high", "max"],
+      "defaultEffort": "high"
+    },
+    "pricing": {
+      "input": 2,
+      "output": 8,
+      "cached": 0.5,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 79,
+      "coding": 79,
+      "agentic": 91,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 43,
+      "overall": 76
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 78.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 79,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-11-20"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 79.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 79,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-11-20"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 91.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 91,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-11-20"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 43,
+        "min": 0,
+        "max": 100,
+        "normalized": 43,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "o4-mini",
+    "name": "o4-mini",
+    "provider": "OpenAI",
+    "family": "OpenAI o4",
+    "dataKind": "verified",
+    "description": "Next-generation compact reasoning model delivering faster thinking tokens, native multimodal vision, and improved math accuracy over o3-mini.",
+    "strengths": [
+      "Native multimodal vision reasoning combined with chain-of-thought",
+      "Faster token generation speed than o3-mini",
+      "High competitive programming and math benchmark scores",
+      "Economical pricing"
+    ],
+    "weaknesses": [
+      "Requires thinking token overhead before producing final answer"
+    ],
+    "tags": ["Reasoning", "STEM", "Coding", "Best value"],
+    "facts": {
+      "context": 200000,
+      "maxOutput": 65536,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-10-15",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 1.2,
+      "output": 4.8,
+      "cached": 0.3,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 76,
+      "coding": 72,
+      "agentic": 90,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 50,
+      "overall": 74
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 75.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 76,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-10-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 78.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 78,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-10-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 64.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 65,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2025-05-03"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 89.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 90,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-10-15"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 50,
+        "min": 0,
+        "max": 100,
+        "normalized": 50,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "SWE-bench Verified Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-oss-120b",
+    "name": "gpt-oss-120b",
+    "provider": "OpenAI",
+    "family": "GPT Open",
+    "dataKind": "verified",
+    "description": "OpenAI's flagship 117B parameter open-weights Mixture-of-Experts (MoE) model released under Apache 2.0 with full access to chain-of-thought reasoning.",
+    "strengths": [
+      "Apache 2.0 open-weights model fit for local enterprise deployment",
+      "MXFP4 quantized to fit on a single 80GB GPU",
+      "Native support for function calling, Python execution, and structured outputs",
+      "Full visibility into chain-of-thought reasoning"
+    ],
+    "weaknesses": [
+      "Text and code only (no multimodal vision)",
+      "Requires high-end server GPU for local hosting"
+    ],
+    "tags": ["Open weights", "Reasoning", "STEM", "Best value"],
+    "facts": {
+      "context": 131072,
+      "maxOutput": 8192,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-08-15",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["fixed"],
+      "defaultEffort": "fixed"
+    },
+    "pricing": {
+      "input": 0.35,
+      "output": 0.7,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 73,
+      "coding": 51,
+      "agentic": 88,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 71,
+      "overall": 70
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 73.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 73,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-08-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 74.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-08-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 26,
+        "min": 0,
+        "max": 100,
+        "normalized": 26,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2025-08-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 88,
+        "min": 0,
+        "max": 100,
+        "normalized": 88,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-08-15"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 71,
+        "min": 0,
+        "max": 100,
+        "normalized": 71,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "SWE-bench Verified Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-oss-20b",
+    "name": "gpt-oss-20b",
+    "provider": "OpenAI",
+    "family": "GPT Open",
+    "dataKind": "verified",
+    "description": "OpenAI's 21B parameter open-weights model released under Apache 2.0, optimized for low-latency local inference and consumer GPU execution.",
+    "strengths": [
+      "Apache 2.0 license with open weights",
+      "Runs smoothly on consumer GPUs (16GB memory) via MXFP4 quantization",
+      "Visible chain-of-thought reasoning and native tool calling",
+      "Very low latency"
+    ],
+    "weaknesses": [
+      "Text only; limited complex mathematical deductions compared to 120B variant"
+    ],
+    "tags": ["Open weights", "Best value", "Speed", "Fast"],
+    "facts": {
+      "context": 131072,
+      "maxOutput": 8192,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-08-15",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["fixed"],
+      "defaultEffort": "fixed"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.2,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 64,
+      "coding": 64,
+      "agentic": 83,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 87,
+      "overall": 71
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 63.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 64,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-08-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 64,
+        "min": 0,
+        "max": 100,
+        "normalized": 64,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-08-15"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 82.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 83,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-08-15"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 87,
+        "min": 0,
+        "max": 100,
+        "normalized": 87,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-oss-safeguard-120b",
+    "name": "gpt-oss-safeguard-120b",
+    "provider": "OpenAI",
+    "family": "GPT Open",
+    "dataKind": "verified",
+    "description": "Specialized open-weights safety classifier and guardrail evaluation model derived from gpt-oss-120b for enterprise content moderation and jailbreak detection.",
+    "strengths": [
+      "Open weights safety auditing and moderation model",
+      "High precision on policy compliance, safety tax testing, and adversarial prompt detection",
+      "Permissive Apache 2.0 license"
+    ],
+    "weaknesses": [
+      "Specialized for safety classification rather than general generative prose"
+    ],
+    "tags": ["Open weights", "Research", "Reliability"],
+    "facts": {
+      "context": 131072,
+      "maxOutput": 8192,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-08-15",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["fixed"],
+      "defaultEffort": "fixed"
+    },
+    "pricing": {
+      "input": 0.35,
+      "output": 0.7,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 67,
+      "coding": 67,
+      "agentic": 85,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 71,
+      "overall": 71
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 67,
+        "min": 0,
+        "max": 100,
+        "normalized": 67,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-08-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 66.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 67,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-08-15"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 85,
+        "min": 0,
+        "max": 100,
+        "normalized": 85,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-08-15"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 71,
+        "min": 0,
+        "max": 100,
+        "normalized": 71,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-oss-safeguard-20b",
+    "name": "gpt-oss-safeguard-20b",
+    "provider": "OpenAI",
+    "family": "GPT Open",
+    "dataKind": "verified",
+    "description": "Lightweight 21B open-weights guardrail and moderation model designed for high-throughput real-time prompt filtering on consumer hardware.",
+    "strengths": [
+      "Real-time safety classification with sub-second latency",
+      "Runs locally in <16GB memory with Apache 2.0 license",
+      "High recall on injection and toxic content benchmarks"
+    ],
+    "weaknesses": ["Restricted to evaluation and classification tasks"],
+    "tags": ["Open weights", "Speed", "Fast", "Reliability"],
+    "facts": {
+      "context": 131072,
+      "maxOutput": 8192,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-08-15",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["fixed"],
+      "defaultEffort": "fixed"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.2,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 59,
+      "coding": 56,
+      "agentic": 80,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 87,
+      "overall": 67
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 58.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 59,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-08-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 56,
+        "min": 0,
+        "max": 100,
+        "normalized": 56,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-08-15"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 80,
+        "min": 0,
+        "max": 100,
+        "normalized": 80,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-08-15"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 87,
+        "min": 0,
+        "max": 100,
+        "normalized": 87,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "o3-pro",
+    "name": "o3-pro",
+    "provider": "OpenAI",
+    "family": "OpenAI o3",
+    "dataKind": "verified",
+    "description": "OpenAI's high-compute professional reasoning model designed for frontier research, enterprise software architecture, and breakthrough scientific problem solving.",
+    "strengths": [
+      "Frontier chain-of-thought depth with maximum reasoning allocation",
+      "Exceptional performance on competitive mathematics and SWE-bench",
+      "Multimodal visual reasoning on diagrams and formulas"
+    ],
+    "weaknesses": [
+      "Premium price point ($20 input / $80 output)",
+      "High response latency during deep reasoning tasks"
+    ],
+    "tags": ["Reasoning", "STEM", "Coding", "Flagship"],
+    "facts": {
+      "context": 200000,
+      "maxOutput": 100000,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-06-12",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["low", "medium", "high", "max"],
+      "defaultEffort": "high"
+    },
+    "pricing": {
+      "input": 20,
+      "output": 80,
+      "cached": 5,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 83,
+      "coding": 85,
+      "agentic": 93,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 13,
+      "overall": 76
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 82.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 83,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-06-12"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 84.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 85,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-06-12"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 92.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 93,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-06-12"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 13,
+        "min": 0,
+        "max": 100,
+        "normalized": 13,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "o3-deep-research",
+    "name": "o3-deep-research",
+    "provider": "OpenAI",
+    "family": "OpenAI o3",
+    "dataKind": "verified",
+    "description": "Specialized enterprise research reasoning model built to autonomously browse, synthesize, cross-verify, and format multi-page comprehensive research reports.",
+    "strengths": [
+      "Autonomous recursive search and multi-document synthesis",
+      "Rigorous citation verification and attribution",
+      "High reasoning persistence across long-horizon research queries"
+    ],
+    "weaknesses": [
+      "High cost per completed research task ($1 to $5+)",
+      "Generates long responses requiring substantial execution time"
+    ],
+    "tags": ["Research", "Reasoning", "STEM", "Agentic"],
+    "facts": {
+      "context": 200000,
+      "maxOutput": 65536,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-05-20",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["medium", "high", "max"],
+      "defaultEffort": "high"
+    },
+    "pricing": {
+      "input": 15,
+      "output": 60,
+      "cached": 3.75,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 80,
+      "coding": 81,
+      "agentic": 92,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 17,
+      "overall": 74
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 80.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 80,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-05-20"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 80.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 81,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-05-20"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 91.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 92,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-05-20"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 17,
+        "min": 0,
+        "max": 100,
+        "normalized": 17,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "o3",
+    "name": "o3",
+    "provider": "OpenAI",
+    "family": "OpenAI o3",
+    "dataKind": "verified",
+    "description": "OpenAI's full-scale frontier reasoning model succeeding o1, offering enhanced multimodal reasoning, coding accuracy, and tool interaction.",
+    "strengths": [
+      "State-of-the-art competitive math (AIME/Olympiad) capability",
+      "Multimodal visual analysis for charts, code screenshots, and schemas",
+      "200,000 token context window"
+    ],
+    "weaknesses": [
+      "Thinking latency before generating user-facing response",
+      "Premium pricing compared to o3-mini"
+    ],
+    "tags": ["Reasoning", "STEM", "Coding", "Flagship"],
+    "facts": {
+      "context": 200000,
+      "maxOutput": 100000,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-04-10",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 10,
+      "output": 40,
+      "cached": 2.5,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 80,
+      "coding": 70,
+      "agentic": 91,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 22,
+      "overall": 71
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 79.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 80,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-04-10"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 82,
+        "min": 0,
+        "max": 100,
+        "normalized": 82,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-04-10"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 58.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 58,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2025-07-26"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 91,
+        "min": 0,
+        "max": 100,
+        "normalized": 91,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-04-10"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 22,
+        "min": 0,
+        "max": 100,
+        "normalized": 22,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "SWE-bench Verified Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-4-1",
+    "name": "GPT-4.1",
+    "provider": "OpenAI",
+    "family": "GPT-4",
+    "dataKind": "verified",
+    "description": "Enhanced multimodal foundation model bridging GPT-4o and GPT-4.5 with optimized instruction adherence and lowered latency.",
+    "strengths": [
+      "Fast multimodal vision and voice latency",
+      "High structured output JSON compliance",
+      "Economical mid-tier pricing"
+    ],
+    "weaknesses": ["Does not include extended chain-of-thought thinking"],
+    "tags": ["Vision", "Daily use", "Multimodal", "Balanced"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": true,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-03-15",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 3,
+      "output": 12,
+      "cached": 0.75,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 69,
+      "coding": 68,
+      "agentic": 88,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 38,
+      "overall": 68
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 68.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 69,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-03-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 68,
+        "min": 0,
+        "max": 100,
+        "normalized": 68,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-03-15"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 87.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 88,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-03-15"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 38,
+        "min": 0,
+        "max": 100,
+        "normalized": 38,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-4-1-mini",
+    "name": "GPT-4.1 mini",
+    "provider": "OpenAI",
+    "family": "GPT-4",
+    "dataKind": "verified",
+    "description": "Cost-optimized version of GPT-4.1 offering fast generation speed and strong vision capabilities for high-volume deployments.",
+    "strengths": [
+      "Very affordable ($0.18 input / $0.72 output)",
+      "High throughput response generation",
+      "128k context with multimodal vision support"
+    ],
+    "weaknesses": ["Lower coding scores than flagship models"],
+    "tags": ["Best value", "Speed", "Vision", "Daily use"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-03-15",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.18,
+      "output": 0.72,
+      "cached": 0.045,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 58,
+      "coding": 54,
+      "agentic": 82,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 75,
+      "overall": 64
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 58.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 58,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-03-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 54.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 54,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-03-15"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 81.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 82,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-03-15"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-4-1-nano",
+    "name": "GPT-4.1 nano",
+    "provider": "OpenAI",
+    "family": "GPT-4",
+    "dataKind": "verified",
+    "description": "Compact sub-billion-class utility model built for instantaneous text classification, entity extraction, and prompt preprocessing.",
+    "strengths": [
+      "Near-instantaneous token throughput",
+      "Ultra-low API cost ($0.06 / $0.24 per 1M tokens)",
+      "Strict adherence to output schemas"
+    ],
+    "weaknesses": ["Text only; limited logical depth"],
+    "tags": ["Speed", "Best value", "Fast"],
+    "facts": {
+      "context": 65536,
+      "maxOutput": 4096,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-03-15",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.06,
+      "output": 0.24,
+      "cached": 0.015,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 50,
+      "coding": 44,
+      "agentic": 74,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 89,
+      "overall": 59
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 49.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 50,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-03-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 44,
+        "min": 0,
+        "max": 100,
+        "normalized": 44,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-03-15"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 74,
+        "min": 0,
+        "max": 100,
+        "normalized": 74,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-03-15"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 89,
+        "min": 0,
+        "max": 100,
+        "normalized": 89,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "gpt-4-5-preview",
     "name": "GPT-4.5 Preview",
     "provider": "OpenAI",
@@ -1926,6 +5297,144 @@
         "retrievedAt": "2026-09-05",
         "kind": "provider_doc",
         "publisher": "Google DeepMind"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "o1-pro",
+    "name": "o1-pro",
+    "provider": "OpenAI",
+    "family": "OpenAI o1",
+    "dataKind": "verified",
+    "description": "High-compute configuration of OpenAI o1 that spends significantly more compute thinking through hard problems in mathematics, science, and coding.",
+    "strengths": [
+      "Highest reliability on ultra-hard logic puzzles and complex proofs",
+      "Minimal hallucination rate on verified mathematical benchmarks",
+      "Multimodal visual reasoning"
+    ],
+    "weaknesses": [
+      "Very expensive ($20 input / $80 output per 1M tokens)",
+      "Significant latency on complex queries"
+    ],
+    "tags": ["Reasoning", "STEM", "Flagship"],
+    "facts": {
+      "context": 200000,
+      "maxOutput": 100000,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-12-17",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["high", "max"],
+      "defaultEffort": "high"
+    },
+    "pricing": {
+      "input": 20,
+      "output": 80,
+      "cached": 5,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 77,
+      "coding": 78,
+      "agentic": 89,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 13,
+      "overall": 71
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 76.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-12-17"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 78.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 78,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-12-17"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 89.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 89,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2024-12-17"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 13,
+        "min": 0,
+        "max": 100,
+        "normalized": 13,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
       },
       {
         "id": "livebench-leaderboard",
@@ -6316,6 +9825,422 @@
     ]
   },
   {
+    "slug": "gpt-4-0125-preview",
+    "name": "GPT-4 Turbo (0125 Preview)",
+    "provider": "OpenAI",
+    "family": "GPT-4",
+    "dataKind": "verified",
+    "description": "Updated January 2024 preview snapshot of GPT-4 Turbo engineered to reduce occurrences of 'laziness' in code completion.",
+    "strengths": [
+      "Significantly reduced laziness on long code generation prompts",
+      "128,000 token context window",
+      "High instruction following and parallel tool calling"
+    ],
+    "weaknesses": [
+      "Text only (no vision)",
+      "Superseded by gpt-4-turbo and GPT-4o"
+    ],
+    "tags": ["Legacy", "Coding", "Research"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 4096,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": false,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-01-25",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 10,
+      "output": 30,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 53,
+      "coding": 49,
+      "agentic": 81,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 24,
+      "overall": 54
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 52.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 53,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-01-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 48.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 49,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-01-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 81.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 81,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2024-01-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 24,
+        "min": 0,
+        "max": 100,
+        "normalized": 24,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-4-1106-preview",
+    "name": "GPT-4 Turbo (1106 Preview)",
+    "provider": "OpenAI",
+    "family": "GPT-4",
+    "dataKind": "verified",
+    "description": "OpenAI's milestone November 2023 preview model that introduced the 128k context window and JSON mode to the developer ecosystem.",
+    "strengths": [
+      "Historical milestone for 128k context windows",
+      "First model to introduce native JSON mode and parallel function calling",
+      "Strong instruction adherence"
+    ],
+    "weaknesses": [
+      "Text only (no vision)",
+      "Higher pricing than newer GPT-4o models",
+      "Superseded by gpt-4-turbo and GPT-4o"
+    ],
+    "tags": ["Legacy", "Research", "Coding"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 4096,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": false,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2023-11-06",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 10,
+      "output": 30,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 51,
+      "coding": 47,
+      "agentic": 80,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 24,
+      "overall": 52
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 50.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 51,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2023-11-06"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 47,
+        "min": 0,
+        "max": 100,
+        "normalized": 47,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2023-11-06"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 80.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 80,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2023-11-06"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 24,
+        "min": 0,
+        "max": 100,
+        "normalized": 24,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-4-32k",
+    "name": "GPT-4 32k",
+    "provider": "OpenAI",
+    "family": "GPT-4",
+    "dataKind": "verified",
+    "description": "The original extended-context snapshot of GPT-4 offering 32k tokens, designed for long-document processing before the launch of GPT-4 Turbo.",
+    "strengths": [
+      "Expanded 32,768 token context window for the original GPT-4 model",
+      "Full function calling support",
+      "Rich, thoughtful long-form prose and qualitative depth"
+    ],
+    "weaknesses": [
+      "Extremely expensive ($60 input / $120 output per 1M tokens)",
+      "Text only (no vision)",
+      "Superseded by 128k context models"
+    ],
+    "tags": ["Legacy", "Research", "Large context"],
+    "facts": {
+      "context": 32768,
+      "maxOutput": 4096,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": false,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2023-06-13",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 60,
+      "output": 120,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 45,
+      "coding": 41,
+      "agentic": 74,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 3,
+      "overall": 44
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 44.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 45,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2023-06-13"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 40.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 41,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2023-06-13"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 73.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 74,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2023-06-13"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 3,
+        "min": 0,
+        "max": 100,
+        "normalized": 3,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "gpt-4-0613",
     "name": "GPT-4 (0613)",
     "provider": "OpenAI",
@@ -6424,6 +10349,145 @@
         "id": "source-openai",
         "name": "OpenAI Official Documentation",
         "url": "https://platform.openai.com/docs/models#gpt-4-turbo-and-gpt-4",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-4-0314",
+    "name": "GPT-4 (0314)",
+    "provider": "OpenAI",
+    "family": "GPT-4",
+    "dataKind": "verified",
+    "description": "The original historical launch snapshot of GPT-4 from March 14, 2023, widely admired for philosophical prose and deep qualitative reasoning.",
+    "strengths": [
+      "Exceptional qualitative writing and philosophical synthesis",
+      "Very low hallucination rate on complex logical deductions",
+      "Historical baseline for frontier AI capability"
+    ],
+    "weaknesses": [
+      "Legacy 8,192 token context window",
+      "Very high pricing ($30 input / $60 output per 1M tokens)",
+      "Does not support function calling or vision"
+    ],
+    "tags": ["Legacy", "Writing", "Research"],
+    "facts": {
+      "context": 8192,
+      "maxOutput": 4096,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2023-03-14",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 30,
+      "output": 60,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 44,
+      "coding": 40,
+      "agentic": 70,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 12,
+      "overall": 44
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 43.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 44,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2023-03-14"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 39.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 40,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2023-03-14"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 70,
+        "min": 0,
+        "max": 100,
+        "normalized": 70,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2023-03-14"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 12,
+        "min": 0,
+        "max": 100,
+        "normalized": 12,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
         "retrievedAt": "2026-09-05",
         "kind": "provider_doc",
         "publisher": "OpenAI"

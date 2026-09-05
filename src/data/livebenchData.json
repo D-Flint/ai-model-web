@@ -12,7 +12,7 @@
   {
     "model": "qwq-32b-preview",
     "global_average": 67.8,
-    "reasoning": 81.0,
+    "reasoning": 81,
     "math": 82.5,
     "coding": 60.5,
     "data_analysis": 57.8,
@@ -26,14 +26,14 @@
     "math": 78.2,
     "coding": 66.8,
     "data_analysis": 68.5,
-    "instruction_following": 74.0,
+    "instruction_following": 74,
     "date": "2025-01-27"
   },
   {
     "model": "grok-2-1212",
     "global_average": 68.4,
     "reasoning": 76.5,
-    "math": 71.0,
+    "math": 71,
     "coding": 62.4,
     "data_analysis": 65.2,
     "instruction_following": 71.8,
@@ -56,13 +56,13 @@
     "math": 62.8,
     "coding": 72.8,
     "data_analysis": 60.5,
-    "instruction_following": 65.0,
+    "instruction_following": 65,
     "date": "2025-01-14"
   },
   {
     "model": "Qwen2.5-Coder-32B-Instruct",
     "global_average": 62.1,
-    "reasoning": 64.0,
+    "reasoning": 64,
     "math": 60.5,
     "coding": 70.2,
     "data_analysis": 58.2,
@@ -73,7 +73,7 @@
     "model": "Llama-3.2-90B-Vision-Instruct",
     "global_average": 61.8,
     "reasoning": 67.5,
-    "math": 62.0,
+    "math": 62,
     "coding": 54.2,
     "data_analysis": 59.8,
     "instruction_following": 67.4,
@@ -93,10 +93,10 @@
     "model": "gemini-2.0-pro-exp-02-05",
     "global_average": 73.8,
     "reasoning": 84.1,
-    "math": 82.0,
+    "math": 82,
     "coding": 71.5,
     "data_analysis": 70.8,
-    "instruction_following": 72.0,
+    "instruction_following": 72,
     "date": "2025-02-05"
   },
   {
@@ -111,8 +111,8 @@
   },
   {
     "model": "gemini-2.0-flash-thinking-exp-1219",
-    "global_average": 71.0,
-    "reasoning": 85.0,
+    "global_average": 71,
+    "reasoning": 85,
     "math": 83.2,
     "coding": 66.4,
     "data_analysis": 68.2,
@@ -123,10 +123,10 @@
     "model": "o1-mini-2024-09-12",
     "global_average": 61.2,
     "reasoning": 76.4,
-    "math": 77.0,
+    "math": 77,
     "coding": 56.5,
     "data_analysis": 54.2,
-    "instruction_following": 52.0,
+    "instruction_following": 52,
     "date": "2024-09-12"
   },
   {
@@ -135,7 +135,7 @@
     "reasoning": 65.2,
     "math": 61.4,
     "coding": 52.8,
-    "data_analysis": 58.0,
+    "data_analysis": 58,
     "instruction_following": 63.5,
     "date": "2025-02-05"
   },
@@ -163,10 +163,10 @@
     "model": "o3-mini",
     "global_average": 72.3,
     "reasoning": 87.5,
-    "math": 85.0,
+    "math": 85,
     "coding": 63.8,
     "data_analysis": 68.4,
-    "instruction_following": 64.0,
+    "instruction_following": 64,
     "date": "2025-01-31"
   },
   {
@@ -194,8 +194,8 @@
     "global_average": 63.1,
     "reasoning": 68.5,
     "math": 65.2,
-    "coding": 56.0,
-    "data_analysis": 61.0,
+    "coding": 56,
+    "data_analysis": 61,
     "instruction_following": 64.8,
     "date": "2024-12-11"
   },
@@ -213,7 +213,7 @@
     "model": "gemini-1.5-pro-002",
     "global_average": 61.2,
     "reasoning": 65.4,
-    "math": 63.0,
+    "math": 63,
     "coding": 54.3,
     "data_analysis": 59.2,
     "instruction_following": 64.1,
@@ -234,7 +234,7 @@
     "global_average": 55.5,
     "reasoning": 59.4,
     "math": 57.2,
-    "coding": 49.0,
+    "coding": 49,
     "data_analysis": 54.1,
     "instruction_following": 60.8,
     "date": "2024-12-06"
@@ -253,7 +253,7 @@
     "model": "claude-3-5-haiku-20241022",
     "global_average": 53.4,
     "reasoning": 56.8,
-    "math": 55.0,
+    "math": 55,
     "coding": 47.6,
     "data_analysis": 51.2,
     "instruction_following": 58.4,
@@ -271,7 +271,7 @@
   },
   {
     "model": "claude-3-opus-20240229",
-    "global_average": 48.0,
+    "global_average": 48,
     "reasoning": 50.2,
     "math": 48.6,
     "coding": 42.9,
@@ -283,8 +283,8 @@
     "model": "gemini-1.5-flash-002",
     "global_average": 46.5,
     "reasoning": 48.5,
-    "math": 47.0,
-    "coding": 40.0,
+    "math": 47,
+    "coding": 40,
     "data_analysis": 45.2,
     "instruction_following": 53.8,
     "date": "2024-09-24"
@@ -296,7 +296,7 @@
     "math": 58.4,
     "coding": 55.6,
     "data_analysis": 54.8,
-    "instruction_following": 62.0,
+    "instruction_following": 62,
     "date": "2025-01-29"
   },
   {
@@ -332,7 +332,7 @@
   {
     "model": "ministral-8b-2410",
     "global_average": 48.6,
-    "reasoning": 51.0,
+    "reasoning": 51,
     "math": 46.8,
     "coding": 43.4,
     "data_analysis": 47.2,
@@ -345,7 +345,7 @@
     "reasoning": 45.8,
     "math": 41.5,
     "coding": 38.6,
-    "data_analysis": 43.0,
+    "data_analysis": 43,
     "instruction_following": 53.5,
     "date": "2024-09-25"
   },
@@ -375,7 +375,7 @@
     "reasoning": 39.5,
     "math": 34.2,
     "coding": 33.8,
-    "data_analysis": 38.0,
+    "data_analysis": 38,
     "instruction_following": 46.5,
     "date": "2024-12-03"
   },
@@ -383,7 +383,7 @@
     "model": "ministral-3b-2410",
     "global_average": 42.6,
     "reasoning": 44.5,
-    "math": 39.0,
+    "math": 39,
     "coding": 37.2,
     "data_analysis": 41.5,
     "instruction_following": 50.8,
@@ -396,7 +396,7 @@
     "math": 36.5,
     "coding": 34.5,
     "data_analysis": 38.8,
-    "instruction_following": 48.0,
+    "instruction_following": 48,
     "date": "2024-09-25"
   },
   {
@@ -404,9 +404,9 @@
     "global_average": 33.5,
     "reasoning": 34.8,
     "math": 29.5,
-    "coding": 28.0,
+    "coding": 28,
     "data_analysis": 33.2,
-    "instruction_following": 42.0,
+    "instruction_following": 42,
     "date": "2024-09-25"
   },
   {
@@ -414,7 +414,7 @@
     "global_average": 51.4,
     "reasoning": 54.2,
     "math": 49.5,
-    "coding": 46.0,
+    "coding": 46,
     "data_analysis": 50.2,
     "instruction_following": 57.1,
     "date": "2024-08-08"
@@ -425,7 +425,7 @@
     "reasoning": 77.2,
     "math": 80.5,
     "coding": 58.2,
-    "data_analysis": 53.0,
+    "data_analysis": 53,
     "instruction_following": 50.1,
     "date": "2024-09-12"
   },
@@ -436,7 +436,7 @@
     "math": 64.5,
     "coding": 54.8,
     "data_analysis": 56.2,
-    "instruction_following": 59.0,
+    "instruction_following": 59,
     "date": "2024-08-06"
   },
   {
@@ -446,7 +446,7 @@
     "math": 55.4,
     "coding": 49.2,
     "data_analysis": 52.8,
-    "instruction_following": 55.0,
+    "instruction_following": 55,
     "date": "2024-04-09"
   },
   {
@@ -468,5 +468,295 @@
     "data_analysis": 33.8,
     "instruction_following": 41.8,
     "date": "2024-01-25"
+  },
+  {
+    "model": "gpt-6-astra",
+    "global_average": 84.5,
+    "reasoning": 94.2,
+    "math": 93.8,
+    "coding": 86.5,
+    "data_analysis": 81.2,
+    "instruction_following": 88,
+    "date": "2026-09-02"
+  },
+  {
+    "model": "gpt-5-6-sol",
+    "global_average": 81.2,
+    "reasoning": 90.5,
+    "math": 89.2,
+    "coding": 83.1,
+    "data_analysis": 78.4,
+    "instruction_following": 84.6,
+    "date": "2026-07-09"
+  },
+  {
+    "model": "gpt-5-6-terra",
+    "global_average": 74.8,
+    "reasoning": 82.5,
+    "math": 80.1,
+    "coding": 75.4,
+    "data_analysis": 72,
+    "instruction_following": 79.2,
+    "date": "2026-07-09"
+  },
+  {
+    "model": "gpt-5-6-luna",
+    "global_average": 65.4,
+    "reasoning": 71,
+    "math": 68.2,
+    "coding": 64,
+    "data_analysis": 63.5,
+    "instruction_following": 72.8,
+    "date": "2026-07-09"
+  },
+  {
+    "model": "gpt-5-4-nano",
+    "global_average": 56.2,
+    "reasoning": 59.8,
+    "math": 55.4,
+    "coding": 52,
+    "data_analysis": 54.8,
+    "instruction_following": 63.5,
+    "date": "2026-05-18"
+  },
+  {
+    "model": "gpt-5-3-codex",
+    "global_average": 76.5,
+    "reasoning": 81.2,
+    "math": 83.5,
+    "coding": 85.4,
+    "data_analysis": 74,
+    "instruction_following": 78.5,
+    "date": "2026-04-14"
+  },
+  {
+    "model": "gpt-5-2-pro",
+    "global_average": 79.4,
+    "reasoning": 88,
+    "math": 86.8,
+    "coding": 81.5,
+    "data_analysis": 76.2,
+    "instruction_following": 82.5,
+    "date": "2026-03-20"
+  },
+  {
+    "model": "gpt-5-2",
+    "global_average": 76.2,
+    "reasoning": 83.5,
+    "math": 81.4,
+    "coding": 77.8,
+    "data_analysis": 73.5,
+    "instruction_following": 80,
+    "date": "2026-03-20"
+  },
+  {
+    "model": "gpt-5-pro",
+    "global_average": 77,
+    "reasoning": 85.2,
+    "math": 84,
+    "coding": 78.5,
+    "data_analysis": 74.2,
+    "instruction_following": 80.4,
+    "date": "2026-01-15"
+  },
+  {
+    "model": "gpt-5",
+    "global_average": 74,
+    "reasoning": 80.5,
+    "math": 78.4,
+    "coding": 75,
+    "data_analysis": 71.8,
+    "instruction_following": 78.2,
+    "date": "2026-01-15"
+  },
+  {
+    "model": "gpt-5-mini",
+    "global_average": 64.2,
+    "reasoning": 69.5,
+    "math": 66.8,
+    "coding": 63.2,
+    "data_analysis": 62,
+    "instruction_following": 71.5,
+    "date": "2026-01-15"
+  },
+  {
+    "model": "gpt-5-nano",
+    "global_average": 54.8,
+    "reasoning": 58.2,
+    "math": 53.6,
+    "coding": 50.5,
+    "data_analysis": 53.2,
+    "instruction_following": 61.8,
+    "date": "2026-01-15"
+  },
+  {
+    "model": "o4-mini-deep-research",
+    "global_average": 78.5,
+    "reasoning": 86.8,
+    "math": 85,
+    "coding": 79.2,
+    "data_analysis": 82.5,
+    "instruction_following": 81,
+    "date": "2025-11-20"
+  },
+  {
+    "model": "o4-mini",
+    "global_average": 75.8,
+    "reasoning": 86.2,
+    "math": 87.5,
+    "coding": 78.4,
+    "data_analysis": 72,
+    "instruction_following": 77.5,
+    "date": "2025-10-15"
+  },
+  {
+    "model": "o3-pro",
+    "global_average": 82.5,
+    "reasoning": 92.4,
+    "math": 91.8,
+    "coding": 84.5,
+    "data_analysis": 79.5,
+    "instruction_following": 83.2,
+    "date": "2025-06-12"
+  },
+  {
+    "model": "o3-deep-research",
+    "global_average": 80.4,
+    "reasoning": 89.5,
+    "math": 87.2,
+    "coding": 80.8,
+    "data_analysis": 84.5,
+    "instruction_following": 83,
+    "date": "2025-05-20"
+  },
+  {
+    "model": "o3",
+    "global_average": 79.8,
+    "reasoning": 89.2,
+    "math": 88.5,
+    "coding": 82,
+    "data_analysis": 76.5,
+    "instruction_following": 81.2,
+    "date": "2025-04-10"
+  },
+  {
+    "model": "o1-pro",
+    "global_average": 76.8,
+    "reasoning": 86.4,
+    "math": 86,
+    "coding": 78.2,
+    "data_analysis": 73,
+    "instruction_following": 79.5,
+    "date": "2024-12-17"
+  },
+  {
+    "model": "gpt-4-1",
+    "global_average": 68.5,
+    "reasoning": 74.5,
+    "math": 71.2,
+    "coding": 68,
+    "data_analysis": 67.2,
+    "instruction_following": 74,
+    "date": "2025-03-15"
+  },
+  {
+    "model": "gpt-4-1-mini",
+    "global_average": 58.4,
+    "reasoning": 62.8,
+    "math": 58.5,
+    "coding": 54.2,
+    "data_analysis": 57,
+    "instruction_following": 66.5,
+    "date": "2025-03-15"
+  },
+  {
+    "model": "gpt-4-1-nano",
+    "global_average": 49.5,
+    "reasoning": 51.5,
+    "math": 46.2,
+    "coding": 44,
+    "data_analysis": 48.5,
+    "instruction_following": 58,
+    "date": "2025-03-15"
+  },
+  {
+    "model": "gpt-oss-120b",
+    "global_average": 73.2,
+    "reasoning": 82.5,
+    "math": 81,
+    "coding": 74.5,
+    "data_analysis": 69.8,
+    "instruction_following": 76.5,
+    "date": "2025-08-15"
+  },
+  {
+    "model": "gpt-oss-20b",
+    "global_average": 63.5,
+    "reasoning": 72,
+    "math": 70.5,
+    "coding": 64,
+    "data_analysis": 61.2,
+    "instruction_following": 70.5,
+    "date": "2025-08-15"
+  },
+  {
+    "model": "gpt-oss-safeguard-120b",
+    "global_average": 67,
+    "reasoning": 75.2,
+    "math": 71,
+    "coding": 66.5,
+    "data_analysis": 68,
+    "instruction_following": 80.2,
+    "date": "2025-08-15"
+  },
+  {
+    "model": "gpt-oss-safeguard-20b",
+    "global_average": 58.5,
+    "reasoning": 64,
+    "math": 60.5,
+    "coding": 56,
+    "data_analysis": 59,
+    "instruction_following": 73,
+    "date": "2025-08-15"
+  },
+  {
+    "model": "gpt-4-1106-preview",
+    "global_average": 50.8,
+    "reasoning": 54.2,
+    "math": 51.5,
+    "coding": 47,
+    "data_analysis": 50.5,
+    "instruction_following": 52.8,
+    "date": "2023-11-06"
+  },
+  {
+    "model": "gpt-4-0125-preview",
+    "global_average": 52.5,
+    "reasoning": 56.4,
+    "math": 53,
+    "coding": 48.5,
+    "data_analysis": 51.8,
+    "instruction_following": 53.8,
+    "date": "2024-01-25"
+  },
+  {
+    "model": "gpt-4-0314",
+    "global_average": 43.5,
+    "reasoning": 46,
+    "math": 41.8,
+    "coding": 39.5,
+    "data_analysis": 42,
+    "instruction_following": 47.5,
+    "date": "2023-03-14"
+  },
+  {
+    "model": "gpt-4-32k",
+    "global_average": 44.5,
+    "reasoning": 47,
+    "math": 43,
+    "coding": 40.5,
+    "data_analysis": 43.2,
+    "instruction_following": 48.8,
+    "date": "2023-06-13"
   }
 ]
