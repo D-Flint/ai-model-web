@@ -557,3 +557,23 @@
 - Current state: Landing page features high-taste, performant animations and micro-interactions on load, scroll, hover, and click.
 - Exact next step: User verifies the landing page animations locally at `http://localhost:4321`.
 
+## 2026-09-05 — Integrate User-Provided Logo into Header, Footer, and Favicon
+
+- Objective: Integrate the user-provided brand logo (`ChatGPT Image Sep 5, 2026, 09_47_29 PM.png`) into the website header brand link, footer brand link, and website favicon.
+- Files changed:
+  - `public/logo.png`: User-provided logo image with high-resolution transparent alpha channel.
+  - `public/favicon.svg`: Embedded SVG favicon with base64 raster logo representation for SVG favicon support.
+  - `src/layouts/RootLayout.astro`: Added PNG favicon and apple-touch-icon links; replaced CSS text block `brand-mark` with responsive `brand-logo` image in both header navigation and footer.
+  - `src/styles/global.css`: Added `.brand-logo` styling with soft green glow drop-shadow, responsive sizing, hover micro-interaction (`scale(1.08) rotate(2.5deg)`), and flex gap spacing.
+  - `.agents/registry.json`: Registered `logo-agent` and updated status to `completed`.
+- Attempts: 1 iteration with full verification.
+- Failures and causes: None.
+- Tests and results:
+  - `npm test`: 37/37 passed across all test suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 62 Astro and TypeScript files.
+  - `npm run build`: Production static build generated 2,944 pages with 0 errors.
+- Commit hash: `d850c6b` (local commit; no remote push).
+- Current state: The new logo is cleanly integrated across header, footer, and favicons with smooth hover animations and responsive styling.
+- Exact next step: User verifies the logo on `http://localhost:4321` and confirms appearance across light and dark modes.
+
+

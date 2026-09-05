@@ -27,7 +27,9 @@ const canonical = Astro.site ? new URL(path, Astro.site).href : undefined;
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
+    <link rel="icon" type="image/png" href="/logo.png" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/logo.png" />
     <title>{title}</title><meta name="description" content={description} />
     <meta name="robots" content="noindex, nofollow" />
     {canonical && <link rel="canonical" href={canonical} />}
@@ -53,10 +55,14 @@ const canonical = Astro.site ? new URL(path, Astro.site).href : undefined;
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="container nav-row">
-        <a href="/" class="brand" aria-label="Astra home"
-          ><span class="brand-mark">a</span>astra<span class="brand-period"
-            >.</span
-          ></a
+        <a href="/" class="brand" aria-label="Astra home">
+          <img
+            src="/logo.png"
+            alt="Astra Logo"
+            class="brand-logo"
+            width="34"
+            height="34"
+          /><span>astra<span class="brand-period">.</span></span></a
         >
         <nav class="desktop-nav" aria-label="Main navigation">
           {
@@ -110,7 +116,15 @@ const canonical = Astro.site ? new URL(path, Astro.site).href : undefined;
     <footer class="site-footer">
       <div class="container footer-top">
         <div>
-          <a href="/" class="brand">astra<span class="brand-period">.</span></a
+          <a href="/" class="brand" aria-label="Astra home">
+            <img
+              src="/logo.png"
+              alt="Astra Logo"
+              class="brand-logo brand-logo--footer"
+              width="26"
+              height="26"
+              loading="lazy"
+            /><span>astra<span class="brand-period">.</span></span></a
           ><p>A little clarity in a world of models.</p>
         </div><div class="footer-links">
           <a href="/models">Explore models</a><a href="/methodology"

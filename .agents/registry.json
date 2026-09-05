@@ -120,6 +120,12 @@
       "goal": "Add subtle, high-taste animations to the landing page",
       "lastHeartbeat": "2026-09-05T14:23:27.287Z",
       "status": "active"
+    },
+    "logo-agent": {
+      "role": "UI/UX Design Engineer",
+      "goal": "Integrate user-provided logo into header and branding",
+      "lastHeartbeat": "2026-09-05T14:53:00.000Z",
+      "status": "completed"
     }
   },
   "claims": {},

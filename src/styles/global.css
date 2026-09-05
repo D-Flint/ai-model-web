@@ -265,7 +265,27 @@ main {
   letter-spacing: -1.8px;
   display: inline-flex;
   align-items: center;
+  gap: 10px;
   line-height: 1;
+  text-decoration: none;
+  color: inherit;
+  user-select: none;
+}
+.brand-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease;
+  filter: drop-shadow(0 2px 8px rgba(74, 222, 128, 0.25));
+}
+.brand:hover .brand-logo {
+  transform: scale(1.08) rotate(2.5deg);
+  filter: drop-shadow(0 4px 14px rgba(74, 222, 128, 0.4));
+}
+.brand-logo--footer {
+  width: 24px;
+  height: 24px;
 }
 .brand-mark {
   background: #5146d9;
@@ -278,6 +298,7 @@ main {
   margin-right: 9px;
   font-size: 27px;
   font-weight: 600;
+  display: none;
 }
 .brand-period {
   color: var(--accent);
