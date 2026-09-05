@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Copy, X, ArrowRight, Plus } from 'lucide-react';
+import { Copy, X, Plus } from 'lucide-react';
 import type { CatalogModel } from '../lib/catalogSchema';
 import {
   effortLabels,
   metricLabels,
-  type Metric,
   type ReasoningEffort,
 } from '../data/config';
 import {
@@ -16,24 +15,6 @@ import {
 } from '../lib/decision';
 import { ModelMark } from './ModelCard';
 import { ProviderLogo } from './ProviderLogo';
-
-const groups: { name: string; metrics: Metric[] }[] = [
-  {
-    name: 'Performance',
-    metrics: [
-      'overall',
-      'intelligence',
-      'coding',
-      'agentic',
-      'dailyUse',
-      'writing',
-      'research',
-      'vision',
-    ],
-  },
-  { name: 'Experience', metrics: ['speed', 'reliability'] },
-  { name: 'Economics', metrics: ['costEfficiency'] },
-];
 
 export interface ComparedColumn {
   id: string;
@@ -78,8 +59,8 @@ export default function ComparisonBuilder({
 
       const isReasoning = Boolean(
         model.facts.reasoningEffort &&
-          model.facts.reasoningEffort.length > 0 &&
-          !model.facts.reasoningEffort.includes('none'),
+        model.facts.reasoningEffort.length > 0 &&
+        !model.facts.reasoningEffort.includes('none'),
       );
 
       const availableEfforts: ReasoningEffort[] = isReasoning
@@ -201,8 +182,7 @@ export default function ComparisonBuilder({
             <optgroup label="Add model">
               {models
                 .filter(
-                  (m) =>
-                    !selection.some((s) => s.split(':')[0] === m.slug),
+                  (m) => !selection.some((s) => s.split(':')[0] === m.slug),
                 )
                 .map((m) => (
                   <option value={m.slug} key={m.slug}>
@@ -219,8 +199,7 @@ export default function ComparisonBuilder({
                     (eff) =>
                       !selectedItems.some(
                         (s) =>
-                          s.model.slug === item.model.slug &&
-                          s.effort === eff,
+                          s.model.slug === item.model.slug && s.effort === eff,
                       ),
                   ),
               )
@@ -234,8 +213,7 @@ export default function ComparisonBuilder({
                   (eff) =>
                     !selectedItems.some(
                       (s) =>
-                        s.model.slug === item.model.slug &&
-                        s.effort === eff,
+                        s.model.slug === item.model.slug && s.effort === eff,
                     ),
                 );
                 return (
@@ -297,8 +275,8 @@ export default function ComparisonBuilder({
         <div className="empty-state">
           <h2>Pick at least two models or effort levels.</h2>
           <p>
-            Add up to four to see scores, pricing, thinking tokens, and practical
-            tradeoffs side by side.
+            Add up to four to see scores, pricing, thinking tokens, and
+            practical tradeoffs side by side.
           </p>
         </div>
       ) : (
@@ -372,8 +350,7 @@ export default function ComparisonBuilder({
                                       (e) =>
                                         !selectedItems.some(
                                           (s) =>
-                                            s.model.slug ===
-                                              item.model.slug &&
+                                            s.model.slug === item.model.slug &&
                                             s.effort === e,
                                         ),
                                     ) ||
@@ -398,7 +375,9 @@ export default function ComparisonBuilder({
                         )
                       ) : (
                         <div style={{ marginTop: '6px' }}>
-                          <span className="micro muted">Standard (Instant)</span>
+                          <span className="micro muted">
+                            Standard (Instant)
+                          </span>
                         </div>
                       )}
                     </th>
@@ -406,84 +385,171 @@ export default function ComparisonBuilder({
                 </tr>
               </thead>
               <tbody>
-                {groups.map((group) => (
-                  <ComparisonGroup
-                    key={group.name}
-                    group={group}
-                    selected={selectedItems}
-                  />
-                ))}
-                {(['input', 'output', 'cached'] as const).map((key, i) => (
-                  <tr key={key}>
-                    <th scope="row">
-                      {
-                        [
-                          'Input / 1M tokens',
-                          'Output / 1M tokens',
-                          'Cached input / 1M',
-                        ][i]
-                      }
-                    </th>
-                    {selectedItems.map((item) => (
-                      <td
-                        key={item.id}
-                        className={
-                          item.model.pricing[key] ===
-                          Math.min(
-                            ...selectedItems.map(
-                              (x) => x.model.pricing[key] ?? Infinity,
-                            ),
-                          )
-                            ? 'winner'
-                            : ''
-                        }
-                      >
-                        {item.model.pricing[key] === null
-                          ? 'Not available'
-                          : money(item.model.pricing[key])}
+                <tr className="group-row pillar-group-row">
+                  <th colSpan={selectedItems.length + 1}>
+                    Core Focus Pillars (Intelligence · Speed · Price)
+                  </th>
+                </tr>
+                <tr>
+                  <th scope="row">Intelligence / 100</th>
+                  {selectedItems.map((item) => {
+                    const score = item.stats.scores.intelligence;
+                    const maxScore = Math.max(
+                      ...selectedItems.map((x) => x.stats.scores.intelligence),
+                    );
+                    const isWinner = score === maxScore;
+                    return (
+                      <td key={item.id} className={isWinner ? 'winner' : ''}>
+                        <a
+                          href={`/models/${item.model.slug}#score-intelligence`}
+                        >
+                          <strong>{score}</strong>
+                        </a>
+                        {isWinner && (
+                          <span className="winner-label">Highest</span>
+                        )}
                       </td>
-                    ))}
+                    );
+                  })}
+                </tr>
+                <tr>
+                  <th scope="row">Speed / 100</th>
+                  {selectedItems.map((item) => {
+                    const score = item.stats.scores.speed;
+                    const maxScore = Math.max(
+                      ...selectedItems.map((x) => x.stats.scores.speed),
+                    );
+                    const isWinner = score === maxScore;
+                    return (
+                      <td key={item.id} className={isWinner ? 'winner' : ''}>
+                        <a href={`/models/${item.model.slug}#score-speed`}>
+                          <strong>{score}</strong>
+                        </a>
+                        <div className="micro muted">{item.stats.latency}</div>
+                        {isWinner && (
+                          <span className="winner-label">Fastest</span>
+                        )}
+                      </td>
+                    );
+                  })}
+                </tr>
+                <tr>
+                  <th scope="row">Price: Input / 1M tokens</th>
+                  {selectedItems.map((item) => {
+                    const isWinner =
+                      item.model.pricing.input ===
+                      Math.min(
+                        ...selectedItems.map((x) => x.model.pricing.input),
+                      );
+                    return (
+                      <td key={item.id} className={isWinner ? 'winner' : ''}>
+                        <strong>{money(item.model.pricing.input)}</strong>
+                        {isWinner && (
+                          <span className="winner-label">Lowest</span>
+                        )}
+                      </td>
+                    );
+                  })}
+                </tr>
+                <tr>
+                  <th scope="row">Price: Output / 1M tokens</th>
+                  {selectedItems.map((item) => {
+                    const isWinner =
+                      item.model.pricing.output ===
+                      Math.min(
+                        ...selectedItems.map((x) => x.model.pricing.output),
+                      );
+                    return (
+                      <td key={item.id} className={isWinner ? 'winner' : ''}>
+                        <strong>{money(item.model.pricing.output)}</strong>
+                        {isWinner && (
+                          <span className="winner-label">Lowest</span>
+                        )}
+                      </td>
+                    );
+                  })}
+                </tr>
+                <tr>
+                  <th scope="row">Estimated task cost</th>
+                  {selectedItems.map((item) => {
+                    const isWinner =
+                      item.stats.taskCost ===
+                      Math.min(...selectedItems.map((x) => x.stats.taskCost));
+                    return (
+                      <td key={item.id} className={isWinner ? 'winner' : ''}>
+                        <strong>{money(item.stats.taskCost, 4)}</strong>
+                        {isWinner && (
+                          <span className="winner-label">Best value</span>
+                        )}
+                      </td>
+                    );
+                  })}
+                </tr>
+
+                <tr className="group-row">
+                  <th colSpan={selectedItems.length + 1}>
+                    Secondary Capabilities & Benchmarks
+                  </th>
+                </tr>
+                {(
+                  [
+                    'overall',
+                    'coding',
+                    'agentic',
+                    'dailyUse',
+                    'writing',
+                    'research',
+                    'vision',
+                    'reliability',
+                    'costEfficiency',
+                  ] as const
+                ).map((metric) => (
+                  <tr key={metric}>
+                    <th scope="row">{metricLabels[metric]}</th>
+                    {selectedItems.map((item) => {
+                      const score = item.stats.scores[metric];
+                      const maxScore = Math.max(
+                        ...selectedItems.map((x) => x.stats.scores[metric]),
+                      );
+                      const isWinner = score === maxScore;
+                      return (
+                        <td key={item.id} className={isWinner ? 'winner' : ''}>
+                          <a
+                            href={`/models/${item.model.slug}#score-${metric}`}
+                          >
+                            {score}
+                          </a>
+                          {isWinner && (
+                            <span className="winner-label">Best</span>
+                          )}
+                        </td>
+                      );
+                    })}
                   </tr>
                 ))}
+
+                <tr className="group-row">
+                  <th colSpan={selectedItems.length + 1}>
+                    Technical & Reasoning Specs
+                  </th>
+                </tr>
                 <tr>
-                  <th scope="row">Reasoning tokens / task</th>
+                  <th scope="row">Cached input / 1M</th>
                   {selectedItems.map((item) => (
-                    <td
-                      key={item.id}
-                      className={
-                        item.stats.reasoningTokens ===
-                        Math.min(
-                          ...selectedItems.map((x) => x.stats.reasoningTokens),
-                        )
-                          ? 'winner'
-                          : ''
-                      }
-                    >
-                      {item.stats.reasoningTokens > 0
-                        ? `+${item.stats.reasoningTokens.toLocaleString()} tokens`
-                        : '0 tokens'}
+                    <td key={item.id}>
+                      {item.model.pricing.cached === null
+                        ? 'Not available'
+                        : money(item.model.pricing.cached)}
                     </td>
                   ))}
                 </tr>
                 <tr>
-                  <th scope="row">Thinking latency profile</th>
+                  <th scope="row">Reasoning tokens / task</th>
                   {selectedItems.map((item) => (
-                    <td key={item.id}>{item.stats.latency}</td>
-                  ))}
-                </tr>
-                <tr>
-                  <th scope="row">Estimated task cost</th>
-                  {selectedItems.map((item) => (
-                    <td
-                      key={item.id}
-                      className={
-                        item.stats.taskCost ===
-                        Math.min(...selectedItems.map((x) => x.stats.taskCost))
-                          ? 'winner'
-                          : ''
-                      }
-                    >
-                      {money(item.stats.taskCost, 4)}
+                    <td key={item.id}>
+                      {item.stats.reasoningTokens > 0
+                        ? `+${item.stats.reasoningTokens.toLocaleString()} tokens`
+                        : '0 tokens'}
                     </td>
                   ))}
                 </tr>
@@ -498,9 +564,6 @@ export default function ComparisonBuilder({
                   {selectedItems.map((item) => (
                     <td key={item.id}>{item.model.facts.availability}</td>
                   ))}
-                </tr>
-                <tr className="group-row">
-                  <th colSpan={selectedItems.length + 1}>Technical facts</th>
                 </tr>
                 {technicalFacts.map((f) => (
                   <tr key={f.label}>
@@ -521,48 +584,63 @@ export default function ComparisonBuilder({
           <section className="section">
             <h2>The short version</h2>
             <div className="verdict-grid">
-              {(
-                [
-                  'overall',
-                  'costEfficiency',
-                  'coding',
-                  'agentic',
-                  'dailyUse',
-                ] as const
-              ).map((metric) => {
-                const best = [...selectedItems].sort(
+              {(() => {
+                const bestIntel = [...selectedItems].sort(
                   (a, b) =>
-                    b.stats.scores[metric] - a.stats.scores[metric] ||
-                    a.stats.taskCost - b.stats.taskCost,
+                    b.stats.scores.intelligence - a.stats.scores.intelligence,
                 )[0];
-                return (
-                  <article className="panel" key={metric}>
-                    <span className="micro">
-                      {metric === 'costEfficiency'
-                        ? 'Best value'
-                        : `Best ${metricLabels[metric].toLowerCase()}`}{' '}
-                      in this selection
-                    </span>
+                const bestSpeed = [...selectedItems].sort(
+                  (a, b) => b.stats.scores.speed - a.stats.scores.speed,
+                )[0];
+                const lowestPrice = [...selectedItems].sort(
+                  (a, b) => a.stats.taskCost - b.stats.taskCost,
+                )[0];
+                const bestOverall = [...selectedItems].sort(
+                  (a, b) => b.stats.scores.overall - a.stats.scores.overall,
+                )[0];
+
+                const verdictCards = [
+                  {
+                    title: 'Highest Intelligence',
+                    item: bestIntel,
+                    detail: `${bestIntel.stats.scores.intelligence}/100 intelligence score. Peak reasoning and benchmark quality.`,
+                  },
+                  {
+                    title: 'Fastest Speed',
+                    item: bestSpeed,
+                    detail: `${bestSpeed.stats.scores.speed}/100 speed score (${bestSpeed.stats.latency}).`,
+                  },
+                  {
+                    title: 'Lowest Price',
+                    item: lowestPrice,
+                    detail: `${money(lowestPrice.stats.taskCost, 4)} task cost (${money(lowestPrice.model.pricing.input)} / 1M input).`,
+                  },
+                  {
+                    title: 'Best Overall',
+                    item: bestOverall,
+                    detail: `${bestOverall.stats.scores.overall}/100 overall composite across all evaluated tasks.`,
+                  },
+                ];
+
+                return verdictCards.map((vc) => (
+                  <article className="panel" key={vc.title}>
+                    <span className="micro">{vc.title} in this selection</span>
                     <h3>
-                      {best.model.name}
-                      {best.isReasoning && best.effort !== 'none'
-                        ? ` (${effortLabels[best.effort]})`
+                      {vc.item.model.name}
+                      {vc.item.isReasoning && vc.item.effort !== 'none'
+                        ? ` (${effortLabels[vc.item.effort]})`
                         : ''}
                     </h3>
-                    <p>
-                      {best.stats.scores[metric]}/100 on{' '}
-                      {metricLabels[metric].toLowerCase()}.{' '}
-                      {best.model.weaknesses[0]} is the main tradeoff.
-                    </p>
+                    <p>{vc.detail}</p>
                     <a
                       className="text-link"
-                      href={`/models/${best.model.slug}`}
+                      href={`/models/${vc.item.model.slug}`}
                     >
-                      Explore the evidence <ArrowRight size={14} />
+                      View model details →
                     </a>
                   </article>
-                );
-              })}
+                ));
+              })()}
             </div>
           </section>
           <section className="section">
@@ -601,42 +679,3 @@ export default function ComparisonBuilder({
     </>
   );
 }
-
-function ComparisonGroup({
-  group,
-  selected,
-}: {
-  group: { name: string; metrics: Metric[] };
-  selected: ComparedColumn[];
-}) {
-  return (
-    <>
-      <tr className="group-row">
-        <th colSpan={selected.length + 1}>{group.name}</th>
-      </tr>
-      {group.metrics.map((metric) => (
-        <tr key={metric}>
-          <th scope="row">{metricLabels[metric]}</th>
-          {selected.map((item) => {
-            const score = item.stats.scores[metric];
-            const maxScore = Math.max(
-              ...selected.map((x) => x.stats.scores[metric]),
-            );
-            const isWinner = score === maxScore;
-            return (
-              <td key={item.id} className={isWinner ? 'winner' : ''}>
-                <a href={`/models/${item.model.slug}#score-${metric}`}>
-                  {score}
-                </a>
-                {isWinner && (
-                  <span className="winner-label">Best in selection</span>
-                )}
-              </td>
-            );
-          })}
-        </tr>
-      ))}
-    </>
-  );
-}
-

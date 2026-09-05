@@ -219,4 +219,3 @@ export function selectionFromSearch(search: string, models: CatalogModel[]) {
     })
     .slice(0, 4);
 }
-

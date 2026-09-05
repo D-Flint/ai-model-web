@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowRight, ArrowLeftRight } from 'lucide-react';
 import type { CatalogModel } from '../lib/catalogSchema';
+import { money } from '../lib/decision';
 import { ModelMark } from './ModelCard';
 export default function HeroCompare({ models }: { models: CatalogModel[] }) {
   const [left, setLeft] = useState(models[0].slug);
@@ -53,23 +54,45 @@ export default function HeroCompare({ models }: { models: CatalogModel[] }) {
         </div>
       </div>
       <div className="preview-rows">
-        {(['coding', 'research', 'speed'] as const).map((key) => (
-          <div key={key}>
-            <strong className={a.scores[key] >= b.scores[key] ? 'accent' : ''}>
-              {a.scores[key]}
-            </strong>
-            <span>
-              {key === 'coding'
-                ? 'Coding'
-                : key === 'research'
-                  ? 'Research'
-                  : 'Speed'}
-            </span>
-            <strong className={b.scores[key] >= a.scores[key] ? 'accent' : ''}>
-              {b.scores[key]}
-            </strong>
-          </div>
-        ))}
+        <div>
+          <strong
+            className={
+              a.scores.intelligence >= b.scores.intelligence ? 'accent' : ''
+            }
+          >
+            {a.scores.intelligence}
+          </strong>
+          <span>Intelligence</span>
+          <strong
+            className={
+              b.scores.intelligence >= a.scores.intelligence ? 'accent' : ''
+            }
+          >
+            {b.scores.intelligence}
+          </strong>
+        </div>
+        <div>
+          <strong className={a.scores.speed >= b.scores.speed ? 'accent' : ''}>
+            {a.scores.speed}
+          </strong>
+          <span>Speed</span>
+          <strong className={b.scores.speed >= a.scores.speed ? 'accent' : ''}>
+            {b.scores.speed}
+          </strong>
+        </div>
+        <div>
+          <strong
+            className={a.pricing.input <= b.pricing.input ? 'accent' : ''}
+          >
+            {money(a.pricing.input)}
+          </strong>
+          <span>Price (1M)</span>
+          <strong
+            className={b.pricing.input <= a.pricing.input ? 'accent' : ''}
+          >
+            {money(b.pricing.input)}
+          </strong>
+        </div>
       </div>
       <a className="preview-link" href={`/compare?models=${left},${right}`}>
         See the full comparison <ArrowRight size={16} />

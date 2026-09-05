@@ -175,4 +175,29 @@
 - Current state: The catalog now cleanly lists base models (`GPT-6 Astra`, `GPT-5.6 Sol`, `GPT-5.6 Luna`, `GPT-5.6 Terra`) with full reasoning effort controls (`Low`, `Medium`, `High`, `Max`), eliminating duplicate cards while preserving all benchmark attribution.
 - Exact next step: User verifies the streamlined catalog and comparison interface locally.
 
+## 2026-09-05 — Focus on the 3 Core Model States: Intelligence, Speed, and Price
 
+- Objective: Focus the application on the 3 fundamental states of AI models (Intelligence, Speed, and Price), elevating them as the primary pillars across model cards, hero comparison, explorer filters, and comparison tables, while keeping secondary benchmark scores in clean expandable sections.
+- Files changed:
+  - `src/components/ModelCard.tsx`: Replaced arbitrary mini-metrics with the 3 primary pillars (Intelligence score, Speed score, and Input Price per 1M tokens), alongside output price and context size.
+  - `src/components/HeroCompare.tsx`: Restructured preview comparison rows to directly contrast Intelligence, Speed, and Price (Input/1M).
+  - `src/components/ModelExplorer.tsx`: Prioritized sorting by the 3 Core Pillars (Highest Intelligence, Fastest Speed, Lowest Input Price), elevated Price, Intelligence, and Speed to a dedicated pillar filter panel, and placed secondary capabilities into a clean expandable details drawer.
+  - `src/components/ComparisonBuilder.tsx`: Structured the comparison table with a highlighted "Core Focus Pillars" section (Intelligence, Speed, Input/Output Pricing, and Estimated Task Cost), followed by secondary benchmarks and specs. Updated "The short version" verdicts to spotlight Highest Intelligence, Fastest Speed, Lowest Price, and Best Overall.
+  - `src/pages/models/[slug].astro`: Added a 3-Pillar summary bar (Intelligence, Speed, Price) at the top of model detail pages, and prioritized Intelligence and Speed in the score explanation accordion.
+  - `src/data/config.ts`: Added Intelligence and Speed categories to `categories` configuration to support direct pillar ranking routes (`/rankings/intelligence`, `/rankings/speed`).
+  - `src/pages/index.astro`: Updated hero headlines, pillar shortcuts, and catalog strip to reflect the 3 core states.
+  - `src/styles/global.css`: Added responsive styling for the pillar summary bar, filter card, and comparison group row.
+- Attempts: 1 full iteration with typecheck, linting, and build verification.
+- Failures and causes:
+  - `RootLayout` in `[slug].astro` received an extra `model` prop; removed.
+  - Initial `taskCost` call in `[slug].astro` passed `workloads.chat` directly instead of numbers; updated to standard `taskCost(model)`.
+  - Unused imports in `ComparisonBuilder.tsx` and `index.astro` flagged by Astro check; cleaned up.
+  - Prettier formatting discrepancies resolved with `prettier --write`.
+- Tests and results:
+  - `npm test`: 34/34 tests pass across all 3 test suites.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 50 Astro and TypeScript files.
+  - `npm run lint`: ESLint and Prettier pass cleanly with 0 errors.
+  - `npm run build`: Production build passes cleanly, generating 3,099 static pages (including new ranking routes).
+- Current state: The entire application is focused squarely on Intelligence, Speed, and Price as the primary triad of model metrics.
+- Commit: Pending local commit.
+- Exact next step: User verifies the 3-state experience locally at `http://localhost:4321` or production build preview. Pause before any further implementation.

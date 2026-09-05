@@ -27,6 +27,30 @@ export const overallWeights: Record<Capability, number> = {
 };
 export const categories = [
   {
+    slug: 'intelligence',
+    label: 'Intelligence',
+    metric: 'intelligence',
+    description: 'Frontier reasoning, complex logic, and benchmark depth.',
+  },
+  {
+    slug: 'speed',
+    label: 'Speed',
+    metric: 'speed',
+    description: 'High throughput, ultra-low latency, and fast generation.',
+  },
+  {
+    slug: 'value',
+    label: 'Best value',
+    metric: 'costEfficiency',
+    description: 'Useful results with a smaller API bill.',
+  },
+  {
+    slug: 'cheap',
+    label: 'Lowest cost',
+    metric: 'costEfficiency',
+    description: 'Compare the lowest estimated costs per task.',
+  },
+  {
     slug: 'coding',
     label: 'Coding',
     metric: 'coding',
@@ -57,18 +81,6 @@ export const categories = [
     description: 'Find the words, refine a draft, shape an idea.',
   },
   {
-    slug: 'value',
-    label: 'Best value',
-    metric: 'costEfficiency',
-    description: 'Useful results with a smaller API bill.',
-  },
-  {
-    slug: 'cheap',
-    label: 'Lowest cost',
-    metric: 'costEfficiency',
-    description: 'Compare the lowest estimated costs per task.',
-  },
-  {
     slug: 'vision',
     label: 'Vision',
     metric: 'vision',
@@ -91,12 +103,7 @@ export const recommendationConfig = {
 } as const;
 
 export type ReasoningEffort =
-  | 'none'
-  | 'low'
-  | 'medium'
-  | 'high'
-  | 'max'
-  | 'fixed';
+  'none' | 'low' | 'medium' | 'high' | 'max' | 'fixed';
 
 export const effortLabels: Record<ReasoningEffort, string> = {
   none: 'Instant / Standard',
@@ -171,4 +178,3 @@ export const effortScoreAdjustments: Record<
 
 export const methodologyVersion = 'sample-1.0';
 export const fixtureDate = '2026-09-05';
-

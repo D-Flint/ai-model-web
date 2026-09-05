@@ -35,27 +35,34 @@ const alternatives = [
     ].map((m) => [m.slug, m]),
   ).values(),
 ];
+const orderedMetrics: Metric[] = [
+  'intelligence',
+  'speed',
+  'overall',
+  'coding',
+  'agentic',
+  'dailyUse',
+  'research',
+  'writing',
+  'vision',
+  'reliability',
+  'costEfficiency',
+];
 ---
 
 <RootLayout
-  title={`${model.name}: scores, prices, and tradeoffs | Astra`}
+  title={`${model.name} — AI Model Score, Pricing, and Review | Astra`}
   description={model.description}
 >
-  <div class="page-heading">
+  <div class="page-heading detail-header">
     <div class="breadcrumbs">
       <a href="/models">Models</a><span>/</span><span>{model.name}</span>
-    </div><div class="detail-header">
-      <div>
-        <div class="provider-badge" style="margin-bottom: 8px;">
-          <ProviderLogo provider={model.provider} size={20} />
-          <span class="micro" style="font-weight: 600;">{model.provider}</span>
-          <span class="micro"
-            >· {
-              model.dataKind === 'verified'
-                ? 'Verified model'
-                : 'Fictional sample model'
-            }</span
-          >
+    </div>
+    <div class="model-detail-hero">
+      <div class="detail-hero-left">
+        <div class="detail-provider">
+          <ProviderLogo provider={model.provider} size={26} />
+          <span>{model.provider}</span>
           {
             model.facts.reasoningEffort &&
               model.facts.reasoningEffort.length > 0 &&
@@ -71,13 +78,15 @@ const alternatives = [
               )
           }
         </div>
-        <h1>{model.name}</h1><p>{model.description}</p>        <div class="detail-actions">
+        <h1>{model.name}</h1><p>{model.description}</p>
+        <div class="detail-actions">
           <a class="button primary" href={`/compare?models=${model.slug}`}
             >Add to comparison <ArrowRight size={15} /></a
           >
           {
             model.facts.reasoningEffort &&
-              model.facts.reasoningEffort.filter((e) => e !== 'none').length > 1 && (
+              model.facts.reasoningEffort.filter((e) => e !== 'none').length >
+                1 && (
                 <a
                   class="button"
                   href={`/compare?models=${model.slug}:low,${model.slug}:high`}
@@ -114,13 +123,38 @@ const alternatives = [
         <ModelEffortExplorer model={model} client:load />
       )
   }
+  <div class="pillar-summary-bar">
+    <div class="pillar-summary-card">
+      <span class="pillar-summary-label">Intelligence</span>
+      <strong class="pillar-summary-value"
+        >{model.scores.intelligence}<small>/100</small></strong
+      >
+      <span class="micro muted">Frontier reasoning & benchmark quality</span>
+    </div>
+    <div class="pillar-summary-card">
+      <span class="pillar-summary-label">Speed</span>
+      <strong class="pillar-summary-value"
+        >{model.scores.speed}<small>/100</small></strong
+      >
+      <span class="micro muted">Token throughput & latency tier</span>
+    </div>
+    <div class="pillar-summary-card">
+      <span class="pillar-summary-label">Price</span>
+      <strong class="pillar-summary-value"
+        >{money(model.pricing.input)}
+        <small class="muted">in</small> · {money(model.pricing.output)}
+        <small class="muted">out</small></strong
+      >
+      <span class="micro muted">Est. task: {money(taskCost(model), 4)}</span>
+    </div>
+  </div>
   <div class="detail-grid">
     <section class="panel" id="scores">
       <h2>Capabilities, explained.</h2><p class="micro">
         Select a score to see how it was calculated.
       </p>{
-        Object.entries(metricLabels).map(([key, label]) => {
-          const metric = key as Metric;
+        orderedMetrics.map((metric) => {
+          const label = metricLabels[metric];
           const evidence = model.evidence.find((e) => e.metric === metric);
           const sourceObj = model.sources.find(
             (s) => s.id === evidence?.sourceId,

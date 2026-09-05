@@ -7,7 +7,7 @@ import { selectionFromSearch } from '../lib/decision';
 export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
   const [query, setQuery] = useState('');
   const [provider, setProvider] = useState('');
-  const [sort, setSort] = useState('overall');
+  const [sort, setSort] = useState('intelligence');
   const [minimum, setMinimum] = useState<Record<string, number>>({});
   const [price, setPrice] = useState('');
   const [context, setContext] = useState('0');
@@ -76,19 +76,80 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
         <label className="field">
           Sort by
           <select value={sort} onChange={(e) => setSort(e.target.value)}>
-            {Object.entries(metricLabels).map(([key, label]) => (
-              <option key={key} value={key}>
-                {label}
-              </option>
-            ))}
-            <option value="price">Lowest input price</option>
-            <option value="context">Highest context</option>
+            <optgroup label="Core Pillars">
+              <option value="intelligence">Highest Intelligence</option>
+              <option value="speed">Fastest Speed</option>
+              <option value="price">Lowest Input Price</option>
+            </optgroup>
+            <optgroup label="General">
+              <option value="overall">Overall Score</option>
+              <option value="context">Highest Context Window</option>
+            </optgroup>
+            <optgroup label="Detailed Capabilities">
+              {Object.entries(metricLabels)
+                .filter(
+                  ([k]) => !['intelligence', 'speed', 'overall'].includes(k),
+                )
+                .map(([key, label]) => (
+                  <option key={key} value={key}>
+                    {label}
+                  </option>
+                ))}
+            </optgroup>
           </select>
         </label>
       </div>
       <div className="explorer-layout">
         <aside className="filters panel" aria-label="Model filters">
           <h2>Refine your search</h2>
+
+          <div className="pillar-filter-card">
+            <span className="micro pillar-tag">3 Core Pillars</span>
+
+            <label className="field">
+              Maximum input price / 1M
+              <select value={price} onChange={(e) => setPrice(e.target.value)}>
+                <option value="">Any price</option>
+                <option value="0.25">$0.25 or less (Ultra cheap)</option>
+                <option value="0.5">$0.50 or less</option>
+                <option value="1">$1 or less</option>
+                <option value="3">$3 or less</option>
+                <option value="5">$5 or less</option>
+              </select>
+            </label>
+
+            <label className="field">
+              Min Intelligence: {minimum.intelligence ?? 0}
+              <input
+                type="range"
+                min="0"
+                max="100"
+                step="5"
+                value={minimum.intelligence ?? 0}
+                onChange={(e) =>
+                  setMinimum({
+                    ...minimum,
+                    intelligence: Number(e.target.value),
+                  })
+                }
+              />
+            </label>
+
+            <label className="field">
+              Min Speed: {minimum.speed ?? 0}
+              <input
+                type="range"
+                min="0"
+                max="100"
+                step="5"
+                value={minimum.speed ?? 0}
+                onChange={(e) =>
+                  setMinimum({ ...minimum, speed: Number(e.target.value) })
+                }
+              />
+            </label>
+          </div>
+
           <label className="field">
             Provider
             <select
@@ -101,45 +162,37 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
               ))}
             </select>
           </label>
-          <label className="field">
-            Maximum input price / 1M
-            <select value={price} onChange={(e) => setPrice(e.target.value)}>
-              <option value="">Any price</option>
-              <option value="0.5">$0.50 or less</option>
-              <option value="1">$1 or less</option>
-              <option value="3">$3 or less</option>
-            </select>
-          </label>
-          <label className="field">
-            Minimum context
-            <select
-              value={context}
-              onChange={(e) => setContext(e.target.value)}
-            >
-              <option value="0">Any size</option>
-              <option value="128000">128K tokens</option>
-              <option value="200000">200K tokens</option>
-              <option value="1000000">1M tokens</option>
-            </select>
-          </label>
-          {(['vision', 'api', 'openWeights'] as const).map((key, i) => (
-            <label className="checkbox-label" key={key}>
-              <input
-                type="checkbox"
-                checked={capabilities.includes(key)}
-                onChange={(e) =>
-                  setCapabilities(
-                    e.target.checked
-                      ? [...capabilities, key]
-                      : capabilities.filter((x) => x !== key),
-                  )
-                }
-              />
-              {['Vision support', 'API available', 'Open weights'][i]}
+
+          <details className="secondary-filter-details">
+            <summary>Secondary capabilities & specs</summary>
+            <label className="field">
+              Minimum context
+              <select
+                value={context}
+                onChange={(e) => setContext(e.target.value)}
+              >
+                <option value="0">Any size</option>
+                <option value="128000">128K tokens</option>
+                <option value="200000">200K tokens</option>
+                <option value="1000000">1M tokens</option>
+              </select>
             </label>
-          ))}
-          <details>
-            <summary>Minimum scores</summary>
+            {(['vision', 'api', 'openWeights'] as const).map((key, i) => (
+              <label className="checkbox-label" key={key}>
+                <input
+                  type="checkbox"
+                  checked={capabilities.includes(key)}
+                  onChange={(e) =>
+                    setCapabilities(
+                      e.target.checked
+                        ? [...capabilities, key]
+                        : capabilities.filter((x) => x !== key),
+                    )
+                  }
+                />
+                {['Vision support', 'API available', 'Open weights'][i]}
+              </label>
+            ))}
             {(
               ['overall', 'coding', 'agentic', 'dailyUse', 'research'] as const
             ).map((key) => (
@@ -158,6 +211,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
               </label>
             ))}
           </details>
+
           <button className="button" onClick={reset}>
             Reset filters
           </button>

@@ -64,12 +64,26 @@ export default function ModelCard({
       </div>
       <p className="card-description">{model.description}</p>
       <div className="mini-metrics">
-        {(['coding', 'agentic', 'dailyUse'] as const).map((key, i) => (
-          <div key={key}>
-            <span>{['Coding', 'Agents', 'Daily use'][i]}</span>
-            <strong>{model.scores[key]}</strong>
-          </div>
-        ))}
+        <div>
+          <span>Intelligence</span>
+          <strong title={`Intelligence: ${model.scores.intelligence}/100`}>
+            {model.scores.intelligence}
+          </strong>
+        </div>
+        <div>
+          <span>Speed</span>
+          <strong title={`Speed: ${model.scores.speed}/100`}>
+            {model.scores.speed}
+          </strong>
+        </div>
+        <div>
+          <span>Price (1M)</span>
+          <strong
+            title={`Input cost: ${money(model.pricing.input)} per 1M tokens`}
+          >
+            {money(model.pricing.input)}
+          </strong>
+        </div>
       </div>
       <div className="tags">
         {model.tags.slice(0, 2).map((tag) => (
@@ -78,13 +92,10 @@ export default function ModelCard({
       </div>
       <div className="card-pricing">
         <span>
-          <strong>{money(model.pricing.input)}</strong> input{' '}
+          Output: <strong>{money(model.pricing.output)}</strong>{' '}
           <span className="muted">/ 1M</span>
         </span>
         <span>{contextSize(model.facts.context)} context</span>
-      </div>
-      <div className="card-pricing output-price">
-        <span>{money(model.pricing.output)} output / 1M tokens</span>
       </div>
       <div className="card-bottom">
         <a href={`/models/${model.slug}`}>

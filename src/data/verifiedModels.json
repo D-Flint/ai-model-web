@@ -15,11 +15,7 @@
       "Output rate limits apply for sustained high concurrency",
       "Context limit is lower than newer million-token frontier models"
     ],
-    "tags": [
-      "Daily use",
-      "Vision",
-      "Coding"
-    ],
+    "tags": ["Daily use", "Vision", "Coding"],
     "facts": {
       "context": 128000,
       "maxOutput": 16384,
@@ -33,9 +29,7 @@
       "availability": "Production API",
       "releaseDate": "2024-05-13",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -226,12 +220,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Flagship",
-      "Coding",
-      "Reasoning",
-      "Speed"
-    ],
+    "tags": ["Flagship", "Coding", "Reasoning", "Speed"],
     "facts": {
       "context": 1050000,
       "maxOutput": 65536,
@@ -245,12 +234,7 @@
       "availability": "Production API",
       "releaseDate": "2026-08-10",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -441,11 +425,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Flagship",
-      "Coding",
-      "Agents"
-    ],
+    "tags": ["Flagship", "Coding", "Agents"],
     "facts": {
       "context": 1050000,
       "maxOutput": 65536,
@@ -459,12 +439,7 @@
       "availability": "Production API",
       "releaseDate": "2026-05-01",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -655,11 +630,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Daily use",
-      "Writing",
-      "Speed"
-    ],
+    "tags": ["Daily use", "Writing", "Speed"],
     "facts": {
       "context": 1050000,
       "maxOutput": 65536,
@@ -673,12 +644,7 @@
       "availability": "Production API",
       "releaseDate": "2026-04-20",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "low"
     },
     "pricing": {
@@ -869,11 +835,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Vision",
-      "Research",
-      "Multimodal"
-    ],
+    "tags": ["Vision", "Research", "Multimodal"],
     "facts": {
       "context": 1050000,
       "maxOutput": 65536,
@@ -887,12 +849,7 @@
       "availability": "Production API",
       "releaseDate": "2026-04-01",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -1083,11 +1040,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Intelligence",
-      "Reasoning",
-      "Coding"
-    ],
+    "tags": ["Intelligence", "Reasoning", "Coding"],
     "facts": {
       "context": 1050000,
       "maxOutput": 65536,
@@ -1101,12 +1054,7 @@
       "availability": "Production API",
       "releaseDate": "2026-03-15",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -1317,11 +1265,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Coding",
-      "Agents",
-      "Reliability"
-    ],
+    "tags": ["Coding", "Agents", "Reliability"],
     "facts": {
       "context": 1050000,
       "maxOutput": 65536,
@@ -1335,11 +1279,7 @@
       "availability": "Production API",
       "releaseDate": "2026-02-28",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -1550,11 +1490,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Cheap",
-      "Speed",
-      "Daily use"
-    ],
+    "tags": ["Cheap", "Speed", "Daily use"],
     "facts": {
       "context": 400000,
       "maxOutput": 65536,
@@ -1568,9 +1504,7 @@
       "availability": "Production API",
       "releaseDate": "2026-02-15",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -1761,11 +1695,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Flagship",
-      "Reasoning",
-      "Intelligence"
-    ],
+    "tags": ["Flagship", "Reasoning", "Intelligence"],
     "facts": {
       "context": 400000,
       "maxOutput": 65536,
@@ -1779,12 +1709,7 @@
       "availability": "Production API",
       "releaseDate": "2026-01-20",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -1985,11 +1910,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Reasoning",
-      "Coding",
-      "Research"
-    ],
+    "tags": ["Reasoning", "Coding", "Research"],
     "facts": {
       "context": 400000,
       "maxOutput": 65536,
@@ -2003,11 +1924,7 @@
       "availability": "Production API",
       "releaseDate": "2025-12-10",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -2218,11 +2135,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Flagship",
-      "Intelligence",
-      "Coding"
-    ],
+    "tags": ["Flagship", "Intelligence", "Coding"],
     "facts": {
       "context": 400000,
       "maxOutput": 65536,
@@ -2236,12 +2149,7 @@
       "availability": "Production API",
       "releaseDate": "2025-11-05",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -2432,11 +2340,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Reasoning",
-      "Cheap",
-      "Coding"
-    ],
+    "tags": ["Reasoning", "Cheap", "Coding"],
     "facts": {
       "context": 200000,
       "maxOutput": 65536,
@@ -2450,11 +2354,7 @@
       "availability": "Production API",
       "releaseDate": "2025-10-15",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -2645,11 +2545,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Reasoning",
-      "STEM",
-      "Coding"
-    ],
+    "tags": ["Reasoning", "STEM", "Coding"],
     "facts": {
       "context": 200000,
       "maxOutput": 65536,
@@ -2663,12 +2559,7 @@
       "availability": "Production API",
       "releaseDate": "2025-08-20",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -2859,11 +2750,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Reasoning",
-      "Coding",
-      "Speed"
-    ],
+    "tags": ["Reasoning", "Coding", "Speed"],
     "facts": {
       "context": 200000,
       "maxOutput": 65536,
@@ -2877,11 +2764,7 @@
       "availability": "Production API",
       "releaseDate": "2025-01-31",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -3072,11 +2955,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Reasoning",
-      "Intelligence",
-      "Coding"
-    ],
+    "tags": ["Reasoning", "Intelligence", "Coding"],
     "facts": {
       "context": 200000,
       "maxOutput": 65536,
@@ -3090,11 +2969,7 @@
       "availability": "Production API",
       "releaseDate": "2024-12-17",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -3285,11 +3160,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Daily use",
-      "Writing",
-      "Conversational"
-    ],
+    "tags": ["Daily use", "Writing", "Conversational"],
     "facts": {
       "context": 400000,
       "maxOutput": 65536,
@@ -3303,9 +3174,7 @@
       "availability": "Production API",
       "releaseDate": "2025-09-01",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -3496,12 +3365,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Creative",
-      "Writing",
-      "Research",
-      "Reasoning"
-    ],
+    "tags": ["Creative", "Writing", "Research", "Reasoning"],
     "facts": {
       "context": 1000000,
       "maxOutput": 65536,
@@ -3515,12 +3379,7 @@
       "availability": "Production API",
       "releaseDate": "2026-06-01",
       "sourceId": "source-anthropic",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -3711,11 +3570,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Flagship",
-      "Reasoning",
-      "Intelligence"
-    ],
+    "tags": ["Flagship", "Reasoning", "Intelligence"],
     "facts": {
       "context": 1000000,
       "maxOutput": 65536,
@@ -3729,12 +3584,7 @@
       "availability": "Production API",
       "releaseDate": "2026-03-01",
       "sourceId": "source-anthropic",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -3945,11 +3795,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Flagship",
-      "Coding",
-      "Agents"
-    ],
+    "tags": ["Flagship", "Coding", "Agents"],
     "facts": {
       "context": 1000000,
       "maxOutput": 65536,
@@ -3963,12 +3809,7 @@
       "availability": "Production API",
       "releaseDate": "2026-02-15",
       "sourceId": "source-anthropic",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -4159,11 +4000,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Creative",
-      "Writing",
-      "Research"
-    ],
+    "tags": ["Creative", "Writing", "Research"],
     "facts": {
       "context": 1000000,
       "maxOutput": 65536,
@@ -4177,11 +4014,7 @@
       "availability": "Production API",
       "releaseDate": "2026-01-20",
       "sourceId": "source-anthropic",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -4372,11 +4205,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Reasoning",
-      "Research",
-      "Coding"
-    ],
+    "tags": ["Reasoning", "Research", "Coding"],
     "facts": {
       "context": 1000000,
       "maxOutput": 65536,
@@ -4390,12 +4219,7 @@
       "availability": "Production API",
       "releaseDate": "2026-01-10",
       "sourceId": "source-anthropic",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -4586,11 +4410,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Reasoning",
-      "Research",
-      "Coding"
-    ],
+    "tags": ["Reasoning", "Research", "Coding"],
     "facts": {
       "context": 1000000,
       "maxOutput": 65536,
@@ -4604,12 +4424,7 @@
       "availability": "Production API",
       "releaseDate": "2025-12-18",
       "sourceId": "source-anthropic",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -4800,11 +4615,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Coding",
-      "Agents",
-      "Intelligence"
-    ],
+    "tags": ["Coding", "Agents", "Intelligence"],
     "facts": {
       "context": 1000000,
       "maxOutput": 65536,
@@ -4818,12 +4629,7 @@
       "availability": "Production API",
       "releaseDate": "2025-12-01",
       "sourceId": "source-anthropic",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -5014,11 +4820,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Flagship",
-      "Reasoning",
-      "Coding"
-    ],
+    "tags": ["Flagship", "Reasoning", "Coding"],
     "facts": {
       "context": 1000000,
       "maxOutput": 65536,
@@ -5032,12 +4834,7 @@
       "availability": "Production API",
       "releaseDate": "2025-11-20",
       "sourceId": "source-anthropic",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -5238,11 +5035,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Intelligence",
-      "Coding",
-      "Writing"
-    ],
+    "tags": ["Intelligence", "Coding", "Writing"],
     "facts": {
       "context": 200000,
       "maxOutput": 65536,
@@ -5256,12 +5049,7 @@
       "availability": "Production API",
       "releaseDate": "2025-11-01",
       "sourceId": "source-anthropic",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -5462,11 +5250,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Coding",
-      "Agents",
-      "Research"
-    ],
+    "tags": ["Coding", "Agents", "Research"],
     "facts": {
       "context": 1000000,
       "maxOutput": 65536,
@@ -5480,12 +5264,7 @@
       "availability": "Production API",
       "releaseDate": "2025-09-29",
       "sourceId": "source-anthropic",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -5686,11 +5465,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Speed",
-      "Cheap",
-      "Daily use"
-    ],
+    "tags": ["Speed", "Cheap", "Daily use"],
     "facts": {
       "context": 200000,
       "maxOutput": 65536,
@@ -5704,9 +5479,7 @@
       "availability": "Production API",
       "releaseDate": "2025-10-10",
       "sourceId": "source-anthropic",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -5897,11 +5670,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Coding",
-      "Agents",
-      "Intelligence"
-    ],
+    "tags": ["Coding", "Agents", "Intelligence"],
     "facts": {
       "context": 1000000,
       "maxOutput": 65536,
@@ -5915,9 +5684,7 @@
       "availability": "Production API",
       "releaseDate": "2024-10-22",
       "sourceId": "source-anthropic",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -6108,12 +5875,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Speed",
-      "Vision",
-      "Multimodal",
-      "Reasoning"
-    ],
+    "tags": ["Speed", "Vision", "Multimodal", "Reasoning"],
     "facts": {
       "context": 1048576,
       "maxOutput": 65536,
@@ -6127,11 +5889,7 @@
       "availability": "Production API",
       "releaseDate": "2026-04-10",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -6322,11 +6080,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Vision",
-      "Multimodal",
-      "Image Generation"
-    ],
+    "tags": ["Vision", "Multimodal", "Image Generation"],
     "facts": {
       "context": 131072,
       "maxOutput": 65536,
@@ -6340,11 +6094,7 @@
       "availability": "Production API",
       "releaseDate": "2026-03-25",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -6535,11 +6285,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Vision",
-      "Speed",
-      "Multimodal"
-    ],
+    "tags": ["Vision", "Speed", "Multimodal"],
     "facts": {
       "context": 131072,
       "maxOutput": 65536,
@@ -6553,9 +6299,7 @@
       "availability": "Production API",
       "releaseDate": "2026-03-20",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -6746,11 +6490,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Cheap",
-      "Speed",
-      "Vision"
-    ],
+    "tags": ["Cheap", "Speed", "Vision"],
     "facts": {
       "context": 65536,
       "maxOutput": 65536,
@@ -6764,9 +6504,7 @@
       "availability": "Production API",
       "releaseDate": "2026-03-15",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -6957,11 +6695,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Coding",
-      "Reasoning",
-      "Speed"
-    ],
+    "tags": ["Coding", "Reasoning", "Speed"],
     "facts": {
       "context": 1048576,
       "maxOutput": 65536,
@@ -6975,11 +6709,7 @@
       "availability": "Production API",
       "releaseDate": "2026-02-25",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -7170,11 +6900,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Speed",
-      "Value",
-      "Vision"
-    ],
+    "tags": ["Speed", "Value", "Vision"],
     "facts": {
       "context": 1048576,
       "maxOutput": 65536,
@@ -7188,9 +6914,7 @@
       "availability": "Production API",
       "releaseDate": "2026-01-15",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -7381,11 +7105,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Speed",
-      "Cheap",
-      "Daily use"
-    ],
+    "tags": ["Speed", "Cheap", "Daily use"],
     "facts": {
       "context": 1048576,
       "maxOutput": 65536,
@@ -7399,9 +7119,7 @@
       "availability": "Production API",
       "releaseDate": "2025-12-05",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -7592,11 +7310,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Cheap",
-      "Speed",
-      "Value"
-    ],
+    "tags": ["Cheap", "Speed", "Value"],
     "facts": {
       "context": 1048576,
       "maxOutput": 65536,
@@ -7610,9 +7324,7 @@
       "availability": "Production API",
       "releaseDate": "2025-11-20",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -7803,11 +7515,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Reasoning",
-      "Intelligence",
-      "Research"
-    ],
+    "tags": ["Reasoning", "Intelligence", "Research"],
     "facts": {
       "context": 1048576,
       "maxOutput": 65536,
@@ -7821,11 +7529,7 @@
       "availability": "Production API",
       "releaseDate": "2025-10-15",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -8016,11 +7720,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Coding",
-      "Reasoning",
-      "Long Context"
-    ],
+    "tags": ["Coding", "Reasoning", "Long Context"],
     "facts": {
       "context": 1048576,
       "maxOutput": 65536,
@@ -8034,11 +7734,7 @@
       "availability": "Production API",
       "releaseDate": "2025-06-15",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -8229,11 +7925,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Speed",
-      "Multimodal",
-      "Cheap"
-    ],
+    "tags": ["Speed", "Multimodal", "Cheap"],
     "facts": {
       "context": 1048576,
       "maxOutput": 65536,
@@ -8247,9 +7939,7 @@
       "availability": "Production API",
       "releaseDate": "2025-05-20",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -8440,11 +8130,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Open Weights",
-      "Coding",
-      "Research"
-    ],
+    "tags": ["Open Weights", "Coding", "Research"],
     "facts": {
       "context": 262144,
       "maxOutput": 65536,
@@ -8458,9 +8144,7 @@
       "availability": "Production API",
       "releaseDate": "2026-03-01",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -8651,11 +8335,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Open Weights",
-      "Speed",
-      "Value"
-    ],
+    "tags": ["Open Weights", "Speed", "Value"],
     "facts": {
       "context": 262144,
       "maxOutput": 65536,
@@ -8669,9 +8349,7 @@
       "availability": "Production API",
       "releaseDate": "2026-02-15",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -8862,12 +8540,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Flagship",
-      "Reasoning",
-      "Open Weights",
-      "Coding"
-    ],
+    "tags": ["Flagship", "Reasoning", "Open Weights", "Coding"],
     "facts": {
       "context": 1048576,
       "maxOutput": 65536,
@@ -8881,11 +8554,7 @@
       "availability": "Production API",
       "releaseDate": "2026-08-13",
       "sourceId": "source-deepseek",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -9076,11 +8745,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Flagship",
-      "Reasoning",
-      "Open Weights"
-    ],
+    "tags": ["Flagship", "Reasoning", "Open Weights"],
     "facts": {
       "context": 1048576,
       "maxOutput": 65536,
@@ -9094,11 +8759,7 @@
       "availability": "Production API",
       "releaseDate": "2026-04-01",
       "sourceId": "source-deepseek",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -9289,12 +8950,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Vision",
-      "Speed",
-      "Cheap",
-      "Open Weights"
-    ],
+    "tags": ["Vision", "Speed", "Cheap", "Open Weights"],
     "facts": {
       "context": 1048576,
       "maxOutput": 65536,
@@ -9308,9 +8964,7 @@
       "availability": "Production API",
       "releaseDate": "2026-04-10",
       "sourceId": "source-deepseek",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -9501,11 +9155,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Speed",
-      "Cheap",
-      "Open Weights"
-    ],
+    "tags": ["Speed", "Cheap", "Open Weights"],
     "facts": {
       "context": 1048576,
       "maxOutput": 65536,
@@ -9519,9 +9169,7 @@
       "availability": "Production API",
       "releaseDate": "2026-03-15",
       "sourceId": "source-deepseek",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -9712,11 +9360,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Coding",
-      "Value",
-      "Open Weights"
-    ],
+    "tags": ["Coding", "Value", "Open Weights"],
     "facts": {
       "context": 163840,
       "maxOutput": 65536,
@@ -9730,9 +9374,7 @@
       "availability": "Production API",
       "releaseDate": "2026-02-01",
       "sourceId": "source-deepseek",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -9933,11 +9575,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Coding",
-      "Value",
-      "Open Weights"
-    ],
+    "tags": ["Coding", "Value", "Open Weights"],
     "facts": {
       "context": 163840,
       "maxOutput": 65536,
@@ -9951,9 +9589,7 @@
       "availability": "Production API",
       "releaseDate": "2026-01-15",
       "sourceId": "source-deepseek",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -10144,11 +9780,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Reasoning",
-      "STEM",
-      "Open Weights"
-    ],
+    "tags": ["Reasoning", "STEM", "Open Weights"],
     "facts": {
       "context": 163840,
       "maxOutput": 65536,
@@ -10162,9 +9794,7 @@
       "availability": "Production API",
       "releaseDate": "2025-05-28",
       "sourceId": "source-deepseek",
-      "reasoningEffort": [
-        "fixed"
-      ],
+      "reasoningEffort": ["fixed"],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -10355,11 +9985,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Reasoning",
-      "Coding",
-      "Open Weights"
-    ],
+    "tags": ["Reasoning", "Coding", "Open Weights"],
     "facts": {
       "context": 64000,
       "maxOutput": 64000,
@@ -10373,9 +9999,7 @@
       "availability": "Production API",
       "releaseDate": "2025-01-20",
       "sourceId": "source-deepseek",
-      "reasoningEffort": [
-        "fixed"
-      ],
+      "reasoningEffort": ["fixed"],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -10566,11 +10190,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Value",
-      "Daily use",
-      "Open Weights"
-    ],
+    "tags": ["Value", "Daily use", "Open Weights"],
     "facts": {
       "context": 163840,
       "maxOutput": 65536,
@@ -10584,9 +10204,7 @@
       "availability": "Production API",
       "releaseDate": "2024-12-26",
       "sourceId": "source-deepseek",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -10777,12 +10395,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Flagship",
-      "Coding",
-      "Reasoning",
-      "Open Weights"
-    ],
+    "tags": ["Flagship", "Coding", "Reasoning", "Open Weights"],
     "facts": {
       "context": 1000000,
       "maxOutput": 65536,
@@ -10796,11 +10409,7 @@
       "availability": "Production API",
       "releaseDate": "2026-04-15",
       "sourceId": "source-alibaba",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -10991,11 +10600,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Speed",
-      "Cheap",
-      "Open Weights"
-    ],
+    "tags": ["Speed", "Cheap", "Open Weights"],
     "facts": {
       "context": 1000000,
       "maxOutput": 65536,
@@ -11009,9 +10614,7 @@
       "availability": "Production API",
       "releaseDate": "2026-04-01",
       "sourceId": "source-alibaba",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -11202,11 +10805,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Reasoning",
-      "Coding",
-      "Open Weights"
-    ],
+    "tags": ["Reasoning", "Coding", "Open Weights"],
     "facts": {
       "context": 1000000,
       "maxOutput": 65536,
@@ -11220,11 +10819,7 @@
       "availability": "Production API",
       "releaseDate": "2026-03-10",
       "sourceId": "source-alibaba",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -11415,11 +11010,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Coding",
-      "Agents",
-      "Open Weights"
-    ],
+    "tags": ["Coding", "Agents", "Open Weights"],
     "facts": {
       "context": 1000000,
       "maxOutput": 65536,
@@ -11433,11 +11024,7 @@
       "availability": "Production API",
       "releaseDate": "2026-02-20",
       "sourceId": "source-alibaba",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -11628,11 +11215,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Flagship",
-      "Intelligence",
-      "Open Weights"
-    ],
+    "tags": ["Flagship", "Intelligence", "Open Weights"],
     "facts": {
       "context": 262144,
       "maxOutput": 65536,
@@ -11646,11 +11229,7 @@
       "availability": "Production API",
       "releaseDate": "2026-01-18",
       "sourceId": "source-alibaba",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -11841,11 +11420,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Value",
-      "Speed",
-      "Open Weights"
-    ],
+    "tags": ["Value", "Speed", "Open Weights"],
     "facts": {
       "context": 1000000,
       "maxOutput": 65536,
@@ -11859,9 +11434,7 @@
       "availability": "Production API",
       "releaseDate": "2025-12-12",
       "sourceId": "source-alibaba",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -12052,11 +11625,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Reasoning",
-      "STEM",
-      "Open Weights"
-    ],
+    "tags": ["Reasoning", "STEM", "Open Weights"],
     "facts": {
       "context": 262144,
       "maxOutput": 65536,
@@ -12070,11 +11639,7 @@
       "availability": "Production API",
       "releaseDate": "2026-03-05",
       "sourceId": "source-alibaba",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -12265,11 +11830,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Coding",
-      "Agents",
-      "Software Dev"
-    ],
+    "tags": ["Coding", "Agents", "Software Dev"],
     "facts": {
       "context": 262144,
       "maxOutput": 65536,
@@ -12283,11 +11844,7 @@
       "availability": "Production API",
       "releaseDate": "2026-04-05",
       "sourceId": "source-alibaba",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -12478,11 +12035,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Coding",
-      "Local Dev",
-      "Open Weights"
-    ],
+    "tags": ["Coding", "Local Dev", "Open Weights"],
     "facts": {
       "context": 32768,
       "maxOutput": 32768,
@@ -12496,9 +12049,7 @@
       "availability": "Production API",
       "releaseDate": "2024-11-12",
       "sourceId": "source-alibaba",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -12689,11 +12240,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Open Weights",
-      "Reasoning",
-      "Writing"
-    ],
+    "tags": ["Open Weights", "Reasoning", "Writing"],
     "facts": {
       "context": 32768,
       "maxOutput": 32768,
@@ -12707,9 +12254,7 @@
       "availability": "Production API",
       "releaseDate": "2024-09-19",
       "sourceId": "source-alibaba",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -12900,11 +12445,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Open Weights",
-      "Flagship",
-      "Agents"
-    ],
+    "tags": ["Open Weights", "Flagship", "Agents"],
     "facts": {
       "context": 1048576,
       "maxOutput": 65536,
@@ -12918,11 +12459,7 @@
       "availability": "Production API",
       "releaseDate": "2026-03-20",
       "sourceId": "source-meta",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -13113,11 +12650,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Open Weights",
-      "Speed",
-      "Coding"
-    ],
+    "tags": ["Open Weights", "Speed", "Coding"],
     "facts": {
       "context": 1310720,
       "maxOutput": 65536,
@@ -13131,9 +12664,7 @@
       "availability": "Production API",
       "releaseDate": "2026-02-28",
       "sourceId": "source-meta",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -13324,11 +12855,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Open Weights",
-      "Coding",
-      "Value"
-    ],
+    "tags": ["Open Weights", "Coding", "Value"],
     "facts": {
       "context": 131072,
       "maxOutput": 65536,
@@ -13342,9 +12869,7 @@
       "availability": "Production API",
       "releaseDate": "2024-12-06",
       "sourceId": "source-meta",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -13535,11 +13060,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Open Weights",
-      "General",
-      "Long Context"
-    ],
+    "tags": ["Open Weights", "General", "Long Context"],
     "facts": {
       "context": 131072,
       "maxOutput": 65536,
@@ -13553,9 +13074,7 @@
       "availability": "Production API",
       "releaseDate": "2024-07-23",
       "sourceId": "source-meta",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -13746,12 +13265,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Agents",
-      "Coding",
-      "Reasoning",
-      "Flagship"
-    ],
+    "tags": ["Agents", "Coding", "Reasoning", "Flagship"],
     "facts": {
       "context": 2000000,
       "maxOutput": 65536,
@@ -13765,12 +13279,7 @@
       "availability": "Production API",
       "releaseDate": "2026-05-10",
       "sourceId": "source-xai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -13961,11 +13470,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Coding",
-      "Software Dev",
-      "Agents"
-    ],
+    "tags": ["Coding", "Software Dev", "Agents"],
     "facts": {
       "context": 256000,
       "maxOutput": 65536,
@@ -13979,11 +13484,7 @@
       "availability": "Production API",
       "releaseDate": "2026-04-15",
       "sourceId": "source-xai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -14174,11 +13675,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Flagship",
-      "Reasoning",
-      "Research"
-    ],
+    "tags": ["Flagship", "Reasoning", "Research"],
     "facts": {
       "context": 500000,
       "maxOutput": 65536,
@@ -14192,11 +13689,7 @@
       "availability": "Production API",
       "releaseDate": "2026-03-12",
       "sourceId": "source-xai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -14387,11 +13880,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Reasoning",
-      "Coding",
-      "Intelligence"
-    ],
+    "tags": ["Reasoning", "Coding", "Intelligence"],
     "facts": {
       "context": 500000,
       "maxOutput": 65536,
@@ -14405,11 +13894,7 @@
       "availability": "Production API",
       "releaseDate": "2026-02-05",
       "sourceId": "source-xai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -14600,11 +14085,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Speed",
-      "Conversational",
-      "Daily use"
-    ],
+    "tags": ["Speed", "Conversational", "Daily use"],
     "facts": {
       "context": 1000000,
       "maxOutput": 65536,
@@ -14618,9 +14099,7 @@
       "availability": "Production API",
       "releaseDate": "2026-01-10",
       "sourceId": "source-xai",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -14811,11 +14290,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Intelligence",
-      "Reasoning",
-      "Coding"
-    ],
+    "tags": ["Intelligence", "Reasoning", "Coding"],
     "facts": {
       "context": 2000000,
       "maxOutput": 65536,
@@ -14829,11 +14304,7 @@
       "availability": "Production API",
       "releaseDate": "2025-11-15",
       "sourceId": "source-xai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -15024,11 +14495,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Flagship",
-      "Reasoning",
-      "Coding"
-    ],
+    "tags": ["Flagship", "Reasoning", "Coding"],
     "facts": {
       "context": 262144,
       "maxOutput": 65536,
@@ -15042,9 +14509,7 @@
       "availability": "Production API",
       "releaseDate": "2025-12-15",
       "sourceId": "source-mistral",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -15235,11 +14700,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Reasoning",
-      "Multilingual",
-      "Coding"
-    ],
+    "tags": ["Reasoning", "Multilingual", "Coding"],
     "facts": {
       "context": 128000,
       "maxOutput": 65536,
@@ -15253,9 +14714,7 @@
       "availability": "Production API",
       "releaseDate": "2024-11-18",
       "sourceId": "source-mistral",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -15446,11 +14905,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Value",
-      "Speed",
-      "Reasoning"
-    ],
+    "tags": ["Value", "Speed", "Reasoning"],
     "facts": {
       "context": 262144,
       "maxOutput": 65536,
@@ -15464,9 +14919,7 @@
       "availability": "Production API",
       "releaseDate": "2026-02-10",
       "sourceId": "source-mistral",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -15657,11 +15110,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Coding",
-      "Agents",
-      "Software Dev"
-    ],
+    "tags": ["Coding", "Agents", "Software Dev"],
     "facts": {
       "context": 262144,
       "maxOutput": 65536,
@@ -15675,9 +15124,7 @@
       "availability": "Production API",
       "releaseDate": "2025-12-20",
       "sourceId": "source-mistral",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -15868,11 +15315,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Cheap",
-      "Speed",
-      "Daily use"
-    ],
+    "tags": ["Cheap", "Speed", "Daily use"],
     "facts": {
       "context": 262144,
       "maxOutput": 65536,
@@ -15886,9 +15329,7 @@
       "availability": "Production API",
       "releaseDate": "2026-03-01",
       "sourceId": "source-mistral",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -16079,11 +15520,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Coding",
-      "Speed",
-      "Agents"
-    ],
+    "tags": ["Coding", "Speed", "Agents"],
     "facts": {
       "context": 256000,
       "maxOutput": 65536,
@@ -16097,9 +15534,7 @@
       "availability": "Production API",
       "releaseDate": "2025-08-15",
       "sourceId": "source-mistral",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -16290,11 +15725,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Agents",
-      "Tools",
-      "Enterprise"
-    ],
+    "tags": ["Agents", "Tools", "Enterprise"],
     "facts": {
       "context": 256000,
       "maxOutput": 65536,
@@ -16308,9 +15739,7 @@
       "availability": "Production API",
       "releaseDate": "2026-01-20",
       "sourceId": "source-cohere",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -16501,11 +15930,7 @@
       "Cost and latency scale with problem complexity",
       "Output rate limits apply for sustained high concurrency"
     ],
-    "tags": [
-      "Enterprise",
-      "RAG",
-      "Tools"
-    ],
+    "tags": ["Enterprise", "RAG", "Tools"],
     "facts": {
       "context": 128000,
       "maxOutput": 65536,
@@ -16519,9 +15944,7 @@
       "availability": "Production API",
       "releaseDate": "2024-08-01",
       "sourceId": "source-cohere",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {

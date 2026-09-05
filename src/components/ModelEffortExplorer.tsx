@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import { ArrowRight, Layers } from 'lucide-react';
 import type { CatalogModel } from '../lib/catalogSchema';
-import {
-  effortLabels,
-  type ReasoningEffort,
-} from '../data/config';
+import { effortLabels, type ReasoningEffort } from '../data/config';
 import { getModelEffortStats, money } from '../lib/decision';
 
-export default function ModelEffortExplorer({ model }: { model: CatalogModel }) {
+export default function ModelEffortExplorer({
+  model,
+}: {
+  model: CatalogModel;
+}) {
   const isReasoning = Boolean(
     model.facts.reasoningEffort &&
-      model.facts.reasoningEffort.length > 0 &&
-      !model.facts.reasoningEffort.includes('none'),
+    model.facts.reasoningEffort.length > 0 &&
+    !model.facts.reasoningEffort.includes('none'),
   );
 
   const availableEfforts: ReasoningEffort[] = isReasoning
@@ -21,9 +22,10 @@ export default function ModelEffortExplorer({ model }: { model: CatalogModel }) 
   const defaultEffort: ReasoningEffort =
     model.facts.defaultEffort && model.facts.defaultEffort !== 'none'
       ? model.facts.defaultEffort
-      : availableEfforts[0] ?? 'medium';
+      : (availableEfforts[0] ?? 'medium');
 
-  const [selectedEffort, setSelectedEffort] = useState<ReasoningEffort>(defaultEffort);
+  const [selectedEffort, setSelectedEffort] =
+    useState<ReasoningEffort>(defaultEffort);
 
   if (!isReasoning || availableEfforts.length <= 1) {
     return null;
@@ -32,7 +34,8 @@ export default function ModelEffortExplorer({ model }: { model: CatalogModel }) 
   const currentStats = getModelEffortStats(model, selectedEffort);
   const baselineStats = getModelEffortStats(model, defaultEffort);
 
-  const overallDelta = currentStats.scores.overall - baselineStats.scores.overall;
+  const overallDelta =
+    currentStats.scores.overall - baselineStats.scores.overall;
   const intelligenceDelta =
     currentStats.scores.intelligence - baselineStats.scores.intelligence;
   const speedDelta = currentStats.scores.speed - baselineStats.scores.speed;
@@ -52,7 +55,11 @@ export default function ModelEffortExplorer({ model }: { model: CatalogModel }) 
           <Layers size={18} />
           <span>Reasoning Effort Levels & Dynamic Stats</span>
         </div>
-        <div className="effort-tabs" role="tablist" aria-label="Select reasoning effort">
+        <div
+          className="effort-tabs"
+          role="tablist"
+          aria-label="Select reasoning effort"
+        >
           {availableEfforts.map((effort) => (
             <button
               key={effort}
@@ -69,7 +76,8 @@ export default function ModelEffortExplorer({ model }: { model: CatalogModel }) 
       </div>
 
       <p className="micro muted" style={{ margin: '0 0 16px' }}>
-        Adjusting reasoning effort allocates more or fewer internal thinking tokens, directly altering intelligence, speed, and cost tradeoffs.
+        Adjusting reasoning effort allocates more or fewer internal thinking
+        tokens, directly altering intelligence, speed, and cost tradeoffs.
       </p>
 
       <div className="effort-stats-grid">
@@ -92,7 +100,10 @@ export default function ModelEffortExplorer({ model }: { model: CatalogModel }) 
             <div
               className={`delta ${intelligenceDelta > 0 ? 'delta-positive' : 'delta-negative'}`}
             >
-              {intelligenceDelta > 0 ? `+${intelligenceDelta}` : intelligenceDelta} pts
+              {intelligenceDelta > 0
+                ? `+${intelligenceDelta}`
+                : intelligenceDelta}{' '}
+              pts
             </div>
           )}
         </div>
@@ -139,9 +150,17 @@ export default function ModelEffortExplorer({ model }: { model: CatalogModel }) 
         </div>
       </div>
 
-      <div style={{ marginTop: '16px', display: 'flex', justifyContent: 'flex-end', gap: '8px' }}>
+      <div
+        style={{
+          marginTop: '16px',
+          display: 'flex',
+          justifyContent: 'flex-end',
+          gap: '8px',
+        }}
+      >
         <a className="button primary" href={compareUrl}>
-          Compare {model.name} effort levels side-by-side <ArrowRight size={14} />
+          Compare {model.name} effort levels side-by-side{' '}
+          <ArrowRight size={14} />
         </a>
       </div>
     </div>

@@ -9,16 +9,15 @@ import {
   ArrowRight,
   ArrowUpRight,
   Search,
+  Brain,
+  Zap,
+  BadgeDollarSign,
   Code2,
   Bot,
-  MessageSquare,
-  PenLine,
-  BookOpen,
-  BadgeDollarSign,
   ShieldCheck,
   SlidersHorizontal,
 } from 'lucide-react';
-const icons = [Code2, Bot, MessageSquare, BookOpen, PenLine, BadgeDollarSign];
+const icons = [Brain, Zap, BadgeDollarSign, BadgeDollarSign, Code2, Bot];
 const featured = rankModels(models).slice(0, 4);
 const pairs = [
   [models[0], models[1]],
@@ -31,12 +30,12 @@ const costs = [models[0], models[1], models[4]];
 <RootLayout>
   <section class="hero">
     <div class="hero-copy">
-      <span class="eyebrow">LESS GUESSWORK. BETTER CHOICES.</span><h1>
+      <span class="eyebrow">INTELLIGENCE · SPEED · PRICE</span><h1>
         Find the right<br />AI model<span class="accent"> for you.</span>
       </h1><p>
-        Compare what matters. Understand the tradeoffs.<br
+        Compare the 3 states that matter: Intelligence, Speed, and Price.<br
           class="desktop-break"
-        /> Choose with a little more confidence.
+        /> Understand the tradeoffs and choose with confidence.
       </p>
       <form class="hero-search" action="/models">
         <Search size={20} /><label class="sr-only" for="home-search"
@@ -50,10 +49,11 @@ const costs = [models[0], models[1], models[4]];
         >
       </form>
       <div class="hero-shortcuts">
-        <span>Or start with a task</span><a href="/rankings/coding"
-          >Coding <ArrowUpRight size={12} /></a
-        ><a href="/rankings/daily-use">Daily use <ArrowUpRight size={12} /></a
-        ><a href="/rankings/value">Best value <ArrowUpRight size={12} /></a>
+        <span>The 3 core states</span><a href="/rankings/intelligence"
+          >Intelligence <ArrowUpRight size={12} /></a
+        ><a href="/rankings/speed">Speed <ArrowUpRight size={12} /></a><a
+          href="/rankings/value">Price & Value <ArrowUpRight size={12} /></a
+        >
       </div>
     </div><HeroCompare models={models.slice(0, 5)} client:load />
   </section>
@@ -61,7 +61,9 @@ const costs = [models[0], models[1], models[4]];
     <span>A common language for comparing models</span><div>
       <strong>{models.length}</strong>{' '}
       {models[0]?.dataKind === 'verified' ? 'verified models' : 'sample models'}
-    </div><div><strong>11</strong> capability scores</div><a href="/methodology"
+    </div><div>
+      <strong>3 core states:</strong> Intelligence · Speed · Price
+    </div><a href="/methodology"
       >Every score explained <ArrowUpRight size={14} /></a
     >
   </div>

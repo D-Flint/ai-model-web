@@ -4,7 +4,6 @@ import { effortTokens, workloads } from '../data/config';
 import { money, selectionFromSearch, taskCost } from '../lib/decision';
 import { ProviderLogo } from './ProviderLogo';
 
-
 export default function CostCalculator({ models }: { models: CatalogModel[] }) {
   const [advanced, setAdvanced] = useState(false);
   const [work, setWork] = useState<keyof typeof workloads>('chat');

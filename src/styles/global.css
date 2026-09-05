@@ -2107,3 +2107,87 @@ th {
   color: #f87171;
 }
 
+/* 3 Core Pillars Styles */
+.pillar-summary-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+.pillar-summary-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: var(--shadow);
+  transition: border-color 0.2s ease;
+}
+.pillar-summary-card:hover {
+  border-color: var(--accent);
+}
+.pillar-summary-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+}
+.pillar-summary-value {
+  font-size: 26px;
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  line-height: 1.2;
+}
+.pillar-summary-value small {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: normal;
+}
+.pillar-filter-card {
+  background: var(--subtle);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.pillar-tag {
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.secondary-filter-details {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+.secondary-filter-details summary {
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  padding: 6px 0;
+}
+.secondary-filter-details summary:hover {
+  color: var(--text);
+}
+.pillar-group-row th {
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface)) !important;
+  color: var(--accent) !important;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+@media (max-width: 768px) {
+  .pillar-summary-bar {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
