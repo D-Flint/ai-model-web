@@ -76,3 +76,4 @@
 {"timestamp":"2026-09-05T12:12:56.821Z","agentId":"frontier-agent","action":"RELEASE","target":"src","details":"Released lock"}
 {"timestamp":"2026-09-05T12:12:56.822Z","agentId":"frontier-agent","action":"RELEASE","target":"tests","details":"Released lock"}
 {"timestamp":"2026-09-05T12:13:00.520Z","agentId":"frontier-agent","action":"COMPLETE","target":"SESSION","details":"Added 6 newer models: Grok 2, Qwen 2.5 Max, Qwen 2.5 Coder, Codestral, Pixtral Large, Llama 3.2 90B"}
+{"timestamp":"2026-09-05T12:20:43.967Z","agentId":"frontier-agent","action":"COMPLETE","target":"SESSION","details":"Rebuilt catalog with strict chronological newest-to-oldest ordering and release date badges"}

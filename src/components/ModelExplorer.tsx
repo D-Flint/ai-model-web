@@ -7,7 +7,7 @@ import { selectionFromSearch, getSpeedTokensPerSec } from '../lib/decision';
 export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
   const [query, setQuery] = useState('');
   const [provider, setProvider] = useState('');
-  const [sort, setSort] = useState('intelligence');
+  const [sort, setSort] = useState('newest');
   const [minimum, setMinimum] = useState<Record<string, number>>({});
   const [price, setPrice] = useState('');
   const [context, setContext] = useState('0');
@@ -40,16 +40,27 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
           Boolean(m.facts[key as 'vision' | 'api' | 'openWeights']),
         ),
     )
-    .sort((a, b) =>
-      sort === 'price'
-        ? a.pricing.input - b.pricing.input
-        : sort === 'context'
-          ? b.facts.context - a.facts.context
-          : sort === 'speed'
-            ? getSpeedTokensPerSec(b) - getSpeedTokensPerSec(a)
-            : (b.scores[sort as Metric] ?? -1) -
-              (a.scores[sort as Metric] ?? -1),
-    );
+    .sort((a, b) => {
+      if (sort === 'newest') {
+        return (
+          new Date(b.facts.releaseDate).getTime() -
+          new Date(a.facts.releaseDate).getTime()
+        );
+      }
+      if (sort === 'oldest') {
+        return (
+          new Date(a.facts.releaseDate).getTime() -
+          new Date(b.facts.releaseDate).getTime()
+        );
+      }
+      if (sort === 'price') return a.pricing.input - b.pricing.input;
+      if (sort === 'context') return b.facts.context - a.facts.context;
+      if (sort === 'speed')
+        return getSpeedTokensPerSec(b) - getSpeedTokensPerSec(a);
+      return (
+        (b.scores[sort as Metric] ?? -1) - (a.scores[sort as Metric] ?? -1)
+      );
+    });
   function reset() {
     setQuery('');
     setProvider('');
@@ -84,6 +95,10 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
         <label className="field">
           Sort by
           <select value={sort} onChange={(e) => setSort(e.target.value)}>
+            <optgroup label="Release Date">
+              <option value="newest">Newest to Oldest (Release Date)</option>
+              <option value="oldest">Oldest to Newest</option>
+            </optgroup>
             <optgroup label="Core Pillars">
               <option value="intelligence">Highest Intelligence</option>
               <option value="speed">Fastest Speed (tokens/sec)</option>

@@ -34,6 +34,14 @@ export default function ModelCard({
         <div className="provider-badge">
           <ProviderLogo provider={model.provider} size={16} />
           <span className="micro">{model.provider}</span>
+          {model.facts.releaseDate && (
+            <span
+              className="release-date micro"
+              title={`Released: ${model.facts.releaseDate}`}
+            >
+              {model.facts.releaseDate}
+            </span>
+          )}
         </div>
         {isReasoning ? (
           <span

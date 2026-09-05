@@ -395,6 +395,13 @@ export async function runIngestionPipeline(
   // 8. Validate catalog
   const validatedCatalog = validateCatalog(rawCatalog);
 
+  // 9. Sort catalog strictly from newest to oldest release date
+  validatedCatalog.sort(
+    (a, b) =>
+      new Date(b.facts.releaseDate).getTime() -
+      new Date(a.facts.releaseDate).getTime(),
+  );
+
   return {
     catalog: validatedCatalog,
     measurements: allMeasurements,

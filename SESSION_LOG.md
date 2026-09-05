@@ -307,7 +307,32 @@
   - `npm run check`: 0 errors, 0 warnings, 0 hints across 52 Astro and TypeScript files.
   - `npm run lint`: Clean, 0 errors.
   - `npm run build`: Production static build generated 396 pages in 11.15s with 0 errors.
-- Commit: `bda6f38` (local commit; no remote push).
+- Commit: `7e8bda3` (local commit; no remote push).
 - Current state: Catalog now contains 27 verified foundation models spanning OpenAI, Anthropic, Google DeepMind, DeepSeek, xAI, Mistral, Meta, and Alibaba.
 - Exact next step: User verifies the expanded catalog locally at `http://localhost:4321` or production build preview.
+
+## 2026-09-05 — Enforce Strict Newest-to-Oldest Chronological Ordering & Release Date Visibility
+
+- Objective: Enforce strict chronological ordering from the newest model (`2025-02-27`) down to the oldest (`2024-02-29`) across the catalog pipeline, homepage hero compare, and model explorer. Add `deepseek-r1-distill-qwen-32b` and `qwq-32b-preview` (bringing catalog to 29 verified models). Display visible release date badges on model cards and set "Newest to Oldest" as the default sort option.
+- Files changed:
+  - `src/pipeline/engine.ts`: Added strict chronological sorting (`releaseDate` descending) to `validatedCatalog`.
+  - `src/data/canonicalModels.ts`: Added canonical configurations for `deepseek-r1-distill-qwen-32b` and `qwq-32b-preview`.
+  - `src/data/officialProviders.ts`: Added official provider specs for both reasoning models.
+  - `src/data/livebenchData.json`: Added verified LiveBench benchmark records.
+  - `src/data/verifiedModels.json`: Regenerated catalog containing 29 models ordered from newest (`2025-02-27`) to oldest (`2024-02-29`).
+  - `src/components/ModelExplorer.tsx`: Set default sort to `newest` and added "Newest to Oldest" and "Oldest to Newest" sort options.
+  - `src/components/ModelCard.tsx`: Displayed clean release date badge next to provider name.
+  - `src/styles/global.css`: Added styling for `.release-date` badge.
+  - `.agents/registry.json` & `.agents/activity.jsonl`: Multi-agent collaboration locks claimed, released, and logged.
+- Attempts: 1 iteration with quick typing fix in `engine.ts`.
+- Failures and causes:
+  - `rawCatalog` was typed as `unknown[]` before validation; moved sort to `validatedCatalog` typed as `CatalogModel[]`.
+- Tests and results:
+  - `npm test`: 35/35 passing across all test suites.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 52 Astro and TypeScript files.
+  - `npm run lint`: Clean, 0 errors.
+  - `npm run build`: Production static build generated 453 pages in 12.68s with 0 errors.
+- Commit: `aa8de32` (local commit; no remote push).
+- Current state: All 29 foundation models are strictly ordered from the newest (`gpt-4-5-preview` - Feb 27, 2025) to the oldest (`claude-3-opus-20240229` - Feb 29, 2024).
+- Exact next step: User verifies the newest-to-oldest ordering and release date badges locally at `http://localhost:4321`.
 

@@ -1,5 +1,25 @@
 [
   {
+    "model": "deepseek-r1-distill-qwen-32b",
+    "global_average": 66.4,
+    "reasoning": 79.5,
+    "math": 81.2,
+    "coding": 59.4,
+    "data_analysis": 56.5,
+    "instruction_following": 55.4,
+    "date": "2025-01-20"
+  },
+  {
+    "model": "qwq-32b-preview",
+    "global_average": 67.8,
+    "reasoning": 81.0,
+    "math": 82.5,
+    "coding": 60.5,
+    "data_analysis": 57.8,
+    "instruction_following": 57.2,
+    "date": "2024-11-28"
+  },
+  {
     "model": "qwen-2.5-max",
     "global_average": 72.4,
     "reasoning": 81.5,
