@@ -607,9 +607,36 @@
   - `npm test`: 37/37 passed across all test suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
   - `npm run check`: 0 errors, 0 warnings, 0 hints across 62 Astro and TypeScript files.
   - `npm run build`: Production static site build generated 2,944 pages in 1m 19s with 0 errors.
-- Commit hash: `2905aff` (local commit; no remote push).
+- Commit hash: `a2ebec4` (local commit; no remote push).
 - Current state: The entire application is fully rebranded to Synapse with the dark mode pistachio/obsidian palette as the primary experience, plus cream/moss light mode support.
 - Exact next step: User verifies the new branding, logo, and dark mode color scheme locally.
+
+## 2026-09-05 — Bright and crisp light mode color palette update
+
+- Objective: Upgrade light mode from dark/khaki tones to Option A (modern crisp and bright palette with clean white surfaces, crisp canvas, and vibrant forest emerald green accent).
+- Files changed:
+  - `src/styles/global.css`: Updated light mode `:root` color tokens:
+    - `--canvas`: `#f8faf8` (luminous, clean off-white background)
+    - `--surface`: `#ffffff` (crisp white cards, navbar, hero search)
+    - `--subtle`: `#f1f4f1` (light clean neutral for banners and headers)
+    - `--text`: `#111813` (high contrast deep charcoal)
+    - `--muted`: `#5a665b` (accessible muted slate green)
+    - `--border`: `#e2e8e1` (crisp, light modern borders)
+    - `--accent`: `#1e7039` (vibrant emerald forest green for primary actions)
+    - `--accent-hover`: `#175a2d`
+    - `--accent-text`: `#ffffff`
+    - `--soft`: `#eaf3ec` (pale mint/sage tint for chips and badges)
+    - `--shadow`: `0 12px 40px rgba(17, 24, 18, 0.06)`
+    - `--glow`: `rgba(30, 112, 57, 0.16)`
+- Attempts: 1.
+- Failures and causes: None.
+- Tests and results:
+  - `npm test`: 37/37 tests passed.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 62 files.
+- Commit hash: `5d7c9d3` (local commit; no remote push).
+- Current state: Light mode is now bright, crisp, and high-contrast while maintaining visual coherence with Synapse's green branding and dark mode.
+- Exact next step: Create local commit and await user verification.
+
 
 
 

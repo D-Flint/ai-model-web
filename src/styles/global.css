@@ -1,18 +1,18 @@
 @import 'tailwindcss';
 
 :root {
-  --canvas: #eceae1;
-  --surface: #f7f5ee;
-  --subtle: #dedad0;
-  --text: #141813;
-  --muted: #5c6457;
-  --border: #cbc6b8;
-  --accent: #445536;
-  --accent-hover: #35432a;
-  --accent-text: #f7f5ee;
-  --soft: #e0e6d8;
-  --shadow: 0 12px 40px rgba(20, 24, 19, 0.07);
-  --glow: rgba(68, 85, 54, 0.18);
+  --canvas: #f8faf8;
+  --surface: #ffffff;
+  --subtle: #f1f4f1;
+  --text: #111813;
+  --muted: #5a665b;
+  --border: #e2e8e1;
+  --accent: #1e7039;
+  --accent-hover: #175a2d;
+  --accent-text: #ffffff;
+  --soft: #eaf3ec;
+  --shadow: 0 12px 40px rgba(17, 24, 18, 0.06);
+  --glow: rgba(30, 112, 57, 0.16);
   color-scheme: light;
 }
 :root[data-theme='dark'] {
