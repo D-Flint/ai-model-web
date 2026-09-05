@@ -26,8 +26,8 @@
 - Objective: Close the session and preserve a handoff record.
 - Files changed: `SESSION_LOG.md`.
 - Attempts: Completed status check, registration, path claim, log update, and local commit workflow; registration required one retry.
-- Failures: Initial registration failed with `EPERM` while writing `.agents/registry.json`; the authorized elevated retry succeeded.
-- Verification: `npm run agent:status` passed. No test suite was run because this session only updated session documentation and coordination state.
-- Current state: No active agent work remains. User verification is pending before the next implementation.
+- Failures: Initial registration failed with `EPERM` while writing `.agents/registry.json`; the elevated retry succeeded. The documented `npm run agent:log` alias is missing, so the underlying Node script was used directly.
+- Verification: `npm run agent:status` passed; the completion event was appended and the registry marks this agent completed. No test suite was run because this session only updated session documentation and coordination state.
+- Current state: No active agent work or file claims remain. User verification is pending before the next implementation.
 - Commit: Pending local commit.
 - Next step: Wait for the user to verify the local repository and authorize the next implementation step.
