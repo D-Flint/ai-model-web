@@ -153,7 +153,7 @@
   - `npm test`: 34/34 tests pass across all 3 test suites.
   - `npm run check`: 0 errors, 0 warnings, 0 hints across 50 Astro and TypeScript files.
   - `npm run build`: Production build passes cleanly, generating 3,419 static pages in 3m 7s.
-- Commit hash: Pending local commit.
+- Commit: `4c39419` (local commit; no remote push).
 - Current state: Users can select and compare different reasoning effort levels for any reasoning model, compare multiple effort levels of the same model side-by-side, and inspect dynamic stats (scores, tokens, latency, cost) across both `/compare` and `/models/[slug]`.
 - Exact next step: Pause and await user verification of the new effort selection and comparison features locally.
 
