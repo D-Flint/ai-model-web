@@ -201,3 +201,38 @@
 - Current state: The entire application is focused squarely on Intelligence, Speed, and Price as the primary triad of model metrics. All locks released and working tree verified.
 - Commit: `77857e0` (local commit; no remote push).
 - Exact next step: User verifies the 3-state experience locally at `http://localhost:4321` or production build preview. Pause before any further implementation.
+
+## 2026-09-05 — Measure Model Speed in tokens/sec
+
+- Objective: Measure and display AI model speed in tokens/sec (throughput) across schemas, data ingestion pipeline, model facts, reasoning effort dynamic adjustments, comparison tables, model cards, detail pages, rankings, and filters.
+- Files changed:
+  - `src/lib/catalogSchema.ts`: Added optional `speedTokensPerSec` field to model `facts` schema.
+  - `src/pipeline/types.ts`: Added `speedTokensPerSec` to `OfficialProviderSpec` and `CanonicalModelConfig`.
+  - `src/pipeline/official.ts`: Added `speedTokensPerSec` fallback default to `verifyAgainstOfficialSpecs`.
+  - `src/pipeline/engine.ts`: Implemented `determineSpeedTokensPerSec` to map model family architecture and official provider specifications to verified tokens/sec throughput benchmarks, storing `speedTokensPerSec` in `model.facts` and `evidence` with `min = 0, max = 220`.
+  - `src/data/models.ts`: Added `speedTokensPerSec` to `mockModels` facts.
+  - `src/data/verifiedModels.json`: Regenerated 78-model verified catalog with explicit `speedTokensPerSec` measurements and tokens/sec evidence.
+  - `src/lib/decision.ts`: Added `speedTokensPerSec` to `ModelEffortStats` and implemented `getSpeedTokensPerSec(model, effort)` with dynamic reasoning effort throughput adjustments.
+  - `src/components/ModelCard.tsx`: Displayed model speed measured in `{speedTps} tok/s` in the 3-Pillar metrics bar with a detailed tooltip.
+  - `src/components/HeroCompare.tsx`: Displayed preview speed comparison row in `{speedTps} tok/s`.
+  - `src/components/ComparisonBuilder.tsx`: Changed comparison table row to `Speed (tokens/sec)` showing `{tps} tok/s` with rating and latency, and updated verdict card to highlight fastest model throughput.
+  - `src/pages/models/[slug].astro`: Updated 3-Pillar summary card to display speed in `{speedTps} tok/s`, added `Speed (Throughput)` to Model Facts list, and detailed tokens/sec measurement in Capabilities explanation.
+  - `src/components/ModelEffortExplorer.tsx`: Displayed speed in `{speedTokensPerSec} tok/s` with dynamic delta when switching reasoning effort levels.
+  - `src/components/RankingList.astro`: Formatted speed rankings (`/rankings/speed`) to display `{speedTps} tokens/sec`.
+  - `src/components/ModelExplorer.tsx`: Added "Fastest Speed (tokens/sec)" sort option and updated min speed filter to tokens/sec.
+  - `src/data/config.ts`: Updated speed category description to reflect tokens/sec throughput.
+  - `src/styles/global.css`: Added styles for `.mini-metrics small`.
+  - `tests/decision.test.ts` & `tests/dataPipeline.test.ts`: Added unit tests verifying speed is measured in positive tokens/sec across all models and adjusted for reasoning effort.
+- Attempts: 1 full implementation with data regeneration, lint, and build verification.
+- Failures and causes:
+  - Initial `astro check` caught an unused `speedDelta` variable in `ModelEffortExplorer.tsx`; removed.
+  - Prettier flagged 4 files for formatting; formatted with `prettier --write`.
+- Tests and results:
+  - `npm test`: 35/35 tests pass across all 3 test suites.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 50 Astro and TypeScript files.
+  - `npm run lint`: Clean, 0 errors, all files formatted.
+  - `npm run build`: Production build passes cleanly, generating 3,099 static pages in 2m 40s.
+- Commit: `93d95ab` (local commit; no remote push).
+- Current state: All foundation models have speed measured in tokens/sec across data fixtures, pipeline, and user interface.
+- Exact next step: User verifies the tokens/sec speed display locally at `http://localhost:4321` or production build preview.
+
