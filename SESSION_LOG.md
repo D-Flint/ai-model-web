@@ -171,7 +171,7 @@
   - `npm test`: 34/34 tests pass across all 3 test suites.
   - `npm run check`: 0 errors, 0 warnings, 0 hints across 50 Astro and TypeScript files.
   - `npm run data:refresh`: Successfully ingested 78 canonical models, 97 LMSYS Arena benchmarks, and 12 SWE-bench verified runs in 4.9s.
-- Commit hash: Pending local commit.
+- Commit: `a34a182` (local commit; no remote push).
 - Current state: The catalog now cleanly lists base models (`GPT-6 Astra`, `GPT-5.6 Sol`, `GPT-5.6 Luna`, `GPT-5.6 Terra`) with full reasoning effort controls (`Low`, `Medium`, `High`, `Max`), eliminating duplicate cards while preserving all benchmark attribution.
 - Exact next step: User verifies the streamlined catalog and comparison interface locally.
 
