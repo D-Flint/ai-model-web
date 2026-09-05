@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div align="center">
 
 # ⚡ Astra — AI Model Guide & Decision Engine
@@ -211,3 +212,7 @@ npm run dev
 <div align="center">
   <sub>Designed and engineered for clarity, transparency, and confidence.</sub>
 </div>
+=======
+# ai-model-web
+A consumer friendly AI models comparison platform design for less technical people. This site compare models on factor such as pricing, capability,  cost-per-task, real-world performance, and real-world use case.
+>>>>>>> origin/main
