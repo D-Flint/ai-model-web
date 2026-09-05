@@ -517,10 +517,18 @@
 - Current state: Benchmark leaderboard table is aligned, verified, and matches the reference design.
 - Exact next step: User verifies the fixed leaderboard table locally at `http://localhost:4321/models`.
 
+## 2026-09-05 — Trigger Dropdown Details on Model Row Click
 
-
-
-
-
-
-
+- Objective: Make the entire model row in the benchmark leaderboard table trigger the dropdown / accordion details view upon clicking, instead of requiring users to click specifically on the 14px chevron icon.
+- Files changed:
+  - `src/components/ModelExplorer.tsx`: Added `onClick={() => handleRowClick(row.model.slug)}` to `tr.leaderboard-row` with guard checking `window.getSelection()` so dragging/highlighting text to copy does not trigger toggle; added `e.stopPropagation()` on the chevron button to prevent double-toggling; intercepted default navigation on `a.model-link-title` unless modifier keys (Cmd/Ctrl) are pressed, so clicking the model title expands the details while preserving new-tab opening; full model page navigation remains explicitly accessible inside the dropdown via "View Full Model Guide".
+  - `src/styles/global.css`: Added `cursor: pointer` and background transition to `table.leaderboard-table tbody tr.leaderboard-row`, plus hover styling for `.expand-caret-btn` on row hover.
+  - `.agents/registry.json`: Updated agent status and recorded task completion.
+- Attempts: 1 iteration with comprehensive validation.
+- Tests and results:
+  - `npm test`: 37/37 passed across all test suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 62 Astro and TypeScript files.
+  - `npm run lint`: ESLint and Prettier passed cleanly.
+  - `npm run build`: Production static site build generated 2944 pages in 2m 2s with zero errors.
+- Current state: Clicking anywhere on a model table row (name, scores, cost, speed, whitespace) toggles its subtask and specification dropdown smoothly.
+- Exact next step: User verifies the row click dropdown interaction locally at `http://localhost:4321/models`.

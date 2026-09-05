@@ -107,7 +107,13 @@
       "role": "UI/UX Fix Specialist",
       "goal": "Fix leaderboard table alignment, layout, and visual fidelity",
       "lastHeartbeat": "2026-09-05T13:24:07.325Z",
-      "status": "active"
+      "status": "completed"
+    },
+    "row-click-agent": {
+      "role": "UI/UX Engineer",
+      "goal": "Allow clicking anywhere on model row to trigger dropdown",
+      "lastHeartbeat": "2026-09-05T14:17:00.000Z",
+      "status": "completed"
     }
   },
   "claims": {},

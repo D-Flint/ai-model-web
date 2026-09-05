@@ -2653,8 +2653,17 @@ table.leaderboard-table tbody td {
   vertical-align: middle;
 }
 
+table.leaderboard-table tbody tr.leaderboard-row {
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
 table.leaderboard-table tbody tr.leaderboard-row:hover {
   background-color: color-mix(in srgb, var(--accent) 3%, var(--surface));
+}
+
+table.leaderboard-table tbody tr.leaderboard-row:hover .expand-caret-btn {
+  color: #2563eb;
 }
 
 table.leaderboard-table tbody tr.leaderboard-row.row-selected {

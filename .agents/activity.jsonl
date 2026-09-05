@@ -115,3 +115,8 @@
 {"timestamp":"2026-09-05T13:24:07.326Z","agentId":"table-fix-agent","action":"CLAIM","target":"src/styles/global.css","details":"Fix table layout, columns and header alignment"}
 {"timestamp":"2026-09-05T14:08:15.726Z","agentId":"table-fix-agent","action":"RELEASE","target":"src/components/ModelExplorer.tsx","details":"Released lock"}
 {"timestamp":"2026-09-05T14:08:15.727Z","agentId":"table-fix-agent","action":"RELEASE","target":"src/styles/global.css","details":"Released lock"}
+{"timestamp":"2026-09-05T14:10:58.749Z","agentId":"row-click-agent","action":"REGISTER","target":"UI/UX Engineer","details":"Allow clicking anywhere on model row to trigger dropdown"}
+{"timestamp":"2026-09-05T14:12:28.754Z","agentId":"row-click-agent","action":"CLAIM","target":"src/components/ModelExplorer.tsx","details":"Allow clicking model row to trigger dropdown"}
+{"timestamp":"2026-09-05T14:12:33.790Z","agentId":"row-click-agent","action":"CLAIM","target":"src/styles/global.css","details":"Add cursor pointer and hover cues for clickable model table rows"}
+{"timestamp":"2026-09-05T14:16:57.391Z","agentId":"row-click-agent","action":"RELEASE","target":"src/components/ModelExplorer.tsx","details":"Released lock"}
+{"timestamp":"2026-09-05T14:16:57.392Z","agentId":"row-click-agent","action":"RELEASE","target":"src/styles/global.css","details":"Released lock"}

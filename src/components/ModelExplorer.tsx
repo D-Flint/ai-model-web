@@ -357,6 +357,12 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
     }));
   }
 
+  function handleRowClick(slug: string) {
+    const selection = window.getSelection()?.toString();
+    if (selection && selection.trim().length > 0) return;
+    toggleExpand(slug);
+  }
+
   function toggleSelect(slug: string) {
     if (selectedSlugs.includes(slug)) {
       setSelectedSlugs(selectedSlugs.filter((s) => s !== slug));
@@ -658,12 +664,16 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                       <React.Fragment key={row.model.slug}>
                         <tr
                           className={`leaderboard-row ${isSelected ? 'row-selected' : ''}`}
+                          onClick={() => handleRowClick(row.model.slug)}
                         >
                           <td className="td-expand">
                             <button
                               type="button"
                               className={`expand-caret-btn ${isExpanded ? 'rotated' : ''}`}
-                              onClick={() => toggleExpand(row.model.slug)}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                toggleExpand(row.model.slug);
+                              }}
                               aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${row.model.name}`}
                             >
                               <ChevronRight size={14} />
@@ -677,6 +687,17 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                               <a
                                 href={`/models/${row.model.slug}`}
                                 className="model-link-title"
+                                onClick={(e) => {
+                                  if (
+                                    !e.metaKey &&
+                                    !e.ctrlKey &&
+                                    !e.shiftKey &&
+                                    !e.altKey &&
+                                    e.button === 0
+                                  ) {
+                                    e.preventDefault();
+                                  }
+                                }}
                               >
                                 {row.displayName}
                               </a>
