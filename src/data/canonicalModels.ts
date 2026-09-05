@@ -60,6 +60,231 @@ export const PROVIDERS_CONFIG = [
 
 export const CANONICAL_MODELS: CanonicalModelConfig[] = [
   {
+    slug: 'claude-3-7-sonnet',
+    name: 'Claude 3.7 Sonnet',
+    provider: 'Anthropic',
+    providerSlug: 'anthropic',
+    family: 'Claude 3.7',
+    openWeights: false,
+    openRouterId: 'anthropic/claude-3.7-sonnet',
+    lmarenaAliases: [
+      'claude-3-7-sonnet',
+      'claude-3-7-sonnet-20250219',
+      'claude-3-7-sonnet-thinking',
+      'claude-3.7-sonnet',
+      'anthropic/claude-3.7-sonnet',
+    ],
+    swebenchAliases: [
+      'claude-3-7-sonnet-20250219',
+      'claude-3-7-sonnet',
+      'Claude 3.7 Sonnet',
+      'claude-3.7-sonnet',
+    ],
+    livebenchAliases: [
+      'claude-3-7-sonnet-20250219',
+      'claude-3-7-sonnet',
+      'claude-3.7-sonnet',
+    ],
+    bfclAliases: [
+      'claude-3-7-sonnet-20250219',
+      'claude-3-7-sonnet',
+      'claude-3.7-sonnet',
+    ],
+    officialDocsUrl:
+      'https://docs.anthropic.com/en/docs/about-claude/models#model-comparison-table',
+    description:
+      "Anthropic's flagship hybrid reasoning model, combining instantaneous response generation with extended thinking capabilities for frontier coding and complex reasoning.",
+    strengths: [
+      'State-of-the-art SWE-bench Verified coding performance (70.3% scaffolded)',
+      'Hybrid reasoning architecture with dynamically adjustable thinking tokens',
+      'Frontier Berkeley Function Calling accuracy and agentic tool use',
+      '200,000 token context window with up to 128,000 output tokens',
+    ],
+    weaknesses: [
+      'Higher latency when extended thinking budget is set to maximum',
+      'Premium output pricing ($15.00/1M tokens) during long chain-of-thought generation',
+    ],
+    tags: ['Reasoning', 'Coding', 'Agentic', 'Vision', 'Multimodal'],
+    reasoningEffort: ['low', 'medium', 'high'],
+    defaultEffort: 'medium',
+  },
+  {
+    slug: 'gpt-4-5-preview',
+    name: 'GPT-4.5 Preview',
+    provider: 'OpenAI',
+    providerSlug: 'openai',
+    family: 'GPT-4.5',
+    openWeights: false,
+    openRouterId: 'openai/gpt-4.5-preview',
+    lmarenaAliases: [
+      'gpt-4.5-preview-2025-02-27',
+      'gpt-4.5-preview',
+      'gpt-4.5',
+      'openai/gpt-4.5-preview',
+    ],
+    swebenchAliases: [
+      'gpt-4.5-preview-2025-02-27',
+      'gpt-4.5-preview',
+      'gpt-4.5',
+    ],
+    livebenchAliases: [
+      'gpt-4.5-preview-2025-02-27',
+      'gpt-4.5-preview',
+      'gpt-4.5',
+    ],
+    bfclAliases: ['gpt-4.5-preview-2025-02-27', 'gpt-4.5-preview', 'gpt-4.5'],
+    officialDocsUrl: 'https://platform.openai.com/docs/models#gpt-4-5-preview',
+    description:
+      "OpenAI's largest foundation model, excelling at broad world knowledge, intuition, creative writing, and complex multi-disciplinary synthesis.",
+    strengths: [
+      'Exceptional depth of factual knowledge and intuitive reasoning',
+      'Nuanced writing, communication style, and empathetic tone',
+      'High-reliability function calling and multimodal vision analysis',
+    ],
+    weaknesses: [
+      'High API pricing ($75/1M input, $150/1M output)',
+      'Not a dedicated chain-of-thought reasoning model compared to o3/o1 for pure math',
+    ],
+    tags: ['Vision', 'Research', 'Agentic', 'Knowledge'],
+    reasoningEffort: ['fixed'],
+    defaultEffort: 'fixed',
+  },
+  {
+    slug: 'gemini-2-0-pro-exp',
+    name: 'Gemini 2.0 Pro Exp',
+    provider: 'Google DeepMind',
+    providerSlug: 'google',
+    family: 'Gemini',
+    openWeights: false,
+    openRouterId: 'google/gemini-2.0-pro-exp-02-05:free',
+    lmarenaAliases: [
+      'gemini-2.0-pro-exp-02-05',
+      'gemini-2.0-pro-exp',
+      'gemini-2.0-pro',
+      'google/gemini-2.0-pro-exp-02-05',
+    ],
+    swebenchAliases: [
+      'gemini-2.0-pro-exp-02-05',
+      'gemini-2.0-pro-exp',
+      'gemini-2.0-pro',
+    ],
+    livebenchAliases: [
+      'gemini-2.0-pro-exp-02-05',
+      'gemini-2.0-pro-exp',
+      'gemini-2.0-pro',
+    ],
+    bfclAliases: [
+      'gemini-2.0-pro-exp-02-05',
+      'gemini-2.0-pro-exp',
+      'gemini-2.0-pro',
+    ],
+    officialDocsUrl:
+      'https://ai.google.dev/gemini-api/docs/models/gemini#gemini-2.0-pro',
+    description:
+      "Google's most capable Gemini 2.0 model, built for complex reasoning, large-scale coding, and multi-modal problem solving with a 2M token context window.",
+    strengths: [
+      'Industry-leading 2,097,152 token context window with high recall',
+      'Top-tier coding performance and structured output fidelity',
+      'Native multimodal vision and audio comprehension',
+    ],
+    weaknesses: [
+      'Experimental status with potential endpoint changes across preview cycles',
+      'Higher latency than Gemini 2.0 Flash on basic prompts',
+    ],
+    tags: ['Coding', 'Research', 'Long context', 'Vision', 'Multimodal'],
+    reasoningEffort: ['fixed'],
+    defaultEffort: 'fixed',
+  },
+  {
+    slug: 'gemini-2-0-flash-thinking-exp',
+    name: 'Gemini 2.0 Flash Thinking Exp',
+    provider: 'Google DeepMind',
+    providerSlug: 'google',
+    family: 'Gemini',
+    openWeights: false,
+    openRouterId: 'google/gemini-2.0-flash-thinking-exp:free',
+    lmarenaAliases: [
+      'gemini-2.0-flash-thinking-exp-1219',
+      'gemini-2.0-flash-thinking-exp',
+      'gemini-2.0-flash-thinking',
+      'google/gemini-2.0-flash-thinking-exp',
+    ],
+    swebenchAliases: [
+      'gemini-2.0-flash-thinking-exp-1219',
+      'gemini-2.0-flash-thinking-exp',
+      'gemini-2.0-flash-thinking',
+    ],
+    livebenchAliases: [
+      'gemini-2.0-flash-thinking-exp-1219',
+      'gemini-2.0-flash-thinking-exp',
+      'gemini-2.0-flash-thinking',
+    ],
+    bfclAliases: [
+      'gemini-2.0-flash-thinking-exp-1219',
+      'gemini-2.0-flash-thinking-exp',
+      'gemini-2.0-flash-thinking',
+    ],
+    officialDocsUrl:
+      'https://ai.google.dev/gemini-api/docs/models/gemini#gemini-2.0-flash-thinking',
+    description:
+      "Google's specialized reasoning model combining the Flash architecture speed with explicit internal chain-of-thought reasoning and multimodal input.",
+    strengths: [
+      'Visible reasoning traces for debugging math and logic problems',
+      '1,048,576 token long context support for reasoning over massive documents',
+      'Multimodal reasoning over images, diagrams, and math figures',
+    ],
+    weaknesses: [
+      'Thinking process consumes additional output tokens',
+      'Experimental preview endpoint subject to rate limitations',
+    ],
+    tags: ['Reasoning', 'STEM', 'Long context', 'Vision'],
+    reasoningEffort: ['fixed'],
+    defaultEffort: 'fixed',
+  },
+  {
+    slug: 'gemini-2-0-flash-lite',
+    name: 'Gemini 2.0 Flash-Lite',
+    provider: 'Google DeepMind',
+    providerSlug: 'google',
+    family: 'Gemini',
+    openWeights: false,
+    openRouterId: 'google/gemini-2.0-flash-lite-preview-02-05:free',
+    lmarenaAliases: [
+      'gemini-2.0-flash-lite-preview-02-05',
+      'gemini-2.0-flash-lite-preview',
+      'gemini-2.0-flash-lite',
+      'google/gemini-2.0-flash-lite-preview-02-05',
+    ],
+    swebenchAliases: [
+      'gemini-2.0-flash-lite-preview-02-05',
+      'gemini-2.0-flash-lite',
+    ],
+    livebenchAliases: [
+      'gemini-2.0-flash-lite-preview-02-05',
+      'gemini-2.0-flash-lite',
+    ],
+    bfclAliases: [
+      'gemini-2.0-flash-lite-preview-02-05',
+      'gemini-2.0-flash-lite',
+    ],
+    officialDocsUrl:
+      'https://ai.google.dev/gemini-api/docs/models/gemini#gemini-2.0-flash-lite',
+    description:
+      "Google's ultra-cost-efficient production model, built for high-throughput, low-latency tasks at unprecedented low pricing ($0.075/1M input tokens).",
+    strengths: [
+      'Industry-leading low pricing ($0.075/1M input, $0.30/1M output)',
+      '1,048,576 token long context window',
+      'Ultra-fast time to first token and high generation throughput',
+    ],
+    weaknesses: [
+      'Lower maximum reasoning capability on intricate math and coding proofs',
+      'Compressed parameter footprint compared to Pro models',
+    ],
+    tags: ['Best value', 'Fast', 'Long context', 'Vision'],
+    reasoningEffort: ['fixed'],
+    defaultEffort: 'fixed',
+  },
+  {
     slug: 'o3-mini',
     name: 'o3-mini',
     provider: 'OpenAI',
@@ -515,6 +740,34 @@ export const CANONICAL_MODELS: CanonicalModelConfig[] = [
     tags: ['Open weights', 'Coding', 'Daily use', 'Best value'],
     reasoningEffort: ['none'],
     defaultEffort: 'none',
+  },
+  {
+    slug: 'o1-mini',
+    name: 'o1-mini',
+    provider: 'OpenAI',
+    providerSlug: 'openai',
+    family: 'o1',
+    openWeights: false,
+    openRouterId: 'openai/o1-mini',
+    lmarenaAliases: ['o1-mini', 'o1-mini-2024-09-12', 'openai/o1-mini'],
+    swebenchAliases: ['o1-mini', 'o1-mini-2024-09-12', 'OpenAI: o1-mini'],
+    livebenchAliases: ['o1-mini', 'o1-mini-2024-09-12'],
+    bfclAliases: ['o1-mini', 'o1-mini-2024-09-12'],
+    officialDocsUrl: 'https://platform.openai.com/docs/models#o1-mini',
+    description:
+      "OpenAI's fast reasoning model optimized for STEM, mathematics, and code generation at an accessible price point.",
+    strengths: [
+      'Fast reasoning loop for mathematical and coding challenges',
+      'Significantly lower cost than standard o1 ($1.10/1M input)',
+      '128,000 token context window with up to 65,536 output tokens',
+    ],
+    weaknesses: [
+      'Text-only (no image or multimodal analysis)',
+      'Lacks tool calling and system prompt control on API',
+    ],
+    tags: ['Reasoning', 'STEM', 'Coding', 'Best value'],
+    reasoningEffort: ['fixed'],
+    defaultEffort: 'fixed',
   },
   {
     slug: 'gpt-4o-mini',

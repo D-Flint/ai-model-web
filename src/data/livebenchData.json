@@ -1,5 +1,65 @@
 [
   {
+    "model": "claude-3-7-sonnet-20250219",
+    "global_average": 75.2,
+    "reasoning": 85.6,
+    "math": 81.4,
+    "coding": 74.5,
+    "data_analysis": 73.1,
+    "instruction_following": 73.2,
+    "date": "2025-02-24"
+  },
+  {
+    "model": "gemini-2.0-pro-exp-02-05",
+    "global_average": 73.8,
+    "reasoning": 84.1,
+    "math": 82.0,
+    "coding": 71.5,
+    "data_analysis": 70.8,
+    "instruction_following": 72.0,
+    "date": "2025-02-05"
+  },
+  {
+    "model": "gpt-4.5-preview-2025-02-27",
+    "global_average": 71.5,
+    "reasoning": 79.8,
+    "math": 74.2,
+    "coding": 64.1,
+    "data_analysis": 69.4,
+    "instruction_following": 76.5,
+    "date": "2025-02-27"
+  },
+  {
+    "model": "gemini-2.0-flash-thinking-exp-1219",
+    "global_average": 71.0,
+    "reasoning": 85.0,
+    "math": 83.2,
+    "coding": 66.4,
+    "data_analysis": 68.2,
+    "instruction_following": 68.5,
+    "date": "2024-12-19"
+  },
+  {
+    "model": "o1-mini-2024-09-12",
+    "global_average": 61.2,
+    "reasoning": 76.4,
+    "math": 77.0,
+    "coding": 56.5,
+    "data_analysis": 54.2,
+    "instruction_following": 52.0,
+    "date": "2024-09-12"
+  },
+  {
+    "model": "gemini-2.0-flash-lite-preview-02-05",
+    "global_average": 59.8,
+    "reasoning": 65.2,
+    "math": 61.4,
+    "coding": 52.8,
+    "data_analysis": 58.0,
+    "instruction_following": 63.5,
+    "date": "2025-02-05"
+  },
+  {
     "model": "DeepSeek-R1",
     "global_average": 74.6,
     "reasoning": 88.4,

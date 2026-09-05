@@ -264,7 +264,29 @@
   - `npm run check`: 0 errors, 0 warnings, 0 hints across 52 Astro and TypeScript files.
   - `npm run lint`: ESLint and Prettier check passed with 0 errors.
   - `npm run build`: Production static site build generated 138 pages in 12.07s with zero errors.
-- Commit: `35030bd` (local commit; no remote push).
+- Commit: `37bfc64` (local commit; no remote push).
 - Current state: Catalog contains 15 verified frontier models strictly adhering to `gemini-approved-external-data-sources.md`, with zero fictional models, zero guessed numbers, and full provenance transparency.
 - Exact next step: User verifies the updated frontier model catalog and comparison data locally.
+
+## 2026-09-05 — Add Newer Frontier Models of Gemini, Claude, and GPT
+
+- Objective: Add newer frontier models released by Anthropic (`claude-3-7-sonnet`), Google DeepMind (`gemini-2-0-pro-exp`, `gemini-2-0-flash-thinking-exp`, `gemini-2-0-flash-lite`), and OpenAI (`gpt-4-5-preview`, `o1-mini`) to the verified catalog with strict external data provenance from official documentation, LiveBench, BFCL, and SWE-bench.
+- Files changed:
+  - `src/data/canonicalModels.ts`: Added canonical configurations, cross-benchmark aliases, and tags for `claude-3-7-sonnet`, `gpt-4-5-preview`, `gemini-2-0-pro-exp`, `gemini-2-0-flash-thinking-exp`, `gemini-2-0-flash-lite`, and `o1-mini`.
+  - `src/data/officialProviders.ts`: Added official provider specs (pricing, context window, output limits, modalities, docs URLs) for all 6 new frontier models.
+  - `src/data/livebenchData.json`: Added verified LiveBench benchmark entries across reasoning, math, coding, data analysis, and instruction following.
+  - `src/data/bfclData.json`: Added verified Berkeley Function Calling Leaderboard accuracy entries for tool-enabled models.
+  - `src/data/verifiedModels.json`: Ingestion pipeline regenerated catalog from 15 to 21 models with full evidence records.
+  - `.agents/registry.json` & `.agents/activity.jsonl`: Registered `model-agent`, claimed `src` & `tests`, and completed session cleanly.
+- Attempts: 1 full iteration with data refresh, type check, test suite, linting, and build verification.
+- Failures and causes:
+  - Prettier flagged formatting on `canonicalModels.ts`, `officialProviders.ts`, and `verifiedModels.json`; resolved with `prettier --write`.
+- Tests and results:
+  - `npm test`: 35/35 passing across all test suites.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 52 Astro and TypeScript files.
+  - `npm run lint`: ESLint and Prettier pass cleanly with 0 errors.
+  - `npm run build`: Production build generated 249 static pages in 7.67s with 0 errors.
+- Commit: `6d61c4d` (local commit; no remote push).
+- Current state: The catalog now contains 21 verified foundation models with the newest frontier models from Anthropic, Google, and OpenAI prioritized at the forefront.
+- Exact next step: User verifies the new frontier models across cards, comparison builder, and detail pages locally.
 

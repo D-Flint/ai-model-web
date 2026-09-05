@@ -1,5 +1,40 @@
 [
   {
+    "model": "claude-3-7-sonnet-20250219",
+    "overall_accuracy": 90.4,
+    "ast_summary": 92.8,
+    "exec_summary": 88.0,
+    "date": "2025-02-24"
+  },
+  {
+    "model": "gpt-4.5-preview-2025-02-27",
+    "overall_accuracy": 89.8,
+    "ast_summary": 92.1,
+    "exec_summary": 87.5,
+    "date": "2025-02-27"
+  },
+  {
+    "model": "gemini-2.0-pro-exp-02-05",
+    "overall_accuracy": 89.2,
+    "ast_summary": 91.0,
+    "exec_summary": 87.4,
+    "date": "2025-02-05"
+  },
+  {
+    "model": "gemini-2.0-flash-thinking-exp-1219",
+    "overall_accuracy": 84.8,
+    "ast_summary": 86.5,
+    "exec_summary": 83.1,
+    "date": "2024-12-19"
+  },
+  {
+    "model": "gemini-2.0-flash-lite-preview-02-05",
+    "overall_accuracy": 81.2,
+    "ast_summary": 83.0,
+    "exec_summary": 79.4,
+    "date": "2025-02-05"
+  },
+  {
     "model": "claude-3-5-sonnet-20241022",
     "overall_accuracy": 89.2,
     "ast_summary": 91.5,

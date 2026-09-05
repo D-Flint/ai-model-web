@@ -1,5 +1,732 @@
 [
   {
+    "slug": "claude-3-7-sonnet",
+    "name": "Claude 3.7 Sonnet",
+    "provider": "Anthropic",
+    "family": "Claude 3.7",
+    "dataKind": "verified",
+    "description": "Anthropic's flagship hybrid reasoning model, combining instantaneous response generation with extended thinking capabilities for frontier coding and complex reasoning.",
+    "strengths": [
+      "State-of-the-art SWE-bench Verified coding performance (70.3% scaffolded)",
+      "Hybrid reasoning architecture with dynamically adjustable thinking tokens",
+      "Frontier Berkeley Function Calling accuracy and agentic tool use",
+      "200,000 token context window with up to 128,000 output tokens"
+    ],
+    "weaknesses": [
+      "Higher latency when extended thinking budget is set to maximum",
+      "Premium output pricing ($15.00/1M tokens) during long chain-of-thought generation"
+    ],
+    "tags": ["Reasoning", "Coding", "Agentic", "Vision", "Multimodal"],
+    "facts": {
+      "context": 200000,
+      "maxOutput": 128000,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-02-24",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 3,
+      "output": 15,
+      "cached": 0.3,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 75,
+      "coding": 71,
+      "agentic": 90,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 36,
+      "overall": 72
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 75.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-02-24"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 74.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-02-24"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 66.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 66,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2025-05-14"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 90.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 90,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-02-24"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 36,
+        "min": 0,
+        "max": 100,
+        "normalized": 36,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models#model-comparison-table",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "SWE-bench Verified Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-4-5-preview",
+    "name": "GPT-4.5 Preview",
+    "provider": "OpenAI",
+    "family": "GPT-4.5",
+    "dataKind": "verified",
+    "description": "OpenAI's largest foundation model, excelling at broad world knowledge, intuition, creative writing, and complex multi-disciplinary synthesis.",
+    "strengths": [
+      "Exceptional depth of factual knowledge and intuitive reasoning",
+      "Nuanced writing, communication style, and empathetic tone",
+      "High-reliability function calling and multimodal vision analysis"
+    ],
+    "weaknesses": [
+      "High API pricing ($75/1M input, $150/1M output)",
+      "Not a dedicated chain-of-thought reasoning model compared to o3/o1 for pure math"
+    ],
+    "tags": ["Vision", "Research", "Agentic", "Knowledge"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-02-27",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["fixed"],
+      "defaultEffort": "fixed"
+    },
+    "pricing": {
+      "input": 75,
+      "output": 150,
+      "cached": 37.5,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 72,
+      "coding": 64,
+      "agentic": 90,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": 28,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 0,
+      "overall": 61
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 71.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 72,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-02-27"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 64.1,
+        "min": 0,
+        "max": 100,
+        "normalized": 64,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-02-27"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 89.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 90,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-02-27"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1195,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 28,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 0,
+        "min": 0,
+        "max": 100,
+        "normalized": 0,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 82,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models#gpt-4-5-preview",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gemini-2-0-pro-exp",
+    "name": "Gemini 2.0 Pro Exp",
+    "provider": "Google DeepMind",
+    "family": "Gemini",
+    "dataKind": "verified",
+    "description": "Google's most capable Gemini 2.0 model, built for complex reasoning, large-scale coding, and multi-modal problem solving with a 2M token context window.",
+    "strengths": [
+      "Industry-leading 2,097,152 token context window with high recall",
+      "Top-tier coding performance and structured output fidelity",
+      "Native multimodal vision and audio comprehension"
+    ],
+    "weaknesses": [
+      "Experimental status with potential endpoint changes across preview cycles",
+      "Higher latency than Gemini 2.0 Flash on basic prompts"
+    ],
+    "tags": ["Coding", "Research", "Long context", "Vision", "Multimodal"],
+    "facts": {
+      "context": 2097152,
+      "maxOutput": 65536,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": true,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-02-05",
+      "sourceId": "source-google",
+      "reasoningEffort": ["fixed"],
+      "defaultEffort": "fixed"
+    },
+    "pricing": {
+      "input": 1.25,
+      "output": 5,
+      "cached": 0.3125,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-google",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 74,
+      "coding": 72,
+      "agentic": 89,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 49,
+      "overall": 73
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 73.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 74,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-02-05"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 71.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 72,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-02-05"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 89.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 89,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-02-05"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 49,
+        "min": 0,
+        "max": 100,
+        "normalized": 49,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-google",
+        "name": "Google DeepMind Official Documentation",
+        "url": "https://ai.google.dev/gemini-api/docs/models/gemini#gemini-2.0-pro",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Google DeepMind"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gemini-2-0-flash-thinking-exp",
+    "name": "Gemini 2.0 Flash Thinking Exp",
+    "provider": "Google DeepMind",
+    "family": "Gemini",
+    "dataKind": "verified",
+    "description": "Google's specialized reasoning model combining the Flash architecture speed with explicit internal chain-of-thought reasoning and multimodal input.",
+    "strengths": [
+      "Visible reasoning traces for debugging math and logic problems",
+      "1,048,576 token long context support for reasoning over massive documents",
+      "Multimodal reasoning over images, diagrams, and math figures"
+    ],
+    "weaknesses": [
+      "Thinking process consumes additional output tokens",
+      "Experimental preview endpoint subject to rate limitations"
+    ],
+    "tags": ["Reasoning", "STEM", "Long context", "Vision"],
+    "facts": {
+      "context": 1048576,
+      "maxOutput": 65536,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-12-19",
+      "sourceId": "source-google",
+      "reasoningEffort": ["fixed"],
+      "defaultEffort": "fixed"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.4,
+      "cached": 0.025,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-google",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 71,
+      "coding": 66,
+      "agentic": 85,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 82,
+      "overall": 74
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 71,
+        "min": 0,
+        "max": 100,
+        "normalized": 71,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-12-19"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 66.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 66,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-12-19"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 84.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 85,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2024-12-19"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 82,
+        "min": 0,
+        "max": 100,
+        "normalized": 82,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-google",
+        "name": "Google DeepMind Official Documentation",
+        "url": "https://ai.google.dev/gemini-api/docs/models/gemini#gemini-2.0-flash-thinking",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Google DeepMind"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gemini-2-0-flash-lite",
+    "name": "Gemini 2.0 Flash-Lite",
+    "provider": "Google DeepMind",
+    "family": "Gemini",
+    "dataKind": "verified",
+    "description": "Google's ultra-cost-efficient production model, built for high-throughput, low-latency tasks at unprecedented low pricing ($0.075/1M input tokens).",
+    "strengths": [
+      "Industry-leading low pricing ($0.075/1M input, $0.30/1M output)",
+      "1,048,576 token long context window",
+      "Ultra-fast time to first token and high generation throughput"
+    ],
+    "weaknesses": [
+      "Lower maximum reasoning capability on intricate math and coding proofs",
+      "Compressed parameter footprint compared to Pro models"
+    ],
+    "tags": ["Best value", "Fast", "Long context", "Vision"],
+    "facts": {
+      "context": 1048576,
+      "maxOutput": 65536,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": true,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-02-05",
+      "sourceId": "source-google",
+      "reasoningEffort": ["fixed"],
+      "defaultEffort": "fixed"
+    },
+    "pricing": {
+      "input": 0.075,
+      "output": 0.3,
+      "cached": 0.01875,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-google",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 60,
+      "coding": 53,
+      "agentic": 81,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 86,
+      "overall": 66
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 59.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 60,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-02-05"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 52.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 53,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-02-05"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 81.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 81,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-02-05"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 86,
+        "min": 0,
+        "max": 100,
+        "normalized": 86,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-google",
+        "name": "Google DeepMind Official Documentation",
+        "url": "https://ai.google.dev/gemini-api/docs/models/gemini#gemini-2.0-flash-lite",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Google DeepMind"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "o3-mini",
     "name": "o3-mini",
     "provider": "OpenAI",
@@ -1872,6 +2599,126 @@
         "retrievedAt": "2026-09-05",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "o1-mini",
+    "name": "o1-mini",
+    "provider": "OpenAI",
+    "family": "o1",
+    "dataKind": "verified",
+    "description": "OpenAI's fast reasoning model optimized for STEM, mathematics, and code generation at an accessible price point.",
+    "strengths": [
+      "Fast reasoning loop for mathematical and coding challenges",
+      "Significantly lower cost than standard o1 ($1.10/1M input)",
+      "128,000 token context window with up to 65,536 output tokens"
+    ],
+    "weaknesses": [
+      "Text-only (no image or multimodal analysis)",
+      "Lacks tool calling and system prompt control on API"
+    ],
+    "tags": ["Reasoning", "STEM", "Coding", "Best value"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 65536,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-09-12",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["fixed"],
+      "defaultEffort": "fixed"
+    },
+    "pricing": {
+      "input": 1.1,
+      "output": 4.4,
+      "cached": 0.55,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 61,
+      "coding": 56,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 51,
+      "overall": 57
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 61.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 61,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-09-12"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 56.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 56,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-09-12"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 51,
+        "min": 0,
+        "max": 100,
+        "normalized": 51,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-05"
+      }
+    ],
+    "confidence": 64,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-05",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-05",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models#o1-mini",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
       },
       {
         "id": "astra-cost-engine",
