@@ -390,5 +390,37 @@
 - Current state: All 42 foundation models are strictly ordered from the newest (`gpt-4-5-preview` - Feb 27, 2025) to the oldest (`claude-3-opus-20240229` - Feb 29, 2024).
 - Exact next step: User verifies the 42 models locally at `http://localhost:4321`.
 
+## 2026-09-05 — Ingest All Canonical OpenAI Models (Catalog Expanded to 47 Models)
+
+- Objective: Ingest all key official models from OpenAI spanning reasoning, flagship multimodal, turbo, and canonical base versions (`o1-preview`, `gpt-4o-2024-08-06`, `gpt-4-turbo`, `gpt-4-0613`, `gpt-3-5-turbo`) adhering strictly to approved external data sources guidelines and newest-to-oldest release date ordering.
+- OpenAI Models Ingested (11 total):
+  1. `gpt-4-5-preview` (2025-02-27)
+  2. `o3-mini` (2025-01-31)
+  3. `o1` (2024-12-05)
+  4. `o1-mini` (2024-09-12)
+  5. `o1-preview` (2024-09-12)
+  6. `gpt-4o-2024-08-06` (2024-08-06)
+  7. `gpt-4o-mini` (2024-07-18)
+  8. `gpt-4o` (2024-05-13)
+  9. `gpt-4-turbo` (2024-04-09)
+  10. `gpt-4-0613` (2023-06-13)
+  11. `gpt-3-5-turbo` (2023-03-01)
+- Files changed:
+  - `src/data/canonicalModels.ts`: Added canonical configs for `o1-preview`, `gpt-4o-2024-08-06`, `gpt-4-turbo`, `gpt-4-0613`, and `gpt-3-5-turbo`.
+  - `src/data/officialProviders.ts`: Added official provider specs and documentation pricing for all 5 models.
+  - `src/data/livebenchData.json`: Added verified LiveBench benchmark evaluation records.
+  - `src/data/bfclData.json`: Added verified BFCL tool use accuracy records.
+  - `src/data/verifiedModels.json`: Refreshed pipeline output to 47 models sorted strictly descending by release date (`2025-02-27` down to `2023-03-01`).
+  - `.agents/registry.json`: Updated `openai-agent` status to `completed` and released all claims.
+- Attempts: 1 full iteration with verified build and lint passes.
+- Tests and results:
+  - `npm test`: 35/35 passing across all unit test suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 52 Astro and TypeScript files.
+  - `npm run lint`: Clean, 0 errors.
+  - `npm run build`: Production static build generated 1,146 pages in 32.24s with 0 errors.
+- Current state: Catalog contains 47 verified foundation models (with all 11 OpenAI models fully covered) strictly sorted from newest to oldest.
+- Exact next step: User verifies the complete OpenAI models catalog locally at `http://localhost:4321`.
+
+
 
 

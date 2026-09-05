@@ -72,6 +72,12 @@
       "goal": "Expand catalog with more verified models in newest-to-oldest order",
       "lastHeartbeat": "2026-09-05T12:34:15.000Z",
       "status": "completed"
+    },
+    "openai-agent": {
+      "role": "Data Engineer",
+      "goal": "Add all OpenAI models with official specs in newest-to-oldest order",
+      "lastHeartbeat": "2026-09-05T12:38:00.000Z",
+      "status": "completed"
     }
   },
   "claims": {},

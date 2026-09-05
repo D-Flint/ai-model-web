@@ -271,5 +271,33 @@
     "ast_summary": 83.2,
     "exec_summary": 80.0,
     "date": "2024-08-08"
+  },
+  {
+    "model": "gpt-4o-2024-08-06",
+    "overall_accuracy": 88.0,
+    "ast_summary": 90.2,
+    "exec_summary": 85.8,
+    "date": "2024-08-06"
+  },
+  {
+    "model": "gpt-4-turbo-2024-04-09",
+    "overall_accuracy": 82.0,
+    "ast_summary": 83.5,
+    "exec_summary": 80.5,
+    "date": "2024-04-09"
+  },
+  {
+    "model": "gpt-4-0613",
+    "overall_accuracy": 74.0,
+    "ast_summary": 76.0,
+    "exec_summary": 72.0,
+    "date": "2023-06-13"
+  },
+  {
+    "model": "gpt-3.5-turbo-0125",
+    "overall_accuracy": 62.0,
+    "ast_summary": 64.0,
+    "exec_summary": 60.0,
+    "date": "2024-01-25"
   }
 ]
