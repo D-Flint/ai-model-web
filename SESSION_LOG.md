@@ -128,4 +128,5 @@
   - `npm run lint`: Prettier and ESLint clean with 0 errors.
   - `npm run build`: Production build passes cleanly, generating 3,419 pages in 2m 10s.
 - Current state: 82 verified models with reasoning effort levels, company logos, and real benchmark evidence are fully operational.
+- Commit: `d81fc45` — `feat: add missing newer models, reasoning effort levels, and AI company logos` (local only; no push).
 - Exact next step: User verifies UI locally at `http://localhost:4321` or production build.
