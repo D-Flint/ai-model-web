@@ -1,59 +1,201 @@
 ---
 import RootLayout from '../layouts/RootLayout.astro';
+import HeroCompare from '../components/HeroCompare';
+import ModelCard from '../components/ModelCard';
+import { models } from '../data/models';
+import { categories } from '../data/config';
+import { rankModels, taskCost, money } from '../lib/decision';
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Search,
+  Code2,
+  Bot,
+  MessageSquare,
+  PenLine,
+  BookOpen,
+  BadgeDollarSign,
+  ShieldCheck,
+  SlidersHorizontal,
+} from 'lucide-react';
+const icons = [Code2, Bot, MessageSquare, BookOpen, PenLine, BadgeDollarSign];
+const featured = rankModels(models).slice(0, 4);
+const pairs = [
+  [models[0], models[1]],
+  [models[3], models[4]],
+  [models[2], models[5]],
+];
+const costs = [models[0], models[1], models[4]];
 ---
 
-<RootLayout title="Astra - Find the Right AI Model">
-  <div class="space-y-16">
-    <section class="text-center max-w-3xl mx-auto pt-8 pb-4">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-xs font-medium text-[var(--text-secondary)] mb-6">
-        <span>Transparent Consumer Decision Engine</span>
-      </div>
-      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-[var(--text-primary)] mb-4">
-        Find the right AI model.
-      </h1>
-      <p class="text-lg text-[var(--text-secondary)] mb-8">
-        Compare intelligence, coding, agents, speed, pricing, and real-world cost per task without benchmark jargon.
+<RootLayout>
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">LESS GUESSWORK. BETTER CHOICES.</span><h1>
+        Find the right<br />AI model<span class="accent"> for you.</span>
+      </h1><p>
+        Compare what matters. Understand the tradeoffs.<br
+          class="desktop-break"
+        /> Choose with a little more confidence.
       </p>
-
-      <div class="flex flex-wrap items-center justify-center gap-2 text-xs">
-        <span class="text-[var(--text-muted)]">Popular shortcuts:</span>
-        <a href="/rankings/coding" class="px-3 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] hover:border-[var(--accent)] transition-colors">
-          Coding Models
-        </a>
-        <a href="/rankings/agents" class="px-3 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] hover:border-[var(--accent)] transition-colors">
-          Agentic Workflows
-        </a>
-        <a href="/rankings/daily-use" class="px-3 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] hover:border-[var(--accent)] transition-colors">
-          Daily Use & Chat
-        </a>
-        <a href="/rankings/value" class="px-3 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] hover:border-[var(--accent)] transition-colors">
-          Best Value
-        </a>
+      <form class="hero-search" action="/models">
+        <Search size={20} /><label class="sr-only" for="home-search"
+          >Search models</label
+        ><input
+          id="home-search"
+          name="q"
+          placeholder="Which model are you looking for?"
+        /><button class="button primary" type="submit"
+          >Explore <ArrowRight size={16} /></button
+        >
+      </form>
+      <div class="hero-shortcuts">
+        <span>Or start with a task</span><a href="/rankings/coding"
+          >Coding <ArrowUpRight size={12} /></a
+        ><a href="/rankings/daily-use">Daily use <ArrowUpRight size={12} /></a
+        ><a href="/rankings/value">Best value <ArrowUpRight size={12} /></a>
       </div>
-    </section>
-
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="p-6 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
-        <h3 class="text-base font-semibold mb-2">Model Explorer</h3>
-        <p class="text-sm text-[var(--text-secondary)] mb-4">
-          Browse verified models with standardized 0-100 scores across key capability dimensions.
-        </p>
-        <a href="/models" class="text-xs font-semibold text-[var(--accent)] hover:underline">Browse models &rarr;</a>
-      </div>
-      <div class="p-6 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
-        <h3 class="text-base font-semibold mb-2">Side-by-Side Comparison</h3>
-        <p class="text-sm text-[var(--text-secondary)] mb-4">
-          Directly compare 2 to 4 models with highlighted tradeoffs, specs, and actionable verdicts.
-        </p>
-        <a href="/compare" class="text-xs font-semibold text-[var(--accent)] hover:underline">Start comparing &rarr;</a>
-      </div>
-      <div class="p-6 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
-        <h3 class="text-base font-semibold mb-2">Cost Per Task</h3>
-        <p class="text-sm text-[var(--text-secondary)] mb-4">
-          Estimate realistic operational costs factoring in retries, success rate, and agentic tool overhead.
-        </p>
-        <a href="/cost" class="text-xs font-semibold text-[var(--accent)] hover:underline">Calculate costs &rarr;</a>
-      </div>
-    </section>
+    </div><HeroCompare models={models.slice(0, 5)} client:load />
+  </section>
+  <div class="catalog-strip">
+    <span>A common language for comparing models</span><div>
+      <strong>{models.length}</strong> sample models
+    </div><div><strong>11</strong> capability scores</div><a href="/methodology"
+      >Every score explained <ArrowUpRight size={14} /></a
+    >
   </div>
+  <section class="section">
+    <div class="section-heading">
+      <div>
+        <h2>What do you want to do?</h2><p>
+          Start with your work. Find the model that fits.
+        </p>
+      </div><a class="text-link" href="/find"
+        >Help me choose <ArrowRight size={16} /></a
+      >
+    </div><div class="use-case-grid">
+      {
+        categories.slice(0, 6).map((category, i) => {
+          const Icon = icons[i];
+          return (
+            <a href={`/rankings/${category.slug}`}>
+              <>
+                <Icon size={22} strokeWidth={1.5} />
+                <strong>{category.label}</strong>
+                <span>{category.description}</span>
+                <ArrowUpRight size={15} className="category-arrow" />
+              </>
+            </a>
+          );
+        })
+      }
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-heading">
+      <div>
+        <h2>A few good places to start</h2><p>
+          The highest overall scores in our sample catalog.
+        </p>
+      </div><a class="text-link" href="/models"
+        >Explore all models <ArrowRight size={16} /></a
+      >
+    </div><div class="model-grid">
+      {featured.map((model) => <ModelCard model={model} />)}
+    </div><p class="section-note">
+      Illustrative scores, not real-world evaluations. <a href="/methodology"
+        >See how scoring works</a
+      >
+    </p>
+  </section>
+  <section class="finder-banner">
+    <div class="finder-icon">
+      <SlidersHorizontal size={28} strokeWidth={1.5} />
+    </div><div>
+      <h2>A great model. For your kind of work.</h2><p>
+        Three quick questions. A shortlist with reasons, not just rankings.
+      </p>
+    </div><a class="button primary" href="/find"
+      >Find my model <ArrowRight size={16} /></a
+    >
+  </section>
+  <section class="section">
+    <div class="section-heading">
+      <div>
+        <h2>Put the tradeoffs side by side</h2><p>
+          One view. The differences that actually matter.
+        </p>
+      </div><a class="text-link" href="/compare"
+        >Build a comparison <ArrowRight size={16} /></a
+      >
+    </div><div class="comparison-links">
+      {
+        pairs.map(([a, b]) => (
+          <a href={`/compare/${a.slug}-vs-${b.slug}`}>
+            <>
+              <span>
+                <>
+                  <strong>{a.name}</strong>
+                  <small>{a.provider}</small>
+                </>
+              </span>
+              <span class="versus">vs</span>
+              <span>
+                <>
+                  <strong>{b.name}</strong>
+                  <small>{b.provider}</small>
+                </>
+              </span>
+              <ArrowUpRight size={17} />
+            </>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+  <section class="bottom-grid">
+    <div class="cost-teaser">
+      <span class="eyebrow">THE PRICE OF GETTING THINGS DONE</span><h2>
+        Small costs.<br />A clearer picture.
+      </h2><p>
+        See what everyday use could cost, without having to think in tokens.
+      </p><div class="cost-teaser-rows">
+        {
+          costs.map((m) => (
+            <div>
+              <>
+                <span>{m.name}</span>
+                <strong>
+                  {money(taskCost(m, 500, 500) * 20 * 30)}
+                  <small> / month</small>
+                </strong>
+              </>
+            </div>
+          ))
+        }
+      </div><p class="micro">Sample estimate: 20 questions a day, 30 days.</p><a
+        class="text-link"
+        href="/cost">Calculate your costs <ArrowRight size={16} /></a
+      >
+    </div><div class="trust-teaser">
+      <ShieldCheck size={32} strokeWidth={1.4} /><h2>
+        A score is only useful<br />if you can trust it.
+      </h2><p>
+        Know where the numbers come from, how they’re calculated, and what they
+        can’t tell you.
+      </p><ul>
+        <li>Sources attached to every measurement</li><li>
+          Quality and price scored separately
+        </li><li>Confidence and freshness made visible</li>
+      </ul><a class="text-link" href="/methodology"
+        >Take a look behind the scores <ArrowRight size={16} /></a
+      >
+    </div>
+  </section>
+  <section class="recent-row">
+    <h3>Catalog notes</h3><span>Sample fixtures created September 5, 2026</span
+    ><a href="/methodology#sample-data"
+      >Read the data policy <ArrowUpRight size={14} /></a
+    >
+  </section>
 </RootLayout>

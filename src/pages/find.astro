@@ -1,0 +1,16 @@
+---
+import RootLayout from '../layouts/RootLayout.astro';
+import ModelFinder from '../components/ModelFinder';
+import { models } from '../data/models';
+---
+
+<RootLayout title="Find the right AI model for your work | Astra"
+  ><div class="page-heading">
+    <span class="eyebrow">YOUR WORK COMES FIRST</span><h1>
+      A model that makes sense for you.
+    </h1><p>
+      Three questions. A clear shortlist. Every recommendation comes with the
+      reason behind it.
+    </p>
+  </div><ModelFinder models={models} client:load /></RootLayout
+>

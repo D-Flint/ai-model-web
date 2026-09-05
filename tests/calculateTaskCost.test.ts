@@ -1,5 +1,9 @@
 import { describe, it, expect } from 'vitest';
-import { calculateOverallScore, calculateEffectiveTaskCost, SCORING_WEIGHTS } from '../src/lib/scoring';
+import {
+  calculateOverallScore,
+  calculateEffectiveTaskCost,
+  SCORING_WEIGHTS,
+} from '../src/lib/scoring';
 
 describe('Scoring Logic', () => {
   it('correctly weights capability scores into an overall score of 0-100', () => {
@@ -23,7 +27,10 @@ describe('Scoring Logic', () => {
   });
 
   it('scoring weights sum to 1.0 (100%)', () => {
-    const totalWeight = Object.values(SCORING_WEIGHTS).reduce((sum, w) => sum + w, 0);
+    const totalWeight = Object.values(SCORING_WEIGHTS).reduce(
+      (sum, w) => sum + w,
+      0,
+    );
     expect(Number(totalWeight.toFixed(2))).toBe(1.0);
   });
 });
@@ -82,7 +89,7 @@ describe('Effective Task Cost Calculation', () => {
         inputPerMillion: 3,
         outputPerMillion: 15,
         successProbability: 0,
-      })
+      }),
     ).toThrow('Success probability must be greater than 0');
   });
 });

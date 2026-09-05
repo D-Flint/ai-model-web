@@ -1,0 +1,26 @@
+---
+import RootLayout from '../../layouts/RootLayout.astro';
+import RankingList from '../../components/RankingList.astro';
+import { categories } from '../../data/config';
+export function getStaticPaths() {
+  return categories.map((category) => ({
+    params: { category: category.slug },
+    props: { category },
+  }));
+}
+const { category } = Astro.props;
+---
+
+<RootLayout title={`Best AI models for ${category.label.toLowerCase()} | Astra`}
+  ><div class="page-heading">
+    <div class="breadcrumbs">
+      <a href="/rankings">Rankings</a><span>/</span><span>{category.label}</span
+      >
+    </div><h1>Find your fit for {category.label.toLowerCase()}.</h1><p>
+      {category.description} Compare the sample models and understand each tradeoff.
+    </p>
+  </div><RankingList
+    metric={category.metric}
+    slug={category.slug}
+  /></RootLayout
+>

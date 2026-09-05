@@ -1,0 +1,87 @@
+---
+import { models } from '../data/models';
+import { categories, metricLabels, type Metric } from '../data/config';
+import { rankModels, taskCost, money } from '../lib/decision';
+import { ModelMark } from './ModelCard';
+interface Props {
+  metric?: Metric;
+  slug?: string;
+}
+const { metric = 'overall', slug = 'overall' } = Astro.props;
+const eligible =
+  metric === 'vision' ? models.filter((m) => m.facts.vision) : models;
+const ranked =
+  slug === 'cheap'
+    ? [...eligible].sort((a, b) => taskCost(a) - taskCost(b))
+    : rankModels(eligible, metric);
+---
+
+<nav class="ranking-tabs" aria-label="Ranking categories">
+  <a href="/rankings" aria-current={slug === 'overall' ? 'page' : undefined}
+    >Overall</a
+  >{
+    categories.map((c) => (
+      <a
+        href={`/rankings/${c.slug}`}
+        aria-current={slug === c.slug ? 'page' : undefined}
+      >
+        {c.label}
+      </a>
+    ))
+  }
+</nav>
+<div class="notice">
+  Sample ranking, not a market recommendation. {
+    slug === 'cheap'
+      ? 'Sorted by estimated cost for 1,000 input and 500 output tokens.'
+      : `Sorted by ${metricLabels[metric].toLowerCase()} score, with alphabetical ordering for ties.`
+  }
+  <a href="/methodology">How scoring works</a>.
+</div>
+<div class="ranking-list">
+  {
+    ranked.map((model, index) => (
+      <article class="panel ranking-row">
+        <>
+          <span class="rank-position">
+            {String(index + 1).padStart(2, '0')}
+          </span>
+          <ModelMark model={model} />
+          <div>
+            <>
+              <h3>
+                <a href={`/models/${model.slug}`}>{model.name}</a>
+              </h3>
+              <p>
+                {model.description} Choose it for{' '}
+                {model.tags.slice(0, 2).join(' and ').toLowerCase()} in this
+                sample.
+              </p>
+              <div class="rank-notes">
+                <>
+                  <span>Tradeoff: {model.weaknesses[0].toLowerCase()}</span>
+                  <a href={`/compare?models=${model.slug}`}>
+                    Add to comparison
+                  </a>
+                </>
+              </div>
+            </>
+          </div>
+          <a
+            class="score-number"
+            href={`/models/${model.slug}#score-${metric}`}
+          >
+            {slug === 'cheap'
+              ? money(taskCost(model), 4)
+              : model.scores[metric]}
+            <small>
+              {slug === 'cheap'
+                ? 'estimated / task'
+                : `${metricLabels[metric]} / 100`}
+            </small>
+          </a>
+        </>
+      </article>
+    ))
+  }
+</div>

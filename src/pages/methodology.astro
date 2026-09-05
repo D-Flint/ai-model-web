@@ -1,0 +1,146 @@
+---
+import RootLayout from '../layouts/RootLayout.astro';
+import { metricLabels, overallWeights } from '../data/config';
+---
+
+<RootLayout title="How Astra scores and recommends AI models | Methodology"
+  ><div class="page-heading">
+    <span class="eyebrow">NOTHING BEHIND THE CURTAIN</span><h1>
+      Understand the score.<br />Then make your own call.
+    </h1><p>
+      Numbers should make a decision clearer. Here’s what ours mean, where they
+      come from, and where they stop.
+    </p>
+  </div>
+  <article class="prose">
+    <section id="sample-data">
+      <h2>First, a note about this edition.</h2><p>
+        This local edition contains 12 fictional models from fictional
+        providers. Every score, price, capability, release date, and model
+        description is an illustrative fixture created on September 5, 2026.
+        None is a claim about an available AI product. The catalog is
+        deliberately excluded from search indexing.
+      </p><p>
+        The fixture source is <code>src/data/models.ts</code>. Synthetic inputs
+        demonstrate the calculation pipeline; they are not public benchmarks or
+        internal evaluation runs. Evidence confidence is 0% because these
+        fixtures have no real supporting measurements.
+      </p><p>
+        Recommendations and cost estimates let you test the complete experience.
+        Do not use them to make a real purchasing decision.
+      </p>
+    </section>
+    <section>
+      <h2>One scale, different strengths.</h2><p>
+        Capability scores range from 0 to 100. Each evidence record stores the
+        raw measurement, its scale, its source, and its date. Normalization
+        converts it to a common range:
+      </p><p><code>100 × (raw − minimum) / (maximum − minimum)</code></p><p>
+        Values are clamped to 0-100 and rounded to whole numbers. In this
+        sample, each capability uses one synthetic input on a 0-1,000 scale.
+        Real benchmarks need documented bounds, direction, task comparability,
+        and validation before they can contribute. Normalization alone does not
+        make incompatible tests comparable.
+      </p>
+    </section>
+    <section>
+      <h2>Overall quality. Not just the cheapest answer.</h2><p>
+        The overall score is a weighted sum of the individual capabilities,
+        rounded to a whole number. Price has only a 2% influence. Specialized
+        rankings keep each capability visible independently.
+      </p><div class="weight-grid">
+        {
+          Object.entries(overallWeights).map(([key, value]) => (
+            <div>
+              <>
+                <span>{metricLabels[key as keyof typeof overallWeights]}</span>
+                <strong>{Math.round(value * 100)}%</strong>
+              </>
+            </div>
+          ))
+        }
+      </div><p>
+        These are provisional product weights, version <code>sample-1.0</code>.
+        They live in one configuration file and are exposed on model detail
+        pages. Cost efficiency is a synthetic capability in this edition, not a
+        measured economic advantage.
+      </p>
+    </section>
+    <section>
+      <h2>Confidence is about evidence.</h2><p>
+        Our confidence function combines independent source count (20%), source
+        quality (20%), recency (15%), internal test count (15%), consistency
+        (10%), and capability coverage (20%). Source count saturates at five,
+        test count at 50, freshness decays over 180 days, and variance is scaled
+        over 25 points.
+      </p><p>
+        This is an evidence-coverage heuristic, not a statistical probability
+        that a score is correct. All fictional fixture scores have 0%
+        confidence. No number of synthetic measurements can establish real-world
+        confidence.
+      </p>
+    </section>
+    <section>
+      <h2>A recommendation you can follow.</h2><p>
+        The finder filters out models that do not fit your API task budget or
+        required vision support. It then combines the chosen task score (55%),
+        your priority (30%), and reliability (15%). Quality uses intelligence;
+        speed uses speed; cost and value use cost efficiency; balanced uses
+        overall.
+      </p><p>
+        Ties are resolved by lower estimated task cost and then model slug. The
+        best match has the highest fit score. The value choice has the highest
+        cost-efficiency score among remaining eligible models. The alternative
+        is the next available fit. No sponsorship changes these results.
+      </p><p>
+        Free means zero paid API cost. Very cheap means at most $0.005 per
+        sample task, moderate means at most $0.03, and flexible applies no price
+        cap. A sample task uses 1,000 input and 500 output tokens.
+      </p>
+    </section>
+    <section>
+      <h2>The cost of a completed task.</h2><p>
+        Token prices tell only part of the story. Our calculator includes input
+        and output usage, optional tool costs, and an assumed retry rate.
+      </p><p>
+        <code>Expected task cost = cost per attempt / success probability</code>
+      </p><p>
+        This assumes constant cost and independent retries. The default is one
+        successful attempt. Workload sizes are illustrative assumptions, not
+        observed usage averages. API fees are separate from subscription plans,
+        taxes, hosting, and provider-specific charges.
+      </p>
+    </section>
+    <section>
+      <h2>Facts, evidence, and estimates stay separate.</h2><p>
+        Provider documentation is the intended authority for price, context,
+        modalities, and availability. Public evaluations and controlled internal
+        testing supply evidence. Derived scores refer back to those
+        measurements. Cost estimates retain their workload assumptions.
+      </p><p>
+        The import validator requires source references, dates, score
+        methodology, evidence coverage, bounded values, and unique model slugs.
+        Verified imports cannot contain mock sources or synthetic evidence.
+        Imports are archived as new snapshots; existing historical snapshots are
+        not overwritten.
+      </p><p>
+        Structural validation cannot establish whether an external claim is
+        true. A human source review is required before a verified import is
+        selected for publication. This edition has not performed that review or
+        connected to a live provider feed.
+      </p>
+    </section>
+    <section>
+      <h2>Freshness is part of the answer.</h2><p>
+        Model facts retain the source update date and last verification date;
+        scores retain their calculation date; pricing retains its effective
+        snapshot date. A fixture creation date never masquerades as provider
+        verification. Old values remain in history rather than being silently
+        replaced.
+      </p><p>
+        Use scores to narrow a choice, then review the evidence and test a model
+        on your own work. Small score differences rarely tell the whole story.
+      </p>
+    </section>
+  </article>
+</RootLayout>

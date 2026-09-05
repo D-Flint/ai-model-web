@@ -2,7 +2,8 @@ export interface ModelSource {
   id: string;
   name: string;
   url: string;
-  sourceType: 'provider_doc' | 'public_eval' | 'aggregator_api' | 'internal_test';
+  sourceType:
+    'provider_doc' | 'public_eval' | 'aggregator_api' | 'internal_test';
   publisher: string;
   retrievedAt: string;
 }

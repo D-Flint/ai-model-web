@@ -1,4 +1,6 @@
 # Build outputs
+artifacts/
+debug.log
 dist/
 .astro/
 

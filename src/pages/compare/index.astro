@@ -1,0 +1,16 @@
+---
+import RootLayout from '../../layouts/RootLayout.astro';
+import ComparisonBuilder from '../../components/ComparisonBuilder';
+import { models } from '../../data/models';
+---
+
+<RootLayout title="Compare AI models side by side | Astra"
+  ><div class="page-heading">
+    <span class="eyebrow">SIDE BY SIDE</span><h1>
+      Less switching. More clarity.
+    </h1><p>
+      Compare two to four models on capability, experience, and the cost of
+      getting things done.
+    </p>
+  </div><ComparisonBuilder models={models} client:load /></RootLayout
+>

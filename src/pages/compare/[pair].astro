@@ -1,0 +1,31 @@
+---
+import RootLayout from '../../layouts/RootLayout.astro';
+import ComparisonBuilder from '../../components/ComparisonBuilder';
+import { models } from '../../data/models';
+export function getStaticPaths() {
+  return models.flatMap((a, i) =>
+    models.slice(i + 1).map((b) => ({
+      params: { pair: `${a.slug}-vs-${b.slug}` },
+      props: { a, b },
+    })),
+  );
+}
+const { a, b } = Astro.props;
+---
+
+<RootLayout
+  title={`${a.name} vs ${b.name} | Astra`}
+  description={`Compare ${a.name} and ${b.name}: sample scores, pricing, capabilities, and tradeoffs.`}
+  ><div class="page-heading">
+    <div class="breadcrumbs">
+      <a href="/compare">Compare</a><span>/</span><span>Head to head</span>
+    </div><h1>{a.name} vs {b.name}</h1><p>
+      Understand the differences before you decide. These are fictional models
+      in our sample catalog.
+    </p>
+  </div><ComparisonBuilder
+    models={models}
+    initial={[a.slug, b.slug]}
+    client:load
+  /></RootLayout
+>

@@ -1,0 +1,16 @@
+---
+import RootLayout from '../layouts/RootLayout.astro';
+import CostCalculator from '../components/CostCalculator';
+import { models } from '../data/models';
+---
+
+<RootLayout title="AI model cost calculator | Astra"
+  ><div class="page-heading">
+    <span class="eyebrow">MAKE THE NUMBERS MAKE SENSE</span><h1>
+      What will your AI actually cost?
+    </h1><p>
+      Start with your daily work, or bring your own token counts. See the
+      estimated cost across models.
+    </p>
+  </div><CostCalculator models={models} client:load /></RootLayout
+>

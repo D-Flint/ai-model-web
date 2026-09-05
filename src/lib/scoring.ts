@@ -1,27 +1,20 @@
 import type { ModelScores } from '../types/model';
+import { overallWeights } from '../data/config';
 
 /**
  * Centrally configured scoring weights as specified in Section 16 of the product brief.
  * Kept configurable to avoid hidden magic numbers.
  */
-export const SCORING_WEIGHTS = {
-  intelligence: 0.25,
-  coding: 0.18,
-  agentic: 0.15,
-  dailyUse: 0.12,
-  research: 0.10,
-  reliability: 0.08,
-  writing: 0.05,
-  vision: 0.03,
-  speed: 0.02,
-  costEfficiency: 0.02,
-} as const;
+export const SCORING_WEIGHTS = overallWeights;
 
 /**
  * Calculates the overall composite score (0-100) from capability scores.
  */
 export function calculateOverallScore(
-  scores: Omit<ModelScores, 'overall' | 'confidence' | 'methodologyVersion' | 'scoreUpdatedAt'>
+  scores: Omit<
+    ModelScores,
+    'overall' | 'confidence' | 'methodologyVersion' | 'scoreUpdatedAt'
+  >,
 ): number {
   const weightedSum =
     scores.intelligence * SCORING_WEIGHTS.intelligence +
@@ -64,6 +57,20 @@ export function calculateEffectiveTaskCost(options: {
 
   if (successProbability <= 0) {
     throw new Error('Success probability must be greater than 0');
+  }
+  if (
+    !Number.isFinite(successProbability) ||
+    successProbability > 1 ||
+    ![
+      inputTokens,
+      outputTokens,
+      inputPerMillion,
+      outputPerMillion,
+      toolCallCount,
+      costPerToolCall,
+    ].every((n) => Number.isFinite(n) && n >= 0)
+  ) {
+    throw new Error('Invalid cost inputs');
   }
 
   const baseAttemptCost =
