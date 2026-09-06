@@ -990,3 +990,28 @@
 
 
 
+
+## 2026-09-06 — Replace assumed costs with sourced API pricing
+
+- Objective: Implement `gpt6-astra-pricing-redesign.md`: publish defensible API rates and calculate costs only from user-entered workloads.
+- Files changed: `README.md`, `docs/implementation-design.md`, `docs/pricing-methodology.md`, `gpt6-astra-pricing-redesign.md`, `package.json`, `scripts/persist-api-pricing.ts`, `src/components/ApiPricing.tsx`, `src/components/ComparisonBuilder.tsx`, `src/components/CostCalculator.tsx`, `src/components/HeroCompare.tsx`, `src/components/ModelCard.tsx`, `src/components/ModelEffortExplorer.tsx`, `src/components/ModelExplorer.tsx`, `src/components/ModelFinder.tsx`, `src/components/PricingComparison.tsx`, `src/components/RankingList.astro`, `src/data/apiPricing.ts`, `src/data/config.ts`, `src/data/models.ts`, `src/data/openrouterRankings.ts`, `src/data/verifiedModels.json`, `src/db/migrations/0003_brown_omega_sentinel.sql`, `src/db/migrations/meta/0003_snapshot.json`, `src/db/migrations/meta/_journal.json`, `src/db/schema/index.ts`, `src/layouts/RootLayout.astro`, `src/lib/apiPricing.ts`, `src/lib/apiPricingSchema.ts`, `src/lib/catalogSchema.ts`, `src/lib/decision.ts`, `src/pages/catalog.json.ts`, `src/pages/compare/[pair].astro`, `src/pages/cost.astro`, `src/pages/index.astro`, `src/pages/methodology.astro`, `src/pages/models/[slug].astro`, `src/pages/pricing.astro`, `src/pages/sitemap.xml.ts`, `src/styles/global.css`, `tests/apiPricing.test.ts`, `tests/decision.test.ts`, `tests/pricing_browser.py`.
+- Attempt count: 1 implementation, with iterative verification and the corrections below.
+- Failures and causes:
+  - The patch tool rejected a combined delete/add operation on one file; split the operations. Initial checks found leftover pricing references and a literal-inferred divisor type; removed the references and explicitly typed the divisor.
+  - Windows default text encoding damaged new methodology symbols; repaired them using explicit UTF-8. Existing formatting drift in two data files was normalized; parsed legacy catalog values remain identical.
+  - The migration generator included pre-existing score-schema drift. Removed those statements and preserved every previous table snapshot; this migration only adds `api_pricing_tiers`.
+  - The first pair-page implementation repeated the complete catalog, producing approximately 1.24 MB per page. Pair pages now embed their displayed models and load `/catalog.json` for additional choices, reducing a representative page to approximately 28 KB. Three preliminary builds were canceled for this reduction and final corrections; the final full build passed.
+  - Client catalog validation caught the provider-name difference between Google and Google DeepMind. Matched the catalog name and added full publication validation. Visual inspection caught the old Gemini 2.5 Pro context limit; its published value is now 1,048,576 tokens with a separate official context source.
+  - Browser selectors initially matched ambiguous text; use exact combobox roles and scoped result selectors. Running a production build alongside the development server caused a JSX cache collision; restart the development server and verify sequentially.
+  - The Windows preview helper left child servers and encountered blocked responses. A quiet, self-contained threaded HTTP server completed the production browser suite and shut itself down; temporary helper servers were terminated through CIM after Stop-Process failed.
+- Tests and results:
+  - `npm test`: 60/60 tests passed across 6 suites, including cache accounting, tier boundaries, invalid counts, stale prices, source validation, zero-input/nonzero-output pricing, and publication integrity.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 77 files.
+  - `npm run lint`: ESLint and Prettier passed.
+  - `npm run build`: 29,422 pages built successfully in 3m 18s.
+  - `npm run test:pricing:browser`: passed against development output. The same suite passed against built `dist` output using the self-contained static server. Browse, compare, find, calculator, tier selection, missing rates, shared-catalog loading/failure recovery and mobile layouts passed without browser errors.
+  - `npm run data:pricing:persist -- --dry-run`: 13 pricing tiers for 12 models validated. Live PostgreSQL migration/persistence was not run.
+  - `git diff --check` and migration preservation checks passed. Screenshots and build logs are in ignored `artifacts/pricing-*` files.
+- Commit hash: `bf950c8925e7edb389318a07be776d1be3193e86` (implementation commit, local only; this log is recorded separately).
+- Current state: API rates are reviewed for 12 models; unreviewed pricing is unavailable. Monthly estimates, preset workloads, guessed reasoning-token costs and score-derived retry costs are removed from pricing flows. Field provenance, cached rates, context tiers, seven-day freshness, optional supported extras and an empty calculator are implemented. Benchmark task costs remain null. Batch, media, residency, separate reasoning rates and other unsupported billing cases are documented in `docs/pricing-methodology.md`. Historical capability/cost-efficiency inputs have not been independently re-audited. Nothing was pushed or deployed.
+- Exact next step: The user verifies http://localhost:4321/pricing, /cost, /models/gemini-2-5-pro, /compare and /find using the local server (`npm run dev`). Wait for user verification before starting another implementation.
