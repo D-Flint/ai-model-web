@@ -789,6 +789,50 @@
 - Current state: All 64 models from the user's list (23 previously present + 41 newly added) are fully represented with canonical configurations, official provider specifications, and live verified model records.
 - Exact next step: User verifies the newly added DeepSeek models locally at `http://localhost:4321`.
 
+## 2026-09-06 — Add 17 Moonshot AI Kimi and Moonlight Models
+
+- Objective: Add all 17 Moonshot AI models requested by user across the Kimi K3, Kimi K2, Kimi Linear, Kimi Dev, Kimi VL, Moonlight, and Kimi k1.5 series into the canonical registry, official provider specifications, provider branding, and verified model catalog.
+- Models Added (17 total):
+  1. Kimi K3 Flagship: `kimi-k3` (2.8T MoE / 104B active, Kimi Delta Attention, 1M context, multimodal video/vision).
+  2. Kimi K2 Series:
+     - `kimi-k2-7-code` (1T MoE coding specialist, 256k context).
+     - `kimi-k2-6` (1T MoE multimodal visual-to-code agent, 256k context).
+     - `kimi-k2-5` (1T MoE native multimodal agent trained on 15T tokens, 256k context).
+     - `kimi-k2-thinking` (1T MoE deliberate reasoning model with autonomous multi-step tool orchestration).
+     - `kimi-k2-instruct-0905` (September 2025 refined instruction and agent scaffold model).
+     - `kimi-k2-instruct` (1T MoE general-purpose conversational and synthesis foundation model).
+     - `kimi-k2-base` (1T MoE raw pretrained foundation weights).
+  3. Kimi Linear 48B-A3B Series:
+     - `kimi-linear-48b-a3b-instruct` (48B MoE / 3B active, hybrid Kimi Delta Attention linear attention + MLA).
+     - `kimi-linear-48b-a3b-base` (48B MoE / 3B active foundational linear attention base model).
+  4. Kimi Dev Coding Agent: `kimi-dev-72b` (72B dense SWE-bench verified coding agent trained in Docker).
+  5. Kimi VL Multimodal Series:
+     - `kimi-vl-a3b-thinking-2506` (16B MoE / 3B active, MoonViT, 3.2M pixel high-res vision, thinking VLM).
+     - `kimi-vl-a3b-thinking` (16B MoE / 3B active multimodal reasoning model).
+     - `kimi-vl-a3b-instruct` (16B MoE / 3B active fast vision-language model).
+  6. Moonlight 16B-A3B Series:
+     - `moonlight-16b-a3b-instruct` (16B MoE / 3B active, Muon optimizer, high-efficiency bilingual assistant).
+     - `moonlight-16b-a3b` (16B MoE / 3B active foundational base model trained with Muon optimizer).
+  7. Kimi k1.5 Series: `kimi-k1-5` (multimodal reasoning model with long-context reinforcement learning).
+- Files changed:
+  - `src/data/models/moonshot.ts`: Created canonical configurations for all 17 models with detailed metadata, strengths, weaknesses, tags, aliases, and reasoning efforts.
+  - `src/data/canonicalModels.ts`: Exported `MOONSHOT_MODELS`, added Moonshot AI to `PROVIDERS_CONFIG`, and included in `CANONICAL_MODELS`.
+  - `src/data/officialProviders.ts`: Added official provider specs with context windows, output limits, pricing, speed, and verification dates for all 17 models.
+  - `src/components/ProviderLogo.tsx`: Added Moonshot AI provider logo mapping.
+  - `public/logos/moonshot.png`: Created Moonshot provider logo asset.
+  - `src/data/verifiedModels.json`: Regenerated verified catalog via `npm run data:refresh`, expanding verified catalog from 203 to 220 models.
+- Attempts: 1 full iteration.
+- Failures and causes: Prettier formatting check flagged minor style discrepancies in `src/data/models/moonshot.ts` and `src/data/verifiedModels.json`; resolved by executing `npm run format`.
+- Tests and results:
+  - `npm test`: 37/37 tests passed across all 3 suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 63 Astro and TypeScript files.
+  - `npm run lint`: Prettier check and ESLint passed with 0 errors.
+  - `npm run build`: Production static site build successfully generated 24,328 pages without any errors.
+- Commit hash: `371820a` (code), current session log.
+- Current state: All 17 requested Moonshot AI Kimi and Moonlight models are fully integrated across the canonical registry, database schema, data pipeline, comparison grid, model detail pages, rankings, and decision engine. Verified catalog expanded to 220 models.
+- Exact next step: User verifies the newly added Kimi and Moonlight models locally at `http://localhost:4321`.
+
+
 
 
 
