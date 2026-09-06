@@ -8,13 +8,21 @@ import {
 } from '../lib/decision';
 import { ProviderLogo } from './ProviderLogo';
 
-export function ModelMark({ model }: { model: CatalogModel }) {
+export function ModelMark({
+  model,
+  size = 18,
+  className = '',
+}: {
+  model: CatalogModel;
+  size?: number;
+  className?: string;
+}) {
   return (
     <span
-      className={`model-mark provider-${model.family.toLowerCase()}`}
+      className={`model-mark provider-${model.family.toLowerCase()} ${className}`.trim()}
       aria-hidden="true"
     >
-      {model.family.slice(0, 1)}
+      <ProviderLogo provider={model.provider} size={size} />
     </span>
   );
 }

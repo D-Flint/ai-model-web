@@ -1413,6 +1413,12 @@ input[type='radio'] {
   display: flex;
   padding: 4px;
 }
+.selection-chip .model-mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  flex-shrink: 0;
+}
 .table-scroll {
   overflow: auto;
   border: 1px solid var(--border);
@@ -1451,6 +1457,16 @@ th {
   min-width: 155px;
   text-align: center;
   padding: 25px 16px;
+}
+.comparison-table thead th .provider-badge {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+.comparison-table thead th > a {
+  display: block;
+  font-weight: 650;
+  font-size: 14px;
 }
 .comparison-table thead .model-mark {
   display: flex;

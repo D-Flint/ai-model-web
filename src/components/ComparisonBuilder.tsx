@@ -242,7 +242,7 @@ export default function ComparisonBuilder({
       <div className="selected-models">
         {selectedItems.map((item, idx) => (
           <span className="selection-chip" key={item.id}>
-            <ModelMark model={item.model} />
+            <ModelMark model={item.model} size={16} />
             <span>
               {item.model.name}
               {item.isReasoning && item.effort !== 'none' && (

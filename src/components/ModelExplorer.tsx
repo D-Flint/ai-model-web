@@ -1011,17 +1011,21 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
       {selectedSlugs.length > 0 && (
         <div className="compare-tray">
           <strong>{selectedSlugs.length} / 4 selected</strong>
-          {selectedSlugs.map((slug) => (
-            <span className="selection-chip" key={slug}>
-              {models.find((m) => m.slug === slug)?.name}
-              <button
-                aria-label={`Remove ${models.find((m) => m.slug === slug)?.name}`}
-                onClick={() => toggleSelect(slug)}
-              >
-                <X size={13} />
-              </button>
-            </span>
-          ))}
+          {selectedSlugs.map((slug) => {
+            const m = models.find((item) => item.slug === slug);
+            return (
+              <span className="selection-chip" key={slug}>
+                {m && <ProviderLogo provider={m.provider} size={15} />}
+                {m?.name}
+                <button
+                  aria-label={`Remove ${m?.name}`}
+                  onClick={() => toggleSelect(slug)}
+                >
+                  <X size={13} />
+                </button>
+              </span>
+            );
+          })}
           {selectedSlugs.length >= 2 ? (
             <a
               className="button primary"
