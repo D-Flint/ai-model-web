@@ -955,4 +955,38 @@
 - Current state: Models remain sorted by release date with newest on top, the `RELEASE DATE` column is removed from the leaderboard table, and all changes have been pushed to GitHub.
 - Exact next step: Ready for user testing and feedback.
 
+## 2026-09-06 — List Most Used Models on OpenRouter in Home Featured Section
+
+- Objective: Update the home page section ("A few good places to start") to exclusively list the most used models on OpenRouter based on live real-world token volume processed through the OpenRouter API.
+- Live OpenRouter Top 4 Models Featured:
+  1. `Hy4 preview` (Tencent) — Rank #1 on OpenRouter with 14.1T tokens processed weekly.
+  2. `GLM 5.3 Flash` (Z.ai) — Rank #2 on OpenRouter with 12.5T tokens processed weekly.
+  3. `DeepSeek V4-Flash-0731` (DeepSeek) — Rank #3 on OpenRouter with 12.3T tokens processed weekly.
+  4. `GPT-5.6 Luna` (OpenAI) — Rank #4 on OpenRouter with 12.2T tokens processed weekly.
+- Files changed:
+  - `src/data/openrouterRankings.ts`: Created authoritative dataset containing top 20 models from live OpenRouter rankings, metadata, and helper `getMostUsedOpenRouterModels(catalogModels, limit)`.
+  - `src/data/models/tencent.ts`: Added canonical model configuration for `Hy4 preview` with complete specifications, strengths, weaknesses, tags, and effort levels.
+  - `src/data/models/zai.ts`: Added canonical model configuration for `GLM 5.3 Flash` with complete specifications, strengths, weaknesses, tags, and effort levels.
+  - `public/logos/tencent.svg`: Created crisp vector SVG brand mark for Tencent.
+  - `public/logos/zai.svg`: Created crisp vector SVG brand mark for Z.ai.
+  - `src/components/ProviderLogo.tsx`: Added logo mapping for Tencent and Z.ai / Zhipu.
+  - `src/data/canonicalModels.ts`: Exported `TENCENT_MODELS` and `ZAI_MODELS`, added `provider-tencent` and `provider-zai` to `PROVIDERS_CONFIG`, and aggregated them into `CANONICAL_MODELS`.
+  - `src/data/verifiedModels.json`: Added verified model records for `hy4-preview` and `glm-5-3-flash` and validated catalog (now 242 models total).
+  - `src/components/ModelCard.tsx`: Added `badgeText?: string` prop to render rank and token volume badges (`#1 · 14.1T tokens`).
+  - `src/styles/global.css`: Added `.effort-badge.openrouter-badge` styling with subtle emerald background, crisp borders, nowrap text, and dark mode support.
+  - `src/pages/index.astro`: Updated section heading to "Most used on OpenRouter", updated description to "The most popular models ranked by real-world token volume processed through the OpenRouter API.", passed top OpenRouter models with rank badges, and updated the section note with a link to live OpenRouter rankings.
+  - `tests/openrouterRankings.test.ts`: Added unit tests verifying top OpenRouter rankings data and exact rank-ordered catalog extraction.
+- Attempts: 1 full iteration.
+- Failures and causes:
+  - Unused import `rankModels` in `src/pages/index.astro` triggered TypeScript warning `ts(6133)` during `astro check`; resolved by removing unused import.
+- Tests and results:
+  - `npm test`: 50/50 unit tests passed across 5 test files (`calculateTaskCost.test.ts`, `leaderboardSorting.test.ts`, `openrouterRankings.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 69 Astro and TypeScript files.
+  - `npm run build`: Production static site build generated with 0 errors.
+  - Visual verification: Captured full-resolution viewport screenshot via Chrome DevTools on `http://localhost:4321/` confirming clean presentation, vector provider logos, and badges.
+- Commit hash: `7ed9e5c` (code commit, local only).
+- Current state: The home page featured section exclusively lists the top models on OpenRouter in exact rank order with token volume badges.
+- Exact next step: Pause and wait for user verification through local testing at `http://localhost:4321`.
+
+
 
