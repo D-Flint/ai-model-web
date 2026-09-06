@@ -5760,6 +5760,104 @@
     ]
   },
   {
+    "slug": "deepseek-v4-pro-dspark",
+    "name": "DeepSeek V4-Pro-DSpark",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V4",
+    "dataKind": "verified",
+    "description": "DeepSeek V4-Pro optimized with DSpark dynamic sparse kernel acceleration, offering enhanced token throughput and reduced inference latency.",
+    "strengths": [
+      "Substantially higher generation throughput via DSpark sparse kernels",
+      "Maintains full reasoning fidelity of V4-Pro with lowered compute latency",
+      "Permissive weights and deployment runtimes"
+    ],
+    "weaknesses": [
+      "Text-only model",
+      "Requires compatible GPU compute capabilities for peak hardware acceleration"
+    ],
+    "tags": [
+      "High throughput",
+      "Open weights",
+      "MoE",
+      "Reasoning",
+      "Optimized"
+    ],
+    "facts": {
+      "context": 131072,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 85,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-08-20",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none", "low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 0.27,
+      "output": 1.1,
+      "cached": 0.07,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 69,
+      "overall": 69
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 69,
+        "min": 0,
+        "max": 100,
+        "normalized": 69,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official Documentation",
+        "url": "https://api-docs.deepseek.com/quick_start/pricing",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "gpt-oss-120b",
     "name": "gpt-oss-120b",
     "provider": "OpenAI",
@@ -6327,6 +6425,219 @@
     ]
   },
   {
+    "slug": "deepseek-v4-pro",
+    "name": "DeepSeek V4-Pro",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V4",
+    "dataKind": "verified",
+    "description": "DeepSeek's next-generation flagship Mixture-of-Experts reasoning model, delivering state-of-the-art STEM problem solving, agentic tool workflows, and massive-scale comprehension.",
+    "strengths": [
+      "State-of-the-art multi-step reasoning matching closed frontier labs",
+      "Exceptional price-to-performance for complex agentic workflows",
+      "Native 128k context with multi-token prediction and MLA",
+      "Open weights with permissive licensing for enterprise hosting"
+    ],
+    "weaknesses": [
+      "Text-only model lacking native audio/image modalities",
+      "Requires specialized multi-GPU infrastructure for self-hosting"
+    ],
+    "tags": ["Flagship", "Open weights", "MoE", "Reasoning", "Coding"],
+    "facts": {
+      "context": 131072,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 60,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": 64,
+      "availability": "Production API",
+      "releaseDate": "2025-08-15",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none", "low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 0.27,
+      "output": 1.1,
+      "cached": 0.07,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": 64,
+      "agentic": null,
+      "dailyUse": 64,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 69,
+      "overall": 65
+    },
+    "evidence": [
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1445,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 64,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 1451,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 64,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 69,
+        "min": 0,
+        "max": 100,
+        "normalized": 69,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 71,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official Documentation",
+        "url": "https://api-docs.deepseek.com/quick_start/pricing",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-v4-pro-base",
+    "name": "DeepSeek V4-Pro-Base",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V4",
+    "dataKind": "verified",
+    "description": "The unaligned foundation base model of DeepSeek V4-Pro, pre-trained on multi-trillion token multilingual corpora for custom alignment and specialized fine-tuning.",
+    "strengths": [
+      "Massive pre-training foundation for enterprise domain adaptation",
+      "State-of-the-art sparse MoE architecture with Multi-head Latent Attention",
+      "Permissive open weights for research and fine-tuning"
+    ],
+    "weaknesses": [
+      "Uncensored base model requiring custom instruction tuning or few-shot prompts",
+      "Text-only model"
+    ],
+    "tags": ["Foundation", "Base model", "Open weights", "MoE"],
+    "facts": {
+      "context": 131072,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 60,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-08-15",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.25,
+      "output": 1,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 70,
+      "overall": 70
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 70,
+        "min": 0,
+        "max": 100,
+        "normalized": 70,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "gemini-2-5-pro",
     "name": "Gemini 2.5 Pro",
     "provider": "Google DeepMind",
@@ -6787,6 +7098,99 @@
     ]
   },
   {
+    "slug": "deepseek-v4-pro-0813",
+    "name": "DeepSeek V4-Pro-0813",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V4",
+    "dataKind": "verified",
+    "description": "DeepSeek's dated August 13 snapshot of the flagship V4-Pro MoE reasoning model, featuring advanced dynamic expert routing and frontier chain-of-thought capabilities.",
+    "strengths": [
+      "Frontier reasoning and mathematical problem decomposition",
+      "Advanced dynamic sparse MoE routing architecture",
+      "Open weights for reproducible benchmarking and local inference",
+      "High throughput long-context token generation"
+    ],
+    "weaknesses": [
+      "Text-only foundation model without native vision processing",
+      "High memory footprint requiring enterprise-grade GPU cluster for full precision"
+    ],
+    "tags": ["Flagship", "Open weights", "MoE", "Reasoning", "Snapshot"],
+    "facts": {
+      "context": 131072,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 55,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-08-13",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none", "low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 0.27,
+      "output": 1.1,
+      "cached": 0.07,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 69,
+      "overall": 69
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 69,
+        "min": 0,
+        "max": 100,
+        "normalized": 69,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official Documentation",
+        "url": "https://api-docs.deepseek.com/quick_start/pricing",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "claude-opus-4-1",
     "name": "Claude Opus 4.1",
     "provider": "Anthropic",
@@ -6912,6 +7316,399 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-v4-flash-dspark",
+    "name": "DeepSeek V4-Flash-DSpark",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V4",
+    "dataKind": "verified",
+    "description": "DeepSeek V4-Flash accelerated with DSpark hardware-aware sparse execution kernels for peak token-per-second generation speeds.",
+    "strengths": [
+      "Ultra-fast token streaming exceeding 150 tokens/second",
+      "Optimized for high-concurrency API gateways and conversational bots",
+      "Maintains strong baseline instruction quality with minimal latency"
+    ],
+    "weaknesses": [
+      "Text-only model without vision capabilities",
+      "Best throughput achieved on supported sparse hardware configurations"
+    ],
+    "tags": [
+      "Ultra-fast",
+      "Open weights",
+      "MoE",
+      "Optimized",
+      "High throughput"
+    ],
+    "facts": {
+      "context": 131072,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 150,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-08-10",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.08,
+      "output": 0.2,
+      "cached": 0.02,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 89,
+      "overall": 89
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 89,
+        "min": 0,
+        "max": 100,
+        "normalized": 89,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official Documentation",
+        "url": "https://api-docs.deepseek.com/quick_start/pricing",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-v4-flash",
+    "name": "DeepSeek V4-Flash",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V4",
+    "dataKind": "verified",
+    "description": "DeepSeek's high-efficiency lightweight foundation model engineered for rapid sub-second response times, affordable token pricing, and high concurrency production workloads.",
+    "strengths": [
+      "Exceptional token generation speed (120+ tokens/sec)",
+      "Industry-leading cost efficiency ($0.08 input / $0.20 output)",
+      "Strong instruction following and structured JSON generation",
+      "128k context window with efficient KV caching"
+    ],
+    "weaknesses": [
+      "Text-only model",
+      "Moderate reasoning depth on open-ended STEM competition problems"
+    ],
+    "tags": ["Fast", "Open weights", "MoE", "Best value", "Daily use"],
+    "facts": {
+      "context": 131072,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 120,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": 62,
+      "availability": "Production API",
+      "releaseDate": "2025-08-05",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.08,
+      "output": 0.2,
+      "cached": 0.02,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": 62,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 89,
+      "overall": 73
+    },
+    "evidence": [
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 1432,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 62,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 89,
+        "min": 0,
+        "max": 100,
+        "normalized": 89,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 68,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official Documentation",
+        "url": "https://api-docs.deepseek.com/quick_start/pricing",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-v4-flash-base",
+    "name": "DeepSeek V4-Flash-Base",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V4",
+    "dataKind": "verified",
+    "description": "The unaligned lightweight base checkpoint of DeepSeek V4-Flash, suitable for efficient downstream instruction tuning and edge-cloud deployment.",
+    "strengths": [
+      "Lightweight base checkpoint optimized for rapid adaptation",
+      "Efficient sparse MoE inference on modest hardware",
+      "Permissive open weights for enterprise specialization"
+    ],
+    "weaknesses": [
+      "Uncalibrated base completion model requiring fine-tuning or system prompting",
+      "Text-only model"
+    ],
+    "tags": ["Foundation", "Base model", "Open weights", "Fast"],
+    "facts": {
+      "context": 131072,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 120,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-08-05",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.07,
+      "output": 0.18,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 90,
+      "overall": 90
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 90,
+        "min": 0,
+        "max": 100,
+        "normalized": 90,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-v4-flash-0731",
+    "name": "DeepSeek V4-Flash-0731",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V4",
+    "dataKind": "verified",
+    "description": "Dated July 31 snapshot checkpoint of DeepSeek V4-Flash, offering high-speed MoE inference and balanced general-purpose capability.",
+    "strengths": [
+      "Rapid inference speed and low time-to-first-token",
+      "High cost efficiency for production API integration",
+      "Reliable baseline snapshot for regression testing"
+    ],
+    "weaknesses": [
+      "Text-only model without vision capabilities",
+      "Less exhaustive on deeply complex mathematical proofs than V4-Pro"
+    ],
+    "tags": ["Fast", "Open weights", "MoE", "Snapshot", "Best value"],
+    "facts": {
+      "context": 131072,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 110,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-07-31",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.08,
+      "output": 0.2,
+      "cached": 0.02,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 89,
+      "overall": 89
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 89,
+        "min": 0,
+        "max": 100,
+        "normalized": 89,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official Documentation",
+        "url": "https://api-docs.deepseek.com/quick_start/pricing",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
       },
       {
         "id": "astra-cost-engine",
@@ -7353,6 +8150,300 @@
     ]
   },
   {
+    "slug": "deepseek-r1-0528",
+    "name": "DeepSeek R1-0528",
+    "provider": "DeepSeek",
+    "family": "DeepSeek R1",
+    "dataKind": "verified",
+    "description": "Milestone checkpoint (May 28) of DeepSeek R1 showcasing intermediate reinforcement learning capabilities and extended chain-of-thought exploration.",
+    "strengths": [
+      "State-of-the-art open reasoning performance on mathematical benchmarks",
+      "Step-by-step chain-of-thought verification",
+      "Open weights for reproducible scientific research"
+    ],
+    "weaknesses": [
+      "Text-only model",
+      "Higher generation latency due to expansive chain-of-thought tokens"
+    ],
+    "tags": ["Reasoning", "Open weights", "Research", "Snapshot"],
+    "facts": {
+      "context": 64000,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 45,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": 61,
+      "availability": "Production API",
+      "releaseDate": "2025-05-28",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["fixed"],
+      "defaultEffort": "fixed"
+    },
+    "pricing": {
+      "input": 0.55,
+      "output": 2.19,
+      "cached": 0.14,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": 61,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 60,
+      "overall": 61
+    },
+    "evidence": [
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 1427,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 61,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 60,
+        "min": 0,
+        "max": 100,
+        "normalized": 60,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 68,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official Documentation",
+        "url": "https://api-docs.deepseek.com/quick_start/pricing",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-r1-0528-qwen3-8b",
+    "name": "DeepSeek R1-0528-Qwen3-8B",
+    "provider": "DeepSeek",
+    "family": "DeepSeek R1",
+    "dataKind": "verified",
+    "description": "Distilled reasoning checkpoint based on Qwen3-8B fine-tuned on the May 28 DeepSeek R1 reasoning traces for efficient consumer-grade inference.",
+    "strengths": [
+      "Frontier-class mathematical reasoning in a compact 8B footprint",
+      "Runs locally on consumer workstations (8-16GB VRAM)",
+      "Permissive MIT open weights license"
+    ],
+    "weaknesses": [
+      "Text-only model",
+      "Smaller capacity than 32B or 70B distillation variants"
+    ],
+    "tags": ["Reasoning", "Open weights", "Edge", "STEM"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 90,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-05-28",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["fixed"],
+      "defaultEffort": "fixed"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.2,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 87,
+      "overall": 87
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 87,
+        "min": 0,
+        "max": 100,
+        "normalized": 87,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-R1",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-v3-2-speciale",
+    "name": "DeepSeek V3.2-Speciale",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V3",
+    "dataKind": "verified",
+    "description": "Specialized tuning variant of DeepSeek V3.2 optimized for competition-grade mathematical reasoning and algorithmic problem solving.",
+    "strengths": [
+      "Targeted reinforcement learning for Olympiad and competition STEM problems",
+      "Deep step-by-step logical derivation with high formal accuracy",
+      "Open weights with permissive commercial license"
+    ],
+    "weaknesses": [
+      "Focused on mathematical and algorithmic tasks; less conversational than standard V3.2",
+      "Text-only model"
+    ],
+    "tags": ["STEM", "Open weights", "Math", "Reasoning", "Specialized"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 50,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-05-25",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["fixed"],
+      "defaultEffort": "fixed"
+    },
+    "pricing": {
+      "input": 0.2,
+      "output": 0.5,
+      "cached": 0.03,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 77,
+      "overall": 77
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 77,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official Documentation",
+        "url": "https://api-docs.deepseek.com/quick_start/pricing",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "o3-deep-research",
     "name": "o3-deep-research",
     "provider": "OpenAI",
@@ -7629,6 +8720,328 @@
     ]
   },
   {
+    "slug": "deepseek-v3-2",
+    "name": "DeepSeek V3.2",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V3",
+    "dataKind": "verified",
+    "description": "DeepSeek's refined iteration of the V3 flagship MoE architecture, featuring improved multi-head latent attention calibration and upgraded reasoning retention.",
+    "strengths": [
+      "Refined bilingual and multi-language comprehension over original V3",
+      "Pioneering auxiliary-loss-free routing with enhanced expert specialization",
+      "Very competitive pricing with high inference throughput"
+    ],
+    "weaknesses": [
+      "Text-only model without vision or audio processing",
+      "Full precision deployment demands high-end hardware"
+    ],
+    "tags": ["Flagship", "Open weights", "MoE", "Coding", "General purpose"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 65,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": 61,
+      "availability": "Production API",
+      "releaseDate": "2025-05-15",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.16,
+      "output": 0.32,
+      "cached": 0.02,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": 46,
+      "agentic": null,
+      "dailyUse": 61,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 81,
+      "overall": 59
+    },
+    "evidence": [
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1325,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 46,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 1425,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 61,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 81,
+        "min": 0,
+        "max": 100,
+        "normalized": 81,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 71,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official Documentation",
+        "url": "https://api-docs.deepseek.com/quick_start/pricing",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-v3-2-exp",
+    "name": "DeepSeek V3.2-Exp",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V3",
+    "dataKind": "verified",
+    "description": "Experimental preview checkpoint of DeepSeek V3.2 exploring novel RL reward modeling and extended multi-token prediction horizons.",
+    "strengths": [
+      "Demonstrates bleeding-edge MoE research architectural features",
+      "Improved reasoning density and long-context coherence",
+      "Valuable research artifact for community fine-tuning"
+    ],
+    "weaknesses": [
+      "Experimental weights may exhibit occasional output variance",
+      "Text-only model"
+    ],
+    "tags": ["Experimental", "Open weights", "Research", "MoE"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 65,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": 60,
+      "availability": "Production API",
+      "releaseDate": "2025-05-10",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.16,
+      "output": 0.32,
+      "cached": 0.02,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": 60,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 81,
+      "overall": 68
+    },
+    "evidence": [
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 1423,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 60,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 81,
+        "min": 0,
+        "max": 100,
+        "normalized": 81,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 68,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-v3-2-exp-base",
+    "name": "DeepSeek V3.2-Exp-Base",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V3",
+    "dataKind": "verified",
+    "description": "The unaligned experimental base checkpoint of DeepSeek V3.2-Exp for exploratory research and custom fine-tuning.",
+    "strengths": [
+      "Base foundation incorporating updated pre-training data mixtures",
+      "Permissive weights for specialized enterprise alignment",
+      "State-of-the-art MoE architecture"
+    ],
+    "weaknesses": [
+      "Unsupervised completion model requiring prompt formatting or fine-tuning",
+      "Text-only model"
+    ],
+    "tags": ["Foundation", "Base model", "Open weights", "Experimental"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 65,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-05-10",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.14,
+      "output": 0.28,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 83,
+      "overall": 83
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 83,
+        "min": 0,
+        "max": 100,
+        "normalized": 83,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "o3",
     "name": "o3",
     "provider": "OpenAI",
@@ -7773,6 +9186,371 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "SWE-bench Verified Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-prover-v2-671b",
+    "name": "DeepSeek-Prover-V2-671B",
+    "provider": "DeepSeek",
+    "family": "DeepSeek Math",
+    "dataKind": "verified",
+    "description": "Large-scale 671B MoE formal theorem proving model designed for rigorous automated theorem proving in formal languages like Lean 4 and Isabelle.",
+    "strengths": [
+      "State-of-the-art formal theorem verification across high-school and Olympiad mathematics",
+      "Deep integration with Lean 4 proof checker environments",
+      "Massive 671B parameter knowledge base"
+    ],
+    "weaknesses": [
+      "Strict formal theorem proving specialization",
+      "Requires specialized multi-GPU cluster to host"
+    ],
+    "tags": ["STEM", "Open weights", "Lean 4", "Research", "MoE"],
+    "facts": {
+      "context": 64000,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 40,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-04-10",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["fixed"],
+      "defaultEffort": "fixed"
+    },
+    "pricing": {
+      "input": 0.55,
+      "output": 2.19,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 60,
+      "overall": 60
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 60,
+        "min": 0,
+        "max": 100,
+        "normalized": 60,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-Prover-V1.5",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-prover-v2-7b",
+    "name": "DeepSeek-Prover-V2-7B",
+    "provider": "DeepSeek",
+    "family": "DeepSeek Math",
+    "dataKind": "verified",
+    "description": "Compact 7B formal theorem proving model combining Monte Carlo Tree Search with Lean 4 formal verification for accessible research.",
+    "strengths": [
+      "Runs locally on consumer hardware for formal mathematics research",
+      "Lean 4 formal proof generation and autoformalization",
+      "Permissive MIT open weights release"
+    ],
+    "weaknesses": [
+      "Domain-specific theorem proving focus",
+      "Lower proof resolution rate than 671B variant on Putnam-level proofs"
+    ],
+    "tags": ["STEM", "Open weights", "Lean 4", "Research", "Edge"],
+    "facts": {
+      "context": 32768,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 85,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-04-10",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["fixed"],
+      "defaultEffort": "fixed"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.2,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 87,
+      "overall": 87
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 87,
+        "min": 0,
+        "max": 100,
+        "normalized": 87,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-Prover-V1.5",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-v3-0324",
+    "name": "DeepSeek V3-0324",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V3",
+    "dataKind": "verified",
+    "description": "Specific date checkpoint (March 24) of DeepSeek V3 capturing the post-training alignment state for reproducible benchmarking.",
+    "strengths": [
+      "Consistent point-in-time reference for academic evaluations",
+      "Identical low-latency 37B active MoE execution",
+      "Proven high performance across code and multilingual benchmarks"
+    ],
+    "weaknesses": ["Text-only model", "64k token context limit"],
+    "tags": ["Open weights", "MoE", "Snapshot", "Coding"],
+    "facts": {
+      "context": 64000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 60,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-03-24",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.14,
+      "output": 0.28,
+      "cached": 0.014,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 83,
+      "overall": 83
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 83,
+        "min": 0,
+        "max": 100,
+        "normalized": 83,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official Documentation",
+        "url": "https://api-docs.deepseek.com/quick_start/pricing",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-v3-1-terminus",
+    "name": "DeepSeek V3.1-Terminus",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V3",
+    "dataKind": "verified",
+    "description": "DeepSeek V3.1 terminal fine-tuned checkpoint designed specifically for autonomous terminal commands, agent tool use, and bash execution.",
+    "strengths": [
+      "Trained specifically on CLI workflows, bash commands, and OS interaction",
+      "High precision tool calling and error recovery in terminal environments",
+      "Open weights for local developer tooling"
+    ],
+    "weaknesses": [
+      "Specialized for system administration and devops; less suited for creative writing",
+      "Text-only model"
+    ],
+    "tags": ["Agentic", "Coding", "Open weights", "Tools"],
+    "facts": {
+      "context": 64000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 65,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-03-20",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.14,
+      "output": 0.28,
+      "cached": 0.014,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 83,
+      "overall": 83
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 83,
+        "min": 0,
+        "max": 100,
+        "normalized": 83,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official Documentation",
+        "url": "https://api-docs.deepseek.com/quick_start/pricing",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
       },
       {
         "id": "astra-cost-engine",
@@ -8178,6 +9956,190 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-v3-1",
+    "name": "DeepSeek V3.1",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V3",
+    "dataKind": "verified",
+    "description": "Intermediate update to DeepSeek V3 delivering improved instruction following, reduced repetition, and better factual grounding.",
+    "strengths": [
+      "Solid general-purpose reasoning and code generation at ultra-low cost",
+      "Refined conversational flow and reduced alignment friction",
+      "Robust multi-turn context retention"
+    ],
+    "weaknesses": [
+      "Text-only model",
+      "Context limited to 64k tokens on initial hosted endpoints"
+    ],
+    "tags": ["General purpose", "Open weights", "MoE", "Coding"],
+    "facts": {
+      "context": 64000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 65,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-03-15",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.14,
+      "output": 0.28,
+      "cached": 0.014,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 83,
+      "overall": 83
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 83,
+        "min": 0,
+        "max": 100,
+        "normalized": 83,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official Documentation",
+        "url": "https://api-docs.deepseek.com/quick_start/pricing",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-v3-1-base",
+    "name": "DeepSeek V3.1-Base",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V3",
+    "dataKind": "verified",
+    "description": "Unaligned 671B foundation base model for the DeepSeek V3.1 revision, supporting multi-token prediction and MLA attention.",
+    "strengths": [
+      "Foundational 671B MoE checkpoint for custom enterprise training",
+      "Efficient 37B active parameter execution profile",
+      "Comprehensive bilingual representation"
+    ],
+    "weaknesses": [
+      "Requires instructional alignment for production conversational use",
+      "Text-only model"
+    ],
+    "tags": ["Foundation", "Base model", "Open weights", "MoE"],
+    "facts": {
+      "context": 64000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 65,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-03-15",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.14,
+      "output": 0.28,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 83,
+      "overall": 83
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 83,
+        "min": 0,
+        "max": 100,
+        "normalized": 83,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
       },
       {
         "id": "astra-cost-engine",
@@ -12098,6 +14060,98 @@
     ]
   },
   {
+    "slug": "deepseek-v2-5-1210",
+    "name": "DeepSeek V2.5-1210",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V2",
+    "dataKind": "verified",
+    "description": "December 10 snapshot update to DeepSeek V2.5 with improved coding alignment, expanded safety guardrails, and refined tool invocation.",
+    "strengths": [
+      "Stable production snapshot for enterprise pipelines",
+      "Solid code synthesis and general conversation in 236B MoE (21B active)",
+      "Native 128k context window"
+    ],
+    "weaknesses": [
+      "Superseded by DeepSeek V3 in raw benchmark performance",
+      "Text-only model"
+    ],
+    "tags": ["MoE", "Open weights", "Coding", "Snapshot"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 60,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-12-10",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.14,
+      "output": 0.28,
+      "cached": 0.014,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 83,
+      "overall": 83
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 83,
+        "min": 0,
+        "max": 100,
+        "normalized": 83,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official Documentation",
+        "url": "https://api-docs.deepseek.com/quick_start/pricing",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "command-r7b-12-2024",
     "name": "Command R7B",
     "provider": "Cohere",
@@ -13470,6 +15524,98 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-math-v2",
+    "name": "DeepSeek-Math-V2",
+    "provider": "DeepSeek",
+    "family": "DeepSeek Math",
+    "dataKind": "verified",
+    "description": "Second-generation mathematical foundation model from DeepSeek with upgraded reinforcement learning and symbolic reasoning abilities.",
+    "strengths": [
+      "Advanced mathematical problem decomposition and theorem proving",
+      "Trained with GRPO reinforcement learning on curated mathematical corpora",
+      "High precision on formal math competitions"
+    ],
+    "weaknesses": [
+      "Specialized STEM domain focus; not for everyday general chat",
+      "Text-only model"
+    ],
+    "tags": ["STEM", "Open weights", "Math", "Research"],
+    "facts": {
+      "context": 32768,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 60,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-11-15",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["fixed"],
+      "defaultEffort": "fixed"
+    },
+    "pricing": {
+      "input": 0.14,
+      "output": 0.28,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 83,
+      "overall": 83
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 83,
+        "min": 0,
+        "max": 100,
+        "normalized": 83,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-Math",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
       },
       {
         "id": "astra-cost-engine",
@@ -16266,6 +18412,190 @@
     ]
   },
   {
+    "slug": "deepseek-prover-v1-5-base",
+    "name": "DeepSeek-Prover-V1.5-Base",
+    "provider": "DeepSeek",
+    "family": "DeepSeek Math",
+    "dataKind": "verified",
+    "description": "Pre-trained base checkpoint for DeepSeek Prover V1.5 prior to supervised fine-tuning and RL proof search training.",
+    "strengths": [
+      "Base foundation pre-trained on mathematical literature and Lean code",
+      "Ideal starting checkpoint for formal mathematics research",
+      "Permissive open weights"
+    ],
+    "weaknesses": [
+      "Unsupervised base model requiring fine-tuning or few-shot prompts",
+      "Text-only model"
+    ],
+    "tags": ["Foundation", "Base model", "Open weights", "Math"],
+    "facts": {
+      "context": 8192,
+      "maxOutput": 4096,
+      "speedTokensPerSec": 75,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-08-15",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.2,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 87,
+      "overall": 87
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 87,
+        "min": 0,
+        "max": 100,
+        "normalized": 87,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-Prover-V1.5",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-prover-v1-5-sft",
+    "name": "DeepSeek-Prover-V1.5-SFT",
+    "provider": "DeepSeek",
+    "family": "DeepSeek Math",
+    "dataKind": "verified",
+    "description": "Supervised fine-tuned checkpoint of DeepSeek Prover V1.5 trained on formal mathematical proof corpora before reinforcement learning.",
+    "strengths": [
+      "Produces syntactically valid Lean 4 code and theorem statements",
+      "Provides transparent baseline comparing SFT vs RL theorem proving",
+      "Permissive MIT license"
+    ],
+    "weaknesses": [
+      "Lacks the automated proof search depth of Prover V1.5 RL",
+      "Specialized formal math focus"
+    ],
+    "tags": ["STEM", "Open weights", "Lean 4", "Research"],
+    "facts": {
+      "context": 8192,
+      "maxOutput": 4096,
+      "speedTokensPerSec": 75,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-08-15",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.2,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 87,
+      "overall": 87
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 87,
+        "min": 0,
+        "max": 100,
+        "normalized": 87,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-Prover-V1.5",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "command-r-plus-08-2024",
     "name": "Command R+ 08-2024",
     "provider": "Cohere",
@@ -16820,6 +19150,98 @@
     ]
   },
   {
+    "slug": "deepseek-coder-v2-instruct-0724",
+    "name": "DeepSeek-Coder-V2-Instruct-0724",
+    "provider": "DeepSeek",
+    "family": "DeepSeek Coder",
+    "dataKind": "verified",
+    "description": "July 24 updated instruct checkpoint of DeepSeek Coder V2, supporting 338 programming languages with enhanced bug fixing and mathematical reasoning.",
+    "strengths": [
+      "Refined alignment on full-repository code reasoning and bug localization",
+      "Matches closed frontier models in HumanEval and SWE-bench",
+      "128k context with MLA attention"
+    ],
+    "weaknesses": [
+      "Text and code only; lacks vision",
+      "High resource requirements for self-hosting full 236B model"
+    ],
+    "tags": ["Coding", "Open weights", "MoE", "Snapshot"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 55,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-07-24",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.14,
+      "output": 0.28,
+      "cached": 0.014,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 83,
+      "overall": 83
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 83,
+        "min": 0,
+        "max": 100,
+        "normalized": 83,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-Coder-V2",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "gpt-4o-mini",
     "name": "GPT-4o mini",
     "provider": "OpenAI",
@@ -17084,6 +19506,95 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-v2-chat-0628",
+    "name": "DeepSeek V2-Chat-0628",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V2",
+    "dataKind": "verified",
+    "description": "June 28 release snapshot of DeepSeek V2 Chat featuring enhanced conversational fluency and improved code generation.",
+    "strengths": [
+      "Refined alignment checkpoint for conversational use",
+      "Efficient MLA-powered inference",
+      "Solid bilingual Chinese/English support"
+    ],
+    "weaknesses": ["Superseded by V2.5 and V3", "Text-only model"],
+    "tags": ["MoE", "Open weights", "Snapshot", "General purpose"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 55,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-06-28",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.14,
+      "output": 0.28,
+      "cached": 0.014,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 83,
+      "overall": 83
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 83,
+        "min": 0,
+        "max": 100,
+        "normalized": 83,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-V2",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
       },
       {
         "id": "astra-cost-engine",
@@ -17787,6 +20298,288 @@
     ]
   },
   {
+    "slug": "deepseek-coder-v2-base",
+    "name": "DeepSeek-Coder-V2-Base",
+    "provider": "DeepSeek",
+    "family": "DeepSeek Coder",
+    "dataKind": "verified",
+    "description": "Foundational 236B MoE code intelligence base model pre-trained from intermediate DeepSeek-V2 checkpoint on 6T additional code tokens.",
+    "strengths": [
+      "Pre-trained on 6T high-quality code tokens supporting 338 programming languages",
+      "128k context window with Multi-head Latent Attention",
+      "Ideal base for custom enterprise developer tooling fine-tuning"
+    ],
+    "weaknesses": [
+      "Base model requires fine-tuning or FIM prompts for code generation",
+      "Requires substantial GPU VRAM to run"
+    ],
+    "tags": ["Foundation", "Base model", "Coding", "Open weights", "MoE"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 50,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-06-17",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.14,
+      "output": 0.28,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 83,
+      "overall": 83
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 83,
+        "min": 0,
+        "max": 100,
+        "normalized": 83,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-Coder-V2",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-coder-v2-lite-base",
+    "name": "DeepSeek-Coder-V2-Lite-Base",
+    "provider": "DeepSeek",
+    "family": "DeepSeek Coder",
+    "dataKind": "verified",
+    "description": "Lightweight 16B MoE code base model (2.4B active parameters) pre-trained for code synthesis across 338 languages.",
+    "strengths": [
+      "Lightweight 16B footprint deployable on consumer GPUs",
+      "Full 128k context support with MLA",
+      "Permissive open weights for commercial fine-tuning"
+    ],
+    "weaknesses": [
+      "Unsupervised base model requiring custom tuning",
+      "Text and code only"
+    ],
+    "tags": [
+      "Foundation",
+      "Base model",
+      "Coding",
+      "Open weights",
+      "Lightweight"
+    ],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 85,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-06-17",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.2,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 87,
+      "overall": 87
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 87,
+        "min": 0,
+        "max": 100,
+        "normalized": 87,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-Coder-V2",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-prover-v1",
+    "name": "DeepSeek-Prover-V1",
+    "provider": "DeepSeek",
+    "family": "DeepSeek Math",
+    "dataKind": "verified",
+    "description": "DeepSeek's foundational theorem-proving model, introducing tree search guided by neural language generation in formal mathematics.",
+    "strengths": [
+      "Pioneered neural-guided proof search in Lean 4",
+      "Open weights establishing an academic baseline for formal theorem proving",
+      "Permissive license"
+    ],
+    "weaknesses": [
+      "Superseded by Prover V1.5 and V2 architectures",
+      "Limited 4k token context window"
+    ],
+    "tags": ["STEM", "Open weights", "Lean 4", "Milestone"],
+    "facts": {
+      "context": 4096,
+      "maxOutput": 4096,
+      "speedTokensPerSec": 70,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-05-20",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["fixed"],
+      "defaultEffort": "fixed"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.2,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 87,
+      "overall": 87
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 87,
+        "min": 0,
+        "max": 100,
+        "normalized": 87,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-Prover-V1.5",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "paligemma",
     "name": "PaliGemma",
     "provider": "Google DeepMind",
@@ -18069,6 +20862,190 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "SWE-bench Verified Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-v2",
+    "name": "DeepSeek V2",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V2",
+    "dataKind": "verified",
+    "description": "The original 236B Mixture-of-Experts base foundation model introducing Multi-head Latent Attention (MLA) and DeepSeekMoE architecture.",
+    "strengths": [
+      "Historic milestone introducing MLA to slash KV cache memory by 93%",
+      "Massive 236B foundation with efficient 21B active parameter inference",
+      "Permissive open weights"
+    ],
+    "weaknesses": [
+      "Raw base completion model requiring alignment tuning",
+      "128k context requires careful memory management"
+    ],
+    "tags": ["Foundation", "Base model", "MoE", "Open weights", "Milestone"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 50,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-05-07",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.14,
+      "output": 0.28,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 83,
+      "overall": 83
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 83,
+        "min": 0,
+        "max": 100,
+        "normalized": 83,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-V2",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-v2-lite",
+    "name": "DeepSeek V2-Lite",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V2",
+    "dataKind": "verified",
+    "description": "The unaligned 16B parameter base model of DeepSeek V2 Lite (2.4B active parameters) using DeepSeekMoE sparse architecture.",
+    "strengths": [
+      "Lightweight 16B MoE with only 2.4B active parameters per token",
+      "Deployable on modest single-GPU hardware",
+      "Permissive open weights"
+    ],
+    "weaknesses": [
+      "Uncalibrated base completion model",
+      "32k token context window"
+    ],
+    "tags": ["Foundation", "Base model", "MoE", "Open weights", "Lightweight"],
+    "facts": {
+      "context": 32768,
+      "maxOutput": 4096,
+      "speedTokensPerSec": 90,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-05-07",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.2,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 87,
+      "overall": 87
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 87,
+        "min": 0,
+        "max": 100,
+        "normalized": 87,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-V2",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
       },
       {
         "id": "astra-cost-engine",
@@ -19035,6 +22012,190 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-coder-7b-v1-5-base",
+    "name": "DeepSeek-Coder-7B-v1.5-Base",
+    "provider": "DeepSeek",
+    "family": "DeepSeek Coder",
+    "dataKind": "verified",
+    "description": "Version 1.5 update to the 7B dense code foundation model with expanded multi-language syntax and long context training.",
+    "strengths": [
+      "Improved pre-training data mixture with enhanced Python and JS code",
+      "Fast consumer GPU inference",
+      "Permissive commercial license"
+    ],
+    "weaknesses": [
+      "Unsupervised base model requiring prompt formatting or tuning",
+      "16k context window"
+    ],
+    "tags": ["Foundation", "Base model", "Coding", "Open weights"],
+    "facts": {
+      "context": 16384,
+      "maxOutput": 4096,
+      "speedTokensPerSec": 90,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-03-10",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.2,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 87,
+      "overall": 87
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 87,
+        "min": 0,
+        "max": 100,
+        "normalized": 87,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-Coder",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-coder-7b-v1-5-instruct",
+    "name": "DeepSeek-Coder-7B-v1.5-Instruct",
+    "provider": "DeepSeek",
+    "family": "DeepSeek Coder",
+    "dataKind": "verified",
+    "description": "Version 1.5 instruction-tuned 7B code model featuring improved conversational refactoring, documentation writing, and test generation.",
+    "strengths": [
+      "Strong instruction compliance for code refactoring and explanation",
+      "Accessible single-GPU deployment for local developers",
+      "Permissive license for commercial use"
+    ],
+    "weaknesses": [
+      "16k context window limit",
+      "Superseded by Coder-V2 on multi-lingual benchmarks"
+    ],
+    "tags": ["Coding", "Open weights", "Fast", "Edge"],
+    "facts": {
+      "context": 16384,
+      "maxOutput": 4096,
+      "speedTokensPerSec": 90,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-03-10",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.2,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 87,
+      "overall": 87
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 87,
+        "min": 0,
+        "max": 100,
+        "normalized": 87,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-Coder",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
       },
       {
         "id": "astra-cost-engine",
@@ -20167,6 +23328,98 @@
     ]
   },
   {
+    "slug": "deepseek-math-7b-base",
+    "name": "DeepSeek-Math-7B-Base",
+    "provider": "DeepSeek",
+    "family": "DeepSeek Math",
+    "dataKind": "verified",
+    "description": "Foundational 7B base checkpoint pre-trained on 120B mathematical tokens from web and scientific literature before instruction tuning.",
+    "strengths": [
+      "Uniquely rich 120B token math pre-training foundation",
+      "Excellent starting point for academic math modeling and fine-tuning",
+      "Runs on consumer hardware"
+    ],
+    "weaknesses": [
+      "Unsupervised base completion model requiring fine-tuning for interactive Q&A",
+      "4k token context window"
+    ],
+    "tags": ["Foundation", "Base model", "Open weights", "Math"],
+    "facts": {
+      "context": 4096,
+      "maxOutput": 4096,
+      "speedTokensPerSec": 80,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-02-05",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.2,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 87,
+      "overall": 87
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 87,
+        "min": 0,
+        "max": 100,
+        "normalized": 87,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-Math",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "gpt-4-0125-preview",
     "name": "GPT-4 Turbo (0125 Preview)",
     "provider": "OpenAI",
@@ -20293,6 +23546,190 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-moe-16b-base",
+    "name": "DeepSeek-MoE-16B-Base",
+    "provider": "DeepSeek",
+    "family": "DeepSeek MoE",
+    "dataKind": "verified",
+    "description": "DeepSeek's pioneering research model introducing fine-grained expert segmentation (64 routed experts + 2 shared experts) with only 2.8B active parameters.",
+    "strengths": [
+      "Historic milestone introducing fine-grained expert segmentation and shared experts",
+      "Approached 7B dense model quality with only 2.8B active compute",
+      "Permissive open weights for research"
+    ],
+    "weaknesses": [
+      "4,096 token context window",
+      "Base model requiring fine-tuning for chat"
+    ],
+    "tags": ["Foundation", "Base model", "MoE", "Open weights", "Milestone"],
+    "facts": {
+      "context": 4096,
+      "maxOutput": 4096,
+      "speedTokensPerSec": 95,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-01-11",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.2,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 87,
+      "overall": 87
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 87,
+        "min": 0,
+        "max": 100,
+        "normalized": 87,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-MoE",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-moe-16b-chat",
+    "name": "DeepSeek-MoE-16B-Chat",
+    "provider": "DeepSeek",
+    "family": "DeepSeek MoE",
+    "dataKind": "verified",
+    "description": "Chat fine-tune of DeepSeek-MoE-16B demonstrating that fine-grained MoE architectures can match dense model quality with a fraction of active compute.",
+    "strengths": [
+      "Pioneered practical fine-grained MoE conversational deployment",
+      "Extremely lightweight 2.8B active parameter inference",
+      "Permissive commercial license"
+    ],
+    "weaknesses": [
+      "4,096 token context limit",
+      "Superseded by DeepSeek-V2 and V3 families"
+    ],
+    "tags": ["MoE", "Open weights", "Lightweight", "Milestone"],
+    "facts": {
+      "context": 4096,
+      "maxOutput": 4096,
+      "speedTokensPerSec": 95,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-01-11",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.2,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 87,
+      "overall": 87
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 87,
+        "min": 0,
+        "max": 100,
+        "normalized": 87,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-MoE",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
       },
       {
         "id": "astra-cost-engine",
@@ -21271,6 +24708,190 @@
     ]
   },
   {
+    "slug": "deepseek-llm-7b-base",
+    "name": "DeepSeek-LLM-7B-Base",
+    "provider": "DeepSeek",
+    "family": "DeepSeek LLM",
+    "dataKind": "verified",
+    "description": "DeepSeek's original 7B dense foundation model pre-trained from scratch on 2T bilingual tokens for general NLP tasks.",
+    "strengths": [
+      "Solid bilingual Chinese and English pre-training foundation",
+      "Lightweight dense footprint for edge workstations",
+      "Permissive open weights"
+    ],
+    "weaknesses": [
+      "4,096 token context window",
+      "Requires instruction tuning for conversational use"
+    ],
+    "tags": ["Foundation", "Base model", "Open weights", "Edge"],
+    "facts": {
+      "context": 4096,
+      "maxOutput": 4096,
+      "speedTokensPerSec": 85,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2023-11-29",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.08,
+      "output": 0.16,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 90,
+      "overall": 90
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 90,
+        "min": 0,
+        "max": 100,
+        "normalized": 90,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-LLM",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-llm-67b-base",
+    "name": "DeepSeek-LLM-67B-Base",
+    "provider": "DeepSeek",
+    "family": "DeepSeek LLM",
+    "dataKind": "verified",
+    "description": "Original 67B dense foundation model pre-trained on 2T English and Chinese tokens, forming the base for DeepSeek LLM 67B Chat.",
+    "strengths": [
+      "Historic 67B dense foundation that outperformed contemporaneous Llama-2-70B baselines",
+      "Comprehensive bilingual world knowledge",
+      "Open weights with commercial license"
+    ],
+    "weaknesses": [
+      "Dense 67B memory footprint superseded by modern MoE architectures",
+      "4,096 token context window"
+    ],
+    "tags": ["Foundation", "Base model", "Open weights", "Dense"],
+    "facts": {
+      "context": 4096,
+      "maxOutput": 4096,
+      "speedTokensPerSec": 40,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2023-11-29",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.14,
+      "output": 0.28,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 83,
+      "overall": 83
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 83,
+        "min": 0,
+        "max": 100,
+        "normalized": 83,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-LLM",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "claude-2-1",
     "name": "Claude 2.1",
     "provider": "Anthropic",
@@ -21397,6 +25018,288 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-coder-1-3b-base",
+    "name": "DeepSeek-Coder-1.3B-Base",
+    "provider": "DeepSeek",
+    "family": "DeepSeek Coder",
+    "dataKind": "verified",
+    "description": "Unaligned 1.3B dense code base model pre-trained on 2T code and natural language tokens with Fill-in-the-Middle capability.",
+    "strengths": [
+      "Extremely small memory footprint (<3GB FP16)",
+      "Sub-10ms token generation for inline IDE code autocomplete",
+      "Pre-trained from scratch on 2T multilingual tokens"
+    ],
+    "weaknesses": [
+      "Limited architectural capacity for large multi-file refactoring",
+      "16k context limit"
+    ],
+    "tags": [
+      "Foundation",
+      "Base model",
+      "Coding",
+      "Open weights",
+      "Ultra-fast"
+    ],
+    "facts": {
+      "context": 16384,
+      "maxOutput": 4096,
+      "speedTokensPerSec": 160,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2023-11-20",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.05,
+      "output": 0.1,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 97,
+      "overall": 97
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 97,
+        "min": 0,
+        "max": 100,
+        "normalized": 97,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-Coder",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-coder-6-7b-base",
+    "name": "DeepSeek-Coder-6.7B-Base",
+    "provider": "DeepSeek",
+    "family": "DeepSeek Coder",
+    "dataKind": "verified",
+    "description": "Foundational 6.7B dense code base model pre-trained on 2T tokens for custom code completion and IDE integration.",
+    "strengths": [
+      "Strong baseline code completion across 80+ languages",
+      "Runs locally at high speed on single consumer GPU",
+      "Fill-in-the-Middle support"
+    ],
+    "weaknesses": [
+      "16k context window superseded by Coder-V2",
+      "Text and code only"
+    ],
+    "tags": ["Foundation", "Base model", "Coding", "Open weights", "Edge"],
+    "facts": {
+      "context": 16384,
+      "maxOutput": 4096,
+      "speedTokensPerSec": 90,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2023-11-20",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.2,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 87,
+      "overall": 87
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 87,
+        "min": 0,
+        "max": 100,
+        "normalized": 87,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-Coder",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-coder-33b-base",
+    "name": "DeepSeek-Coder-33B-Base",
+    "provider": "DeepSeek",
+    "family": "DeepSeek Coder",
+    "dataKind": "verified",
+    "description": "Dense 33B code base model pre-trained on 2T multilingual code tokens with FIM support, serving as the base for 33B Instruct.",
+    "strengths": [
+      "Landmark dense 33B base with high programming syntax competence",
+      "Extensive community fine-tuning ecosystem and tooling support",
+      "Permissive open weights"
+    ],
+    "weaknesses": [
+      "Dense 33B architecture demands ~24GB VRAM for 4-bit inference",
+      "16k context window"
+    ],
+    "tags": ["Foundation", "Base model", "Coding", "Open weights"],
+    "facts": {
+      "context": 16384,
+      "maxOutput": 4096,
+      "speedTokensPerSec": 45,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2023-11-20",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.15,
+      "output": 0.3,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 82,
+      "overall": 82
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 82,
+        "min": 0,
+        "max": 100,
+        "normalized": 82,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official GitHub",
+        "url": "https://github.com/deepseek-ai/DeepSeek-Coder",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
       },
       {
         "id": "astra-cost-engine",
