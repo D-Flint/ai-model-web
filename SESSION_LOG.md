@@ -848,3 +848,51 @@
 - Commit hash: `78a2b03`
 - Current state: Model explorer table now displays up to 25 models in view at a time. Lists with > 25 models are scrollable internally within the card container, keeping the sticky header and bottom footer note intact.
 - Exact next step: Wait for user verification through local testing.
+
+## 2026-09-06 — Add 20 MiniMax Foundation and Reasoning Models
+
+- Objective: Integrate 20 requested MiniMax foundation and reasoning models across the M3 series, M2 series, M1 reasoning series, Text-01/VL-01, SynLogic logical reasoning series, and ABAB series into the canonical registry, official specs, data pipeline, and verified catalog.
+  1. MiniMax M3 Series:
+     - `minimax-m3` (Flagship 428B MoE multimodal model with MiniMax Sparse Attention, 1M context, 262k max output).
+     - `minimax-m3-mxfp8` (Microscopic-scaling FP8 quantized M3 optimized for modern GPU architectures).
+  2. MiniMax M2 Series:
+     - `minimax-m2-7` (Recursive self-evolution agentic coding model, 200k context).
+     - `minimax-m2-7-highspeed` (Accelerated 135 tok/s endpoint for M2.7).
+     - `minimax-m2-5` (Frontier cost-effective workhorse at $0.15/$1.20 per 1M tokens, 200k context).
+     - `minimax-m2-5-highspeed` (Lightning 125 tok/s endpoint for M2.5).
+     - `minimax-m2-1` (Polyglot systems programming and mobile development MoE, 200k context).
+     - `minimax-m2-1-highspeed` (High-speed 120 tok/s endpoint for M2.1).
+     - `minimax-m2` (Foundational M2 architecture, 200k context).
+     - `minimax-m2-her` (Dialogue-first character/roleplay companion model).
+  3. MiniMax M1 Reasoning Series:
+     - `minimax-m1-80k` (Open-weights reasoning model with 80k thinking budget, 1M context, hybrid attention).
+     - `minimax-m1-40k` (Open-weights reasoning model with 40k thinking budget, 1M context).
+  4. MiniMax 01 Series:
+     - `minimax-text-01` (456B MoE with 4,000,000 token context window, Lightning Attention).
+     - `minimax-vl-01` (456B MoE multimodal vision-language model with 4,000,000 token context window).
+  5. MiniMax SynLogic Series:
+     - `synlogic-32b` (32B open-weights logical reasoning model trained with RL on verifiable puzzle synthesis).
+     - `synlogic-7b` (Compact 7B reasoning model for consumer GPUs and laptops).
+     - `synlogic-mix-3-32b` (Multi-domain reasoning mixture blending logic, math, and code).
+  6. MiniMax ABAB Series:
+     - `abab7-preview` (Frontier preview model with math and long-document reasoning, 245k context).
+     - `abab6-5` (Trillion-parameter MoE model for enterprise RAG and document analysis, 200k context).
+     - `abab6-5s` (High-efficiency, cost-optimized edition of abab6.5 at 110 tok/s).
+- Files changed:
+  - `src/data/models/minimax.ts`: Created canonical configurations for all 20 models with accurate metadata, descriptions, strengths, weaknesses, tags, aliases, and reasoning efforts.
+  - `src/data/canonicalModels.ts`: Exported `MINIMAX_MODELS`, added MiniMax to `PROVIDERS_CONFIG`, and included in `CANONICAL_MODELS`.
+  - `src/data/officialProviders.ts`: Added official provider specs with context windows, output limits, pricing, speed, and verification dates for all 20 models.
+  - `src/components/ProviderLogo.tsx`: Added MiniMax, SynLogic, and ABAB provider logo mapping.
+  - `public/logos/minimax.png`: Added MiniMax provider logo asset.
+  - `src/data/verifiedModels.json`: Regenerated verified catalog via `refresh-all-data.ts`, expanding verified catalog from 220 to 240 models.
+- Attempts: 1 full iteration.
+- Failures and causes: Initial Prettier check flagged style formatting in `src/data/models/minimax.ts` and `src/data/verifiedModels.json`; resolved by executing `npm run format`.
+- Tests and results:
+  - `npm test`: 37/37 tests passed across all 3 suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 64 Astro and TypeScript files.
+  - `npm run lint`: Prettier check and ESLint passed cleanly with 0 errors.
+  - `npm run build`: Production static site build successfully generated 28,938 pages without any errors.
+- Commit hash: `9f28941` (code commit), current session log.
+- Current state: All 20 requested MiniMax models are fully integrated across the canonical registry, data pipeline, verified catalog (240 models), model detail pages, comparisons, rankings, and decision engine.
+- Exact next step: User verifies the newly added MiniMax models locally at `http://localhost:4321`.
+
