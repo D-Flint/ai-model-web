@@ -1,5 +1,211 @@
 [
   {
+    "slug": "hy4-preview",
+    "name": "Hy4 preview",
+    "provider": "Tencent",
+    "family": "Hunyuan",
+    "dataKind": "verified",
+    "description": "Tencent's next-generation frontier foundation model delivering extraordinary token throughput, bilingual reasoning, and large-context multimodal capabilities.",
+    "strengths": [
+      "Top-ranked model by token volume on OpenRouter with over 14T weekly processed tokens",
+      "1,048,576 token context window with reliable long-sequence retrieval",
+      "High-throughput bilingual generation and agent execution",
+      "Adaptive reasoning depth with selectable effort levels"
+    ],
+    "weaknesses": [
+      "Higher output token price ($2.50/1M) relative to lightweight flash tiers",
+      "Preview checkpoint subject to continuous parameter optimization"
+    ],
+    "tags": [
+      "OpenRouter #1",
+      "Frontier",
+      "Multimodal",
+      "Large context",
+      "Reasoning"
+    ],
+    "facts": {
+      "context": 1048576,
+      "maxOutput": 65536,
+      "speedTokensPerSec": 145,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-08-27",
+      "sourceId": "source-tencent",
+      "reasoningEffort": [
+        "none",
+        "low",
+        "high"
+      ],
+      "defaultEffort": "high"
+    },
+    "pricing": {
+      "input": 0.834,
+      "output": 2.501,
+      "cached": 0.042,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-tencent",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 82,
+      "overall": 82
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 82,
+        "min": 0,
+        "max": 100,
+        "normalized": 82,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 45,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-tencent",
+        "name": "Tencent Official Documentation & OpenRouter",
+        "url": "https://openrouter.ai/models/tencent/hy4-preview",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Tencent"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "glm-5-3-flash",
+    "name": "GLM 5.3 Flash",
+    "provider": "Z.ai",
+    "family": "GLM",
+    "dataKind": "verified",
+    "description": "Z.ai's native multimodal model engineered for ultra-fast coding, high-volume agent workflows, and cost-efficient long-horizon execution.",
+    "strengths": [
+      "Ranked #2 on OpenRouter with over 12.5T tokens processed weekly",
+      "Ultra-competitive pricing ($0.075/1M input, $0.25/1M output)",
+      "1,310,720 token context length with hybrid sparse attention",
+      "Native multimodal comprehension across text, image, and video inputs"
+    ],
+    "weaknesses": [
+      "Reasoning tokens mandatory on complex mathematical queries",
+      "Lower general reasoning ceiling than frontier trillion-parameter flagships"
+    ],
+    "tags": [
+      "OpenRouter #2",
+      "High speed",
+      "Ultra cheap",
+      "Multimodal",
+      "Coding"
+    ],
+    "facts": {
+      "context": 1310720,
+      "maxOutput": 131072,
+      "speedTokensPerSec": 165,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-08-26",
+      "sourceId": "source-zai",
+      "reasoningEffort": [
+        "low",
+        "high",
+        "max"
+      ],
+      "defaultEffort": "max"
+    },
+    "pricing": {
+      "input": 0.075,
+      "output": 0.25,
+      "cached": 0.015,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-zai",
+      "updatedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 95,
+      "overall": 95
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 95,
+        "min": 0,
+        "max": 100,
+        "normalized": 95,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 50,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-zai",
+        "name": "Z.ai Official Documentation & OpenRouter",
+        "url": "https://openrouter.ai/models/z-ai/glm-5.3-flash",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Z.ai"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "gpt-6-astra",
     "name": "GPT-6 Astra",
     "provider": "OpenAI",
@@ -37,7 +243,12 @@
       "availability": "Production API",
       "releaseDate": "2026-09-02",
       "sourceId": "source-openai",
-      "reasoningEffort": ["low", "medium", "high", "max"],
+      "reasoningEffort": [
+        "low",
+        "medium",
+        "high",
+        "max"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -160,7 +371,13 @@
       "Complex reasoning chains require allocating additional thinking token budget",
       "Higher generation cost than lightweight Lite tiers"
     ],
-    "tags": ["Flagship", "Speed", "Multimodal", "Large context", "Vision"],
+    "tags": [
+      "Flagship",
+      "Speed",
+      "Multimodal",
+      "Large context",
+      "Vision"
+    ],
     "facts": {
       "context": 2097152,
       "maxOutput": 65536,
@@ -175,7 +392,12 @@
       "availability": "Production API",
       "releaseDate": "2026-08-20",
       "sourceId": "source-google",
-      "reasoningEffort": ["none", "low", "medium", "high"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -298,7 +520,12 @@
       "Requires high-VRAM dual-GPU or quantized deployment for peak performance",
       "Output generation speed depends on host hardware"
     ],
-    "tags": ["Open weights", "Multimodal", "Coding", "Research"],
+    "tags": [
+      "Open weights",
+      "Multimodal",
+      "Coding",
+      "Research"
+    ],
     "facts": {
       "context": 262144,
       "maxOutput": 16384,
@@ -313,7 +540,9 @@
       "availability": "Production API",
       "releaseDate": "2026-07-28",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -459,7 +688,12 @@
       "availability": "Production API",
       "releaseDate": "2026-07-15",
       "sourceId": "source-moonshot",
-      "reasoningEffort": ["none", "low", "medium", "high"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -536,7 +770,12 @@
       "Premium price point for high-volume routine tasks",
       "Longer generation times when thinking depth is set to high"
     ],
-    "tags": ["Flagship", "Coding", "Research", "Reasoning"],
+    "tags": [
+      "Flagship",
+      "Coding",
+      "Research",
+      "Reasoning"
+    ],
     "facts": {
       "context": 524288,
       "maxOutput": 32768,
@@ -551,7 +790,12 @@
       "availability": "Production API",
       "releaseDate": "2026-07-09",
       "sourceId": "source-openai",
-      "reasoningEffort": ["low", "medium", "high", "max"],
+      "reasoningEffort": [
+        "low",
+        "medium",
+        "high",
+        "max"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -674,7 +918,12 @@
       "Lower mathematical rigor than Sol on PhD-level STEM problems",
       "Context window capped at 262k tokens"
     ],
-    "tags": ["Best value", "Daily use", "Multimodal", "Balanced"],
+    "tags": [
+      "Best value",
+      "Daily use",
+      "Multimodal",
+      "Balanced"
+    ],
     "facts": {
       "context": 262144,
       "maxOutput": 16384,
@@ -689,7 +938,11 @@
       "availability": "Production API",
       "releaseDate": "2026-07-09",
       "sourceId": "source-openai",
-      "reasoningEffort": ["none", "low", "medium"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -812,7 +1065,12 @@
       "Not designed for deep multi-step algorithmic proofs",
       "Lower code refactoring accuracy than Terra or Sol"
     ],
-    "tags": ["Speed", "Best value", "Daily use", "Fast"],
+    "tags": [
+      "Speed",
+      "Best value",
+      "Daily use",
+      "Fast"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
@@ -827,7 +1085,9 @@
       "availability": "Production API",
       "releaseDate": "2026-07-09",
       "sourceId": "source-openai",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -950,7 +1210,13 @@
       "Thinking tokens consume output budget and increase generation latency",
       "Complex tool calling chains require explicit schema constraints"
     ],
-    "tags": ["Reasoning", "Speed", "Multimodal", "Coding", "Agents"],
+    "tags": [
+      "Reasoning",
+      "Speed",
+      "Multimodal",
+      "Coding",
+      "Agents"
+    ],
     "facts": {
       "context": 2097152,
       "maxOutput": 65536,
@@ -965,7 +1231,12 @@
       "availability": "Production API",
       "releaseDate": "2026-06-20",
       "sourceId": "source-google",
-      "reasoningEffort": ["none", "low", "medium", "high"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -1111,7 +1382,12 @@
       "availability": "Production API",
       "releaseDate": "2026-06-20",
       "sourceId": "source-minimax",
-      "reasoningEffort": ["none", "low", "medium", "high"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -1211,7 +1487,13 @@
       "availability": "Production API",
       "releaseDate": "2026-06-15",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none", "low", "medium", "high", "max"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium",
+        "high",
+        "max"
+      ],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -1358,7 +1640,12 @@
       "availability": "Production API",
       "releaseDate": "2026-06-15",
       "sourceId": "source-minimax",
-      "reasoningEffort": ["none", "low", "medium", "high"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -1473,7 +1760,11 @@
       "Text only (no image analysis)",
       "Limited complex analytical reasoning"
     ],
-    "tags": ["Speed", "Best value", "Fast"],
+    "tags": [
+      "Speed",
+      "Best value",
+      "Fast"
+    ],
     "facts": {
       "context": 65536,
       "maxOutput": 4096,
@@ -1488,7 +1779,9 @@
       "availability": "Production API",
       "releaseDate": "2026-05-18",
       "sourceId": "source-openai",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -1610,7 +1903,13 @@
     "weaknesses": [
       "Not intended for complex multi-file architectural refactors"
     ],
-    "tags": ["Speed", "Daily use", "Agents", "Vision", "Cost efficiency"],
+    "tags": [
+      "Speed",
+      "Daily use",
+      "Agents",
+      "Vision",
+      "Cost efficiency"
+    ],
     "facts": {
       "context": 500000,
       "maxOutput": 32000,
@@ -1625,7 +1924,9 @@
       "availability": "Production API",
       "releaseDate": "2026-05-18",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -1749,7 +2050,12 @@
       "Specialized for software development; less tailored for creative and expository prose",
       "Text and code only without image input support"
     ],
-    "tags": ["Coding", "Open weights", "Agents", "Developer"],
+    "tags": [
+      "Coding",
+      "Open weights",
+      "Agents",
+      "Developer"
+    ],
     "facts": {
       "context": 256000,
       "maxOutput": 32768,
@@ -1764,7 +2070,12 @@
       "availability": "Production API",
       "releaseDate": "2026-05-18",
       "sourceId": "source-moonshot",
-      "reasoningEffort": ["none", "low", "medium", "high"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -1859,7 +2170,12 @@
       "Lower maximum reasoning depth than Gemini 3 Pro",
       "Fixed output token ceiling of 32,768 tokens"
     ],
-    "tags": ["Speed", "Multimodal", "Large context", "Best value"],
+    "tags": [
+      "Speed",
+      "Multimodal",
+      "Large context",
+      "Best value"
+    ],
     "facts": {
       "context": 1048576,
       "maxOutput": 32768,
@@ -1874,7 +2190,11 @@
       "availability": "Production API",
       "releaseDate": "2026-05-14",
       "sourceId": "source-google",
-      "reasoningEffort": ["none", "low", "medium"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -1996,7 +2316,13 @@
     "weaknesses": [
       "Slightly lower complex theoretical math reasoning compared to Opus 5"
     ],
-    "tags": ["Best value", "Daily use", "Coding", "Vision", "Large context"],
+    "tags": [
+      "Best value",
+      "Daily use",
+      "Coding",
+      "Vision",
+      "Large context"
+    ],
     "facts": {
       "context": 1000000,
       "maxOutput": 64000,
@@ -2011,7 +2337,11 @@
       "availability": "Production API",
       "releaseDate": "2026-05-02",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none", "low", "medium"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -2134,7 +2464,11 @@
       "Code-centric model; less nuanced for creative prose or essay writing",
       "Text and code only (no vision)"
     ],
-    "tags": ["Coding", "Agentic", "Large context"],
+    "tags": [
+      "Coding",
+      "Agentic",
+      "Large context"
+    ],
     "facts": {
       "context": 262144,
       "maxOutput": 16384,
@@ -2149,7 +2483,11 @@
       "availability": "Production API",
       "releaseDate": "2026-04-14",
       "sourceId": "source-openai",
-      "reasoningEffort": ["none", "low", "medium"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -2273,7 +2611,13 @@
       "Large MoE model memory footprint requiring multi-GPU nodes for self-hosting",
       "Does not process raw audio streams"
     ],
-    "tags": ["Agents", "Coding", "Vision", "Open weights", "Reasoning"],
+    "tags": [
+      "Agents",
+      "Coding",
+      "Vision",
+      "Open weights",
+      "Reasoning"
+    ],
     "facts": {
       "context": 256000,
       "maxOutput": 32768,
@@ -2288,7 +2632,12 @@
       "availability": "Production API",
       "releaseDate": "2026-04-12",
       "sourceId": "source-moonshot",
-      "reasoningEffort": ["none", "low", "medium", "high"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -2403,7 +2752,13 @@
       "Higher latency than Sonnet tiers for simple conversational queries",
       "Costly for high-throughput shallow chat applications"
     ],
-    "tags": ["Flagship", "Coding", "Research", "Large context", "Vision"],
+    "tags": [
+      "Flagship",
+      "Coding",
+      "Research",
+      "Large context",
+      "Vision"
+    ],
     "facts": {
       "context": 1000000,
       "maxOutput": 128000,
@@ -2418,7 +2773,12 @@
       "availability": "Production API",
       "releaseDate": "2026-04-10",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none", "low", "medium", "high"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -2541,7 +2901,11 @@
       "Less specialized in competitive programming proofs than Pro variants",
       "Output token limit capped at 32k tokens"
     ],
-    "tags": ["Speed", "Multimodal", "Daily use"],
+    "tags": [
+      "Speed",
+      "Multimodal",
+      "Daily use"
+    ],
     "facts": {
       "context": 1048576,
       "maxOutput": 32768,
@@ -2556,7 +2920,10 @@
       "availability": "Production API",
       "releaseDate": "2026-03-25",
       "sourceId": "source-google",
-      "reasoningEffort": ["none", "low"],
+      "reasoningEffort": [
+        "none",
+        "low"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -2679,7 +3046,11 @@
       "Reduced capability on intricate algorithmic reasoning and math",
       "Audio input not supported in Lite tier"
     ],
-    "tags": ["Best value", "Speed", "Fast"],
+    "tags": [
+      "Best value",
+      "Speed",
+      "Fast"
+    ],
     "facts": {
       "context": 1048576,
       "maxOutput": 16384,
@@ -2694,7 +3065,9 @@
       "availability": "Production API",
       "releaseDate": "2026-03-25",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -2855,7 +3228,12 @@
       "Higher latency than standard GPT-5.2",
       "Expensive output rate"
     ],
-    "tags": ["Flagship", "Reasoning", "Vision", "Multimodal"],
+    "tags": [
+      "Flagship",
+      "Reasoning",
+      "Vision",
+      "Multimodal"
+    ],
     "facts": {
       "context": 393216,
       "maxOutput": 24576,
@@ -2870,7 +3248,11 @@
       "availability": "Production API",
       "releaseDate": "2026-03-20",
       "sourceId": "source-openai",
-      "reasoningEffort": ["low", "medium", "high"],
+      "reasoningEffort": [
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -2992,7 +3374,12 @@
     "weaknesses": [
       "Superseded in pure reasoning by GPT-5.6 Sol and GPT-6 Astra"
     ],
-    "tags": ["Flagship", "Vision", "Multimodal", "Daily use"],
+    "tags": [
+      "Flagship",
+      "Vision",
+      "Multimodal",
+      "Daily use"
+    ],
     "facts": {
       "context": 262144,
       "maxOutput": 16384,
@@ -3007,7 +3394,11 @@
       "availability": "Production API",
       "releaseDate": "2026-03-20",
       "sourceId": "source-openai",
-      "reasoningEffort": ["none", "low", "medium"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -3130,7 +3521,13 @@
       "Premium pricing model for production deployment",
       "Superseded in speed and latency by Claude Fable 5.1"
     ],
-    "tags": ["Flagship", "Reasoning", "Agents", "Large context", "Vision"],
+    "tags": [
+      "Flagship",
+      "Reasoning",
+      "Agents",
+      "Large context",
+      "Vision"
+    ],
     "facts": {
       "context": 1000000,
       "maxOutput": 128000,
@@ -3145,7 +3542,12 @@
       "availability": "Production API",
       "releaseDate": "2026-03-20",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none", "low", "medium", "high"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -3317,7 +3719,12 @@
       "Carries a higher token pricing premium over standard M2.7",
       "Does not process image or visual inputs"
     ],
-    "tags": ["Coding", "Agents", "Speed", "Developer"],
+    "tags": [
+      "Coding",
+      "Agents",
+      "Speed",
+      "Developer"
+    ],
     "facts": {
       "context": 204800,
       "maxOutput": 16384,
@@ -3332,7 +3739,11 @@
       "availability": "Production API",
       "releaseDate": "2026-03-15",
       "sourceId": "source-minimax",
-      "reasoningEffort": ["none", "low", "medium"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium"
+      ],
       "defaultEffort": "low"
     },
     "pricing": {
@@ -3409,7 +3820,11 @@
       "Outperformed by larger commercial proprietary models on PhD STEM benchmarks",
       "Requires local GPU acceleration for interactive token rates"
     ],
-    "tags": ["Open weights", "Coding", "Daily use"],
+    "tags": [
+      "Open weights",
+      "Coding",
+      "Daily use"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
@@ -3424,7 +3839,9 @@
       "availability": "Production API",
       "releaseDate": "2026-03-12",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -3547,7 +3964,12 @@
       "32,768 token context window",
       "Not designed for complex multi-step algorithmic proofs"
     ],
-    "tags": ["Open weights", "Fast", "Edge", "Best value"],
+    "tags": [
+      "Open weights",
+      "Fast",
+      "Edge",
+      "Best value"
+    ],
     "facts": {
       "context": 32768,
       "maxOutput": 4096,
@@ -3562,7 +3984,9 @@
       "availability": "Production API",
       "releaseDate": "2026-03-12",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -3686,7 +4110,12 @@
       "Text and code only; lacks vision and image input capabilities",
       "Batch throughput slightly lower on heavy reasoning steps than high-speed endpoints"
     ],
-    "tags": ["Coding", "Agents", "Reasoning", "Developer"],
+    "tags": [
+      "Coding",
+      "Agents",
+      "Reasoning",
+      "Developer"
+    ],
     "facts": {
       "context": 204800,
       "maxOutput": 16384,
@@ -3701,7 +4130,12 @@
       "availability": "Production API",
       "releaseDate": "2026-03-12",
       "sourceId": "source-minimax",
-      "reasoningEffort": ["none", "low", "medium", "high"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -3797,7 +4231,12 @@
       "Priced higher than standard M2.5 tier",
       "Text-only model without vision processing"
     ],
-    "tags": ["Speed", "Best value", "Agents", "Daily use"],
+    "tags": [
+      "Speed",
+      "Best value",
+      "Agents",
+      "Daily use"
+    ],
     "facts": {
       "context": 204800,
       "maxOutput": 16384,
@@ -3812,7 +4251,10 @@
       "availability": "Production API",
       "releaseDate": "2026-02-20",
       "sourceId": "source-minimax",
-      "reasoningEffort": ["none", "low"],
+      "reasoningEffort": [
+        "none",
+        "low"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -3890,7 +4332,12 @@
       "Lacks native multimodal image support",
       "Slightly less capable on hyper-complex mathematical proofs than M3"
     ],
-    "tags": ["Best value", "Coding", "Agents", "Daily use"],
+    "tags": [
+      "Best value",
+      "Coding",
+      "Agents",
+      "Daily use"
+    ],
     "facts": {
       "context": 204800,
       "maxOutput": 16384,
@@ -3905,7 +4352,11 @@
       "availability": "Production API",
       "releaseDate": "2026-02-18",
       "sourceId": "source-minimax",
-      "reasoningEffort": ["none", "low", "medium"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -4000,7 +4451,12 @@
       "Higher API unit pricing than Flash models",
       "Longer latency on full context window queries"
     ],
-    "tags": ["Flagship", "Coding", "Research", "Large context"],
+    "tags": [
+      "Flagship",
+      "Coding",
+      "Research",
+      "Large context"
+    ],
     "facts": {
       "context": 2097152,
       "maxOutput": 65536,
@@ -4015,7 +4471,12 @@
       "availability": "Production API",
       "releaseDate": "2026-02-12",
       "sourceId": "source-google",
-      "reasoningEffort": ["none", "low", "medium", "high"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -4138,7 +4599,12 @@
       "Text and vision only (no audio input)",
       "Smaller output buffer (16k tokens)"
     ],
-    "tags": ["Best value", "Speed", "Fast", "Large context"],
+    "tags": [
+      "Best value",
+      "Speed",
+      "Fast",
+      "Large context"
+    ],
     "facts": {
       "context": 1048576,
       "maxOutput": 16384,
@@ -4153,7 +4619,9 @@
       "availability": "Production API",
       "releaseDate": "2026-02-12",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -4277,7 +4745,13 @@
       "Higher latency when running full reasoning mode compared to compact models",
       "High hardware requirements for local deployment"
     ],
-    "tags": ["Multimodal", "Open weights", "Vision", "Agents", "Reasoning"],
+    "tags": [
+      "Multimodal",
+      "Open weights",
+      "Vision",
+      "Agents",
+      "Reasoning"
+    ],
     "facts": {
       "context": 256000,
       "maxOutput": 32768,
@@ -4292,7 +4766,12 @@
       "availability": "Production API",
       "releaseDate": "2026-01-20",
       "sourceId": "source-moonshot",
-      "reasoningEffort": ["none", "low", "medium", "high"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -4369,7 +4848,11 @@
       "Slower response times than standard GPT-5",
       "Higher token cost"
     ],
-    "tags": ["Flagship", "Reasoning", "STEM"],
+    "tags": [
+      "Flagship",
+      "Reasoning",
+      "STEM"
+    ],
     "facts": {
       "context": 262144,
       "maxOutput": 16384,
@@ -4384,7 +4867,11 @@
       "availability": "Production API",
       "releaseDate": "2026-01-15",
       "sourceId": "source-openai",
-      "reasoningEffort": ["low", "medium", "high"],
+      "reasoningEffort": [
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -4506,7 +4993,12 @@
     "weaknesses": [
       "Lower reasoning ceiling compared to o3/o4 specialized models"
     ],
-    "tags": ["Flagship", "Multimodal", "Vision", "Daily use"],
+    "tags": [
+      "Flagship",
+      "Multimodal",
+      "Vision",
+      "Daily use"
+    ],
     "facts": {
       "context": 262144,
       "maxOutput": 16384,
@@ -4521,7 +5013,9 @@
       "availability": "Production API",
       "releaseDate": "2026-01-15",
       "sourceId": "source-openai",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -4658,8 +5152,15 @@
       "Fast first-token generation with native image input",
       "131k token context window"
     ],
-    "weaknesses": ["Lower benchmark scores on advanced math and coding proofs"],
-    "tags": ["Best value", "Speed", "Vision", "Daily use"],
+    "weaknesses": [
+      "Lower benchmark scores on advanced math and coding proofs"
+    ],
+    "tags": [
+      "Best value",
+      "Speed",
+      "Vision",
+      "Daily use"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
@@ -4674,7 +5175,9 @@
       "availability": "Production API",
       "releaseDate": "2026-01-15",
       "sourceId": "source-openai",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -4793,8 +5296,14 @@
       "Low cost ($0.10 input per 1M tokens)",
       "Strict JSON formatting compliance"
     ],
-    "weaknesses": ["Text only; limited multi-step deductive capacity"],
-    "tags": ["Speed", "Best value", "Fast"],
+    "weaknesses": [
+      "Text only; limited multi-step deductive capacity"
+    ],
+    "tags": [
+      "Speed",
+      "Best value",
+      "Fast"
+    ],
     "facts": {
       "context": 65536,
       "maxOutput": 4096,
@@ -4809,7 +5318,9 @@
       "availability": "Production API",
       "releaseDate": "2026-01-15",
       "sourceId": "source-openai",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -4933,7 +5444,11 @@
       "Specialized for conversational prose and character chat; not suited for coding or math reasoning",
       "Lacks code execution and external tool call specialization"
     ],
-    "tags": ["Writing", "Daily use", "Conversation"],
+    "tags": [
+      "Writing",
+      "Daily use",
+      "Conversation"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
@@ -4948,7 +5463,9 @@
       "availability": "Production API",
       "releaseDate": "2026-01-15",
       "sourceId": "source-minimax",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -5026,7 +5543,11 @@
       "Priced at 2x the standard M2.1 base rate",
       "Text and code only"
     ],
-    "tags": ["Coding", "Speed", "Developer"],
+    "tags": [
+      "Coding",
+      "Speed",
+      "Developer"
+    ],
     "facts": {
       "context": 204800,
       "maxOutput": 16384,
@@ -5041,7 +5562,10 @@
       "availability": "Production API",
       "releaseDate": "2025-12-20",
       "sourceId": "source-minimax",
-      "reasoningEffort": ["none", "low"],
+      "reasoningEffort": [
+        "none",
+        "low"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -5119,7 +5643,11 @@
       "Predecessor to M2.5 and M2.7 with lower benchmark scores on automated benchmarks",
       "No native visual or image input support"
     ],
-    "tags": ["Coding", "Agents", "Developer"],
+    "tags": [
+      "Coding",
+      "Agents",
+      "Developer"
+    ],
     "facts": {
       "context": 204800,
       "maxOutput": 16384,
@@ -5134,7 +5662,11 @@
       "availability": "Production API",
       "releaseDate": "2025-12-18",
       "sourceId": "source-minimax",
-      "reasoningEffort": ["none", "low", "medium"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -5207,8 +5739,15 @@
       "1,000,000 token context window with precise instruction following",
       "Prompt caching discount support for high-context workflows"
     ],
-    "weaknesses": ["Premium API output pricing tier ($25.00/1M)"],
-    "tags": ["Flagship", "Coding", "Research", "Large context"],
+    "weaknesses": [
+      "Premium API output pricing tier ($25.00/1M)"
+    ],
+    "tags": [
+      "Flagship",
+      "Coding",
+      "Research",
+      "Large context"
+    ],
     "facts": {
       "context": 1000000,
       "maxOutput": 64000,
@@ -5223,7 +5762,11 @@
       "availability": "Production API",
       "releaseDate": "2025-12-08",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none", "low", "medium"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -5394,7 +5937,12 @@
       "High output token volume during extensive research cycles",
       "Longer latency during multi-turn research loops"
     ],
-    "tags": ["Research", "Reasoning", "STEM", "Agentic"],
+    "tags": [
+      "Research",
+      "Reasoning",
+      "STEM",
+      "Agentic"
+    ],
     "facts": {
       "context": 262144,
       "maxOutput": 32768,
@@ -5409,7 +5957,12 @@
       "availability": "Production API",
       "releaseDate": "2025-11-20",
       "sourceId": "source-openai",
-      "reasoningEffort": ["low", "medium", "high", "max"],
+      "reasoningEffort": [
+        "low",
+        "medium",
+        "high",
+        "max"
+      ],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -5528,8 +6081,15 @@
       "1,000,000 token context window",
       "Strong long-form structured technical documentation writing"
     ],
-    "weaknesses": ["Slower inference compared to Claude Sonnet tiers"],
-    "tags": ["Coding", "Reasoning", "Enterprise", "Vision"],
+    "weaknesses": [
+      "Slower inference compared to Claude Sonnet tiers"
+    ],
+    "tags": [
+      "Coding",
+      "Reasoning",
+      "Enterprise",
+      "Vision"
+    ],
     "facts": {
       "context": 1000000,
       "maxOutput": 64000,
@@ -5544,7 +6104,11 @@
       "availability": "Production API",
       "releaseDate": "2025-11-20",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none", "low", "medium"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -5715,7 +6279,12 @@
       "Premium pricing relative to the Flash tier",
       "Higher generation time on complex deep reasoning prompts"
     ],
-    "tags": ["Flagship", "Coding", "Research", "Large context"],
+    "tags": [
+      "Flagship",
+      "Coding",
+      "Research",
+      "Large context"
+    ],
     "facts": {
       "context": 2097152,
       "maxOutput": 65536,
@@ -5730,7 +6299,12 @@
       "availability": "Production API",
       "releaseDate": "2025-11-20",
       "sourceId": "source-google",
-      "reasoningEffort": ["none", "low", "medium", "high"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -5891,7 +6465,12 @@
       "Outperformed by Gemini 3 Deep Think on high-level mathematical competitions",
       "Max output limited to 32,768 tokens"
     ],
-    "tags": ["Speed", "Multimodal", "Best value", "Large context"],
+    "tags": [
+      "Speed",
+      "Multimodal",
+      "Best value",
+      "Large context"
+    ],
     "facts": {
       "context": 1048576,
       "maxOutput": 32768,
@@ -5906,7 +6485,10 @@
       "availability": "Production API",
       "releaseDate": "2025-11-20",
       "sourceId": "source-google",
-      "reasoningEffort": ["none", "low"],
+      "reasoningEffort": [
+        "none",
+        "low"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -6067,7 +6649,12 @@
       "Higher price point ($2.50 input / $10.00 output)",
       "Deliberate reasoning generation produces higher overall latency"
     ],
-    "tags": ["Reasoning", "STEM", "Coding", "Research"],
+    "tags": [
+      "Reasoning",
+      "STEM",
+      "Coding",
+      "Research"
+    ],
     "facts": {
       "context": 1048576,
       "maxOutput": 65536,
@@ -6082,7 +6669,11 @@
       "availability": "Production API",
       "releaseDate": "2025-11-20",
       "sourceId": "source-google",
-      "reasoningEffort": ["medium", "high", "max"],
+      "reasoningEffort": [
+        "medium",
+        "high",
+        "max"
+      ],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -6206,7 +6797,13 @@
       "Increased time-to-first-token and overall latency due to extensive reasoning traces",
       "Text-only model without vision processing"
     ],
-    "tags": ["Reasoning", "Open weights", "Agents", "Coding", "Research"],
+    "tags": [
+      "Reasoning",
+      "Open weights",
+      "Agents",
+      "Coding",
+      "Research"
+    ],
     "facts": {
       "context": 256000,
       "maxOutput": 65536,
@@ -6221,7 +6818,9 @@
       "availability": "Production API",
       "releaseDate": "2025-11-12",
       "sourceId": "source-moonshot",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -6297,7 +6896,12 @@
     "weaknesses": [
       "Tiered pricing applies above 200,000 prompt tokens ($6/$22.50 per 1M)"
     ],
-    "tags": ["Coding", "Agents", "Balanced", "Large context"],
+    "tags": [
+      "Coding",
+      "Agents",
+      "Balanced",
+      "Large context"
+    ],
     "facts": {
       "context": 1000000,
       "maxOutput": 64000,
@@ -6312,7 +6916,10 @@
       "availability": "Production API",
       "releaseDate": "2025-11-10",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none", "low"],
+      "reasoningEffort": [
+        "none",
+        "low"
+      ],
       "defaultEffort": "low"
     },
     "pricing": {
@@ -6474,7 +7081,11 @@
       "Superseded in software reasoning by M2.5 and M2.7",
       "No multimodal vision support"
     ],
-    "tags": ["Coding", "Agents", "Developer"],
+    "tags": [
+      "Coding",
+      "Agents",
+      "Developer"
+    ],
     "facts": {
       "context": 204800,
       "maxOutput": 16384,
@@ -6489,7 +7100,10 @@
       "availability": "Production API",
       "releaseDate": "2025-11-10",
       "sourceId": "source-minimax",
-      "reasoningEffort": ["none", "low"],
+      "reasoningEffort": [
+        "none",
+        "low"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -6562,8 +7176,15 @@
       "1,000,000 token context window",
       "Prompt caching discount support"
     ],
-    "weaknesses": ["Premium price point ($5 input / $25 output per 1M)"],
-    "tags": ["Coding", "Reasoning", "Research", "Vision"],
+    "weaknesses": [
+      "Premium price point ($5 input / $25 output per 1M)"
+    ],
+    "tags": [
+      "Coding",
+      "Reasoning",
+      "Research",
+      "Vision"
+    ],
     "facts": {
       "context": 1000000,
       "maxOutput": 64000,
@@ -6578,7 +7199,11 @@
       "availability": "Production API",
       "releaseDate": "2025-10-25",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none", "low", "medium"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -6739,7 +7364,12 @@
     "weaknesses": [
       "Requires thinking token overhead before producing final answer"
     ],
-    "tags": ["Reasoning", "STEM", "Coding", "Best value"],
+    "tags": [
+      "Reasoning",
+      "STEM",
+      "Coding",
+      "Best value"
+    ],
     "facts": {
       "context": 200000,
       "maxOutput": 65536,
@@ -6754,7 +7384,11 @@
       "availability": "Production API",
       "releaseDate": "2025-10-15",
       "sourceId": "source-openai",
-      "reasoningEffort": ["low", "medium", "high"],
+      "reasoningEffort": [
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -6891,8 +7525,15 @@
       "200,000 token context window with solid code generation",
       "Strong function calling accuracy for real-time applications"
     ],
-    "weaknesses": ["Text only; does not support multi-modal image input"],
-    "tags": ["Speed", "Efficiency", "Daily use", "Coding"],
+    "weaknesses": [
+      "Text only; does not support multi-modal image input"
+    ],
+    "tags": [
+      "Speed",
+      "Efficiency",
+      "Daily use",
+      "Coding"
+    ],
     "facts": {
       "context": 200000,
       "maxOutput": 32000,
@@ -6907,7 +7548,9 @@
       "availability": "Production API",
       "releaseDate": "2025-10-15",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -7029,7 +7672,12 @@
     "weaknesses": [
       "200,000 token context window (smaller than 1M Opus 4.6+ series)"
     ],
-    "tags": ["Research", "Deep thinking", "Writing", "Flagship"],
+    "tags": [
+      "Research",
+      "Deep thinking",
+      "Writing",
+      "Flagship"
+    ],
     "facts": {
       "context": 200000,
       "maxOutput": 32000,
@@ -7044,7 +7692,10 @@
       "availability": "Production API",
       "releaseDate": "2025-09-28",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none", "low"],
+      "reasoningEffort": [
+        "none",
+        "low"
+      ],
       "defaultEffort": "low"
     },
     "pricing": {
@@ -7166,7 +7817,12 @@
     "weaknesses": [
       "Pricing tier increases on prompts exceeding 200,000 tokens"
     ],
-    "tags": ["Coding", "Agents", "Computer use", "Vision"],
+    "tags": [
+      "Coding",
+      "Agents",
+      "Computer use",
+      "Vision"
+    ],
     "facts": {
       "context": 1000000,
       "maxOutput": 64000,
@@ -7181,7 +7837,10 @@
       "availability": "Production API",
       "releaseDate": "2025-09-15",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none", "low"],
+      "reasoningEffort": [
+        "none",
+        "low"
+      ],
       "defaultEffort": "low"
     },
     "pricing": {
@@ -7323,7 +7982,12 @@
       "Text-only processing without multimodal vision inputs",
       "Fixed instruction model without dynamic test-time reasoning compute scaling"
     ],
-    "tags": ["Instruction", "Open weights", "Coding", "Agents"],
+    "tags": [
+      "Instruction",
+      "Open weights",
+      "Coding",
+      "Agents"
+    ],
     "facts": {
       "context": 256000,
       "maxOutput": 16384,
@@ -7338,7 +8002,9 @@
       "availability": "Production API",
       "releaseDate": "2025-09-05",
       "sourceId": "source-moonshot",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -7436,7 +8102,12 @@
       "availability": "Production API",
       "releaseDate": "2025-08-20",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none", "low", "medium", "high"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -7514,7 +8185,12 @@
       "Text and code only (no multimodal vision)",
       "Requires high-end server GPU for local hosting"
     ],
-    "tags": ["Open weights", "Reasoning", "STEM", "Best value"],
+    "tags": [
+      "Open weights",
+      "Reasoning",
+      "STEM",
+      "Best value"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
@@ -7529,7 +8205,9 @@
       "availability": "Production API",
       "releaseDate": "2025-08-15",
       "sourceId": "source-openai",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -7670,7 +8348,12 @@
     "weaknesses": [
       "Text only; limited complex mathematical deductions compared to 120B variant"
     ],
-    "tags": ["Open weights", "Best value", "Speed", "Fast"],
+    "tags": [
+      "Open weights",
+      "Best value",
+      "Speed",
+      "Fast"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
@@ -7685,7 +8368,9 @@
       "availability": "Production API",
       "releaseDate": "2025-08-15",
       "sourceId": "source-openai",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -7807,7 +8492,11 @@
     "weaknesses": [
       "Specialized for safety classification rather than general generative prose"
     ],
-    "tags": ["Open weights", "Research", "Reliability"],
+    "tags": [
+      "Open weights",
+      "Research",
+      "Reliability"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
@@ -7822,7 +8511,9 @@
       "availability": "Production API",
       "releaseDate": "2025-08-15",
       "sourceId": "source-openai",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -7941,8 +8632,15 @@
       "Runs locally in <16GB memory with Apache 2.0 license",
       "High recall on injection and toxic content benchmarks"
     ],
-    "weaknesses": ["Restricted to evaluation and classification tasks"],
-    "tags": ["Open weights", "Speed", "Fast", "Reliability"],
+    "weaknesses": [
+      "Restricted to evaluation and classification tasks"
+    ],
+    "tags": [
+      "Open weights",
+      "Speed",
+      "Fast",
+      "Reliability"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
@@ -7957,7 +8655,9 @@
       "availability": "Production API",
       "releaseDate": "2025-08-15",
       "sourceId": "source-openai",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -8081,7 +8781,13 @@
       "Text-only model lacking native audio/image modalities",
       "Requires specialized multi-GPU infrastructure for self-hosting"
     ],
-    "tags": ["Flagship", "Open weights", "MoE", "Reasoning", "Coding"],
+    "tags": [
+      "Flagship",
+      "Open weights",
+      "MoE",
+      "Reasoning",
+      "Coding"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 16384,
@@ -8096,7 +8802,12 @@
       "availability": "Production API",
       "releaseDate": "2025-08-15",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none", "low", "medium", "high"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -8201,7 +8912,12 @@
       "Uncensored base model requiring custom instruction tuning or few-shot prompts",
       "Text-only model"
     ],
-    "tags": ["Foundation", "Base model", "Open weights", "MoE"],
+    "tags": [
+      "Foundation",
+      "Base model",
+      "Open weights",
+      "MoE"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 16384,
@@ -8216,7 +8932,9 @@
       "availability": "Production API",
       "releaseDate": "2025-08-15",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -8315,7 +9033,9 @@
       "availability": "Production API",
       "releaseDate": "2025-08-15",
       "sourceId": "source-moonshot",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -8392,7 +9112,12 @@
       "Raw base model requiring custom instruction fine-tuning before interactive use",
       "No native chat format or tool interfaces"
     ],
-    "tags": ["Base model", "Open weights", "Research", "Linear Attention"],
+    "tags": [
+      "Base model",
+      "Open weights",
+      "Research",
+      "Linear Attention"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -8407,7 +9132,9 @@
       "availability": "Production API",
       "releaseDate": "2025-08-15",
       "sourceId": "source-moonshot",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -8484,7 +9211,12 @@
       "Higher token costs than Flash alternatives",
       "Slower time-to-first-token than Flash"
     ],
-    "tags": ["Flagship", "Coding", "Research", "Multimodal"],
+    "tags": [
+      "Flagship",
+      "Coding",
+      "Research",
+      "Multimodal"
+    ],
     "facts": {
       "context": 2097152,
       "maxOutput": 65536,
@@ -8499,7 +9231,10 @@
       "availability": "Production API",
       "releaseDate": "2025-08-14",
       "sourceId": "source-google",
-      "reasoningEffort": ["none", "medium"],
+      "reasoningEffort": [
+        "none",
+        "medium"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -8650,7 +9385,11 @@
       "Lower coding resolution than Pro models on multi-file repos",
       "Text and image outputs only"
     ],
-    "tags": ["Speed", "Multimodal", "Best value"],
+    "tags": [
+      "Speed",
+      "Multimodal",
+      "Best value"
+    ],
     "facts": {
       "context": 1048576,
       "maxOutput": 32768,
@@ -8665,7 +9404,9 @@
       "availability": "Production API",
       "releaseDate": "2025-08-14",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -8806,7 +9547,11 @@
       "Lower STEM and complex logic reasoning depth",
       "Audio input is omitted"
     ],
-    "tags": ["Best value", "Speed", "Fast"],
+    "tags": [
+      "Best value",
+      "Speed",
+      "Fast"
+    ],
     "facts": {
       "context": 1048576,
       "maxOutput": 16384,
@@ -8821,7 +9566,9 @@
       "availability": "Production API",
       "releaseDate": "2025-08-14",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -8945,7 +9692,13 @@
       "Text-only foundation model without native vision processing",
       "High memory footprint requiring enterprise-grade GPU cluster for full precision"
     ],
-    "tags": ["Flagship", "Open weights", "MoE", "Reasoning", "Snapshot"],
+    "tags": [
+      "Flagship",
+      "Open weights",
+      "MoE",
+      "Reasoning",
+      "Snapshot"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 16384,
@@ -8960,7 +9713,12 @@
       "availability": "Production API",
       "releaseDate": "2025-08-13",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none", "low", "medium", "high"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -9036,7 +9794,11 @@
       "High price point ($15 input / $75 output per 1M)",
       "Superseded by lower-priced Opus 4.5+ models"
     ],
-    "tags": ["Reasoning", "Writing", "Analysis"],
+    "tags": [
+      "Reasoning",
+      "Writing",
+      "Analysis"
+    ],
     "facts": {
       "context": 200000,
       "maxOutput": 32000,
@@ -9051,7 +9813,9 @@
       "availability": "Production API",
       "releaseDate": "2025-08-10",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -9195,7 +9959,9 @@
       "availability": "Production API",
       "releaseDate": "2025-08-10",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -9273,7 +10039,13 @@
       "Text-only model",
       "Moderate reasoning depth on open-ended STEM competition problems"
     ],
-    "tags": ["Fast", "Open weights", "MoE", "Best value", "Daily use"],
+    "tags": [
+      "Fast",
+      "Open weights",
+      "MoE",
+      "Best value",
+      "Daily use"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
@@ -9288,7 +10060,9 @@
       "availability": "Production API",
       "releaseDate": "2025-08-05",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -9383,7 +10157,12 @@
       "Uncalibrated base completion model requiring fine-tuning or system prompting",
       "Text-only model"
     ],
-    "tags": ["Foundation", "Base model", "Open weights", "Fast"],
+    "tags": [
+      "Foundation",
+      "Base model",
+      "Open weights",
+      "Fast"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
@@ -9398,7 +10177,9 @@
       "availability": "Production API",
       "releaseDate": "2025-08-05",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -9475,7 +10256,13 @@
       "Text-only model without vision capabilities",
       "Less exhaustive on deeply complex mathematical proofs than V4-Pro"
     ],
-    "tags": ["Fast", "Open weights", "MoE", "Snapshot", "Best value"],
+    "tags": [
+      "Fast",
+      "Open weights",
+      "MoE",
+      "Snapshot",
+      "Best value"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
@@ -9490,7 +10277,9 @@
       "availability": "Production API",
       "releaseDate": "2025-07-31",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -9568,7 +10357,12 @@
       "Lacks native vision input capabilities",
       "Superseded in specialized coding benchmarks by subsequent K2.x releases"
     ],
-    "tags": ["Generalist", "Open weights", "Daily use", "Writing"],
+    "tags": [
+      "Generalist",
+      "Open weights",
+      "Daily use",
+      "Writing"
+    ],
     "facts": {
       "context": 256000,
       "maxOutput": 16384,
@@ -9583,7 +10377,9 @@
       "availability": "Production API",
       "releaseDate": "2025-07-20",
       "sourceId": "source-moonshot",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -9660,7 +10456,11 @@
       "Base model without chat or instruction alignment; requires prompting or fine-tuning",
       "No tool calling or structured function interfaces out-of-the-box"
     ],
-    "tags": ["Base model", "Open weights", "Research"],
+    "tags": [
+      "Base model",
+      "Open weights",
+      "Research"
+    ],
     "facts": {
       "context": 256000,
       "maxOutput": 16384,
@@ -9675,7 +10475,9 @@
       "availability": "Production API",
       "releaseDate": "2025-07-20",
       "sourceId": "source-moonshot",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -9752,7 +10554,11 @@
       "High output pricing ($75/1M)",
       "Slower token generation speed than Sonnet 4"
     ],
-    "tags": ["Flagship", "Writing", "Complex reasoning"],
+    "tags": [
+      "Flagship",
+      "Writing",
+      "Complex reasoning"
+    ],
     "facts": {
       "context": 200000,
       "maxOutput": 32000,
@@ -9767,7 +10573,9 @@
       "availability": "Production API",
       "releaseDate": "2025-07-15",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -9886,8 +10694,15 @@
       "Superb software engineering and agentic tool adherence",
       "Reliable prompt caching discounts"
     ],
-    "weaknesses": ["Higher tiered pricing on prompts over 200,000 tokens"],
-    "tags": ["Coding", "Agents", "Enterprise", "Large context"],
+    "weaknesses": [
+      "Higher tiered pricing on prompts over 200,000 tokens"
+    ],
+    "tags": [
+      "Coding",
+      "Agents",
+      "Enterprise",
+      "Large context"
+    ],
     "facts": {
       "context": 1000000,
       "maxOutput": 64000,
@@ -9902,7 +10717,9 @@
       "availability": "Production API",
       "releaseDate": "2025-07-15",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -10044,7 +10861,13 @@
       "Thinking step overhead increases total response latency",
       "Does not support native audio speech understanding"
     ],
-    "tags": ["Vision", "Reasoning", "Open weights", "Multimodal", "Efficient"],
+    "tags": [
+      "Vision",
+      "Reasoning",
+      "Open weights",
+      "Multimodal",
+      "Efficient"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 32768,
@@ -10059,7 +10882,9 @@
       "availability": "Production API",
       "releaseDate": "2025-06-25",
       "sourceId": "source-moonshot",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -10136,7 +10961,12 @@
       "Premium price point ($20 input / $80 output)",
       "High response latency during deep reasoning tasks"
     ],
-    "tags": ["Reasoning", "STEM", "Coding", "Flagship"],
+    "tags": [
+      "Reasoning",
+      "STEM",
+      "Coding",
+      "Flagship"
+    ],
     "facts": {
       "context": 200000,
       "maxOutput": 100000,
@@ -10151,7 +10981,12 @@
       "availability": "Production API",
       "releaseDate": "2025-06-12",
       "sourceId": "source-openai",
-      "reasoningEffort": ["low", "medium", "high", "max"],
+      "reasoningEffort": [
+        "low",
+        "medium",
+        "high",
+        "max"
+      ],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -10275,7 +11110,13 @@
       "Dense 72B parameter model with higher GPU memory requirements than sparse MoEs",
       "Specialized for coding agents; less versatile for literary and casual writing"
     ],
-    "tags": ["Coding", "Agents", "Open weights", "Developer", "SWE-bench"],
+    "tags": [
+      "Coding",
+      "Agents",
+      "Open weights",
+      "Developer",
+      "SWE-bench"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 16384,
@@ -10290,7 +11131,9 @@
       "availability": "Production API",
       "releaseDate": "2025-06-10",
       "sourceId": "source-moonshot",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -10389,7 +11232,12 @@
       "availability": "Production API",
       "releaseDate": "2025-06-10",
       "sourceId": "source-minimax",
-      "reasoningEffort": ["low", "medium", "high", "max"],
+      "reasoningEffort": [
+        "low",
+        "medium",
+        "high",
+        "max"
+      ],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -10467,7 +11315,12 @@
       "Slightly lower peak benchmark resolution than the full 80k reasoning configuration",
       "Requires substantial VRAM for long-context KV cache management"
     ],
-    "tags": ["Reasoning", "Open weights", "Coding", "Large context"],
+    "tags": [
+      "Reasoning",
+      "Open weights",
+      "Coding",
+      "Large context"
+    ],
     "facts": {
       "context": 1000000,
       "maxOutput": 40960,
@@ -10482,7 +11335,11 @@
       "availability": "Production API",
       "releaseDate": "2025-06-10",
       "sourceId": "source-minimax",
-      "reasoningEffort": ["low", "medium", "high"],
+      "reasoningEffort": [
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -10560,7 +11417,12 @@
       "Requires dual-GPU setup for full FP16/BF16 self-hosted inference",
       "Specialized for technical reasoning rather than creative dialogue"
     ],
-    "tags": ["Reasoning", "Open weights", "Coding", "Research"],
+    "tags": [
+      "Reasoning",
+      "Open weights",
+      "Coding",
+      "Research"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 16384,
@@ -10575,7 +11437,11 @@
       "availability": "Production API",
       "releaseDate": "2025-06-01",
       "sourceId": "source-minimax",
-      "reasoningEffort": ["low", "medium", "high"],
+      "reasoningEffort": [
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -10652,7 +11518,12 @@
       "Text-only model",
       "Higher generation latency due to expansive chain-of-thought tokens"
     ],
-    "tags": ["Reasoning", "Open weights", "Research", "Snapshot"],
+    "tags": [
+      "Reasoning",
+      "Open weights",
+      "Research",
+      "Snapshot"
+    ],
     "facts": {
       "context": 64000,
       "maxOutput": 16384,
@@ -10667,7 +11538,9 @@
       "availability": "Production API",
       "releaseDate": "2025-05-28",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -10762,7 +11635,12 @@
       "Text-only model",
       "Smaller capacity than 32B or 70B distillation variants"
     ],
-    "tags": ["Reasoning", "Open weights", "Edge", "STEM"],
+    "tags": [
+      "Reasoning",
+      "Open weights",
+      "Edge",
+      "STEM"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -10777,7 +11655,9 @@
       "availability": "Production API",
       "releaseDate": "2025-05-28",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -10854,7 +11734,13 @@
       "Focused on mathematical and algorithmic tasks; less conversational than standard V3.2",
       "Text-only model"
     ],
-    "tags": ["STEM", "Open weights", "Math", "Reasoning", "Specialized"],
+    "tags": [
+      "STEM",
+      "Open weights",
+      "Math",
+      "Reasoning",
+      "Specialized"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 16384,
@@ -10869,7 +11755,9 @@
       "availability": "Production API",
       "releaseDate": "2025-05-25",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -10947,7 +11835,12 @@
       "131,072 context window is smaller than 1M+ flagship architectures",
       "Pure reasoning focus; less suited for unstructured creative writing"
     ],
-    "tags": ["Reasoning", "Open weights", "Research", "Coding"],
+    "tags": [
+      "Reasoning",
+      "Open weights",
+      "Research",
+      "Coding"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 16384,
@@ -10962,7 +11855,11 @@
       "availability": "Production API",
       "releaseDate": "2025-05-25",
       "sourceId": "source-minimax",
-      "reasoningEffort": ["low", "medium", "high"],
+      "reasoningEffort": [
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -11040,7 +11937,12 @@
       "Compact capacity limits broad world knowledge compared to 32B+ scale",
       "Cannot process visual inputs"
     ],
-    "tags": ["Reasoning", "Open weights", "Speed", "Best value"],
+    "tags": [
+      "Reasoning",
+      "Open weights",
+      "Speed",
+      "Best value"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
@@ -11055,7 +11957,10 @@
       "availability": "Production API",
       "releaseDate": "2025-05-25",
       "sourceId": "source-minimax",
-      "reasoningEffort": ["low", "medium"],
+      "reasoningEffort": [
+        "low",
+        "medium"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -11132,7 +12037,12 @@
       "High cost per completed research task ($1 to $5+)",
       "Generates long responses requiring substantial execution time"
     ],
-    "tags": ["Research", "Reasoning", "STEM", "Agentic"],
+    "tags": [
+      "Research",
+      "Reasoning",
+      "STEM",
+      "Agentic"
+    ],
     "facts": {
       "context": 200000,
       "maxOutput": 65536,
@@ -11147,7 +12057,11 @@
       "availability": "Production API",
       "releaseDate": "2025-05-20",
       "sourceId": "source-openai",
-      "reasoningEffort": ["medium", "high", "max"],
+      "reasoningEffort": [
+        "medium",
+        "high",
+        "max"
+      ],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -11270,7 +12184,11 @@
       "Dedicated classification model; not a general conversational agent",
       "Small output token limit"
     ],
-    "tags": ["Open weights", "Safety", "Moderation"],
+    "tags": [
+      "Open weights",
+      "Safety",
+      "Moderation"
+    ],
     "facts": {
       "context": 16384,
       "maxOutput": 2048,
@@ -11285,7 +12203,9 @@
       "availability": "Production API",
       "releaseDate": "2025-05-18",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -11408,7 +12328,13 @@
       "Text-only model without vision or audio processing",
       "Full precision deployment demands high-end hardware"
     ],
-    "tags": ["Flagship", "Open weights", "MoE", "Coding", "General purpose"],
+    "tags": [
+      "Flagship",
+      "Open weights",
+      "MoE",
+      "Coding",
+      "General purpose"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -11423,7 +12349,9 @@
       "availability": "Production API",
       "releaseDate": "2025-05-15",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -11518,7 +12446,12 @@
       "Experimental weights may exhibit occasional output variance",
       "Text-only model"
     ],
-    "tags": ["Experimental", "Open weights", "Research", "MoE"],
+    "tags": [
+      "Experimental",
+      "Open weights",
+      "Research",
+      "MoE"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -11533,7 +12466,9 @@
       "availability": "Production API",
       "releaseDate": "2025-05-10",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -11628,7 +12563,12 @@
       "Unsupervised completion model requiring prompt formatting or fine-tuning",
       "Text-only model"
     ],
-    "tags": ["Foundation", "Base model", "Open weights", "Experimental"],
+    "tags": [
+      "Foundation",
+      "Base model",
+      "Open weights",
+      "Experimental"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -11643,7 +12583,9 @@
       "availability": "Production API",
       "releaseDate": "2025-05-10",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -11720,7 +12662,12 @@
       "Earlier release superseded by 2506 revision in ultra-high resolution image tasks",
       "Text generation latency higher than non-thinking instruction variant"
     ],
-    "tags": ["Vision", "Reasoning", "Open weights", "Multimodal"],
+    "tags": [
+      "Vision",
+      "Reasoning",
+      "Open weights",
+      "Multimodal"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 32768,
@@ -11735,7 +12682,9 @@
       "availability": "Production API",
       "releaseDate": "2025-04-20",
       "sourceId": "source-moonshot",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -11812,7 +12761,13 @@
       "Less capable on tricky multi-step visual math problems than thinking models",
       "No audio input support"
     ],
-    "tags": ["Vision", "Fast", "Best value", "Open weights", "Multimodal"],
+    "tags": [
+      "Vision",
+      "Fast",
+      "Best value",
+      "Open weights",
+      "Multimodal"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -11827,7 +12782,9 @@
       "availability": "Production API",
       "releaseDate": "2025-04-20",
       "sourceId": "source-moonshot",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -11904,7 +12861,12 @@
       "Thinking latency before generating user-facing response",
       "Premium pricing compared to o3-mini"
     ],
-    "tags": ["Reasoning", "STEM", "Coding", "Flagship"],
+    "tags": [
+      "Reasoning",
+      "STEM",
+      "Coding",
+      "Flagship"
+    ],
     "facts": {
       "context": 200000,
       "maxOutput": 100000,
@@ -11919,7 +12881,11 @@
       "availability": "Production API",
       "releaseDate": "2025-04-10",
       "sourceId": "source-openai",
-      "reasoningEffort": ["low", "medium", "high"],
+      "reasoningEffort": [
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -12060,7 +13026,13 @@
       "Strict formal theorem proving specialization",
       "Requires specialized multi-GPU cluster to host"
     ],
-    "tags": ["STEM", "Open weights", "Lean 4", "Research", "MoE"],
+    "tags": [
+      "STEM",
+      "Open weights",
+      "Lean 4",
+      "Research",
+      "MoE"
+    ],
     "facts": {
       "context": 64000,
       "maxOutput": 16384,
@@ -12075,7 +13047,9 @@
       "availability": "Production API",
       "releaseDate": "2025-04-10",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -12152,7 +13126,13 @@
       "Domain-specific theorem proving focus",
       "Lower proof resolution rate than 671B variant on Putnam-level proofs"
     ],
-    "tags": ["STEM", "Open weights", "Lean 4", "Research", "Edge"],
+    "tags": [
+      "STEM",
+      "Open weights",
+      "Lean 4",
+      "Research",
+      "Edge"
+    ],
     "facts": {
       "context": 32768,
       "maxOutput": 8192,
@@ -12167,7 +13147,9 @@
       "availability": "Production API",
       "releaseDate": "2025-04-10",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -12240,8 +13222,16 @@
       "Identical low-latency 37B active MoE execution",
       "Proven high performance across code and multilingual benchmarks"
     ],
-    "weaknesses": ["Text-only model", "64k token context limit"],
-    "tags": ["Open weights", "MoE", "Snapshot", "Coding"],
+    "weaknesses": [
+      "Text-only model",
+      "64k token context limit"
+    ],
+    "tags": [
+      "Open weights",
+      "MoE",
+      "Snapshot",
+      "Coding"
+    ],
     "facts": {
       "context": 64000,
       "maxOutput": 8192,
@@ -12256,7 +13246,9 @@
       "availability": "Production API",
       "releaseDate": "2025-03-24",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -12333,7 +13325,12 @@
       "Specialized for system administration and devops; less suited for creative writing",
       "Text-only model"
     ],
-    "tags": ["Agentic", "Coding", "Open weights", "Tools"],
+    "tags": [
+      "Agentic",
+      "Coding",
+      "Open weights",
+      "Tools"
+    ],
     "facts": {
       "context": 64000,
       "maxOutput": 8192,
@@ -12348,7 +13345,9 @@
       "availability": "Production API",
       "releaseDate": "2025-03-20",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -12421,8 +13420,15 @@
       "High structured output JSON compliance",
       "Economical mid-tier pricing"
     ],
-    "weaknesses": ["Does not include extended chain-of-thought thinking"],
-    "tags": ["Vision", "Daily use", "Multimodal", "Balanced"],
+    "weaknesses": [
+      "Does not include extended chain-of-thought thinking"
+    ],
+    "tags": [
+      "Vision",
+      "Daily use",
+      "Multimodal",
+      "Balanced"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 16384,
@@ -12437,7 +13443,9 @@
       "availability": "Production API",
       "releaseDate": "2025-03-15",
       "sourceId": "source-openai",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -12556,8 +13564,15 @@
       "High throughput response generation",
       "128k context with multimodal vision support"
     ],
-    "weaknesses": ["Lower coding scores than flagship models"],
-    "tags": ["Best value", "Speed", "Vision", "Daily use"],
+    "weaknesses": [
+      "Lower coding scores than flagship models"
+    ],
+    "tags": [
+      "Best value",
+      "Speed",
+      "Vision",
+      "Daily use"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 16384,
@@ -12572,7 +13587,9 @@
       "availability": "Production API",
       "releaseDate": "2025-03-15",
       "sourceId": "source-openai",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -12691,8 +13708,14 @@
       "Ultra-low API cost ($0.06 / $0.24 per 1M tokens)",
       "Strict adherence to output schemas"
     ],
-    "weaknesses": ["Text only; limited logical depth"],
-    "tags": ["Speed", "Best value", "Fast"],
+    "weaknesses": [
+      "Text only; limited logical depth"
+    ],
+    "tags": [
+      "Speed",
+      "Best value",
+      "Fast"
+    ],
     "facts": {
       "context": 65536,
       "maxOutput": 4096,
@@ -12707,7 +13730,9 @@
       "availability": "Production API",
       "releaseDate": "2025-03-15",
       "sourceId": "source-openai",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -12830,7 +13855,12 @@
       "Text-only model",
       "Context limited to 64k tokens on initial hosted endpoints"
     ],
-    "tags": ["General purpose", "Open weights", "MoE", "Coding"],
+    "tags": [
+      "General purpose",
+      "Open weights",
+      "MoE",
+      "Coding"
+    ],
     "facts": {
       "context": 64000,
       "maxOutput": 8192,
@@ -12845,7 +13875,9 @@
       "availability": "Production API",
       "releaseDate": "2025-03-15",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -12922,7 +13954,12 @@
       "Requires instructional alignment for production conversational use",
       "Text-only model"
     ],
-    "tags": ["Foundation", "Base model", "Open weights", "MoE"],
+    "tags": [
+      "Foundation",
+      "Base model",
+      "Open weights",
+      "MoE"
+    ],
     "facts": {
       "context": 64000,
       "maxOutput": 8192,
@@ -12937,7 +13974,9 @@
       "availability": "Production API",
       "releaseDate": "2025-03-15",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -13014,7 +14053,12 @@
       "High API pricing ($75/1M input, $150/1M output)",
       "Not a dedicated chain-of-thought reasoning model compared to o3/o1 for pure math"
     ],
-    "tags": ["Vision", "Research", "Agentic", "Knowledge"],
+    "tags": [
+      "Vision",
+      "Research",
+      "Agentic",
+      "Knowledge"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 16384,
@@ -13029,7 +14073,9 @@
       "availability": "Production API",
       "releaseDate": "2025-02-27",
       "sourceId": "source-openai",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -13171,7 +14217,13 @@
       "Higher latency when extended thinking budget is set to maximum",
       "Premium output pricing ($15.00/1M tokens) during long chain-of-thought generation"
     ],
-    "tags": ["Reasoning", "Coding", "Agentic", "Vision", "Multimodal"],
+    "tags": [
+      "Reasoning",
+      "Coding",
+      "Agentic",
+      "Vision",
+      "Multimodal"
+    ],
     "facts": {
       "context": 200000,
       "maxOutput": 128000,
@@ -13186,7 +14238,11 @@
       "availability": "Production API",
       "releaseDate": "2025-02-24",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["low", "medium", "high"],
+      "reasoningEffort": [
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -13328,7 +14384,13 @@
       "Shorter context window (8,192 tokens) focused on efficient execution rather than massive documents",
       "Text-only model without vision capabilities"
     ],
-    "tags": ["Efficient", "Open weights", "Best value", "Fast", "Research"],
+    "tags": [
+      "Efficient",
+      "Open weights",
+      "Best value",
+      "Fast",
+      "Research"
+    ],
     "facts": {
       "context": 8192,
       "maxOutput": 4096,
@@ -13343,7 +14405,9 @@
       "availability": "Production API",
       "releaseDate": "2025-02-15",
       "sourceId": "source-moonshot",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -13420,7 +14484,12 @@
       "Base model requiring instruction tuning or few-shot examples for dialogue",
       "8k context window limit"
     ],
-    "tags": ["Base model", "Open weights", "Research", "Efficient"],
+    "tags": [
+      "Base model",
+      "Open weights",
+      "Research",
+      "Efficient"
+    ],
     "facts": {
       "context": 8192,
       "maxOutput": 4096,
@@ -13435,7 +14504,9 @@
       "availability": "Production API",
       "releaseDate": "2025-02-15",
       "sourceId": "source-moonshot",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -13512,7 +14583,12 @@
       "Higher token cost than Flash models",
       "Slower generation than Flash"
     ],
-    "tags": ["Flagship", "Coding", "Research", "Long context"],
+    "tags": [
+      "Flagship",
+      "Coding",
+      "Research",
+      "Long context"
+    ],
     "facts": {
       "context": 2097152,
       "maxOutput": 65536,
@@ -13527,7 +14603,10 @@
       "availability": "Production API",
       "releaseDate": "2025-02-05",
       "sourceId": "source-google",
-      "reasoningEffort": ["none", "medium"],
+      "reasoningEffort": [
+        "none",
+        "medium"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -13650,7 +14729,13 @@
       "Experimental status with potential endpoint changes across preview cycles",
       "Higher latency than Gemini 2.0 Flash on basic prompts"
     ],
-    "tags": ["Coding", "Research", "Long context", "Vision", "Multimodal"],
+    "tags": [
+      "Coding",
+      "Research",
+      "Long context",
+      "Vision",
+      "Multimodal"
+    ],
     "facts": {
       "context": 2097152,
       "maxOutput": 65536,
@@ -13665,7 +14750,9 @@
       "availability": "Production API",
       "releaseDate": "2025-02-05",
       "sourceId": "source-google",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -13788,7 +14875,12 @@
       "Lower maximum reasoning capability on intricate math and coding proofs",
       "Compressed parameter footprint compared to Pro models"
     ],
-    "tags": ["Best value", "Fast", "Long context", "Vision"],
+    "tags": [
+      "Best value",
+      "Fast",
+      "Long context",
+      "Vision"
+    ],
     "facts": {
       "context": 1048576,
       "maxOutput": 65536,
@@ -13803,7 +14895,9 @@
       "availability": "Production API",
       "releaseDate": "2025-02-05",
       "sourceId": "source-google",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -13926,7 +15020,12 @@
       "Text-only inputs (no vision or multimodal analysis)",
       "Longer latency than non-reasoning models when using high effort"
     ],
-    "tags": ["Reasoning", "Coding", "STEM", "Best value"],
+    "tags": [
+      "Reasoning",
+      "Coding",
+      "STEM",
+      "Best value"
+    ],
     "facts": {
       "context": 200000,
       "maxOutput": 100000,
@@ -13941,7 +15040,11 @@
       "availability": "Production API",
       "releaseDate": "2025-01-31",
       "sourceId": "source-openai",
-      "reasoningEffort": ["low", "medium", "high"],
+      "reasoningEffort": [
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -14065,7 +15168,12 @@
       "Text-only model without multimodal vision capabilities",
       "Context window limited to 32k tokens"
     ],
-    "tags": ["Open weights", "Best value", "Coding", "Fast"],
+    "tags": [
+      "Open weights",
+      "Best value",
+      "Coding",
+      "Fast"
+    ],
     "facts": {
       "context": 32768,
       "maxOutput": 8192,
@@ -14080,7 +15188,9 @@
       "availability": "Production API",
       "releaseDate": "2025-01-29",
       "sourceId": "source-mistral",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -14204,7 +15314,12 @@
       "Fixed 384x384 standard image generation grid",
       "4,096 token context window"
     ],
-    "tags": ["Vision", "Multimodal", "Generation", "Open weights"],
+    "tags": [
+      "Vision",
+      "Multimodal",
+      "Generation",
+      "Open weights"
+    ],
     "facts": {
       "context": 4096,
       "maxOutput": 4096,
@@ -14219,7 +15334,9 @@
       "availability": "Production API",
       "releaseDate": "2025-01-27",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -14342,7 +15459,12 @@
       "Lower detail resolution in generated art than 7B model",
       "Compact reasoning capacity on multi-step visual logic"
     ],
-    "tags": ["Vision", "Multimodal", "Generation", "Edge"],
+    "tags": [
+      "Vision",
+      "Multimodal",
+      "Generation",
+      "Edge"
+    ],
     "facts": {
       "context": 4096,
       "maxOutput": 4096,
@@ -14357,7 +15479,9 @@
       "availability": "Production API",
       "releaseDate": "2025-01-27",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -14480,7 +15604,12 @@
       "Proprietary hosted API (not available as open weights)",
       "Text-only interface without native visual inputs"
     ],
-    "tags": ["Research", "STEM", "Coding", "Multilingual"],
+    "tags": [
+      "Research",
+      "STEM",
+      "Coding",
+      "Multilingual"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
@@ -14495,7 +15624,9 @@
       "availability": "Production API",
       "releaseDate": "2025-01-27",
       "sourceId": "source-qwen",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -14619,7 +15750,13 @@
       "Text-only model with no native image or audio support",
       "API rate limits and peak-hour queue delays on official hosted endpoints"
     ],
-    "tags": ["Reasoning", "Open weights", "Coding", "Best value", "Flagship"],
+    "tags": [
+      "Reasoning",
+      "Open weights",
+      "Coding",
+      "Best value",
+      "Flagship"
+    ],
     "facts": {
       "context": 64000,
       "maxOutput": 8192,
@@ -14634,7 +15771,9 @@
       "availability": "Production API",
       "releaseDate": "2025-01-20",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -14757,7 +15896,12 @@
       "Lacks human-preference alignment; outputs mixed languages and repetitive chains without SFT formatting",
       "Text-only model without multimodal vision capabilities"
     ],
-    "tags": ["Reasoning", "Open weights", "Research", "Milestone"],
+    "tags": [
+      "Reasoning",
+      "Open weights",
+      "Research",
+      "Milestone"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -14772,7 +15916,9 @@
       "availability": "Production API",
       "releaseDate": "2025-01-20",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -14896,7 +16042,12 @@
       "Text-only reasoning without image or audio support",
       "Requires dual-GPU or 4-bit quantization for self-hosting"
     ],
-    "tags": ["Reasoning", "Open weights", "STEM", "Coding"],
+    "tags": [
+      "Reasoning",
+      "Open weights",
+      "STEM",
+      "Coding"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -14911,7 +16062,9 @@
       "availability": "Production API",
       "releaseDate": "2025-01-20",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -15034,7 +16187,12 @@
       "Text-only reasoning without multimodal vision capabilities",
       "Narrower general world knowledge compared to 671B full R1"
     ],
-    "tags": ["Reasoning", "Open weights", "STEM", "Best value"],
+    "tags": [
+      "Reasoning",
+      "Open weights",
+      "STEM",
+      "Best value"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
@@ -15049,7 +16207,9 @@
       "availability": "Production API",
       "releaseDate": "2025-01-20",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -15155,7 +16315,12 @@
       "Text and code only; lacks multimodal visual understanding",
       "Smaller memory capacity than 32B or 70B distillation variants"
     ],
-    "tags": ["Reasoning", "Open weights", "STEM", "Best value"],
+    "tags": [
+      "Reasoning",
+      "Open weights",
+      "STEM",
+      "Best value"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -15170,7 +16335,9 @@
       "availability": "Production API",
       "releaseDate": "2025-01-20",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -15294,7 +16461,12 @@
       "Text-only with no multimodal vision support",
       "Lower reasoning depth than 32B/70B variants on highly complex STEM proofs"
     ],
-    "tags": ["Reasoning", "Open weights", "Edge", "Best value"],
+    "tags": [
+      "Reasoning",
+      "Open weights",
+      "Edge",
+      "Best value"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -15309,7 +16481,9 @@
       "availability": "Production API",
       "releaseDate": "2025-01-20",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -15432,7 +16606,12 @@
       "Text-only without image processing",
       "More prone to hallucinating niche domain facts than larger models"
     ],
-    "tags": ["Reasoning", "Open weights", "STEM", "Edge"],
+    "tags": [
+      "Reasoning",
+      "Open weights",
+      "STEM",
+      "Edge"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -15447,7 +16626,9 @@
       "availability": "Production API",
       "releaseDate": "2025-01-20",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -15570,7 +16751,12 @@
       "Limited broad world knowledge and multi-lingual nuance",
       "Text-only; complex logical chains may occasionally derail"
     ],
-    "tags": ["Reasoning", "Open weights", "Edge", "Ultra-fast"],
+    "tags": [
+      "Reasoning",
+      "Open weights",
+      "Edge",
+      "Ultra-fast"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -15585,7 +16771,9 @@
       "availability": "Production API",
       "releaseDate": "2025-01-20",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -15709,7 +16897,13 @@
       "Thinking step outputs add response latency",
       "Predecessor to the larger 1T+ K2 and 2.8T K3 architectures"
     ],
-    "tags": ["Reasoning", "Vision", "Open weights", "Coding", "Research"],
+    "tags": [
+      "Reasoning",
+      "Vision",
+      "Open weights",
+      "Coding",
+      "Research"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 32768,
@@ -15724,7 +16918,9 @@
       "availability": "Production API",
       "releaseDate": "2025-01-20",
       "sourceId": "source-moonshot",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -15823,7 +17019,9 @@
       "availability": "Production API",
       "releaseDate": "2025-01-20",
       "sourceId": "source-minimax",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -15901,7 +17099,12 @@
       "Requires specialized distributed inference engines (such as vLLM/SGLang with linear attention kernels)",
       "Text only; visual inputs handled by sister model MiniMax-VL-01"
     ],
-    "tags": ["Large context", "Research", "Open weights", "Flagship"],
+    "tags": [
+      "Large context",
+      "Research",
+      "Open weights",
+      "Flagship"
+    ],
     "facts": {
       "context": 4000000,
       "maxOutput": 16384,
@@ -15916,7 +17119,9 @@
       "availability": "Production API",
       "releaseDate": "2025-01-16",
       "sourceId": "source-minimax",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -15993,7 +17198,12 @@
       "Specialized for coding; less versatile on generic prose or creative writing",
       "Text and code only (no multimodal vision)"
     ],
-    "tags": ["Coding", "Large context", "Fast", "Best value"],
+    "tags": [
+      "Coding",
+      "Large context",
+      "Fast",
+      "Best value"
+    ],
     "facts": {
       "context": 256000,
       "maxOutput": 8192,
@@ -16008,7 +17218,9 @@
       "availability": "Production API",
       "releaseDate": "2025-01-14",
       "sourceId": "source-mistral",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -16132,7 +17344,13 @@
       "Text-only model without vision or audio processing",
       "Context window limited to 64,000 tokens on official hosted API"
     ],
-    "tags": ["Best value", "Open weights", "Coding", "Daily use", "Flagship"],
+    "tags": [
+      "Best value",
+      "Open weights",
+      "Coding",
+      "Daily use",
+      "Flagship"
+    ],
     "facts": {
       "context": 64000,
       "maxOutput": 8192,
@@ -16147,7 +17365,9 @@
       "availability": "Production API",
       "releaseDate": "2024-12-26",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -16270,7 +17490,12 @@
       "Raw base completion model requiring instructional tuning or few-shot prompting for chat",
       "Text-only without vision capabilities"
     ],
-    "tags": ["Foundation", "Open weights", "MoE", "Base model"],
+    "tags": [
+      "Foundation",
+      "Open weights",
+      "MoE",
+      "Base model"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -16285,7 +17510,9 @@
       "availability": "Production API",
       "releaseDate": "2024-12-26",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -16408,7 +17635,12 @@
       "Thinking process consumes additional output tokens",
       "Experimental preview endpoint subject to rate limitations"
     ],
-    "tags": ["Reasoning", "STEM", "Long context", "Vision"],
+    "tags": [
+      "Reasoning",
+      "STEM",
+      "Long context",
+      "Vision"
+    ],
     "facts": {
       "context": 1048576,
       "maxOutput": 65536,
@@ -16423,7 +17655,9 @@
       "availability": "Production API",
       "releaseDate": "2024-12-19",
       "sourceId": "source-google",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -16546,7 +17780,11 @@
       "Very expensive ($20 input / $80 output per 1M tokens)",
       "Significant latency on complex queries"
     ],
-    "tags": ["Reasoning", "STEM", "Flagship"],
+    "tags": [
+      "Reasoning",
+      "STEM",
+      "Flagship"
+    ],
     "facts": {
       "context": 200000,
       "maxOutput": 100000,
@@ -16561,7 +17799,10 @@
       "availability": "Production API",
       "releaseDate": "2024-12-17",
       "sourceId": "source-openai",
-      "reasoningEffort": ["high", "max"],
+      "reasoningEffort": [
+        "high",
+        "max"
+      ],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -16684,7 +17925,12 @@
       "Does not support native audio or video stream inputs",
       "32k context window is smaller than text-only counterparts"
     ],
-    "tags": ["Vision", "Multimodal", "MoE", "Open weights"],
+    "tags": [
+      "Vision",
+      "Multimodal",
+      "MoE",
+      "Open weights"
+    ],
     "facts": {
       "context": 32000,
       "maxOutput": 4096,
@@ -16699,7 +17945,9 @@
       "availability": "Production API",
       "releaseDate": "2024-12-13",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -16822,7 +18070,12 @@
       "Lower nuance on subtle visual reasoning than 27.5B model",
       "Vision and text only (no video/audio)"
     ],
-    "tags": ["Vision", "Multimodal", "MoE", "Edge"],
+    "tags": [
+      "Vision",
+      "Multimodal",
+      "MoE",
+      "Edge"
+    ],
     "facts": {
       "context": 32000,
       "maxOutput": 4096,
@@ -16837,7 +18090,9 @@
       "availability": "Production API",
       "releaseDate": "2024-12-13",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -16960,7 +18215,12 @@
       "Basic conversational depth compared to larger models",
       "Limited multi-turn complex image reasoning"
     ],
-    "tags": ["Vision", "Multimodal", "Edge", "Ultra-fast"],
+    "tags": [
+      "Vision",
+      "Multimodal",
+      "Edge",
+      "Ultra-fast"
+    ],
     "facts": {
       "context": 32000,
       "maxOutput": 4096,
@@ -16975,7 +18235,9 @@
       "availability": "Production API",
       "releaseDate": "2024-12-13",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -17098,7 +18360,12 @@
       "Higher output pricing ($10.00/1M tokens) than mid-tier open models",
       "Rate limits on specialized enterprise tiers"
     ],
-    "tags": ["Vision", "Research", "Agentic", "Daily use"],
+    "tags": [
+      "Vision",
+      "Research",
+      "Agentic",
+      "Daily use"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
@@ -17113,7 +18380,9 @@
       "availability": "Production API",
       "releaseDate": "2024-12-12",
       "sourceId": "source-xai",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -17236,7 +18505,12 @@
       "Lower deep-reasoning depth than dedicated o1/r1 reasoning architectures",
       "Output token limit of 8,192 is lower than flagship generation limits"
     ],
-    "tags": ["Speed", "Multimodal", "Vision", "Large context"],
+    "tags": [
+      "Speed",
+      "Multimodal",
+      "Vision",
+      "Large context"
+    ],
     "facts": {
       "context": 1048576,
       "maxOutput": 8192,
@@ -17251,7 +18525,9 @@
       "availability": "Production API",
       "releaseDate": "2024-12-11",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -17392,7 +18668,12 @@
       "Superseded by DeepSeek V3 in raw benchmark performance",
       "Text-only model"
     ],
-    "tags": ["MoE", "Open weights", "Coding", "Snapshot"],
+    "tags": [
+      "MoE",
+      "Open weights",
+      "Coding",
+      "Snapshot"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -17407,7 +18688,9 @@
       "availability": "Production API",
       "releaseDate": "2024-12-10",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -17485,7 +18768,12 @@
       "Edge scale limits complex mathematical proofs and creative nuance",
       "Text-only inputs without image comprehension"
     ],
-    "tags": ["Agentic", "Open weights", "Best value", "Fast"],
+    "tags": [
+      "Agentic",
+      "Open weights",
+      "Best value",
+      "Fast"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 4096,
@@ -17500,7 +18788,9 @@
       "availability": "Production API",
       "releaseDate": "2024-12-10",
       "sourceId": "source-cohere",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -17623,7 +18913,12 @@
       "Text-only model without vision processing",
       "Lower code generation depth than specialized coding frontier models"
     ],
-    "tags": ["Open weights", "Daily use", "Research", "Best value"],
+    "tags": [
+      "Open weights",
+      "Daily use",
+      "Research",
+      "Best value"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -17638,7 +18933,9 @@
       "availability": "Production API",
       "releaseDate": "2024-12-06",
       "sourceId": "source-meta",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -17761,7 +19058,12 @@
       "Premium pricing ($15 input / $60 output per 1M tokens)",
       "Higher latency due to chain-of-thought token generation before responding"
     ],
-    "tags": ["Reasoning", "Coding", "Flagship", "Vision"],
+    "tags": [
+      "Reasoning",
+      "Coding",
+      "Flagship",
+      "Vision"
+    ],
     "facts": {
       "context": 200000,
       "maxOutput": 100000,
@@ -17776,7 +19078,11 @@
       "availability": "Production API",
       "releaseDate": "2024-12-05",
       "sourceId": "source-openai",
-      "reasoningEffort": ["low", "medium", "high"],
+      "reasoningEffort": [
+        "low",
+        "medium",
+        "high"
+      ],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -17917,7 +19223,12 @@
       "High cost tier ($15 input / $75 output per 1M)",
       "Slower generation speeds than Sonnet models"
     ],
-    "tags": ["Writing", "Research", "Complex reasoning", "Vision"],
+    "tags": [
+      "Writing",
+      "Research",
+      "Complex reasoning",
+      "Vision"
+    ],
     "facts": {
       "context": 200000,
       "maxOutput": 16384,
@@ -17932,7 +19243,9 @@
       "availability": "Production API",
       "releaseDate": "2024-12-05",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -18056,7 +19369,12 @@
       "AWS Bedrock exclusive API (not available as standalone open weights)",
       "No selectable reasoning effort budget controls"
     ],
-    "tags": ["Multimodal", "Vision", "Agentic", "Large context"],
+    "tags": [
+      "Multimodal",
+      "Vision",
+      "Agentic",
+      "Large context"
+    ],
     "facts": {
       "context": 300000,
       "maxOutput": 5000,
@@ -18071,7 +19389,9 @@
       "availability": "Production API",
       "releaseDate": "2024-12-03",
       "sourceId": "source-amazon",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -18195,7 +19515,12 @@
       "Not tuned for deep multi-step algorithmic or math reasoning",
       "Lower coding benchmark accuracy than Nova Pro or Claude 3.5 Haiku"
     ],
-    "tags": ["Best value", "Speed", "Vision", "Multimodal"],
+    "tags": [
+      "Best value",
+      "Speed",
+      "Vision",
+      "Multimodal"
+    ],
     "facts": {
       "context": 300000,
       "maxOutput": 5000,
@@ -18210,7 +19535,9 @@
       "availability": "Production API",
       "releaseDate": "2024-12-03",
       "sourceId": "source-amazon",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -18334,7 +19661,11 @@
       "Text only (no multimodal vision)",
       "Not designed for deep multi-step coding or advanced STEM proofs"
     ],
-    "tags": ["Best value", "Speed", "Fast"],
+    "tags": [
+      "Best value",
+      "Speed",
+      "Fast"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 5000,
@@ -18349,7 +19680,9 @@
       "availability": "Production API",
       "releaseDate": "2024-12-03",
       "sourceId": "source-amazon",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -18472,7 +19805,12 @@
       "Preview release with potential repetition on recursive open-ended prompts",
       "32k token context window (smaller than standard Qwen 2.5 128k)"
     ],
-    "tags": ["Reasoning", "STEM", "Open weights", "Coding"],
+    "tags": [
+      "Reasoning",
+      "STEM",
+      "Open weights",
+      "Coding"
+    ],
     "facts": {
       "context": 32768,
       "maxOutput": 8192,
@@ -18487,7 +19825,9 @@
       "availability": "Production API",
       "releaseDate": "2024-11-28",
       "sourceId": "source-qwen",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -18592,7 +19932,12 @@
       "Requires multi-GPU infrastructure (e.g. 4-8x H100) for local self-hosting",
       "Higher latency on large batches of high-resolution images"
     ],
-    "tags": ["Vision", "Multimodal", "Open weights", "Research"],
+    "tags": [
+      "Vision",
+      "Multimodal",
+      "Open weights",
+      "Research"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
@@ -18607,7 +19952,9 @@
       "availability": "Production API",
       "releaseDate": "2024-11-18",
       "sourceId": "source-mistral",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -18730,7 +20077,12 @@
       "Lower raw STEM and competition math scores than dedicated reasoning models",
       "Context window is smaller than million-token alternatives"
     ],
-    "tags": ["Multilingual", "Vision", "Daily use", "Agents"],
+    "tags": [
+      "Multilingual",
+      "Vision",
+      "Daily use",
+      "Agents"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -18745,7 +20097,9 @@
       "availability": "Production API",
       "releaseDate": "2024-11-18",
       "sourceId": "source-mistral",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -18868,7 +20222,12 @@
       "Specialized STEM domain focus; not for everyday general chat",
       "Text-only model"
     ],
-    "tags": ["STEM", "Open weights", "Math", "Research"],
+    "tags": [
+      "STEM",
+      "Open weights",
+      "Math",
+      "Research"
+    ],
     "facts": {
       "context": 32768,
       "maxOutput": 8192,
@@ -18883,7 +20242,9 @@
       "availability": "Production API",
       "releaseDate": "2024-11-15",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -18960,7 +20321,12 @@
       "Experimental research architecture",
       "4,096 token context window"
     ],
-    "tags": ["Vision", "Multimodal", "Generation", "Research"],
+    "tags": [
+      "Vision",
+      "Multimodal",
+      "Generation",
+      "Research"
+    ],
     "facts": {
       "context": 4096,
       "maxOutput": 4096,
@@ -18975,7 +20341,9 @@
       "availability": "Production API",
       "releaseDate": "2024-11-12",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -19098,7 +20466,12 @@
       "Code and text only (no image or audio comprehension)",
       "Requires fine-tuning for non-coding specialized domains"
     ],
-    "tags": ["Coding", "Open weights", "Best value", "STEM"],
+    "tags": [
+      "Coding",
+      "Open weights",
+      "Best value",
+      "STEM"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
@@ -19113,7 +20486,9 @@
       "availability": "Production API",
       "releaseDate": "2024-11-12",
       "sourceId": "source-qwen",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -19236,7 +20611,12 @@
       "Text-only API (vision support not enabled on 3.5 Haiku API)",
       "Higher pricing than competitor lightweight models (e.g. Gemini Flash)"
     ],
-    "tags": ["Speed", "Coding", "Agents", "Daily use"],
+    "tags": [
+      "Speed",
+      "Coding",
+      "Agents",
+      "Daily use"
+    ],
     "facts": {
       "context": 200000,
       "maxOutput": 8192,
@@ -19251,7 +20631,9 @@
       "availability": "Production API",
       "releaseDate": "2024-11-04",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -19374,7 +20756,12 @@
       "200,000 token context is smaller than million-token alternatives",
       "Rate limits apply during peak enterprise hours"
     ],
-    "tags": ["Coding", "Agents", "Flagship", "Vision"],
+    "tags": [
+      "Coding",
+      "Agents",
+      "Flagship",
+      "Vision"
+    ],
     "facts": {
       "context": 200000,
       "maxOutput": 8192,
@@ -19389,7 +20776,9 @@
       "availability": "Production API",
       "releaseDate": "2024-10-22",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -19531,7 +20920,12 @@
       "Text-only model without vision support",
       "Lower frontier knowledge depth compared to Mistral Large or GPT-4o"
     ],
-    "tags": ["Best value", "Agentic", "Fast", "Large context"],
+    "tags": [
+      "Best value",
+      "Agentic",
+      "Fast",
+      "Large context"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -19546,7 +20940,9 @@
       "availability": "Production API",
       "releaseDate": "2024-10-22",
       "sourceId": "source-mistral",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -19670,7 +21066,12 @@
       "Limited capacity for intricate multi-step reasoning",
       "Text-only interface without multimodal features"
     ],
-    "tags": ["Best value", "Speed", "Fast", "Large context"],
+    "tags": [
+      "Best value",
+      "Speed",
+      "Fast",
+      "Large context"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -19685,7 +21086,9 @@
       "availability": "Production API",
       "releaseDate": "2024-10-22",
       "sourceId": "source-mistral",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -19809,7 +21212,12 @@
       "Preview release with evolving API endpoint configurations",
       "No native visual image comprehension"
     ],
-    "tags": ["Research", "Writing", "Daily use", "Reasoning"],
+    "tags": [
+      "Research",
+      "Writing",
+      "Daily use",
+      "Reasoning"
+    ],
     "facts": {
       "context": 245760,
       "maxOutput": 16384,
@@ -19824,7 +21232,11 @@
       "availability": "Production API",
       "releaseDate": "2024-10-18",
       "sourceId": "source-minimax",
-      "reasoningEffort": ["none", "low", "medium"],
+      "reasoningEffort": [
+        "none",
+        "low",
+        "medium"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -19901,7 +21313,12 @@
       "Superseded by Janus-Pro-7B and Janus-Pro-1B",
       "Initial generation quality has occasional visual artifacts"
     ],
-    "tags": ["Vision", "Multimodal", "Generation", "Research"],
+    "tags": [
+      "Vision",
+      "Multimodal",
+      "Generation",
+      "Research"
+    ],
     "facts": {
       "context": 4096,
       "maxOutput": 4096,
@@ -19916,7 +21333,9 @@
       "availability": "Production API",
       "releaseDate": "2024-10-17",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -20039,7 +21458,12 @@
       "Lower code generation depth than standard 1.5 Flash",
       "Requires clear prompting for complex instructions"
     ],
-    "tags": ["Best value", "Speed", "Multimodal", "Large context"],
+    "tags": [
+      "Best value",
+      "Speed",
+      "Multimodal",
+      "Large context"
+    ],
     "facts": {
       "context": 1048576,
       "maxOutput": 8192,
@@ -20054,7 +21478,9 @@
       "availability": "Production API",
       "releaseDate": "2024-10-03",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -20177,7 +21603,12 @@
       "Lower code generation accuracy compared to dedicated coding models",
       "Text outputs capped at 8,192 tokens per response"
     ],
-    "tags": ["Vision", "Multimodal", "Open weights", "Research"],
+    "tags": [
+      "Vision",
+      "Multimodal",
+      "Open weights",
+      "Research"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
@@ -20192,7 +21623,9 @@
       "availability": "Production API",
       "releaseDate": "2024-09-25",
       "sourceId": "source-meta",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -20316,7 +21749,12 @@
       "Lower complex reasoning and coding scores than 90B or frontier models",
       "Output generation capped at 8,192 tokens"
     ],
-    "tags": ["Vision", "Multimodal", "Open weights", "Best value"],
+    "tags": [
+      "Vision",
+      "Multimodal",
+      "Open weights",
+      "Best value"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -20331,7 +21769,9 @@
       "availability": "Production API",
       "releaseDate": "2024-09-25",
       "sourceId": "source-meta",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -20455,7 +21895,12 @@
       "Text only; lacks visual and audio comprehension",
       "Not suitable for high-difficulty coding or multi-hop logical deductions"
     ],
-    "tags": ["Open weights", "Best value", "Speed", "Fast"],
+    "tags": [
+      "Open weights",
+      "Best value",
+      "Speed",
+      "Fast"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -20470,7 +21915,9 @@
       "availability": "Production API",
       "releaseDate": "2024-09-25",
       "sourceId": "source-meta",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -20594,7 +22041,12 @@
       "Text only; basic reasoning capabilities",
       "Prone to hallucination on complex multi-step technical instructions"
     ],
-    "tags": ["Open weights", "Speed", "Fast", "Best value"],
+    "tags": [
+      "Open weights",
+      "Speed",
+      "Fast",
+      "Best value"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -20609,7 +22061,9 @@
       "availability": "Production API",
       "releaseDate": "2024-09-25",
       "sourceId": "source-meta",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -20732,7 +22186,12 @@
       "Higher latency on very large prompt contexts",
       "Pricing scales up for requests exceeding 128,000 tokens"
     ],
-    "tags": ["Large context", "Vision", "Multimodal", "Research"],
+    "tags": [
+      "Large context",
+      "Vision",
+      "Multimodal",
+      "Research"
+    ],
     "facts": {
       "context": 2097152,
       "maxOutput": 8192,
@@ -20747,7 +22206,9 @@
       "availability": "Production API",
       "releaseDate": "2024-09-24",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -20888,7 +22349,12 @@
       "Lower code synthesis accuracy on complex algorithmic tasks",
       "Requires precise prompting for intricate reasoning chains"
     ],
-    "tags": ["Speed", "Best value", "Vision", "Large context"],
+    "tags": [
+      "Speed",
+      "Best value",
+      "Vision",
+      "Large context"
+    ],
     "facts": {
       "context": 1048576,
       "maxOutput": 8192,
@@ -20903,7 +22369,9 @@
       "availability": "Production API",
       "releaseDate": "2024-09-24",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -21026,7 +22494,12 @@
       "Text-only model without vision understanding",
       "Self-hosting requires high-capacity multi-GPU hardware"
     ],
-    "tags": ["Open weights", "Coding", "Daily use", "Best value"],
+    "tags": [
+      "Open weights",
+      "Coding",
+      "Daily use",
+      "Best value"
+    ],
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
@@ -21041,7 +22514,9 @@
       "availability": "Production API",
       "releaseDate": "2024-09-19",
       "sourceId": "source-qwen",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -21164,7 +22639,12 @@
       "Text-only (no image or multimodal analysis)",
       "Lacks tool calling and system prompt control on API"
     ],
-    "tags": ["Reasoning", "STEM", "Coding", "Best value"],
+    "tags": [
+      "Reasoning",
+      "STEM",
+      "Coding",
+      "Best value"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 65536,
@@ -21179,7 +22659,9 @@
       "availability": "Production API",
       "releaseDate": "2024-09-12",
       "sourceId": "source-openai",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -21285,7 +22767,12 @@
       "Does not support function calling, structured outputs, or system instructions",
       "Premium pricing ($15.00 input / $60.00 output per 1M tokens)"
     ],
-    "tags": ["Reasoning", "STEM", "Coding", "Flagship"],
+    "tags": [
+      "Reasoning",
+      "STEM",
+      "Coding",
+      "Flagship"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 32768,
@@ -21300,7 +22787,9 @@
       "availability": "Production API",
       "releaseDate": "2024-09-12",
       "sourceId": "source-openai",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -21423,7 +22912,12 @@
       "Text-only model lacking native image support",
       "Superseded in overall raw benchmarks by DeepSeek-V3"
     ],
-    "tags": ["MoE", "Open weights", "Coding", "General purpose"],
+    "tags": [
+      "MoE",
+      "Open weights",
+      "Coding",
+      "General purpose"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -21438,7 +22932,9 @@
       "availability": "Production API",
       "releaseDate": "2024-09-05",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -21561,7 +23057,11 @@
       "Requires domain knowledge for biochemical prompt engineering",
       "8,192 token context window"
     ],
-    "tags": ["Open weights", "Research", "Biotech"],
+    "tags": [
+      "Open weights",
+      "Research",
+      "Biotech"
+    ],
     "facts": {
       "context": 8192,
       "maxOutput": 4096,
@@ -21576,7 +23076,9 @@
       "availability": "Production API",
       "releaseDate": "2024-08-20",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -21699,7 +23201,12 @@
       "Domain-specific model for Lean 4 theorem proving; not for casual conversation",
       "8,192 token context window"
     ],
-    "tags": ["STEM", "Open weights", "Lean 4", "Research"],
+    "tags": [
+      "STEM",
+      "Open weights",
+      "Lean 4",
+      "Research"
+    ],
     "facts": {
       "context": 8192,
       "maxOutput": 4096,
@@ -21714,7 +23221,9 @@
       "availability": "Production API",
       "releaseDate": "2024-08-15",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -21837,7 +23346,12 @@
       "Unsupervised base model requiring fine-tuning or few-shot prompts",
       "Text-only model"
     ],
-    "tags": ["Foundation", "Base model", "Open weights", "Math"],
+    "tags": [
+      "Foundation",
+      "Base model",
+      "Open weights",
+      "Math"
+    ],
     "facts": {
       "context": 8192,
       "maxOutput": 4096,
@@ -21852,7 +23366,9 @@
       "availability": "Production API",
       "releaseDate": "2024-08-15",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -21929,7 +23445,12 @@
       "Lacks the automated proof search depth of Prover V1.5 RL",
       "Specialized formal math focus"
     ],
-    "tags": ["STEM", "Open weights", "Lean 4", "Research"],
+    "tags": [
+      "STEM",
+      "Open weights",
+      "Lean 4",
+      "Research"
+    ],
     "facts": {
       "context": 8192,
       "maxOutput": 4096,
@@ -21944,7 +23465,9 @@
       "availability": "Production API",
       "releaseDate": "2024-08-15",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -22022,7 +23545,12 @@
       "Text only (no multimodal vision)",
       "Higher output pricing ($10.00/1M) than generic mid-sized open models"
     ],
-    "tags": ["Agentic", "Open weights", "Research", "Large context"],
+    "tags": [
+      "Agentic",
+      "Open weights",
+      "Research",
+      "Large context"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 4096,
@@ -22037,7 +23565,9 @@
       "availability": "Production API",
       "releaseDate": "2024-08-08",
       "sourceId": "source-cohere",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -22161,7 +23691,12 @@
       "Does not produce visible reasoning traces like o1 or o3-mini",
       "Moderate SWE-bench coding score compared to specialized reasoning models"
     ],
-    "tags": ["Vision", "Agentic", "Daily use", "Multimodal"],
+    "tags": [
+      "Vision",
+      "Agentic",
+      "Daily use",
+      "Multimodal"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 16384,
@@ -22176,7 +23711,9 @@
       "availability": "Production API",
       "releaseDate": "2024-08-06",
       "sourceId": "source-openai",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -22299,7 +23836,11 @@
       "Intended solely as a classifier/moderator, not for generative prose",
       "Capped output length (1,024 tokens)"
     ],
-    "tags": ["Open weights", "Safety", "Moderation"],
+    "tags": [
+      "Open weights",
+      "Safety",
+      "Moderation"
+    ],
     "facts": {
       "context": 8192,
       "maxOutput": 1024,
@@ -22314,7 +23855,9 @@
       "availability": "Production API",
       "releaseDate": "2024-08-01",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -22437,7 +23980,12 @@
       "8,192 token context window",
       "Lower complex math and multi-step reasoning accuracy"
     ],
-    "tags": ["Open weights", "Speed", "Edge", "Fast"],
+    "tags": [
+      "Open weights",
+      "Speed",
+      "Edge",
+      "Fast"
+    ],
     "facts": {
       "context": 8192,
       "maxOutput": 4096,
@@ -22452,7 +24000,9 @@
       "availability": "Production API",
       "releaseDate": "2024-07-31",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -22575,7 +24125,12 @@
       "Text and code only; lacks vision",
       "High resource requirements for self-hosting full 236B model"
     ],
-    "tags": ["Coding", "Open weights", "MoE", "Snapshot"],
+    "tags": [
+      "Coding",
+      "Open weights",
+      "MoE",
+      "Snapshot"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -22590,7 +24145,9 @@
       "availability": "Production API",
       "releaseDate": "2024-07-24",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -22667,7 +24224,12 @@
       "Significantly lower SWE-bench Verified coding score (20.2%)",
       "Prone to simplification on nuanced reasoning prompts"
     ],
-    "tags": ["Best value", "Speed", "Vision", "Daily use"],
+    "tags": [
+      "Best value",
+      "Speed",
+      "Vision",
+      "Daily use"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 16384,
@@ -22682,7 +24244,9 @@
       "availability": "Production API",
       "releaseDate": "2024-07-18",
       "sourceId": "source-openai",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -22805,7 +24369,11 @@
       "Not cleared for autonomous diagnostic decisions without clinical physician review",
       "Text only (no native medical imaging DICOM analysis in base tier)"
     ],
-    "tags": ["Open weights", "Medical", "Research"],
+    "tags": [
+      "Open weights",
+      "Medical",
+      "Research"
+    ],
     "facts": {
       "context": 8192,
       "maxOutput": 4096,
@@ -22820,7 +24388,9 @@
       "availability": "Production API",
       "releaseDate": "2024-07-10",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -22939,8 +24509,16 @@
       "Efficient MLA-powered inference",
       "Solid bilingual Chinese/English support"
     ],
-    "weaknesses": ["Superseded by V2.5 and V3", "Text-only model"],
-    "tags": ["MoE", "Open weights", "Snapshot", "General purpose"],
+    "weaknesses": [
+      "Superseded by V2.5 and V3",
+      "Text-only model"
+    ],
+    "tags": [
+      "MoE",
+      "Open weights",
+      "Snapshot",
+      "General purpose"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -22955,7 +24533,9 @@
       "availability": "Production API",
       "releaseDate": "2024-06-28",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -23032,7 +24612,11 @@
       "8,192 token context window limit",
       "Text only; no native vision support"
     ],
-    "tags": ["Open weights", "Research", "Coding"],
+    "tags": [
+      "Open weights",
+      "Research",
+      "Coding"
+    ],
     "facts": {
       "context": 8192,
       "maxOutput": 4096,
@@ -23047,7 +24631,9 @@
       "availability": "Production API",
       "releaseDate": "2024-06-27",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -23170,7 +24756,11 @@
       "8,192 token context window limit",
       "Outperformed on large-scale repository coding by 27B+ models"
     ],
-    "tags": ["Open weights", "Best value", "Daily use"],
+    "tags": [
+      "Open weights",
+      "Best value",
+      "Daily use"
+    ],
     "facts": {
       "context": 8192,
       "maxOutput": 4096,
@@ -23185,7 +24775,9 @@
       "availability": "Production API",
       "releaseDate": "2024-06-27",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -23307,7 +24899,11 @@
     "weaknesses": [
       "Lacks the updated computer use capabilities added in the October 2024 revision"
     ],
-    "tags": ["Coding", "Vision", "Balanced"],
+    "tags": [
+      "Coding",
+      "Vision",
+      "Balanced"
+    ],
     "facts": {
       "context": 200000,
       "maxOutput": 8192,
@@ -23322,7 +24918,9 @@
       "availability": "Production API",
       "releaseDate": "2024-06-20",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -23446,7 +25044,12 @@
       "Text and code only; lacks vision and multimodal comprehension",
       "High hardware requirements for self-hosting the full 236B checkpoint"
     ],
-    "tags": ["Coding", "Open weights", "MoE", "Agentic"],
+    "tags": [
+      "Coding",
+      "Open weights",
+      "MoE",
+      "Agentic"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -23461,7 +25064,9 @@
       "availability": "Production API",
       "releaseDate": "2024-06-17",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -23585,7 +25190,12 @@
       "Lower architectural capacity on complex system design compared to 236B variant",
       "Text and code only"
     ],
-    "tags": ["Coding", "Open weights", "MoE", "Fast"],
+    "tags": [
+      "Coding",
+      "Open weights",
+      "MoE",
+      "Fast"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -23600,7 +25210,9 @@
       "availability": "Production API",
       "releaseDate": "2024-06-17",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -23723,7 +25335,13 @@
       "Base model requires fine-tuning or FIM prompts for code generation",
       "Requires substantial GPU VRAM to run"
     ],
-    "tags": ["Foundation", "Base model", "Coding", "Open weights", "MoE"],
+    "tags": [
+      "Foundation",
+      "Base model",
+      "Coding",
+      "Open weights",
+      "MoE"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -23738,7 +25356,9 @@
       "availability": "Production API",
       "releaseDate": "2024-06-17",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -23836,7 +25456,9 @@
       "availability": "Production API",
       "releaseDate": "2024-06-17",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -23913,7 +25535,12 @@
       "Superseded by Prover V1.5 and V2 architectures",
       "Limited 4k token context window"
     ],
-    "tags": ["STEM", "Open weights", "Lean 4", "Milestone"],
+    "tags": [
+      "STEM",
+      "Open weights",
+      "Lean 4",
+      "Milestone"
+    ],
     "facts": {
       "context": 4096,
       "maxOutput": 4096,
@@ -23928,7 +25555,9 @@
       "availability": "Production API",
       "releaseDate": "2024-05-20",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -24005,7 +25634,11 @@
       "Fixed image token resolution",
       "8,192 token context window"
     ],
-    "tags": ["Open weights", "Vision", "Multimodal"],
+    "tags": [
+      "Open weights",
+      "Vision",
+      "Multimodal"
+    ],
     "facts": {
       "context": 8192,
       "maxOutput": 2048,
@@ -24020,7 +25653,9 @@
       "availability": "Production API",
       "releaseDate": "2024-05-14",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -24143,7 +25778,12 @@
       "Lower reasoning depth than dedicated reasoning models (o1/o3-mini)",
       "128,000 token context window is smaller than newer million-token models"
     ],
-    "tags": ["Daily use", "Vision", "Multimodal", "Flagship"],
+    "tags": [
+      "Daily use",
+      "Vision",
+      "Multimodal",
+      "Flagship"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 16384,
@@ -24158,7 +25798,9 @@
       "availability": "Production API",
       "releaseDate": "2024-05-13",
       "sourceId": "source-openai",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -24299,7 +25941,13 @@
       "Raw base completion model requiring alignment tuning",
       "128k context requires careful memory management"
     ],
-    "tags": ["Foundation", "Base model", "MoE", "Open weights", "Milestone"],
+    "tags": [
+      "Foundation",
+      "Base model",
+      "MoE",
+      "Open weights",
+      "Milestone"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
@@ -24314,7 +25962,9 @@
       "availability": "Production API",
       "releaseDate": "2024-05-07",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -24391,7 +26041,13 @@
       "Uncalibrated base completion model",
       "32k token context window"
     ],
-    "tags": ["Foundation", "Base model", "MoE", "Open weights", "Lightweight"],
+    "tags": [
+      "Foundation",
+      "Base model",
+      "MoE",
+      "Open weights",
+      "Lightweight"
+    ],
     "facts": {
       "context": 32768,
       "maxOutput": 4096,
@@ -24406,7 +26062,9 @@
       "availability": "Production API",
       "releaseDate": "2024-05-07",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -24483,7 +26141,12 @@
       "Superseded by DeepSeek-V2.5 and V3",
       "Text-only with no multimodal vision input"
     ],
-    "tags": ["MoE", "Open weights", "MLA", "Milestone"],
+    "tags": [
+      "MoE",
+      "Open weights",
+      "MLA",
+      "Milestone"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 4096,
@@ -24498,7 +26161,9 @@
       "availability": "Production API",
       "releaseDate": "2024-05-06",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -24621,7 +26286,12 @@
       "Limited context window of 32k tokens",
       "Outperformed on complex queries by newer V2.5 and V3 models"
     ],
-    "tags": ["MoE", "Open weights", "Lightweight", "Self-hosted"],
+    "tags": [
+      "MoE",
+      "Open weights",
+      "Lightweight",
+      "Self-hosted"
+    ],
     "facts": {
       "context": 32000,
       "maxOutput": 4096,
@@ -24636,7 +26306,9 @@
       "availability": "Production API",
       "releaseDate": "2024-05-06",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -24760,7 +26432,12 @@
       "Higher inference compute requirements than lightweight variant abab6.5s",
       "Text-only model without image upload support"
     ],
-    "tags": ["Research", "Writing", "Daily use", "Flagship"],
+    "tags": [
+      "Research",
+      "Writing",
+      "Daily use",
+      "Flagship"
+    ],
     "facts": {
       "context": 204800,
       "maxOutput": 8192,
@@ -24775,7 +26452,9 @@
       "availability": "Production API",
       "releaseDate": "2024-04-17",
       "sourceId": "source-minimax",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -24853,7 +26532,12 @@
       "Lower creative writing nuance and technical depth than base abab6.5",
       "No visual or multimodal inputs"
     ],
-    "tags": ["Best value", "Speed", "Daily use", "Writing"],
+    "tags": [
+      "Best value",
+      "Speed",
+      "Daily use",
+      "Writing"
+    ],
     "facts": {
       "context": 204800,
       "maxOutput": 8192,
@@ -24868,7 +26552,9 @@
       "availability": "Production API",
       "releaseDate": "2024-04-17",
       "sourceId": "source-minimax",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -24945,7 +26631,12 @@
       "Higher pricing ($10 input / $30 output per 1M tokens) than newer GPT-4o",
       "Slower inference latency than GPT-4o"
     ],
-    "tags": ["Vision", "Research", "Coding", "Flagship"],
+    "tags": [
+      "Vision",
+      "Research",
+      "Coding",
+      "Flagship"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 4096,
@@ -24960,7 +26651,9 @@
       "availability": "Production API",
       "releaseDate": "2024-04-09",
       "sourceId": "source-openai",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -25083,7 +26776,11 @@
       "8,192 token context window",
       "Lower conversational nuance on non-programming topics"
     ],
-    "tags": ["Open weights", "Coding", "Fast"],
+    "tags": [
+      "Open weights",
+      "Coding",
+      "Fast"
+    ],
     "facts": {
       "context": 8192,
       "maxOutput": 4096,
@@ -25098,7 +26795,9 @@
       "availability": "Production API",
       "releaseDate": "2024-04-09",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -25221,7 +26920,11 @@
       "8,192 context window",
       "Lower complex math benchmark accuracy than dense attention models"
     ],
-    "tags": ["Open weights", "Research", "Speed"],
+    "tags": [
+      "Open weights",
+      "Research",
+      "Speed"
+    ],
     "facts": {
       "context": 8192,
       "maxOutput": 4096,
@@ -25236,7 +26939,9 @@
       "availability": "Production API",
       "releaseDate": "2024-04-09",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -25359,7 +27064,11 @@
       "4,096 token context window",
       "Superseded by DeepSeek-VL2 dynamic tiling architecture"
     ],
-    "tags": ["Vision", "Multimodal", "Open weights"],
+    "tags": [
+      "Vision",
+      "Multimodal",
+      "Open weights"
+    ],
     "facts": {
       "context": 4096,
       "maxOutput": 4096,
@@ -25374,7 +27083,9 @@
       "availability": "Production API",
       "releaseDate": "2024-03-11",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -25497,7 +27208,12 @@
       "Limited complex reasoning capability",
       "4,096 token context limit"
     ],
-    "tags": ["Vision", "Multimodal", "Edge", "Compact"],
+    "tags": [
+      "Vision",
+      "Multimodal",
+      "Edge",
+      "Compact"
+    ],
     "facts": {
       "context": 4096,
       "maxOutput": 4096,
@@ -25512,7 +27228,9 @@
       "availability": "Production API",
       "releaseDate": "2024-03-11",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -25635,7 +27353,12 @@
       "Unsupervised base model requiring prompt formatting or tuning",
       "16k context window"
     ],
-    "tags": ["Foundation", "Base model", "Coding", "Open weights"],
+    "tags": [
+      "Foundation",
+      "Base model",
+      "Coding",
+      "Open weights"
+    ],
     "facts": {
       "context": 16384,
       "maxOutput": 4096,
@@ -25650,7 +27373,9 @@
       "availability": "Production API",
       "releaseDate": "2024-03-10",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -25727,7 +27452,12 @@
       "16k context window limit",
       "Superseded by Coder-V2 on multi-lingual benchmarks"
     ],
-    "tags": ["Coding", "Open weights", "Fast", "Edge"],
+    "tags": [
+      "Coding",
+      "Open weights",
+      "Fast",
+      "Edge"
+    ],
     "facts": {
       "context": 16384,
       "maxOutput": 4096,
@@ -25742,7 +27472,9 @@
       "availability": "Production API",
       "releaseDate": "2024-03-10",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -25818,7 +27550,12 @@
     "weaknesses": [
       "Lower performance on complex coding and multi-step reasoning"
     ],
-    "tags": ["Speed", "Affordable", "Vision", "Daily use"],
+    "tags": [
+      "Speed",
+      "Affordable",
+      "Vision",
+      "Daily use"
+    ],
     "facts": {
       "context": 200000,
       "maxOutput": 4096,
@@ -25833,7 +27570,9 @@
       "availability": "Production API",
       "releaseDate": "2024-03-07",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -25956,7 +27695,12 @@
       "Premium pricing ($15 input / $75 output per 1M tokens)",
       "Slower generation speed and lower coding benchmarks than Claude 3.5 Sonnet"
     ],
-    "tags": ["Writing", "Research", "Vision", "Flagship"],
+    "tags": [
+      "Writing",
+      "Research",
+      "Vision",
+      "Flagship"
+    ],
     "facts": {
       "context": 200000,
       "maxOutput": 4096,
@@ -25971,7 +27715,9 @@
       "availability": "Production API",
       "releaseDate": "2024-02-29",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -26111,7 +27857,11 @@
     "weaknesses": [
       "Superseded by Claude 3.5 Sonnet across coding and general intelligence"
     ],
-    "tags": ["Balanced", "Vision", "Enterprise"],
+    "tags": [
+      "Balanced",
+      "Vision",
+      "Enterprise"
+    ],
     "facts": {
       "context": 200000,
       "maxOutput": 4096,
@@ -26126,7 +27876,9 @@
       "availability": "Production API",
       "releaseDate": "2024-02-29",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -26249,7 +28001,11 @@
       "Superseded in performance and efficiency by Gemma 2 9B",
       "8,192 token context window"
     ],
-    "tags": ["Open weights", "Legacy", "Daily use"],
+    "tags": [
+      "Open weights",
+      "Legacy",
+      "Daily use"
+    ],
     "facts": {
       "context": 8192,
       "maxOutput": 2048,
@@ -26264,7 +28020,9 @@
       "availability": "Production API",
       "releaseDate": "2024-02-21",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -26387,7 +28145,11 @@
       "Superseded by Gemma 2 2B with higher reasoning accuracy",
       "8,192 context window limit"
     ],
-    "tags": ["Open weights", "Legacy", "Fast"],
+    "tags": [
+      "Open weights",
+      "Legacy",
+      "Fast"
+    ],
     "facts": {
       "context": 8192,
       "maxOutput": 2048,
@@ -26402,7 +28164,9 @@
       "availability": "Production API",
       "releaseDate": "2024-02-21",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -26525,7 +28289,11 @@
       "32k token context window compared to million-token modern models",
       "Higher legacy price point ($7.00/$21.00 per 1M tokens)"
     ],
-    "tags": ["Legacy", "Flagship", "Multimodal"],
+    "tags": [
+      "Legacy",
+      "Flagship",
+      "Multimodal"
+    ],
     "facts": {
       "context": 32768,
       "maxOutput": 4096,
@@ -26540,7 +28308,9 @@
       "availability": "Production API",
       "releaseDate": "2024-02-08",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -26663,7 +28433,12 @@
       "Strictly focused on mathematics and STEM; average general conversation ability",
       "4,096 token context window"
     ],
-    "tags": ["STEM", "Open weights", "Math", "Research"],
+    "tags": [
+      "STEM",
+      "Open weights",
+      "Math",
+      "Research"
+    ],
     "facts": {
       "context": 4096,
       "maxOutput": 4096,
@@ -26678,7 +28453,9 @@
       "availability": "Production API",
       "releaseDate": "2024-02-05",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -26801,7 +28578,12 @@
       "Specialized math focus; not optimized for creative writing or broad trivia",
       "4,096 token context limit"
     ],
-    "tags": ["STEM", "Open weights", "GRPO", "Milestone"],
+    "tags": [
+      "STEM",
+      "Open weights",
+      "GRPO",
+      "Milestone"
+    ],
     "facts": {
       "context": 4096,
       "maxOutput": 4096,
@@ -26816,7 +28598,9 @@
       "availability": "Production API",
       "releaseDate": "2024-02-05",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["fixed"],
+      "reasoningEffort": [
+        "fixed"
+      ],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -26939,7 +28723,12 @@
       "Unsupervised base completion model requiring fine-tuning for interactive Q&A",
       "4k token context window"
     ],
-    "tags": ["Foundation", "Base model", "Open weights", "Math"],
+    "tags": [
+      "Foundation",
+      "Base model",
+      "Open weights",
+      "Math"
+    ],
     "facts": {
       "context": 4096,
       "maxOutput": 4096,
@@ -26954,7 +28743,9 @@
       "availability": "Production API",
       "releaseDate": "2024-02-05",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -27031,7 +28822,11 @@
       "Text only (no vision)",
       "Superseded by gpt-4-turbo and GPT-4o"
     ],
-    "tags": ["Legacy", "Coding", "Research"],
+    "tags": [
+      "Legacy",
+      "Coding",
+      "Research"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 4096,
@@ -27046,7 +28841,9 @@
       "availability": "Production API",
       "releaseDate": "2024-01-25",
       "sourceId": "source-openai",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -27169,7 +28966,13 @@
       "4,096 token context window",
       "Base model requiring fine-tuning for chat"
     ],
-    "tags": ["Foundation", "Base model", "MoE", "Open weights", "Milestone"],
+    "tags": [
+      "Foundation",
+      "Base model",
+      "MoE",
+      "Open weights",
+      "Milestone"
+    ],
     "facts": {
       "context": 4096,
       "maxOutput": 4096,
@@ -27184,7 +28987,9 @@
       "availability": "Production API",
       "releaseDate": "2024-01-11",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -27261,7 +29066,12 @@
       "4,096 token context limit",
       "Superseded by DeepSeek-V2 and V3 families"
     ],
-    "tags": ["MoE", "Open weights", "Lightweight", "Milestone"],
+    "tags": [
+      "MoE",
+      "Open weights",
+      "Lightweight",
+      "Milestone"
+    ],
     "facts": {
       "context": 4096,
       "maxOutput": 4096,
@@ -27276,7 +29086,9 @@
       "availability": "Production API",
       "releaseDate": "2024-01-11",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -27353,7 +29165,10 @@
       "Outperformed across benchmarks by modern Gemini 1.5 / 2.0 Flash",
       "32,768 token context window"
     ],
-    "tags": ["Legacy", "Daily use"],
+    "tags": [
+      "Legacy",
+      "Daily use"
+    ],
     "facts": {
       "context": 32768,
       "maxOutput": 2048,
@@ -27368,7 +29183,9 @@
       "availability": "Production API",
       "releaseDate": "2023-12-06",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -27491,7 +29308,11 @@
       "Restricted to 4,096 token context",
       "Text only; smaller parameter capacity limits deep analytical reasoning"
     ],
-    "tags": ["On-device", "Legacy", "Fast"],
+    "tags": [
+      "On-device",
+      "Legacy",
+      "Fast"
+    ],
     "facts": {
       "context": 4096,
       "maxOutput": 1024,
@@ -27506,7 +29327,9 @@
       "availability": "Production API",
       "releaseDate": "2023-12-06",
       "sourceId": "source-google",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -27629,7 +29452,12 @@
       "16,384 token context window superseded by 128k Coder-V2",
       "Dense architecture requires ~24GB VRAM for 4-bit local inference"
     ],
-    "tags": ["Coding", "Open weights", "Classic", "Milestone"],
+    "tags": [
+      "Coding",
+      "Open weights",
+      "Classic",
+      "Milestone"
+    ],
     "facts": {
       "context": 16384,
       "maxOutput": 4096,
@@ -27644,7 +29472,9 @@
       "availability": "Production API",
       "releaseDate": "2023-11-29",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -27767,7 +29597,12 @@
       "16k context limit",
       "Less capable on large multi-file architectures than 33B or Coder-V2"
     ],
-    "tags": ["Coding", "Open weights", "Fast", "Edge"],
+    "tags": [
+      "Coding",
+      "Open weights",
+      "Fast",
+      "Edge"
+    ],
     "facts": {
       "context": 16384,
       "maxOutput": 4096,
@@ -27782,7 +29617,9 @@
       "availability": "Production API",
       "releaseDate": "2023-11-29",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -27905,7 +29742,12 @@
       "Limited reasoning on complex algorithmic challenges",
       "Simple completions and basic snippet refactoring only"
     ],
-    "tags": ["Coding", "Open weights", "Autocomplete", "Ultra-fast"],
+    "tags": [
+      "Coding",
+      "Open weights",
+      "Autocomplete",
+      "Ultra-fast"
+    ],
     "facts": {
       "context": 16384,
       "maxOutput": 4096,
@@ -27920,7 +29762,9 @@
       "availability": "Production API",
       "releaseDate": "2023-11-29",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -28043,7 +29887,12 @@
       "Dense architecture superseded by high-efficiency MoE models (V2/V3)",
       "4,096 token context window"
     ],
-    "tags": ["General purpose", "Open weights", "Milestone", "Dense"],
+    "tags": [
+      "General purpose",
+      "Open weights",
+      "Milestone",
+      "Dense"
+    ],
     "facts": {
       "context": 4096,
       "maxOutput": 4096,
@@ -28058,7 +29907,9 @@
       "availability": "Production API",
       "releaseDate": "2023-11-29",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -28181,7 +30032,11 @@
       "4,096 token context window",
       "Superseded by newer MoE and distilled R1 architectures"
     ],
-    "tags": ["General purpose", "Open weights", "Edge"],
+    "tags": [
+      "General purpose",
+      "Open weights",
+      "Edge"
+    ],
     "facts": {
       "context": 4096,
       "maxOutput": 4096,
@@ -28196,7 +30051,9 @@
       "availability": "Production API",
       "releaseDate": "2023-11-29",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -28319,7 +30176,12 @@
       "4,096 token context window",
       "Requires instruction tuning for conversational use"
     ],
-    "tags": ["Foundation", "Base model", "Open weights", "Edge"],
+    "tags": [
+      "Foundation",
+      "Base model",
+      "Open weights",
+      "Edge"
+    ],
     "facts": {
       "context": 4096,
       "maxOutput": 4096,
@@ -28334,7 +30196,9 @@
       "availability": "Production API",
       "releaseDate": "2023-11-29",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -28411,7 +30275,12 @@
       "Dense 67B memory footprint superseded by modern MoE architectures",
       "4,096 token context window"
     ],
-    "tags": ["Foundation", "Base model", "Open weights", "Dense"],
+    "tags": [
+      "Foundation",
+      "Base model",
+      "Open weights",
+      "Dense"
+    ],
     "facts": {
       "context": 4096,
       "maxOutput": 4096,
@@ -28426,7 +30295,9 @@
       "availability": "Production API",
       "releaseDate": "2023-11-29",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -28503,7 +30374,11 @@
       "Text-only; lacks multimodal image understanding",
       "Higher latency and token costs compared to modern 3.x/4.x models"
     ],
-    "tags": ["Large context", "Writing", "Legacy"],
+    "tags": [
+      "Large context",
+      "Writing",
+      "Legacy"
+    ],
     "facts": {
       "context": 200000,
       "maxOutput": 4096,
@@ -28518,7 +30393,9 @@
       "availability": "Production API",
       "releaseDate": "2023-11-21",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -28662,7 +30539,9 @@
       "availability": "Production API",
       "releaseDate": "2023-11-20",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -28739,7 +30618,13 @@
       "16k context window superseded by Coder-V2",
       "Text and code only"
     ],
-    "tags": ["Foundation", "Base model", "Coding", "Open weights", "Edge"],
+    "tags": [
+      "Foundation",
+      "Base model",
+      "Coding",
+      "Open weights",
+      "Edge"
+    ],
     "facts": {
       "context": 16384,
       "maxOutput": 4096,
@@ -28754,7 +30639,9 @@
       "availability": "Production API",
       "releaseDate": "2023-11-20",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -28831,7 +30718,12 @@
       "Dense 33B architecture demands ~24GB VRAM for 4-bit inference",
       "16k context window"
     ],
-    "tags": ["Foundation", "Base model", "Coding", "Open weights"],
+    "tags": [
+      "Foundation",
+      "Base model",
+      "Coding",
+      "Open weights"
+    ],
     "facts": {
       "context": 16384,
       "maxOutput": 4096,
@@ -28846,7 +30738,9 @@
       "availability": "Production API",
       "releaseDate": "2023-11-20",
       "sourceId": "source-deepseek",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -28924,7 +30818,11 @@
       "Higher pricing than newer GPT-4o models",
       "Superseded by gpt-4-turbo and GPT-4o"
     ],
-    "tags": ["Legacy", "Research", "Coding"],
+    "tags": [
+      "Legacy",
+      "Research",
+      "Coding"
+    ],
     "facts": {
       "context": 128000,
       "maxOutput": 4096,
@@ -28939,7 +30837,9 @@
       "availability": "Production API",
       "releaseDate": "2023-11-06",
       "sourceId": "source-openai",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -29062,7 +30962,11 @@
       "Text-only with no image support",
       "Limited coding and deep multi-step algorithmic reasoning"
     ],
-    "tags": ["Speed", "Lightweight", "Legacy"],
+    "tags": [
+      "Speed",
+      "Lightweight",
+      "Legacy"
+    ],
     "facts": {
       "context": 100000,
       "maxOutput": 4096,
@@ -29077,7 +30981,9 @@
       "availability": "Production API",
       "releaseDate": "2023-08-09",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -29200,7 +31106,11 @@
       "Older architecture with higher hallucination rates on complex retrieval",
       "Text-only with no multimodal vision support"
     ],
-    "tags": ["Writing", "Research", "Legacy"],
+    "tags": [
+      "Writing",
+      "Research",
+      "Legacy"
+    ],
     "facts": {
       "context": 100000,
       "maxOutput": 4096,
@@ -29215,7 +31125,9 @@
       "availability": "Production API",
       "releaseDate": "2023-07-11",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -29357,7 +31269,11 @@
       "Text only (no vision)",
       "Superseded by 128k context models"
     ],
-    "tags": ["Legacy", "Research", "Large context"],
+    "tags": [
+      "Legacy",
+      "Research",
+      "Large context"
+    ],
     "facts": {
       "context": 32768,
       "maxOutput": 4096,
@@ -29372,7 +31288,9 @@
       "availability": "Production API",
       "releaseDate": "2023-06-13",
       "sourceId": "source-openai",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -29496,7 +31414,11 @@
       "Extremely high pricing ($30.00 input / $60.00 output per 1M tokens)",
       "Text only; lacks multimodal image understanding"
     ],
-    "tags": ["Writing", "Research", "Legacy"],
+    "tags": [
+      "Writing",
+      "Research",
+      "Legacy"
+    ],
     "facts": {
       "context": 8192,
       "maxOutput": 4096,
@@ -29511,7 +31433,9 @@
       "availability": "Production API",
       "releaseDate": "2023-06-13",
       "sourceId": "source-openai",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -29633,7 +31557,11 @@
       "Text only; high pricing compared to modern models",
       "Lower code generation proficiency"
     ],
-    "tags": ["Nuance", "Writing", "Legacy"],
+    "tags": [
+      "Nuance",
+      "Writing",
+      "Legacy"
+    ],
     "facts": {
       "context": 100000,
       "maxOutput": 4096,
@@ -29648,7 +31576,9 @@
       "availability": "Production API",
       "releaseDate": "2023-05-11",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -29772,7 +31702,11 @@
       "Very high pricing ($30 input / $60 output per 1M tokens)",
       "Does not support function calling or vision"
     ],
-    "tags": ["Legacy", "Writing", "Research"],
+    "tags": [
+      "Legacy",
+      "Writing",
+      "Research"
+    ],
     "facts": {
       "context": 8192,
       "maxOutput": 4096,
@@ -29787,7 +31721,9 @@
       "availability": "Production API",
       "releaseDate": "2023-03-14",
       "sourceId": "source-openai",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -29905,8 +31841,14 @@
       "Rapid response generation",
       "100,000 token context window capability"
     ],
-    "weaknesses": ["Text only; superseded by Claude Instant 1.2"],
-    "tags": ["Speed", "Lightweight", "Legacy"],
+    "weaknesses": [
+      "Text only; superseded by Claude Instant 1.2"
+    ],
+    "tags": [
+      "Speed",
+      "Lightweight",
+      "Legacy"
+    ],
     "facts": {
       "context": 100000,
       "maxOutput": 4096,
@@ -29921,7 +31863,9 @@
       "availability": "Production API",
       "releaseDate": "2023-03-14",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -30039,8 +31983,14 @@
       "Early low-latency performance",
       "Helpful and harmless Constitutional AI dialogue"
     ],
-    "weaknesses": ["Limited reasoning depth and code generation ability"],
-    "tags": ["Speed", "Lightweight", "Legacy"],
+    "weaknesses": [
+      "Limited reasoning depth and code generation ability"
+    ],
+    "tags": [
+      "Speed",
+      "Lightweight",
+      "Legacy"
+    ],
     "facts": {
       "context": 100000,
       "maxOutput": 4096,
@@ -30055,7 +32005,9 @@
       "availability": "Production API",
       "releaseDate": "2023-03-14",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -30178,7 +32130,12 @@
       "Text only with no image understanding",
       "Legacy generation replaced by Claude 2 and Claude 3"
     ],
-    "tags": ["Constitutional AI", "Safety", "Pioneer", "Legacy"],
+    "tags": [
+      "Constitutional AI",
+      "Safety",
+      "Pioneer",
+      "Legacy"
+    ],
     "facts": {
       "context": 9000,
       "maxOutput": 4096,
@@ -30193,7 +32150,9 @@
       "availability": "Production API",
       "releaseDate": "2023-03-14",
       "sourceId": "source-anthropic",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -30316,7 +32275,11 @@
       "Substantially outperformed across all benchmarks by GPT-4o mini at higher cost ($0.50/$1.50 vs $0.15/$0.60)",
       "Text only without vision or advanced reasoning"
     ],
-    "tags": ["Legacy", "Speed", "Daily use"],
+    "tags": [
+      "Legacy",
+      "Speed",
+      "Daily use"
+    ],
     "facts": {
       "context": 16385,
       "maxOutput": 4096,
@@ -30331,7 +32294,9 @@
       "availability": "Production API",
       "releaseDate": "2023-03-01",
       "sourceId": "source-openai",
-      "reasoningEffort": ["none"],
+      "reasoningEffort": [
+        "none"
+      ],
       "defaultEffort": "none"
     },
     "pricing": {

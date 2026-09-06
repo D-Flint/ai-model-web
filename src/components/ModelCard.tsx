@@ -30,10 +30,12 @@ export default function ModelCard({
   model,
   selected,
   onSelect,
+  badgeText,
 }: {
   model: CatalogModel;
   selected?: boolean;
   onSelect?: () => void;
+  badgeText?: string;
 }) {
   const maxEffort = getMaxReasoningEffort(model);
   const isReasoning = maxEffort !== 'none';
@@ -55,7 +57,11 @@ export default function ModelCard({
             </span>
           )}
         </div>
-        {isReasoning ? (
+        {badgeText ? (
+          <span className="effort-badge openrouter-badge" title={badgeText}>
+            {badgeText}
+          </span>
+        ) : isReasoning ? (
           <span
             className={`effort-badge ${maxEffort === 'fixed' ? 'effort-fixed' : ''}`}
             title={`Reasoning effort tiers: ${model.facts.reasoningEffort?.join(', ')} (Card effort: ${maxEffort})`}

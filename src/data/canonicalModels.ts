@@ -11,6 +11,8 @@ import { AMAZON_MODELS } from './models/amazon';
 import { COHERE_MODELS } from './models/cohere';
 import { MOONSHOT_MODELS } from './models/moonshot';
 import { MINIMAX_MODELS } from './models/minimax';
+import { TENCENT_MODELS } from './models/tencent';
+import { ZAI_MODELS } from './models/zai';
 
 export {
   OPENAI_MODELS,
@@ -25,6 +27,8 @@ export {
   COHERE_MODELS,
   MOONSHOT_MODELS,
   MINIMAX_MODELS,
+  TENCENT_MODELS,
+  ZAI_MODELS,
 };
 
 export const PROVIDERS_CONFIG = [
@@ -123,6 +127,22 @@ export const PROVIDERS_CONFIG = [
     description:
       'Pioneering AI research company developing linear attention MoE foundation models, reasoning architectures, and generative agents.',
   },
+  {
+    id: 'provider-tencent',
+    slug: 'tencent',
+    name: 'Tencent',
+    website: 'https://hunyuan.tencent.com',
+    description:
+      'Tencent AI lab creator of the Hunyuan (Hy) family of large-scale foundation and multimodal models.',
+  },
+  {
+    id: 'provider-zai',
+    slug: 'z-ai',
+    name: 'Z.ai',
+    website: 'https://z.ai',
+    description:
+      'Zhipu AI research enterprise developing the GLM series of multimodal foundation and agentic models.',
+  },
 ];
 
 export const CANONICAL_MODELS: CanonicalModelConfig[] = [
@@ -138,4 +158,6 @@ export const CANONICAL_MODELS: CanonicalModelConfig[] = [
   ...COHERE_MODELS,
   ...MOONSHOT_MODELS,
   ...MINIMAX_MODELS,
+  ...TENCENT_MODELS,
+  ...ZAI_MODELS,
 ];

@@ -2313,6 +2313,19 @@ th {
   color: #fde68a;
   border-color: #78350f;
 }
+.effort-badge.openrouter-badge {
+  margin-left: auto;
+  white-space: nowrap;
+  background: rgba(16, 185, 129, 0.12);
+  color: #047857;
+  border-color: rgba(16, 185, 129, 0.3);
+  font-size: 11px;
+}
+:root[data-theme='dark'] .effort-badge.openrouter-badge {
+  background: rgba(16, 185, 129, 0.18);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.4);
+}
 .effort-control-group {
   display: flex;
   align-items: center;

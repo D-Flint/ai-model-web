@@ -5,7 +5,8 @@ import ModelCard from '../components/ModelCard';
 import ProviderLogo from '../components/ProviderLogo.astro';
 import { models } from '../data/models';
 import { categories } from '../data/config';
-import { rankModels, taskCost, money } from '../lib/decision';
+import { taskCost, money } from '../lib/decision';
+import { getMostUsedOpenRouterModels } from '../data/openrouterRankings';
 import {
   ArrowRight,
   ArrowUpRight,
@@ -19,7 +20,7 @@ import {
   SlidersHorizontal,
 } from 'lucide-react';
 const icons = [Brain, Zap, BadgeDollarSign, BadgeDollarSign, Code2, Bot];
-const featured = rankModels(models).slice(0, 4);
+const featured = getMostUsedOpenRouterModels(models, 4);
 const pairs = [
   [models[0], models[1]],
   [models[3], models[4]],
@@ -97,17 +98,24 @@ const costs = [models[0], models[1], models[4]];
   <section class="section reveal-section">
     <div class="section-heading">
       <div>
-        <h2>A few good places to start</h2><p>
-          The highest overall scores in our sample catalog.
+        <h2>Most used on OpenRouter</h2><p>
+          The most popular models ranked by real-world token volume processed through the OpenRouter API.
         </p>
       </div><a class="text-link" href="/models"
         >Explore all models <ArrowRight size={16} /></a
       >
     </div><div class="model-grid">
-      {featured.map((model) => <ModelCard model={model} />)}
+      {
+        featured.map(({ model, badge }) => (
+          <ModelCard model={model} badgeText={badge} />
+        ))
+      }
     </div><p class="section-note">
-      Illustrative scores, not real-world evaluations. <a href="/methodology"
-        >See how scoring works</a
+      Usage volume sourced directly from OpenRouter LLM rankings. <a
+        href="https://openrouter.ai/rankings"
+        target="_blank"
+        rel="noopener noreferrer"
+        >View live OpenRouter rankings</a
       >
     </p>
   </section>

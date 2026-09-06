@@ -123,6 +123,27 @@ export function getProviderLogoInfo(provider: string): {
     };
   }
 
+  // Tencent / Hunyuan
+  if (norm.includes('tencent') || norm.includes('hunyuan')) {
+    return {
+      src: '/logos/tencent.svg',
+      alt: 'Tencent logo',
+    };
+  }
+
+  // Z.ai / Zhipu / GLM
+  if (
+    norm.includes('z-ai') ||
+    norm.includes('z.ai') ||
+    norm.includes('zhipu') ||
+    norm.includes('glm')
+  ) {
+    return {
+      src: '/logos/zai.svg',
+      alt: 'Z.ai logo',
+    };
+  }
+
   return {
     src: '/logos/generic.png',
     alt: `${provider || 'AI'} logo`,
