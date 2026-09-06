@@ -917,3 +917,26 @@
 - Current state: Every metric in the leaderboard can now be sorted ascending and descending by clicking the column headers or corresponding category pills, with clear visual icons and highlighted sorted columns.
 - Exact next step: Pause and wait for user verification through local testing.
 
+## 2026-09-06 — Sort Models by Release Date with Newest on Top
+
+- Objective: Sort models in the Model Explorer leaderboard by release date with the newest one on top by default, add interactive `RELEASE DATE` column header sorting (ascending/descending) with visual arrow indicators, and wire the `All` category pill to release date sorting.
+- Files changed:
+  - `src/lib/decision.ts`: Added `releaseDate` sorting support to `sortLeaderboardRows` and `LeaderboardSortColumn`, handling ISO date comparisons, null/missing date push to bottom, and secondary tie-breaking by overall score and name.
+  - `src/components/ModelExplorer.tsx`: Added `releaseDate` to `LeaderboardColumnKey` and `ALL_COLUMNS`, added `releaseDate` to `processedModels`, mapped the `All` category pill to `releaseDate`, set initial default sort to `releaseDate` descending, rendered the `RELEASE DATE` column cell, and updated column direction hints.
+  - `src/styles/global.css`: Added `.td-date` typography, monospace tabular styling, and theme-adaptive sorted column highlight colors.
+  - `tests/leaderboardSorting.test.ts`: Added unit tests verifying release date descending (newest first), ascending (oldest first), null handling, and secondary tie-breaking.
+- Attempts: 1 full iteration.
+- Failures and causes:
+  - `top5Thresholds` in `ModelExplorer.tsx` was typed with `LeaderboardColumnKey[]`, causing TypeScript error `ts(7053)` when indexing scores with `releaseDate`. Resolved by typing `metricKeys` and `thresholds` with `LeaderboardMetricKey`.
+  - Prettier formatting check flagged style in `src/lib/decision.ts`. Resolved with `prettier --write`.
+- Tests and results:
+  - `npm test`: 48/48 unit tests passed across all 4 suites.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 65 Astro and TypeScript files.
+  - `npm run lint`: ESLint and Prettier checks passed cleanly with 0 errors.
+  - `npm run build`: Production static site build successfully generated 28,938 pages without errors.
+  - Browser verification: Loaded `http://localhost:4321/models` in Chrome DevTools and confirmed `GPT-6 Astra Max Effort (2026-09-02)` is at the top of the leaderboard, followed by `Gemini 3.8 Flash High Effort (2026-08-20)`, `Gemma 4 (2026-07-28)`, etc. Verified visual indicators and captured screenshot in `artifacts/leaderboard-release-date-sorted.png`.
+- Commit hash: `219cb9e` (code commit).
+- Current state: The Model Explorer leaderboard sorts by release date with newest models on top by default, displays the `RELEASE DATE` column, and supports interactive ascending/descending toggles.
+- Exact next step: Pause and wait for user verification through local testing.
+
+
