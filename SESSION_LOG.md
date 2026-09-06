@@ -896,3 +896,24 @@
 - Current state: All 20 requested MiniMax models are fully integrated across the canonical registry, data pipeline, verified catalog (240 models), model detail pages, comparisons, rankings, and decision engine.
 - Exact next step: User verifies the newly added MiniMax models locally at `http://localhost:4321`.
 
+## 2026-09-06 — Enable Sorting For Each Metric on Leaderboard
+
+- Objective: Give the user the ability to sort by each metric in the leaderboard table (`OVERALL`, `REASONING`, `CODING`, `AGENTIC CODING`, `MATHEMATICS`, `DATA ANALYSIS`, `LANGUAGE`, `INSTRUCTION FOLLOWING`, `COST PER SUCCESSFUL TASK`, and `SPEED`), with accessible interactive controls, clear visual direction indicators, and stable null-handling and tie-breaking.
+- Files changed:
+  - `src/lib/decision.ts`: Added `sortLeaderboardRows` with mathematical anti-symmetry, stable null-handling (models missing a benchmark sort to the bottom), cost metric direction logic (cheapest first by default in ascending), performance score direction logic (highest score first by default in descending), secondary tie-breaking by overall score and name, and exported `LeaderboardMetricKey`, `LeaderboardSortColumn`, and `LeaderboardSortableItem`.
+  - `src/components/ModelExplorer.tsx`: Integrated `sortLeaderboardRows`, replaced static `<th>` elements and unicode arrows with accessible interactive `<button className="th-sort-button">` controls, added `ArrowUp`, `ArrowDown`, and `ArrowUpDown` Lucide icons for active and idle states, synced active category pills with column clicks, enabled toggling sort direction on category pill clicks, and added `aria-sort`, `title`, and descriptive `aria-label` attributes.
+  - `src/styles/global.css`: Added styles for `.th-sort-button`, hover states, `.sort-icon-wrap.idle` and `.sort-icon-wrap.active`, dark mode support, category pill sort indicators, and column highlight states.
+  - `tests/leaderboardSorting.test.ts`: Added comprehensive unit test suite covering descending and ascending sorting for every metric, null handling, tie-breaking, cost logic, speed zero-handling, and alphabetical model name sorting.
+- Attempts: 1 full iteration.
+- Failures and causes:
+  - Initial `write_to_file` call failed because `ArtifactMetadata` was passed for a non-artifact file; resolved by calling without metadata.
+  - Prettier formatting check flagged minor whitespace differences in `ModelExplorer.tsx`, `decision.ts`, and `global.css`; resolved with `prettier --write`.
+- Tests and results:
+  - `npm test`: 45/45 tests passed across all 4 test suites (`calculateTaskCost.test.ts`, `leaderboardSorting.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 65 Astro and TypeScript files.
+  - `npm run lint`: ESLint and Prettier check passed cleanly with 0 errors.
+  - Browser verification: Tested sorting across metrics (Reasoning, Cost, Coding, Overall) via Chrome DevTools and captured screenshots confirming visual indicators and correct sorting.
+- Commit hash: `6114b56` (code commit).
+- Current state: Every metric in the leaderboard can now be sorted ascending and descending by clicking the column headers or corresponding category pills, with clear visual icons and highlighted sorted columns.
+- Exact next step: Pause and wait for user verification through local testing.
+
