@@ -1,6 +1,9 @@
 import React, { useEffect, useState, useMemo, useRef } from 'react';
 import {
   ArrowRight,
+  ArrowUp,
+  ArrowDown,
+  ArrowUpDown,
   ChevronDown,
   ChevronRight,
   ExternalLink,
@@ -21,6 +24,7 @@ import {
   taskCost,
   money,
   contextSize,
+  sortLeaderboardRows,
 } from '../lib/decision';
 import livebenchRows from '../data/livebenchData.json';
 
@@ -292,24 +296,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
   }, [processedModels, query, openWeightsOnly, selectedOrg]);
 
   const sortedRows = useMemo(() => {
-    return [...filteredRows].sort((a, b) => {
-      if (sortColumn === 'name') {
-        const cmp = a.displayName.localeCompare(b.displayName);
-        return sortDirection === 'asc' ? cmp : -cmp;
-      }
-
-      const aVal = a.scores[sortColumn];
-      const bVal = b.scores[sortColumn];
-
-      if (aVal === null || aVal === undefined) return 1;
-      if (bVal === null || bVal === undefined) return -1;
-
-      if (sortColumn === 'cost') {
-        return sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
-      }
-
-      return sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
-    });
+    return sortLeaderboardRows(filteredRows, sortColumn, sortDirection);
   }, [filteredRows, sortColumn, sortDirection]);
 
   useEffect(() => {
@@ -368,9 +355,13 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
   }, [filteredRows]);
 
   function handleCategoryClick(cat: (typeof CATEGORIES)[number]) {
-    setActiveCategory(cat.id);
-    setSortColumn(cat.sortCol);
-    setSortDirection('desc');
+    if (activeCategory === cat.id && sortColumn === cat.sortCol) {
+      setSortDirection((prev) => (prev === 'desc' ? 'asc' : 'desc'));
+    } else {
+      setActiveCategory(cat.id);
+      setSortColumn(cat.sortCol);
+      setSortDirection('desc');
+    }
   }
 
   function handleColumnHeaderClick(colKey: LeaderboardColumnKey | 'name') {
@@ -378,7 +369,15 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
       setSortDirection((prev) => (prev === 'desc' ? 'asc' : 'desc'));
     } else {
       setSortColumn(colKey);
-      setSortDirection(colKey === 'name' || colKey === 'cost' ? 'asc' : 'desc');
+      const defaultDir =
+        colKey === 'name' || colKey === 'cost' ? 'asc' : 'desc';
+      setSortDirection(defaultDir);
+      const matchedCat = CATEGORIES.find((c) => c.sortCol === colKey);
+      if (matchedCat) {
+        setActiveCategory(matchedCat.id);
+      } else {
+        setActiveCategory('');
+      }
     }
   }
 
@@ -606,6 +605,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
         <span className="category-label">CATEGORY</span>
         {CATEGORIES.map((cat) => {
           const isActive = activeCategory === cat.id;
+          const isSortedCol = sortColumn === cat.sortCol;
           return (
             <button
               key={cat.id}
@@ -614,8 +614,22 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
               aria-selected={isActive}
               className={`category-pill ${isActive ? 'active' : ''}`}
               onClick={() => handleCategoryClick(cat)}
+              title={
+                isActive
+                  ? `Currently sorted by ${cat.label} (${sortDirection === 'asc' ? 'ascending' : 'descending'}). Click to toggle.`
+                  : `Sort by ${cat.label}`
+              }
             >
-              {cat.label}
+              <span>{cat.label}</span>
+              {isActive && isSortedCol && (
+                <span className="category-pill-sort-icon">
+                  {sortDirection === 'asc' ? (
+                    <ArrowUp size={11} strokeWidth={2.5} />
+                  ) : (
+                    <ArrowDown size={11} strokeWidth={2.5} />
+                  )}
+                </span>
+              )}
             </button>
           );
         })}
@@ -640,34 +654,116 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                   ></th>
                   <th
                     className={`th-model th-sortable th-align-left ${sortColumn === 'name' ? 'col-sorted' : ''}`}
-                    onClick={() => handleColumnHeaderClick('name')}
+                    scope="col"
+                    aria-sort={
+                      sortColumn === 'name'
+                        ? sortDirection === 'asc'
+                          ? 'ascending'
+                          : 'descending'
+                        : 'none'
+                    }
                   >
-                    <span className="th-content">
-                      MODEL
-                      {sortColumn === 'name' && (
-                        <span className="sort-indicator">
-                          {sortDirection === 'asc' ? '▴' : '▾'}
-                        </span>
-                      )}
-                    </span>
+                    <button
+                      type="button"
+                      className={`th-sort-button ${sortColumn === 'name' ? 'is-sorted' : ''}`}
+                      onClick={() => handleColumnHeaderClick('name')}
+                      title={`Sort by Model name (${sortColumn === 'name' && sortDirection === 'asc' ? 'currently A to Z; click for Z to A' : 'click for A to Z'})`}
+                      aria-label={`Sort by Model name${sortColumn === 'name' ? `, currently sorted ${sortDirection === 'asc' ? 'ascending' : 'descending'}` : ''}`}
+                    >
+                      <span className="th-label">MODEL</span>
+                      <span
+                        className={`sort-icon-wrap ${sortColumn === 'name' ? 'active' : 'idle'}`}
+                      >
+                        {sortColumn === 'name' ? (
+                          sortDirection === 'asc' ? (
+                            <ArrowUp
+                              size={13}
+                              className="sort-icon active"
+                              aria-hidden="true"
+                            />
+                          ) : (
+                            <ArrowDown
+                              size={13}
+                              className="sort-icon active"
+                              aria-hidden="true"
+                            />
+                          )
+                        ) : (
+                          <ArrowUpDown
+                            size={13}
+                            className="sort-icon idle"
+                            aria-hidden="true"
+                          />
+                        )}
+                      </span>
+                    </button>
                   </th>
                   {ALL_COLUMNS.filter((col) => visibleColumns[col.key]).map(
                     (col) => {
                       const isSorted = sortColumn === col.key;
+                      const nextDir = isSorted
+                        ? sortDirection === 'asc'
+                          ? 'desc'
+                          : 'asc'
+                        : col.key === 'cost'
+                          ? 'asc'
+                          : 'desc';
+                      const directionHint =
+                        nextDir === 'asc'
+                          ? col.key === 'cost'
+                            ? 'lowest cost first'
+                            : 'lowest score first'
+                          : col.key === 'cost'
+                            ? 'highest cost first'
+                            : 'highest score first';
+
                       return (
                         <th
                           key={col.key}
                           className={`th-metric th-sortable th-align-${col.align} ${isSorted ? 'col-sorted' : ''}`}
-                          onClick={() => handleColumnHeaderClick(col.key)}
+                          scope="col"
+                          aria-sort={
+                            isSorted
+                              ? sortDirection === 'asc'
+                                ? 'ascending'
+                                : 'descending'
+                              : 'none'
+                          }
                         >
-                          <span className="th-content">
-                            {col.label}
-                            {isSorted && (
-                              <span className="sort-indicator">
-                                {sortDirection === 'asc' ? '▴' : '▾'}
-                              </span>
-                            )}
-                          </span>
+                          <button
+                            type="button"
+                            className={`th-sort-button ${isSorted ? 'is-sorted' : ''}`}
+                            onClick={() => handleColumnHeaderClick(col.key)}
+                            title={`Sort by ${col.label} (click for ${directionHint})`}
+                            aria-label={`Sort by ${col.label}${isSorted ? `, currently sorted ${sortDirection === 'asc' ? 'ascending' : 'descending'}` : ''}`}
+                          >
+                            <span className="th-label">{col.label}</span>
+                            <span
+                              className={`sort-icon-wrap ${isSorted ? 'active' : 'idle'}`}
+                            >
+                              {isSorted ? (
+                                sortDirection === 'asc' ? (
+                                  <ArrowUp
+                                    size={13}
+                                    className="sort-icon active"
+                                    aria-hidden="true"
+                                  />
+                                ) : (
+                                  <ArrowDown
+                                    size={13}
+                                    className="sort-icon active"
+                                    aria-hidden="true"
+                                  />
+                                )
+                              ) : (
+                                <ArrowUpDown
+                                  size={13}
+                                  className="sort-icon idle"
+                                  aria-hidden="true"
+                                />
+                              )}
+                            </span>
+                          </button>
                         </th>
                       );
                     },

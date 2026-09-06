@@ -298,3 +298,85 @@ export function selectionFromSearch(search: string, models: CatalogModel[]) {
     })
     .slice(0, 4);
 }
+
+export type LeaderboardMetricKey =
+  | 'overall'
+  | 'reasoning'
+  | 'coding'
+  | 'agentic'
+  | 'mathematics'
+  | 'dataAnalysis'
+  | 'language'
+  | 'instructionFollowing'
+  | 'cost'
+  | 'speed';
+
+export type LeaderboardSortColumn = LeaderboardMetricKey | 'name';
+
+export interface LeaderboardSortableItem {
+  displayName: string;
+  scores: Record<LeaderboardMetricKey, number | null>;
+  [key: string]: unknown;
+}
+
+export function sortLeaderboardRows<T extends LeaderboardSortableItem>(
+  rows: T[],
+  sortColumn: LeaderboardSortColumn,
+  sortDirection: 'asc' | 'desc',
+): T[] {
+  return [...rows].sort((a, b) => {
+    if (sortColumn === 'name') {
+      const cmp = a.displayName.localeCompare(b.displayName);
+      return sortDirection === 'asc' ? cmp : -cmp;
+    }
+
+    const aVal = a.scores[sortColumn];
+    const bVal = b.scores[sortColumn];
+
+    // Speed <= 0 treated as null / not available
+    const aNormVal =
+      sortColumn === 'speed' && aVal !== null && aVal !== undefined && aVal <= 0
+        ? null
+        : aVal;
+    const bNormVal =
+      sortColumn === 'speed' && bVal !== null && bVal !== undefined && bVal <= 0
+        ? null
+        : bVal;
+
+    const aNull = aNormVal === null || aNormVal === undefined;
+    const bNull = bNormVal === null || bNormVal === undefined;
+
+    // Both null: stable tie-break by name
+    if (aNull && bNull) {
+      return a.displayName.localeCompare(b.displayName);
+    }
+    // Items with missing data always sort to the bottom
+    if (aNull) return 1;
+    if (bNull) return -1;
+
+    // Cost metric: ascending means lowest cost first (e.g. $0.000)
+    if (sortColumn === 'cost') {
+      const diff =
+        sortDirection === 'asc' ? aNormVal - bNormVal : bNormVal - aNormVal;
+      if (diff !== 0) return diff;
+      // Secondary tie-breaker by overall score (higher is better), then name
+      const aOverall = a.scores.overall ?? 0;
+      const bOverall = b.scores.overall ?? 0;
+      if (bOverall !== aOverall) return bOverall - aOverall;
+      return a.displayName.localeCompare(b.displayName);
+    }
+
+    // Performance metrics: descending means highest score first
+    const diff =
+      sortDirection === 'asc' ? aNormVal - bNormVal : bNormVal - aNormVal;
+    if (diff !== 0) return diff;
+
+    // Secondary tie-breaker by overall score (higher is better), then name
+    if (sortColumn !== 'overall') {
+      const aOverall = a.scores.overall ?? 0;
+      const bOverall = b.scores.overall ?? 0;
+      if (bOverall !== aOverall) return bOverall - aOverall;
+    }
+    return a.displayName.localeCompare(b.displayName);
+  });
+}
