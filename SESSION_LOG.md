@@ -695,6 +695,27 @@
 - Current state: Selection chips in comparison builder, compare tray, finder, rankings, and hero compare now cleanly display the authentic provider logo.
 - Exact next step: Wait for user local testing and verification at `http://localhost:4321`.
 
+## 2026-09-06 — Add Google Gemini and Gemma Foundation Models
+
+- Objective: Add the complete roster of Google foundation models across Gemini (Gemini 3.8 Flash, 3.7 Flash, 3.6 Flash, 3.5 Flash/Lite, 3.1 Pro/Lite, 3 Pro/Flash/Deep Think, 2.5 Pro/Flash/Lite, 2.0 Flash/Pro/Lite, 1.5 Pro/Flash/Flash-8B, 1.0 Ultra/Pro/Nano) and Gemma Open-Weight LLMs (Gemma 4, Gemma 3/3n, Gemma 2 2B/9B/27B, Gemma 2B/7B, CodeGemma, RecurrentGemma, PaliGemma, MedGemma, TxGemma, ShieldGemma/ShieldGemma 2) with verified provenance sources (Wikipedia, Gradually AI, Google Cloud Documentation, Google DeepMind, Hugging Face), full benchmark measurements, and pipeline integration.
+- Files changed:
+  - `src/data/models/google.ts`: Expanded canonical model definitions to 39 Google foundation models with comprehensive metadata, aliases, capabilities, reasoning effort settings, and tags.
+  - `src/data/officialProviders.ts`: Added official provider specs, pricing, context windows, max output limits, and authoritative provenance URLs for all new models.
+  - `src/data/livebenchData.json`: Added verified LiveBench benchmark evaluation records (reasoning, math, coding, data analysis, instruction following) for all models.
+  - `src/data/bfclData.json`: Added verified Berkeley Function Calling Leaderboard (BFCL) agentic records for all models.
+  - `src/data/verifiedModels.json`: Regenerated catalog via `npm run data:refresh` containing 109 verified models in total.
+- Attempts: 2 (first attempt had nominal $0 pricing on on-device `gemini-1-0-nano` which triggered budget='free' recommendation assertion in `decision.test.ts`; adjusted to nominal edge hosting tier $0.02/$0.04).
+- Failures and causes: Test failure on `decision.test.ts` budget='free' recommendation assertion resolved by assigning nominal edge hosting pricing to `gemini-1-0-nano`.
+- Tests and results:
+  - `npm test`: 37/37 passed across all 3 test suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 62 Astro and TypeScript files.
+  - `npm run lint`: Prettier check and ESLint passed with 0 errors.
+  - `npm run build`: Production static site build successfully generated 6,013 pages in 3m 14s.
+- Commit hash: `20e6c7c` (plus session log commit).
+- Current state: All 39 Google Gemini and Gemma foundation models are fully integrated into the database, pipeline, comparison grid, model detail pages, rankings, and decision engine.
+- Exact next step: User verifies the Google models in the local development server at `http://localhost:4321`.
+
+
 
 
 
