@@ -111,6 +111,18 @@ export function getProviderLogoInfo(provider: string): {
     };
   }
 
+  // MiniMax / SynLogic / ABAB
+  if (
+    norm.includes('minimax') ||
+    norm.includes('synlogic') ||
+    norm.includes('abab')
+  ) {
+    return {
+      src: '/logos/minimax.png',
+      alt: 'MiniMax logo',
+    };
+  }
+
   return {
     src: '/logos/generic.png',
     alt: `${provider || 'AI'} logo`,

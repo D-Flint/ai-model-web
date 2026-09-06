@@ -1073,6 +1073,106 @@
     ]
   },
   {
+    "slug": "minimax-m3-mxfp8",
+    "name": "MiniMax-M3-MXFP8",
+    "provider": "MiniMax",
+    "family": "MiniMax M3",
+    "dataKind": "verified",
+    "description": "Microscopic-scaling FP8 (MXFP8) quantized release of MiniMax-M3, hardware-accelerated for NVIDIA Blackwell and AMD Instinct architectures. Preserves full 1M context and multimodal intelligence while significantly reducing memory footprint and boosting decode speed.",
+    "strengths": [
+      "Native MXFP8 block quantization preserving 99%+ of full-precision reasoning accuracy",
+      "Substantially reduced memory requirements allowing inference on fewer accelerator nodes",
+      "High decode throughput exceeding 110 tokens/second on modern AI accelerator silicon",
+      "Maintains the complete 1,048,576 token context window and multimodal processing capabilities"
+    ],
+    "weaknesses": [
+      "Quantization benefits require modern GPU architectures with hardware MXFP8 tensor cores",
+      "Does not support raw native audio processing"
+    ],
+    "tags": [
+      "Multimodal",
+      "Vision",
+      "Coding",
+      "Open weights",
+      "Speed",
+      "Large context"
+    ],
+    "facts": {
+      "context": 1048576,
+      "maxOutput": 262144,
+      "speedTokensPerSec": 110,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-06-20",
+      "sourceId": "source-minimax",
+      "reasoningEffort": ["none", "low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 0.25,
+      "output": 1,
+      "cached": 0.12,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-minimax",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 70,
+      "overall": 70
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 70,
+        "min": 0,
+        "max": 100,
+        "normalized": 70,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-minimax",
+        "name": "MiniMax Official Documentation",
+        "url": "https://www.minimax.io/",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "MiniMax"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "claude-fable-5-1",
     "name": "Claude Fable 5.1",
     "provider": "Anthropic",
@@ -1207,6 +1307,145 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "minimax-m3",
+    "name": "MiniMax-M3",
+    "provider": "MiniMax",
+    "family": "MiniMax M3",
+    "dataKind": "verified",
+    "description": "MiniMax's flagship frontier multimodal MoE foundation model (~428B parameters). Features native comprehension of text, images, and video, a 1M token context window powered by MiniMax Sparse Attention (MSA), and advanced coding and desktop automation capabilities.",
+    "strengths": [
+      "Massive 428B parameter MoE architecture with native multimodal reasoning across text, code, images, and video",
+      "1,048,576 token context window powered by MiniMax Sparse Attention (MSA) for low-latency retrieval",
+      "High-performance coding, software engineering, and multi-turn agentic workflows",
+      "Generous 262k maximum completion tokens for extensive document and application generation"
+    ],
+    "weaknesses": [
+      "Self-hosting the full-precision 428B weights requires multi-GPU cluster infrastructure",
+      "Complex multimodal reasoning carries higher computational latency than lightweight tiers"
+    ],
+    "tags": [
+      "Multimodal",
+      "Vision",
+      "Coding",
+      "Agents",
+      "Open weights",
+      "Flagship",
+      "Large context"
+    ],
+    "facts": {
+      "context": 1048576,
+      "maxOutput": 262144,
+      "speedTokensPerSec": 75,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": 62,
+      "availability": "Production API",
+      "releaseDate": "2026-06-15",
+      "sourceId": "source-minimax",
+      "reasoningEffort": ["none", "low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 0.3,
+      "output": 1.2,
+      "cached": 0.15,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-minimax",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": 70,
+      "agentic": null,
+      "dailyUse": 62,
+      "research": null,
+      "writing": null,
+      "vision": 36,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 68,
+      "overall": 64
+    },
+    "evidence": [
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1487,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 70,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 1435,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 62,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-02"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1255,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 36,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 68,
+        "min": 0,
+        "max": 100,
+        "normalized": 68,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 74,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-minimax",
+        "name": "MiniMax Official Documentation",
+        "url": "https://www.minimax.io/",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "MiniMax"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
         "id": "astra-cost-engine",
@@ -1539,7 +1778,7 @@
     },
     "scores": {
       "intelligence": null,
-      "coding": null,
+      "coding": 67,
       "agentic": null,
       "dailyUse": null,
       "research": null,
@@ -1548,9 +1787,19 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 60,
-      "overall": 60
+      "overall": 65
     },
     "evidence": [
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1472,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 67,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
       {
         "metric": "costEfficiency",
         "kind": "benchmark",
@@ -1562,7 +1811,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 48,
+    "confidence": 67,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -1575,6 +1824,14 @@
         "retrievedAt": "2026-09-06",
         "kind": "provider_doc",
         "publisher": "Moonshot AI"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
         "id": "astra-cost-engine",
@@ -2045,18 +2302,28 @@
     },
     "scores": {
       "intelligence": null,
-      "coding": null,
+      "coding": 73,
       "agentic": null,
       "dailyUse": 65,
       "research": null,
       "writing": null,
-      "vision": null,
+      "vision": 40,
       "speed": null,
       "reliability": null,
       "costEfficiency": 60,
-      "overall": 63
+      "overall": 65
     },
     "evidence": [
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1509,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 73,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
       {
         "metric": "dailyUse",
         "kind": "benchmark",
@@ -2066,6 +2333,16 @@
         "normalized": 65,
         "sourceId": "lmarena-leaderboard",
         "updatedAt": "2026-09-02"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1281,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 40,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
       },
       {
         "metric": "costEfficiency",
@@ -2078,7 +2355,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 68,
+    "confidence": 74,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -2431,16 +2708,16 @@
     },
     "scores": {
       "intelligence": 65,
-      "coding": 61,
+      "coding": 63,
       "agentic": 84,
       "dailyUse": 62,
       "research": null,
       "writing": null,
-      "vision": null,
+      "vision": 38,
       "speed": null,
       "reliability": null,
       "costEfficiency": 92,
-      "overall": 70
+      "overall": 69
     },
     "evidence": [
       {
@@ -2464,6 +2741,16 @@
         "updatedAt": "2026-03-25"
       },
       {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1449,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 64,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
         "metric": "agentic",
         "kind": "benchmark",
         "raw": 83.5,
@@ -2484,6 +2771,16 @@
         "updatedAt": "2026-09-02"
       },
       {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1269,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 38,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 92,
@@ -2494,7 +2791,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 85,
+    "confidence": 88,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -2862,16 +3159,16 @@
     },
     "scores": {
       "intelligence": 82,
-      "coding": 85,
+      "coding": 88,
       "agentic": 93,
       "dailyUse": 71,
       "research": 33,
       "writing": null,
-      "vision": null,
+      "vision": 47,
       "speed": null,
       "reliability": null,
       "costEfficiency": 20,
-      "overall": 71
+      "overall": 70
     },
     "evidence": [
       {
@@ -2893,6 +3190,16 @@
         "normalized": 85,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-03-20"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1629,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 90,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
       },
       {
         "metric": "agentic",
@@ -2925,6 +3232,16 @@
         "updatedAt": "2026-08-24"
       },
       {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1329,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 47,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 20,
@@ -2935,7 +3252,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 88,
+    "confidence": 91,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -2972,6 +3289,99 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "LMSYS Chatbot Arena Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "minimax-m2-7-highspeed",
+    "name": "MiniMax-M2.7-highspeed",
+    "provider": "MiniMax",
+    "family": "MiniMax M2",
+    "dataKind": "verified",
+    "description": "Low-latency accelerated endpoint for MiniMax-M2.7 delivering sustained generation speeds over 135 tokens/second. Tailored for interactive coding copilots, real-time agent loops, and time-sensitive developer tools.",
+    "strengths": [
+      "Blazing inference speed exceeding 135 tokens/second for responsive interactive programming",
+      "Same robust self-evolving coding and tool-calling capabilities as base M2.7",
+      "204,800 token context window with instantaneous time-to-first-token",
+      "High reliability for high-concurrency production deployments"
+    ],
+    "weaknesses": [
+      "Carries a higher token pricing premium over standard M2.7",
+      "Does not process image or visual inputs"
+    ],
+    "tags": ["Coding", "Agents", "Speed", "Developer"],
+    "facts": {
+      "context": 204800,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 135,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-03-15",
+      "sourceId": "source-minimax",
+      "reasoningEffort": ["none", "low", "medium"],
+      "defaultEffort": "low"
+    },
+    "pricing": {
+      "input": 0.6,
+      "output": 2.4,
+      "cached": 0.3,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-minimax",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 59,
+      "overall": 59
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 59,
+        "min": 0,
+        "max": 100,
+        "normalized": 59,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-minimax",
+        "name": "MiniMax Official Documentation",
+        "url": "https://www.minimax.io/",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "MiniMax"
       },
       {
         "id": "astra-cost-engine",
@@ -3248,6 +3658,321 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "minimax-m2-7",
+    "name": "MiniMax-M2.7",
+    "provider": "MiniMax",
+    "family": "MiniMax M2",
+    "dataKind": "verified",
+    "description": "MiniMax's advanced autonomous programming and agentic model featuring a recursive self-evolution framework. Autonomously identifies code execution errors, refines skills, and coordinates complex multi-file software engineering tasks across a 200k context window.",
+    "strengths": [
+      "Recursive self-evolution architecture optimized for continuous refinement during complex coding sessions",
+      "Exceptional tool usage and execution feedback interpretation for automated agent scaffolds",
+      "Balanced 204,800 token context window designed for deep repository understanding",
+      "Strong cost-to-performance ratio for software engineering workflows"
+    ],
+    "weaknesses": [
+      "Text and code only; lacks vision and image input capabilities",
+      "Batch throughput slightly lower on heavy reasoning steps than high-speed endpoints"
+    ],
+    "tags": ["Coding", "Agents", "Reasoning", "Developer"],
+    "facts": {
+      "context": 204800,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 85,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-03-12",
+      "sourceId": "source-minimax",
+      "reasoningEffort": ["none", "low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 0.3,
+      "output": 1.2,
+      "cached": 0.15,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-minimax",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": 57,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 68,
+      "overall": 61
+    },
+    "evidence": [
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1398,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 57,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 68,
+        "min": 0,
+        "max": 100,
+        "normalized": 68,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 68,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-minimax",
+        "name": "MiniMax Official Documentation",
+        "url": "https://www.minimax.io/",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "MiniMax"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "minimax-m2-5-highspeed",
+    "name": "MiniMax-M2.5-highspeed",
+    "provider": "MiniMax",
+    "family": "MiniMax M2",
+    "dataKind": "verified",
+    "description": "Accelerated lightning tier of MiniMax-M2.5 engineered for ultra-fast generation speeds up to 125 tokens/second, optimized for interactive applications, rapid prototyping, and high-frequency chatbot bots.",
+    "strengths": [
+      "High-throughput generation delivering 125 tokens/second with minimal latency",
+      "Maintains M2.5 reliable tool calling and structured JSON compliance",
+      "204,800 token context window for seamless multi-turn conversations",
+      "Ideal latency profile for conversational voice bots and auto-complete tools"
+    ],
+    "weaknesses": [
+      "Priced higher than standard M2.5 tier",
+      "Text-only model without vision processing"
+    ],
+    "tags": ["Speed", "Best value", "Agents", "Daily use"],
+    "facts": {
+      "context": 204800,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 125,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-02-20",
+      "sourceId": "source-minimax",
+      "reasoningEffort": ["none", "low"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.3,
+      "output": 2.4,
+      "cached": 0.15,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-minimax",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 62,
+      "overall": 62
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 62,
+        "min": 0,
+        "max": 100,
+        "normalized": 62,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-minimax",
+        "name": "MiniMax Official Documentation",
+        "url": "https://www.minimax.io/",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "MiniMax"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "minimax-m2-5",
+    "name": "MiniMax-M2.5",
+    "provider": "MiniMax",
+    "family": "MiniMax M2",
+    "dataKind": "verified",
+    "description": "MiniMax's frontier value workhorse, marketed as 'intelligence too cheap to meter'. Combines strong reasoning, task decomposition, and coding proficiency at industry-leading cost efficiency with a 200k context window.",
+    "strengths": [
+      "Ultra-low API cost of $0.15/M input and $1.20/M output for frontier-class output quality",
+      "Extensively trained on real-world tool execution, structured output, and agentic workflows",
+      "204,800 token context window capable of ingesting lengthy specifications and logs",
+      "Dependable daily driver for high-volume background tasks and automated pipelines"
+    ],
+    "weaknesses": [
+      "Lacks native multimodal image support",
+      "Slightly less capable on hyper-complex mathematical proofs than M3"
+    ],
+    "tags": ["Best value", "Coding", "Agents", "Daily use"],
+    "facts": {
+      "context": 204800,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 90,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-02-18",
+      "sourceId": "source-minimax",
+      "reasoningEffort": ["none", "low", "medium"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 0.15,
+      "output": 1.2,
+      "cached": 0.08,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-minimax",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": 55,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 71,
+      "overall": 60
+    },
+    "evidence": [
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1384,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 55,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 71,
+        "min": 0,
+        "max": 100,
+        "normalized": 71,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 68,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-minimax",
+        "name": "MiniMax Official Documentation",
+        "url": "https://www.minimax.io/",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "MiniMax"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
         "id": "astra-cost-engine",
@@ -4192,6 +4917,285 @@
     ]
   },
   {
+    "slug": "minimax-m2-her",
+    "name": "MiniMax-M2-her",
+    "provider": "MiniMax",
+    "family": "MiniMax M2",
+    "dataKind": "verified",
+    "description": "Specialized dialogue and persona model fine-tuned for immersive roleplay, conversational companions, and rich emotional storytelling. Powers conversational experiences with consistent persona retention.",
+    "strengths": [
+      "Exceptional persona stability and nuance across long, multi-turn emotional conversations",
+      "Supports fine-grained message roles and simulated character behavioral guidelines",
+      "High empathy and natural conversational phrasing in creative roleplay",
+      "131,072 token context window retaining deep conversational relationship history"
+    ],
+    "weaknesses": [
+      "Specialized for conversational prose and character chat; not suited for coding or math reasoning",
+      "Lacks code execution and external tool call specialization"
+    ],
+    "tags": ["Writing", "Daily use", "Conversation"],
+    "facts": {
+      "context": 131072,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 95,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-01-15",
+      "sourceId": "source-minimax",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.2,
+      "output": 0.8,
+      "cached": 0.1,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-minimax",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 73,
+      "overall": 73
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 73,
+        "min": 0,
+        "max": 100,
+        "normalized": 73,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-minimax",
+        "name": "MiniMax Official Documentation",
+        "url": "https://www.minimax.io/",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "MiniMax"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "minimax-m2-1-highspeed",
+    "name": "MiniMax-M2.1-highspeed",
+    "provider": "MiniMax",
+    "family": "MiniMax M2",
+    "dataKind": "verified",
+    "description": "High-speed inference variation of MiniMax-M2.1 delivering low time-to-first-token and 120 tokens/second throughput for low-latency coding assistants and live agent evaluation loops.",
+    "strengths": [
+      "120 tokens/second generation speed for snappy developer experience",
+      "Accurate polyglot code completion and syntax generation",
+      "204,800 token context window for seamless multi-file workflows",
+      "High uptime and concurrent request handling"
+    ],
+    "weaknesses": [
+      "Priced at 2x the standard M2.1 base rate",
+      "Text and code only"
+    ],
+    "tags": ["Coding", "Speed", "Developer"],
+    "facts": {
+      "context": 204800,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 120,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-12-20",
+      "sourceId": "source-minimax",
+      "reasoningEffort": ["none", "low"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.4,
+      "output": 2,
+      "cached": 0.2,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-minimax",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 62,
+      "overall": 62
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 62,
+        "min": 0,
+        "max": 100,
+        "normalized": 62,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-minimax",
+        "name": "MiniMax Official Documentation",
+        "url": "https://www.minimax.io/",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "MiniMax"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "minimax-m2-1",
+    "name": "MiniMax-M2.1",
+    "provider": "MiniMax",
+    "family": "MiniMax M2",
+    "dataKind": "verified",
+    "description": "Agentic Mixture-of-Experts language model with specialized improvements in polyglot systems programming (Rust, Go, C++, Java) and mobile development. Provides 200k context and deep function routing.",
+    "strengths": [
+      "Targeted training across modern systems languages including Rust, Go, TypeScript, and Java",
+      "Solid function-calling accuracy and schema generation for developer tooling",
+      "204,800 token context window supporting expansive stack traces and codebases",
+      "Economical API pricing with responsive generation speeds"
+    ],
+    "weaknesses": [
+      "Predecessor to M2.5 and M2.7 with lower benchmark scores on automated benchmarks",
+      "No native visual or image input support"
+    ],
+    "tags": ["Coding", "Agents", "Developer"],
+    "facts": {
+      "context": 204800,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 85,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-12-18",
+      "sourceId": "source-minimax",
+      "reasoningEffort": ["none", "low", "medium"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.2,
+      "output": 1,
+      "cached": 0.1,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-minimax",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 71,
+      "overall": 71
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 71,
+        "min": 0,
+        "max": 100,
+        "normalized": 71,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-minimax",
+        "name": "MiniMax Official Documentation",
+        "url": "https://www.minimax.io/",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "MiniMax"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "claude-opus-4-8",
     "name": "Claude Opus 4.8",
     "provider": "Anthropic",
@@ -4233,16 +5237,16 @@
     },
     "scores": {
       "intelligence": 80,
-      "coding": 83,
+      "coding": 80,
       "agentic": 92,
       "dailyUse": 65,
       "research": 29,
       "writing": null,
-      "vision": null,
+      "vision": 41,
       "speed": null,
       "reliability": null,
       "costEfficiency": 29,
-      "overall": 69
+      "overall": 67
     },
     "evidence": [
       {
@@ -4264,6 +5268,16 @@
         "normalized": 83,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2025-12-08"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1540,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 77,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
       },
       {
         "metric": "agentic",
@@ -4296,6 +5310,16 @@
         "updatedAt": "2026-08-24"
       },
       {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1289,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 41,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 29,
@@ -4306,7 +5330,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 88,
+    "confidence": 91,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -4534,16 +5558,16 @@
     },
     "scores": {
       "intelligence": 79,
-      "coding": 82,
+      "coding": 81,
       "agentic": 91,
       "dailyUse": 69,
       "research": 33,
       "writing": null,
-      "vision": null,
+      "vision": 45,
       "speed": null,
       "reliability": null,
       "costEfficiency": 29,
-      "overall": 70
+      "overall": 68
     },
     "evidence": [
       {
@@ -4565,6 +5589,16 @@
         "normalized": 82,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2025-11-20"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1557,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 80,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
       },
       {
         "metric": "agentic",
@@ -4597,6 +5631,16 @@
         "updatedAt": "2026-08-24"
       },
       {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1317,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 45,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 29,
@@ -4607,7 +5651,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 88,
+    "confidence": 91,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -4700,16 +5744,16 @@
     },
     "scores": {
       "intelligence": 81,
-      "coding": 82,
+      "coding": 73,
       "agentic": 92,
       "dailyUse": 68,
       "research": null,
       "writing": null,
-      "vision": null,
+      "vision": 43,
       "speed": null,
       "reliability": null,
       "costEfficiency": 49,
-      "overall": 77
+      "overall": 73
     },
     "evidence": [
       {
@@ -4733,6 +5777,16 @@
         "updatedAt": "2025-11-20"
       },
       {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1439,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 63,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
         "metric": "agentic",
         "kind": "benchmark",
         "raw": 92,
@@ -4753,6 +5807,16 @@
         "updatedAt": "2026-09-02"
       },
       {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1304,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 43,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 49,
@@ -4763,7 +5827,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 85,
+    "confidence": 88,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -4856,16 +5920,16 @@
     },
     "scores": {
       "intelligence": 72,
-      "coding": 71,
+      "coding": 67,
       "agentic": 88,
       "dailyUse": 67,
       "research": null,
       "writing": null,
-      "vision": null,
+      "vision": 41,
       "speed": null,
       "reliability": null,
       "costEfficiency": 82,
-      "overall": 75
+      "overall": 72
     },
     "evidence": [
       {
@@ -4889,6 +5953,16 @@
         "updatedAt": "2025-11-20"
       },
       {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1438,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 63,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
         "metric": "agentic",
         "kind": "benchmark",
         "raw": 87.5,
@@ -4909,6 +5983,16 @@
         "updatedAt": "2026-09-02"
       },
       {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1285,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 41,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 82,
@@ -4919,7 +6003,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 85,
+    "confidence": 88,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -5242,16 +6326,16 @@
     },
     "scores": {
       "intelligence": 78,
-      "coding": 82,
+      "coding": 78,
       "agentic": 91,
       "dailyUse": 65,
       "research": null,
       "writing": null,
-      "vision": null,
+      "vision": 40,
       "speed": null,
       "reliability": null,
       "costEfficiency": 36,
-      "overall": 74
+      "overall": 71
     },
     "evidence": [
       {
@@ -5275,6 +6359,16 @@
         "updatedAt": "2025-11-10"
       },
       {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1521,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 74,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
         "metric": "agentic",
         "kind": "benchmark",
         "raw": 91,
@@ -5295,6 +6389,16 @@
         "updatedAt": "2026-09-02"
       },
       {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1282,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 40,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 36,
@@ -5305,7 +6409,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 85,
+    "confidence": 88,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -5342,6 +6446,99 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "LMSYS Chatbot Arena Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "minimax-m2",
+    "name": "MiniMax-M2",
+    "provider": "MiniMax",
+    "family": "MiniMax M2",
+    "dataKind": "verified",
+    "description": "Foundational release of MiniMax's M2 generation, establishing the architecture's 200k context window, robust MoE dispatch, and strong agentic software development foundations.",
+    "strengths": [
+      "First M-series model to deliver full 204,800 token context window",
+      "Strong instruction following and structured JSON response generation",
+      "Efficient Mixture-of-Experts architecture delivering balanced cost and quality",
+      "Well-tested across developer copilots and autonomous web scrapers"
+    ],
+    "weaknesses": [
+      "Superseded in software reasoning by M2.5 and M2.7",
+      "No multimodal vision support"
+    ],
+    "tags": ["Coding", "Agents", "Developer"],
+    "facts": {
+      "context": 204800,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 80,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-11-10",
+      "sourceId": "source-minimax",
+      "reasoningEffort": ["none", "low"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.25,
+      "output": 1,
+      "cached": 0.12,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-minimax",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 70,
+      "overall": 70
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 70,
+        "min": 0,
+        "max": 100,
+        "normalized": 70,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-minimax",
+        "name": "MiniMax Official Documentation",
+        "url": "https://www.minimax.io/",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "MiniMax"
       },
       {
         "id": "astra-cost-engine",
@@ -5395,16 +6592,16 @@
     },
     "scores": {
       "intelligence": 77,
-      "coding": 81,
+      "coding": 79,
       "agentic": 91,
       "dailyUse": 71,
       "research": null,
       "writing": null,
-      "vision": null,
+      "vision": 44,
       "speed": null,
       "reliability": null,
       "costEfficiency": 29,
-      "overall": 74
+      "overall": 72
     },
     "evidence": [
       {
@@ -5428,6 +6625,16 @@
         "updatedAt": "2025-10-25"
       },
       {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1537,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 77,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
+      {
         "metric": "agentic",
         "kind": "benchmark",
         "raw": 90.6,
@@ -5448,6 +6655,16 @@
         "updatedAt": "2026-09-02"
       },
       {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1311,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 44,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 29,
@@ -5458,7 +6675,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 85,
+    "confidence": 88,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -6893,7 +8110,7 @@
     },
     "scores": {
       "intelligence": null,
-      "coding": null,
+      "coding": 64,
       "agentic": null,
       "dailyUse": 64,
       "research": null,
@@ -6902,9 +8119,19 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 69,
-      "overall": 66
+      "overall": 65
     },
     "evidence": [
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1446,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 64,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-05"
+      },
       {
         "metric": "dailyUse",
         "kind": "benchmark",
@@ -6926,7 +8153,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 68,
+    "confidence": 71,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-05",
@@ -7291,11 +8518,11 @@
       "dailyUse": 65,
       "research": null,
       "writing": null,
-      "vision": null,
+      "vision": 37,
       "speed": null,
       "reliability": null,
       "costEfficiency": 49,
-      "overall": 74
+      "overall": 72
     },
     "evidence": [
       {
@@ -7339,6 +8566,16 @@
         "updatedAt": "2026-09-02"
       },
       {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1262,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 37,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 49,
@@ -7349,7 +8586,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 85,
+    "confidence": 88,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -7447,11 +8684,11 @@
       "dailyUse": null,
       "research": null,
       "writing": null,
-      "vision": null,
+      "vision": 34,
       "speed": null,
       "reliability": null,
       "costEfficiency": 82,
-      "overall": 73
+      "overall": 71
     },
     "evidence": [
       {
@@ -7485,6 +8722,16 @@
         "updatedAt": "2025-08-14"
       },
       {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1236,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 34,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 82,
@@ -7495,7 +8742,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 75,
+    "confidence": 85,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -7524,6 +8771,14 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
         "id": "astra-cost-engine",
@@ -9097,6 +10352,291 @@
     ]
   },
   {
+    "slug": "minimax-m1-80k",
+    "name": "MiniMax-M1-80k",
+    "provider": "MiniMax",
+    "family": "MiniMax M1",
+    "dataKind": "verified",
+    "description": "Flagship open-weights test-time reasoning model from the M1 series, equipped with an expansive 80,000 thinking token budget. Combines hybrid Lightning Attention with Mixture-of-Experts across a 1,000,000 token context window.",
+    "strengths": [
+      "Enormous 80,000 test-time thinking budget for deep algorithmic deduction and complex proofs",
+      "Hybrid Lightning Attention + MoE architecture enabling efficient long-context compute",
+      "1,000,000 token context window for comprehensive repository and document ingestion",
+      "Weights freely available under open license for local and enterprise deployment"
+    ],
+    "weaknesses": [
+      "Deep reasoning mode results in higher end-to-end latency before initial answer tokens",
+      "High memory footprint during peak test-time thought generation"
+    ],
+    "tags": [
+      "Reasoning",
+      "Open weights",
+      "Coding",
+      "Research",
+      "Large context"
+    ],
+    "facts": {
+      "context": 1000000,
+      "maxOutput": 81920,
+      "speedTokensPerSec": 65,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-06-10",
+      "sourceId": "source-minimax",
+      "reasoningEffort": ["low", "medium", "high", "max"],
+      "defaultEffort": "high"
+    },
+    "pricing": {
+      "input": 0.4,
+      "output": 2,
+      "cached": 0.2,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-minimax",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 62,
+      "overall": 62
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 62,
+        "min": 0,
+        "max": 100,
+        "normalized": 62,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-minimax",
+        "name": "MiniMax Official Documentation",
+        "url": "https://www.minimax.io/",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "MiniMax"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "minimax-m1-40k",
+    "name": "MiniMax-M1-40k",
+    "provider": "MiniMax",
+    "family": "MiniMax M1",
+    "dataKind": "verified",
+    "description": "Open-weights test-time reasoning model configured with a 40,000 thinking token budget. Strikes a practical equilibrium between rigorous chain-of-thought verification, latency, and operational inference costs over a 1M token context.",
+    "strengths": [
+      "40,000 thinking token budget delivering strong reasoning accuracy with faster response times than 80k",
+      "Full 1,000,000 token context window for massive input processing",
+      "Open-weights architecture deployable on self-hosted enterprise infrastructure",
+      "Strong competitive performance across math competitions and code verification"
+    ],
+    "weaknesses": [
+      "Slightly lower peak benchmark resolution than the full 80k reasoning configuration",
+      "Requires substantial VRAM for long-context KV cache management"
+    ],
+    "tags": ["Reasoning", "Open weights", "Coding", "Large context"],
+    "facts": {
+      "context": 1000000,
+      "maxOutput": 40960,
+      "speedTokensPerSec": 75,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-06-10",
+      "sourceId": "source-minimax",
+      "reasoningEffort": ["low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 0.3,
+      "output": 1.5,
+      "cached": 0.15,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-minimax",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 66,
+      "overall": 66
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 66,
+        "min": 0,
+        "max": 100,
+        "normalized": 66,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-minimax",
+        "name": "MiniMax Official Documentation",
+        "url": "https://www.minimax.io/",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "MiniMax"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "synlogic-mix-3-32b",
+    "name": "SynLogic-Mix-3-32B",
+    "provider": "MiniMax",
+    "family": "SynLogic",
+    "dataKind": "verified",
+    "description": "Advanced iteration of MiniMax's SynLogic family blending verifiable logical synthesis with mathematical proofs and coding curricula across 32B parameters for comprehensive multi-domain reasoning.",
+    "strengths": [
+      "Harmonized multi-domain reasoning blending logic puzzles, formal math, and programmatic verification",
+      "High accuracy on complex multi-step theorem proving and constraint solvers",
+      "Strong generalizing capabilities on novel algorithmic challenges",
+      "Open weights architecture suitable for fine-tuning on proprietary analytical datasets"
+    ],
+    "weaknesses": [
+      "Requires dual-GPU setup for full FP16/BF16 self-hosted inference",
+      "Specialized for technical reasoning rather than creative dialogue"
+    ],
+    "tags": ["Reasoning", "Open weights", "Coding", "Research"],
+    "facts": {
+      "context": 131072,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 60,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-06-01",
+      "sourceId": "source-minimax",
+      "reasoningEffort": ["low", "medium", "high"],
+      "defaultEffort": "high"
+    },
+    "pricing": {
+      "input": 0.12,
+      "output": 0.48,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-minimax",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 80,
+      "overall": 80
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 80,
+        "min": 0,
+        "max": 100,
+        "normalized": 80,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-minimax",
+        "name": "MiniMax SynLogic Repository",
+        "url": "https://github.com/MiniMax-AI/SynLogic",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "MiniMax"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "deepseek-r1-0528",
     "name": "DeepSeek R1-0528",
     "provider": "DeepSeek",
@@ -9379,6 +10919,192 @@
         "retrievedAt": "2026-09-05",
         "kind": "provider_doc",
         "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "synlogic-32b",
+    "name": "SynLogic-32B",
+    "provider": "MiniMax",
+    "family": "SynLogic",
+    "dataKind": "verified",
+    "description": "MiniMax's 32B open-weights logical reasoning model trained on synthesized verifiable reasoning tasks (Sudoku, Game of 24, ciphers, and mazes). Built on Qwen2.5-32B-Base and refined via RL, achieving state-of-the-art deductive logic.",
+    "strengths": [
+      "State-of-the-art performance on difficult logical deduction and puzzle benchmarks like BBEH",
+      "Effective cross-domain transfer to algorithmic coding and mathematical proofs without targeted tuning",
+      "Deployable on dual-GPU workstation hardware (2x RTX 4090 or single A100/H100)",
+      "Full open-weights release with verifiable training methodologies"
+    ],
+    "weaknesses": [
+      "131,072 context window is smaller than 1M+ flagship architectures",
+      "Pure reasoning focus; less suited for unstructured creative writing"
+    ],
+    "tags": ["Reasoning", "Open weights", "Research", "Coding"],
+    "facts": {
+      "context": 131072,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 60,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-05-25",
+      "sourceId": "source-minimax",
+      "reasoningEffort": ["low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 0.12,
+      "output": 0.48,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-minimax",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 80,
+      "overall": 80
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 80,
+        "min": 0,
+        "max": 100,
+        "normalized": 80,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-minimax",
+        "name": "MiniMax SynLogic Repository",
+        "url": "https://github.com/MiniMax-AI/SynLogic",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "MiniMax"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "synlogic-7b",
+    "name": "SynLogic-7B",
+    "provider": "MiniMax",
+    "family": "SynLogic",
+    "dataKind": "verified",
+    "description": "Compact 7B parameter reasoning model trained with MiniMax's SynLogic verifiable task synthesis framework. Delivers disproportionate logical deduction, puzzle-solving, and algorithmic precision on consumer-grade hardware.",
+    "strengths": [
+      "Ultra-compact 7B parameter footprint runnable on consumer GPUs or laptops (under 6GB VRAM quantized)",
+      "Outperforms standard 7B foundation models on formal logic, ciphers, and constraint satisfaction",
+      "High token generation speed suitable for edge deployment and local agent loops",
+      "Open weights with permissive open-source license"
+    ],
+    "weaknesses": [
+      "Compact capacity limits broad world knowledge compared to 32B+ scale",
+      "Cannot process visual inputs"
+    ],
+    "tags": ["Reasoning", "Open weights", "Speed", "Best value"],
+    "facts": {
+      "context": 131072,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 110,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-05-25",
+      "sourceId": "source-minimax",
+      "reasoningEffort": ["low", "medium"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 0.04,
+      "output": 0.16,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-minimax",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 94,
+      "overall": 94
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 94,
+        "min": 0,
+        "max": 100,
+        "normalized": 94,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-minimax",
+        "name": "MiniMax SynLogic Repository",
+        "url": "https://github.com/MiniMax-AI/SynLogic",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "MiniMax"
       },
       {
         "id": "astra-cost-engine",
@@ -11322,11 +13048,11 @@
       "dailyUse": null,
       "research": null,
       "writing": null,
-      "vision": null,
+      "vision": 28,
       "speed": null,
       "reliability": null,
       "costEfficiency": 0,
-      "overall": 63
+      "overall": 61
     },
     "evidence": [
       {
@@ -11360,6 +13086,16 @@
         "updatedAt": "2025-02-27"
       },
       {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1195,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 28,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 0,
@@ -11370,7 +13106,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 75,
+    "confidence": 82,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-05",
@@ -11399,6 +13135,14 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
         "id": "astra-cost-engine",
@@ -14042,6 +15786,198 @@
     ]
   },
   {
+    "slug": "minimax-vl-01",
+    "name": "MiniMax-VL-01",
+    "provider": "MiniMax",
+    "family": "MiniMax 01",
+    "dataKind": "verified",
+    "description": "Multimodal vision-language foundation model pairing the 456B MoE Text-01 backbone with a high-resolution ViT visual encoder. Extends visual comprehension across an unprecedented 4,000,000 token context window.",
+    "strengths": [
+      "Unmatched 4,000,000 token multimodal context window accommodating hours of video or thousands of slides",
+      "High-resolution ViT encoder delivering detailed OCR, chart parsing, and technical diagram interpretation",
+      "Hybrid attention architecture maintaining fast inference despite massive visual token sequences",
+      "Open weights available for research and specialized enterprise document extraction pipelines"
+    ],
+    "weaknesses": [
+      "Significant GPU memory requirements when ingesting high-resolution image batches",
+      "Audio modalities not natively supported"
+    ],
+    "tags": [
+      "Vision",
+      "Large context",
+      "Research",
+      "Open weights",
+      "Multimodal"
+    ],
+    "facts": {
+      "context": 4000000,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 65,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-01-20",
+      "sourceId": "source-minimax",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.2,
+      "output": 1.1,
+      "cached": 0.1,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-minimax",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 71,
+      "overall": 71
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 71,
+        "min": 0,
+        "max": 100,
+        "normalized": 71,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-minimax",
+        "name": "MiniMax Official Documentation",
+        "url": "https://www.minimax.io/",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "MiniMax"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "minimax-text-01",
+    "name": "MiniMax-Text-01",
+    "provider": "MiniMax",
+    "family": "MiniMax 01",
+    "dataKind": "verified",
+    "description": "Pioneering 456B MoE foundation model (45.9B active parameters) featuring linear hybrid attention supporting an astonishing 4,000,000 token context window. Handles vast document archives and multi-book analysis.",
+    "strengths": [
+      "Industry-leading 4,000,000 token context window enabling analysis of entire code repositories and book libraries",
+      "Linear hybrid attention (Lightning Attention + Softmax) delivering sub-quadratic compute scaling",
+      "High parameter efficiency with 45.9B active compute out of 456B total parameters",
+      "Highly cost-effective API rates for massive document ingestion"
+    ],
+    "weaknesses": [
+      "Requires specialized distributed inference engines (such as vLLM/SGLang with linear attention kernels)",
+      "Text only; visual inputs handled by sister model MiniMax-VL-01"
+    ],
+    "tags": ["Large context", "Research", "Open weights", "Flagship"],
+    "facts": {
+      "context": 4000000,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 70,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-01-16",
+      "sourceId": "source-minimax",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.2,
+      "output": 1.1,
+      "cached": 0.1,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-minimax",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 71,
+      "overall": 71
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 71,
+        "min": 0,
+        "max": 100,
+        "normalized": 71,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-minimax",
+        "name": "MiniMax Official Documentation",
+        "url": "https://www.minimax.io/",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "MiniMax"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "codestral-2501",
     "name": "Codestral 2501",
     "provider": "Mistral AI",
@@ -15334,11 +17270,11 @@
       "dailyUse": null,
       "research": null,
       "writing": null,
-      "vision": null,
+      "vision": 23,
       "speed": null,
       "reliability": null,
       "costEfficiency": 82,
-      "overall": 68
+      "overall": 65
     },
     "evidence": [
       {
@@ -15372,6 +17308,16 @@
         "updatedAt": "2024-12-11"
       },
       {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1158,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 23,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 82,
@@ -15382,7 +17328,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 75,
+    "confidence": 85,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-05",
@@ -15411,6 +17357,14 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
         "id": "astra-cost-engine",
@@ -15841,11 +17795,11 @@
       "dailyUse": null,
       "research": null,
       "writing": null,
-      "vision": null,
+      "vision": 24,
       "speed": null,
       "reliability": null,
       "costEfficiency": 17,
-      "overall": 66
+      "overall": 63
     },
     "evidence": [
       {
@@ -15879,6 +17833,16 @@
         "updatedAt": "2024-12-17"
       },
       {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1168,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 24,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 17,
@@ -15889,7 +17853,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 75,
+    "confidence": 83,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-05",
@@ -15918,6 +17882,14 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
         "id": "astra-cost-engine",
@@ -17821,6 +19793,99 @@
     ]
   },
   {
+    "slug": "abab7-preview",
+    "name": "abab7-preview",
+    "provider": "MiniMax",
+    "family": "ABAB",
+    "dataKind": "verified",
+    "description": "MiniMax's frontier preview model in the ABAB generation, featuring enhanced mathematical computation, long-form document comprehension, and refined conversational generation across a 245k context window.",
+    "strengths": [
+      "Advanced mathematical deduction and long-document synthesis over prior ABAB generations",
+      "245,760 token context window for large enterprise document processing",
+      "High quality bilingual Chinese and English linguistic articulation",
+      "Support for advanced tool calling and function schemas"
+    ],
+    "weaknesses": [
+      "Preview release with evolving API endpoint configurations",
+      "No native visual image comprehension"
+    ],
+    "tags": ["Research", "Writing", "Daily use", "Reasoning"],
+    "facts": {
+      "context": 245760,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 75,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-10-18",
+      "sourceId": "source-minimax",
+      "reasoningEffort": ["none", "low", "medium"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.4,
+      "output": 1.6,
+      "cached": 0.2,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-minimax",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 64,
+      "overall": 64
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 64,
+        "min": 0,
+        "max": 100,
+        "normalized": 64,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-minimax",
+        "name": "MiniMax Official Documentation",
+        "url": "https://www.minimax.io/",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "MiniMax"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "janus-1-3b",
     "name": "Janus 1.3B",
     "provider": "DeepSeek",
@@ -18701,11 +20766,11 @@
       "dailyUse": null,
       "research": null,
       "writing": null,
-      "vision": null,
+      "vision": 23,
       "speed": null,
       "reliability": null,
       "costEfficiency": 49,
-      "overall": 62
+      "overall": 60
     },
     "evidence": [
       {
@@ -18739,6 +20804,16 @@
         "updatedAt": "2024-09-24"
       },
       {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1161,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 23,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 49,
@@ -18749,7 +20824,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 75,
+    "confidence": 85,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-05",
@@ -18778,6 +20853,14 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
         "id": "astra-cost-engine",
@@ -22649,6 +24732,192 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "abab6-5",
+    "name": "abab6.5",
+    "provider": "MiniMax",
+    "family": "ABAB",
+    "dataKind": "verified",
+    "description": "MiniMax's flagship trillion-parameter class Mixture-of-Experts model, delivering deep enterprise RAG, comprehensive corporate document analysis, and dependable conversational reasoning over a 200k context window.",
+    "strengths": [
+      "Trillion-parameter scale MoE delivering extensive world knowledge and enterprise domain accuracy",
+      "204,800 token context window tailored for comprehensive enterprise retrieval-augmented generation",
+      "Nuanced stylistic versatility across complex professional drafting and analytical summaries",
+      "High benchmark performance on bilingual Chinese/English comprehension tasks"
+    ],
+    "weaknesses": [
+      "Higher inference compute requirements than lightweight variant abab6.5s",
+      "Text-only model without image upload support"
+    ],
+    "tags": ["Research", "Writing", "Daily use", "Flagship"],
+    "facts": {
+      "context": 204800,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 65,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-04-17",
+      "sourceId": "source-minimax",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.3,
+      "output": 1.2,
+      "cached": 0.15,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-minimax",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 68,
+      "overall": 68
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 68,
+        "min": 0,
+        "max": 100,
+        "normalized": 68,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-minimax",
+        "name": "MiniMax Official Documentation",
+        "url": "https://www.minimax.io/",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "MiniMax"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "abab6-5s",
+    "name": "abab6.5s",
+    "provider": "MiniMax",
+    "family": "ABAB",
+    "dataKind": "verified",
+    "description": "High-efficiency, cost-optimized edition of abab6.5 engineered for high-volume summarization, rapid conversational agents, and batch document processing at 110 tokens/second.",
+    "strengths": [
+      "Very economical pricing at $0.10/M input and $0.40/M output",
+      "Fast generation throughput averaging 110 tokens/second for responsive user interactions",
+      "Retains the full 204,800 token context window of abab6.5 for large batch workloads",
+      "Excellent cost-to-performance ratio for customer support agents and automated summaries"
+    ],
+    "weaknesses": [
+      "Lower creative writing nuance and technical depth than base abab6.5",
+      "No visual or multimodal inputs"
+    ],
+    "tags": ["Best value", "Speed", "Daily use", "Writing"],
+    "facts": {
+      "context": 204800,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 110,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-04-17",
+      "sourceId": "source-minimax",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.4,
+      "cached": 0.05,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-minimax",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 82,
+      "overall": 82
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 82,
+        "min": 0,
+        "max": 100,
+        "normalized": 82,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-minimax",
+        "name": "MiniMax Official Documentation",
+        "url": "https://www.minimax.io/",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "MiniMax"
       },
       {
         "id": "astra-cost-engine",

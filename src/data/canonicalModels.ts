@@ -10,6 +10,7 @@ import { XAI_MODELS } from './models/xai';
 import { AMAZON_MODELS } from './models/amazon';
 import { COHERE_MODELS } from './models/cohere';
 import { MOONSHOT_MODELS } from './models/moonshot';
+import { MINIMAX_MODELS } from './models/minimax';
 
 export {
   OPENAI_MODELS,
@@ -23,6 +24,7 @@ export {
   AMAZON_MODELS,
   COHERE_MODELS,
   MOONSHOT_MODELS,
+  MINIMAX_MODELS,
 };
 
 export const PROVIDERS_CONFIG = [
@@ -113,6 +115,14 @@ export const PROVIDERS_CONFIG = [
     description:
       'Pioneering AI research laboratory and creator of the Kimi and Moonlight long-context reasoning models.',
   },
+  {
+    id: 'provider-minimax',
+    slug: 'minimax',
+    name: 'MiniMax',
+    website: 'https://www.minimax.io',
+    description:
+      'Pioneering AI research company developing linear attention MoE foundation models, reasoning architectures, and generative agents.',
+  },
 ];
 
 export const CANONICAL_MODELS: CanonicalModelConfig[] = [
@@ -127,4 +137,5 @@ export const CANONICAL_MODELS: CanonicalModelConfig[] = [
   ...AMAZON_MODELS,
   ...COHERE_MODELS,
   ...MOONSHOT_MODELS,
+  ...MINIMAX_MODELS,
 ];
