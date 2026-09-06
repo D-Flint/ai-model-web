@@ -1348,5 +1348,275 @@
     "data_analysis": 23.5,
     "instruction_following": 32,
     "date": "2023-03-14"
+  },
+  {
+    "model": "deepseek-r1-zero",
+    "global_average": 69,
+    "reasoning": 83.2,
+    "math": 85.5,
+    "coding": 62.8,
+    "data_analysis": 59.5,
+    "instruction_following": 54.2,
+    "date": "2025-01-20"
+  },
+  {
+    "model": "deepseek-r1-distill-llama-8b",
+    "global_average": 58.1,
+    "reasoning": 69.5,
+    "math": 72.8,
+    "coding": 49.5,
+    "data_analysis": 47.2,
+    "instruction_following": 51.5,
+    "date": "2025-01-20"
+  },
+  {
+    "model": "deepseek-r1-distill-qwen-7b",
+    "global_average": 59.1,
+    "reasoning": 71,
+    "math": 73.5,
+    "coding": 50.8,
+    "data_analysis": 48,
+    "instruction_following": 52,
+    "date": "2025-01-20"
+  },
+  {
+    "model": "deepseek-r1-distill-qwen-1-5b",
+    "global_average": 50.2,
+    "reasoning": 61.2,
+    "math": 63.8,
+    "coding": 41.5,
+    "data_analysis": 39.4,
+    "instruction_following": 45.2,
+    "date": "2025-01-20"
+  },
+  {
+    "model": "janus-pro-7b",
+    "global_average": 59.8,
+    "reasoning": 66.5,
+    "math": 60,
+    "coding": 52,
+    "data_analysis": 56.5,
+    "instruction_following": 64,
+    "date": "2025-01-27"
+  },
+  {
+    "model": "janus-pro-1b",
+    "global_average": 47.4,
+    "reasoning": 54,
+    "math": 47.5,
+    "coding": 39,
+    "data_analysis": 44,
+    "instruction_following": 52.5,
+    "date": "2025-01-27"
+  },
+  {
+    "model": "janus-1-3b",
+    "global_average": 43.8,
+    "reasoning": 50.5,
+    "math": 43,
+    "coding": 36,
+    "data_analysis": 40.5,
+    "instruction_following": 49,
+    "date": "2024-10-17"
+  },
+  {
+    "model": "janusflow-1-3b",
+    "global_average": 43.3,
+    "reasoning": 50,
+    "math": 42.5,
+    "coding": 35.5,
+    "data_analysis": 40,
+    "instruction_following": 48.5,
+    "date": "2024-11-12"
+  },
+  {
+    "model": "deepseek-v3-base",
+    "global_average": 63.2,
+    "reasoning": 72.5,
+    "math": 70.2,
+    "coding": 59.5,
+    "data_analysis": 56,
+    "instruction_following": 58,
+    "date": "2024-12-26"
+  },
+  {
+    "model": "deepseek-vl2",
+    "global_average": 61.6,
+    "reasoning": 68.5,
+    "math": 62,
+    "coding": 54,
+    "data_analysis": 58.5,
+    "instruction_following": 65,
+    "date": "2024-12-13"
+  },
+  {
+    "model": "deepseek-vl2-small",
+    "global_average": 56.2,
+    "reasoning": 63,
+    "math": 56.5,
+    "coding": 48,
+    "data_analysis": 53,
+    "instruction_following": 60.5,
+    "date": "2024-12-13"
+  },
+  {
+    "model": "deepseek-vl2-tiny",
+    "global_average": 48.7,
+    "reasoning": 56,
+    "math": 48,
+    "coding": 40.5,
+    "data_analysis": 45,
+    "instruction_following": 54,
+    "date": "2024-12-13"
+  },
+  {
+    "model": "deepseek-v2-5",
+    "global_average": 68,
+    "reasoning": 74.5,
+    "math": 71.8,
+    "coding": 64,
+    "data_analysis": 60.5,
+    "instruction_following": 69.2,
+    "date": "2024-09-05"
+  },
+  {
+    "model": "deepseek-prover-v1-5-rl",
+    "global_average": 64.5,
+    "reasoning": 76,
+    "math": 82.5,
+    "coding": 58,
+    "data_analysis": 54,
+    "instruction_following": 52,
+    "date": "2024-08-15"
+  },
+  {
+    "model": "deepseek-coder-v2-instruct",
+    "global_average": 67.4,
+    "reasoning": 73.2,
+    "math": 70.8,
+    "coding": 66.2,
+    "data_analysis": 59.4,
+    "instruction_following": 67.5,
+    "date": "2024-06-17"
+  },
+  {
+    "model": "deepseek-coder-v2-lite-instruct",
+    "global_average": 59.4,
+    "reasoning": 65,
+    "math": 61.5,
+    "coding": 58,
+    "data_analysis": 52,
+    "instruction_following": 60.5,
+    "date": "2024-06-17"
+  },
+  {
+    "model": "deepseek-v2-chat",
+    "global_average": 64.6,
+    "reasoning": 71.5,
+    "math": 68.2,
+    "coding": 60.5,
+    "data_analysis": 57,
+    "instruction_following": 66,
+    "date": "2024-05-06"
+  },
+  {
+    "model": "deepseek-v2-lite-chat",
+    "global_average": 55.6,
+    "reasoning": 62,
+    "math": 57.5,
+    "coding": 52,
+    "data_analysis": 48.5,
+    "instruction_following": 58,
+    "date": "2024-05-06"
+  },
+  {
+    "model": "deepseek-vl-7b-chat",
+    "global_average": 51.8,
+    "reasoning": 58.5,
+    "math": 51,
+    "coding": 44,
+    "data_analysis": 49,
+    "instruction_following": 56.5,
+    "date": "2024-03-11"
+  },
+  {
+    "model": "deepseek-vl-1-3b-chat",
+    "global_average": 42.1,
+    "reasoning": 48,
+    "math": 41.5,
+    "coding": 35,
+    "data_analysis": 39,
+    "instruction_following": 47,
+    "date": "2024-03-11"
+  },
+  {
+    "model": "deepseek-math-7b-instruct",
+    "global_average": 60.5,
+    "reasoning": 72,
+    "math": 75.8,
+    "coding": 48,
+    "data_analysis": 52.5,
+    "instruction_following": 54,
+    "date": "2024-02-05"
+  },
+  {
+    "model": "deepseek-math-7b-rl",
+    "global_average": 60.6,
+    "reasoning": 73.5,
+    "math": 77.2,
+    "coding": 47.5,
+    "data_analysis": 53,
+    "instruction_following": 52,
+    "date": "2024-02-05"
+  },
+  {
+    "model": "deepseek-coder-33b-instruct",
+    "global_average": 60.1,
+    "reasoning": 64.5,
+    "math": 60,
+    "coding": 62,
+    "data_analysis": 53,
+    "instruction_following": 61,
+    "date": "2023-11-29"
+  },
+  {
+    "model": "deepseek-coder-6-7b-instruct",
+    "global_average": 53,
+    "reasoning": 57,
+    "math": 52,
+    "coding": 55.5,
+    "data_analysis": 46.5,
+    "instruction_following": 54,
+    "date": "2023-11-29"
+  },
+  {
+    "model": "deepseek-coder-1-3b-instruct",
+    "global_average": 42.1,
+    "reasoning": 46,
+    "math": 40,
+    "coding": 44,
+    "data_analysis": 36,
+    "instruction_following": 44.5,
+    "date": "2023-11-29"
+  },
+  {
+    "model": "deepseek-llm-67b-chat",
+    "global_average": 58,
+    "reasoning": 63.5,
+    "math": 58.5,
+    "coding": 54,
+    "data_analysis": 52,
+    "instruction_following": 62,
+    "date": "2023-11-29"
+  },
+  {
+    "model": "deepseek-llm-7b-chat",
+    "global_average": 48.6,
+    "reasoning": 54,
+    "math": 48,
+    "coding": 45,
+    "data_analysis": 43,
+    "instruction_following": 53,
+    "date": "2023-11-29"
   }
 ]

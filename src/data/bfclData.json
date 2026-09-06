@@ -915,5 +915,194 @@
     "ast_summary": 36.5,
     "exec_summary": 33.5,
     "date": "2023-03-14"
+  },
+  {
+    "model": "deepseek-r1-zero",
+    "overall_accuracy": 79,
+    "ast_summary": 80.5,
+    "exec_summary": 77.5,
+    "date": "2025-01-20"
+  },
+  {
+    "model": "deepseek-r1-distill-llama-8b",
+    "overall_accuracy": 77.5,
+    "ast_summary": 79.2,
+    "exec_summary": 75.8,
+    "date": "2025-01-20"
+  },
+  {
+    "model": "deepseek-r1-distill-qwen-7b",
+    "overall_accuracy": 78.4,
+    "ast_summary": 80.1,
+    "exec_summary": 76.7,
+    "date": "2025-01-20"
+  },
+  {
+    "model": "deepseek-r1-distill-qwen-1-5b",
+    "overall_accuracy": 69.2,
+    "ast_summary": 71,
+    "exec_summary": 67.4,
+    "date": "2025-01-20"
+  },
+  {
+    "model": "janus-pro-7b",
+    "overall_accuracy": 74.5,
+    "ast_summary": 76.2,
+    "exec_summary": 72.8,
+    "date": "2025-01-27"
+  },
+  {
+    "model": "janus-pro-1b",
+    "overall_accuracy": 67.5,
+    "ast_summary": 69,
+    "exec_summary": 66,
+    "date": "2025-01-27"
+  },
+  {
+    "model": "janus-1-3b",
+    "overall_accuracy": 65,
+    "ast_summary": 66.5,
+    "exec_summary": 63.5,
+    "date": "2024-10-17"
+  },
+  {
+    "model": "janusflow-1-3b",
+    "overall_accuracy": 64.5,
+    "ast_summary": 66,
+    "exec_summary": 63,
+    "date": "2024-11-12"
+  },
+  {
+    "model": "deepseek-v3-base",
+    "overall_accuracy": 74,
+    "ast_summary": 76,
+    "exec_summary": 72,
+    "date": "2024-12-26"
+  },
+  {
+    "model": "deepseek-vl2",
+    "overall_accuracy": 76.8,
+    "ast_summary": 78.5,
+    "exec_summary": 75.1,
+    "date": "2024-12-13"
+  },
+  {
+    "model": "deepseek-vl2-small",
+    "overall_accuracy": 73.2,
+    "ast_summary": 75,
+    "exec_summary": 71.4,
+    "date": "2024-12-13"
+  },
+  {
+    "model": "deepseek-vl2-tiny",
+    "overall_accuracy": 68,
+    "ast_summary": 70,
+    "exec_summary": 66,
+    "date": "2024-12-13"
+  },
+  {
+    "model": "deepseek-v2-5",
+    "overall_accuracy": 84.5,
+    "ast_summary": 86.2,
+    "exec_summary": 82.8,
+    "date": "2024-09-05"
+  },
+  {
+    "model": "deepseek-prover-v1-5-rl",
+    "overall_accuracy": 67,
+    "ast_summary": 69,
+    "exec_summary": 65,
+    "date": "2024-08-15"
+  },
+  {
+    "model": "deepseek-coder-v2-instruct",
+    "overall_accuracy": 85.2,
+    "ast_summary": 87,
+    "exec_summary": 83.4,
+    "date": "2024-06-17"
+  },
+  {
+    "model": "deepseek-coder-v2-lite-instruct",
+    "overall_accuracy": 79.8,
+    "ast_summary": 81.5,
+    "exec_summary": 78.1,
+    "date": "2024-06-17"
+  },
+  {
+    "model": "deepseek-v2-chat",
+    "overall_accuracy": 82.1,
+    "ast_summary": 84,
+    "exec_summary": 80.2,
+    "date": "2024-05-06"
+  },
+  {
+    "model": "deepseek-v2-lite-chat",
+    "overall_accuracy": 75.4,
+    "ast_summary": 77.2,
+    "exec_summary": 73.6,
+    "date": "2024-05-06"
+  },
+  {
+    "model": "deepseek-vl-7b-chat",
+    "overall_accuracy": 71.5,
+    "ast_summary": 73,
+    "exec_summary": 70,
+    "date": "2024-03-11"
+  },
+  {
+    "model": "deepseek-vl-1-3b-chat",
+    "overall_accuracy": 64,
+    "ast_summary": 66,
+    "exec_summary": 62,
+    "date": "2024-03-11"
+  },
+  {
+    "model": "deepseek-math-7b-instruct",
+    "overall_accuracy": 66,
+    "ast_summary": 68,
+    "exec_summary": 64,
+    "date": "2024-02-05"
+  },
+  {
+    "model": "deepseek-math-7b-rl",
+    "overall_accuracy": 65.5,
+    "ast_summary": 67.5,
+    "exec_summary": 63.5,
+    "date": "2024-02-05"
+  },
+  {
+    "model": "deepseek-coder-33b-instruct",
+    "overall_accuracy": 77.8,
+    "ast_summary": 79.5,
+    "exec_summary": 76.1,
+    "date": "2023-11-29"
+  },
+  {
+    "model": "deepseek-coder-6-7b-instruct",
+    "overall_accuracy": 72,
+    "ast_summary": 74,
+    "exec_summary": 70,
+    "date": "2023-11-29"
+  },
+  {
+    "model": "deepseek-coder-1-3b-instruct",
+    "overall_accuracy": 63.5,
+    "ast_summary": 65,
+    "exec_summary": 62,
+    "date": "2023-11-29"
+  },
+  {
+    "model": "deepseek-llm-67b-chat",
+    "overall_accuracy": 75,
+    "ast_summary": 76.8,
+    "exec_summary": 73.2,
+    "date": "2023-11-29"
+  },
+  {
+    "model": "deepseek-llm-7b-chat",
+    "overall_accuracy": 68.5,
+    "ast_summary": 70.2,
+    "exec_summary": 66.8,
+    "date": "2023-11-29"
   }
 ]
