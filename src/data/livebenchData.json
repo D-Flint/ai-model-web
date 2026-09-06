@@ -1088,5 +1088,265 @@
     "data_analysis": 57,
     "instruction_following": 68,
     "date": "2025-05-18"
+  },
+  {
+    "model": "claude-fable-5-1",
+    "global_average": 84.8,
+    "reasoning": 93.8,
+    "math": 92.4,
+    "coding": 88.5,
+    "data_analysis": 83.2,
+    "instruction_following": 86.4,
+    "date": "2026-06-15"
+  },
+  {
+    "model": "claude-fable-5",
+    "global_average": 82.1,
+    "reasoning": 91.2,
+    "math": 89.4,
+    "coding": 85.2,
+    "data_analysis": 80.8,
+    "instruction_following": 83.9,
+    "date": "2026-03-20"
+  },
+  {
+    "model": "claude-opus-5",
+    "global_average": 83.2,
+    "reasoning": 92.4,
+    "math": 90.6,
+    "coding": 87.2,
+    "data_analysis": 82.1,
+    "instruction_following": 84.7,
+    "date": "2026-04-10"
+  },
+  {
+    "model": "claude-sonnet-5",
+    "global_average": 81,
+    "reasoning": 89.6,
+    "math": 87.2,
+    "coding": 85,
+    "data_analysis": 79.8,
+    "instruction_following": 82.4,
+    "date": "2026-05-02"
+  },
+  {
+    "model": "claude-haiku-5",
+    "global_average": 68.6,
+    "reasoning": 73.4,
+    "math": 70.2,
+    "coding": 68.5,
+    "data_analysis": 66.8,
+    "instruction_following": 74.2,
+    "date": "2026-05-18"
+  },
+  {
+    "model": "claude-opus-4-8",
+    "global_average": 79.8,
+    "reasoning": 88.5,
+    "math": 86.4,
+    "coding": 83.2,
+    "data_analysis": 78.5,
+    "instruction_following": 82.4,
+    "date": "2025-12-08"
+  },
+  {
+    "model": "claude-opus-4-7",
+    "global_average": 78.6,
+    "reasoning": 87.2,
+    "math": 85,
+    "coding": 82,
+    "data_analysis": 77.4,
+    "instruction_following": 81.5,
+    "date": "2025-11-20"
+  },
+  {
+    "model": "claude-sonnet-4-6",
+    "global_average": 77.9,
+    "reasoning": 86,
+    "math": 83.8,
+    "coding": 81.5,
+    "data_analysis": 76.5,
+    "instruction_following": 81,
+    "date": "2025-11-10"
+  },
+  {
+    "model": "claude-opus-4-6",
+    "global_average": 77.4,
+    "reasoning": 85.5,
+    "math": 83.2,
+    "coding": 80.8,
+    "data_analysis": 76,
+    "instruction_following": 80.5,
+    "date": "2025-10-25"
+  },
+  {
+    "model": "claude-opus-4-5",
+    "global_average": 76.5,
+    "reasoning": 84.2,
+    "math": 82,
+    "coding": 79.8,
+    "data_analysis": 75.2,
+    "instruction_following": 80.2,
+    "date": "2025-09-28"
+  },
+  {
+    "model": "claude-sonnet-4-5",
+    "global_average": 76.2,
+    "reasoning": 84,
+    "math": 81.5,
+    "coding": 80.2,
+    "data_analysis": 74.8,
+    "instruction_following": 79.5,
+    "date": "2025-09-15"
+  },
+  {
+    "model": "claude-haiku-4-5",
+    "global_average": 65.4,
+    "reasoning": 70.2,
+    "math": 67.5,
+    "coding": 64,
+    "data_analysis": 62.5,
+    "instruction_following": 71,
+    "date": "2025-10-15"
+  },
+  {
+    "model": "claude-opus-4-1",
+    "global_average": 74.5,
+    "reasoning": 81.8,
+    "math": 79.4,
+    "coding": 77.5,
+    "data_analysis": 73.2,
+    "instruction_following": 78.6,
+    "date": "2025-08-10"
+  },
+  {
+    "model": "claude-opus-4",
+    "global_average": 73.8,
+    "reasoning": 80.5,
+    "math": 78,
+    "coding": 76.8,
+    "data_analysis": 72.5,
+    "instruction_following": 77.8,
+    "date": "2025-07-15"
+  },
+  {
+    "model": "claude-sonnet-4",
+    "global_average": 73,
+    "reasoning": 79.8,
+    "math": 77.2,
+    "coding": 76,
+    "data_analysis": 71.8,
+    "instruction_following": 77.2,
+    "date": "2025-07-15"
+  },
+  {
+    "model": "claude-3-5-sonnet-20240620",
+    "global_average": 65.2,
+    "reasoning": 72.8,
+    "math": 68.4,
+    "coding": 58.8,
+    "data_analysis": 62,
+    "instruction_following": 67,
+    "date": "2024-06-20"
+  },
+  {
+    "model": "claude-3-5-opus",
+    "global_average": 68.8,
+    "reasoning": 76.5,
+    "math": 72,
+    "coding": 64.2,
+    "data_analysis": 65.8,
+    "instruction_following": 71.5,
+    "date": "2024-12-05"
+  },
+  {
+    "model": "claude-3-sonnet-20240229",
+    "global_average": 45.4,
+    "reasoning": 48.2,
+    "math": 45.8,
+    "coding": 39.5,
+    "data_analysis": 43.8,
+    "instruction_following": 51.2,
+    "date": "2024-02-29"
+  },
+  {
+    "model": "claude-3-haiku-20240307",
+    "global_average": 41.6,
+    "reasoning": 43.5,
+    "math": 42,
+    "coding": 36.2,
+    "data_analysis": 39.8,
+    "instruction_following": 48,
+    "date": "2024-03-07"
+  },
+  {
+    "model": "claude-2-1",
+    "global_average": 34.8,
+    "reasoning": 36.5,
+    "math": 34.2,
+    "coding": 29.8,
+    "data_analysis": 33.5,
+    "instruction_following": 42,
+    "date": "2023-11-21"
+  },
+  {
+    "model": "claude-2-0",
+    "global_average": 32.5,
+    "reasoning": 34,
+    "math": 31.8,
+    "coding": 27.5,
+    "data_analysis": 31.2,
+    "instruction_following": 39.5,
+    "date": "2023-07-11"
+  },
+  {
+    "model": "claude-instant-1-2",
+    "global_average": 28.5,
+    "reasoning": 29.8,
+    "math": 27.4,
+    "coding": 23.2,
+    "data_analysis": 27.5,
+    "instruction_following": 36,
+    "date": "2023-08-09"
+  },
+  {
+    "model": "claude-instant-1-1",
+    "global_average": 27,
+    "reasoning": 28.2,
+    "math": 25.8,
+    "coding": 21.5,
+    "data_analysis": 26,
+    "instruction_following": 34.5,
+    "date": "2023-03-14"
+  },
+  {
+    "model": "claude-instant-1-0",
+    "global_average": 25.6,
+    "reasoning": 26.5,
+    "math": 24.2,
+    "coding": 20,
+    "data_analysis": 24.8,
+    "instruction_following": 33,
+    "date": "2023-03-14"
+  },
+  {
+    "model": "claude-1-3",
+    "global_average": 27.2,
+    "reasoning": 28.5,
+    "math": 26,
+    "coding": 21.8,
+    "data_analysis": 26.2,
+    "instruction_following": 34.8,
+    "date": "2023-05-11"
+  },
+  {
+    "model": "claude-1-0",
+    "global_average": 24.5,
+    "reasoning": 25.2,
+    "math": 23,
+    "coding": 19,
+    "data_analysis": 23.5,
+    "instruction_following": 32,
+    "date": "2023-03-14"
   }
 ]

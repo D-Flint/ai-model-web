@@ -973,6 +973,152 @@
     ]
   },
   {
+    "slug": "claude-fable-5-1",
+    "name": "Claude Fable 5.1",
+    "provider": "Anthropic",
+    "family": "Claude 5",
+    "dataKind": "verified",
+    "description": "Anthropic's frontier flagship model designed for the most demanding long-horizon agentic workflows, autonomous software engineering, and deep reflective reasoning with 1M context.",
+    "strengths": [
+      "Frontier SWE-bench and autonomous agentic task performance",
+      "1,000,000 token context window with flawless recall across long codebases",
+      "Adaptive reasoning and thinking token scaling for complex architectures",
+      "SOTA computer use, tool adherence, and multi-step plan execution"
+    ],
+    "weaknesses": [
+      "High token pricing ($10 input / $50 output per 1M) on maximum thinking budget",
+      "Longer generation latency under deep reflective analysis"
+    ],
+    "tags": [
+      "Flagship",
+      "Reasoning",
+      "Coding",
+      "Agentic",
+      "Large context",
+      "Vision"
+    ],
+    "facts": {
+      "context": 1000000,
+      "maxOutput": 128000,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-06-15",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none", "low", "medium", "high", "max"],
+      "defaultEffort": "high"
+    },
+    "pricing": {
+      "input": 10,
+      "output": 50,
+      "cached": 0.25,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 85,
+      "coding": 89,
+      "agentic": 95,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 20,
+      "overall": 79
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 84.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 85,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 88.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 89,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-15"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 94.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 95,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2026-06-15"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 20,
+        "min": 0,
+        "max": 100,
+        "normalized": 20,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "gpt-5-4-nano",
     "name": "GPT-5.4 nano",
     "provider": "OpenAI",
@@ -1083,6 +1229,143 @@
         "retrievedAt": "2026-09-05",
         "kind": "provider_doc",
         "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "claude-haiku-5",
+    "name": "Claude Haiku 5",
+    "provider": "Anthropic",
+    "family": "Claude 5",
+    "dataKind": "verified",
+    "description": "Anthropic's lightning-fast lightweight model of the 5th generation, delivering near-frontier intelligence at sub-second latencies and high throughput.",
+    "strengths": [
+      "Sub-second response latencies for interactive real-time applications",
+      "Cost-efficient ($0.50 input / $2.50 output per 1M) for high-scale traffic",
+      "500,000 token context window with rapid structured extraction"
+    ],
+    "weaknesses": [
+      "Not intended for complex multi-file architectural refactors"
+    ],
+    "tags": ["Speed", "Daily use", "Agents", "Vision", "Cost efficiency"],
+    "facts": {
+      "context": 500000,
+      "maxOutput": 32000,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-05-18",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.5,
+      "output": 2.5,
+      "cached": 0.05,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 69,
+      "coding": 69,
+      "agentic": 87,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 59,
+      "overall": 71
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 68.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 69,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-05-18"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 68.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 69,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-05-18"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 86.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 87,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2026-05-18"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 59,
+        "min": 0,
+        "max": 100,
+        "normalized": 59,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
       },
       {
         "id": "livebench-leaderboard",
@@ -1249,6 +1532,143 @@
     ]
   },
   {
+    "slug": "claude-sonnet-5",
+    "name": "Claude Sonnet 5",
+    "provider": "Anthropic",
+    "family": "Claude 5",
+    "dataKind": "verified",
+    "description": "The definitive balanced daily workhorse of the Claude 5 generation, pairing near-flagship intelligence with high generation speed and 1M token context.",
+    "strengths": [
+      "Outstanding balance of price, speed, and frontier coding intelligence",
+      "1,000,000 token context with ultra-fast initial time-to-first-token",
+      "Superb computer use and browser automation execution accuracy"
+    ],
+    "weaknesses": [
+      "Slightly lower complex theoretical math reasoning compared to Opus 5"
+    ],
+    "tags": ["Best value", "Daily use", "Coding", "Vision", "Large context"],
+    "facts": {
+      "context": 1000000,
+      "maxOutput": 64000,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-05-02",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none", "low", "medium"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 2,
+      "output": 10,
+      "cached": 0.2,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 81,
+      "coding": 85,
+      "agentic": 92,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 41,
+      "overall": 79
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 81,
+        "min": 0,
+        "max": 100,
+        "normalized": 81,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-05-02"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 85,
+        "min": 0,
+        "max": 100,
+        "normalized": 85,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-05-02"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 92.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 92,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2026-05-02"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 41,
+        "min": 0,
+        "max": 100,
+        "normalized": 41,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "gpt-5-3-codex",
     "name": "GPT-5.3-Codex",
     "provider": "OpenAI",
@@ -1359,6 +1779,144 @@
         "retrievedAt": "2026-09-05",
         "kind": "provider_doc",
         "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "claude-opus-5",
+    "name": "Claude Opus 5",
+    "provider": "Anthropic",
+    "family": "Claude 5",
+    "dataKind": "verified",
+    "description": "Anthropic's powerhouse coding and enterprise flagship model, engineered for end-to-end repository refactoring, complex mathematical proofs, and nuanced research synthesis.",
+    "strengths": [
+      "Top-tier repository-scale code generation and automated debugging",
+      "1,000,000 token context window with prompt caching optimizations",
+      "Deep multi-factor qualitative analysis and structured technical writing"
+    ],
+    "weaknesses": [
+      "Higher latency than Sonnet tiers for simple conversational queries",
+      "Costly for high-throughput shallow chat applications"
+    ],
+    "tags": ["Flagship", "Coding", "Research", "Large context", "Vision"],
+    "facts": {
+      "context": 1000000,
+      "maxOutput": 128000,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-04-10",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none", "low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 5,
+      "output": 25,
+      "cached": 0.5,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 83,
+      "coding": 87,
+      "agentic": 94,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 29,
+      "overall": 79
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 83.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 83,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-04-10"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 87.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 87,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-04-10"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 93.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 94,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2026-04-10"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 29,
+        "min": 0,
+        "max": 100,
+        "normalized": 29,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
       },
       {
         "id": "livebench-leaderboard",
@@ -1964,6 +2522,192 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "claude-fable-5",
+    "name": "Claude Fable 5",
+    "provider": "Anthropic",
+    "family": "Claude 5",
+    "dataKind": "verified",
+    "description": "The pioneer of the Claude Fable tier, introducing Mythos-class reasoning depth, autonomous multi-step reasoning, and 1M token context for enterprise environments.",
+    "strengths": [
+      "Frontier autonomous reasoning and multi-step plan decomposition",
+      "1,000,000 token context window for comprehensive repository ingestion",
+      "High precision in formal mathematical logic and vulnerability analysis"
+    ],
+    "weaknesses": [
+      "Premium pricing model for production deployment",
+      "Superseded in speed and latency by Claude Fable 5.1"
+    ],
+    "tags": ["Flagship", "Reasoning", "Agents", "Large context", "Vision"],
+    "facts": {
+      "context": 1000000,
+      "maxOutput": 128000,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": 71,
+      "availability": "Production API",
+      "releaseDate": "2026-03-20",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none", "low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 10,
+      "output": 50,
+      "cached": 1,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 82,
+      "coding": 88,
+      "agentic": 93,
+      "dailyUse": 71,
+      "research": 33,
+      "writing": null,
+      "vision": 47,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 20,
+      "overall": 70
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 82.1,
+        "min": 0,
+        "max": 100,
+        "normalized": 82,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-03-20"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 85.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 85,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-03-20"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1628,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 90,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 92.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 93,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2026-03-20"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 1494,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 71,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "research",
+        "kind": "benchmark",
+        "raw": 1230,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 33,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1329,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 47,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 20,
+        "min": 0,
+        "max": 100,
+        "normalized": 20,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 91,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
         "id": "astra-cost-engine",
@@ -3091,6 +3835,189 @@
     ]
   },
   {
+    "slug": "claude-opus-4-8",
+    "name": "Claude Opus 4.8",
+    "provider": "Anthropic",
+    "family": "Claude 4",
+    "dataKind": "verified",
+    "description": "Refined version of Claude Opus 4 featuring enhanced mathematical rigor, extended 1M context capabilities, and advanced autonomous agent tool chaining.",
+    "strengths": [
+      "Exceptional depth in scientific research and complex algorithms",
+      "1,000,000 token context window with precise instruction following",
+      "Prompt caching discount support for high-context workflows"
+    ],
+    "weaknesses": ["Premium API output pricing tier ($25.00/1M)"],
+    "tags": ["Flagship", "Coding", "Research", "Large context"],
+    "facts": {
+      "context": 1000000,
+      "maxOutput": 64000,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": 65,
+      "availability": "Production API",
+      "releaseDate": "2025-12-08",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none", "low", "medium"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 5,
+      "output": 25,
+      "cached": 0.5,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 80,
+      "coding": 80,
+      "agentic": 92,
+      "dailyUse": 65,
+      "research": 29,
+      "writing": null,
+      "vision": 41,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 29,
+      "overall": 67
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 79.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 80,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-12-08"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 83.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 83,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-12-08"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1540,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 77,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 92,
+        "min": 0,
+        "max": 100,
+        "normalized": 92,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-12-08"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 1452,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 65,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "research",
+        "kind": "benchmark",
+        "raw": 1204,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 29,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1289,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 41,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 29,
+        "min": 0,
+        "max": 100,
+        "normalized": 29,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 91,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "o4-mini-deep-research",
     "name": "o4-mini-deep-research",
     "provider": "OpenAI",
@@ -3217,6 +4144,189 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "claude-opus-4-7",
+    "name": "Claude Opus 4.7",
+    "provider": "Anthropic",
+    "family": "Claude 4",
+    "dataKind": "verified",
+    "description": "High-performance enterprise reasoning model with 1M context, tailored for multi-repo software maintenance, security audits, and formal proofs.",
+    "strengths": [
+      "Comprehensive codebase security review and dependency analysis",
+      "1,000,000 token context window",
+      "Strong long-form structured technical documentation writing"
+    ],
+    "weaknesses": ["Slower inference compared to Claude Sonnet tiers"],
+    "tags": ["Coding", "Reasoning", "Enterprise", "Vision"],
+    "facts": {
+      "context": 1000000,
+      "maxOutput": 64000,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": 69,
+      "availability": "Production API",
+      "releaseDate": "2025-11-20",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none", "low", "medium"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 5,
+      "output": 25,
+      "cached": 0.5,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 79,
+      "coding": 81,
+      "agentic": 91,
+      "dailyUse": 69,
+      "research": 33,
+      "writing": null,
+      "vision": 45,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 29,
+      "overall": 68
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 78.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 79,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-11-20"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 82,
+        "min": 0,
+        "max": 100,
+        "normalized": 82,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-11-20"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1557,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 80,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 91.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 91,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-11-20"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 1483,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 69,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "research",
+        "kind": "benchmark",
+        "raw": 1233,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 33,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-24"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1317,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 45,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 29,
+        "min": 0,
+        "max": 100,
+        "normalized": 29,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 91,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
         "id": "astra-cost-engine",
@@ -3719,6 +4829,354 @@
     ]
   },
   {
+    "slug": "claude-sonnet-4-6",
+    "name": "Claude Sonnet 4.6",
+    "provider": "Anthropic",
+    "family": "Claude 4",
+    "dataKind": "verified",
+    "description": "Late-generation Claude 4 balanced model featuring 1M token context, high coding accuracy, and low-latency agentic tool calling.",
+    "strengths": [
+      "Fast and reliable multi-tool execution and JSON extraction",
+      "1,000,000 token context window with tiered pricing overrides",
+      "High SWE-bench benchmark scoring for everyday coding challenges"
+    ],
+    "weaknesses": [
+      "Tiered pricing applies above 200,000 prompt tokens ($6/$22.50 per 1M)"
+    ],
+    "tags": ["Coding", "Agents", "Balanced", "Large context"],
+    "facts": {
+      "context": 1000000,
+      "maxOutput": 64000,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": 65,
+      "availability": "Production API",
+      "releaseDate": "2025-11-10",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none", "low"],
+      "defaultEffort": "low"
+    },
+    "pricing": {
+      "input": 3,
+      "output": 15,
+      "cached": 0.3,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 78,
+      "coding": 79,
+      "agentic": 91,
+      "dailyUse": 65,
+      "research": null,
+      "writing": null,
+      "vision": 40,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 36,
+      "overall": 71
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 77.9,
+        "min": 0,
+        "max": 100,
+        "normalized": 78,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-11-10"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 81.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 82,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-11-10"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1522,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 75,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 91,
+        "min": 0,
+        "max": 100,
+        "normalized": 91,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-11-10"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 1458,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 65,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1282,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 40,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 36,
+        "min": 0,
+        "max": 100,
+        "normalized": 36,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 88,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "claude-opus-4-6",
+    "name": "Claude Opus 4.6",
+    "provider": "Anthropic",
+    "family": "Claude 4",
+    "dataKind": "verified",
+    "description": "Robust enterprise intelligence model designed for complex analytical tasks, policy analysis, and rigorous data synthesis across 1M context.",
+    "strengths": [
+      "High accuracy on complex legal, technical, and regulatory analysis",
+      "1,000,000 token context window",
+      "Prompt caching discount support"
+    ],
+    "weaknesses": ["Premium price point ($5 input / $25 output per 1M)"],
+    "tags": ["Coding", "Reasoning", "Research", "Vision"],
+    "facts": {
+      "context": 1000000,
+      "maxOutput": 64000,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": 71,
+      "availability": "Production API",
+      "releaseDate": "2025-10-25",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none", "low", "medium"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 5,
+      "output": 25,
+      "cached": 0.5,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 77,
+      "coding": 79,
+      "agentic": 91,
+      "dailyUse": 71,
+      "research": null,
+      "writing": null,
+      "vision": 44,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 29,
+      "overall": 72
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 77.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-10-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 80.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 81,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-10-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 1537,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 77,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 90.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 91,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-10-25"
+      },
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 1498,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 71,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-01"
+      },
+      {
+        "metric": "vision",
+        "kind": "benchmark",
+        "raw": 1311,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 44,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-08-27"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 29,
+        "min": 0,
+        "max": 100,
+        "normalized": 29,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 88,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "o4-mini",
     "name": "o4-mini",
     "provider": "OpenAI",
@@ -3839,6 +5297,433 @@
         "retrievedAt": "2026-09-05",
         "kind": "provider_doc",
         "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "SWE-bench Verified Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "claude-haiku-4-5",
+    "name": "Claude Haiku 4.5",
+    "provider": "Anthropic",
+    "family": "Claude 4",
+    "dataKind": "verified",
+    "description": "High-speed, cost-effective model providing near-frontier capability for high-throughput customer-facing agents and low-latency pipelines.",
+    "strengths": [
+      "High throughput and low latency at attractive pricing ($1.00/$5.00)",
+      "200,000 token context window with solid code generation",
+      "Strong function calling accuracy for real-time applications"
+    ],
+    "weaknesses": ["Text only; does not support multi-modal image input"],
+    "tags": ["Speed", "Efficiency", "Daily use", "Coding"],
+    "facts": {
+      "context": 200000,
+      "maxOutput": 32000,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-10-15",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 1,
+      "output": 5,
+      "cached": 0.1,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 65,
+      "coding": 64,
+      "agentic": 86,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 50,
+      "overall": 67
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 65.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 65,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-10-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 64,
+        "min": 0,
+        "max": 100,
+        "normalized": 64,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-10-15"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 85.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 86,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-10-15"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 50,
+        "min": 0,
+        "max": 100,
+        "normalized": 50,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "claude-opus-4-5",
+    "name": "Claude Opus 4.5",
+    "provider": "Anthropic",
+    "family": "Claude 4",
+    "dataKind": "verified",
+    "description": "Mid-generation Opus 4 model delivering exceptional nuance in creative writing, philosophical inquiry, and multi-disciplinary research.",
+    "strengths": [
+      "Sophisticated prose and nuanced conversational voice",
+      "Strong vision and chart interpretation capabilities",
+      "Careful adherence to nuanced guardrails and constitutional guidelines"
+    ],
+    "weaknesses": [
+      "200,000 token context window (smaller than 1M Opus 4.6+ series)"
+    ],
+    "tags": ["Research", "Deep thinking", "Writing", "Flagship"],
+    "facts": {
+      "context": 200000,
+      "maxOutput": 32000,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-09-28",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none", "low"],
+      "defaultEffort": "low"
+    },
+    "pricing": {
+      "input": 5,
+      "output": 25,
+      "cached": 0.5,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 77,
+      "coding": 80,
+      "agentic": 90,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 29,
+      "overall": 74
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 76.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-09-28"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 79.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 80,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-09-28"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 90.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 90,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-09-28"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 29,
+        "min": 0,
+        "max": 100,
+        "normalized": 29,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "claude-sonnet-4-5",
+    "name": "Claude Sonnet 4.5",
+    "provider": "Anthropic",
+    "family": "Claude 4",
+    "dataKind": "verified",
+    "description": "Flagship coding model of the Claude 4 era, famous for industry-leading computer use, agentic IDE integration, and 1M token context.",
+    "strengths": [
+      "Top-tier benchmark score on SWE-bench Verified coding",
+      "1,000,000 token context window with reliable retrieval",
+      "Precise computer use and graphical user interface automation"
+    ],
+    "weaknesses": [
+      "Pricing tier increases on prompts exceeding 200,000 tokens"
+    ],
+    "tags": ["Coding", "Agents", "Computer use", "Vision"],
+    "facts": {
+      "context": 1000000,
+      "maxOutput": 64000,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-09-15",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none", "low"],
+      "defaultEffort": "low"
+    },
+    "pricing": {
+      "input": 3,
+      "output": 15,
+      "cached": 0.3,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 76,
+      "coding": 78,
+      "agentic": 90,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 36,
+      "overall": 74
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 76.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 76,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-09-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 80.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 80,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-09-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 74.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2025-11-03"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 90,
+        "min": 0,
+        "max": 100,
+        "normalized": 90,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-09-15"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 36,
+        "min": 0,
+        "max": 100,
+        "normalized": 36,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
       },
       {
         "id": "livebench-leaderboard",
@@ -4890,6 +6775,434 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "claude-opus-4-1",
+    "name": "Claude Opus 4.1",
+    "provider": "Anthropic",
+    "family": "Claude 4",
+    "dataKind": "verified",
+    "description": "Early Claude 4 iteration focusing on deep qualitative reasoning, multi-disciplinary document analysis, and sophisticated writing.",
+    "strengths": [
+      "High qualitative reasoning and nuanced prose synthesis",
+      "200,000 token context with strong vision comprehension"
+    ],
+    "weaknesses": [
+      "High price point ($15 input / $75 output per 1M)",
+      "Superseded by lower-priced Opus 4.5+ models"
+    ],
+    "tags": ["Reasoning", "Writing", "Analysis"],
+    "facts": {
+      "context": 200000,
+      "maxOutput": 32000,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-08-10",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 15,
+      "output": 75,
+      "cached": 1.5,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 75,
+      "coding": 78,
+      "agentic": 89,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 15,
+      "overall": 70
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 74.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-08-10"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 77.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 78,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-08-10"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 88.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 89,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-08-10"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 15,
+        "min": 0,
+        "max": 100,
+        "normalized": 15,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "claude-opus-4",
+    "name": "Claude Opus 4",
+    "provider": "Anthropic",
+    "family": "Claude 4",
+    "dataKind": "verified",
+    "description": "The initial release of the Claude 4 generation, inaugurating new heights in autonomous code generation, multi-step problem solving, and nuanced dialogue.",
+    "strengths": [
+      "Rich conversational voice and sophisticated writing",
+      "Deep multi-step reasoning capabilities",
+      "200,000 token context window with vision support"
+    ],
+    "weaknesses": [
+      "High output pricing ($75/1M)",
+      "Slower token generation speed than Sonnet 4"
+    ],
+    "tags": ["Flagship", "Writing", "Complex reasoning"],
+    "facts": {
+      "context": 200000,
+      "maxOutput": 32000,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-07-15",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 15,
+      "output": 75,
+      "cached": 1.5,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 74,
+      "coding": 77,
+      "agentic": 88,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 15,
+      "overall": 69
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 73.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 74,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-07-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 76.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-07-15"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 88,
+        "min": 0,
+        "max": 100,
+        "normalized": 88,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-07-15"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 15,
+        "min": 0,
+        "max": 100,
+        "normalized": 15,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "claude-sonnet-4",
+    "name": "Claude Sonnet 4",
+    "provider": "Anthropic",
+    "family": "Claude 4",
+    "dataKind": "verified",
+    "description": "Inaugural Claude 4 series workhorse introducing the 1,000,000 token context window, computer use agentic features, and balanced enterprise economics.",
+    "strengths": [
+      "First Anthropic model with 1M context window capability",
+      "Superb software engineering and agentic tool adherence",
+      "Reliable prompt caching discounts"
+    ],
+    "weaknesses": ["Higher tiered pricing on prompts over 200,000 tokens"],
+    "tags": ["Coding", "Agents", "Enterprise", "Large context"],
+    "facts": {
+      "context": 1000000,
+      "maxOutput": 64000,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-07-15",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 3,
+      "output": 15,
+      "cached": 0.3,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 73,
+      "coding": 76,
+      "agentic": 87,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 36,
+      "overall": 72
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 73,
+        "min": 0,
+        "max": 100,
+        "normalized": 73,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-07-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 76,
+        "min": 0,
+        "max": 100,
+        "normalized": 76,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-07-15"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 74.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2025-07-31"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 87.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 87,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2025-07-15"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 36,
+        "min": 0,
+        "max": 100,
+        "normalized": 36,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "SWE-bench Verified Leaderboard"
       },
       {
         "id": "astra-cost-engine",
@@ -8834,6 +11147,144 @@
     ]
   },
   {
+    "slug": "claude-3-5-opus",
+    "name": "Claude 3.5 Opus",
+    "provider": "Anthropic",
+    "family": "Claude 3.5",
+    "dataKind": "verified",
+    "description": "Anthropic's heavyweight qualitative reasoning model of the 3.5 generation, built for complex research, philosophical nuance, and deep writing.",
+    "strengths": [
+      "Unmatched depth in prose style and nuanced long-form writing",
+      "200,000 token context window with vision support",
+      "High accuracy on complex multi-step reasoning and humanities research"
+    ],
+    "weaknesses": [
+      "High cost tier ($15 input / $75 output per 1M)",
+      "Slower generation speeds than Sonnet models"
+    ],
+    "tags": ["Writing", "Research", "Complex reasoning", "Vision"],
+    "facts": {
+      "context": 200000,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-12-05",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 15,
+      "output": 75,
+      "cached": 1.5,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 69,
+      "coding": 64,
+      "agentic": 88,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 15,
+      "overall": 64
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 68.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 69,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-12-05"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 64.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 64,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-12-05"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 88.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 88,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2024-12-05"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 15,
+        "min": 0,
+        "max": 100,
+        "normalized": 15,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "amazon-nova-pro",
     "name": "Amazon Nova Pro",
     "provider": "Amazon AWS",
@@ -9797,7 +12248,7 @@
       "Cost-effective for high-volume customer-facing agent deployments"
     ],
     "weaknesses": [
-      "Text-only API (vision support not yet enabled on 3.5 Haiku API)",
+      "Text-only API (vision support not enabled on 3.5 Haiku API)",
       "Higher pricing than competitor lightweight models (e.g. Gemini Flash)"
     ],
     "tags": ["Speed", "Coding", "Agents", "Daily use"],
@@ -12985,6 +15436,143 @@
     ]
   },
   {
+    "slug": "claude-3-5-sonnet-20240620",
+    "name": "Claude 3.5 Sonnet (Original)",
+    "provider": "Anthropic",
+    "family": "Claude 3.5",
+    "dataKind": "verified",
+    "description": "The original June 2024 release of Claude 3.5 Sonnet, which set new industry benchmarks for coding proficiency, visual reasoning, and conversational nuance.",
+    "strengths": [
+      "Breakthrough coding and multi-modal vision comprehension",
+      "200,000 token context window",
+      "High generation speed with excellent cost efficiency"
+    ],
+    "weaknesses": [
+      "Lacks the updated computer use capabilities added in the October 2024 revision"
+    ],
+    "tags": ["Coding", "Vision", "Balanced"],
+    "facts": {
+      "context": 200000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-06-20",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 3,
+      "output": 15,
+      "cached": 0.3,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 65,
+      "coding": 59,
+      "agentic": 88,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 36,
+      "overall": 64
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 65.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 65,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-06-20"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 58.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 59,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-06-20"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 87.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 88,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2024-06-20"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 36,
+        "min": 0,
+        "max": 100,
+        "normalized": 36,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "paligemma",
     "name": "PaliGemma",
     "provider": "Google DeepMind",
@@ -13693,6 +16281,143 @@
     ]
   },
   {
+    "slug": "claude-3-haiku-20240307",
+    "name": "Claude 3 Haiku",
+    "provider": "Anthropic",
+    "family": "Claude 3",
+    "dataKind": "verified",
+    "description": "Anthropic's compact, rapid-response model of the Claude 3 family, offering multimodal vision capabilities and near-instant answers at low cost.",
+    "strengths": [
+      "Extremely affordable ($0.25 input / $1.25 output per 1M tokens)",
+      "Fast generation speed with multimodal vision comprehension",
+      "200,000 token context window"
+    ],
+    "weaknesses": [
+      "Lower performance on complex coding and multi-step reasoning"
+    ],
+    "tags": ["Speed", "Affordable", "Vision", "Daily use"],
+    "facts": {
+      "context": 200000,
+      "maxOutput": 4096,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-03-07",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.25,
+      "output": 1.25,
+      "cached": 0.025,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 42,
+      "coding": 36,
+      "agentic": 69,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 68,
+      "overall": 50
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 41.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 42,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-03-07"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 36.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 36,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-03-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 68.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 69,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2024-03-07"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 68,
+        "min": 0,
+        "max": 100,
+        "normalized": 68,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "claude-3-opus-20240229",
     "name": "Claude 3 Opus",
     "provider": "Anthropic",
@@ -13837,6 +16562,143 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "SWE-bench Verified Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "claude-3-sonnet-20240229",
+    "name": "Claude 3 Sonnet",
+    "provider": "Anthropic",
+    "family": "Claude 3",
+    "dataKind": "verified",
+    "description": "The balanced workhorse model of the Claude 3 family, engineered for enterprise-scale text processing, document data extraction, and vision tasks.",
+    "strengths": [
+      "Solid balance of intelligence and throughput for business workloads",
+      "200,000 token context with multimodal vision understanding",
+      "Reliable performance on data processing and summarization"
+    ],
+    "weaknesses": [
+      "Superseded by Claude 3.5 Sonnet across coding and general intelligence"
+    ],
+    "tags": ["Balanced", "Vision", "Enterprise"],
+    "facts": {
+      "context": 200000,
+      "maxOutput": 4096,
+      "speedTokensPerSec": null,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2024-02-29",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 3,
+      "output": 15,
+      "cached": 0.3,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 45,
+      "coding": 40,
+      "agentic": 73,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 36,
+      "overall": 48
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 45.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 45,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-02-29"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 39.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 40,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2024-02-29"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 72.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 73,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2024-02-29"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 36,
+        "min": 0,
+        "max": 100,
+        "normalized": 36,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
       },
       {
         "id": "astra-cost-engine",
@@ -14677,6 +17539,144 @@
     ]
   },
   {
+    "slug": "claude-2-1",
+    "name": "Claude 2.1",
+    "provider": "Anthropic",
+    "family": "Claude 2",
+    "dataKind": "verified",
+    "description": "Historic milestone model that introduced the industry-first 200,000 token context window, system prompt support, and a 2x reduction in hallucination rates.",
+    "strengths": [
+      "Pioneered 200k token context window for massive document comprehension",
+      "Significant reduction in false statements compared to Claude 2.0",
+      "First Anthropic model with official system prompts and tool use beta"
+    ],
+    "weaknesses": [
+      "Text-only; lacks multimodal image understanding",
+      "Higher latency and token costs compared to modern 3.x/4.x models"
+    ],
+    "tags": ["Large context", "Writing", "Legacy"],
+    "facts": {
+      "context": 200000,
+      "maxOutput": 4096,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2023-11-21",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 8,
+      "output": 24,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 35,
+      "coding": 30,
+      "agentic": 52,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 27,
+      "overall": 36
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 34.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 35,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2023-11-21"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 29.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 30,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2023-11-21"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 52.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 52,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2023-11-21"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 27,
+        "min": 0,
+        "max": 100,
+        "normalized": 27,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://www.anthropic.com/news/claude-2-1",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "gpt-4-1106-preview",
     "name": "GPT-4 Turbo (1106 Preview)",
     "provider": "OpenAI",
@@ -14804,6 +17804,300 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "claude-instant-1-2",
+    "name": "Claude Instant 1.2",
+    "provider": "Anthropic",
+    "family": "Claude Instant",
+    "dataKind": "verified",
+    "description": "Fast, cost-effective model combining high generation speed with 100,000 token context, optimized for casual dialogue, text summarization, and document search.",
+    "strengths": [
+      "Low latency and fast response streaming",
+      "100,000 token context window for large text analysis",
+      "Strong safety adherence and structured formatting output"
+    ],
+    "weaknesses": [
+      "Text-only with no image support",
+      "Limited coding and deep multi-step algorithmic reasoning"
+    ],
+    "tags": ["Speed", "Lightweight", "Legacy"],
+    "facts": {
+      "context": 100000,
+      "maxOutput": 4096,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2023-08-09",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 1.63,
+      "output": 5.51,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 28,
+      "coding": 23,
+      "agentic": 45,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 47,
+      "overall": 33
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 28.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 28,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2023-08-09"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 23.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 23,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2023-08-09"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 44.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 45,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2023-08-09"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 47,
+        "min": 0,
+        "max": 100,
+        "normalized": 47,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://www.anthropic.com/news/claude-instant-1-2",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "claude-2-0",
+    "name": "Claude 2.0",
+    "provider": "Anthropic",
+    "family": "Claude 2",
+    "dataKind": "verified",
+    "description": "Anthropic's major second-generation leap, introducing a 100,000 token context window, substantial improvements in coding and math, and powering the launch of claude.ai.",
+    "strengths": [
+      "First widely accessible 100,000 token context window model",
+      "Major advances in Python coding and standardized test benchmarks",
+      "Strong conversational safety and Constitutional AI alignment"
+    ],
+    "weaknesses": [
+      "Older architecture with higher hallucination rates on complex retrieval",
+      "Text-only with no multimodal vision support"
+    ],
+    "tags": ["Writing", "Research", "Legacy"],
+    "facts": {
+      "context": 100000,
+      "maxOutput": 4096,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2023-07-11",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 8,
+      "output": 24,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 33,
+      "coding": 16,
+      "agentic": 48,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 27,
+      "overall": 31
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 32.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 33,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2023-07-11"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 27.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 28,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2023-07-11"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 4.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 4,
+        "sourceId": "swebench-verified",
+        "updatedAt": "2023-10-10"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 48,
+        "min": 0,
+        "max": 100,
+        "normalized": 48,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2023-07-11"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 27,
+        "min": 0,
+        "max": 100,
+        "normalized": 27,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://www.anthropic.com/news/claude-2",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "swebench-verified",
+        "name": "SWE-bench Verified Leaderboard",
+        "url": "https://www.swebench.com",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "SWE-bench Verified Leaderboard"
       },
       {
         "id": "astra-cost-engine",
@@ -15094,6 +18388,143 @@
     ]
   },
   {
+    "slug": "claude-1-3",
+    "name": "Claude 1.3",
+    "provider": "Anthropic",
+    "family": "Claude 1",
+    "dataKind": "verified",
+    "description": "Refined version of the original Claude model, expanding context to 100,000 tokens and improving long-form document comprehension and creative writing.",
+    "strengths": [
+      "First model to demonstrate 100k token context recall in May 2023",
+      "Sophisticated conversational tone and literary writing ability"
+    ],
+    "weaknesses": [
+      "Text only; high pricing compared to modern models",
+      "Lower code generation proficiency"
+    ],
+    "tags": ["Nuance", "Writing", "Legacy"],
+    "facts": {
+      "context": 100000,
+      "maxOutput": 4096,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2023-05-11",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 8,
+      "output": 24,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 27,
+      "coding": 22,
+      "agentic": 39,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 27,
+      "overall": 28
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 27.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 27,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2023-05-11"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 21.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 22,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2023-05-11"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 39,
+        "min": 0,
+        "max": 100,
+        "normalized": 39,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2023-05-11"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 27,
+        "min": 0,
+        "max": 100,
+        "normalized": 27,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://www.anthropic.com/news",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "gpt-4-0314",
     "name": "GPT-4 (0314)",
     "provider": "OpenAI",
@@ -15205,6 +18636,412 @@
         "retrievedAt": "2026-09-05",
         "kind": "provider_doc",
         "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "claude-instant-1-1",
+    "name": "Claude Instant 1.1",
+    "provider": "Anthropic",
+    "family": "Claude Instant",
+    "dataKind": "verified",
+    "description": "Early lightweight model from Anthropic designed for low-latency dialogue, customer support queries, and quick content classification.",
+    "strengths": [
+      "Rapid response generation",
+      "100,000 token context window capability"
+    ],
+    "weaknesses": ["Text only; superseded by Claude Instant 1.2"],
+    "tags": ["Speed", "Lightweight", "Legacy"],
+    "facts": {
+      "context": 100000,
+      "maxOutput": 4096,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2023-03-14",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 1.63,
+      "output": 5.51,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 27,
+      "coding": 22,
+      "agentic": 42,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 47,
+      "overall": 32
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 27,
+        "min": 0,
+        "max": 100,
+        "normalized": 27,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2023-03-14"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 21.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 22,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2023-03-14"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 42,
+        "min": 0,
+        "max": 100,
+        "normalized": 42,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2023-03-14"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 47,
+        "min": 0,
+        "max": 100,
+        "normalized": 47,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://www.anthropic.com/news",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "claude-instant-1-0",
+    "name": "Claude Instant 1.0",
+    "provider": "Anthropic",
+    "family": "Claude Instant",
+    "dataKind": "verified",
+    "description": "Anthropic's first high-speed lightweight commercial API model, offering quick turnaround for interactive conversational workloads.",
+    "strengths": [
+      "Early low-latency performance",
+      "Helpful and harmless Constitutional AI dialogue"
+    ],
+    "weaknesses": ["Limited reasoning depth and code generation ability"],
+    "tags": ["Speed", "Lightweight", "Legacy"],
+    "facts": {
+      "context": 100000,
+      "maxOutput": 4096,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2023-03-14",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 1.63,
+      "output": 5.51,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 26,
+      "coding": 20,
+      "agentic": 39,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 47,
+      "overall": 30
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 25.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 26,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2023-03-14"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 20,
+        "min": 0,
+        "max": 100,
+        "normalized": 20,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2023-03-14"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 38.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 39,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2023-03-14"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 47,
+        "min": 0,
+        "max": 100,
+        "normalized": 47,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://www.anthropic.com/news",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LiveBench AI Benchmark"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "claude-1-0",
+    "name": "Claude 1.0",
+    "provider": "Anthropic",
+    "family": "Claude 1",
+    "dataKind": "verified",
+    "description": "The original foundational Claude model released in March 2023, debuting Anthropic's Constitutional AI training methodology for helpful, harmless, and honest assistance.",
+    "strengths": [
+      "Historic breakthrough in AI alignment and Constitutional AI",
+      "Low refusal rate on benign queries with strong safety guardrails"
+    ],
+    "weaknesses": [
+      "Original 9,000 token context window",
+      "Text only with no image understanding",
+      "Legacy generation replaced by Claude 2 and Claude 3"
+    ],
+    "tags": ["Constitutional AI", "Safety", "Pioneer", "Legacy"],
+    "facts": {
+      "context": 9000,
+      "maxOutput": 4096,
+      "speedTokensPerSec": null,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2023-03-14",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 8,
+      "output": 24,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 25,
+      "coding": 19,
+      "agentic": 35,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 27,
+      "overall": 26
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 24.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 25,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2023-03-14"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 19,
+        "min": 0,
+        "max": 100,
+        "normalized": 19,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2023-03-14"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 35,
+        "min": 0,
+        "max": 100,
+        "normalized": 35,
+        "sourceId": "berkeley-function-calling-leaderboard",
+        "updatedAt": "2023-03-14"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 27,
+        "min": 0,
+        "max": 100,
+        "normalized": 27,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 75,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://www.anthropic.com/news",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
       },
       {
         "id": "livebench-leaderboard",
