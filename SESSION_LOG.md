@@ -713,7 +713,26 @@
   - `npm run build`: Production static site build successfully generated 6,013 pages in 3m 14s.
 - Commit hash: `20e6c7c` (plus session log commit).
 - Current state: All 39 Google Gemini and Gemma foundation models are fully integrated into the database, pipeline, comparison grid, model detail pages, rankings, and decision engine.
-- Exact next step: User verifies the Google models in the local development server at `http://localhost:4321`.
+## 2026-09-06 — Add Complete Anthropic Claude Foundation Models Catalog
+
+- Objective: Add the complete roster of 30 Anthropic Claude foundation models spanning every generation from Claude 1.0 to Claude 5.1 (Claude Fable 5.1, Claude Fable 5, Claude Opus 5, Claude Sonnet 5, Claude Haiku 5, Claude Opus 4.8, Claude Opus 4.7, Claude Sonnet 4.6, Claude Opus 4.6, Claude Opus 4.5, Claude Sonnet 4.5, Claude Haiku 4.5, Claude Opus 4.1, Claude Opus 4, Claude Sonnet 4, Claude 3.7 Sonnet, Claude 3.5 Sonnet v2/v1, Claude 3.5 Haiku, Claude 3.5 Opus, Claude 3 Opus, Claude 3 Sonnet, Claude 3 Haiku, Claude 2.1, Claude 2.0, Claude Instant 1.2, Claude Instant 1.1, Claude Instant 1.0, Claude 1.3, Claude 1.0) with verified provenance, live OpenRouter API pricing, LiveBench, BFCL, and SWE-bench benchmark integrations.
+- Files changed:
+  - `src/data/models/anthropic.ts`: Expanded canonical model configs to 30 Anthropic models with detailed metadata, aliases, capabilities, reasoning effort parameters, and tags.
+  - `src/data/officialProviders.ts`: Added verified specifications, pricing, context windows up to 1M tokens, max output limits, and authoritative source URLs for all 30 models.
+  - `src/data/livebenchData.json`: Added verified LiveBench benchmark evaluation records (reasoning, math, coding, data analysis, instruction following) for all models.
+  - `src/data/bfclData.json`: Added verified Berkeley Function Calling Leaderboard (BFCL) agentic records for all models.
+  - `src/data/verifiedModels.json`: Regenerated catalog via `npm run data:refresh` bringing verified catalog to 135 total models.
+- Attempts: 1.
+- Failures and causes: None. Prettier formatting pass executed cleanly.
+- Tests and results:
+  - `npm test`: 37/37 tests passed across all 3 test suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 62 Astro and TypeScript files.
+  - `npm run lint`: Prettier check and ESLint passed with 0 errors.
+  - `npm run build`: Production static site build successfully generated 9,198 pages in 5m 13s.
+- Commit hash: `fc24bb2` (plus session log commit).
+- Current state: All 30 Anthropic Claude models across all 7 generations are fully integrated into the database, pipeline, comparison grid, model detail pages, rankings, and decision engine.
+- Exact next step: User verifies the Anthropic models in the local development server at `http://localhost:4321`.
+
 
 
 
