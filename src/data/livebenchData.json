@@ -758,5 +758,335 @@
     "data_analysis": 43.2,
     "instruction_following": 48.8,
     "date": "2023-06-13"
+  },
+  {
+    "model": "gemini-3-8-flash",
+    "global_average": 81.5,
+    "reasoning": 89.4,
+    "math": 88.5,
+    "coding": 82,
+    "data_analysis": 79.5,
+    "instruction_following": 86,
+    "date": "2026-08-20"
+  },
+  {
+    "model": "gemini-3-7-flash",
+    "global_average": 79.8,
+    "reasoning": 88,
+    "math": 86.8,
+    "coding": 80.2,
+    "data_analysis": 78,
+    "instruction_following": 84.5,
+    "date": "2026-06-20"
+  },
+  {
+    "model": "gemini-3-6-flash",
+    "global_average": 76.4,
+    "reasoning": 83.5,
+    "math": 81,
+    "coding": 76.5,
+    "data_analysis": 74.2,
+    "instruction_following": 82,
+    "date": "2026-05-14"
+  },
+  {
+    "model": "gemini-3-5-flash",
+    "global_average": 73.2,
+    "reasoning": 80,
+    "math": 77.5,
+    "coding": 72.8,
+    "data_analysis": 71,
+    "instruction_following": 79,
+    "date": "2026-03-25"
+  },
+  {
+    "model": "gemini-3-5-flash-lite",
+    "global_average": 64.5,
+    "reasoning": 69.8,
+    "math": 66,
+    "coding": 61.2,
+    "data_analysis": 63.5,
+    "instruction_following": 71,
+    "date": "2026-03-25"
+  },
+  {
+    "model": "gemini-3-1-pro",
+    "global_average": 82.4,
+    "reasoning": 91.5,
+    "math": 90.2,
+    "coding": 83.8,
+    "data_analysis": 81,
+    "instruction_following": 87.2,
+    "date": "2026-02-12"
+  },
+  {
+    "model": "gemini-3-1-flash-lite",
+    "global_average": 63,
+    "reasoning": 68.2,
+    "math": 64.5,
+    "coding": 59.8,
+    "data_analysis": 62,
+    "instruction_following": 69.5,
+    "date": "2026-02-12"
+  },
+  {
+    "model": "gemini-3-pro",
+    "global_average": 80.6,
+    "reasoning": 89.5,
+    "math": 88,
+    "coding": 81.5,
+    "data_analysis": 79,
+    "instruction_following": 85.5,
+    "date": "2025-11-20"
+  },
+  {
+    "model": "gemini-3-flash",
+    "global_average": 71.5,
+    "reasoning": 78,
+    "math": 75.2,
+    "coding": 70.5,
+    "data_analysis": 69,
+    "instruction_following": 77.5,
+    "date": "2025-11-20"
+  },
+  {
+    "model": "gemini-3-deep-think",
+    "global_average": 83.2,
+    "reasoning": 94,
+    "math": 93.5,
+    "coding": 85.2,
+    "data_analysis": 80.5,
+    "instruction_following": 84,
+    "date": "2025-11-20"
+  },
+  {
+    "model": "gemini-2-5-pro",
+    "global_average": 77.2,
+    "reasoning": 86.5,
+    "math": 84.8,
+    "coding": 76,
+    "data_analysis": 75.2,
+    "instruction_following": 81,
+    "date": "2025-08-14"
+  },
+  {
+    "model": "gemini-2-5-flash",
+    "global_average": 68.4,
+    "reasoning": 74.5,
+    "math": 71.8,
+    "coding": 65,
+    "data_analysis": 66.2,
+    "instruction_following": 74,
+    "date": "2025-08-14"
+  },
+  {
+    "model": "gemini-2-5-flash-lite",
+    "global_average": 61.5,
+    "reasoning": 66.8,
+    "math": 63.2,
+    "coding": 57.5,
+    "data_analysis": 60,
+    "instruction_following": 66.5,
+    "date": "2025-08-14"
+  },
+  {
+    "model": "gemini-2-0-pro",
+    "global_average": 74,
+    "reasoning": 84.5,
+    "math": 82.4,
+    "coding": 71.8,
+    "data_analysis": 71,
+    "instruction_following": 72.5,
+    "date": "2025-02-05"
+  },
+  {
+    "model": "gemini-1-5-flash-8b",
+    "global_average": 43.8,
+    "reasoning": 45.2,
+    "math": 43.5,
+    "coding": 37,
+    "data_analysis": 42.5,
+    "instruction_following": 51,
+    "date": "2024-10-03"
+  },
+  {
+    "model": "gemini-1-0-ultra",
+    "global_average": 53.5,
+    "reasoning": 58.2,
+    "math": 55.4,
+    "coding": 49,
+    "data_analysis": 51.8,
+    "instruction_following": 57,
+    "date": "2024-02-08"
+  },
+  {
+    "model": "gemini-1-0-pro",
+    "global_average": 41.2,
+    "reasoning": 43,
+    "math": 40.5,
+    "coding": 35.8,
+    "data_analysis": 40,
+    "instruction_following": 48,
+    "date": "2023-12-06"
+  },
+  {
+    "model": "gemini-1-0-nano",
+    "global_average": 32,
+    "reasoning": 33.5,
+    "math": 30,
+    "coding": 26.5,
+    "data_analysis": 31,
+    "instruction_following": 40,
+    "date": "2023-12-06"
+  },
+  {
+    "model": "gemma-4",
+    "global_average": 74.5,
+    "reasoning": 81.2,
+    "math": 79,
+    "coding": 74,
+    "data_analysis": 72.5,
+    "instruction_following": 80,
+    "date": "2026-07-28"
+  },
+  {
+    "model": "gemma-3",
+    "global_average": 67.8,
+    "reasoning": 73.5,
+    "math": 70.8,
+    "coding": 66,
+    "data_analysis": 65.2,
+    "instruction_following": 74.5,
+    "date": "2026-03-12"
+  },
+  {
+    "model": "gemma-3n",
+    "global_average": 54.2,
+    "reasoning": 57,
+    "math": 53.5,
+    "coding": 48.2,
+    "data_analysis": 52,
+    "instruction_following": 62,
+    "date": "2026-03-12"
+  },
+  {
+    "model": "gemma-2-27b-it",
+    "global_average": 60.5,
+    "reasoning": 65,
+    "math": 61.8,
+    "coding": 56.4,
+    "data_analysis": 58.5,
+    "instruction_following": 67,
+    "date": "2024-06-27"
+  },
+  {
+    "model": "gemma-2-9b-it",
+    "global_average": 52.4,
+    "reasoning": 56.2,
+    "math": 52,
+    "coding": 46.8,
+    "data_analysis": 50.5,
+    "instruction_following": 60,
+    "date": "2024-06-27"
+  },
+  {
+    "model": "gemma-2-2b-it",
+    "global_average": 38.5,
+    "reasoning": 40.2,
+    "math": 37,
+    "coding": 32.5,
+    "data_analysis": 37.5,
+    "instruction_following": 46,
+    "date": "2024-07-31"
+  },
+  {
+    "model": "gemma-7b-it",
+    "global_average": 42,
+    "reasoning": 44.5,
+    "math": 41,
+    "coding": 37.5,
+    "data_analysis": 41,
+    "instruction_following": 49,
+    "date": "2024-02-21"
+  },
+  {
+    "model": "gemma-2b-it",
+    "global_average": 31.5,
+    "reasoning": 32.8,
+    "math": 29.5,
+    "coding": 26,
+    "data_analysis": 30.5,
+    "instruction_following": 39,
+    "date": "2024-02-21"
+  },
+  {
+    "model": "codegemma-7b-it",
+    "global_average": 54,
+    "reasoning": 53.5,
+    "math": 52,
+    "coding": 68.5,
+    "data_analysis": 51,
+    "instruction_following": 58,
+    "date": "2024-04-09"
+  },
+  {
+    "model": "recurrentgemma-2b-it",
+    "global_average": 41.5,
+    "reasoning": 43.8,
+    "math": 40.2,
+    "coding": 36.5,
+    "data_analysis": 40.8,
+    "instruction_following": 48.5,
+    "date": "2024-04-09"
+  },
+  {
+    "model": "paligemma-3b-pt-224",
+    "global_average": 44.5,
+    "reasoning": 46,
+    "math": 42.5,
+    "coding": 38,
+    "data_analysis": 43.5,
+    "instruction_following": 52,
+    "date": "2024-05-14"
+  },
+  {
+    "model": "medgemma-27b",
+    "global_average": 56.2,
+    "reasoning": 62,
+    "math": 54.5,
+    "coding": 47,
+    "data_analysis": 58,
+    "instruction_following": 61.5,
+    "date": "2024-07-10"
+  },
+  {
+    "model": "txgemma-27b",
+    "global_average": 55.8,
+    "reasoning": 61.5,
+    "math": 55,
+    "coding": 46.5,
+    "data_analysis": 57.5,
+    "instruction_following": 60.5,
+    "date": "2024-08-20"
+  },
+  {
+    "model": "shieldgemma-9b",
+    "global_average": 48,
+    "reasoning": 51,
+    "math": 44,
+    "coding": 40,
+    "data_analysis": 46,
+    "instruction_following": 59,
+    "date": "2024-08-01"
+  },
+  {
+    "model": "shieldgemma-2-9b",
+    "global_average": 58.5,
+    "reasoning": 63,
+    "math": 55,
+    "coding": 50,
+    "data_analysis": 57,
+    "instruction_following": 68,
+    "date": "2025-05-18"
   }
 ]
