@@ -762,6 +762,32 @@
 - Current state: All 32 DeepSeek models across all generations (R1, V3, V2.5, Coder V2, V2, VL, VL2, Janus, Janus-Pro, JanusFlow, Math, Prover, Coder V1, LLM V1) are fully integrated into the database, pipeline, comparison grid, model detail pages, rankings, and decision engine.
 - Exact next step: User verifies the DeepSeek models locally at `http://localhost:4321`.
 
+## 2026-09-06 — Add 41 Missing DeepSeek Models Across V4, V3.x, Prover, Coder, and Base Series
+
+- Objective: Compare user-supplied list of 64 DeepSeek models against the existing catalog, identify missing models, and add all 41 missing models with canonical configurations and authoritative official specifications.
+- Models Added (41 total):
+  1. DeepSeek V4 Next-Gen MoE Series: `deepseek-v4-pro`, `deepseek-v4-pro-0813`, `deepseek-v4-pro-base`, `deepseek-v4-pro-dspark`, `deepseek-v4-flash`, `deepseek-v4-flash-0731`, `deepseek-v4-flash-base`, `deepseek-v4-flash-dspark`.
+  2. DeepSeek V3.1 & V3.2 Revisions and Experimental Series: `deepseek-v3-2`, `deepseek-v3-2-speciale`, `deepseek-v3-2-exp`, `deepseek-v3-2-exp-base`, `deepseek-v3-1`, `deepseek-v3-1-terminus`, `deepseek-v3-1-base`, `deepseek-v3-0324`.
+  3. DeepSeek R1 Additional Reasoning Variants: `deepseek-r1-0528`, `deepseek-r1-0528-qwen3-8b`.
+  4. DeepSeek Math & Theorem Prover Expansion: `deepseek-math-v2`, `deepseek-prover-v2-671b`, `deepseek-prover-v2-7b`, `deepseek-prover-v1`, `deepseek-prover-v1-5-base`, `deepseek-prover-v1-5-sft`, `deepseek-math-7b-base`.
+  5. DeepSeek V2 & V2.5 Expansion: `deepseek-v2-5-1210`, `deepseek-v2`, `deepseek-v2-chat-0628`, `deepseek-v2-lite`.
+  6. DeepSeek Coder V2 & V1 Expansion: `deepseek-coder-v2-base`, `deepseek-coder-v2-instruct-0724`, `deepseek-coder-v2-lite-base`, `deepseek-coder-1-3b-base`, `deepseek-coder-6-7b-base`, `deepseek-coder-7b-v1-5-base`, `deepseek-coder-7b-v1-5-instruct`, `deepseek-coder-33b-base`.
+  7. DeepSeek MoE 16B & DeepSeek LLM Base Series: `deepseek-moe-16b-base`, `deepseek-moe-16b-chat`, `deepseek-llm-7b-base`, `deepseek-llm-67b-base`.
+- Files changed:
+  - `src/data/models/deepseek.ts`: Added canonical configurations for all 41 models with complete metadata, strengths, weaknesses, tags, aliases, and reasoning efforts.
+  - `src/data/officialProviders.ts`: Added official provider specifications for all 41 models with context windows, output limits, pricing, speed, and verification dates.
+  - `SESSION_LOG.md`: Appended session documentation.
+- Attempts: 1 full iteration.
+- Failures and causes: Prettier formatting check flagged minor style discrepancies in `src/data/models/deepseek.ts`; fixed via `npm run format`.
+- Tests and results:
+  - `npm test`: 37/37 tests passed across all 3 suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 62 Astro and TypeScript files.
+  - `npm run lint`: Prettier check and ESLint passed with 0 errors.
+  - `npm run build`: Production static site build successfully generated 13,221 pages without any errors.
+- Commit hash: `3ee8a1b`
+- Current state: All 64 models from the user's list (23 previously present + 41 newly added) are fully represented with canonical configurations and official provider specifications.
+- Exact next step: User verifies the newly added DeepSeek models locally at `http://localhost:4321`.
+
 
 
 
