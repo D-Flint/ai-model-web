@@ -1015,3 +1015,25 @@
 - Commit hash: `bf950c8925e7edb389318a07be776d1be3193e86` (implementation commit, local only; this log is recorded separately).
 - Current state: API rates are reviewed for 12 models; unreviewed pricing is unavailable. Monthly estimates, preset workloads, guessed reasoning-token costs and score-derived retry costs are removed from pricing flows. Field provenance, cached rates, context tiers, seven-day freshness, optional supported extras and an empty calculator are implemented. Benchmark task costs remain null. Batch, media, residency, separate reasoning rates and other unsupported billing cases are documented in `docs/pricing-methodology.md`. Historical capability/cost-efficiency inputs have not been independently re-audited. Nothing was pushed or deployed.
 - Exact next step: The user verifies http://localhost:4321/pricing, /cost, /models/gemini-2-5-pro, /compare and /find using the local server (`npm run dev`). Wait for user verification before starting another implementation.
+
+## 2026-09-06 — Refine the Synapse Green Color System
+
+- Objective: Execute `gemini-3.8-synapse-green-refinement.md` to unify and strengthen Synapse brand identity with an intentional green hierarchy (Primary `#1F7A3F`, Deep `#14532D`, Bright `#8FEA45`, Soft `#EDF7EE`), recolor brand logo marks, and harmonize active/hover states in light and dark mode.
+- Files changed:
+  - `src/styles/global.css`: Updated light and dark root tokens, button hover ring, card selection state, badges (`.effort-badge.openrouter-badge`, `.badge-open`), and leaderboard interactive accents.
+  - `src/layouts/RootLayout.astro`: Updated `theme-color` meta tag to `#0D120F`.
+  - `src/components/ModelCard.tsx`: Connected `selected` prop to `.model-card.selected`.
+  - `public/synapse-mark.png`: Recolored mark using 135deg gradient `#14532D` -> `#1F7A3F` -> `#8FEA45` while preserving 3D bevel shading.
+  - `public/logo.png`: Recolored dark app icon mark with matching gradient.
+  - `public/favicon.svg`: Updated vector gradient to match deep-to-lime brand palette.
+- Attempt count: 1 implementation iteration.
+- Failures and causes: None.
+- Tests and results:
+  - `npm test`: 60/60 tests passed across 6 test suites.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 77 files.
+  - `npm run lint`: ESLint and Prettier passed.
+  - `npm run build`: 29,422 pages generated in production build.
+- Commit hash: `033c4a4` (code commit, local only).
+- Current state: Synapse green color system refined according to brief specifications.
+- Exact next step: User verifies UI appearance and color consistency locally.
+
