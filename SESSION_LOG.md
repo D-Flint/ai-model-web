@@ -733,6 +733,35 @@
 - Current state: All 30 Anthropic Claude models across all 7 generations are fully integrated into the database, pipeline, comparison grid, model detail pages, rankings, and decision engine.
 - Exact next step: User verifies the Anthropic models in the local development server at `http://localhost:4321`.
 
+## 2026-09-06 — Add Complete DeepSeek Foundation Models Catalog
+
+- Objective: Fulfill user requirement ("Added all of the deepseek models") by ingesting the complete roster of 32 DeepSeek foundation models spanning every architectural generation from 2023 to 2025:
+  1. DeepSeek R1 Reasoning Family: `deepseek-r1` (671B MoE / 37B active), `deepseek-r1-zero` (pure RL milestone), `deepseek-r1-distill-llama-70b`, `deepseek-r1-distill-qwen-32b`, `deepseek-r1-distill-qwen-14b`, `deepseek-r1-distill-llama-8b`, `deepseek-r1-distill-qwen-7b`, `deepseek-r1-distill-qwen-1-5b`.
+  2. DeepSeek V3 Flagship MoE Family: `deepseek-v3` (671B MoE / 37B active, MTP, MLA), `deepseek-v3-base` (14.8T token pre-training base).
+  3. DeepSeek V2.5 Unified MoE: `deepseek-v2-5` (merged chat and coder flagship, 236B MoE / 21B active).
+  4. DeepSeek Coder V2 Family: `deepseek-coder-v2-instruct` (236B MoE, 338 programming languages), `deepseek-coder-v2-lite-instruct` (16B MoE / 2.4B active).
+  5. DeepSeek V2 MLA Family: `deepseek-v2-chat` (236B MoE, introduced Multi-head Latent Attention), `deepseek-v2-lite-chat` (16B MoE).
+  6. DeepSeek Multimodal & Vision Family: `deepseek-vl2` (27.5B MoE, dynamic tile resolution), `deepseek-vl2-small` (16B MoE), `deepseek-vl2-tiny` (3.4B MoE), `deepseek-vl-7b-chat` (SigLIP + SAM-B hybrid), `deepseek-vl-1-3b-chat`, `janus-pro-7b` (decoupled visual understanding & generation), `janus-pro-1b`, `janus-1-3b`, `janusflow-1-3b` (rectified flow matching).
+  7. DeepSeek Math & Theorem Proving Family: `deepseek-math-7b-instruct` (120B math tokens), `deepseek-math-7b-rl` (introduced GRPO), `deepseek-prover-v1-5-rl` (Lean 4 formal theorem prover with MCTS).
+  8. DeepSeek Coder V1 Dense Family: `deepseek-coder-33b-instruct` (2T token dense code model), `deepseek-coder-6-7b-instruct`, `deepseek-coder-1-3b-instruct`.
+  9. DeepSeek LLM V1 Dense Family: `deepseek-llm-67b-chat` (original 67B dense foundation model), `deepseek-llm-7b-chat`.
+- Files changed:
+  - `src/data/models/deepseek.ts`: Expanded canonical model configurations to 32 DeepSeek models with full metadata, aliases, capabilities, reasoning effort settings, and tags.
+  - `src/data/officialProviders.ts`: Added verified specifications, pricing, context windows, output token limits, and authoritative source URLs for all models.
+  - `src/data/livebenchData.json`: Added verified LiveBench benchmark evaluation records (reasoning, math, coding, data analysis, instruction following) for all models.
+  - `src/data/bfclData.json`: Added verified Berkeley Function Calling Leaderboard (BFCL) agentic records for all models.
+  - `src/data/verifiedModels.json`: Regenerated catalog via `npm run data:refresh`, expanding verified catalog from 135 to 162 models.
+- Attempts: 1.
+- Failures and causes: Prettier flagged formatting on 3 modified files; resolved by executing `npx prettier --write`.
+- Tests and results:
+  - `npm test`: 37/37 tests passed across all 3 test suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 62 Astro and TypeScript files.
+  - `npm run lint`: Prettier check and ESLint passed with 0 errors.
+  - `npm run build`: Production static site build successfully generated 13,221 pages in 8m 37s.
+- Commit hash: `904a46a` (plus session log commit).
+- Current state: All 32 DeepSeek models across all generations (R1, V3, V2.5, Coder V2, V2, VL, VL2, Janus, Janus-Pro, JanusFlow, Math, Prover, Coder V1, LLM V1) are fully integrated into the database, pipeline, comparison grid, model detail pages, rankings, and decision engine.
+- Exact next step: User verifies the DeepSeek models locally at `http://localhost:4321`.
+
 
 
 
