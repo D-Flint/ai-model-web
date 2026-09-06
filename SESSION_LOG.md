@@ -776,16 +776,17 @@
 - Files changed:
   - `src/data/models/deepseek.ts`: Added canonical configurations for all 41 models with complete metadata, strengths, weaknesses, tags, aliases, and reasoning efforts.
   - `src/data/officialProviders.ts`: Added official provider specifications for all 41 models with context windows, output limits, pricing, speed, and verification dates.
+  - `src/data/verifiedModels.json`: Regenerated verified catalog via `npm run data:refresh`, bringing the catalog to 203 verified models (73 DeepSeek models active on the site).
   - `SESSION_LOG.md`: Appended session documentation.
 - Attempts: 1 full iteration.
-- Failures and causes: Prettier formatting check flagged minor style discrepancies in `src/data/models/deepseek.ts`; fixed via `npm run format`.
+- Failures and causes: Prettier formatting check flagged minor style discrepancies in `src/data/models/deepseek.ts` and `src/data/verifiedModels.json`; fixed via `npm run format`.
 - Tests and results:
   - `npm test`: 37/37 tests passed across all 3 suites (`calculateTaskCost.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
   - `npm run check`: 0 errors, 0 warnings, 0 hints across 62 Astro and TypeScript files.
   - `npm run lint`: Prettier check and ESLint passed with 0 errors.
   - `npm run build`: Production static site build successfully generated 13,221 pages without any errors.
-- Commit hash: `3ee8a1b`
-- Current state: All 64 models from the user's list (23 previously present + 41 newly added) are fully represented with canonical configurations and official provider specifications.
+- Commit hashes: `3ee8a1b` (code), `a4a5b61` (verifiedModels.json).
+- Current state: All 64 models from the user's list (23 previously present + 41 newly added) are fully represented with canonical configurations, official provider specifications, and live verified model records.
 - Exact next step: User verifies the newly added DeepSeek models locally at `http://localhost:4321`.
 
 
