@@ -1,7 +1,8 @@
+import { rateLabel } from '../lib/apiPricing';
 import { useState } from 'react';
 import { ArrowRight, ArrowLeftRight } from 'lucide-react';
 import type { CatalogModel } from '../lib/catalogSchema';
-import { money, getSpeedTokensPerSec } from '../lib/decision';
+import { getSpeedTokensPerSec } from '../lib/decision';
 import { ModelMark } from './ModelCard';
 export default function HeroCompare({ models }: { models: CatalogModel[] }) {
   const [left, setLeft] = useState(models[0].slug);
@@ -115,17 +116,9 @@ export default function HeroCompare({ models }: { models: CatalogModel[] }) {
           </strong>
         </div>
         <div>
-          <strong
-            className={a.pricing.input <= b.pricing.input ? 'accent' : ''}
-          >
-            {money(a.pricing.input)}
-          </strong>
-          <span>Price (1M)</span>
-          <strong
-            className={b.pricing.input <= a.pricing.input ? 'accent' : ''}
-          >
-            {money(b.pricing.input)}
-          </strong>
+          <strong>{rateLabel(a, 'input')}</strong>
+          <span>Input / 1M</span>
+          <strong>{rateLabel(b, 'input')}</strong>
         </div>
       </div>
       <a className="preview-link" href={`/compare?models=${left},${right}`}>

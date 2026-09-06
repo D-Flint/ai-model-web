@@ -14,6 +14,7 @@ const links = [
   ['/compare', 'Compare'],
   ['/rankings', 'Rankings'],
   ['/find', 'Model Finder'],
+  ['/pricing', 'API Pricing'],
   ['/cost', 'Cost Calculator'],
 ];
 const path = Astro.url.pathname;
@@ -106,7 +107,7 @@ const canonical = Astro.site ? new URL(path, Astro.site).href : undefined;
       </nav>
     </header>
     <div class="sample-banner">
-      <span>Sample edition</span> Fictional models and illustrative data. <a
+      <span>Preview edition</span> Check model sources and pricing dates. <a
         href="/methodology#sample-data"
         >What this means <ArrowRight size={12} /></a
       >
@@ -140,6 +141,26 @@ const canonical = Astro.site ? new URL(path, Astro.site).href : undefined;
       </div>
     </footer>
     <script>
+      import { pricingPolicy } from '../lib/apiPricing';
+      function refreshPricingDates() {
+        document
+          .querySelectorAll<HTMLElement>('[data-price-date]')
+          .forEach((node) => {
+            const date = Date.parse(node.dataset.priceDate ?? '');
+            const effective = Date.parse(node.dataset.effectiveDate ?? '');
+            const age = Date.now() - date;
+            node.textContent =
+              !Number.isFinite(date) ||
+              age < 0 ||
+              age > pricingPolicy.staleAfterDays * 86_400_000 ||
+              effective > Date.now()
+                ? 'Needs verification'
+                : 'Current';
+          });
+      }
+      refreshPricingDates();
+      document.addEventListener('astro:page-load', refreshPricingDates);
+      window.setInterval(refreshPricingDates, 60_000);
       document.querySelector('#theme-toggle')?.addEventListener('click', () => {
         const theme =
           document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';

@@ -1,0 +1,13 @@
+---
+import RootLayout from '../layouts/RootLayout.astro';
+import PricingComparison from '../components/PricingComparison';
+import { models } from '../data/models';
+---
+
+<RootLayout title="Compare API pricing | Synapse"
+  ><div class="page-heading">
+    <span class="eyebrow">API PRICING</span><h1>Compare model pricing</h1><p>
+      Compare official API pricing without guessing your monthly usage.
+    </p>
+  </div><PricingComparison models={models} client:load /></RootLayout
+>

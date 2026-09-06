@@ -21,7 +21,9 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "test:browser": "python tests/browser_flows.py",
-    "test": "vitest run"
+    "test": "vitest run",
+    "data:pricing:persist": "tsx scripts/persist-api-pricing.ts",
+    "test:pricing:browser": "python tests/pricing_browser.py"
   },
   "repository": {
     "type": "git",

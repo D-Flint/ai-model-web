@@ -1,8 +1,8 @@
+import ApiPricing from './ApiPricing';
 import { ArrowUpRight, Plus, Check } from 'lucide-react';
 import type { CatalogModel } from '../lib/catalogSchema';
 import {
   contextSize,
-  money,
   getMaxReasoningEffort,
   getModelEffortStats,
 } from '../lib/decision';
@@ -121,25 +121,14 @@ export default function ModelCard({
             )}
           </strong>
         </div>
-        <div>
-          <span>Price (1M)</span>
-          <strong
-            title={`Input cost: ${money(model.pricing.input)} per 1M tokens`}
-          >
-            {money(model.pricing.input)}
-          </strong>
-        </div>
       </div>
       <div className="tags">
         {model.tags.slice(0, 2).map((tag) => (
           <span key={tag}>{tag}</span>
         ))}
       </div>
+      <ApiPricing model={model} />
       <div className="card-pricing">
-        <span>
-          Output: <strong>{money(model.pricing.output)}</strong>{' '}
-          <span className="muted">/ 1M</span>
-        </span>
         <span>{contextSize(model.facts.context)} context</span>
       </div>
       <div className="card-bottom">

@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { apiPricingSchema } from './apiPricingSchema';
 const score = z.number().min(0).max(100);
 const date = z.iso.date();
 const factSource = z.object({
@@ -34,6 +35,7 @@ export const catalogModelSchema = z
     tags: z.array(z.string()).min(1),
     facts: z.object({
       context: z.number().int().positive(),
+      contextSourceId: z.string().min(1).optional(),
       maxOutput: z.number().int().positive(),
       speedTokensPerSec: z.number().int().positive().nullable().optional(),
       vision: z.boolean(),
@@ -53,6 +55,8 @@ export const catalogModelSchema = z
         .enum(['none', 'low', 'medium', 'high', 'max', 'fixed'])
         .default('none'),
     }),
+    apiPricing: apiPricingSchema.nullable().optional(),
+    // Legacy ingestion values: not approved for publication or cost calculation.
     pricing: z.object({
       input: z.number().nonnegative(),
       output: z.number().nonnegative(),
@@ -96,10 +100,16 @@ export const catalogModelSchema = z
     sources: z.array(factSource).min(1),
   })
   .superRefine((model, ctx) => {
+    if (model.apiPricing && model.apiPricing.provider !== model.provider)
+      ctx.addIssue({
+        code: 'custom',
+        message: 'Pricing provider does not match model',
+      });
     const ids = new Set(model.sources.map((s) => s.id));
     for (const id of [
       model.pricing.sourceId,
       model.facts.sourceId,
+      ...(model.facts.contextSourceId ? [model.facts.contextSourceId] : []),
       ...model.evidence.map((e) => e.sourceId),
     ]) {
       if (!ids.has(id))

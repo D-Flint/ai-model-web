@@ -49,7 +49,7 @@ export const categories = [
     slug: 'cheap',
     label: 'Lowest cost',
     metric: 'costEfficiency',
-    description: 'Compare the lowest estimated costs per task.',
+    description: 'Compare input API rates per million tokens.',
   },
   {
     slug: 'coding',
@@ -88,19 +88,11 @@ export const categories = [
     description: 'Understand images, charts, and visual context.',
   },
 ] as const;
-export const workloads = {
-  chat: { label: 'Everyday questions', input: 500, output: 500 },
-  writing: { label: 'Writing and editing', input: 1500, output: 1200 },
-  coding: { label: 'Coding assistance', input: 4000, output: 2000 },
-  documents: { label: 'Document analysis', input: 16000, output: 1500 },
-  research: { label: 'Research', input: 8000, output: 3000 },
-  agents: { label: 'Agentic coding', input: 24000, output: 6000 },
-} as const;
 export const recommendationConfig = {
   task: 0.55,
   priority: 0.3,
   reliability: 0.15,
-  budgetLimits: { free: 0, cheap: 0.005, moderate: 0.03, any: Infinity },
+  budgetLimits: { free: 0, cheap: 1, moderate: 5, any: Infinity },
 } as const;
 
 export type ReasoningEffort =
@@ -113,15 +105,6 @@ export const effortLabels: Record<ReasoningEffort, string> = {
   high: 'High effort',
   max: 'Max effort',
   fixed: 'Fixed CoT',
-};
-
-export const effortTokens: Record<ReasoningEffort, number> = {
-  none: 0,
-  low: 1000,
-  medium: 4000,
-  high: 16000,
-  max: 32000,
-  fixed: 4000,
 };
 
 export const effortLatency: Record<ReasoningEffort, string> = {

@@ -3347,3 +3347,83 @@ table.leaderboard-table td.col-sorted.td-date {
   line-height: 1.5;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
+
+/* Pricing follows the existing surface, type and color system. */
+.model-card .mini-metrics {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.api-pricing {
+  min-width: 0;
+  margin-block: 12px;
+}
+.api-pricing h3 {
+  font-size: 15px;
+  margin-block: 18px 10px;
+}
+.api-pricing p {
+  margin-block: 8px;
+}
+.api-rate-list {
+  margin-block: 10px;
+}
+.api-rate-list > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+  padding-block: 8px;
+}
+.api-rate-list dt {
+  color: var(--muted);
+}
+.api-rate-list dd {
+  margin: 0;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.api-rate-list small {
+  font-weight: 400;
+  color: var(--muted);
+}
+.pricing-source {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.pricing-controls {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.pricing-controls .field {
+  flex: 1;
+  min-width: 200px;
+}
+.cost-teaser-rows > div {
+  display: block;
+}
+.cost-teaser-rows .api-pricing > strong {
+  display: none;
+}
+.cost-teaser-rows .api-rate-list > div {
+  display: flex;
+  padding-block: 3px;
+  border: 0;
+}
+.calculator-layout > section {
+  min-width: 0;
+}
+.calculator-layout > section > .panel {
+  margin-block: 16px;
+}
+@media (max-width: 600px) {
+  .api-rate-list > div {
+    flex-wrap: wrap;
+  }
+  .api-rate-list dd {
+    text-align: left;
+  }
+}

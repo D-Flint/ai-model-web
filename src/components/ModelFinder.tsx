@@ -1,13 +1,8 @@
+import { rateLabel } from '../lib/apiPricing';
 import { useState } from 'react';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import type { CatalogModel } from '../lib/catalogSchema';
-import {
-  recommend,
-  taskCost,
-  money,
-  type Budget,
-  type Priority,
-} from '../lib/decision';
+import { recommend, type Budget, type Priority } from '../lib/decision';
 import type { Metric } from '../data/config';
 import { ModelMark } from './ModelCard';
 const tasks: { value: Metric; label: string; description: string }[] = [
@@ -89,12 +84,12 @@ const budgets: { value: Budget; label: string; description: string }[] = [
   {
     value: 'cheap',
     label: 'Very cheap',
-    description: 'Up to $0.005 per sample task',
+    description: 'Up to $1 / 1M input tokens',
   },
   {
     value: 'moderate',
     label: 'Moderate',
-    description: 'Up to $0.03 per sample task',
+    description: 'Up to $5 / 1M input tokens',
   },
   {
     value: 'any',
@@ -150,7 +145,7 @@ export default function ModelFinder({ models }: { models: CatalogModel[] }) {
                   [
                     'Choose the task you come back to most often.',
                     'We’ll use this to weigh the tradeoffs.',
-                    'These are API task budgets, not chat subscriptions.',
+                    'Filter by standard input price per million tokens.',
                   ][step]
                 }
               </p>
@@ -233,8 +228,8 @@ export default function ModelFinder({ models }: { models: CatalogModel[] }) {
               <div className="empty-state">
                 <h3>No models fit this budget.</h3>
                 <p>
-                  The sample catalog has no free API models. Free chat plans and
-                  self-hosting are separate from API pricing.
+                  No current, comparable API rate fits this limit. Models with
+                  tiered or unavailable prices are excluded from capped budgets.
                 </p>
                 <button className="button primary" onClick={() => setStep(2)}>
                   Adjust my budget
@@ -262,9 +257,11 @@ export default function ModelFinder({ models }: { models: CatalogModel[] }) {
                     {pick.model.weaknesses.join('; ')}.
                   </p>
                   <p>
-                    <strong>Estimated task cost:</strong>{' '}
-                    {money(taskCost(pick.model), 4)} for 1,000 input + 500
-                    output tokens, one attempt.
+                    <strong>API input / 1M:</strong>{' '}
+                    {rateLabel(pick.model, 'input')} ·{' '}
+                    <a href={`/models/${pick.model.slug}#pricing`}>
+                      Sources and billing details
+                    </a>
                   </p>
                   <details className="score-details">
                     <summary>Why this match?</summary>
@@ -273,8 +270,8 @@ export default function ModelFinder({ models }: { models: CatalogModel[] }) {
                       {i === 1
                         ? 'The value choice has the highest cost-efficiency score among remaining eligible models.'
                         : ''}{' '}
-                      Equal fit scores are ordered by lower task cost, then
-                      model slug.
+                      Equal fit scores are ordered by lower input API price,
+                      then model slug.
                     </p>
                   </details>
                   <a href={`/models/${pick.model.slug}`} className="button">

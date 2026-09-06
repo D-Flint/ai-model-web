@@ -1,3 +1,5 @@
+> Historical initial design. Pricing and workload behavior is superseded by [the pricing redesign](pricing-methodology.md).
+
 # Astra implementation design
 
 The approved product brief defines the scope. Complete one local implementation before user preview.

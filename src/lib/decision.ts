@@ -1,7 +1,7 @@
+import { comparablePrice, compareApiPrice } from './apiPricing';
 import {
   effortLatency,
   effortScoreAdjustments,
-  effortTokens,
   metricLabels,
   overallWeights,
   recommendationConfig,
@@ -59,12 +59,11 @@ export function confidence(input: {
 }
 export function taskCost(
   model: CatalogModel,
-  input = 1000,
-  output = 500,
+  input: number,
+  output: number,
   success = 1,
   toolCalls = 0,
   toolPrice = 0,
-  effort?: ReasoningEffort,
 ): number {
   if (
     ![input, output, toolCalls, toolPrice].every(
@@ -77,12 +76,8 @@ export function taskCost(
     throw new Error(
       'Enter non-negative amounts and a success rate greater than 0 and at most 100%.',
     );
-  const extraReasoningTokens =
-    effort !== undefined ? (effortTokens[effort] ?? 0) : 0;
   return (
-    ((input * model.pricing.input +
-      (output + extraReasoningTokens) * model.pricing.output) /
-      1_000_000 +
+    ((input * model.pricing.input + output * model.pricing.output) / 1_000_000 +
       toolCalls * toolPrice) /
     success
   );
@@ -90,9 +85,7 @@ export function taskCost(
 
 export interface ModelEffortStats {
   effort: ReasoningEffort;
-  reasoningTokens: number;
   latency: string;
-  taskCost: number;
   speedTokensPerSec: number;
   scores: Record<Capability, number | null> & { overall: number | null };
 }
@@ -178,9 +171,7 @@ export function getModelEffortStats(
     }
   }
 
-  const reasoningTokens = isReasoning ? (effortTokens[effort] ?? 0) : 0;
   const latency = effortLatency[effort] ?? 'Instant (< 1s)';
-  const cost = taskCost(model, 1000, 500, 1, 0, 0, effort);
   const speedTokensPerSec = getSpeedTokensPerSec(model, effort);
 
   const baseDefault =
@@ -213,9 +204,7 @@ export function getModelEffortStats(
 
   return {
     effort,
-    reasoningTokens,
     latency,
-    taskCost: cost,
     speedTokensPerSec,
     scores: {
       ...adjustedCapabilities,
@@ -263,7 +252,11 @@ export function recommend(
   return models
     .filter(
       (m) =>
-        taskCost(m) <= recommendationConfig.budgetLimits[budget] &&
+        (budget === 'any' ||
+          (comparablePrice(m) !== null &&
+            comparablePrice(m)! <=
+              recommendationConfig.budgetLimits[budget])) &&
+        (budget !== 'free' || comparablePrice(m, 'output') === 0) &&
         (metric !== 'vision' || m.facts.vision),
     )
     .map((model) => {
@@ -284,7 +277,7 @@ export function recommend(
     .sort(
       (a, b) =>
         b.score - a.score ||
-        taskCost(a.model) - taskCost(b.model) ||
+        compareApiPrice(a.model, b.model) ||
         a.model.slug.localeCompare(b.model.slug),
     );
 }

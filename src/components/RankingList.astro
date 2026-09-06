@@ -1,12 +1,8 @@
 ---
+import { compareApiPrice, rateLabel } from '../lib/apiPricing';
 import { models } from '../data/models';
 import { categories, metricLabels, type Metric } from '../data/config';
-import {
-  rankModels,
-  taskCost,
-  money,
-  getSpeedTokensPerSec,
-} from '../lib/decision';
+import { rankModels, getSpeedTokensPerSec } from '../lib/decision';
 import { ModelMark } from './ModelCard';
 interface Props {
   metric?: Metric;
@@ -17,7 +13,7 @@ const eligible =
   metric === 'vision' ? models.filter((m) => m.facts.vision) : models;
 const ranked =
   slug === 'cheap'
-    ? [...eligible].sort((a, b) => taskCost(a) - taskCost(b))
+    ? [...eligible].sort(compareApiPrice)
     : rankModels(eligible, metric);
 ---
 
@@ -38,7 +34,7 @@ const ranked =
 <div class="notice">
   Sample ranking, not a market recommendation. {
     slug === 'cheap'
-      ? 'Sorted by estimated cost for 1,000 input and 500 output tokens.'
+      ? 'Sorted by current standard input API rate. Tiered or unavailable rates sort last; see model details for sources.'
       : metric === 'speed'
         ? 'Sorted by generation throughput in tokens/sec.'
         : `Sorted by ${metricLabels[metric].toLowerCase()} score, with alphabetical ordering for ties.`
@@ -79,13 +75,13 @@ const ranked =
             href={`/models/${model.slug}#score-${metric}`}
           >
             {slug === 'cheap'
-              ? money(taskCost(model), 4)
+              ? rateLabel(model, 'input')
               : metric === 'speed'
                 ? getSpeedTokensPerSec(model)
                 : model.scores[metric]}
             <small>
               {slug === 'cheap'
-                ? 'estimated / task'
+                ? 'input / 1M tokens'
                 : metric === 'speed'
                   ? 'tokens/sec'
                   : `${metricLabels[metric]} / 100`}

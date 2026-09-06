@@ -249,7 +249,9 @@ export function getMostUsedOpenRouterModels(
       (m) =>
         m.slug === item.slug ||
         m.name.toLowerCase() === item.name.toLowerCase() ||
-        m.sources?.some((s) => s.url?.includes(item.openRouterId.replace(':free', ''))),
+        m.sources?.some((s) =>
+          s.url?.includes(item.openRouterId.replace(':free', '')),
+        ),
     );
 
     if (found && !seenSlugs.has(found.slug)) {

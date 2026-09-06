@@ -5,7 +5,7 @@ import ModelCard from '../components/ModelCard';
 import ProviderLogo from '../components/ProviderLogo.astro';
 import { models } from '../data/models';
 import { categories } from '../data/config';
-import { taskCost, money } from '../lib/decision';
+import ApiPricing from '../components/ApiPricing';
 import { getMostUsedOpenRouterModels } from '../data/openrouterRankings';
 import {
   ArrowRight,
@@ -26,7 +26,9 @@ const pairs = [
   [models[3], models[4]],
   [models[2], models[5]],
 ];
-const costs = [models[0], models[1], models[4]];
+const costs = models
+  .filter((m) => m.apiPricing?.tiers.length === 1)
+  .slice(0, 3);
 ---
 
 <RootLayout>
@@ -99,7 +101,8 @@ const costs = [models[0], models[1], models[4]];
     <div class="section-heading">
       <div>
         <h2>Most used on OpenRouter</h2><p>
-          The most popular models ranked by real-world token volume processed through the OpenRouter API.
+          The most popular models ranked by real-world token volume processed
+          through the OpenRouter API.
         </p>
       </div><a class="text-link" href="/models"
         >Explore all models <ArrowRight size={16} /></a
@@ -114,8 +117,7 @@ const costs = [models[0], models[1], models[4]];
       Usage volume sourced directly from OpenRouter LLM rankings. <a
         href="https://openrouter.ai/rankings"
         target="_blank"
-        rel="noopener noreferrer"
-        >View live OpenRouter rankings</a
+        rel="noopener noreferrer">View live OpenRouter rankings</a
       >
     </p>
   </section>
@@ -172,27 +174,23 @@ const costs = [models[0], models[1], models[4]];
   </section>
   <section class="bottom-grid reveal-section">
     <div class="cost-teaser">
-      <span class="eyebrow">THE PRICE OF GETTING THINGS DONE</span><h2>
-        Small costs.<br />A clearer picture.
-      </h2><p>
-        See what everyday use could cost, without having to think in tokens.
+      <span class="eyebrow">API PRICING</span><h2>Compare model pricing</h2><p>
+        Compare official API pricing without guessing your monthly usage.
       </p><div class="cost-teaser-rows">
         {
           costs.map((m) => (
             <div>
               <>
                 <span>{m.name}</span>
-                <strong>
-                  {money(taskCost(m, 500, 500) * 20 * 30)}
-                  <small> / month</small>
-                </strong>
+                <ApiPricing model={m} />
               </>
             </div>
           ))
         }
-      </div><p class="micro">Sample estimate: 20 questions a day, 30 days.</p><a
-        class="text-link"
-        href="/cost">Calculate your costs <ArrowRight size={16} /></a
+      </div><p class="micro">
+        Standard API rates in USD. Provider extras may apply.
+      </p><a class="text-link" href="/pricing"
+        >Compare pricing <ArrowRight size={16} /></a
       >
     </div><div class="trust-teaser">
       <ShieldCheck size={32} strokeWidth={1.4} /><h2>

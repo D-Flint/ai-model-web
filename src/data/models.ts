@@ -3,6 +3,8 @@ import { validateCatalog } from '../lib/importCatalog';
 import { composite, normalize } from '../lib/decision';
 import { fixtureDate, methodologyVersion, type Capability } from './config';
 import type { CatalogModel } from '../lib/catalogSchema';
+import { verifiedApiPricing, reviewedContext } from './apiPricing';
+import { choosePricing } from '../lib/apiPricing';
 
 // Fictional providers and model names for fallback fixtures
 const seeds = [
@@ -263,5 +265,23 @@ try {
 
 export const models: CatalogModel[] =
   verifiedModelsList && verifiedModelsList.length > 0
-    ? verifiedModelsList
+    ? validateCatalog(
+        verifiedModelsList.map((model) => ({
+          ...model,
+          ...(reviewedContext[model.slug]
+            ? {
+                facts: {
+                  ...model.facts,
+                  context: reviewedContext[model.slug].value,
+                  contextSourceId: reviewedContext[model.slug].source.id,
+                },
+                sources: [...model.sources, reviewedContext[model.slug].source],
+              }
+            : {}),
+          apiPricing: choosePricing(
+            verifiedApiPricing[model.slug] ?? null,
+            null,
+          ),
+        })),
+      )
     : mockModels;

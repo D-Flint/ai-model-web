@@ -82,33 +82,75 @@ import { metricLabels, overallWeights } from '../data/config';
     </section>
     <section>
       <h2>A recommendation you can follow.</h2><p>
-        The finder filters out models that do not fit your API task budget or
-        required vision support. It then combines the chosen task score (55%),
-        your priority (30%), and reliability (15%). Quality uses intelligence;
-        speed uses speed; cost and value use cost efficiency; balanced uses
-        overall.
+        The finder filters out models that do not fit your standard input API
+        price limit or required vision support. It then combines the chosen task
+        score (55%), your priority (30%), and reliability (15%). Quality uses
+        intelligence; speed uses speed; cost and value use cost efficiency;
+        balanced uses overall.
       </p><p>
-        Ties are resolved by lower estimated task cost and then model slug. The
-        best match has the highest fit score. The value choice has the highest
-        cost-efficiency score among remaining eligible models. The alternative
-        is the next available fit. No sponsorship changes these results.
+        Ties are resolved by lower current input API price and then model slug.
+        The best match has the highest fit score. The value choice has the
+        highest cost-efficiency score among remaining eligible models. The
+        alternative is the next available fit. No sponsorship changes these
+        results.
       </p><p>
-        Free means zero paid API cost. Very cheap means at most $0.005 per
-        sample task, moderate means at most $0.03, and flexible applies no price
-        cap. A sample task uses 1,000 input and 500 output tokens.
+        Free requires verified zero input and output rates. Very cheap caps
+        input at $1 / 1M tokens; moderate at $5 / 1M. Flexible applies no cap.
+        Capped filters exclude missing, stale and tiered rates. Output charges
+        are separate.
       </p>
     </section>
-    <section>
-      <h2>The cost of a completed task.</h2><p>
-        Token prices tell only part of the story. Our calculator includes input
-        and output usage, optional tool costs, and an assumed retry rate.
-      </p><p>
-        <code>Expected task cost = cost per attempt / success probability</code>
-      </p><p>
-        This assumes constant cost and independent retries. The default is one
-        successful attempt. Workload sizes are illustrative assumptions, not
-        observed usage averages. API fees are separate from subscription plans,
-        taxes, hosting, and provider-specific charges.
+    <section id="api-pricing">
+      <h2>Official API pricing first.</h2>
+      <p>
+        We use official provider pricing, then a verified OpenRouter fallback,
+        otherwise unavailable. Each rate stores its value, currency, unit,
+        source name and URL, retrieval date, and effective date when the
+        provider supplies one. A missing rate is never treated as free.
+      </p>
+      <p>
+        Reviewed standard text rates currently cover 12 models from Anthropic
+        and Google. Other pricing awaits verification. Historical ingestion
+        prices are not used for published rates or estimates.
+      </p>
+      <p>
+        Input, output and cached reads are distinct. Context tiers stay
+        separate. Comparison sorting uses current single-tier rates; blended API
+        price explicitly uses 70% input and 30% output. Neither determines a
+        user's bill.
+      </p>
+      <p>
+        The calculator starts empty. Total = requests * (uncached input * input
+        rate + cached input * cache-read rate + output * output rate) /
+        1,000,000, plus supported extras. Token counts are per request; cache
+        storage is the total stored token-hours across the workload. All
+        requests are assumed to have the user-entered counts. Retries must be
+        counted explicitly. Billed thinking tokens belong in output; we never
+        infer them from an effort setting or score.
+      </p>
+      <p>
+        Rates older than seven days need verification and are blocked from
+        estimates and price ranking. Retrieval dates are fixed at source review,
+        never refreshed by a build. Check the provider's current page before
+        purchasing. No monthly estimate is shown. Benchmark task cost stays
+        unavailable until a documented workload, source and reproducible
+        methodology exist.
+      </p>
+      <p>
+        Current calculator scope is standard text tokens, cache reads, supported
+        cache writes, cache storage and Anthropic web searches. Batch, flex,
+        priority, fast mode, residency premiums, audio/image conversion,
+        account-level allowances and other tools are not calculated. These
+        require their own reviewed billing rules.
+      </p>
+      <p>
+        <a href="https://platform.claude.com/docs/en/about-claude/pricing"
+          >Anthropic pricing</a
+        > * <a href="https://ai.google.dev/gemini-api/docs/pricing"
+          >Google pricing</a
+        > * <a href="/pricing">Compare rates</a> * <a href="/cost"
+          >Calculate your workload</a
+        >
       </p>
     </section>
     <section>
@@ -126,8 +168,9 @@ import { metricLabels, overallWeights } from '../data/config';
       </p><p>
         Structural validation cannot establish whether an external claim is
         true. A human source review is required before a verified import is
-        selected for publication. This edition has not performed that review or
-        connected to a live provider feed.
+        selected for publication. Pricing reviews are documented separately from
+        catalog and benchmark validation. Provider pages are reviewed snapshots,
+        not a live billing feed.
       </p>
     </section>
     <section>

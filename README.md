@@ -1,6 +1,6 @@
 # Astra: AI Model Guide
 
-A content-first Astro application for discovering, comparing, understanding, and choosing AI models. The local edition implements the product flows with 12 explicitly fictional models. No sample score or price is a claim about a real provider.
+A content-first Astro application for discovering, comparing, understanding, and choosing AI models. The application loads catalog snapshots with an explicitly fictional fallback. API pricing is published separately from reviewed provider sources; unreviewed rates are unavailable.
 
 ## Run locally
 
@@ -11,17 +11,17 @@ npm install
 npm run dev
 ```
 
-Open the local address printed by Astro (normally http://localhost:4321). No database, API key, or external account is needed for the sample app.
+Open the local address printed by Astro (normally http://localhost:4321). No database, API key, or external account is needed for the local app.
 
 ## Implemented experience
 
-- Homepage with a working comparison, search, task shortcuts, model highlights, and cost examples.
+- Homepage with a working comparison, search, task shortcuts, model highlights, and API pricing.
 - Model explorer with search, provider and numerical filters, capability filters, sorting, and a four-model comparison tray.
-- Twelve model detail pages with numerical scores, expandable evidence, pricing, facts, alternatives, and tradeoffs.
-- Two-to-four-model comparisons with shareable query URLs, 66 static pair pages, grouped metrics, ties, and conditional verdicts.
+- Model detail pages with numerical scores, expandable evidence, pricing, facts, alternatives, and tradeoffs.
+- Two-to-four-model comparisons with shareable query URLs, static pair pages, grouped metrics, ties, and conditional verdicts.
 - Overall and eight task-specific rankings with plain-language explanations.
 - Three-question deterministic finder, budget filtering, explained matches, and a free-budget empty state.
-- Simple and advanced cost estimates with adjustable workload, usage, success probability, and tool overhead.
+- Source-backed API pricing comparison and an empty-by-default workload calculator with supported cache and tool charges.
 - Responsive light/dark layouts, keyboard focus, mobile navigation, reduced-motion support, and semantic tables.
 - Validated sample inputs, configurable scoring, source references, snapshot imports, optional PostgreSQL persistence, and generated Drizzle migrations.
 
@@ -33,16 +33,16 @@ npm run check        # Astro and strict TypeScript diagnostics
 npm run lint         # TypeScript/Astro ESLint rules and Prettier checks
 npm run build        # Static production output
 npm run preview      # Serve the production build
-npm run test:browser # Python Playwright flows against localhost:4321
+npm run test:pricing:browser # Pricing, browse, compare, find and mobile flows
 ```
 
 The browser suite requires Python, `pip install playwright`, and `python -m playwright install chromium`. It expects the local server to be running. Screenshots go to the ignored `artifacts/` directory. Set `ASTRA_TEST_URL` to test another local server address.
 
-`npm run format` formats source files. Build output contains 94 pages plus sitemap output. Static model and ranking content works without client JavaScript; interactive controls require JavaScript.
+`npm run format` formats source files. Build output includes every model pair; its size grows quadratically with the catalog. Pair selectors share a single catalog file. Static model and ranking content works without client JavaScript; interactive controls require JavaScript.
 
 ## Architecture and data policy
 
-`src/pages` owns Astro content and routes. `src/components` contains static components and React islands. `src/data/config.ts` holds scoring weights, workload assumptions, and recommendation parameters. `src/lib` contains validation and deterministic calculations. `src/db` holds the optional database connection, schema, and migrations.
+`src/pages` owns Astro content and routes. `src/components` contains static components and React islands. `src/data/config.ts` holds scoring weights and recommendation parameters. `src/lib` contains validation and deterministic calculations. `src/db` holds the optional database connection, schema, and migrations.
 
 The fixture catalog in `src/data/models.ts` uses synthetic raw inputs with declared scales. Scores are derived from those inputs, and overall quality uses the brief's provisional weights. Every fictional model has zero evidence confidence and no provider verification date. Capability confidence is not a statistical probability.
 
@@ -65,7 +65,7 @@ The persistence command stores an immutable, content-deduplicated validated snap
 
 ## Publishing real data
 
-This is a complete sample-data application, not a verified live model directory. Provider ingestion, licensed benchmarks, actual internal evaluations, and real-model editorial review have not been performed. The brief explicitly permits mock data until verification is available.
+Pricing source review is independent of catalog and benchmark validation. This revision publishes 12 provider-reviewed model prices; other rates remain unavailable. See [pricing methodology](docs/pricing-methodology.md) for source rules, covered models, formulas, freshness, storage and unsupported billing cases. Historical catalog assertions are not made current by this pricing review.
 
 The sample site emits `noindex, nofollow` and blocks crawlers in `robots.txt`. Set `SITE_URL` to a real deployment origin to generate canonical URLs and sitemap locations. Local mode omits canonical URLs and returns an empty sitemap rather than inventing a production domain. Only remove the indexing restrictions after replacing and reviewing all fictional content. Nothing has been deployed or pushed.
 

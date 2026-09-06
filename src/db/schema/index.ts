@@ -9,6 +9,21 @@ import {
   check,
 } from 'drizzle-orm/pg-core';
 import { sql } from 'drizzle-orm';
+import type { PricingTier } from '../../lib/apiPricingSchema';
+
+// Append-only, field-provenanced API rates. Legacy model_pricing is ingestion history.
+export const apiPricingTiers = pgTable('api_pricing_tiers', {
+  id: text('id').primaryKey(),
+  modelSlug: text('model_slug').notNull(),
+  provider: text('provider').notNull(),
+  scope: text('scope').notNull(),
+  tierId: text('tier_id').notNull(),
+  minContext: integer('min_context').notNull(),
+  maxContext: integer('max_context'),
+  rates: jsonb('rates').$type<PricingTier>().notNull(),
+  notes: jsonb('notes').$type<string[]>().notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
 
 export const providers = pgTable('providers', {
   id: text('id').primaryKey(),

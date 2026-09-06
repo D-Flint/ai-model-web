@@ -1,6 +1,8 @@
+import { rateLabel } from '../lib/apiPricing';
+import ApiPricing from './ApiPricing';
 import { useEffect, useState } from 'react';
 import { Copy, X, Plus } from 'lucide-react';
-import type { CatalogModel } from '../lib/catalogSchema';
+import { catalogSchema, type CatalogModel } from '../lib/catalogSchema';
 import {
   effortLabels,
   metricLabels,
@@ -9,7 +11,6 @@ import {
 import {
   contextSize,
   getModelEffortStats,
-  money,
   selectionFromSearch,
   type ModelEffortStats,
 } from '../lib/decision';
@@ -27,17 +28,43 @@ export interface ComparedColumn {
 }
 
 export default function ComparisonBuilder({
-  models,
+  models: initialModels,
   initial = [],
+  catalogUrl,
 }: {
   models: CatalogModel[];
   initial?: string[];
+  catalogUrl?: string;
 }) {
+  const [models, setModels] = useState(initialModels);
   const [selection, setSelection] = useState<string[]>(
     initial.length ? initial : models.slice(0, 2).map((m) => m.slug),
   );
   const [add, setAdd] = useState('');
   const [status, setStatus] = useState('');
+
+  useEffect(() => {
+    if (!catalogUrl) return;
+    const controller = new AbortController();
+    async function loadCatalog() {
+      try {
+        const response = await fetch(catalogUrl!, {
+          signal: controller.signal,
+        });
+        if (!response.ok) throw new Error('Catalog request failed');
+        const data: unknown = await response.json();
+        const catalog = catalogSchema.parse(data);
+        if (!controller.signal.aborted) setModels(catalog);
+      } catch {
+        if (!controller.signal.aborted)
+          setStatus(
+            'Additional models could not load. Reload this page to retry.',
+          );
+      }
+    }
+    void loadCatalog();
+    return () => controller.abort();
+  }, [catalogUrl]);
 
   useEffect(() => {
     if (new URLSearchParams(location.search).has('models'))
@@ -275,8 +302,8 @@ export default function ComparisonBuilder({
         <div className="empty-state">
           <h2>Pick at least two models or effort levels.</h2>
           <p>
-            Add up to four to see scores, pricing, thinking tokens, and
-            practical tradeoffs side by side.
+            Add up to four to see scores, API pricing, and practical tradeoffs
+            side by side.
           </p>
         </div>
       ) : (
@@ -457,56 +484,12 @@ export default function ComparisonBuilder({
                   })}
                 </tr>
                 <tr>
-                  <th scope="row">Price: Input / 1M tokens</th>
-                  {selectedItems.map((item) => {
-                    const isWinner =
-                      item.model.pricing.input ===
-                      Math.min(
-                        ...selectedItems.map((x) => x.model.pricing.input),
-                      );
-                    return (
-                      <td key={item.id} className={isWinner ? 'winner' : ''}>
-                        <strong>{money(item.model.pricing.input)}</strong>
-                        {isWinner && (
-                          <span className="winner-label">Lowest</span>
-                        )}
-                      </td>
-                    );
-                  })}
-                </tr>
-                <tr>
-                  <th scope="row">Price: Output / 1M tokens</th>
-                  {selectedItems.map((item) => {
-                    const isWinner =
-                      item.model.pricing.output ===
-                      Math.min(
-                        ...selectedItems.map((x) => x.model.pricing.output),
-                      );
-                    return (
-                      <td key={item.id} className={isWinner ? 'winner' : ''}>
-                        <strong>{money(item.model.pricing.output)}</strong>
-                        {isWinner && (
-                          <span className="winner-label">Lowest</span>
-                        )}
-                      </td>
-                    );
-                  })}
-                </tr>
-                <tr>
-                  <th scope="row">Estimated task cost</th>
-                  {selectedItems.map((item) => {
-                    const isWinner =
-                      item.stats.taskCost ===
-                      Math.min(...selectedItems.map((x) => x.stats.taskCost));
-                    return (
-                      <td key={item.id} className={isWinner ? 'winner' : ''}>
-                        <strong>{money(item.stats.taskCost, 4)}</strong>
-                        {isWinner && (
-                          <span className="winner-label">Best value</span>
-                        )}
-                      </td>
-                    );
-                  })}
+                  <th scope="row">API pricing</th>
+                  {selectedItems.map((item) => (
+                    <td key={item.id}>
+                      <ApiPricing model={item.model} />
+                    </td>
+                  ))}
                 </tr>
 
                 <tr className="group-row">
@@ -567,23 +550,10 @@ export default function ComparisonBuilder({
                 <tr>
                   <th scope="row">Cached input / 1M</th>
                   {selectedItems.map((item) => (
-                    <td key={item.id}>
-                      {item.model.pricing.cached === null
-                        ? 'Not available'
-                        : money(item.model.pricing.cached)}
-                    </td>
+                    <td key={item.id}>{rateLabel(item.model, 'cached')}</td>
                   ))}
                 </tr>
-                <tr>
-                  <th scope="row">Reasoning tokens / task</th>
-                  {selectedItems.map((item) => (
-                    <td key={item.id}>
-                      {item.stats.reasoningTokens > 0
-                        ? `+${item.stats.reasoningTokens.toLocaleString()} tokens`
-                        : '0 tokens'}
-                    </td>
-                  ))}
-                </tr>
+
                 <tr>
                   <th scope="row">Speed latency tier</th>
                   {selectedItems.map((item) => (
@@ -602,9 +572,8 @@ export default function ComparisonBuilder({
             </table>
           </div>
           <p className="section-note">
-            Task estimate: 1,000 input + 500 base output tokens + reasoning
-            tokens for the selected effort level, one attempt, no tools.{' '}
-            <a href="/cost">Adjust the assumptions in the calculator</a>.
+            API rates depend on provider and context.{' '}
+            <a href="/cost">Calculate with your workload</a>.
           </p>
           <section className="section">
             <h2>The short version</h2>
@@ -618,9 +587,6 @@ export default function ComparisonBuilder({
                 const bestSpeed = [...selectedItems].sort(
                   (a, b) =>
                     b.stats.speedTokensPerSec - a.stats.speedTokensPerSec,
-                )[0];
-                const lowestPrice = [...selectedItems].sort(
-                  (a, b) => a.stats.taskCost - b.stats.taskCost,
                 )[0];
                 const bestOverall = [...selectedItems].sort(
                   (a, b) =>
@@ -644,11 +610,6 @@ export default function ComparisonBuilder({
                       bestSpeed.stats.speedTokensPerSec > 0
                         ? `${bestSpeed.stats.speedTokensPerSec} tokens/sec throughput (${bestSpeed.stats.latency}).`
                         : 'Speed measurements not claimed yet without approved independent benchmark.',
-                  },
-                  {
-                    title: 'Lowest Price',
-                    item: lowestPrice,
-                    detail: `${money(lowestPrice.stats.taskCost, 4)} task cost (${money(lowestPrice.model.pricing.input)} / 1M input).`,
                   },
                   {
                     title: 'Best Overall',

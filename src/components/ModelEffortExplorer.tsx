@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ArrowRight, Layers } from 'lucide-react';
 import type { CatalogModel } from '../lib/catalogSchema';
 import { effortLabels, type ReasoningEffort } from '../data/config';
-import { getModelEffortStats, money } from '../lib/decision';
+import { getModelEffortStats } from '../lib/decision';
 
 export default function ModelEffortExplorer({
   model,
@@ -48,7 +48,6 @@ export default function ModelEffortExplorer({
     currentStats.speedTokensPerSec > 0 && baselineStats.speedTokensPerSec > 0
       ? currentStats.speedTokensPerSec - baselineStats.speedTokensPerSec
       : 0;
-  const costDelta = currentStats.taskCost - baselineStats.taskCost;
 
   // Comparison link comparing available effort levels of this model
   const compareEffortsParam = availableEfforts
@@ -152,32 +151,10 @@ export default function ModelEffortExplorer({
         </div>
 
         <div className="effort-stat-card">
-          <span className="label">Thinking Tokens</span>
-          <div className="value">
-            {currentStats.reasoningTokens > 0
-              ? `+${currentStats.reasoningTokens.toLocaleString()}`
-              : '0'}
-          </div>
-          <div className="micro muted">per task</div>
-        </div>
-
-        <div className="effort-stat-card">
           <span className="label">Latency Profile</span>
           <div className="value" style={{ fontSize: '14px', marginTop: '6px' }}>
             {currentStats.latency}
           </div>
-        </div>
-
-        <div className="effort-stat-card">
-          <span className="label">Est. Task Cost</span>
-          <div className="value">{money(currentStats.taskCost, 4)}</div>
-          {costDelta !== 0 && (
-            <div
-              className={`delta ${costDelta < 0 ? 'delta-positive' : 'delta-negative'}`}
-            >
-              {costDelta > 0 ? `+${money(costDelta, 4)}` : money(costDelta, 4)}
-            </div>
-          )}
         </div>
       </div>
 

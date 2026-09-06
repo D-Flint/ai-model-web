@@ -1,3 +1,4 @@
+import { comparablePrice } from '../src/lib/apiPricing';
 import { describe, it, expect } from 'vitest';
 import { models, mockModels } from '../src/data/models';
 import {
@@ -64,7 +65,9 @@ describe('recommendation and comparison flows', () => {
   it('produces deterministic recommendations and respects hard budgets', () => {
     const a = recommend(models, 'coding', 'balanced', 'cheap');
     expect(a).toEqual(recommend(models, 'coding', 'balanced', 'cheap'));
-    expect(a.every((r) => taskCost(r.model) <= 0.005)).toBe(true);
+    expect(a.every((r) => (comparablePrice(r.model) ?? Infinity) <= 1)).toBe(
+      true,
+    );
     expect(recommend(models, 'coding', 'cost', 'free')).toEqual([]);
   });
   it('excludes text-only models from vision recommendations', () => {
@@ -131,8 +134,6 @@ describe('task cost assumptions and reasoning effort stats', () => {
       const lowStats = getModelEffortStats(reasoningModel, 'low');
       const highStats = getModelEffortStats(reasoningModel, 'high');
 
-      expect(lowStats.reasoningTokens).toBeLessThan(highStats.reasoningTokens);
-      expect(lowStats.taskCost).toBeLessThan(highStats.taskCost);
       if (
         highStats.scores.intelligence !== null &&
         lowStats.scores.intelligence !== null

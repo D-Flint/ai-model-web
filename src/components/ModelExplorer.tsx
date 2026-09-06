@@ -1,3 +1,4 @@
+import { comparablePrice, formatPrice, rateLabel } from '../lib/apiPricing';
 import React, { useEffect, useState, useMemo, useRef } from 'react';
 import {
   ArrowRight,
@@ -21,8 +22,6 @@ import {
   selectionFromSearch,
   getMaxReasoningEffort,
   getModelEffortStats,
-  taskCost,
-  money,
   contextSize,
   sortLeaderboardRows,
   type LeaderboardMetricKey,
@@ -89,7 +88,7 @@ const ALL_COLUMNS: ColumnDef[] = [
   },
   {
     key: 'cost',
-    label: 'COST PER SUCCESSFUL TASK',
+    label: 'INPUT / 1M TOKENS',
     align: 'right',
     defaultVisible: true,
   },
@@ -214,16 +213,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
         displayName = `${model.name} ${effortSuffix}`;
       }
 
-      const successRate = Math.max(0.1, (stats.scores.overall ?? 75) / 100);
-      const taskCostVal = taskCost(
-        model,
-        1000,
-        500,
-        successRate,
-        0,
-        0,
-        maxEffort,
-      );
+      const inputPrice = comparablePrice(model);
 
       const slugLower = model.slug.toLowerCase();
       const slugStripped = slugLower.replace(/[^a-z0-9]/g, '');
@@ -272,9 +262,9 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
           language: langVal,
           instructionFollowing: instVal,
           speed: stats.speedTokensPerSec,
-          cost: taskCostVal,
+          cost: inputPrice,
         },
-        taskCostVal,
+        inputPrice,
       };
     });
   }, [models, livebenchMap]);
@@ -991,7 +981,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                             <td
                               className={`td-metric td-cost td-align-right ${sortColumn === 'cost' ? 'col-sorted' : ''}`}
                             >
-                              ${row.taskCostVal.toFixed(3)}
+                              {formatPrice(row.inputPrice)}
                             </td>
                           )}
 
@@ -1084,7 +1074,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                                       Input Price
                                     </span>
                                     <strong>
-                                      {money(row.model.pricing.input)} / 1M
+                                      {rateLabel(row.model, 'input')} / 1M
                                     </strong>
                                   </div>
                                   <div>
@@ -1092,7 +1082,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                                       Output Price
                                     </span>
                                     <strong>
-                                      {money(row.model.pricing.output)} / 1M
+                                      {rateLabel(row.model, 'output')} / 1M
                                     </strong>
                                   </div>
                                   <div>
@@ -1123,8 +1113,8 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
             <code>
               // select 1 category for its subtasks, or several to compare
               category averages · shading = top 5 per column · click a row for
-              subtasks · Cost per successful task = (∑ cost ÷ ∑ questions ÷
-              score) × 100 over the selected scope
+              subtasks · Price = standard input API rate per million tokens.
+              Tiered, stale and unavailable rates are not ranked.
             </code>
           </div>
         </div>

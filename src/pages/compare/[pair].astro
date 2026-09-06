@@ -15,16 +15,17 @@ const { a, b } = Astro.props;
 
 <RootLayout
   title={`${a.name} vs ${b.name} | Synapse`}
-  description={`Compare ${a.name} and ${b.name}: sample scores, pricing, capabilities, and tradeoffs.`}
+  description={`Compare ${a.name} and ${b.name}: scores, API pricing, capabilities, and tradeoffs.`}
   ><div class="page-heading">
     <div class="breadcrumbs">
       <a href="/compare">Compare</a><span>/</span><span>Head to head</span>
     </div><h1>{a.name} vs {b.name}</h1><p>
-      Understand the differences before you decide. These are fictional models
-      in our sample catalog.
+      Review the differences, pricing sources, and billing details before you
+      decide.
     </p>
   </div><ComparisonBuilder
-    models={models}
+    models={[a, b]}
+    catalogUrl="/catalog.json"
     initial={[a.slug, b.slug]}
     client:load
   /></RootLayout
