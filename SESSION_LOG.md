@@ -939,4 +939,20 @@
 - Current state: The Model Explorer leaderboard sorts by release date with newest models on top by default, displays the `RELEASE DATE` column, and supports interactive ascending/descending toggles.
 - Exact next step: Pause and wait for user verification through local testing.
 
+## 2026-09-06 — Remove Release Date Column while Maintaining Date Sorting
+
+- Objective: Remove the `RELEASE DATE` column from the Model Explorer table while keeping the models sorted by date (newest first) by default and retaining date sorting through the `All` category tab.
+- Files changed:
+  - `src/components/ModelExplorer.tsx`: Removed `releaseDate` from `ALL_COLUMNS` and `LeaderboardColumnKey`, removed the table cell `<td className="td-date">`, kept `sortColumn` defaulted to `releaseDate` descending, and updated `directionHint` without altering model date sorting logic.
+- Attempts: 1 full iteration.
+- Failures and causes: None.
+- Tests and results:
+  - `npm test`: 48/48 unit tests passed across all 4 suites (`calculateTaskCost.test.ts`, `leaderboardSorting.test.ts`, `decision.test.ts`, `dataPipeline.test.ts`).
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 65 Astro and TypeScript files.
+  - `npm run lint`: ESLint and Prettier check passed with 0 errors.
+  - Browser verification: Captured screenshot at `http://localhost:4321/models` confirming models remain sorted by newest release date (GPT-6 Astra Max Effort, Gemini 3.8 Flash High Effort, Gemma 4, Kimi K3, etc.) under the active "All ↓" category while the `RELEASE DATE` column is removed from the table.
+- Commit hash: `30dbb41` (code commit).
+- Current state: Models remain sorted by release date with newest on top, and the `RELEASE DATE` column has been removed from the leaderboard table.
+- Exact next step: Pause and wait for user verification through local testing.
+
 

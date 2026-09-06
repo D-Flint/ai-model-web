@@ -30,7 +30,6 @@ import {
 import livebenchRows from '../data/livebenchData.json';
 
 export type LeaderboardColumnKey =
-  | 'releaseDate'
   | 'overall'
   | 'reasoning'
   | 'coding'
@@ -50,12 +49,6 @@ interface ColumnDef {
 }
 
 const ALL_COLUMNS: ColumnDef[] = [
-  {
-    key: 'releaseDate',
-    label: 'RELEASE DATE',
-    align: 'center',
-    defaultVisible: true,
-  },
   { key: 'overall', label: 'OVERALL', align: 'center', defaultVisible: true },
   {
     key: 'reasoning',
@@ -136,9 +129,9 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
   const [viewMode, setViewMode] = useState<'table' | 'cards'>('table');
 
   const [activeCategory, setActiveCategory] = useState<string>('all');
-  const [sortColumn, setSortColumn] = useState<LeaderboardColumnKey | 'name'>(
-    'releaseDate',
-  );
+  const [sortColumn, setSortColumn] = useState<
+    LeaderboardColumnKey | 'name' | 'releaseDate'
+  >('releaseDate');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
 
   const [expandedRows, setExpandedRows] = useState<Record<string, boolean>>({});
@@ -721,14 +714,10 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                         nextDir === 'asc'
                           ? col.key === 'cost'
                             ? 'lowest cost first'
-                            : col.key === 'releaseDate'
-                              ? 'oldest models first'
-                              : 'lowest score first'
+                            : 'lowest score first'
                           : col.key === 'cost'
                             ? 'highest cost first'
-                            : col.key === 'releaseDate'
-                              ? 'newest models first'
-                              : 'highest score first';
+                            : 'highest score first';
 
                       return (
                         <th
@@ -862,14 +851,6 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                               </div>
                             )}
                           </td>
-
-                          {visibleColumns.releaseDate && (
-                            <td
-                              className={`td-metric td-date td-align-center ${sortColumn === 'releaseDate' ? 'col-sorted' : ''}`}
-                            >
-                              {row.releaseDate || '—'}
-                            </td>
-                          )}
 
                           {visibleColumns.overall && (
                             <td
