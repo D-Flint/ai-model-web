@@ -2203,6 +2203,15 @@ th {
   display: inline-block;
   vertical-align: middle;
 }
+.provider-logo-img {
+  display: inline-block;
+  vertical-align: middle;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+:root[data-theme='light'] .provider-logo-invert-light {
+  filter: invert(1);
+}
 .provider-openai {
   color: #10a37f;
 }

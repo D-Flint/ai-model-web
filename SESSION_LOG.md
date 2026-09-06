@@ -657,6 +657,26 @@
 - Current state: All 10 major AI company providers have authentic, crisp vector SVG logos properly rendered across model cards, model detail pages, comparison builder, cost calculator, benchmark leaderboard, and homepage comparison shortcuts.
 - Exact next step: User verifies the authentic AI company logos locally at `http://localhost:4321`.
 
+## 2026-09-06 — Replace AI Company SVG icons with actual official PNG logos
+
+- Objective: Fulfill user requirement ("no, no more SVG, use actual png of the logo") by replacing inline vector SVG icons for all AI company logos with authentic, high-resolution transparent PNG brand assets across both React and Astro components (`ProviderLogo.tsx`, `ProviderLogo.astro`).
+- Files changed:
+  - `public/logos/`: Added official 640x640 transparent PNG brand logos from `@lobehub/lobe-icons` for OpenAI, Anthropic, Google DeepMind, DeepSeek, Meta AI, xAI, Mistral AI, Cohere, Alibaba Cloud / Qwen, Amazon AWS, plus generic fallback dot.
+  - `src/components/ProviderLogo.tsx`: Replaced all inline SVG icons with `<img>` rendering using `getProviderLogoInfo(provider)` returning high-res PNG path, descriptive alt text, and dark/light theme inversion support for monochrome logos (OpenAI, xAI).
+  - `src/components/ProviderLogo.astro`: Refactored to import `getProviderLogoInfo` and render standard `<img>` tag matching `ProviderLogo.tsx`.
+  - `src/styles/global.css`: Added `.provider-logo-img` and `.provider-logo-invert-light` rules for crisp image scaling and light/dark theme contrast.
+- Attempts: 1.
+- Failures and causes: Prettier lint warning on `ProviderLogo.astro` resolved by running `npx prettier --write`.
+- Tests and results:
+  - `npm test`: 37/37 tests passed.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 62 files.
+  - `npm run lint`: Clean format and lint check passed.
+  - `npm run build`: Production static build successfully generated 2,944 pages in 1m 12s.
+- Commit hash: `3333b30` (local commit; no remote push).
+- Current state: All AI company logos throughout the entire application (model cards, explorer table, comparisons, detail pages, cost calculator) now use actual high-resolution official PNG brand images.
+- Exact next step: Wait for user local testing and verification.
+
+
 
 
 
