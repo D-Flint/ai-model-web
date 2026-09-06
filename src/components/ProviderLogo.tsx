@@ -99,6 +99,18 @@ export function getProviderLogoInfo(provider: string): {
     };
   }
 
+  // Moonshot AI / Kimi / Moonlight
+  if (
+    norm.includes('moonshot') ||
+    norm.includes('kimi') ||
+    norm.includes('moonlight')
+  ) {
+    return {
+      src: '/logos/moonshot.png',
+      alt: 'Moonshot AI logo',
+    };
+  }
+
   return {
     src: '/logos/generic.png',
     alt: `${provider || 'AI'} logo`,

@@ -421,6 +421,106 @@
     ]
   },
   {
+    "slug": "kimi-k3",
+    "name": "Kimi K3",
+    "provider": "Moonshot AI",
+    "family": "Kimi K3",
+    "dataKind": "verified",
+    "description": "Moonshot AI's flagship 3T-class open-weights multimodal agent model (2.8T parameters, 104B active per token). Features Kimi Delta Attention (KDA) and LatentMoE, supporting 1M tokens context for advanced reasoning, coding, and video analysis.",
+    "strengths": [
+      "Massive 2.8T parameter MoE architecture with ultra-efficient 104B active compute",
+      "Native multimodal comprehension spanning text, documents, images, and video sequences",
+      "1M token context window powered by Kimi Delta Attention linear-hybrid mechanics",
+      "High-tier performance across complex coding, mathematical proofs, and agentic workflows"
+    ],
+    "weaknesses": [
+      "Requires distributed cluster infrastructure for self-hosted local deployment",
+      "Custom open weights commercial license requires revenue-sharing above enterprise thresholds"
+    ],
+    "tags": [
+      "Reasoning",
+      "Open weights",
+      "Coding",
+      "Agents",
+      "Vision",
+      "Flagship"
+    ],
+    "facts": {
+      "context": 1000000,
+      "maxOutput": 65536,
+      "speedTokensPerSec": 58,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-07-15",
+      "sourceId": "source-moonshot",
+      "reasoningEffort": ["none", "low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 0.8,
+      "output": 2.4,
+      "cached": 0.2,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-moonshot",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 57,
+      "overall": 57
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 57,
+        "min": 0,
+        "max": 100,
+        "normalized": 57,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-moonshot",
+        "name": "Moonshot AI Official Documentation",
+        "url": "https://platform.moonshot.cn/docs/pricing",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Moonshot AI"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "gpt-5-6-sol",
     "name": "GPT-5.6 Sol",
     "provider": "OpenAI",
@@ -1394,6 +1494,99 @@
     ]
   },
   {
+    "slug": "kimi-k2-7-code",
+    "name": "Kimi K2.7 Code",
+    "provider": "Moonshot AI",
+    "family": "Kimi K2",
+    "dataKind": "verified",
+    "description": "Specialized 1T-parameter MoE code generation and repository engineering model in the Kimi K2 generation, trained on expansive software corpora and execution feedback.",
+    "strengths": [
+      "Exceptional repository-level software comprehension and multi-file code editing",
+      "Deep integration with terminal tools, debugging workflows, and automated test runners",
+      "High syntactic accuracy across systems languages, modern web frameworks, and scripting",
+      "Generous 256k token context window accommodating entire microservices"
+    ],
+    "weaknesses": [
+      "Specialized for software development; less tailored for creative and expository prose",
+      "Text and code only without image input support"
+    ],
+    "tags": ["Coding", "Open weights", "Agents", "Developer"],
+    "facts": {
+      "context": 256000,
+      "maxOutput": 32768,
+      "speedTokensPerSec": 68,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-05-18",
+      "sourceId": "source-moonshot",
+      "reasoningEffort": ["none", "low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 0.6,
+      "output": 2,
+      "cached": 0.15,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-moonshot",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 60,
+      "overall": 60
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 60,
+        "min": 0,
+        "max": 100,
+        "normalized": 60,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-moonshot",
+        "name": "Moonshot AI Official Documentation",
+        "url": "https://platform.moonshot.cn/docs/pricing",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Moonshot AI"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "gemini-3-6-flash",
     "name": "Gemini 3.6 Flash",
     "provider": "Google DeepMind",
@@ -1807,6 +2000,117 @@
     ]
   },
   {
+    "slug": "kimi-k2-6",
+    "name": "Kimi K2.6",
+    "provider": "Moonshot AI",
+    "family": "Kimi K2",
+    "dataKind": "verified",
+    "description": "Moonshot AI's multimodal agentic milestone featuring 1T parameters MoE (32B active). Delivers state-of-the-art visual-to-code generation, agent swarm orchestration, and 256k context.",
+    "strengths": [
+      "Pioneering visual-to-code synthesis transforming designs and mockups directly into functional frontend code",
+      "Robust multi-agent collaboration and subagent task decomposition",
+      "Strong reasoning benchmarks in math, competitive coding, and logical inference",
+      "Efficient token economics with dynamic reasoning effort tuning"
+    ],
+    "weaknesses": [
+      "Large MoE model memory footprint requiring multi-GPU nodes for self-hosting",
+      "Does not process raw audio streams"
+    ],
+    "tags": ["Agents", "Coding", "Vision", "Open weights", "Reasoning"],
+    "facts": {
+      "context": 256000,
+      "maxOutput": 32768,
+      "speedTokensPerSec": 62,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": 65,
+      "availability": "Production API",
+      "releaseDate": "2026-04-12",
+      "sourceId": "source-moonshot",
+      "reasoningEffort": ["none", "low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 0.6,
+      "output": 2,
+      "cached": 0.15,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-moonshot",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": 65,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 60,
+      "overall": 63
+    },
+    "evidence": [
+      {
+        "metric": "dailyUse",
+        "kind": "benchmark",
+        "raw": 1455,
+        "min": 1000,
+        "max": 1700,
+        "normalized": 65,
+        "sourceId": "lmarena-leaderboard",
+        "updatedAt": "2026-09-02"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 60,
+        "min": 0,
+        "max": 100,
+        "normalized": 60,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 68,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-moonshot",
+        "name": "Moonshot AI Official Documentation",
+        "url": "https://platform.moonshot.cn/docs/pricing",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Moonshot AI"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "claude-opus-5",
     "name": "Claude Opus 5",
     "provider": "Anthropic",
@@ -2127,16 +2431,16 @@
     },
     "scores": {
       "intelligence": 65,
-      "coding": 63,
+      "coding": 61,
       "agentic": 84,
       "dailyUse": 62,
       "research": null,
       "writing": null,
-      "vision": 38,
+      "vision": null,
       "speed": null,
       "reliability": null,
       "costEfficiency": 92,
-      "overall": 69
+      "overall": 70
     },
     "evidence": [
       {
@@ -2160,16 +2464,6 @@
         "updatedAt": "2026-03-25"
       },
       {
-        "metric": "coding",
-        "kind": "benchmark",
-        "raw": 1449,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 64,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
-      },
-      {
         "metric": "agentic",
         "kind": "benchmark",
         "raw": 83.5,
@@ -2187,17 +2481,7 @@
         "max": 1700,
         "normalized": 62,
         "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
-      },
-      {
-        "metric": "vision",
-        "kind": "benchmark",
-        "raw": 1269,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 38,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-08-27"
+        "updatedAt": "2026-09-02"
       },
       {
         "metric": "costEfficiency",
@@ -2210,7 +2494,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 88,
+    "confidence": 85,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -2578,16 +2862,16 @@
     },
     "scores": {
       "intelligence": 82,
-      "coding": 88,
+      "coding": 85,
       "agentic": 93,
       "dailyUse": 71,
       "research": 33,
       "writing": null,
-      "vision": 47,
+      "vision": null,
       "speed": null,
       "reliability": null,
       "costEfficiency": 20,
-      "overall": 70
+      "overall": 71
     },
     "evidence": [
       {
@@ -2611,16 +2895,6 @@
         "updatedAt": "2026-03-20"
       },
       {
-        "metric": "coding",
-        "kind": "benchmark",
-        "raw": 1628,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 90,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
-      },
-      {
         "metric": "agentic",
         "kind": "benchmark",
         "raw": 92.5,
@@ -2638,7 +2912,7 @@
         "max": 1700,
         "normalized": 71,
         "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
+        "updatedAt": "2026-09-02"
       },
       {
         "metric": "research",
@@ -2651,16 +2925,6 @@
         "updatedAt": "2026-08-24"
       },
       {
-        "metric": "vision",
-        "kind": "benchmark",
-        "raw": 1329,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 47,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-08-27"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 20,
@@ -2671,7 +2935,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 91,
+    "confidence": 88,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -3260,6 +3524,99 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "kimi-k2-5",
+    "name": "Kimi K2.5",
+    "provider": "Moonshot AI",
+    "family": "Kimi K2",
+    "dataKind": "verified",
+    "description": "Continually pretrained on 15 trillion tokens, Kimi K2.5 is a native multimodal MoE agent model combining advanced visual perception with deep agentic problem-solving.",
+    "strengths": [
+      "Native multimodal alignment trained end-to-end on image and text tokens",
+      "15T token pretraining corpus ensuring broad cross-domain factual knowledge",
+      "Strong agentic tool invocation and multi-turn planning",
+      "256k long-context document analysis and chart comprehension"
+    ],
+    "weaknesses": [
+      "Higher latency when running full reasoning mode compared to compact models",
+      "High hardware requirements for local deployment"
+    ],
+    "tags": ["Multimodal", "Open weights", "Vision", "Agents", "Reasoning"],
+    "facts": {
+      "context": 256000,
+      "maxOutput": 32768,
+      "speedTokensPerSec": 60,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-01-20",
+      "sourceId": "source-moonshot",
+      "reasoningEffort": ["none", "low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 0.6,
+      "output": 2,
+      "cached": 0.15,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-moonshot",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 60,
+      "overall": 60
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 60,
+        "min": 0,
+        "max": 100,
+        "normalized": 60,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-moonshot",
+        "name": "Moonshot AI Official Documentation",
+        "url": "https://platform.moonshot.cn/docs/pricing",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Moonshot AI"
       },
       {
         "id": "astra-cost-engine",
@@ -3876,16 +4233,16 @@
     },
     "scores": {
       "intelligence": 80,
-      "coding": 80,
+      "coding": 83,
       "agentic": 92,
       "dailyUse": 65,
       "research": 29,
       "writing": null,
-      "vision": 41,
+      "vision": null,
       "speed": null,
       "reliability": null,
       "costEfficiency": 29,
-      "overall": 67
+      "overall": 69
     },
     "evidence": [
       {
@@ -3909,16 +4266,6 @@
         "updatedAt": "2025-12-08"
       },
       {
-        "metric": "coding",
-        "kind": "benchmark",
-        "raw": 1540,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 77,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
-      },
-      {
         "metric": "agentic",
         "kind": "benchmark",
         "raw": 92,
@@ -3936,7 +4283,7 @@
         "max": 1700,
         "normalized": 65,
         "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
+        "updatedAt": "2026-09-02"
       },
       {
         "metric": "research",
@@ -3949,16 +4296,6 @@
         "updatedAt": "2026-08-24"
       },
       {
-        "metric": "vision",
-        "kind": "benchmark",
-        "raw": 1289,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 41,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-08-27"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 29,
@@ -3969,7 +4306,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 91,
+    "confidence": 88,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -4197,16 +4534,16 @@
     },
     "scores": {
       "intelligence": 79,
-      "coding": 81,
+      "coding": 82,
       "agentic": 91,
       "dailyUse": 69,
       "research": 33,
       "writing": null,
-      "vision": 45,
+      "vision": null,
       "speed": null,
       "reliability": null,
       "costEfficiency": 29,
-      "overall": 68
+      "overall": 70
     },
     "evidence": [
       {
@@ -4230,16 +4567,6 @@
         "updatedAt": "2025-11-20"
       },
       {
-        "metric": "coding",
-        "kind": "benchmark",
-        "raw": 1557,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 80,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
-      },
-      {
         "metric": "agentic",
         "kind": "benchmark",
         "raw": 91.4,
@@ -4257,7 +4584,7 @@
         "max": 1700,
         "normalized": 69,
         "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
+        "updatedAt": "2026-09-02"
       },
       {
         "metric": "research",
@@ -4270,16 +4597,6 @@
         "updatedAt": "2026-08-24"
       },
       {
-        "metric": "vision",
-        "kind": "benchmark",
-        "raw": 1317,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 45,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-08-27"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 29,
@@ -4290,7 +4607,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 91,
+    "confidence": 88,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -4365,7 +4682,7 @@
       "structured": true,
       "api": true,
       "openWeights": false,
-      "easeOfUse": 69,
+      "easeOfUse": 68,
       "availability": "Production API",
       "releaseDate": "2025-11-20",
       "sourceId": "source-google",
@@ -4383,16 +4700,16 @@
     },
     "scores": {
       "intelligence": 81,
-      "coding": 73,
+      "coding": 82,
       "agentic": 92,
-      "dailyUse": 69,
+      "dailyUse": 68,
       "research": null,
       "writing": null,
-      "vision": 43,
+      "vision": null,
       "speed": null,
       "reliability": null,
       "costEfficiency": 49,
-      "overall": 73
+      "overall": 77
     },
     "evidence": [
       {
@@ -4416,16 +4733,6 @@
         "updatedAt": "2025-11-20"
       },
       {
-        "metric": "coding",
-        "kind": "benchmark",
-        "raw": 1438,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 63,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
-      },
-      {
         "metric": "agentic",
         "kind": "benchmark",
         "raw": 92,
@@ -4438,22 +4745,12 @@
       {
         "metric": "dailyUse",
         "kind": "benchmark",
-        "raw": 1480,
+        "raw": 1479,
         "min": 1000,
         "max": 1700,
-        "normalized": 69,
+        "normalized": 68,
         "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
-      },
-      {
-        "metric": "vision",
-        "kind": "benchmark",
-        "raw": 1304,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 43,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-08-27"
+        "updatedAt": "2026-09-02"
       },
       {
         "metric": "costEfficiency",
@@ -4466,7 +4763,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 88,
+    "confidence": 85,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -4559,16 +4856,16 @@
     },
     "scores": {
       "intelligence": 72,
-      "coding": 67,
+      "coding": 71,
       "agentic": 88,
       "dailyUse": 67,
       "research": null,
       "writing": null,
-      "vision": 41,
+      "vision": null,
       "speed": null,
       "reliability": null,
       "costEfficiency": 82,
-      "overall": 72
+      "overall": 75
     },
     "evidence": [
       {
@@ -4592,16 +4889,6 @@
         "updatedAt": "2025-11-20"
       },
       {
-        "metric": "coding",
-        "kind": "benchmark",
-        "raw": 1438,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 63,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
-      },
-      {
         "metric": "agentic",
         "kind": "benchmark",
         "raw": 87.5,
@@ -4619,17 +4906,7 @@
         "max": 1700,
         "normalized": 67,
         "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
-      },
-      {
-        "metric": "vision",
-        "kind": "benchmark",
-        "raw": 1285,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 41,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-08-27"
+        "updatedAt": "2026-09-02"
       },
       {
         "metric": "costEfficiency",
@@ -4642,7 +4919,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 88,
+    "confidence": 85,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -4829,6 +5106,99 @@
     ]
   },
   {
+    "slug": "kimi-k2-thinking",
+    "name": "Kimi K2 Thinking",
+    "provider": "Moonshot AI",
+    "family": "Kimi K2",
+    "dataKind": "verified",
+    "description": "Deliberate reasoning variant of Kimi K2. Utilizes large-scale RL test-time compute and autonomous tool orchestration capable of executing up to 200–300 sequential tool calls.",
+    "strengths": [
+      "Autonomous multi-step tool orchestration capable of solving complex multi-stage problems",
+      "Deep chain-of-thought exploration with automatic backtrack and error self-correction",
+      "Superior scores on competitive coding, mathematical proofs, and scientific analysis",
+      "Massive 64k token thinking budget per query"
+    ],
+    "weaknesses": [
+      "Increased time-to-first-token and overall latency due to extensive reasoning traces",
+      "Text-only model without vision processing"
+    ],
+    "tags": ["Reasoning", "Open weights", "Agents", "Coding", "Research"],
+    "facts": {
+      "context": 256000,
+      "maxOutput": 65536,
+      "speedTokensPerSec": 46,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-11-12",
+      "sourceId": "source-moonshot",
+      "reasoningEffort": ["fixed"],
+      "defaultEffort": "fixed"
+    },
+    "pricing": {
+      "input": 0.6,
+      "output": 2,
+      "cached": 0.15,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-moonshot",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 60,
+      "overall": 60
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 60,
+        "min": 0,
+        "max": 100,
+        "normalized": 60,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-moonshot",
+        "name": "Moonshot AI Official Documentation",
+        "url": "https://platform.moonshot.cn/docs/pricing",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Moonshot AI"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "claude-sonnet-4-6",
     "name": "Claude Sonnet 4.6",
     "provider": "Anthropic",
@@ -4872,16 +5242,16 @@
     },
     "scores": {
       "intelligence": 78,
-      "coding": 79,
+      "coding": 82,
       "agentic": 91,
       "dailyUse": 65,
       "research": null,
       "writing": null,
-      "vision": 40,
+      "vision": null,
       "speed": null,
       "reliability": null,
       "costEfficiency": 36,
-      "overall": 71
+      "overall": 74
     },
     "evidence": [
       {
@@ -4905,16 +5275,6 @@
         "updatedAt": "2025-11-10"
       },
       {
-        "metric": "coding",
-        "kind": "benchmark",
-        "raw": 1522,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 75,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
-      },
-      {
         "metric": "agentic",
         "kind": "benchmark",
         "raw": 91,
@@ -4932,17 +5292,7 @@
         "max": 1700,
         "normalized": 65,
         "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
-      },
-      {
-        "metric": "vision",
-        "kind": "benchmark",
-        "raw": 1282,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 40,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-08-27"
+        "updatedAt": "2026-09-02"
       },
       {
         "metric": "costEfficiency",
@@ -4955,7 +5305,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 88,
+    "confidence": 85,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -5045,16 +5395,16 @@
     },
     "scores": {
       "intelligence": 77,
-      "coding": 79,
+      "coding": 81,
       "agentic": 91,
       "dailyUse": 71,
       "research": null,
       "writing": null,
-      "vision": 44,
+      "vision": null,
       "speed": null,
       "reliability": null,
       "costEfficiency": 29,
-      "overall": 72
+      "overall": 74
     },
     "evidence": [
       {
@@ -5078,16 +5428,6 @@
         "updatedAt": "2025-10-25"
       },
       {
-        "metric": "coding",
-        "kind": "benchmark",
-        "raw": 1537,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 77,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
-      },
-      {
         "metric": "agentic",
         "kind": "benchmark",
         "raw": 90.6,
@@ -5105,17 +5445,7 @@
         "max": 1700,
         "normalized": 71,
         "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
-      },
-      {
-        "metric": "vision",
-        "kind": "benchmark",
-        "raw": 1311,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 44,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-08-27"
+        "updatedAt": "2026-09-02"
       },
       {
         "metric": "costEfficiency",
@@ -5128,7 +5458,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 88,
+    "confidence": 85,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -5748,6 +6078,99 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "SWE-bench Verified Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "kimi-k2-instruct-0905",
+    "name": "Kimi K2 Instruct 0905",
+    "provider": "Moonshot AI",
+    "family": "Kimi K2",
+    "dataKind": "verified",
+    "description": "September 2025 refined instruction checkpoint for Kimi K2, providing upgraded coding benchmarks, enhanced scaffold integration, and high instruction adherence.",
+    "strengths": [
+      "Targeted alignment refinements improving coding syntax and agent tool calls",
+      "Reduced hallucination and tighter adherence to system instructions",
+      "Full 256k context processing for long conversational and documentation tasks",
+      "Fast non-thinking token generation speed"
+    ],
+    "weaknesses": [
+      "Text-only processing without multimodal vision inputs",
+      "Fixed instruction model without dynamic test-time reasoning compute scaling"
+    ],
+    "tags": ["Instruction", "Open weights", "Coding", "Agents"],
+    "facts": {
+      "context": 256000,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 72,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-09-05",
+      "sourceId": "source-moonshot",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.6,
+      "output": 2,
+      "cached": 0.15,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-moonshot",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 60,
+      "overall": 60
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 60,
+        "min": 0,
+        "max": 100,
+        "normalized": 60,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-moonshot",
+        "name": "Moonshot AI Official Documentation",
+        "url": "https://platform.moonshot.cn/docs/pricing",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Moonshot AI"
       },
       {
         "id": "astra-cost-engine",
@@ -6470,7 +6893,7 @@
     },
     "scores": {
       "intelligence": null,
-      "coding": 64,
+      "coding": null,
       "agentic": null,
       "dailyUse": 64,
       "research": null,
@@ -6479,19 +6902,9 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 69,
-      "overall": 65
+      "overall": 66
     },
     "evidence": [
-      {
-        "metric": "coding",
-        "kind": "benchmark",
-        "raw": 1445,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 64,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
-      },
       {
         "metric": "dailyUse",
         "kind": "benchmark",
@@ -6500,7 +6913,7 @@
         "max": 1700,
         "normalized": 64,
         "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
+        "updatedAt": "2026-09-02"
       },
       {
         "metric": "costEfficiency",
@@ -6513,7 +6926,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 71,
+    "confidence": 68,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-05",
@@ -6638,6 +7051,197 @@
     ]
   },
   {
+    "slug": "kimi-linear-48b-a3b-instruct",
+    "name": "Kimi Linear 48B-A3B Instruct",
+    "provider": "Moonshot AI",
+    "family": "Kimi Linear",
+    "dataKind": "verified",
+    "description": "High-throughput hybrid-attention MoE model (48B total, 3B active per token). Interleaves Kimi Delta Attention (gated linear attention) with MLA for blazingly fast inference.",
+    "strengths": [
+      "Groundbreaking hybrid linear-attention architecture achieving sub-linear decoding complexity",
+      "Ultra-fast token throughput and tiny memory footprint (3B activated parameters)",
+      "High cost efficiency and minimal latency on long conversational contexts",
+      "Strong instruction adherence and tool use for low-latency assistant tasks"
+    ],
+    "weaknesses": [
+      "Lower depth on extreme multi-step scientific reasoning than flagship 1T+ models",
+      "Text-only processing without image vision inputs"
+    ],
+    "tags": [
+      "Fast",
+      "Best value",
+      "Open weights",
+      "Efficient",
+      "Linear Attention"
+    ],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 135,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-08-15",
+      "sourceId": "source-moonshot",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.15,
+      "output": 0.6,
+      "cached": 0.04,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-moonshot",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 77,
+      "overall": 77
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 77,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-moonshot",
+        "name": "Moonshot AI Official Documentation",
+        "url": "https://platform.moonshot.cn/docs/pricing",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Moonshot AI"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "kimi-linear-48b-a3b-base",
+    "name": "Kimi Linear 48B-A3B Base",
+    "provider": "Moonshot AI",
+    "family": "Kimi Linear",
+    "dataKind": "verified",
+    "description": "Un-aligned foundational base checkpoint of the 48B MoE hybrid linear-attention model (3B active), demonstrating linear attention scaling principles.",
+    "strengths": [
+      "Highly efficient foundation architecture for continuous pretraining and custom RL",
+      "Compact 3B active parameter compute load suitable for edge and enterprise clusters",
+      "Open research weights demonstrating KDA gated linear attention mechanics"
+    ],
+    "weaknesses": [
+      "Raw base model requiring custom instruction fine-tuning before interactive use",
+      "No native chat format or tool interfaces"
+    ],
+    "tags": ["Base model", "Open weights", "Research", "Linear Attention"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 135,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-08-15",
+      "sourceId": "source-moonshot",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.15,
+      "output": 0.6,
+      "cached": 0.04,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-moonshot",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 77,
+      "overall": 77
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 77,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-moonshot",
+        "name": "Moonshot AI Official Documentation",
+        "url": "https://platform.moonshot.cn/docs/pricing",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Moonshot AI"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "gemini-2-5-pro",
     "name": "Gemini 2.5 Pro",
     "provider": "Google DeepMind",
@@ -6687,11 +7291,11 @@
       "dailyUse": 65,
       "research": null,
       "writing": null,
-      "vision": 37,
+      "vision": null,
       "speed": null,
       "reliability": null,
       "costEfficiency": 49,
-      "overall": 72
+      "overall": 74
     },
     "evidence": [
       {
@@ -6732,17 +7336,7 @@
         "max": 1700,
         "normalized": 65,
         "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
-      },
-      {
-        "metric": "vision",
-        "kind": "benchmark",
-        "raw": 1262,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 37,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-08-27"
+        "updatedAt": "2026-09-02"
       },
       {
         "metric": "costEfficiency",
@@ -6755,7 +7349,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 88,
+    "confidence": 85,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -6853,11 +7447,11 @@
       "dailyUse": null,
       "research": null,
       "writing": null,
-      "vision": 34,
+      "vision": null,
       "speed": null,
       "reliability": null,
       "costEfficiency": 82,
-      "overall": 71
+      "overall": 73
     },
     "evidence": [
       {
@@ -6891,16 +7485,6 @@
         "updatedAt": "2025-08-14"
       },
       {
-        "metric": "vision",
-        "kind": "benchmark",
-        "raw": 1236,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 34,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-08-27"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 82,
@@ -6911,7 +7495,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 85,
+    "confidence": 75,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-06",
@@ -6940,14 +7524,6 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
-      },
-      {
-        "id": "lmarena-leaderboard",
-        "name": "LMSYS Chatbot Arena Leaderboard",
-        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
-        "retrievedAt": "2026-09-06",
-        "kind": "public_eval",
-        "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
         "id": "astra-cost-engine",
@@ -7491,7 +8067,7 @@
         "max": 1700,
         "normalized": 62,
         "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
+        "updatedAt": "2026-09-02"
       },
       {
         "metric": "costEfficiency",
@@ -7709,6 +8285,191 @@
         "retrievedAt": "2026-09-05",
         "kind": "provider_doc",
         "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "kimi-k2-instruct",
+    "name": "Kimi K2 Instruct",
+    "provider": "Moonshot AI",
+    "family": "Kimi K2",
+    "dataKind": "verified",
+    "description": "The general-purpose instruction-tuned variant of the 1T parameter Kimi K2 MoE foundation model, optimized for conversation, synthesis, and structured outputs.",
+    "strengths": [
+      "Strong generalist conversational fluency in English and Chinese",
+      "Reliable JSON and structured schema extraction across 256k tokens",
+      "1T MoE parameter capacity providing rich factual breadth",
+      "Accessible API pricing for an ultra-large-scale MoE model"
+    ],
+    "weaknesses": [
+      "Lacks native vision input capabilities",
+      "Superseded in specialized coding benchmarks by subsequent K2.x releases"
+    ],
+    "tags": ["Generalist", "Open weights", "Daily use", "Writing"],
+    "facts": {
+      "context": 256000,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 70,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-07-20",
+      "sourceId": "source-moonshot",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.6,
+      "output": 2,
+      "cached": 0.15,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-moonshot",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 60,
+      "overall": 60
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 60,
+        "min": 0,
+        "max": 100,
+        "normalized": 60,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-moonshot",
+        "name": "Moonshot AI Official Documentation",
+        "url": "https://platform.moonshot.cn/docs/pricing",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Moonshot AI"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "kimi-k2-base",
+    "name": "Kimi K2 Base",
+    "provider": "Moonshot AI",
+    "family": "Kimi K2",
+    "dataKind": "verified",
+    "description": "Foundational pretrained base checkpoint of the 1T parameter MoE Kimi K2 model, serving as a clean starting point for custom fine-tuning and domain adaptation.",
+    "strengths": [
+      "Raw foundation weights with broad language representation and pretraining density",
+      "Unmodified token probability distributions ideal for downstream fine-tuning",
+      "Native 256k long-sequence modeling capability"
+    ],
+    "weaknesses": [
+      "Base model without chat or instruction alignment; requires prompting or fine-tuning",
+      "No tool calling or structured function interfaces out-of-the-box"
+    ],
+    "tags": ["Base model", "Open weights", "Research"],
+    "facts": {
+      "context": 256000,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 70,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-07-20",
+      "sourceId": "source-moonshot",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.6,
+      "output": 2,
+      "cached": 0.15,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-moonshot",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 60,
+      "overall": 60
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 60,
+        "min": 0,
+        "max": 100,
+        "normalized": 60,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-moonshot",
+        "name": "Moonshot AI Official Documentation",
+        "url": "https://platform.moonshot.cn/docs/pricing",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Moonshot AI"
       },
       {
         "id": "astra-cost-engine",
@@ -8012,6 +8773,99 @@
     ]
   },
   {
+    "slug": "kimi-vl-a3b-thinking-2506",
+    "name": "Kimi VL A3B Thinking 2506",
+    "provider": "Moonshot AI",
+    "family": "Kimi VL",
+    "dataKind": "verified",
+    "description": "June 2025 upgraded multimodal thinking model (16B MoE, 3B active) featuring MoonViT encoder, 3.2M pixel high-resolution perception, and deep visual chain-of-thought.",
+    "strengths": [
+      "Enhanced high-resolution perception supporting up to 3.2 million pixels for detailed diagram and OCR analysis",
+      "Multi-frame video temporal reasoning and long-sequence visual grounding",
+      "Deliberate step-by-step thinking for complex visual mathematics and scientific plots",
+      "Lightweight 3B activated parameter inference efficiency"
+    ],
+    "weaknesses": [
+      "Thinking step overhead increases total response latency",
+      "Does not support native audio speech understanding"
+    ],
+    "tags": ["Vision", "Reasoning", "Open weights", "Multimodal", "Efficient"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 32768,
+      "speedTokensPerSec": 75,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-06-25",
+      "sourceId": "source-moonshot",
+      "reasoningEffort": ["fixed"],
+      "defaultEffort": "fixed"
+    },
+    "pricing": {
+      "input": 0.15,
+      "output": 0.6,
+      "cached": 0.04,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-moonshot",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 77,
+      "overall": 77
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 77,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-moonshot",
+        "name": "Moonshot AI Official Documentation",
+        "url": "https://platform.moonshot.cn/docs/pricing",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Moonshot AI"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "o3-pro",
     "name": "o3-pro",
     "provider": "OpenAI",
@@ -8150,6 +9004,99 @@
     ]
   },
   {
+    "slug": "kimi-dev-72b",
+    "name": "Kimi Dev 72B",
+    "provider": "Moonshot AI",
+    "family": "Kimi Dev",
+    "dataKind": "verified",
+    "description": "Software engineering autonomous agent model based on 72B dense architecture, trained with large-scale RL in live Docker environments to patch GitHub repositories autonomously.",
+    "strengths": [
+      "Frontier performance on SWE-bench Verified among open-weights models",
+      "Trained directly in sandboxed execution environments for realistic repository-level debugging",
+      "Expertise in git conflict resolution, build error analysis, and test case generation",
+      "High reliability in terminal shell and automated tool execution"
+    ],
+    "weaknesses": [
+      "Dense 72B parameter model with higher GPU memory requirements than sparse MoEs",
+      "Specialized for coding agents; less versatile for literary and casual writing"
+    ],
+    "tags": ["Coding", "Agents", "Open weights", "Developer", "SWE-bench"],
+    "facts": {
+      "context": 131072,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 54,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-06-10",
+      "sourceId": "source-moonshot",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.4,
+      "output": 1.5,
+      "cached": 0.1,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-moonshot",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 65,
+      "overall": 65
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 65,
+        "min": 0,
+        "max": 100,
+        "normalized": 65,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-moonshot",
+        "name": "Moonshot AI Official Documentation",
+        "url": "https://platform.moonshot.cn/docs/pricing",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Moonshot AI"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "deepseek-r1-0528",
     "name": "DeepSeek R1-0528",
     "provider": "DeepSeek",
@@ -8214,7 +9161,7 @@
         "max": 1700,
         "normalized": 61,
         "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
+        "updatedAt": "2026-09-02"
       },
       {
         "metric": "costEfficiency",
@@ -8764,7 +9711,7 @@
     },
     "scores": {
       "intelligence": null,
-      "coding": 46,
+      "coding": null,
       "agentic": null,
       "dailyUse": 61,
       "research": null,
@@ -8773,19 +9720,9 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 81,
-      "overall": 59
+      "overall": 69
     },
     "evidence": [
-      {
-        "metric": "coding",
-        "kind": "benchmark",
-        "raw": 1325,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 46,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
-      },
       {
         "metric": "dailyUse",
         "kind": "benchmark",
@@ -8794,7 +9731,7 @@
         "max": 1700,
         "normalized": 61,
         "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
+        "updatedAt": "2026-09-02"
       },
       {
         "metric": "costEfficiency",
@@ -8807,7 +9744,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 71,
+    "confidence": 68,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-05",
@@ -8904,7 +9841,7 @@
         "max": 1700,
         "normalized": 60,
         "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-09-01"
+        "updatedAt": "2026-09-02"
       },
       {
         "metric": "costEfficiency",
@@ -9030,6 +9967,190 @@
         "retrievedAt": "2026-09-05",
         "kind": "provider_doc",
         "publisher": "DeepSeek"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "kimi-vl-a3b-thinking",
+    "name": "Kimi VL A3B Thinking",
+    "provider": "Moonshot AI",
+    "family": "Kimi VL",
+    "dataKind": "verified",
+    "description": "Pioneering lightweight multimodal reasoning model (16B MoE, 3B active), applying reinforcement learning test-time reasoning to visual question answering, charts, and geometry.",
+    "strengths": [
+      "Extended visual chain-of-thought reasoning for complex visual puzzle and geometric proofs",
+      "Low inference computational requirement (3B active parameters)",
+      "Strong document parsing, complex tabular data extraction, and OCR"
+    ],
+    "weaknesses": [
+      "Earlier release superseded by 2506 revision in ultra-high resolution image tasks",
+      "Text generation latency higher than non-thinking instruction variant"
+    ],
+    "tags": ["Vision", "Reasoning", "Open weights", "Multimodal"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 32768,
+      "speedTokensPerSec": 72,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-04-20",
+      "sourceId": "source-moonshot",
+      "reasoningEffort": ["fixed"],
+      "defaultEffort": "fixed"
+    },
+    "pricing": {
+      "input": 0.15,
+      "output": 0.6,
+      "cached": 0.04,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-moonshot",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 77,
+      "overall": 77
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 77,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-moonshot",
+        "name": "Moonshot AI Official Documentation",
+        "url": "https://platform.moonshot.cn/docs/pricing",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Moonshot AI"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "kimi-vl-a3b-instruct",
+    "name": "Kimi VL A3B Instruct",
+    "provider": "Moonshot AI",
+    "family": "Kimi VL",
+    "dataKind": "verified",
+    "description": "Standard fast instruction-following vision-language model (16B MoE, 3B active), built for rapid image captioning, UI inspection, and multimodal assistance.",
+    "strengths": [
+      "Rapid low-latency multimodal generation without reasoning wait times",
+      "Accurate user interface element localization and document transcription",
+      "High cost efficiency at just $0.15 per million input tokens"
+    ],
+    "weaknesses": [
+      "Less capable on tricky multi-step visual math problems than thinking models",
+      "No audio input support"
+    ],
+    "tags": ["Vision", "Fast", "Best value", "Open weights", "Multimodal"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 110,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-04-20",
+      "sourceId": "source-moonshot",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.15,
+      "output": 0.6,
+      "cached": 0.04,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-moonshot",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 77,
+      "overall": 77
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 77,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-moonshot",
+        "name": "Moonshot AI Official Documentation",
+        "url": "https://platform.moonshot.cn/docs/pricing",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Moonshot AI"
       },
       {
         "id": "astra-cost-engine",
@@ -10201,11 +11322,11 @@
       "dailyUse": null,
       "research": null,
       "writing": null,
-      "vision": 28,
+      "vision": null,
       "speed": null,
       "reliability": null,
       "costEfficiency": 0,
-      "overall": 61
+      "overall": 63
     },
     "evidence": [
       {
@@ -10239,16 +11360,6 @@
         "updatedAt": "2025-02-27"
       },
       {
-        "metric": "vision",
-        "kind": "benchmark",
-        "raw": 1195,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 28,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-08-27"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 0,
@@ -10259,7 +11370,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 82,
+    "confidence": 75,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-05",
@@ -10288,14 +11399,6 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
-      },
-      {
-        "id": "lmarena-leaderboard",
-        "name": "LMSYS Chatbot Arena Leaderboard",
-        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
-        "retrievedAt": "2026-09-06",
-        "kind": "public_eval",
-        "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
         "id": "astra-cost-engine",
@@ -10453,6 +11556,191 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "SWE-bench Verified Leaderboard"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "moonlight-16b-a3b-instruct",
+    "name": "Moonlight 16B-A3B Instruct",
+    "provider": "Moonshot AI",
+    "family": "Moonlight",
+    "dataKind": "verified",
+    "description": "Compact, high-efficiency MoE language model (16B total, 3B active) trained with the Muon optimizer. Advancing the Pareto frontier of performance-per-FLOP for coding, math, and bilingual reasoning.",
+    "strengths": [
+      "Pioneering use of the Muon matrix-orthogonalization optimizer for extreme pretraining sample efficiency",
+      "Extremely lightweight runtime footprint: only 3B parameters active per token",
+      "Outstanding performance-per-watt and cost efficiency for lightweight agent deployment",
+      "Strong bilingual instruction-following in English and Chinese"
+    ],
+    "weaknesses": [
+      "Shorter context window (8,192 tokens) focused on efficient execution rather than massive documents",
+      "Text-only model without vision capabilities"
+    ],
+    "tags": ["Efficient", "Open weights", "Best value", "Fast", "Research"],
+    "facts": {
+      "context": 8192,
+      "maxOutput": 4096,
+      "speedTokensPerSec": 140,
+      "vision": false,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-02-15",
+      "sourceId": "source-moonshot",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.3,
+      "cached": 0.02,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-moonshot",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 85,
+      "overall": 85
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 85,
+        "min": 0,
+        "max": 100,
+        "normalized": 85,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-moonshot",
+        "name": "Moonshot AI Moonlight Repository",
+        "url": "https://github.com/moonshot-ai/Moonlight",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Moonshot AI"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "moonlight-16b-a3b",
+    "name": "Moonlight 16B-A3B",
+    "provider": "Moonshot AI",
+    "family": "Moonlight",
+    "dataKind": "verified",
+    "description": "The foundational base MoE checkpoint (16B total, 3B active) trained via the Muon optimizer, designed for academic research on MoE scaling and optimization dynamics.",
+    "strengths": [
+      "Clean foundational weights demonstrating Muon optimizer scaling laws",
+      "Low resource threshold for academic and personal fine-tuning (3B active parameters)",
+      "Open-source weights released under permissive Apache 2.0 license"
+    ],
+    "weaknesses": [
+      "Base model requiring instruction tuning or few-shot examples for dialogue",
+      "8k context window limit"
+    ],
+    "tags": ["Base model", "Open weights", "Research", "Efficient"],
+    "facts": {
+      "context": 8192,
+      "maxOutput": 4096,
+      "speedTokensPerSec": 140,
+      "vision": false,
+      "audio": false,
+      "tools": false,
+      "structured": false,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-02-15",
+      "sourceId": "source-moonshot",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.3,
+      "cached": 0.02,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-moonshot",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 85,
+      "overall": 85
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 85,
+        "min": 0,
+        "max": 100,
+        "normalized": 85,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-moonshot",
+        "name": "Moonshot AI Moonlight Repository",
+        "url": "https://github.com/moonshot-ai/Moonlight",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Moonshot AI"
       },
       {
         "id": "astra-cost-engine",
@@ -12661,6 +13949,99 @@
     ]
   },
   {
+    "slug": "kimi-k1-5",
+    "name": "Kimi k1.5",
+    "provider": "Moonshot AI",
+    "family": "Kimi k1",
+    "dataKind": "verified",
+    "description": "Moonshot AI's landmark multimodal reasoning model utilizing long-context reinforcement learning to match frontier reasoning performance across math, coding, and vision.",
+    "strengths": [
+      "Breakthrough long-context reinforcement learning scaling without Monte Carlo Tree Search",
+      "Natively multimodal reasoning handling complex math formulas and visual diagrams",
+      "128k token context window enabling reasoning over large documents and codebases",
+      "High performance on competitive math (AIME, MATH) and coding challenges"
+    ],
+    "weaknesses": [
+      "Thinking step outputs add response latency",
+      "Predecessor to the larger 1T+ K2 and 2.8T K3 architectures"
+    ],
+    "tags": ["Reasoning", "Vision", "Open weights", "Coding", "Research"],
+    "facts": {
+      "context": 128000,
+      "maxOutput": 32768,
+      "speedTokensPerSec": 50,
+      "vision": true,
+      "audio": false,
+      "tools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-01-20",
+      "sourceId": "source-moonshot",
+      "reasoningEffort": ["fixed"],
+      "defaultEffort": "fixed"
+    },
+    "pricing": {
+      "input": 0.5,
+      "output": 2,
+      "cached": 0.12,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-moonshot",
+      "updatedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": null,
+      "coding": null,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 61,
+      "overall": 61
+    },
+    "evidence": [
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 61,
+        "min": 0,
+        "max": 100,
+        "normalized": 61,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-06"
+      }
+    ],
+    "confidence": 48,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-06",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-06",
+    "sources": [
+      {
+        "id": "source-moonshot",
+        "name": "Moonshot AI Official Documentation",
+        "url": "https://platform.moonshot.cn/docs/pricing",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Moonshot AI"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-06",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "codestral-2501",
     "name": "Codestral 2501",
     "provider": "Mistral AI",
@@ -13953,11 +15334,11 @@
       "dailyUse": null,
       "research": null,
       "writing": null,
-      "vision": 23,
+      "vision": null,
       "speed": null,
       "reliability": null,
       "costEfficiency": 82,
-      "overall": 65
+      "overall": 68
     },
     "evidence": [
       {
@@ -13991,16 +15372,6 @@
         "updatedAt": "2024-12-11"
       },
       {
-        "metric": "vision",
-        "kind": "benchmark",
-        "raw": 1158,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 23,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-08-27"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 82,
@@ -14011,7 +15382,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 85,
+    "confidence": 75,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-05",
@@ -14040,14 +15411,6 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
-      },
-      {
-        "id": "lmarena-leaderboard",
-        "name": "LMSYS Chatbot Arena Leaderboard",
-        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
-        "retrievedAt": "2026-09-06",
-        "kind": "public_eval",
-        "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
         "id": "astra-cost-engine",
@@ -14478,11 +15841,11 @@
       "dailyUse": null,
       "research": null,
       "writing": null,
-      "vision": 24,
+      "vision": null,
       "speed": null,
       "reliability": null,
       "costEfficiency": 17,
-      "overall": 63
+      "overall": 66
     },
     "evidence": [
       {
@@ -14516,16 +15879,6 @@
         "updatedAt": "2024-12-17"
       },
       {
-        "metric": "vision",
-        "kind": "benchmark",
-        "raw": 1168,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 24,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-08-27"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 17,
@@ -14536,7 +15889,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 83,
+    "confidence": 75,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-05",
@@ -14565,14 +15918,6 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
-      },
-      {
-        "id": "lmarena-leaderboard",
-        "name": "LMSYS Chatbot Arena Leaderboard",
-        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
-        "retrievedAt": "2026-09-06",
-        "kind": "public_eval",
-        "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
         "id": "astra-cost-engine",
@@ -17356,11 +18701,11 @@
       "dailyUse": null,
       "research": null,
       "writing": null,
-      "vision": 23,
+      "vision": null,
       "speed": null,
       "reliability": null,
       "costEfficiency": 49,
-      "overall": 60
+      "overall": 62
     },
     "evidence": [
       {
@@ -17394,16 +18739,6 @@
         "updatedAt": "2024-09-24"
       },
       {
-        "metric": "vision",
-        "kind": "benchmark",
-        "raw": 1161,
-        "min": 1000,
-        "max": 1700,
-        "normalized": 23,
-        "sourceId": "lmarena-leaderboard",
-        "updatedAt": "2026-08-27"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 49,
@@ -17414,7 +18749,7 @@
         "updatedAt": "2026-09-06"
       }
     ],
-    "confidence": 85,
+    "confidence": 75,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-06",
     "lastVerifiedAt": "2026-09-05",
@@ -17443,14 +18778,6 @@
         "retrievedAt": "2026-09-06",
         "kind": "public_eval",
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
-      },
-      {
-        "id": "lmarena-leaderboard",
-        "name": "LMSYS Chatbot Arena Leaderboard",
-        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
-        "retrievedAt": "2026-09-06",
-        "kind": "public_eval",
-        "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
         "id": "astra-cost-engine",

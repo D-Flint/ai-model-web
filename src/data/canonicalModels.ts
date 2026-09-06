@@ -9,6 +9,7 @@ import { QWEN_MODELS } from './models/qwen';
 import { XAI_MODELS } from './models/xai';
 import { AMAZON_MODELS } from './models/amazon';
 import { COHERE_MODELS } from './models/cohere';
+import { MOONSHOT_MODELS } from './models/moonshot';
 
 export {
   OPENAI_MODELS,
@@ -21,6 +22,7 @@ export {
   XAI_MODELS,
   AMAZON_MODELS,
   COHERE_MODELS,
+  MOONSHOT_MODELS,
 };
 
 export const PROVIDERS_CONFIG = [
@@ -103,6 +105,14 @@ export const PROVIDERS_CONFIG = [
     description:
       'Enterprise AI platform pioneering command, reasoning, and high-accuracy retrieval-augmented generation.',
   },
+  {
+    id: 'provider-moonshot',
+    slug: 'moonshot',
+    name: 'Moonshot AI',
+    website: 'https://www.moonshot.ai',
+    description:
+      'Pioneering AI research laboratory and creator of the Kimi and Moonlight long-context reasoning models.',
+  },
 ];
 
 export const CANONICAL_MODELS: CanonicalModelConfig[] = [
@@ -116,4 +126,5 @@ export const CANONICAL_MODELS: CanonicalModelConfig[] = [
   ...XAI_MODELS,
   ...AMAZON_MODELS,
   ...COHERE_MODELS,
+  ...MOONSHOT_MODELS,
 ];
