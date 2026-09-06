@@ -951,8 +951,8 @@
   - `npm run check`: 0 errors, 0 warnings, 0 hints across 65 Astro and TypeScript files.
   - `npm run lint`: ESLint and Prettier check passed with 0 errors.
   - Browser verification: Captured screenshot at `http://localhost:4321/models` confirming models remain sorted by newest release date (GPT-6 Astra Max Effort, Gemini 3.8 Flash High Effort, Gemma 4, Kimi K3, etc.) under the active "All ↓" category while the `RELEASE DATE` column is removed from the table.
-- Commit hash: `30dbb41` (code commit).
-- Current state: Models remain sorted by release date with newest on top, and the `RELEASE DATE` column has been removed from the leaderboard table.
-- Exact next step: Pause and wait for user verification through local testing.
+- Commit hash: `04c2a8c` (code commit, pushed to GitHub `origin/main`).
+- Current state: Models remain sorted by release date with newest on top, the `RELEASE DATE` column is removed from the leaderboard table, and all changes have been pushed to GitHub.
+- Exact next step: Ready for user testing and feedback.
 
 
