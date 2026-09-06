@@ -137,6 +137,10 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
   const compareMenuRef = useRef<HTMLDivElement>(null);
   const columnsMenuRef = useRef<HTMLDivElement>(null);
+  const tableWrapperRef = useRef<HTMLDivElement>(null);
+  const [tableMaxHeight, setTableMaxHeight] = useState<number | undefined>(
+    undefined,
+  );
 
   const [visibleColumns, setVisibleColumns] = useState<
     Record<LeaderboardColumnKey, boolean>
@@ -307,6 +311,33 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
       return sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
     });
   }, [filteredRows, sortColumn, sortDirection]);
+
+  useEffect(() => {
+    if (
+      sortedRows.length > 25 &&
+      tableWrapperRef.current &&
+      viewMode === 'table'
+    ) {
+      const updateMaxHeight = () => {
+        if (!tableWrapperRef.current) return;
+        const thead = tableWrapperRef.current.querySelector('thead');
+        const headerHeight = thead ? thead.offsetHeight : 54;
+        const firstRow =
+          tableWrapperRef.current.querySelector<HTMLTableRowElement>(
+            'tbody tr.leaderboard-row',
+          );
+        const rowHeight = firstRow ? firstRow.offsetHeight : 47;
+        // Up to 25 models visible at a time
+        setTableMaxHeight(headerHeight + 25 * rowHeight);
+      };
+
+      updateMaxHeight();
+      window.addEventListener('resize', updateMaxHeight);
+      return () => window.removeEventListener('resize', updateMaxHeight);
+    } else {
+      setTableMaxHeight(undefined);
+    }
+  }, [sortedRows.length, showOrg, viewMode]);
 
   const top5Thresholds = useMemo(() => {
     const metricKeys: LeaderboardColumnKey[] = [
@@ -593,7 +624,13 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
       {/* Main Content: Table or Cards */}
       {viewMode === 'table' ? (
         <div className="leaderboard-table-card">
-          <div className="table-scroll-wrapper">
+          <div
+            ref={tableWrapperRef}
+            className={`table-scroll-wrapper ${sortedRows.length > 25 ? 'is-scrollable' : ''}`}
+            style={
+              tableMaxHeight ? { maxHeight: `${tableMaxHeight}px` } : undefined
+            }
+          >
             <table className="leaderboard-table">
               <thead>
                 <tr>
