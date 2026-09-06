@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <rect width="64" height="64" rx="16" fill="#0E120D" stroke="#253023" stroke-width="1.5"/>
+  <rect width="64" height="64" rx="16" fill="#0D120F" stroke="#243127" stroke-width="1.5"/>
   <defs>
     <linearGradient id="synGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#BAE389"/>
-      <stop offset="60%" stop-color="#AFD97C"/>
-      <stop offset="100%" stop-color="#7EA651"/>
+      <stop offset="0%" stop-color="#14532D"/>
+      <stop offset="55%" stop-color="#1F7A3F"/>
+      <stop offset="100%" stop-color="#8FEA45"/>
     </linearGradient>
     <linearGradient id="synFold" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#557338"/>
-      <stop offset="100%" stop-color="#384C25"/>
+      <stop offset="0%" stop-color="#0a2e18"/>
+      <stop offset="100%" stop-color="#14532D"/>
     </linearGradient>
   </defs>
   <g transform="translate(14, 8) scale(0.23)">

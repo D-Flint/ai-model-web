@@ -43,7 +43,7 @@ export default function ModelCard({
   const speedTps = stats.speedTokensPerSec;
 
   return (
-    <article className="model-card">
+    <article className={`model-card ${selected ? 'selected' : ''}`.trim()}>
       <div className="card-top">
         <div className="provider-badge">
           <ProviderLogo provider={model.provider} size={16} />
