@@ -2,6 +2,7 @@
 import RootLayout from '../layouts/RootLayout.astro';
 import HeroCompare from '../components/HeroCompare';
 import ModelCard from '../components/ModelCard';
+import ProviderLogo from '../components/ProviderLogo.astro';
 import { models } from '../data/models';
 import { categories } from '../data/config';
 import { rankModels, taskCost, money } from '../lib/decision';
@@ -33,7 +34,8 @@ const costs = [models[0], models[1], models[4]];
       <span class="eyebrow">COMPARE · UNDERSTAND · CHOOSE</span><h1>
         Find the right<br />AI model<span class="accent"> for you.</span>
       </h1><p>
-        Synapse helps you compare AI models with clear, reliable data — so you can understand faster and choose with confidence.
+        Synapse helps you compare AI models with clear, reliable data — so you
+        can understand faster and choose with confidence.
       </p>
       <form class="hero-search" action="/models">
         <Search size={20} /><label class="sr-only" for="home-search"
@@ -137,14 +139,20 @@ const costs = [models[0], models[1], models[4]];
               <span>
                 <>
                   <strong>{a.name}</strong>
-                  <small>{a.provider}</small>
+                  <small class="provider-sub">
+                    <ProviderLogo provider={a.provider} size={12} />
+                    {a.provider}
+                  </small>
                 </>
               </span>
               <span class="versus">vs</span>
               <span>
                 <>
                   <strong>{b.name}</strong>
-                  <small>{b.provider}</small>
+                  <small class="provider-sub">
+                    <ProviderLogo provider={b.provider} size={12} />
+                    {b.provider}
+                  </small>
                 </>
               </span>
               <ArrowUpRight size={17} />
@@ -212,9 +220,11 @@ const costs = [models[0], models[1], models[4]];
             }
           });
         },
-        { rootMargin: '0px 0px -30px 0px', threshold: 0.05 }
+        { rootMargin: '0px 0px -30px 0px', threshold: 0.05 },
       );
-      document.querySelectorAll('.reveal-section').forEach((el) => observer.observe(el));
+      document
+        .querySelectorAll('.reveal-section')
+        .forEach((el) => observer.observe(el));
     }
   </script>
 </RootLayout>

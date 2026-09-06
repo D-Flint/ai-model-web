@@ -12,6 +12,7 @@ import {
   Table as TableIcon,
 } from 'lucide-react';
 import ModelCard from './ModelCard';
+import { ProviderLogo } from './ProviderLogo';
 import type { CatalogModel } from '../lib/catalogSchema';
 import {
   selectionFromSearch,
@@ -707,7 +708,11 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                             </div>
                             {showOrg && (
                               <div className="model-org-sub">
-                                {row.model.provider}
+                                <ProviderLogo
+                                  provider={row.model.provider}
+                                  size={13}
+                                />
+                                <span>{row.model.provider}</span>
                               </div>
                             )}
                           </td>
@@ -873,7 +878,11 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                                 <div className="subtask-top-row">
                                   <div className="subtask-title-group">
                                     <h4>{row.model.name}</h4>
-                                    <span className="micro muted">
+                                    <span className="micro muted provider-badge">
+                                      <ProviderLogo
+                                        provider={row.model.provider}
+                                        size={14}
+                                      />
                                       {row.model.provider}
                                     </span>
                                     {row.model.facts.releaseDate && (
