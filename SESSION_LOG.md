@@ -676,6 +676,26 @@
 - Current state: All AI company logos throughout the entire application (model cards, explorer table, comparisons, detail pages, cost calculator) now use actual high-resolution official PNG brand images.
 - Exact next step: Wait for user local testing and verification.
 
+## 2026-09-06 — Fix missing logos in selection chips & model mark
+
+- Objective: Address missing logo issue in selection pills/chips on comparison and explorer views where letter avatars (e.g. green "G" square) were shown instead of the official provider logo.
+- Files changed:
+  - `src/components/ModelCard.tsx`: Updated `ModelMark` to render `ProviderLogo` with configurable `size` and fallback styling rather than legacy `model.family.slice(0, 1)` initial letter.
+  - `src/components/ComparisonBuilder.tsx`: Set `size={16}` for `ModelMark` inside selection chips.
+  - `src/components/ModelExplorer.tsx`: Added `ProviderLogo` to the floating compare-tray selection chips.
+  - `src/styles/global.css`: Added `.selection-chip .model-mark` dimensions (28x28px, rounded 7px, flex-shrink 0) and centered `.comparison-table thead th .provider-badge` above the model link.
+- Attempts: 1.
+- Failures and causes: None.
+- Tests and results:
+  - `npm test`: 37/37 passed across 3 test suites.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 62 files.
+  - `npm run lint`: Clean format and lint check.
+  - `npm run build`: 2,944 pages successfully built in 1m 12s.
+- Commit hash: `47c3b73` (plus session log update).
+- Current state: Selection chips in comparison builder, compare tray, finder, rankings, and hero compare now cleanly display the authentic provider logo.
+- Exact next step: Wait for user local testing and verification at `http://localhost:4321`.
+
+
 
 
 
