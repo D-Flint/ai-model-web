@@ -832,12 +832,19 @@
 - Current state: All 17 requested Moonshot AI Kimi and Moonlight models are fully integrated across the canonical registry, database schema, data pipeline, comparison grid, model detail pages, rankings, and decision engine. Verified catalog expanded to 220 models.
 - Exact next step: User verifies the newly added Kimi and Moonlight models locally at `http://localhost:4321`.
 
+## 2026-09-06 — Leaderboard 25-model viewport limit and scrollable table
 
-
-
-
-
-
-
-
-
+- Objective: Restrict the leaderboard model list to display no more than 25 models at a time, making the list container scrollable with sticky column headers when models exceed 25.
+- Files changed:
+  - `src/components/ModelExplorer.tsx`: Added `tableWrapperRef`, dynamic height calculation effect for 25 visible rows (+ sticky header), responsive resize listener, and conditional `is-scrollable` class.
+  - `src/styles/global.css`: Added `.table-scroll-wrapper.is-scrollable` styling with `overflow-y: auto`, thin modern scrollbar styling, and `position: sticky; top: 0; z-index: 10` for `table.leaderboard-table thead th` with inset border shadow to prevent bleed-through.
+- Attempts: 1 iteration with verification.
+- Failures and causes: Initial hook declaration was placed before `sortedRows` declaration, caught immediately by `astro check` (`ts(2454)`); relocated effect to immediately follow `sortedRows`.
+- Tests and results:
+  - `npm test`: 37/37 passed across all 3 test suites.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 63 Astro and TypeScript files.
+  - `npm run lint`: Prettier check and ESLint passed with 0 errors.
+  - Playwright browser verification: Verified full 220 models rendered with `is-scrollable` class and container clientHeight capped at 1229px (25 rows); verified sticky header remains locked at top during 500px scroll; verified `is-scrollable` automatically unsets when filtered models <= 25; verified dynamic height adapts smoothly when "Show org" is toggled.
+- Commit hash: `78a2b03`
+- Current state: Model explorer table now displays up to 25 models in view at a time. Lists with > 25 models are scrollable internally within the card container, keeping the sticky header and bottom footer note intact.
+- Exact next step: Wait for user verification through local testing.
