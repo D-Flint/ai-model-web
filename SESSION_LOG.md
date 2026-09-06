@@ -637,6 +637,27 @@
 - Current state: Light mode is now bright, crisp, and high-contrast while maintaining visual coherence with Synapse's green branding and dark mode.
 - Exact next step: Create local commit and await user verification.
 
+## 2026-09-06 — Fix and authentic upgrade of AI company vector logos
+
+- Objective: Fix incorrect and placeholder AI company logos across the application, update them with authentic official vector marks, add missing provider support for Amazon AWS, and integrate company logos into the benchmark leaderboard table.
+- Files changed:
+  - `src/components/ProviderLogo.tsx`: Updated SVG vector paths to authentic official brand marks for Anthropic (fixed out-of-bounds negative coordinates), DeepSeek (replaced incorrect play-button icon with authentic DeepSeek whale/dolphin brand mark), Cohere (replaced bowling ball icon with authentic 3-part organic brand mark), Alibaba Cloud / Qwen (replaced 3-layer database stack with authentic geometric Qwen origami mark), Meta AI (clean infinity loop), xAI (official Grok/xAI mark), Mistral AI, and Amazon AWS.
+  - `src/components/ProviderLogo.astro`: Synced all authentic vector paths with `ProviderLogo.tsx` and added missing Amazon AWS provider support.
+  - `src/styles/global.css`: Added `.provider-amazon` brand color rules and enhanced `.model-org-sub` / `.provider-sub` flex alignment.
+  - `src/components/ModelExplorer.tsx`: Integrated `ProviderLogo` into the benchmark leaderboard table model organization subtitle (`model-org-sub`) and expanded subtask accordion panel.
+  - `src/pages/index.astro`: Integrated `ProviderLogo` into homepage comparison links.
+- Attempts: 1.
+- Failures and causes: None. Prettier formatting pass executed cleanly.
+- Tests and results:
+  - `npm test`: 37/37 tests passed across all 3 test suites.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 62 Astro and TypeScript files.
+  - `npm run lint`: Clean format and lint check.
+  - `npm run build`: Production static build successfully generated 2,944 pages in 1m 15s.
+- Commit hash: `f0b1e84` (local commit; no remote push).
+- Current state: All 10 major AI company providers have authentic, crisp vector SVG logos properly rendered across model cards, model detail pages, comparison builder, cost calculator, benchmark leaderboard, and homepage comparison shortcuts.
+- Exact next step: User verifies the authentic AI company logos locally at `http://localhost:4321`.
+
+
 
 
 
