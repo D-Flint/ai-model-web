@@ -25,10 +25,12 @@ import {
   money,
   contextSize,
   sortLeaderboardRows,
+  type LeaderboardMetricKey,
 } from '../lib/decision';
 import livebenchRows from '../data/livebenchData.json';
 
 export type LeaderboardColumnKey =
+  | 'releaseDate'
   | 'overall'
   | 'reasoning'
   | 'coding'
@@ -48,6 +50,12 @@ interface ColumnDef {
 }
 
 const ALL_COLUMNS: ColumnDef[] = [
+  {
+    key: 'releaseDate',
+    label: 'RELEASE DATE',
+    align: 'center',
+    defaultVisible: true,
+  },
   { key: 'overall', label: 'OVERALL', align: 'center', defaultVisible: true },
   {
     key: 'reasoning',
@@ -101,7 +109,7 @@ const ALL_COLUMNS: ColumnDef[] = [
 ];
 
 const CATEGORIES = [
-  { id: 'all', label: 'All', sortCol: 'overall' as const },
+  { id: 'all', label: 'All', sortCol: 'releaseDate' as const },
   { id: 'reasoning', label: 'Reasoning', sortCol: 'reasoning' as const },
   { id: 'coding', label: 'Coding', sortCol: 'coding' as const },
   { id: 'agentic', label: 'Agentic Coding', sortCol: 'agentic' as const },
@@ -129,7 +137,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [sortColumn, setSortColumn] = useState<LeaderboardColumnKey | 'name'>(
-    'overall',
+    'releaseDate',
   );
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
 
@@ -259,6 +267,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
         model,
         maxEffort,
         displayName,
+        releaseDate: model.facts.releaseDate,
         isOpenWeights: Boolean(model.facts.openWeights),
         scores: {
           overall: stats.scores.overall,
@@ -327,7 +336,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
   }, [sortedRows.length, showOrg, viewMode]);
 
   const top5Thresholds = useMemo(() => {
-    const metricKeys: LeaderboardColumnKey[] = [
+    const metricKeys: LeaderboardMetricKey[] = [
       'overall',
       'reasoning',
       'coding',
@@ -338,7 +347,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
       'instructionFollowing',
     ];
 
-    const thresholds: Partial<Record<LeaderboardColumnKey, number>> = {};
+    const thresholds: Partial<Record<LeaderboardMetricKey, number>> = {};
     for (const k of metricKeys) {
       const vals = filteredRows
         .map((r) => r.scores[k])
@@ -409,7 +418,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
     setSelectedOrg('');
     setOpenWeightsOnly(false);
     setActiveCategory('all');
-    setSortColumn('overall');
+    setSortColumn('releaseDate');
     setSortDirection('desc');
   }
 
@@ -712,10 +721,14 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                         nextDir === 'asc'
                           ? col.key === 'cost'
                             ? 'lowest cost first'
-                            : 'lowest score first'
+                            : col.key === 'releaseDate'
+                              ? 'oldest models first'
+                              : 'lowest score first'
                           : col.key === 'cost'
                             ? 'highest cost first'
-                            : 'highest score first';
+                            : col.key === 'releaseDate'
+                              ? 'newest models first'
+                              : 'highest score first';
 
                       return (
                         <th
@@ -849,6 +862,14 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                               </div>
                             )}
                           </td>
+
+                          {visibleColumns.releaseDate && (
+                            <td
+                              className={`td-metric td-date td-align-center ${sortColumn === 'releaseDate' ? 'col-sorted' : ''}`}
+                            >
+                              {row.releaseDate || '—'}
+                            </td>
+                          )}
 
                           {visibleColumns.overall && (
                             <td

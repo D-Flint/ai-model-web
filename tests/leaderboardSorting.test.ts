@@ -169,4 +169,89 @@ describe('sortLeaderboardRows', () => {
       'Model Alpha',
     ]);
   });
+
+  it('sorts by releaseDate descending with newest models on top', () => {
+    const datedRows: LeaderboardSortableItem[] = [
+      {
+        displayName: 'Model 2024',
+        releaseDate: '2024-11-15',
+        scores: { ...sampleRows[0].scores, overall: 85 },
+      },
+      {
+        displayName: 'Model 2026',
+        releaseDate: '2026-09-02',
+        scores: { ...sampleRows[0].scores, overall: 98 },
+      },
+      {
+        displayName: 'Model 2025',
+        releaseDate: '2025-02-24',
+        scores: { ...sampleRows[0].scores, overall: 92 },
+      },
+      {
+        displayName: 'Model Undated',
+        releaseDate: null,
+        scores: { ...sampleRows[0].scores, overall: 99 },
+      },
+    ];
+
+    const sorted = sortLeaderboardRows(datedRows, 'releaseDate', 'desc');
+    expect(sorted.map((r) => r.displayName)).toEqual([
+      'Model 2026',
+      'Model 2025',
+      'Model 2024',
+      'Model Undated',
+    ]);
+  });
+
+  it('sorts by releaseDate ascending with oldest models first', () => {
+    const datedRows: LeaderboardSortableItem[] = [
+      {
+        displayName: 'Model 2024',
+        releaseDate: '2024-11-15',
+        scores: { ...sampleRows[0].scores, overall: 85 },
+      },
+      {
+        displayName: 'Model 2026',
+        releaseDate: '2026-09-02',
+        scores: { ...sampleRows[0].scores, overall: 98 },
+      },
+      {
+        displayName: 'Model 2025',
+        releaseDate: '2025-02-24',
+        scores: { ...sampleRows[0].scores, overall: 92 },
+      },
+      {
+        displayName: 'Model Undated',
+        releaseDate: null,
+        scores: { ...sampleRows[0].scores, overall: 99 },
+      },
+    ];
+
+    const sorted = sortLeaderboardRows(datedRows, 'releaseDate', 'asc');
+    expect(sorted.map((r) => r.displayName)).toEqual([
+      'Model 2024',
+      'Model 2025',
+      'Model 2026',
+      'Model Undated',
+    ]);
+  });
+
+  it('breaks releaseDate ties by overall score then displayName', () => {
+    const tiedRows: LeaderboardSortableItem[] = [
+      {
+        displayName: 'Model Lower Score',
+        releaseDate: '2025-01-01',
+        scores: { ...sampleRows[0].scores, overall: 80 },
+      },
+      {
+        displayName: 'Model Higher Score',
+        releaseDate: '2025-01-01',
+        scores: { ...sampleRows[0].scores, overall: 95 },
+      },
+    ];
+
+    const sorted = sortLeaderboardRows(tiedRows, 'releaseDate', 'desc');
+    expect(sorted[0].displayName).toBe('Model Higher Score');
+    expect(sorted[1].displayName).toBe('Model Lower Score');
+  });
 });

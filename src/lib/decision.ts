@@ -311,10 +311,12 @@ export type LeaderboardMetricKey =
   | 'cost'
   | 'speed';
 
-export type LeaderboardSortColumn = LeaderboardMetricKey | 'name';
+export type LeaderboardSortColumn =
+  LeaderboardMetricKey | 'name' | 'releaseDate';
 
 export interface LeaderboardSortableItem {
   displayName: string;
+  releaseDate?: string | null;
   scores: Record<LeaderboardMetricKey, number | null>;
   [key: string]: unknown;
 }
@@ -328,6 +330,37 @@ export function sortLeaderboardRows<T extends LeaderboardSortableItem>(
     if (sortColumn === 'name') {
       const cmp = a.displayName.localeCompare(b.displayName);
       return sortDirection === 'asc' ? cmp : -cmp;
+    }
+
+    if (sortColumn === 'releaseDate') {
+      const aRaw =
+        a.releaseDate ??
+        (a.model as { facts?: { releaseDate?: string } } | undefined)?.facts
+          ?.releaseDate;
+      const bRaw =
+        b.releaseDate ??
+        (b.model as { facts?: { releaseDate?: string } } | undefined)?.facts
+          ?.releaseDate;
+      const aDate = aRaw ? new Date(aRaw).getTime() : NaN;
+      const bDate = bRaw ? new Date(bRaw).getTime() : NaN;
+      const aNull = !aRaw || isNaN(aDate);
+      const bNull = !bRaw || isNaN(bDate);
+
+      if (aNull && bNull) {
+        return a.displayName.localeCompare(b.displayName);
+      }
+      if (aNull) return 1;
+      if (bNull) return -1;
+
+      // Descending means newest date first (larger timestamp first)
+      const diff = sortDirection === 'asc' ? aDate - bDate : bDate - aDate;
+      if (diff !== 0) return diff;
+
+      // Secondary tie-breaker by overall score (higher is better), then name
+      const aOverall = a.scores.overall ?? 0;
+      const bOverall = b.scores.overall ?? 0;
+      if (bOverall !== aOverall) return bOverall - aOverall;
+      return a.displayName.localeCompare(b.displayName);
     }
 
     const aVal = a.scores[sortColumn];

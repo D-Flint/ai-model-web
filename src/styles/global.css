@@ -3168,6 +3168,21 @@ table.leaderboard-table tbody tr.leaderboard-row.row-selected {
   color: var(--text);
 }
 
+.td-date {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+table.leaderboard-table td.col-sorted.td-date {
+  color: #1e40af;
+}
+
+:root[data-theme='dark'] table.leaderboard-table td.col-sorted.td-date {
+  color: #93c5fd;
+}
+
 .expand-caret-btn {
   background: none;
   border: none;
