@@ -13,6 +13,8 @@
   --bright-accent: #8fea45;
   --deep-green: #14532d;
   --soft: #edf7ee;
+  --effort-accent: #4f46b8;
+  --effort-soft: #eef0ff;
   --shadow: 0 12px 40px rgba(16, 23, 19, 0.06);
   --glow: rgba(31, 122, 63, 0.16);
   --accent-glow: rgba(143, 234, 69, 0.18);
@@ -31,6 +33,8 @@
   --bright-accent: #9bef4a;
   --deep-green: #2d7a45;
   --soft: #16271a;
+  --effort-accent: #a5b4fc;
+  --effort-soft: #202645;
   --shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
   --glow: rgba(85, 184, 107, 0.2);
   --accent-glow: rgba(155, 239, 74, 0.22);
@@ -3168,6 +3172,27 @@ table.leaderboard-table td.col-sorted.td-date {
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
+}
+
+.model-effort-row {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.model-effort-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border: 1px solid color-mix(in srgb, var(--effort-accent) 34%, var(--border));
+  border-radius: 9999px;
+  background: var(--effort-soft);
+  color: var(--effort-accent);
+  font-size: 10.5px;
+  font-weight: 650;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 .model-link-title {

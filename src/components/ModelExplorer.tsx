@@ -251,18 +251,21 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
       const maxEffort = getMaxReasoningEffort(model);
       const stats = getModelEffortStats(model, maxEffort);
 
-      let displayName = model.name;
-      if (maxEffort !== 'none' && maxEffort !== 'fixed') {
-        const effortSuffix =
-          maxEffort === 'max'
-            ? 'Max Effort'
-            : maxEffort === 'high'
-              ? 'High Effort'
-              : maxEffort === 'medium'
-                ? 'Medium Effort'
-                : 'Low Effort';
-        displayName = `${model.name} ${effortSuffix}`;
-      }
+      const effortLabel =
+        maxEffort === 'none'
+          ? null
+          : maxEffort === 'fixed'
+            ? 'Fixed CoT'
+            : maxEffort === 'max'
+              ? 'Max Effort'
+              : maxEffort === 'high'
+                ? 'High Effort'
+                : maxEffort === 'medium'
+                  ? 'Medium Effort'
+                  : 'Low Effort';
+      const displayName = effortLabel
+        ? `${model.name} ${effortLabel}`
+        : model.name;
 
       // API pricing fallback: tiered apiPricing or verified official-provider pricing
       const inputPrice = comparablePrice(model) ?? model.pricing?.input ?? null;
@@ -305,6 +308,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
       return {
         model,
         maxEffort,
+        effortLabel,
         displayName,
         releaseDate: model.facts.releaseDate,
         isOpenWeights: Boolean(model.facts.openWeights),
@@ -998,12 +1002,19 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                                   }
                                 }}
                               >
-                                {row.displayName}
+                                {row.model.name}
                               </a>
                               {row.isOpenWeights && (
                                 <span className="badge-open">open</span>
                               )}
                             </div>
+                            {row.effortLabel && (
+                              <div className="model-effort-row">
+                                <span className="model-effort-badge">
+                                  {row.effortLabel}
+                                </span>
+                              </div>
+                            )}
                             {showOrg && (
                               <div className="model-org-sub">
                                 <ProviderLogo
@@ -1379,12 +1390,19 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                             }
                           }}
                         >
-                          {row.displayName}
+                          {row.model.name}
                         </a>
                         {row.isOpenWeights && (
                           <span className="badge-open">open</span>
                         )}
                       </div>
+                      {row.effortLabel && (
+                        <div className="model-effort-row">
+                          <span className="model-effort-badge">
+                            {row.effortLabel}
+                          </span>
+                        </div>
+                      )}
                       <div className="mobile-model-score-line">
                         <span className="mobile-score-val">
                           {row.scores.overall !== null
