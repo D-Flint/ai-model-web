@@ -79,7 +79,9 @@ const orderedMetrics: Metric[] = [
           {
             model.facts.reasoningEffort &&
               model.facts.reasoningEffort.length > 0 &&
-              !model.facts.reasoningEffort.includes('none') && (
+              model.facts.reasoningEffort.some(
+                (effort) => effort !== 'none',
+              ) && (
                 <span
                   class={`effort-badge ${model.facts.reasoningEffort.includes('fixed') ? 'effort-fixed' : ''}`}
                   style="margin-left: 6px;"
@@ -333,7 +335,9 @@ const orderedMetrics: Metric[] = [
               {
                 model.facts.reasoningEffort &&
                 model.facts.reasoningEffort.length > 0 &&
-                !model.facts.reasoningEffort.includes('none') ? (
+                model.facts.reasoningEffort.some(
+                  (effort) => effort !== 'none',
+                ) ? (
                   <span
                     class={`effort-badge ${model.facts.reasoningEffort.includes('fixed') ? 'effort-fixed' : ''}`}
                   >

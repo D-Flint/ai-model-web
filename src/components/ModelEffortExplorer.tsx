@@ -12,7 +12,7 @@ export default function ModelEffortExplorer({
   const isReasoning = Boolean(
     model.facts.reasoningEffort &&
     model.facts.reasoningEffort.length > 0 &&
-    !model.facts.reasoningEffort.includes('none'),
+    model.facts.reasoningEffort.some((effort) => effort !== 'none'),
   );
 
   const availableEfforts: ReasoningEffort[] = isReasoning

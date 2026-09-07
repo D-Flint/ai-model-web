@@ -27,3 +27,36 @@
 - Commit: `ba0a927` (`feat: wire LiveBench and OpenRouter metrics`).
 - Current state: Implementation committed locally; no push. LiveBench Agentic Coding is sourced and rendered where official rows exist. OpenRouter range support is ready but awaits upstream telemetry.
 - Exact next step: User verifies local UI and confirms whether to keep or adjust the official LiveBench snapshot policy.
+
+## 2026-09-07 — Comparison pricing audit
+
+- Objective: Double-check missing API prices on comparison page.
+- Files changed: `SESSION_LOG.md` only; no product code changes.
+- Attempts: 1 diagnostic pass.
+- Failures/causes: `tests/pricing_browser.py` stopped at stale `hy4-preview` fixture; unrelated to pricing.
+- Tests: Catalog audit found 30 tracked models, 6 with reviewed `apiPricing`, 24 unavailable. Official Anthropic, Google, and DeepSeek pricing pages checked.
+- Commit: None.
+- Current state: Missing rates come from intentional reviewed-data coverage, not comparison rendering. Legacy prices remain excluded by policy.
+- Exact next step: Add model-by-model reviewed `apiPricing` records only after official source verification.
+
+## 2026-09-07 — Comparison metric coverage fix
+
+- Objective: Restore verified LiveBench capability scores, reviewed provider pricing fallback, and comparison missing-state clarity.
+- Files changed: LiveBench processor and refresh script, verified catalog snapshot, speed pipeline, pricing validation/helpers, comparison UI, config, tests.
+- Attempts: 2 implementation attempts; first catalog refresh failed because mixed coding evidence was not re-averaged; fixed by preserving non-LiveBench coding evidence.
+- Failures/causes: Existing `tests/pricing_browser.py` remains stale; it expects excluded `hy4-preview` in model selector. Targeted browser comparison check passed.
+- Tests: `npm run check` passed with known Wrangler log `EPERM`; `npm test` 90/90; targeted ESLint and Prettier checks passed; comparison browser smoke check passed.
+- Commit: Pending local commit.
+- Current state: Active 30-model catalog now has intelligence, coding, agentic, daily-use, research, cost-efficiency values for all tracked models; writing, vision, speed, and reliability remain explicitly unavailable where verified evidence is absent.
+- Exact next step: Create local commit, then wait for user verification.
+
+## 2026-09-07 — Reasoning effort selector fix
+
+- Objective: Show effort selectors for models supporting `none` plus selectable reasoning levels.
+- Files changed: `src/components/ComparisonBuilder.tsx`, `src/components/ModelEffortExplorer.tsx`, `src/pages/models/[slug].astro`.
+- Attempts: 1 implementation attempt after browser reproduction.
+- Failures/causes: Full lint reports existing formatting warnings in five files, including unrelated catalog/style files; targeted TypeScript, Astro, and component formatting checks pass.
+- Tests: `npm test -- --run tests/decision.test.ts` 17/17; `npm run check` passed with known Wrangler log `EPERM`; browser smoke check shows 4 comparison selectors and 4 detail effort tabs; `git diff --check` passed.
+- Commit: Pending local commit.
+- Current state: Mixed `none` plus selectable effort lists now render reasoning controls; standard `none` remains excluded from selector options.
+- Exact next step: Create local commit, then wait for user verification.
