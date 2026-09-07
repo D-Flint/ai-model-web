@@ -1097,4 +1097,15 @@
 - Current state: Fast, lightweight static builds with curated SEO comparison pages and seamless client-side comparison handling for arbitrary pairs.
 - Exact next step: User verifies local comparison flows on `http://localhost:4321/compare`.
 
+## 2026-09-07 — Cloudflare Workers hybrid rendering
+
+- Objective: Implement `gpt6-astra-cloudflare-hybrid-ssr.md`: preserve static content and render arbitrary model pairs on demand.
+- Files changed: Astro/Wrangler and npm configuration, environment/ignore/lint configuration, comparison preparation script, slug registry and pair/asset helpers, pair/404/home routes, comparison sharing, bounded SEO links, two test files, README, and `docs/cloudflare-workers.md`. The deployment guide lists all paths. Source catalog and database schema are unchanged.
+- Attempt count: 3 runtime verification iterations within one implementation.
+- Failures and causes: npm initially hit sandbox network denial, then a dependency lock from the existing Astro dev server; authorized installation succeeded after stopping that specific server. Wrangler required access to its local registry outside the sandbox. Missing generated Workers types were fixed with `src/env.d.ts`. Rewriting to a prerendered 404 caused a production 500; the pair route now renders its own 404 response. Cloudflare navigation asset fallback bypassed SSR; explicit `run_worker_first` rules fixed browser requests. Nine checkout CRLF formatting warnings were normalized with no tracked page changes. Do not repeat the static-404 rewrite or omit the Worker routing rules.
+- Tests and results: 85/85 unit tests; Astro/TypeScript 0 errors/warnings/hints; full lint passes; production build passes with 301 HTML pages, 282 static model details, zero pair HTML, and 91 sitemap pairs (previously 392 HTML; original all-pairs build 39,922). Development and production browser suites pass SSR content, canonical URLs/redirects, invalid/duplicate 404s, static routes, hydration, selection reloads, and clipboard sharing. Withholding one generated asset verified friendly 503/no-store; restoring it recovered 200. Wrangler dry run passes: 269.78 KiB gzip, ASSETS binding only, no upload.
+- Commit hash: `855d074` (implementation, local only).
+- Current state: Complete, awaiting user verification. Production preview runs at `http://127.0.0.1:4321`; development at `http://127.0.0.1:4322`. Existing unrelated untracked files remain. No push or deployment. Preview metadata uses the test-only `https://synapse.example`; production requires a real build-time `SITE_URL`. Existing indexing restrictions remain. No live database test is needed for the asset-only Worker; Node persistence scripts are preserved.
+- Exact next step: User opens `http://127.0.0.1:4321/compare/claude-sonnet-5-vs-gpt-6-astra`, tests selection/sharing and an invalid pair, and verifies locally before the next implementation. Deployment instructions and rollback are in `docs/cloudflare-workers.md`.
+
 
