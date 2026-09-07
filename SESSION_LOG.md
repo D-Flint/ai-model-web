@@ -1072,4 +1072,29 @@
 - Current state: All 46 Mistral AI models are active, fully verified, typed, and available in the live catalog.
 - Exact next step: User verifies local testing and confirms Mistral models on `http://localhost:4321`.
 
+## 2026-09-07 — Optimize Comparison Pages for SEO & Client-Side Comparisons
+
+- Objective: Restrict static HTML generation in `compare/[pair].astro` to a curated, high-value set of SEO comparison pages (Option 1) and use interactive client-side `/compare?models=...` for arbitrary user comparisons (Option 3).
+- Files changed:
+  - `src/lib/seoComparisons.ts`: Created helper returning bounded list of high-priority and curated rivalries for static pre-rendering.
+  - `src/pages/compare/[pair].astro`: Replaced $O(N^2)$ all-pairs Cartesian product with `getSeoComparisonPairs(models)`.
+  - `src/pages/compare/index.astro`: Added "Popular head-to-head comparisons" section linking to SEO pages.
+  - `src/pages/sitemap.xml.ts`: Included curated SEO comparison URLs in the sitemap.
+  - `src/pages/404.astro`: Added automatic client-side redirection for arbitrary unrendered `/compare/a-vs-b` URLs to `/compare?models=a,b`.
+  - `src/lib/decision.ts`: Enhanced `selectionFromSearch` to support both `?models=` and `?a=&b=` query patterns.
+  - `tests/seoComparisons.test.ts`: Added unit tests covering pair bounding, deduplication, curated rivalries, and query parsing.
+- Attempt count: 1.
+- Failures and causes:
+  - Initial `write_to_file` call failed because `ArtifactMetadata` was specified for project source code instead of an artifact file.
+  - PowerShell multiline string expansion accidentally interpolated `$a` and `$b`; resolved using Python write and `replace_file_content`.
+  - Prettier lint warning resolved with `npm run format`.
+- Tests and results:
+  - `npm test`: 67/67 unit tests passed across 7 test suites.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 80 files.
+  - `npm run lint`: Prettier and ESLint passed cleanly.
+  - `npm run build`: Static build reduced from 39,922 pages to 392 pages (16.49s build time).
+- Commit hash: `2887420` (local commit; no remote push).
+- Current state: Fast, lightweight static builds with curated SEO comparison pages and seamless client-side comparison handling for arbitrary pairs.
+- Exact next step: User verifies local comparison flows on `http://localhost:4321/compare`.
+
 
