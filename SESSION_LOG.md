@@ -1097,15 +1097,4 @@
 - Current state: Fast, lightweight static builds with curated SEO comparison pages and seamless client-side comparison handling for arbitrary pairs.
 - Exact next step: User verifies local comparison flows on `http://localhost:4321/compare`.
 
-## 2026-09-07 — Cloudflare Workers Hybrid Rendering
-
-- Objective: Move Astro rendering to Cloudflare Workers and keep comparison pairs on-demand.
-- Files changed: `astro.config.mjs`, `package.json`, `package-lock.json`, `.env.example`, `README.md`, static route files, `src/pages/compare/[pair].astro`.
-- Attempt count: 1.
-- Failures and causes: Initial build hit restricted global Wrangler config paths; rerun with workspace-local `XDG_CONFIG_HOME` succeeded. Removed static pair `getStaticPaths()`.
-- Tests and results: `npm run check` passed; `npm test` 67/67 passed; `npm run lint` passed; `npm run build` passed with 373 dist files and no generated `/compare/[pair]` pages.
-- Commit hash: `c316bc2` (local commit; no remote push).
-- Current state: Cloudflare adapter active. Static content/model/ranking pages prerender. Pair route SSR on demand. Reverse pairs redirect to alphabetical canonical URL.
-- Exact next step: User verifies local routes, then commit remains ready for review.
-
 

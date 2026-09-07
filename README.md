@@ -38,13 +38,7 @@ npm run test:pricing:browser # Pricing, browse, compare, find and mobile flows
 
 The browser suite requires Python, `pip install playwright`, and `python -m playwright install chromium`. It expects the local server to be running. Screenshots go to the ignored `artifacts/` directory. Set `ASTRA_TEST_URL` to test another local server address.
 
-`npm run format` formats source files. Pair selectors share a single catalog file. Static model and ranking content works without client JavaScript; interactive controls require JavaScript.
-
-## Cloudflare Workers
-
-The production build targets Cloudflare Workers through `@astrojs/cloudflare`. Content pages and model pages are prerendered. `/compare/[pair]` stays on-demand, so arbitrary pairs do not expand the build. Deploy with `npm run deploy`.
-
-Set runtime secrets with Wrangler, for example `npx wrangler secret put DATABASE_URL`. Local catalog rendering works without `DATABASE_URL`; database access uses serverless-compatible PostgreSQL connections when configured.
+`npm run format` formats source files. Build output includes every model pair; its size grows quadratically with the catalog. Pair selectors share a single catalog file. Static model and ranking content works without client JavaScript; interactive controls require JavaScript.
 
 ## Architecture and data policy
 

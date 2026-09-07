@@ -2,62 +2,31 @@
 import RootLayout from '../../layouts/RootLayout.astro';
 import ComparisonBuilder from '../../components/ComparisonBuilder';
 import { models } from '../../data/models';
-
-export const prerender = false;
-
-const pair = Astro.params.pair ?? '';
-const match = models
-  .flatMap((a) =>
-    models
-      .filter((b) => b.slug !== a.slug)
-      .map((b) => ({ a, b, slug: `${a.slug}-vs-${b.slug}` })),
-  )
-  .find((candidate) => candidate.slug === pair);
-
-if (!match) Astro.response.status = 404;
-
-const a = match?.a;
-const b = match?.b;
-const canonicalPair = a && b ? [a.slug, b.slug].sort().join('-vs-') : null;
-
-if (canonicalPair && pair !== canonicalPair) {
-  return Astro.redirect(`/compare/${canonicalPair}`, 301);
+import { getSeoComparisonPairs } from '../../lib/seoComparisons';
+export function getStaticPaths() {
+  const pairs = getSeoComparisonPairs(models);
+  return pairs.map(({ a, b, slug }) => ({
+    params: { pair: slug },
+    props: { a, b },
+  }));
 }
+const { a, b } = Astro.props;
 ---
 
 <RootLayout
-  title={a && b
-    ? `${a.name} vs ${b.name} | Synapse`
-    : 'Comparison not found | Synapse'}
-  description={a && b
-    ? `Compare ${a.name} and ${b.name}: scores, API pricing, capabilities, and tradeoffs.`
-    : 'The requested model comparison was not found.'}
->
-  <div class="page-heading">
+  title={`${a.name} vs ${b.name} | Synapse`}
+  description={`Compare ${a.name} and ${b.name}: scores, API pricing, capabilities, and tradeoffs.`}
+  ><div class="page-heading">
     <div class="breadcrumbs">
       <a href="/compare">Compare</a><span>/</span><span>Head to head</span>
-    </div>
-    <h1>{a && b ? `${a.name} vs ${b.name}` : 'Comparison not found'}</h1>
-    <p>
-      {
-        a && b
-          ? 'Review the differences, pricing sources, and billing details before you decide.'
-          : 'This comparison does not exist. Choose two supported models to compare.'
-      }
+    </div><h1>{a.name} vs {b.name}</h1><p>
+      Review the differences, pricing sources, and billing details before you
+      decide.
     </p>
-  </div>
-  {
-    a && b ? (
-      <ComparisonBuilder
-        models={[a, b]}
-        catalogUrl="/catalog.json"
-        initial={[a.slug, b.slug]}
-        client:load
-      />
-    ) : (
-      <a class="button" href="/compare">
-        Return to compare
-      </a>
-    )
-  }
-</RootLayout>
+  </div><ComparisonBuilder
+    models={[a, b]}
+    catalogUrl="/catalog.json"
+    initial={[a.slug, b.slug]}
+    client:load
+  /></RootLayout
+>
