@@ -106,8 +106,8 @@ export function getProviderLogoInfo(provider: string): {
     norm.includes('moonlight')
   ) {
     return {
-      src: '/logos/moonshot.png',
-      alt: 'Moonshot AI logo',
+      src: '/logos/kimi.svg',
+      alt: 'Moonshot Kimi logo',
     };
   }
 
@@ -118,7 +118,7 @@ export function getProviderLogoInfo(provider: string): {
     norm.includes('abab')
   ) {
     return {
-      src: '/logos/minimax.png',
+      src: '/logos/minimax.svg',
       alt: 'MiniMax logo',
     };
   }
@@ -144,8 +144,32 @@ export function getProviderLogoInfo(provider: string): {
     };
   }
 
+  // Nvidia / Nemotron
+  if (norm.includes('nvidia') || norm.includes('nemotron')) {
+    return {
+      src: '/logos/nvidia.svg',
+      alt: 'Nvidia logo',
+    };
+  }
+
+  // Xiaomi / MiMo
+  if (norm.includes('xiaomi') || norm.includes('mimo')) {
+    return {
+      src: '/logos/xiaomi.svg',
+      alt: 'Xiaomi logo',
+    };
+  }
+
+  // Poolside / Laguna
+  if (norm.includes('poolside') || norm.includes('laguna')) {
+    return {
+      src: '/logos/poolside.svg',
+      alt: 'Poolside logo',
+    };
+  }
+
   return {
-    src: '/logos/generic.png',
+    src: '/logos/generic.svg',
     alt: `${provider || 'AI'} logo`,
   };
 }
