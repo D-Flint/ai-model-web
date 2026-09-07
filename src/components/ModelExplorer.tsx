@@ -29,6 +29,7 @@ import {
   type LeaderboardMetricKey,
 } from '../lib/decision';
 import livebenchRows from '../data/livebenchData.json';
+import { CANONICAL_MODELS } from '../data/canonicalModels';
 
 export type LeaderboardColumnKey =
   | 'overall'
@@ -138,6 +139,13 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
   const [expandedRows, setExpandedRows] = useState<Record<string, boolean>>({});
   const [selectedSlugs, setSelectedSlugs] = useState<string[]>([]);
 
+  function getDisplayPriceLabel(model: CatalogModel, key: 'input' | 'output'): string {
+    const label = rateLabel(model, key);
+    if (label !== 'Unavailable') return label;
+    const fallbackVal = key === 'input' ? model.pricing?.input : model.pricing?.output;
+    return fallbackVal != null ? formatPrice(fallbackVal) : 'Unavailable';
+  }
+
   const [showCompareMenu, setShowCompareMenu] = useState(false);
   const [showColumnsMenu, setShowColumnsMenu] = useState(false);
   const [showMobileModal, setShowMobileModal] = useState(false);
@@ -207,6 +215,15 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
     return [...new Set(models.map((m) => m.provider))].sort();
   }, [models]);
 
+  const canonicalBySlug = useMemo(() => {
+    const map = new Map<string, (typeof CANONICAL_MODELS)[0]>();
+    for (const c of CANONICAL_MODELS) {
+      map.set(c.slug.toLowerCase(), c);
+      map.set(c.slug.toLowerCase().replace(/[^a-z0-9]/g, ''), c);
+    }
+    return map;
+  }, []);
+
   const livebenchMap = useMemo(() => {
     const map = new Map<string, (typeof livebenchRows)[0]>();
     for (const r of livebenchRows) {
@@ -235,38 +252,44 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
         displayName = `${model.name} ${effortSuffix}`;
       }
 
-      const inputPrice = comparablePrice(model);
+      // API pricing fallback: tiered apiPricing or verified official-provider pricing
+      const inputPrice = comparablePrice(model) ?? model.pricing?.input ?? null;
 
       const slugLower = model.slug.toLowerCase();
       const slugStripped = slugLower.replace(/[^a-z0-9]/g, '');
-      const lbRow =
-        livebenchMap.get(slugLower) || livebenchMap.get(slugStripped);
+      const canon = canonicalBySlug.get(slugLower) || canonicalBySlug.get(slugStripped);
 
-      const baseIntel = stats.scores.intelligence ?? stats.scores.overall ?? 70;
-      const mathVal =
-        stats.scores.research ??
-        lbRow?.math ??
-        (baseIntel ? Math.round(baseIntel - 2) : null);
-      const dataVal =
-        stats.scores.dailyUse ??
-        lbRow?.data_analysis ??
-        (baseIntel ? Math.round(baseIntel - 5) : null);
-      const instVal =
-        stats.scores.reliability ??
-        lbRow?.instruction_following ??
-        (baseIntel ? Math.round(baseIntel - 4) : null);
-      const langVal =
-        stats.scores.writing ??
-        (lbRow
-          ? Number(
-              (
-                (lbRow.global_average + lbRow.instruction_following) /
-                2
-              ).toFixed(1),
-            )
-          : baseIntel
-            ? Math.round(baseIntel - 3)
-            : null);
+      let lbRow = livebenchMap.get(slugLower) || livebenchMap.get(slugStripped);
+      if (!lbRow && canon?.livebenchAliases) {
+        for (const alias of canon.livebenchAliases) {
+          const matched =
+            livebenchMap.get(alias.toLowerCase()) ||
+            livebenchMap.get(alias.toLowerCase().replace(/[^a-z0-9]/g, ''));
+          if (matched) {
+            lbRow = matched;
+            break;
+          }
+        }
+      }
+
+      // Leaderboard capability scores strictly from the single LiveBench release.
+      // Missing benchmark values remain null (rendered as '—').
+      // Agentic Coding is strictly null (LiveBench has no agentic coding column; no BFCL/SWE-bench pollution).
+      const reasoningVal = lbRow?.reasoning ?? null;
+      const codingVal = lbRow?.coding ?? null;
+      const agenticVal: number | null = null;
+      const mathVal = lbRow?.math ?? null;
+      const dataVal = lbRow?.data_analysis ?? null;
+      const instVal = lbRow?.instruction_following ?? null;
+      const langVal = lbRow
+        ? Number(
+            (
+              (lbRow.global_average + (lbRow.instruction_following ?? lbRow.global_average)) /
+              2
+            ).toFixed(1),
+          )
+        : null;
+      const overallVal = lbRow ? lbRow.global_average : null;
 
       return {
         model,
@@ -275,21 +298,21 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
         releaseDate: model.facts.releaseDate,
         isOpenWeights: Boolean(model.facts.openWeights),
         scores: {
-          overall: stats.scores.overall,
-          reasoning: stats.scores.intelligence,
-          coding: stats.scores.coding,
-          agentic: stats.scores.agentic,
+          overall: overallVal,
+          reasoning: reasoningVal,
+          coding: codingVal,
+          agentic: agenticVal,
           mathematics: mathVal,
           dataAnalysis: dataVal,
           language: langVal,
           instructionFollowing: instVal,
           speed: stats.speedTokensPerSec,
           cost: inputPrice,
-        },
+        } as Record<LeaderboardMetricKey, number | null>,
         inputPrice,
       };
     });
-  }, [models, livebenchMap]);
+  }, [models, livebenchMap, canonicalBySlug]);
 
   const filteredRows = useMemo(() => {
     return processedModels.filter((row) => {
@@ -1113,7 +1136,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                             <td
                               className={`td-metric td-align-center ${sortColumn === 'speed' ? 'col-sorted' : ''}`}
                             >
-                              {row.scores.speed > 0
+                              {row.scores.speed != null && row.scores.speed > 0
                                 ? `${row.scores.speed} tok/s`
                                 : '—'}
                             </td>
@@ -1180,7 +1203,8 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                                   <div>
                                     <span className="spec-label">Speed</span>
                                     <strong>
-                                      {row.scores.speed > 0
+                                      {row.scores.speed != null &&
+                                      row.scores.speed > 0
                                         ? `${row.scores.speed} tok/s`
                                         : '—'}
                                     </strong>
@@ -1198,7 +1222,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                                       Input Price
                                     </span>
                                     <strong>
-                                      {rateLabel(row.model, 'input')} / 1M
+                                      {getDisplayPriceLabel(row.model, 'input')} / 1M
                                     </strong>
                                   </div>
                                   <div>
@@ -1206,7 +1230,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                                       Output Price
                                     </span>
                                     <strong>
-                                      {rateLabel(row.model, 'output')} / 1M
+                                      {getDisplayPriceLabel(row.model, 'output')} / 1M
                                     </strong>
                                   </div>
                                   <div>
@@ -1378,7 +1402,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                       <div className="mobile-expanded-specs">
                         <div>
                           <span className="spec-label">Speed</span>
-                          <strong>{row.scores.speed > 0 ? `${row.scores.speed} tok/s` : '—'}</strong>
+                          <strong>{row.scores.speed != null && row.scores.speed > 0 ? `${row.scores.speed} tok/s` : '—'}</strong>
                         </div>
                         <div>
                           <span className="spec-label">Context</span>
@@ -1386,11 +1410,11 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                         </div>
                         <div>
                           <span className="spec-label">Input Price</span>
-                          <strong>{rateLabel(row.model, 'input')} / 1M</strong>
+                          <strong>{getDisplayPriceLabel(row.model, 'input')} / 1M</strong>
                         </div>
                         <div>
                           <span className="spec-label">Output Price</span>
-                          <strong>{rateLabel(row.model, 'output')} / 1M</strong>
+                          <strong>{getDisplayPriceLabel(row.model, 'output')} / 1M</strong>
                         </div>
                         {row.model.facts.releaseDate && (
                           <div>
