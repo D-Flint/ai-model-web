@@ -1197,3 +1197,24 @@
 - Commit hash: `be39379` (local commit; no remote push).
 - Current state: Leaderboard scores strictly grounded in single LiveBench release, missing values render as `—`, pricing falls back to verified official specs.
 - Exact next step: User verifies leaderboard data and pricing locally at `http://localhost:4321/models`.
+
+## 2026-09-07 — Restrict Synapse v1 to Relevant LiveBench Models
+
+- Objective: Restrict visible v1 model catalog from 282 models to a curated LiveBench-backed set (target 30–80 models), keeping raw database intact while excluding unbenchmarked, deprecated, duplicate, and specialized non-general models.
+- Files changed:
+  - `src/lib/catalogEligibility.ts`: Added `evaluateModelEligibility` function with explicit categorization (`hasLiveBenchData`, `isRelevant`, `isUserAccessible`, `isNotDeprecated`, `isNotDuplicate`, `isSupportedModelType`).
+  - `src/data/models.ts`: Kept `allModels` for full catalog, filtered `models` export to tracked models meeting LiveBench eligibility (77 models).
+  - `src/components/ModelExplorer.tsx`: Added LiveBench-evaluated scope badge and explanation bar.
+  - `src/components/RankingList.astro`: Filtered metric rankings to benchmarked models with non-null scores.
+  - `src/pages/models/index.astro`: Updated heading subtitle to "Models benchmarked by LiveBench".
+  - `tests/apiPricing.test.ts`: Verified full catalog (`allModels`) retains all 12 verified API pricing entries.
+  - `tests/openrouterRankings.test.ts`: Updated test fixture call to use `allModels`.
+- Attempt count: 1.
+- Failures and causes: None.
+- Tests and results:
+  - `npm test`: 85/85 tests passed across 8 test suites.
+  - `npm run check`: 0 errors, 0 warnings across 86 files.
+  - `npm run build`: Production build succeeded (100 static routes generated).
+- Commit hash: `16f680c` (local commit; no remote push).
+- Current state: 77 curated LiveBench-evaluated models visible in v1 catalog, Model Finder, Rankings, and Model Explorer.
+- Exact next step: User verifies catalog count and rankings on `http://localhost:4321/models`.
