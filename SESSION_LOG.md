@@ -1250,3 +1250,14 @@
 - Commit hash: `6e16151` (local commit; no remote push).
 - Current state: Top-30 LiveBench catalog complete; full historical verified catalog preserved.
 - Exact next step: User verifies `/models`, `/find`, `/rankings`, and one model detail page locally before next implementation.
+
+## 2026-09-07 — Refine AGENTS.md from Product Brief
+
+- Objective: Read `ai-model-guide-gpt6-astra-brief.md`, keep durable agent rules, remove unnecessary duplication from `AGENTS.md`.
+- Files changed: `AGENTS.md`.
+- Attempt count: 1.
+- Failures and causes: Initial commit attempt hit `.git/index.lock` permission denial; escalated commit succeeded.
+- Tests and results: `git diff --check` passed.
+- Commit hash: `9bb516a` (local commit; no remote push).
+- Current state: `AGENTS.md` now contains concise product, architecture, data-integrity, UX, validation, workflow, and session-log rules.
+- Exact next step: User verifies updated agent instructions; no implementation started.
