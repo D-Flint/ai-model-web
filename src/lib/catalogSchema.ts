@@ -38,6 +38,15 @@ export const catalogModelSchema = z
       contextSourceId: z.string().min(1).optional(),
       maxOutput: z.number().int().positive(),
       speedTokensPerSec: z.number().int().positive().nullable().optional(),
+      speedTokensPerSecRange: z
+        .object({
+          min: z.number().int().positive(),
+          max: z.number().int().positive(),
+          sourceId: z.string().min(1),
+          retrievedAt: date,
+        })
+        .nullable()
+        .optional(),
       vision: z.boolean(),
       audio: z.boolean(),
       tools: z.boolean(),

@@ -30,6 +30,7 @@ import {
 } from '../lib/decision';
 import livebenchRows from '../data/livebenchData.json';
 import { CANONICAL_MODELS } from '../data/canonicalModels';
+import { defaultAliasResolver } from '../pipeline/aliasResolver';
 
 export type LeaderboardColumnKey =
   | 'overall'
@@ -139,20 +140,28 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
   const [expandedRows, setExpandedRows] = useState<Record<string, boolean>>({});
   const [selectedSlugs, setSelectedSlugs] = useState<string[]>([]);
 
-  function getDisplayPriceLabel(model: CatalogModel, key: 'input' | 'output'): string {
+  function getDisplayPriceLabel(
+    model: CatalogModel,
+    key: 'input' | 'output',
+  ): string {
     const label = rateLabel(model, key);
     if (label !== 'Unavailable') return label;
-    const fallbackVal = key === 'input' ? model.pricing?.input : model.pricing?.output;
+    const fallbackVal =
+      key === 'input' ? model.pricing?.input : model.pricing?.output;
     return fallbackVal != null ? formatPrice(fallbackVal) : 'Unavailable';
   }
 
   const [showCompareMenu, setShowCompareMenu] = useState(false);
   const [showColumnsMenu, setShowColumnsMenu] = useState(false);
   const [showMobileModal, setShowMobileModal] = useState(false);
-  const [mobileModalTab, setMobileModalTab] = useState<'categories' | 'columns'>('categories');
+  const [mobileModalTab, setMobileModalTab] = useState<
+    'categories' | 'columns'
+  >('categories');
   const [isMobileView, setIsMobileView] = useState(false);
   const [tempCategory, setTempCategory] = useState<string>('all');
-  const [tempVisibleColumns, setTempVisibleColumns] = useState<Record<LeaderboardColumnKey, boolean>>(() => {
+  const [tempVisibleColumns, setTempVisibleColumns] = useState<
+    Record<LeaderboardColumnKey, boolean>
+  >(() => {
     const init: Record<string, boolean> = {};
     for (const c of ALL_COLUMNS) {
       init[c.key] = c.defaultVisible;
@@ -230,6 +239,8 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
       map.set(r.model.toLowerCase(), r);
       const stripped = r.model.toLowerCase().replace(/[^a-z0-9]/g, '');
       map.set(stripped, r);
+      const canonical = defaultAliasResolver.resolve('livebench', r.model);
+      if (canonical) map.set(`canonical:${canonical.slug}`, r);
     }
     return map;
   }, []);
@@ -257,9 +268,13 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
       const slugLower = model.slug.toLowerCase();
       const slugStripped = slugLower.replace(/[^a-z0-9]/g, '');
-      const canon = canonicalBySlug.get(slugLower) || canonicalBySlug.get(slugStripped);
+      const canon =
+        canonicalBySlug.get(slugLower) || canonicalBySlug.get(slugStripped);
 
-      let lbRow = livebenchMap.get(slugLower) || livebenchMap.get(slugStripped);
+      let lbRow =
+        livebenchMap.get(slugLower) ||
+        livebenchMap.get(slugStripped) ||
+        livebenchMap.get(`canonical:${model.slug}`);
       if (!lbRow && canon?.livebenchAliases) {
         for (const alias of canon.livebenchAliases) {
           const matched =
@@ -274,22 +289,21 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
       // Leaderboard capability scores strictly from the single LiveBench release.
       // Missing benchmark values remain null (rendered as '—').
-      // Agentic Coding is strictly null (LiveBench has no agentic coding column; no BFCL/SWE-bench pollution).
       const reasoningVal = lbRow?.reasoning ?? null;
       const codingVal = lbRow?.coding ?? null;
-      const agenticVal: number | null = null;
       const mathVal = lbRow?.math ?? null;
       const dataVal = lbRow?.data_analysis ?? null;
       const instVal = lbRow?.instruction_following ?? null;
-      const langVal = lbRow
-        ? Number(
-            (
-              (lbRow.global_average + (lbRow.instruction_following ?? lbRow.global_average)) /
-              2
-            ).toFixed(1),
-          )
-        : null;
+      const langVal = lbRow?.language ?? null;
       const overallVal = lbRow ? lbRow.global_average : null;
+      const speedRange = model.facts.speedTokensPerSecRange;
+      const speedLabel = speedRange
+        ? speedRange.min === speedRange.max
+          ? `${speedRange.min} tok/s`
+          : `${speedRange.min}–${speedRange.max} tok/s`
+        : stats.speedTokensPerSec > 0
+          ? `${stats.speedTokensPerSec} tok/s`
+          : null;
 
       return {
         model,
@@ -301,7 +315,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
           overall: overallVal,
           reasoning: reasoningVal,
           coding: codingVal,
-          agentic: agenticVal,
+          agentic: lbRow?.agentic_coding ?? null,
           mathematics: mathVal,
           dataAnalysis: dataVal,
           language: langVal,
@@ -310,6 +324,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
           cost: inputPrice,
         } as Record<LeaderboardMetricKey, number | null>,
         inputPrice,
+        speedLabel,
       };
     });
   }, [models, livebenchMap, canonicalBySlug]);
@@ -640,8 +655,8 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
               type="button"
               className={`view-mode-btn ${viewMode === 'table' ? 'active' : ''}`}
               onClick={() => setViewMode('table')}
-              title={isMobileView ? "List View" : "Table View"}
-              aria-label={isMobileView ? "List View" : "Table View"}
+              title={isMobileView ? 'List View' : 'Table View'}
+              aria-label={isMobileView ? 'List View' : 'Table View'}
               aria-pressed={viewMode === 'table'}
             >
               {isMobileView ? <List size={16} /> : <TableIcon size={16} />}
@@ -664,7 +679,8 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
       <div className="leaderboard-scope-bar">
         <span className="scope-badge">LiveBench-evaluated</span>
         <span className="scope-text">
-          Showing models with official LiveBench benchmark evaluations. Scores replicate LiveBench arithmetic mean across categories.
+          Showing models with official LiveBench benchmark evaluations. Scores
+          replicate LiveBench arithmetic mean across categories.
         </span>
       </div>
 
@@ -729,15 +745,20 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
         </button>
 
         <div className="mobile-sort-select-wrapper">
-          <label htmlFor="mobile-sort-select" className="sr-only">Sort by</label>
+          <label htmlFor="mobile-sort-select" className="sr-only">
+            Sort by
+          </label>
           <select
             id="mobile-sort-select"
             className="mobile-sort-select"
             value={sortColumn}
             onChange={(e) => {
-              const val = e.target.value as LeaderboardColumnKey | 'name' | 'releaseDate';
+              const val = e.target.value as
+                LeaderboardColumnKey | 'name' | 'releaseDate';
               setSortColumn(val);
-              setSortDirection(val === 'name' || val === 'cost' ? 'asc' : 'desc');
+              setSortDirection(
+                val === 'name' || val === 'cost' ? 'asc' : 'desc',
+              );
               const matchedCat = CATEGORIES.find((c) => c.sortCol === val);
               if (matchedCat) setActiveCategory(matchedCat.id);
             }}
@@ -1145,7 +1166,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                               className={`td-metric td-align-center ${sortColumn === 'speed' ? 'col-sorted' : ''}`}
                             >
                               {row.scores.speed != null && row.scores.speed > 0
-                                ? `${row.scores.speed} tok/s`
+                                ? row.speedLabel
                                 : '—'}
                             </td>
                           )}
@@ -1230,7 +1251,8 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                                       Input Price
                                     </span>
                                     <strong>
-                                      {getDisplayPriceLabel(row.model, 'input')} / 1M
+                                      {getDisplayPriceLabel(row.model, 'input')}{' '}
+                                      / 1M
                                     </strong>
                                   </div>
                                   <div>
@@ -1238,7 +1260,11 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                                       Output Price
                                     </span>
                                     <strong>
-                                      {getDisplayPriceLabel(row.model, 'output')} / 1M
+                                      {getDisplayPriceLabel(
+                                        row.model,
+                                        'output',
+                                      )}{' '}
+                                      / 1M
                                     </strong>
                                   </div>
                                   <div>
@@ -1304,7 +1330,10 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
               const isSelected = selectedSlugs.includes(row.model.slug);
 
               // Extract top 3 metrics to display
-              const metricCandidates: Array<{ label: string; val: number | null }> = [
+              const metricCandidates: Array<{
+                label: string;
+                val: number | null;
+              }> = [
                 { label: 'Reasoning', val: row.scores.reasoning },
                 { label: 'Coding', val: row.scores.coding },
                 { label: 'Agentic', val: row.scores.agentic },
@@ -1312,7 +1341,9 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                 { label: 'Data Analysis', val: row.scores.dataAnalysis },
               ];
               const topMetrics = metricCandidates
-                .filter((m) => m.val !== null && m.val !== undefined && m.val > 0)
+                .filter(
+                  (m) => m.val !== null && m.val !== undefined && m.val > 0,
+                )
                 .slice(0, 3);
 
               return (
@@ -1340,7 +1371,13 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                           href={`/models/${row.model.slug}`}
                           className="mobile-model-name"
                           onClick={(e) => {
-                            if (!e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey && e.button === 0) {
+                            if (
+                              !e.metaKey &&
+                              !e.ctrlKey &&
+                              !e.shiftKey &&
+                              !e.altKey &&
+                              e.button === 0
+                            ) {
                               e.preventDefault();
                             }
                           }}
@@ -1353,16 +1390,16 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                       </div>
                       <div className="mobile-model-score-line">
                         <span className="mobile-score-val">
-                          {row.scores.overall !== null ? row.scores.overall.toFixed(1) : '—'}
+                          {row.scores.overall !== null
+                            ? row.scores.overall.toFixed(1)
+                            : '—'}
                         </span>
                         <span className="mobile-score-lbl">Overall</span>
                       </div>
                     </div>
 
                     <div className="mobile-card-actions">
-                      <span className="mobile-rank-badge">
-                        #{index + 1}
-                      </span>
+                      <span className="mobile-rank-badge">#{index + 1}</span>
                       <a
                         href={`/models/${row.model.slug}`}
                         className="mobile-detail-chevron"
@@ -1395,7 +1432,9 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                       {row.model.provider}
                     </span>
                     {row.model.tags.slice(0, 2).map((t) => (
-                      <span key={t} className="mobile-tag-pill">{t}</span>
+                      <span key={t} className="mobile-tag-pill">
+                        {t}
+                      </span>
                     ))}
                   </div>
 
@@ -1405,24 +1444,36 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                       className="mobile-expanded-details"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <p className="mobile-expanded-desc">{row.model.description}</p>
+                      <p className="mobile-expanded-desc">
+                        {row.model.description}
+                      </p>
 
                       <div className="mobile-expanded-specs">
                         <div>
                           <span className="spec-label">Speed</span>
-                          <strong>{row.scores.speed != null && row.scores.speed > 0 ? `${row.scores.speed} tok/s` : '—'}</strong>
+                          <strong>
+                            {row.scores.speed != null && row.scores.speed > 0
+                              ? row.speedLabel
+                              : '—'}
+                          </strong>
                         </div>
                         <div>
                           <span className="spec-label">Context</span>
-                          <strong>{contextSize(row.model.facts.context)}</strong>
+                          <strong>
+                            {contextSize(row.model.facts.context)}
+                          </strong>
                         </div>
                         <div>
                           <span className="spec-label">Input Price</span>
-                          <strong>{getDisplayPriceLabel(row.model, 'input')} / 1M</strong>
+                          <strong>
+                            {getDisplayPriceLabel(row.model, 'input')} / 1M
+                          </strong>
                         </div>
                         <div>
                           <span className="spec-label">Output Price</span>
-                          <strong>{getDisplayPriceLabel(row.model, 'output')} / 1M</strong>
+                          <strong>
+                            {getDisplayPriceLabel(row.model, 'output')} / 1M
+                          </strong>
                         </div>
                         {row.model.facts.releaseDate && (
                           <div>
@@ -1433,21 +1484,36 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                         {row.maxEffort !== 'none' && (
                           <div>
                             <span className="spec-label">Reasoning Effort</span>
-                            <strong>{row.maxEffort === 'fixed' ? 'Fixed CoT' : row.maxEffort}</strong>
+                            <strong>
+                              {row.maxEffort === 'fixed'
+                                ? 'Fixed CoT'
+                                : row.maxEffort}
+                            </strong>
                           </div>
                         )}
                       </div>
 
                       {/* All visible column scores */}
                       <div className="mobile-expanded-all-scores">
-                        <span className="spec-label" style={{ marginBottom: '6px' }}>All Scores</span>
+                        <span
+                          className="spec-label"
+                          style={{ marginBottom: '6px' }}
+                        >
+                          All Scores
+                        </span>
                         <div className="mobile-scores-grid">
-                          {ALL_COLUMNS.filter((c) => c.key !== 'cost' && c.key !== 'speed').map((col) => {
+                          {ALL_COLUMNS.filter(
+                            (c) => c.key !== 'cost' && c.key !== 'speed',
+                          ).map((col) => {
                             const val = row.scores[col.key];
                             return (
                               <div key={col.key} className="mobile-score-cell">
                                 <span className="cell-lbl">{col.label}</span>
-                                <span className="cell-val">{val !== null && val !== undefined ? Number(val).toFixed(1) : '—'}</span>
+                                <span className="cell-val">
+                                  {val !== null && val !== undefined
+                                    ? Number(val).toFixed(1)
+                                    : '—'}
+                                </span>
                               </div>
                             );
                           })}
@@ -1460,7 +1526,11 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                           className={`button ${isSelected ? 'primary' : ''}`}
                           onClick={() => toggleSelect(row.model.slug)}
                         >
-                          {isSelected ? <Check size={14} /> : <Plus size={14} />}
+                          {isSelected ? (
+                            <Check size={14} />
+                          ) : (
+                            <Plus size={14} />
+                          )}
                           {isSelected ? 'In Compare' : 'Add to Compare'}
                         </button>
                         <a
@@ -1586,7 +1656,11 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                 className="button primary mobile-modal-apply"
                 onClick={applyMobileModal}
               >
-                Apply ({mobileModalTab === 'categories' ? 1 : Object.values(tempVisibleColumns).filter(Boolean).length})
+                Apply (
+                {mobileModalTab === 'categories'
+                  ? 1
+                  : Object.values(tempVisibleColumns).filter(Boolean).length}
+                )
               </button>
             </div>
           </div>

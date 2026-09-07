@@ -1,4 +1,9 @@
-import { openRouterResponseSchema, type OpenRouterModel } from './types';
+import {
+  openRouterEndpointsResponseSchema,
+  openRouterResponseSchema,
+  type OpenRouterEndpoint,
+  type OpenRouterModel,
+} from './types';
 import { defaultAliasResolver, ModelAliasResolver } from './aliasResolver';
 import type { CanonicalModelConfig } from './types';
 
@@ -15,6 +20,14 @@ export interface OpenRouterExtractedData {
   supportsAudio: boolean;
   retrievedAt: string;
   sourceUrl: string;
+}
+
+export interface OpenRouterThroughputRange {
+  min: number;
+  max: number;
+  midpoint: number;
+  sourceId: 'openrouter-throughput';
+  retrievedAt: string;
 }
 
 export async function fetchOpenRouterModels(options?: {
@@ -47,6 +60,75 @@ export async function fetchOpenRouterModels(options?: {
   }
 
   return parsed.data.data;
+}
+
+export async function fetchOpenRouterEndpoints(
+  modelId: string,
+  options?: { apiKey?: string; endpoint?: string },
+): Promise<OpenRouterEndpoint[]> {
+  const [author, ...slugParts] = modelId.split('/');
+  const slug = slugParts.join('/');
+  if (!author || !slug) {
+    throw new Error(`OpenRouter model ID is invalid: ${modelId}`);
+  }
+
+  const endpoint =
+    options?.endpoint ??
+    `https://openrouter.ai/api/v1/models/${encodeURIComponent(author)}/${encodeURIComponent(slug)}/endpoints`;
+  const apiKey = options?.apiKey || process.env.OPENROUTER_API_KEY;
+  const headers: Record<string, string> = {
+    Accept: 'application/json',
+    'User-Agent': 'Astra-Model-Guide/1.0',
+  };
+  if (apiKey) headers['Authorization'] = `Bearer ${apiKey}`;
+
+  const response = await fetch(endpoint, { headers });
+  if (!response.ok) {
+    throw new Error(
+      `OpenRouter endpoint fetch failed: HTTP ${response.status} ${response.statusText}`,
+    );
+  }
+
+  const parsed = openRouterEndpointsResponseSchema.safeParse(
+    await response.json(),
+  );
+  if (!parsed.success) {
+    throw new Error('OpenRouter endpoint payload failed schema validation');
+  }
+  return parsed.data.data.endpoints;
+}
+
+export function processOpenRouterThroughput(
+  endpoints: OpenRouterEndpoint[],
+  retrievedAt = new Date().toISOString().split('T')[0],
+): OpenRouterThroughputRange | null {
+  const values = endpoints
+    .filter(
+      (endpoint) =>
+        endpoint.status === undefined ||
+        endpoint.status === null ||
+        endpoint.status === 0,
+    )
+    .map((endpoint) => endpoint.throughput_last_30m?.p50)
+    .filter(
+      (value): value is number =>
+        value !== null &&
+        value !== undefined &&
+        Number.isFinite(value) &&
+        value > 0,
+    );
+
+  if (values.length === 0) return null;
+
+  const min = Math.max(1, Math.round(Math.min(...values)));
+  const max = Math.max(min, Math.round(Math.max(...values)));
+  return {
+    min,
+    max,
+    midpoint: Math.round((min + max) / 2),
+    sourceId: 'openrouter-throughput',
+    retrievedAt,
+  };
 }
 
 export function processOpenRouterModels(

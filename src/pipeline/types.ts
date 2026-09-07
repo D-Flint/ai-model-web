@@ -36,11 +36,32 @@ export const openRouterModelSchema = z.object({
   per_request_limits: z.unknown().optional().nullable(),
 });
 
+export const openRouterThroughputSchema = z.object({
+  p50: z.number().nonnegative().optional().nullable(),
+  p75: z.number().nonnegative().optional().nullable(),
+  p90: z.number().nonnegative().optional().nullable(),
+  p99: z.number().nonnegative().optional().nullable(),
+});
+
+export const openRouterEndpointSchema = z.object({
+  model_id: z.string().min(1),
+  provider_name: z.string().min(1),
+  status: z.number().int().optional().nullable(),
+  throughput_last_30m: openRouterThroughputSchema.optional().nullable(),
+});
+
+export const openRouterEndpointsResponseSchema = z.object({
+  data: z.object({
+    endpoints: z.array(openRouterEndpointSchema),
+  }),
+});
+
 export const openRouterResponseSchema = z.object({
   data: z.array(openRouterModelSchema),
 });
 
 export type OpenRouterModel = z.infer<typeof openRouterModelSchema>;
+export type OpenRouterEndpoint = z.infer<typeof openRouterEndpointSchema>;
 
 // ---------------------------------------------------------------------------
 // LMArena Payload Schemas (Hugging Face Serverless Dataset API)
@@ -130,6 +151,8 @@ export const liveBenchRowSchema = z.object({
   coding: z.number().min(0).max(100).optional(),
   data_analysis: z.number().min(0).max(100).optional(),
   instruction_following: z.number().min(0).max(100).optional(),
+  agentic_coding: z.number().min(0).max(100).optional(),
+  language: z.number().min(0).max(100).optional(),
   date: z.string().optional(),
 });
 export type LiveBenchRow = z.infer<typeof liveBenchRowSchema>;

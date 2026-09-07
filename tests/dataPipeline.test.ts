@@ -12,6 +12,8 @@ import {
 } from '../src/pipeline/normalization';
 import { calculateConfidence } from '../src/pipeline/confidence';
 import { processOpenRouterModels } from '../src/pipeline/openrouter';
+import { processOpenRouterThroughput } from '../src/pipeline/openrouter';
+import { processLiveBenchResults } from '../src/pipeline/livebench';
 import { catalogSchema } from '../src/lib/catalogSchema';
 import { validateCatalog } from '../src/lib/importCatalog';
 import verifiedModels from '../src/data/verifiedModels.json';
@@ -49,6 +51,68 @@ describe('OpenRouter Payload Validation', () => {
 
     const parsed = openRouterModelSchema.safeParse(invalid);
     expect(parsed.success).toBe(false);
+  });
+
+  it('extracts recent p50 throughput as a model range', () => {
+    const throughput = processOpenRouterThroughput([
+      {
+        model_id: 'openai/gpt-5',
+        provider_name: 'OpenAI',
+        status: 0,
+        throughput_last_30m: { p50: 20 },
+      },
+      {
+        model_id: 'openai/gpt-5',
+        provider_name: 'Together',
+        status: 0,
+        throughput_last_30m: { p50: 40 },
+      },
+      {
+        model_id: 'openai/gpt-5',
+        provider_name: 'Unavailable',
+        status: 1,
+        throughput_last_30m: { p50: 999 },
+      },
+    ]);
+
+    expect(throughput).toMatchObject({
+      min: 20,
+      max: 40,
+      midpoint: 30,
+      sourceId: 'openrouter-throughput',
+    });
+  });
+});
+
+describe('LiveBench native categories', () => {
+  it('normalizes Agentic Coding into traceable agentic evidence', () => {
+    const measurements = processLiveBenchResults(
+      [
+        {
+          model: 'o3-mini',
+          global_average: 80,
+          reasoning: 82,
+          coding: 78,
+          agentic_coding: 71.5,
+          math: 80,
+          data_analysis: 79,
+          language: 81,
+          instruction_following: 80,
+          date: '2026-06-25',
+        },
+      ],
+      defaultAliasResolver,
+    );
+
+    expect(
+      measurements.find((measurement) => measurement.category === 'agentic'),
+    ).toMatchObject({
+      benchmarkName: 'LiveBench Agentic Coding',
+      rawScore: 71.5,
+      normalizedScore: 72,
+      sourceId: 'livebench-leaderboard',
+      evaluationDate: '2026-06-25',
+    });
   });
 });
 

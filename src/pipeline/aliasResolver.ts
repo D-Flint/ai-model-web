@@ -1,4 +1,5 @@
 import { CANONICAL_MODELS } from '../data/canonicalModels';
+import { LIVEBENCH_RELEASE_ALIASES } from '../data/livebenchReleaseAliases';
 import type { CanonicalModelConfig } from './types';
 
 export class ModelAliasResolver {
@@ -33,6 +34,11 @@ export class ModelAliasResolver {
       for (const alias of model.bfclAliases ?? []) {
         this.bfclMap.set(alias.toLowerCase().trim(), model);
       }
+    }
+
+    for (const [alias, slug] of Object.entries(LIVEBENCH_RELEASE_ALIASES)) {
+      const model = this.slugMap.get(slug.toLowerCase());
+      if (model) this.livebenchMap.set(alias.toLowerCase(), model);
     }
   }
 

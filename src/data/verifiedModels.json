@@ -52,7 +52,7 @@
     "scores": {
       "intelligence": 85,
       "coding": 87,
-      "agentic": 95,
+      "agentic": 57,
       "dailyUse": null,
       "research": null,
       "writing": null,
@@ -60,7 +60,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 19,
-      "overall": 78
+      "overall": 70
     },
     "evidence": [
       {
@@ -84,16 +84,6 @@
         "updatedAt": "2026-09-02"
       },
       {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 94.8,
-        "min": 0,
-        "max": 100,
-        "normalized": 95,
-        "sourceId": "berkeley-function-calling-leaderboard",
-        "updatedAt": "2026-09-02"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 19,
@@ -102,11 +92,21 @@
         "normalized": 19,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 57.3,
+        "min": 0,
+        "max": 100,
+        "normalized": 57,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 75,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-05",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -314,7 +314,7 @@
     "scores": {
       "intelligence": null,
       "coding": 86,
-      "agentic": null,
+      "agentic": 57,
       "dailyUse": 67,
       "research": null,
       "writing": null,
@@ -322,7 +322,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 88,
-      "overall": 76
+      "overall": 72
     },
     "evidence": [
       {
@@ -364,11 +364,21 @@
         "normalized": 88,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 56.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 57,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 74,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-05",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -395,6 +405,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -444,7 +462,7 @@
     "scores": {
       "intelligence": 82,
       "coding": 82,
-      "agentic": 93,
+      "agentic": 54,
       "dailyUse": null,
       "research": null,
       "writing": null,
@@ -452,7 +470,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 77,
-      "overall": 84
+      "overall": 75
     },
     "evidence": [
       {
@@ -476,16 +494,6 @@
         "updatedAt": "2026-08-20"
       },
       {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 92.5,
-        "min": 0,
-        "max": 100,
-        "normalized": 93,
-        "sourceId": "berkeley-function-calling-leaderboard",
-        "updatedAt": "2026-08-20"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 77,
@@ -494,11 +502,21 @@
         "normalized": 77,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 54.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 54,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 75,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-06",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -728,7 +746,7 @@
     "scores": {
       "intelligence": null,
       "coding": null,
-      "agentic": null,
+      "agentic": 62,
       "dailyUse": null,
       "research": null,
       "writing": null,
@@ -736,7 +754,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 57,
-      "overall": 57
+      "overall": 60
     },
     "evidence": [
       {
@@ -748,11 +766,21 @@
         "normalized": 57,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 62.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 62,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 48,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-06",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -771,6 +799,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -820,7 +856,7 @@
     "scores": {
       "intelligence": 81,
       "coding": 83,
-      "agentic": 93,
+      "agentic": 56,
       "dailyUse": null,
       "research": null,
       "writing": null,
@@ -828,7 +864,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 25,
-      "overall": 76
+      "overall": 68
     },
     "evidence": [
       {
@@ -852,16 +888,6 @@
         "updatedAt": "2026-07-09"
       },
       {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 92.5,
-        "min": 0,
-        "max": 100,
-        "normalized": 93,
-        "sourceId": "berkeley-function-calling-leaderboard",
-        "updatedAt": "2026-07-09"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 25,
@@ -870,11 +896,21 @@
         "normalized": 25,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 56.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 56,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 75,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-05",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -958,7 +994,7 @@
     "scores": {
       "intelligence": 75,
       "coding": 75,
-      "agentic": 89,
+      "agentic": 55,
       "dailyUse": null,
       "research": null,
       "writing": null,
@@ -966,7 +1002,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 40,
-      "overall": 73
+      "overall": 66
     },
     "evidence": [
       {
@@ -990,16 +1026,6 @@
         "updatedAt": "2026-07-09"
       },
       {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 89.2,
-        "min": 0,
-        "max": 100,
-        "normalized": 89,
-        "sourceId": "berkeley-function-calling-leaderboard",
-        "updatedAt": "2026-07-09"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 40,
@@ -1008,11 +1034,21 @@
         "normalized": 40,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 54.9,
+        "min": 0,
+        "max": 100,
+        "normalized": 55,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 75,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-05",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -1096,7 +1132,7 @@
     "scores": {
       "intelligence": 65,
       "coding": 64,
-      "agentic": 85,
+      "agentic": 48,
       "dailyUse": null,
       "research": null,
       "writing": null,
@@ -1104,7 +1140,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 70,
-      "overall": 70
+      "overall": 62
     },
     "evidence": [
       {
@@ -1128,16 +1164,6 @@
         "updatedAt": "2026-07-09"
       },
       {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 84.6,
-        "min": 0,
-        "max": 100,
-        "normalized": 85,
-        "sourceId": "berkeley-function-calling-leaderboard",
-        "updatedAt": "2026-07-09"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 70,
@@ -1146,11 +1172,21 @@
         "normalized": 70,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 48.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 48,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 75,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-05",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -1234,7 +1270,7 @@
     "scores": {
       "intelligence": 80,
       "coding": 80,
-      "agentic": 91,
+      "agentic": 58,
       "dailyUse": null,
       "research": null,
       "writing": null,
@@ -1242,7 +1278,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 77,
-      "overall": 82
+      "overall": 75
     },
     "evidence": [
       {
@@ -1266,16 +1302,6 @@
         "updatedAt": "2026-06-20"
       },
       {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 91.2,
-        "min": 0,
-        "max": 100,
-        "normalized": 91,
-        "sourceId": "berkeley-function-calling-leaderboard",
-        "updatedAt": "2026-06-20"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 77,
@@ -1284,11 +1310,21 @@
         "normalized": 77,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 58.3,
+        "min": 0,
+        "max": 100,
+        "normalized": 58,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 75,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-06",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -1480,7 +1516,7 @@
     "scores": {
       "intelligence": 85,
       "coding": 89,
-      "agentic": 95,
+      "agentic": 66,
       "dailyUse": null,
       "research": null,
       "writing": null,
@@ -1488,7 +1524,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 20,
-      "overall": 79
+      "overall": 73
     },
     "evidence": [
       {
@@ -1512,16 +1548,6 @@
         "updatedAt": "2026-06-15"
       },
       {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 94.8,
-        "min": 0,
-        "max": 100,
-        "normalized": 95,
-        "sourceId": "berkeley-function-calling-leaderboard",
-        "updatedAt": "2026-06-15"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 20,
@@ -1530,11 +1556,21 @@
         "normalized": 20,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 66.1,
+        "min": 0,
+        "max": 100,
+        "normalized": 66,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 75,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-06",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -1627,7 +1663,7 @@
     "scores": {
       "intelligence": null,
       "coding": 70,
-      "agentic": null,
+      "agentic": 41,
       "dailyUse": 62,
       "research": null,
       "writing": null,
@@ -1635,7 +1671,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 68,
-      "overall": 64
+      "overall": 59
     },
     "evidence": [
       {
@@ -1677,11 +1713,21 @@
         "normalized": 68,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 40.7,
+        "min": 0,
+        "max": 100,
+        "normalized": 41,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 74,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-06",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -1708,6 +1754,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -1757,7 +1811,7 @@
     "scores": {
       "intelligence": 56,
       "coding": 52,
-      "agentic": 78,
+      "agentic": 47,
       "dailyUse": null,
       "research": null,
       "writing": null,
@@ -1765,7 +1819,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 85,
-      "overall": 64
+      "overall": 57
     },
     "evidence": [
       {
@@ -1789,16 +1843,6 @@
         "updatedAt": "2026-05-18"
       },
       {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 78.4,
-        "min": 0,
-        "max": 100,
-        "normalized": 78,
-        "sourceId": "berkeley-function-calling-leaderboard",
-        "updatedAt": "2026-05-18"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 85,
@@ -1807,11 +1851,21 @@
         "normalized": 85,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 46.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 47,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 75,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-05",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -2033,7 +2087,7 @@
     "scores": {
       "intelligence": null,
       "coding": 67,
-      "agentic": null,
+      "agentic": 46,
       "dailyUse": null,
       "research": null,
       "writing": null,
@@ -2041,7 +2095,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 60,
-      "overall": 65
+      "overall": 58
     },
     "evidence": [
       {
@@ -2063,11 +2117,21 @@
         "normalized": 60,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 45.7,
+        "min": 0,
+        "max": 100,
+        "normalized": 46,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 67,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-06",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -2094,6 +2158,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -2143,7 +2215,7 @@
     "scores": {
       "intelligence": 76,
       "coding": 77,
-      "agentic": 90,
+      "agentic": 43,
       "dailyUse": null,
       "research": null,
       "writing": null,
@@ -2151,7 +2223,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 80,
-      "overall": 80
+      "overall": 70
     },
     "evidence": [
       {
@@ -2175,16 +2247,6 @@
         "updatedAt": "2026-05-14"
       },
       {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 89.8,
-        "min": 0,
-        "max": 100,
-        "normalized": 90,
-        "sourceId": "berkeley-function-calling-leaderboard",
-        "updatedAt": "2026-05-14"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 80,
@@ -2193,11 +2255,21 @@
         "normalized": 80,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 43.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 43,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 75,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-06",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -2280,7 +2352,7 @@
     "scores": {
       "intelligence": 81,
       "coding": 85,
-      "agentic": 92,
+      "agentic": 59,
       "dailyUse": null,
       "research": null,
       "writing": null,
@@ -2288,7 +2360,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 41,
-      "overall": 79
+      "overall": 72
     },
     "evidence": [
       {
@@ -2312,16 +2384,6 @@
         "updatedAt": "2026-05-02"
       },
       {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 92.2,
-        "min": 0,
-        "max": 100,
-        "normalized": 92,
-        "sourceId": "berkeley-function-calling-leaderboard",
-        "updatedAt": "2026-05-02"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 41,
@@ -2330,11 +2392,21 @@
         "normalized": 41,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 59.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 59,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 75,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-06",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -2650,7 +2722,7 @@
     "scores": {
       "intelligence": null,
       "coding": 73,
-      "agentic": null,
+      "agentic": 47,
       "dailyUse": 65,
       "research": null,
       "writing": null,
@@ -2658,7 +2730,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 60,
-      "overall": 65
+      "overall": 61
     },
     "evidence": [
       {
@@ -2700,11 +2772,21 @@
         "normalized": 60,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 46.9,
+        "min": 0,
+        "max": 100,
+        "normalized": 47,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 74,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-06",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -2731,6 +2813,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -2780,7 +2870,7 @@
     "scores": {
       "intelligence": 83,
       "coding": 87,
-      "agentic": 94,
+      "agentic": 65,
       "dailyUse": null,
       "research": null,
       "writing": null,
@@ -2788,7 +2878,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 29,
-      "overall": 79
+      "overall": 73
     },
     "evidence": [
       {
@@ -2812,16 +2902,6 @@
         "updatedAt": "2026-04-10"
       },
       {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 93.6,
-        "min": 0,
-        "max": 100,
-        "normalized": 94,
-        "sourceId": "berkeley-function-calling-leaderboard",
-        "updatedAt": "2026-04-10"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 29,
@@ -2830,11 +2910,21 @@
         "normalized": 29,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 65.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 65,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 75,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-06",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -2918,7 +3008,7 @@
     "scores": {
       "intelligence": 73,
       "coding": 73,
-      "agentic": 88,
+      "agentic": 49,
       "dailyUse": null,
       "research": null,
       "writing": null,
@@ -2926,7 +3016,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 82,
-      "overall": 78
+      "overall": 69
     },
     "evidence": [
       {
@@ -2950,16 +3040,6 @@
         "updatedAt": "2026-03-25"
       },
       {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 88.4,
-        "min": 0,
-        "max": 100,
-        "normalized": 88,
-        "sourceId": "berkeley-function-calling-leaderboard",
-        "updatedAt": "2026-03-25"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 82,
@@ -2968,11 +3048,21 @@
         "normalized": 82,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 49,
+        "min": 0,
+        "max": 100,
+        "normalized": 49,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 75,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-06",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -3056,7 +3146,7 @@
     "scores": {
       "intelligence": 65,
       "coding": 63,
-      "agentic": 84,
+      "agentic": 45,
       "dailyUse": 62,
       "research": null,
       "writing": null,
@@ -3064,7 +3154,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 92,
-      "overall": 69
+      "overall": 62
     },
     "evidence": [
       {
@@ -3098,16 +3188,6 @@
         "updatedAt": "2026-09-05"
       },
       {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 83.5,
-        "min": 0,
-        "max": 100,
-        "normalized": 84,
-        "sourceId": "berkeley-function-calling-leaderboard",
-        "updatedAt": "2026-03-25"
-      },
-      {
         "metric": "dailyUse",
         "kind": "benchmark",
         "raw": 1436,
@@ -3136,11 +3216,21 @@
         "normalized": 92,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 45.3,
+        "min": 0,
+        "max": 100,
+        "normalized": 45,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 88,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-06",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -3369,7 +3459,7 @@
     "scores": {
       "intelligence": 76,
       "coding": 78,
-      "agentic": 90,
+      "agentic": 50,
       "dailyUse": null,
       "research": null,
       "writing": null,
@@ -3377,7 +3467,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 31,
-      "overall": 73
+      "overall": 65
     },
     "evidence": [
       {
@@ -3401,16 +3491,6 @@
         "updatedAt": "2026-03-20"
       },
       {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 89.8,
-        "min": 0,
-        "max": 100,
-        "normalized": 90,
-        "sourceId": "berkeley-function-calling-leaderboard",
-        "updatedAt": "2026-03-20"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 31,
@@ -3419,11 +3499,21 @@
         "normalized": 31,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 50.3,
+        "min": 0,
+        "max": 100,
+        "normalized": 50,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 75,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-05",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -3507,7 +3597,7 @@
     "scores": {
       "intelligence": 82,
       "coding": 88,
-      "agentic": 93,
+      "agentic": 62,
       "dailyUse": 71,
       "research": 33,
       "writing": null,
@@ -3515,7 +3605,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 20,
-      "overall": 70
+      "overall": 66
     },
     "evidence": [
       {
@@ -3547,16 +3637,6 @@
         "normalized": 90,
         "sourceId": "lmarena-leaderboard",
         "updatedAt": "2026-09-05"
-      },
-      {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 92.5,
-        "min": 0,
-        "max": 100,
-        "normalized": 93,
-        "sourceId": "berkeley-function-calling-leaderboard",
-        "updatedAt": "2026-03-20"
       },
       {
         "metric": "dailyUse",
@@ -3597,11 +3677,21 @@
         "normalized": 20,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 62.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 62,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 91,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-06",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -4498,7 +4588,7 @@
     "scores": {
       "intelligence": 82,
       "coding": 84,
-      "agentic": 93,
+      "agentic": 44,
       "dailyUse": null,
       "research": null,
       "writing": null,
@@ -4506,7 +4596,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 49,
-      "overall": 80
+      "overall": 70
     },
     "evidence": [
       {
@@ -4530,16 +4620,6 @@
         "updatedAt": "2026-02-12"
       },
       {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 93,
-        "min": 0,
-        "max": 100,
-        "normalized": 93,
-        "sourceId": "berkeley-function-calling-leaderboard",
-        "updatedAt": "2026-02-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 49,
@@ -4548,11 +4628,21 @@
         "normalized": 49,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 44.1,
+        "min": 0,
+        "max": 100,
+        "normalized": 44,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 75,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-06",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -6298,7 +6388,7 @@
     "scores": {
       "intelligence": 80,
       "coding": 80,
-      "agentic": 92,
+      "agentic": 51,
       "dailyUse": 65,
       "research": 29,
       "writing": null,
@@ -6306,7 +6396,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 29,
-      "overall": 67
+      "overall": 61
     },
     "evidence": [
       {
@@ -6338,16 +6428,6 @@
         "normalized": 77,
         "sourceId": "lmarena-leaderboard",
         "updatedAt": "2026-09-05"
-      },
-      {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 92,
-        "min": 0,
-        "max": 100,
-        "normalized": 92,
-        "sourceId": "berkeley-function-calling-leaderboard",
-        "updatedAt": "2025-12-08"
       },
       {
         "metric": "dailyUse",
@@ -6388,11 +6468,21 @@
         "normalized": 29,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 50.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 51,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 91,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-06",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -6805,7 +6895,7 @@
     "scores": {
       "intelligence": 79,
       "coding": 81,
-      "agentic": 91,
+      "agentic": 51,
       "dailyUse": 69,
       "research": 33,
       "writing": null,
@@ -6813,7 +6903,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 29,
-      "overall": 68
+      "overall": 62
     },
     "evidence": [
       {
@@ -6845,16 +6935,6 @@
         "normalized": 80,
         "sourceId": "lmarena-leaderboard",
         "updatedAt": "2026-09-05"
-      },
-      {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 91.4,
-        "min": 0,
-        "max": 100,
-        "normalized": 91,
-        "sourceId": "berkeley-function-calling-leaderboard",
-        "updatedAt": "2025-11-20"
       },
       {
         "metric": "dailyUse",
@@ -6895,11 +6975,21 @@
         "normalized": 29,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 50.7,
+        "min": 0,
+        "max": 100,
+        "normalized": 51,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 91,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-06",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -7666,7 +7756,7 @@
     "scores": {
       "intelligence": 78,
       "coding": 78,
-      "agentic": 91,
+      "agentic": 43,
       "dailyUse": 65,
       "research": null,
       "writing": null,
@@ -7674,7 +7764,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 36,
-      "overall": 71
+      "overall": 63
     },
     "evidence": [
       {
@@ -7708,16 +7798,6 @@
         "updatedAt": "2026-09-05"
       },
       {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 91,
-        "min": 0,
-        "max": 100,
-        "normalized": 91,
-        "sourceId": "berkeley-function-calling-leaderboard",
-        "updatedAt": "2025-11-10"
-      },
-      {
         "metric": "dailyUse",
         "kind": "benchmark",
         "raw": 1458,
@@ -7746,11 +7826,21 @@
         "normalized": 36,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 42.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 43,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 88,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-06",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -7932,7 +8022,7 @@
     "scores": {
       "intelligence": 77,
       "coding": 79,
-      "agentic": 91,
+      "agentic": 49,
       "dailyUse": 71,
       "research": null,
       "writing": null,
@@ -7940,7 +8030,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 29,
-      "overall": 72
+      "overall": 65
     },
     "evidence": [
       {
@@ -7974,16 +8064,6 @@
         "updatedAt": "2026-09-05"
       },
       {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 90.6,
-        "min": 0,
-        "max": 100,
-        "normalized": 91,
-        "sourceId": "berkeley-function-calling-leaderboard",
-        "updatedAt": "2025-10-25"
-      },
-      {
         "metric": "dailyUse",
         "kind": "benchmark",
         "raw": 1498,
@@ -8012,11 +8092,21 @@
         "normalized": 29,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 49,
+        "min": 0,
+        "max": 100,
+        "normalized": 49,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 88,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-06",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -8491,7 +8581,7 @@
     "scores": {
       "intelligence": 77,
       "coding": 80,
-      "agentic": 90,
+      "agentic": 40,
       "dailyUse": null,
       "research": null,
       "writing": null,
@@ -8499,7 +8589,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 29,
-      "overall": 74
+      "overall": 63
     },
     "evidence": [
       {
@@ -8523,16 +8613,6 @@
         "updatedAt": "2025-09-28"
       },
       {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 90.2,
-        "min": 0,
-        "max": 100,
-        "normalized": 90,
-        "sourceId": "berkeley-function-calling-leaderboard",
-        "updatedAt": "2025-09-28"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 29,
@@ -8541,11 +8621,21 @@
         "normalized": 29,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 39.7,
+        "min": 0,
+        "max": 100,
+        "normalized": 40,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 75,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-06",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -9727,7 +9817,7 @@
     "scores": {
       "intelligence": null,
       "coding": 64,
-      "agentic": null,
+      "agentic": 43,
       "dailyUse": 64,
       "research": null,
       "writing": null,
@@ -9735,7 +9825,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 69,
-      "overall": 65
+      "overall": 60
     },
     "evidence": [
       {
@@ -9767,11 +9857,21 @@
         "normalized": 69,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 42.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 43,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 71,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-05",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -9798,6 +9898,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -10591,7 +10699,7 @@
     "scores": {
       "intelligence": null,
       "coding": null,
-      "agentic": null,
+      "agentic": 55,
       "dailyUse": null,
       "research": null,
       "writing": null,
@@ -10599,7 +10707,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 69,
-      "overall": 69
+      "overall": 61
     },
     "evidence": [
       {
@@ -10611,11 +10719,21 @@
         "normalized": 69,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 54.9,
+        "min": 0,
+        "max": 100,
+        "normalized": 55,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 48,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-05",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -10634,6 +10752,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -11012,7 +11138,7 @@
     "scores": {
       "intelligence": null,
       "coding": null,
-      "agentic": null,
+      "agentic": 38,
       "dailyUse": 62,
       "research": null,
       "writing": null,
@@ -11020,7 +11146,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 89,
-      "overall": 73
+      "overall": 60
     },
     "evidence": [
       {
@@ -11042,11 +11168,21 @@
         "normalized": 89,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 37.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 38,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 68,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-05",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -11073,6 +11209,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -11214,7 +11358,7 @@
     "scores": {
       "intelligence": null,
       "coding": null,
-      "agentic": null,
+      "agentic": 47,
       "dailyUse": null,
       "research": null,
       "writing": null,
@@ -11222,7 +11366,7 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 89,
-      "overall": 89
+      "overall": 64
     },
     "evidence": [
       {
@@ -11234,11 +11378,21 @@
         "normalized": 89,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 46.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 47,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
       }
     ],
     "confidence": 48,
     "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-07",
+    "scoreUpdatedAt": "2026-06-25",
     "lastVerifiedAt": "2026-09-05",
     "sourceUpdatedAt": "2026-09-07",
     "sources": [
@@ -11257,6 +11411,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },

@@ -41,6 +41,14 @@ export default function ModelCard({
   const isReasoning = maxEffort !== 'none';
   const stats = getModelEffortStats(model, maxEffort);
   const speedTps = stats.speedTokensPerSec;
+  const speedRange = model.facts.speedTokensPerSecRange;
+  const speedLabel = speedRange
+    ? speedRange.min === speedRange.max
+      ? `${speedRange.min} tok/s`
+      : `${speedRange.min}–${speedRange.max} tok/s`
+    : speedTps > 0
+      ? `${speedTps} tok/s`
+      : null;
 
   return (
     <article className={`model-card ${selected ? 'selected' : ''}`.trim()}>
@@ -107,18 +115,12 @@ export default function ModelCard({
           <span>Speed</span>
           <strong
             title={
-              speedTps > 0
-                ? `Generation speed: ${speedTps} tokens/sec${isReasoning && maxEffort !== 'fixed' ? ` (${maxEffort} effort)` : ''}`
+              speedLabel
+                ? `Generation speed: ${speedLabel}${speedRange ? ' · OpenRouter recent throughput' : ''}${isReasoning && maxEffort !== 'fixed' ? ` (${maxEffort} effort)` : ''}`
                 : 'Speed benchmark not yet claimed'
             }
           >
-            {speedTps > 0 ? (
-              <>
-                {speedTps} <small className="micro muted">tok/s</small>
-              </>
-            ) : (
-              <span className="muted">—</span>
-            )}
+            {speedLabel ? <>{speedLabel}</> : <span className="muted">—</span>}
           </strong>
         </div>
       </div>

@@ -21,6 +21,14 @@ export function getStaticPaths() {
 }
 const { model } = Astro.props;
 const speedTps = getSpeedTokensPerSec(model);
+const speedRange = model.facts.speedTokensPerSecRange;
+const speedLabel = speedRange
+  ? speedRange.min === speedRange.max
+    ? `${speedRange.min} tokens/sec`
+    : `${speedRange.min}–${speedRange.max} tokens/sec`
+  : speedTps > 0
+    ? `${speedTps} tokens/sec`
+    : '—';
 const alternatives = [
   ...new Map(
     [
@@ -155,22 +163,11 @@ const orderedMetrics: Metric[] = [
     </div>
     <div class="pillar-summary-card">
       <span class="pillar-summary-label">Speed</span>
-      <strong class="pillar-summary-value"
-        >{
-          speedTps > 0 ? (
-            <>
-              {speedTps}
-              <small>tok/s</small>
-            </>
-          ) : (
-            '—'
-          )
-        }</strong
-      >
+      <strong class="pillar-summary-value">{speedLabel}</strong>
       <span class="micro muted">
         {
           speedTps > 0
-            ? `Measured throughput · ${model.scores.speed !== null ? `${model.scores.speed}/100 rating` : ''}`
+            ? `${speedRange ? 'OpenRouter recent throughput' : 'Measured throughput'} · ${model.scores.speed !== null ? `${model.scores.speed}/100 rating` : 'No normalized rating'}`
             : 'Speed measurements not yet claimed'
         }
       </span>
@@ -320,8 +317,16 @@ const orderedMetrics: Metric[] = [
             </dd>
           </div><div>
             <dt>Speed (Throughput)</dt><dd>
-              <strong>{speedTps} tokens/sec</strong>{' '}
-              <span class="micro muted">({model.scores.speed}/100 rating)</span>
+              <strong>{speedLabel}</strong>{' '}
+              <span class="micro muted">
+                ({
+                  speedRange
+                    ? 'OpenRouter recent throughput'
+                    : model.scores.speed !== null
+                      ? `${model.scores.speed}/100 rating`
+                      : 'No normalized rating'
+                })
+              </span>
             </dd>
           </div><div>
             <dt>Reasoning effort</dt><dd>

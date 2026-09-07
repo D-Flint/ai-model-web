@@ -1,6 +1,11 @@
 import { CANONICAL_MODELS } from '../data/canonicalModels';
 import { OFFICIAL_PROVIDER_SPECS } from '../data/officialProviders';
-import { fetchOpenRouterModels, processOpenRouterModels } from './openrouter';
+import {
+  fetchOpenRouterEndpoints,
+  fetchOpenRouterModels,
+  processOpenRouterModels,
+  processOpenRouterThroughput,
+} from './openrouter';
 import {
   fetchLMArenaCategory,
   processLMArenaRows,
@@ -43,6 +48,38 @@ export interface IngestionPipelineResult {
   errors: string[];
 }
 
+async function fetchOpenRouterThroughputByModel(
+  extracted: ReturnType<typeof processOpenRouterModels>,
+  apiKey: string | undefined,
+  errors: string[],
+): Promise<Map<string, ReturnType<typeof processOpenRouterThroughput>>> {
+  const results = new Map<
+    string,
+    ReturnType<typeof processOpenRouterThroughput>
+  >();
+  let nextIndex = 0;
+  const worker = async () => {
+    while (nextIndex < extracted.length) {
+      const item = extracted[nextIndex++];
+      try {
+        const endpoints = await fetchOpenRouterEndpoints(item.rawModel.id, {
+          apiKey,
+        });
+        const throughput = processOpenRouterThroughput(endpoints);
+        if (throughput) results.set(item.canonicalModel.slug, throughput);
+      } catch (err: unknown) {
+        const msg = err instanceof Error ? err.message : String(err);
+        errors.push(`OpenRouter throughput (${item.rawModel.id}): ${msg}`);
+      }
+    }
+  };
+
+  await Promise.all(
+    Array.from({ length: Math.min(5, extracted.length) }, () => worker()),
+  );
+  return results;
+}
+
 export async function runIngestionPipeline(
   options: IngestionOptions = {},
 ): Promise<IngestionPipelineResult> {
@@ -51,6 +88,10 @@ export async function runIngestionPipeline(
 
   // 1. OpenRouter (Fallback / Discovery only)
   let openRouterExtracted: ReturnType<typeof processOpenRouterModels> = [];
+  let openRouterThroughputByModel = new Map<
+    string,
+    ReturnType<typeof processOpenRouterThroughput>
+  >();
   if (!options.skipOpenRouter) {
     try {
       console.log('Fetching OpenRouter models for discovery & fallback...');
@@ -63,6 +104,11 @@ export async function runIngestionPipeline(
       );
       console.log(
         `Processed ${openRouterExtracted.length} matching OpenRouter models.`,
+      );
+      openRouterThroughputByModel = await fetchOpenRouterThroughputByModel(
+        openRouterExtracted,
+        options.openRouterApiKey ?? process.env.OPENROUTER_API_KEY,
+        errors,
       );
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : String(err);
@@ -222,6 +268,9 @@ export async function runIngestionPipeline(
     };
 
     const combinedMeasurements = [...modelMeasurements, costEvidence];
+    const openRouterThroughput = openRouterThroughputByModel.get(
+      canonical.slug,
+    );
 
     // Master sources repository
     const availableSources = new Map<
@@ -258,6 +307,17 @@ export async function runIngestionPipeline(
           publisher: m.sourceName,
         });
       }
+    }
+
+    if (openRouterThroughput) {
+      availableSources.set('openrouter-throughput', {
+        id: 'openrouter-throughput',
+        name: 'OpenRouter recent throughput',
+        url: 'https://openrouter.ai/api/v1/models',
+        retrievedAt: openRouterThroughput.retrievedAt,
+        kind: 'public_eval',
+        publisher: 'OpenRouter',
+      });
     }
 
     // Capability evidence array
@@ -301,6 +361,11 @@ export async function runIngestionPipeline(
 
     for (const key of capabilityKeys) {
       const items = combinedMeasurements.filter((m) => m.category === key);
+      const liveBenchItems = items.filter(
+        (item) => item.sourceId === 'livebench-leaderboard',
+      );
+      const selectedItems =
+        key === 'agentic' && liveBenchItems.length > 0 ? liveBenchItems : items;
 
       // If vision is false in official facts, never add vision evidence
       if (key === 'vision' && !officialSpec.supportsVision) {
@@ -308,8 +373,8 @@ export async function runIngestionPipeline(
         continue;
       }
 
-      if (items.length > 0) {
-        for (const item of items) {
+      if (selectedItems.length > 0) {
+        for (const item of selectedItems) {
           evidenceList.push({
             metric: key,
             kind: 'benchmark',
@@ -322,8 +387,8 @@ export async function runIngestionPipeline(
           });
         }
         const avg = Math.round(
-          items.reduce((sum, item) => sum + item.normalizedScore, 0) /
-            items.length,
+          selectedItems.reduce((sum, item) => sum + item.normalizedScore, 0) /
+            selectedItems.length,
         );
         scores[key] = avg;
       } else {
@@ -361,7 +426,18 @@ export async function runIngestionPipeline(
       facts: {
         context: officialSpec.contextWindow,
         maxOutput: officialSpec.maxOutputTokens,
-        speedTokensPerSec: officialSpec.speedTokensPerSec ?? null,
+        speedTokensPerSec:
+          openRouterThroughput?.midpoint ??
+          officialSpec.speedTokensPerSec ??
+          null,
+        speedTokensPerSecRange: openRouterThroughput
+          ? {
+              min: openRouterThroughput.min,
+              max: openRouterThroughput.max,
+              sourceId: openRouterThroughput.sourceId,
+              retrievedAt: openRouterThroughput.retrievedAt,
+            }
+          : null,
         vision: officialSpec.supportsVision,
         audio: officialSpec.supportsAudio,
         tools: officialSpec.supportsTools,

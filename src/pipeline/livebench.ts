@@ -87,6 +87,31 @@ export function processLiveBenchResults(
         retrievedAt: today,
       });
     }
+
+    // LiveBench Agentic Coding is distinct from ordinary coding and BFCL.
+    if (
+      row.agentic_coding !== undefined &&
+      Number.isFinite(row.agentic_coding)
+    ) {
+      const agenticRaw = Number(row.agentic_coding.toFixed(1));
+      const agenticNorm = normalize(agenticRaw, 0, 100);
+
+      measurements.push({
+        id: `livebench-agentic-coding-${canonical.slug}`,
+        modelSlug: canonical.slug,
+        benchmarkName: 'LiveBench Agentic Coding',
+        category: 'agentic',
+        rawScore: agenticRaw,
+        minScale: 0,
+        maxScale: 100,
+        normalizedScore: agenticNorm,
+        evaluationDate: evalDate,
+        sourceId: 'livebench-leaderboard',
+        sourceName: 'LiveBench AI Benchmark',
+        sourceUrl: 'https://livebench.ai',
+        retrievedAt: today,
+      });
+    }
   }
 
   return measurements;
