@@ -155,8 +155,12 @@ describe('task cost assumptions and reasoning effort stats', () => {
       const tps = getSpeedTokensPerSec(model);
       expect(Number.isFinite(tps)).toBe(true);
       expect(tps).toBeGreaterThanOrEqual(0);
-      if (model.facts.speedTokensPerSec) {
+      if (
+        model.facts.speedTokensPerSecRange?.sourceId === 'openrouter-throughput'
+      ) {
         expect(model.facts.speedTokensPerSec).toBe(tps);
+      } else {
+        expect(tps).toBe(0);
       }
     }
   });
@@ -181,6 +185,15 @@ describe('task cost assumptions and reasoning effort stats', () => {
       retrievedAt: '2026-09-07',
     };
     expect(getSpeedDisplayValue(twoProviders)).toBe('20–40');
+  });
+  it('hides static speed values without OpenRouter throughput evidence', () => {
+    const staticSpeed = structuredClone(mockModels[0]);
+    staticSpeed.facts.speedTokensPerSec = 90;
+    staticSpeed.scores.speed = 45;
+
+    expect(getSpeedTokensPerSec(staticSpeed)).toBe(0);
+    expect(getSpeedDisplayValue(staticSpeed)).toBeNull();
+    expect(getModelEffortStats(staticSpeed).scores.speed).toBeNull();
   });
   it('determines the maximum possible effort for any model', () => {
     const multiEffortModel = models.find(

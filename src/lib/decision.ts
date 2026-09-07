@@ -90,10 +90,20 @@ export interface ModelEffortStats {
   scores: Record<Capability, number | null> & { overall: number | null };
 }
 
+const openRouterThroughputSource = 'openrouter-throughput';
+
+function hasOpenRouterThroughput(model: CatalogModel): boolean {
+  return (
+    model.facts.speedTokensPerSecRange?.sourceId === openRouterThroughputSource
+  );
+}
+
 export function getSpeedTokensPerSec(
   model: CatalogModel,
   effort?: ReasoningEffort,
 ): number {
+  if (!hasOpenRouterThroughput(model)) return 0;
+
   let baseTps = model.facts.speedTokensPerSec ?? 0;
   if (!baseTps || baseTps <= 0) {
     const speedEvidence = model.evidence?.find((e) => e.metric === 'speed');
@@ -133,6 +143,8 @@ export function getSpeedDisplayValue(
   effort?: ReasoningEffort,
 ): string | null {
   const range = model.facts.speedTokensPerSecRange;
+  if (!hasOpenRouterThroughput(model)) return null;
+
   const providerCount =
     range?.providerCount ?? (range && range.min !== range.max ? 2 : 1);
 
@@ -204,7 +216,10 @@ export function getModelEffortStats(
 
   const adjustedCapabilities = {} as Record<Capability, number | null>;
   for (const key of Object.keys(overallWeights) as Capability[]) {
-    const baseScore = model.scores[key];
+    const baseScore =
+      key === 'speed' && !hasOpenRouterThroughput(model)
+        ? null
+        : model.scores[key];
     if (baseScore === null) {
       adjustedCapabilities[key] = null;
       continue;
@@ -240,8 +255,10 @@ export const contextSize = (value: number) =>
   value >= 1_000_000 ? `${value / 1_000_000}M` : `${Math.round(value / 1000)}K`;
 export function rankModels(models: CatalogModel[], metric: Metric = 'overall') {
   return [...models].sort((a, b) => {
-    const aScore = a.scores[metric];
-    const bScore = b.scores[metric];
+    const aScore =
+      metric === 'speed' ? getSpeedTokensPerSec(a) || null : a.scores[metric];
+    const bScore =
+      metric === 'speed' ? getSpeedTokensPerSec(b) || null : b.scores[metric];
     if (aScore === null && bScore === null) return a.slug.localeCompare(b.slug);
     if (aScore === null) return 1;
     if (bScore === null) return -1;
