@@ -102,17 +102,11 @@ export function getSpeedTokensPerSec(
   model: CatalogModel,
   effort?: ReasoningEffort,
 ): number {
-  if (!hasOpenRouterThroughput(model)) return 0;
+  const range = model.facts.speedTokensPerSecRange;
+  if (!hasOpenRouterThroughput(model) || !range) return 0;
 
-  let baseTps = model.facts.speedTokensPerSec ?? 0;
-  if (!baseTps || baseTps <= 0) {
-    const speedEvidence = model.evidence?.find((e) => e.metric === 'speed');
-    if (speedEvidence && speedEvidence.raw > 0) {
-      baseTps = speedEvidence.raw;
-    } else if (model.scores.speed !== null) {
-      baseTps = Math.round(model.scores.speed * 1.8);
-    }
-  }
+  let baseTps =
+    model.facts.speedTokensPerSec ?? Math.round((range.min + range.max) / 2);
 
   if (!effort || effort === 'none' || effort === 'fixed') {
     return baseTps;
