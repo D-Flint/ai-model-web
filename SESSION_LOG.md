@@ -1050,3 +1050,26 @@
 - Current state: Scroll animations eliminated; initial hero landing page load animations preserved.
 - Exact next step: User verifies local landing page behavior at `http://localhost:4321`.
 
+## 2026-09-07 — Add 46 Mistral AI Models to Catalog and Specs
+
+- Objective: Add the full list of 46 Mistral AI models requested by the user into the canonical catalog, official provider specifications, and verified real data pipeline.
+- Files changed:
+  - `src/data/models/mistral.ts`: Expanded to 46 canonical models with complete metadata, tags, context lengths, and aliases.
+  - `src/data/officialMistral.ts`: Created authoritative specifications covering all 46 models plus legacy slugs and verified ground truth specs.
+  - `src/data/officialProviders.ts`: Integrated Mistral specifications into master official specs map.
+  - `src/data/verifiedModels.json`: Refreshed pipeline catalog containing 282 total verified models (46 Mistral models).
+- Attempt count: 1 end-to-end iteration.
+- Failures and causes:
+  - Regex replacement in `officialProviders.ts` previously clipped adjacent keys; resolved cleanly by modularizing specs into `src/data/officialMistral.ts` and spreading them.
+  - `openrouterRankings.test.ts` expected `hy4-preview` and `glm-5-3-flash` which were skipped during ingestion because their official provider specs were previously missing; added specs for both models to prevent dropping during pipeline refresh.
+  - Prettier style check required running `npm run format`.
+- Tests and results:
+  - `npm test`: 60/60 unit tests passed across 6 test suites.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 78 files.
+  - `npm run lint`: Passed with Prettier code style confirmed.
+  - `npm run build`: Static production build finished cleanly (39,922 pages generated).
+- Commit hash: `a6f0edb` (local commit; no remote push).
+- Current state: All 46 Mistral AI models are active, fully verified, typed, and available in the live catalog.
+- Exact next step: User verifies local testing and confirms Mistral models on `http://localhost:4321`.
+
+
