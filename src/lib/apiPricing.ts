@@ -1,5 +1,10 @@
 import type { CatalogModel } from './catalogSchema';
-import type { ApiPricing, PriceValue, PricingTier } from './apiPricingSchema';
+import {
+  apiPricingSchema,
+  type ApiPricing,
+  type PriceValue,
+  type PricingTier,
+} from './apiPricingSchema';
 
 export const pricingPolicy = {
   staleAfterDays: 7,
@@ -73,6 +78,79 @@ export function choosePricing(
   fallback: ApiPricing | null,
 ): ApiPricing | null {
   return official ?? fallback;
+}
+
+const reviewedPricingHosts: Record<string, string[]> = {
+  Anthropic: ['platform.claude.com', 'docs.anthropic.com'],
+  'Google DeepMind': ['ai.google.dev', 'cloud.google.com'],
+  OpenAI: ['platform.openai.com'],
+  DeepSeek: ['api-docs.deepseek.com'],
+  'Moonshot AI': ['platform.moonshot.cn'],
+  'Mistral AI': ['docs.mistral.ai'],
+  'Alibaba Cloud / Qwen': ['help.aliyun.com', 'qwenlm.github.io'],
+  xAI: ['docs.x.ai'],
+  'Amazon AWS': ['aws.amazon.com'],
+  Cohere: ['docs.cohere.com'],
+  MiniMax: ['platform.minimaxi.com'],
+  Tencent: ['hunyuan.tencent.com'],
+  'Z.ai': ['z.ai', 'docs.z.ai'],
+};
+
+/** Convert legacy provider pricing only when its source is first-party. */
+export function reviewedCatalogPricing(model: CatalogModel): ApiPricing | null {
+  const source = model.sources.find(
+    (item) => item.id === model.pricing.sourceId,
+  );
+  if (!source || source.kind !== 'provider_doc') return null;
+
+  let hostname: string;
+  try {
+    hostname = new URL(source.url).hostname;
+  } catch {
+    return null;
+  }
+  if (!reviewedPricingHosts[model.provider]?.includes(hostname)) return null;
+
+  const makePrice = (value: number | null): PriceValue | null =>
+    value === null
+      ? null
+      : {
+          value,
+          currency: 'USD',
+          unit: 'per-million-tokens',
+          source: {
+            name: source.name,
+            url: source.url,
+            type: 'provider_doc',
+            retrievedAt: model.pricing.updatedAt,
+            effectiveFrom: null,
+          },
+        };
+
+  return apiPricingSchema.parse({
+    provider: model.provider,
+    scope: `${model.provider} API pricing · reviewed provider documentation`,
+    tiers: [
+      {
+        id: 'standard',
+        label: `0–${model.facts.context.toLocaleString('en-US')} input tokens`,
+        minContext: 0,
+        maxContext: model.facts.context,
+        input: makePrice(model.pricing.input),
+        output: makePrice(model.pricing.output),
+        cached: makePrice(model.pricing.cached),
+        cacheWrite5m: null,
+        cacheWrite1h: null,
+        cacheStorage: null,
+        search: null,
+      },
+    ],
+    notes: [
+      'Standard rates are taken from the linked first-party provider documentation.',
+      'Context-specific, batch, media, tool, and priority charges may differ.',
+    ],
+    benchmarkCost: null,
+  });
 }
 export interface Workload {
   input: number;

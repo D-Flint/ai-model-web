@@ -78,6 +78,17 @@ export const apiPricingSchema = z
         ],
         Google: ['ai.google.dev', 'cloud.google.com'],
         'Google DeepMind': ['ai.google.dev', 'cloud.google.com'],
+        OpenAI: ['platform.openai.com'],
+        DeepSeek: ['api-docs.deepseek.com'],
+        'Moonshot AI': ['platform.moonshot.cn'],
+        'Mistral AI': ['docs.mistral.ai'],
+        'Alibaba Cloud / Qwen': ['help.aliyun.com', 'qwenlm.github.io'],
+        xAI: ['docs.x.ai'],
+        'Amazon AWS': ['aws.amazon.com'],
+        Cohere: ['docs.cohere.com'],
+        MiniMax: ['platform.minimaxi.com'],
+        Tencent: ['hunyuan.tencent.com'],
+        'Z.ai': ['z.ai', 'docs.z.ai'],
       };
       for (const rate of [
         t.input,

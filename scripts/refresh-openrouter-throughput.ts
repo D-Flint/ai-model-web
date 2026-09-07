@@ -9,6 +9,7 @@ import {
 import { defaultAliasResolver } from '../src/pipeline/aliasResolver';
 import { validateCatalog } from '../src/lib/importCatalog';
 import type { CatalogModel } from '../src/lib/catalogSchema';
+import { speedScoreMaxTokensPerSec } from '../src/data/config';
 
 async function main() {
   const rawModels = await fetchOpenRouterModels();
@@ -76,6 +77,26 @@ async function main() {
     )
       ? model.sources
       : [...model.sources, source];
+    const speedScore = Math.min(
+      100,
+      Math.round((throughput.midpoint / speedScoreMaxTokensPerSec) * 100),
+    );
+    const evidence = [
+      ...model.evidence.filter(
+        (item) =>
+          !(item.metric === 'speed' && item.sourceId === throughput.sourceId),
+      ),
+      {
+        metric: 'speed' as const,
+        kind: 'benchmark' as const,
+        raw: throughput.midpoint,
+        min: 0,
+        max: speedScoreMaxTokensPerSec,
+        normalized: speedScore,
+        sourceId: throughput.sourceId,
+        updatedAt: throughput.retrievedAt,
+      },
+    ];
 
     return {
       ...model,
@@ -89,6 +110,8 @@ async function main() {
           retrievedAt: throughput.retrievedAt,
         },
       },
+      scores: { ...model.scores, speed: speedScore },
+      evidence,
       sources,
     };
   });

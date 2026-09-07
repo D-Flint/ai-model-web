@@ -95,6 +95,9 @@ export const recommendationConfig = {
   budgetLimits: { free: 0, cheap: 1, moderate: 5, any: Infinity },
 } as const;
 
+// Throughput score ceiling for comparable OpenRouter measurements.
+export const speedScoreMaxTokensPerSec = 200;
+
 export type ReasoningEffort =
   'none' | 'low' | 'medium' | 'high' | 'max' | 'fixed';
 

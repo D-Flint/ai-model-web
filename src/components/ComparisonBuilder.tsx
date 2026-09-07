@@ -312,7 +312,9 @@ export default function ComparisonBuilder({
           <p className="section-note">
             Comparison data. Highlighted cells show the best value in the
             selected group; ties are highlighted equally. Select reasoning
-            effort to see real-time performance and cost changes.
+            effort to see real-time performance and cost changes. “Not measured”
+            means no verified evidence exists for that model and metric; Astra
+            does not fill gaps with proxy scores.
           </p>
           <div
             className="table-scroll"
@@ -450,6 +452,7 @@ export default function ComparisonBuilder({
                   <th scope="row">Speed (tokens/sec)</th>
                   {selectedItems.map((item) => {
                     const tps = item.stats.speedTokensPerSec;
+                    const speedScore = item.stats.scores.speed;
                     const validTps = selectedItems
                       .map((x) => x.stats.speedTokensPerSec)
                       .filter((s): s is number => s > 0);
@@ -471,10 +474,20 @@ export default function ComparisonBuilder({
                               {item.stats.latency}
                             </div>
                           </>
+                        ) : speedScore !== null ? (
+                          <>
+                            <a href={`/models/${item.model.slug}#score-speed`}>
+                              <strong>{speedScore}</strong>{' '}
+                              <small className="micro muted">/100 rating</small>
+                            </a>
+                            <div className="micro muted">
+                              No throughput claim
+                            </div>
+                          </>
                         ) : (
                           <div className="micro muted">
-                            <span>—</span>
-                            <div>Not yet claimed</div>
+                            <span>Not measured</span>
+                            <div>No verified speed evidence</div>
                           </div>
                         )}
                         {isWinner && (
@@ -532,7 +545,12 @@ export default function ComparisonBuilder({
                               {score}
                             </a>
                           ) : (
-                            <span className="muted">—</span>
+                            <span
+                              className="muted"
+                              title={`No verified ${metricLabels[metric].toLowerCase()} evidence`}
+                            >
+                              Not measured
+                            </span>
                           )}
                           {isWinner && (
                             <span className="winner-label">Best</span>

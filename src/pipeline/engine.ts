@@ -22,7 +22,7 @@ import { validateCatalog } from '../lib/importCatalog';
 import type { CatalogModel } from '../lib/catalogSchema';
 import type { Capability } from '../data/config';
 import type { BenchmarkMeasurement } from './types';
-import { methodologyVersion } from '../data/config';
+import { methodologyVersion, speedScoreMaxTokensPerSec } from '../data/config';
 
 export interface IngestionOptions {
   skipOpenRouter?: boolean;
@@ -267,10 +267,39 @@ export async function runIngestionPipeline(
       retrievedAt: today,
     };
 
-    const combinedMeasurements = [...modelMeasurements, costEvidence];
     const openRouterThroughput = openRouterThroughputByModel.get(
       canonical.slug,
     );
+    const speedEvidence: BenchmarkMeasurement[] = openRouterThroughput
+      ? [
+          {
+            id: `openrouter-speed-${canonical.slug}`,
+            modelSlug: canonical.slug,
+            benchmarkName: 'OpenRouter recent throughput',
+            category: 'speed',
+            rawScore: openRouterThroughput.midpoint,
+            minScale: 0,
+            maxScale: speedScoreMaxTokensPerSec,
+            normalizedScore: Math.min(
+              100,
+              Math.round(
+                (openRouterThroughput.midpoint / speedScoreMaxTokensPerSec) *
+                  100,
+              ),
+            ),
+            evaluationDate: openRouterThroughput.retrievedAt,
+            sourceId: openRouterThroughput.sourceId,
+            sourceName: 'OpenRouter recent throughput',
+            sourceUrl: 'https://openrouter.ai/api/v1/models',
+            retrievedAt: openRouterThroughput.retrievedAt,
+          },
+        ]
+      : [];
+    const combinedMeasurements = [
+      ...modelMeasurements,
+      ...speedEvidence,
+      costEvidence,
+    ];
 
     // Master sources repository
     const availableSources = new Map<

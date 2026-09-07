@@ -8,6 +8,7 @@ import {
 } from './types';
 import type { ModelAliasResolver } from './aliasResolver';
 import { normalize } from '../lib/decision';
+import type { Capability } from '../data/config';
 
 export const liveBenchFileSchema = z.array(liveBenchRowSchema);
 
@@ -32,6 +33,31 @@ export function processLiveBenchResults(
   const measurements: BenchmarkMeasurement[] = [];
   const today = new Date().toISOString().split('T')[0];
 
+  function addMeasurement(
+    canonicalSlug: string,
+    evalDate: string,
+    category: Capability,
+    label: string,
+    rawValue: number,
+  ) {
+    const rawScore = Number(rawValue.toFixed(1));
+    measurements.push({
+      id: `livebench-${category}-${canonicalSlug}`,
+      modelSlug: canonicalSlug,
+      benchmarkName: label,
+      category,
+      rawScore,
+      minScale: 0,
+      maxScale: 100,
+      normalizedScore: normalize(rawScore, 0, 100),
+      evaluationDate: evalDate,
+      sourceId: 'livebench-leaderboard',
+      sourceName: 'LiveBench AI Benchmark',
+      sourceUrl: 'https://livebench.ai',
+      retrievedAt: today,
+    });
+  }
+
   for (const row of rows) {
     const canonical = resolver.resolve('livebench', row.model);
     if (!canonical) {
@@ -40,77 +66,64 @@ export function processLiveBenchResults(
 
     const evalDate = row.date ?? today;
 
-    // 1. LiveBench Intelligence measurement
-    const intelRaw = Number(row.global_average.toFixed(1));
-    const intelNorm = normalize(intelRaw, 0, 100);
-
-    measurements.push({
-      id: `livebench-intelligence-${canonical.slug}`,
-      modelSlug: canonical.slug,
-      benchmarkName: 'LiveBench Global Average',
-      category: 'intelligence',
-      rawScore: intelRaw,
-      minScale: 0,
-      maxScale: 100,
-      normalizedScore: intelNorm,
-      evaluationDate: evalDate,
-      sourceId: 'livebench-leaderboard',
-      sourceName: 'LiveBench AI Benchmark',
-      sourceUrl: 'https://livebench.ai',
-      retrievedAt: today,
-      metadata: {
-        reasoning: row.reasoning,
-        math: row.math,
-        data_analysis: row.data_analysis,
-        instruction_following: row.instruction_following,
-      },
-    });
+    // LiveBench Global Average represents general intelligence.
+    addMeasurement(
+      canonical.slug,
+      evalDate,
+      'intelligence',
+      'LiveBench Global Average',
+      row.global_average,
+    );
 
     // 2. LiveBench Coding measurement (secondary contributor to coding)
     if (row.coding !== undefined && Number.isFinite(row.coding)) {
-      const codingRaw = Number(row.coding.toFixed(1));
-      const codingNorm = normalize(codingRaw, 0, 100);
-
-      measurements.push({
-        id: `livebench-coding-${canonical.slug}`,
-        modelSlug: canonical.slug,
-        benchmarkName: 'LiveBench Coding',
-        category: 'coding',
-        rawScore: codingRaw,
-        minScale: 0,
-        maxScale: 100,
-        normalizedScore: codingNorm,
-        evaluationDate: evalDate,
-        sourceId: 'livebench-leaderboard',
-        sourceName: 'LiveBench AI Benchmark',
-        sourceUrl: 'https://livebench.ai',
-        retrievedAt: today,
-      });
+      addMeasurement(
+        canonical.slug,
+        evalDate,
+        'coding',
+        'LiveBench Coding',
+        row.coding,
+      );
     }
+
+    // LiveBench sub-scores map directly to consumer-facing work categories.
+    if (row.instruction_following !== undefined)
+      addMeasurement(
+        canonical.slug,
+        evalDate,
+        'dailyUse',
+        'LiveBench Instruction Following',
+        row.instruction_following,
+      );
+    if (row.data_analysis !== undefined)
+      addMeasurement(
+        canonical.slug,
+        evalDate,
+        'research',
+        'LiveBench Data Analysis',
+        row.data_analysis,
+      );
+    if (row.language !== undefined)
+      addMeasurement(
+        canonical.slug,
+        evalDate,
+        'writing',
+        'LiveBench Language',
+        row.language,
+      );
 
     // LiveBench Agentic Coding is distinct from ordinary coding and BFCL.
     if (
       row.agentic_coding !== undefined &&
       Number.isFinite(row.agentic_coding)
     ) {
-      const agenticRaw = Number(row.agentic_coding.toFixed(1));
-      const agenticNorm = normalize(agenticRaw, 0, 100);
-
-      measurements.push({
-        id: `livebench-agentic-coding-${canonical.slug}`,
-        modelSlug: canonical.slug,
-        benchmarkName: 'LiveBench Agentic Coding',
-        category: 'agentic',
-        rawScore: agenticRaw,
-        minScale: 0,
-        maxScale: 100,
-        normalizedScore: agenticNorm,
-        evaluationDate: evalDate,
-        sourceId: 'livebench-leaderboard',
-        sourceName: 'LiveBench AI Benchmark',
-        sourceUrl: 'https://livebench.ai',
-        retrievedAt: today,
-      });
+      addMeasurement(
+        canonical.slug,
+        evalDate,
+        'agentic',
+        'LiveBench Agentic Coding',
+        row.agentic_coding,
+      );
     }
   }
 

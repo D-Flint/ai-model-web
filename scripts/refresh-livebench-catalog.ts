@@ -1,14 +1,10 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { composite, normalize } from '../src/lib/decision';
+import { composite } from '../src/lib/decision';
 import { validateCatalog } from '../src/lib/importCatalog';
 import type { CatalogModel } from '../src/lib/catalogSchema';
 import { defaultAliasResolver } from '../src/pipeline/aliasResolver';
-import { liveBenchRowSchema, type LiveBenchRow } from '../src/pipeline/types';
-
-function dateValue(row: LiveBenchRow): string {
-  return row.date ?? '';
-}
+import { processLiveBenchResults } from '../src/pipeline/livebench';
 
 async function main() {
   const catalog = JSON.parse(
@@ -17,43 +13,65 @@ async function main() {
   const rawRows = JSON.parse(
     await readFile(resolve('src/data/livebenchData.json'), 'utf8'),
   ) as unknown[];
-  const latestBySlug = new Map<string, LiveBenchRow>();
-
-  for (const rawRow of rawRows) {
-    const row = liveBenchRowSchema.parse(rawRow);
-    const canonical = defaultAliasResolver.resolve('livebench', row.model);
-    if (!canonical) continue;
-    const previous = latestBySlug.get(canonical.slug);
+  const measurements = processLiveBenchResults(rawRows, defaultAliasResolver);
+  const latestByModelMetric = new Map<string, (typeof measurements)[number]>();
+  for (const measurement of measurements) {
+    const key = `${measurement.modelSlug}:${measurement.category}`;
+    const previous = latestByModelMetric.get(key);
     if (
       !previous ||
-      dateValue(row) > dateValue(previous) ||
-      (dateValue(row) === dateValue(previous) &&
-        row.global_average > previous.global_average)
+      measurement.evaluationDate > previous.evaluationDate ||
+      (measurement.evaluationDate === previous.evaluationDate &&
+        measurement.normalizedScore > previous.normalizedScore)
     ) {
-      latestBySlug.set(canonical.slug, row);
+      latestByModelMetric.set(key, measurement);
     }
   }
 
   const updated = catalog.map((model) => {
-    const row = latestBySlug.get(model.slug);
-    if (row?.agentic_coding === undefined) return model;
+    const modelMeasurements = [...latestByModelMetric.entries()]
+      .filter(([key]) => key.startsWith(`${model.slug}:`))
+      .map(([, measurement]) => measurement);
+    if (modelMeasurements.length === 0) return model;
 
-    const normalized = normalize(row.agentic_coding, 0, 100);
-    const evidence = model.evidence.filter((item) => item.metric !== 'agentic');
-    evidence.push({
-      metric: 'agentic',
-      kind: 'benchmark',
-      raw: row.agentic_coding,
-      min: 0,
-      max: 100,
-      normalized,
-      sourceId: 'livebench-leaderboard',
-      updatedAt: row.date ?? new Date().toISOString().split('T')[0],
-    });
-    const scores = {
-      ...model.scores,
-      agentic: normalized,
-    };
+    const measuredMetrics = new Set(modelMeasurements.map((m) => m.category));
+    const evidence = model.evidence.filter(
+      (item) =>
+        !(
+          measuredMetrics.has(item.metric) &&
+          (item.sourceId === 'livebench-leaderboard' ||
+            item.metric === 'agentic')
+        ),
+    );
+    evidence.push(
+      ...modelMeasurements.map((measurement) => ({
+        metric: measurement.category,
+        kind: 'benchmark' as const,
+        raw: measurement.rawScore,
+        min: measurement.minScale,
+        max: measurement.maxScale,
+        normalized: measurement.normalizedScore,
+        sourceId: measurement.sourceId,
+        updatedAt: measurement.evaluationDate,
+      })),
+    );
+    const scores = { ...model.scores };
+    for (const metric of measuredMetrics) {
+      const categoryEvidence = evidence.filter(
+        (item) => item.metric === metric,
+      );
+      scores[metric] = Math.round(
+        categoryEvidence.reduce((sum, item) => sum + item.normalized, 0) /
+          categoryEvidence.length,
+      );
+    }
+    const latestDate = modelMeasurements.reduce(
+      (latest, measurement) =>
+        measurement.evaluationDate > latest
+          ? measurement.evaluationDate
+          : latest,
+      model.scoreUpdatedAt,
+    );
     const sources = model.sources.some(
       (source) => source.id === 'livebench-leaderboard',
     )
@@ -64,7 +82,7 @@ async function main() {
             id: 'livebench-leaderboard',
             name: 'LiveBench AI Benchmark',
             url: 'https://livebench.ai',
-            retrievedAt: row.date ?? new Date().toISOString().split('T')[0],
+            retrievedAt: latestDate,
             kind: 'public_eval' as const,
             publisher: 'LiveBench',
           },
@@ -75,7 +93,7 @@ async function main() {
       scores: { ...scores, overall: composite(scores) },
       evidence,
       sources,
-      scoreUpdatedAt: row.date ?? model.scoreUpdatedAt,
+      scoreUpdatedAt: latestDate,
     };
   });
 
@@ -86,7 +104,7 @@ async function main() {
     'utf8',
   );
   console.log(
-    `Updated LiveBench Agentic Coding for ${updated.filter((model, index) => model !== catalog[index]).length} catalog models.`,
+    `Updated LiveBench capability scores for ${updated.filter((model, index) => model !== catalog[index]).length} catalog models.`,
   );
 }
 

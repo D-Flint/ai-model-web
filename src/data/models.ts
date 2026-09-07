@@ -1,10 +1,15 @@
 import verifiedCatalogRaw from './verifiedModels.json';
 import { validateCatalog } from '../lib/importCatalog';
 import { composite, normalize } from '../lib/decision';
-import { fixtureDate, methodologyVersion, type Capability } from './config';
+import {
+  fixtureDate,
+  methodologyVersion,
+  speedScoreMaxTokensPerSec,
+  type Capability,
+} from './config';
 import type { CatalogModel } from '../lib/catalogSchema';
 import { verifiedApiPricing, reviewedContext } from './apiPricing';
-import { choosePricing } from '../lib/apiPricing';
+import { choosePricing, reviewedCatalogPricing } from '../lib/apiPricing';
 
 // Fictional providers and model names for fallback fixtures
 const seeds = [
@@ -265,6 +270,35 @@ try {
 
 import { selectTopLiveBenchModels } from '../lib/livebenchCatalog';
 
+function addVerifiedSpeedScore(model: CatalogModel): CatalogModel {
+  const speed = model.facts.speedTokensPerSec;
+  if (model.scores.speed !== null || speed === null || speed === undefined)
+    return model;
+
+  const source = model.sources.find((item) => item.id === model.facts.sourceId);
+  if (!source) return model;
+
+  const normalized = normalize(speed, 0, speedScoreMaxTokensPerSec);
+  const scores = { ...model.scores, speed: normalized };
+  return {
+    ...model,
+    scores: { ...scores, overall: composite(scores) },
+    evidence: [
+      ...model.evidence,
+      {
+        metric: 'speed',
+        kind: 'benchmark',
+        raw: speed,
+        min: 0,
+        max: speedScoreMaxTokensPerSec,
+        normalized,
+        sourceId: source.id,
+        updatedAt: source.retrievedAt,
+      },
+    ],
+  };
+}
+
 // All models (complete database, including legacy/untracked)
 export const allModels: CatalogModel[] =
   verifiedModelsList && verifiedModelsList.length > 0
@@ -293,4 +327,10 @@ export const allModels: CatalogModel[] =
 export const models: CatalogModel[] =
   allModels[0]?.dataKind === 'verified'
     ? selectTopLiveBenchModels(allModels)
+        .map((model) => ({
+          ...model,
+          apiPricing:
+            model.apiPricing ?? reviewedCatalogPricing(model) ?? undefined,
+        }))
+        .map(addVerifiedSpeedScore)
     : mockModels;

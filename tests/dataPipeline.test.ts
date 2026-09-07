@@ -113,6 +113,27 @@ describe('LiveBench native categories', () => {
       sourceId: 'livebench-leaderboard',
       evaluationDate: '2026-06-25',
     });
+    expect(
+      measurements.find((measurement) => measurement.category === 'dailyUse'),
+    ).toMatchObject({
+      benchmarkName: 'LiveBench Instruction Following',
+      rawScore: 80,
+      normalizedScore: 80,
+    });
+    expect(
+      measurements.find((measurement) => measurement.category === 'research'),
+    ).toMatchObject({
+      benchmarkName: 'LiveBench Data Analysis',
+      rawScore: 79,
+      normalizedScore: 79,
+    });
+    expect(
+      measurements.find((measurement) => measurement.category === 'writing'),
+    ).toMatchObject({
+      benchmarkName: 'LiveBench Language',
+      rawScore: 81,
+      normalizedScore: 81,
+    });
   });
 });
 
