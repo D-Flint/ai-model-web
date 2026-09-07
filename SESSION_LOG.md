@@ -1034,6 +1034,19 @@
   - `npm run lint`: ESLint and Prettier passed.
   - `npm run build`: 29,422 pages generated in production build.
 - Commit hash: `033c4a4` (code commit, local only).
-- Current state: Synapse green color system refined according to brief specifications.
-- Exact next step: User verifies UI appearance and color consistency locally.
+## 2026-09-07 — Remove scroll animations, retain initial load animation
+
+- Objective: Remove scroll-triggered animations across the application, keeping only initial landing page load animations (hero entry).
+- Files changed:
+  - `src/pages/index.astro`: Removed `.reveal-section` classes from content sections and deleted the `IntersectionObserver` scroll listener script.
+  - `src/styles/global.css`: Removed `.reveal-section` opacity/transform styles, staggered reveal delays, and unused `cardFadeInUp` keyframe. Cleaned reduced-motion block.
+- Attempt count: 1.
+- Failures and causes: None.
+- Tests and results:
+  - `npm test`: 60/60 unit tests passed.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 77 files.
+  - `npm run build`: Static production build finished cleanly (29,422 pages generated).
+- Commit hash: `ecaed6e` (local commit; no remote push).
+- Current state: Scroll animations eliminated; initial hero landing page load animations preserved.
+- Exact next step: User verifies local landing page behavior at `http://localhost:4321`.
 
