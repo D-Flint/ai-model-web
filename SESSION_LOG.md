@@ -1108,4 +1108,29 @@
 - Current state: Complete, awaiting user verification. Production preview runs at `http://127.0.0.1:4321`; development at `http://127.0.0.1:4322`. Existing unrelated untracked files remain. No push or deployment. Preview metadata uses the test-only `https://synapse.example`; production requires a real build-time `SITE_URL`. Existing indexing restrictions remain. No live database test is needed for the asset-only Worker; Node persistence scripts are preserved.
 - Exact next step: User opens `http://127.0.0.1:4321/compare/claude-sonnet-5-vs-gpt-6-astra`, tests selection/sharing and an invalid pair, and verifies locally before the next implementation. Deployment instructions and rollback are in `docs/cloudflare-workers.md`.
 
+## 2026-09-07 — Fix Missing AI Provider Logos
+
+- Objective: Fix missing brand logos for AI providers in the catalog (MiniMax, Moonshot AI / Kimi, Nvidia, Xiaomi, Poolside) and restore crisp SVG vector assets for Tencent and Z.ai / Zhipu.
+- Files changed:
+  - `public/logos/minimax.svg`: Official MiniMax brand vector logo.
+  - `public/logos/kimi.svg`: Official Moonshot Kimi brand vector logo.
+  - `public/logos/moonshot.svg`: Moonshot AI glyph vector logo.
+  - `public/logos/nvidia.svg`: Official Nvidia brand vector logo.
+  - `public/logos/xiaomi.svg`: Official Xiaomi brand vector logo.
+  - `public/logos/poolside.svg`: Official Poolside brand vector logo.
+  - `public/logos/tencent.svg`: Updated Tencent brand SVG.
+  - `public/logos/zai.svg`: Updated Z.ai / Zhipu brand SVG.
+  - `public/logos/generic.svg`: Clean SVG fallback spark icon.
+  - `src/components/ProviderLogo.tsx`: Added mappings for MiniMax, Moonshot/Kimi, Nvidia, Xiaomi, Poolside, and updated generic fallback.
+- Attempt count: 1.
+- Failures and causes: Dummy 1x1 blurred placeholder PNGs were previously in place for MiniMax and Moonshot; Nvidia, Xiaomi, and Poolside were unmapped in `ProviderLogo.tsx` falling back to generic placeholder. Replaced with official SVG assets and mapped in `ProviderLogo.tsx`.
+- Tests and results:
+  - `npm test`: 85/85 tests passed.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 85 files.
+  - `npm run lint`: Passed with Prettier code style confirmed.
+  - Validated all 17 catalog providers resolve to existing logo files.
+- Commit hash: `efacc35` (local commit; no remote push).
+- Current state: All providers have verified, crisp SVG/PNG logos.
+- Exact next step: User verifies provider logos in UI locally at `http://localhost:4321`.
+
 
