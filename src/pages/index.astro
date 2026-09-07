@@ -4,6 +4,7 @@ import HeroCompare from '../components/HeroCompare';
 import ModelCard from '../components/ModelCard';
 import ProviderLogo from '../components/ProviderLogo.astro';
 import { models } from '../data/models';
+import { comparisonPairSlug } from '../lib/comparisonPairs';
 import { categories } from '../data/config';
 import ApiPricing from '../components/ApiPricing';
 import { getMostUsedOpenRouterModels } from '../data/openrouterRankings';
@@ -144,7 +145,7 @@ const costs = models
     </div><div class="comparison-links">
       {
         pairs.map(([a, b]) => (
-          <a href={`/compare/${a.slug}-vs-${b.slug}`}>
+          <a href={`/compare/${comparisonPairSlug(a.slug, b.slug)}`}>
             <>
               <span>
                 <>

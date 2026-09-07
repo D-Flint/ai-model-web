@@ -18,7 +18,7 @@ Open the local address printed by Astro (normally http://localhost:4321). No dat
 - Homepage with a working comparison, search, task shortcuts, model highlights, and API pricing.
 - Model explorer with search, provider and numerical filters, capability filters, sorting, and a four-model comparison tray.
 - Model detail pages with numerical scores, expandable evidence, pricing, facts, alternatives, and tradeoffs.
-- Two-to-four-model comparisons with shareable query URLs, static pair pages, grouped metrics, ties, and conditional verdicts.
+- Two-to-four-model comparisons with shareable URLs, on-demand pair pages, grouped metrics, ties, and conditional verdicts.
 - Overall and eight task-specific rankings with plain-language explanations.
 - Three-question deterministic finder, budget filtering, explained matches, and a free-budget empty state.
 - Source-backed API pricing comparison and an empty-by-default workload calculator with supported cache and tool charges.
@@ -38,7 +38,7 @@ npm run test:pricing:browser # Pricing, browse, compare, find and mobile flows
 
 The browser suite requires Python, `pip install playwright`, and `python -m playwright install chromium`. It expects the local server to be running. Screenshots go to the ignored `artifacts/` directory. Set `ASTRA_TEST_URL` to test another local server address.
 
-`npm run format` formats source files. Build output includes every model pair; its size grows quadratically with the catalog. Pair selectors share a single catalog file. Static model and ranking content works without client JavaScript; interactive controls require JavaScript.
+`npm run format` formats source files. Cloudflare Workers render `/compare/[pair]` on demand; all other pages remain static. No comparison pair HTML is generated during builds. Pair selectors share a single catalog file. Static model and ranking content works without client JavaScript; interactive controls require JavaScript. See [Cloudflare deployment](docs/cloudflare-workers.md) for setup, environment variables, validation, and rollback.
 
 ## Architecture and data policy
 

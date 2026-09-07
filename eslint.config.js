@@ -5,6 +5,8 @@ export default [
     ignores: [
       'dist/**',
       '.astro/**',
+      '.wrangler/**',
+      'worker-configuration.d.ts',
       'node_modules/**',
       '.agents/**',
       '.codex/**',

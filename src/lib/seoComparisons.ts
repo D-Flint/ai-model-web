@@ -1,5 +1,6 @@
 import type { CatalogModel } from './catalogSchema';
 import { getMostUsedOpenRouterModels } from '../data/openrouterRankings';
+import { comparisonPairSlug } from './comparisonPairs';
 
 export interface SeoComparisonPair {
   slug: string;
@@ -8,7 +9,7 @@ export interface SeoComparisonPair {
 }
 
 /**
- * Priority model slugs to prioritize for SEO comparison static generation.
+ * Priority model slugs for comparison discovery and the bounded sitemap list.
  */
 export const TOP_SEO_MODEL_SLUGS: readonly string[] = [
   'gpt-6-astra',
@@ -38,7 +39,7 @@ export const TOP_SEO_MODEL_SLUGS: readonly string[] = [
 ];
 
 /**
- * Curated key rivalries that must be generated for SEO when both models exist.
+ * Curated key rivalries to link when both models exist.
  */
 export const CURATED_SEO_PAIRS: readonly [string, string][] = [
   ['claude-sonnet-5', 'gemini-2-5-pro'],
@@ -61,8 +62,7 @@ export const CURATED_SEO_PAIRS: readonly [string, string][] = [
 ];
 
 /**
- * Returns a bounded, curated list of high-value pairwise comparisons for static SEO pages.
- * Arbitrary comparisons outside this set are served via client-side /compare?models=...
+ * Returns a bounded discovery list. All comparison pages render on demand.
  */
 export function getSeoComparisonPairs(
   catalogModels: CatalogModel[],
@@ -101,11 +101,11 @@ export function getSeoComparisonPairs(
 
   function tryAddPair(a: CatalogModel, b: CatalogModel): boolean {
     if (a.slug === b.slug) return false;
-    const sortedKey = [a.slug, b.slug].sort().join('-vs-');
+    const sortedKey = comparisonPairSlug(a.slug, b.slug);
     if (seenKeys.has(sortedKey)) return false;
     seenKeys.add(sortedKey);
     pairs.push({
-      slug: `${a.slug}-vs-${b.slug}`,
+      slug: sortedKey,
       a,
       b,
     });

@@ -1,32 +1,97 @@
 ---
 import RootLayout from '../../layouts/RootLayout.astro';
 import ComparisonBuilder from '../../components/ComparisonBuilder';
-import { models } from '../../data/models';
-import { getSeoComparisonPairs } from '../../lib/seoComparisons';
-export function getStaticPaths() {
-  const pairs = getSeoComparisonPairs(models);
-  return pairs.map(({ a, b, slug }) => ({
-    params: { pair: slug },
-    props: { a, b },
-  }));
+import { env } from 'cloudflare:workers';
+import { comparisonSlugs } from '../../lib/comparisonCatalog';
+import { resolveComparisonPair } from '../../lib/comparisonPairs';
+import { loadComparisonModels } from '../../lib/loadComparisonModels';
+export const prerender = false;
+
+const pair = resolveComparisonPair(Astro.params.pair, comparisonSlugs);
+if (!pair) {
+  Astro.response.status = 404;
+  Astro.response.headers.set('Cache-Control', 'no-store');
+} else if (
+  Astro.params.pair !== pair.canonical ||
+  Astro.url.pathname.endsWith('/')
+) {
+  return Astro.redirect(`/compare/${pair.canonical}${Astro.url.search}`, 301);
 }
-const { a, b } = Astro.props;
+let records;
+try {
+  if (pair) {
+    records = await loadComparisonModels(env.ASSETS, Astro.url, [
+      pair.a,
+      pair.b,
+    ]);
+  }
+} catch {
+  Astro.response.status = 503;
+  Astro.response.headers.set('Cache-Control', 'no-store');
+  Astro.response.headers.set('Retry-After', '60');
+}
+const [a, b] = records ?? [];
 ---
 
-<RootLayout
-  title={`${a.name} vs ${b.name} | Synapse`}
-  description={`Compare ${a.name} and ${b.name}: scores, API pricing, capabilities, and tradeoffs.`}
-  ><div class="page-heading">
-    <div class="breadcrumbs">
-      <a href="/compare">Compare</a><span>/</span><span>Head to head</span>
-    </div><h1>{a.name} vs {b.name}</h1><p>
-      Review the differences, pricing sources, and billing details before you
-      decide.
-    </p>
-  </div><ComparisonBuilder
-    models={[a, b]}
-    catalogUrl="/catalog.json"
-    initial={[a.slug, b.slug]}
-    client:load
-  /></RootLayout
->
+{
+  a && b ? (
+    <RootLayout
+      title={`${a.name} vs ${b.name} | Synapse`}
+      description={`Compare ${a.name} and ${b.name}: scores, API pricing, capabilities, and tradeoffs.`}
+    >
+      <>
+        <div class="page-heading">
+          <>
+            <div class="breadcrumbs">
+              <>
+                <a href="/compare">Compare</a>
+                <span>/</span>
+                <span>Head to head</span>
+              </>
+            </div>
+            <h1>
+              {a.name} vs {b.name}
+            </h1>
+            <p>
+              Review the differences, pricing sources, and billing details
+              before you decide.
+            </p>
+            <p>
+              <a href="/methodology">Scoring methodology and source policy</a>
+            </p>
+          </>
+        </div>
+        <ComparisonBuilder
+          models={[a, b]}
+          catalogUrl="/catalog.json"
+          initial={[a.slug, b.slug]}
+          client:load
+        />
+      </>
+    </RootLayout>
+  ) : (
+    <RootLayout
+      title={
+        pair
+          ? 'Comparison unavailable | Synapse'
+          : 'Comparison not found | Synapse'
+      }
+    >
+      <div class="page-heading">
+        <h1>
+          {pair
+            ? 'Comparison temporarily unavailable.'
+            : 'Comparison not found.'}
+        </h1>
+        <p>
+          {pair
+            ? 'The model records could not load. Please try again shortly.'
+            : 'Choose two different models from the catalog to create a valid comparison.'}
+        </p>
+      </div>
+      <a class="button primary" href="/compare">
+        Open comparison tool
+      </a>
+    </RootLayout>
+  )
+}

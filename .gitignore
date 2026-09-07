@@ -3,6 +3,12 @@ artifacts/
 debug.log
 dist/
 .astro/
+.wrangler/
+src/data/generated/
+public/_comparison-data/
+worker-configuration.d.ts
+.dev.vars
+.dev.vars.*
 
 # Dependencies
 node_modules/

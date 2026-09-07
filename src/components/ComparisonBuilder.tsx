@@ -16,6 +16,7 @@ import {
 } from '../lib/decision';
 import { ModelMark } from './ModelCard';
 import { ProviderLogo } from './ProviderLogo';
+import { comparisonSharePath } from '../lib/comparisonPairs';
 
 export interface ComparedColumn {
   id: string;
@@ -67,13 +68,14 @@ export default function ComparisonBuilder({
   }, [catalogUrl]);
 
   useEffect(() => {
-    if (new URLSearchParams(location.search).has('models'))
+    const search = new URLSearchParams(location.search);
+    if (search.has('models') || (search.has('a') && search.has('b')))
       setSelection(selectionFromSearch(location.search, models));
   }, [models]);
 
   function update(next: string[]) {
     setSelection(next);
-    const url = new URL(location.href);
+    const url = new URL('/compare', location.origin);
     url.searchParams.set('models', next.join(','));
     history.replaceState(null, '', url);
   }
@@ -144,8 +146,7 @@ export default function ComparisonBuilder({
   }
 
   async function copy() {
-    const url = new URL('/compare', location.origin);
-    url.searchParams.set('models', selection.join(','));
+    const url = new URL(comparisonSharePath(selection), location.origin);
     try {
       await navigator.clipboard.writeText(url.href);
       setStatus('Comparison link copied.');

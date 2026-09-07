@@ -4,6 +4,12 @@
   "type": "module",
   "description": "Astra - Consumer AI Model Decision Engine",
   "scripts": {
+    "predev": "npm run data:prepare-comparisons",
+    "prebuild": "npm run data:prepare-comparisons",
+    "precheck": "npm run data:prepare-comparisons && wrangler types",
+    "data:prepare-comparisons": "tsx scripts/prepare-comparisons.ts",
+    "deploy": "npm run build && wrangler deploy",
+    "test:cloudflare": "python tests/cloudflare_comparisons.py",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -39,6 +45,7 @@
   ],
   "license": "AGPL-3.0-only",
   "dependencies": {
+    "@astrojs/cloudflare": "^14.3.0",
     "@astrojs/react": "^6.0.5",
     "astro": "^7.3.1",
     "clsx": "^2.1.1",
@@ -67,6 +74,7 @@
     "tsx": "^4.23.13",
     "typescript": "~5.7.3",
     "typescript-eslint": "^8.69.0",
-    "vitest": "^5.0.0"
+    "vitest": "^5.0.0",
+    "wrangler": "^4.129.0"
   }
 }
