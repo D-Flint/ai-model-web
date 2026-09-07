@@ -26,6 +26,7 @@ export interface OpenRouterThroughputRange {
   min: number;
   max: number;
   midpoint: number;
+  providerCount: number;
   sourceId: 'openrouter-throughput';
   retrievedAt: string;
 }
@@ -102,21 +103,37 @@ export function processOpenRouterThroughput(
   endpoints: OpenRouterEndpoint[],
   retrievedAt = new Date().toISOString().split('T')[0],
 ): OpenRouterThroughputRange | null {
-  const values = endpoints
-    .filter(
-      (endpoint) =>
-        endpoint.status === undefined ||
-        endpoint.status === null ||
-        endpoint.status === 0,
-    )
-    .map((endpoint) => endpoint.throughput_last_30m?.p50)
-    .filter(
-      (value): value is number =>
-        value !== null &&
-        value !== undefined &&
-        Number.isFinite(value) &&
-        value > 0,
-    );
+  const valuesByProvider = new Map<string, number[]>();
+  for (const endpoint of endpoints) {
+    if (
+      endpoint.status !== undefined &&
+      endpoint.status !== null &&
+      endpoint.status !== 0
+    ) {
+      continue;
+    }
+
+    const value = endpoint.throughput_last_30m?.p50;
+    if (
+      value === null ||
+      value === undefined ||
+      !Number.isFinite(value) ||
+      value <= 0
+    ) {
+      continue;
+    }
+
+    const providerValues = valuesByProvider.get(endpoint.provider_name) ?? [];
+    providerValues.push(value);
+    valuesByProvider.set(endpoint.provider_name, providerValues);
+  }
+
+  const values = [...valuesByProvider.values()].map((providerValues) =>
+    Math.round(
+      providerValues.reduce((sum, value) => sum + value, 0) /
+        providerValues.length,
+    ),
+  );
 
   if (values.length === 0) return null;
 
@@ -126,6 +143,7 @@ export function processOpenRouterThroughput(
     min,
     max,
     midpoint: Math.round((min + max) / 2),
+    providerCount: values.length,
     sourceId: 'openrouter-throughput',
     retrievedAt,
   };

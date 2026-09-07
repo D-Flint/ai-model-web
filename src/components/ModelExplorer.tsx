@@ -24,6 +24,7 @@ import {
   selectionFromSearch,
   getMaxReasoningEffort,
   getModelEffortStats,
+  getSpeedDisplayValue,
   contextSize,
   sortLeaderboardRows,
   type LeaderboardMetricKey,
@@ -296,14 +297,10 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
       const instVal = lbRow?.instruction_following ?? null;
       const langVal = lbRow?.language ?? null;
       const overallVal = lbRow ? lbRow.global_average : null;
-      const speedRange = model.facts.speedTokensPerSecRange;
-      const speedLabel = speedRange
-        ? speedRange.min === speedRange.max
-          ? `${speedRange.min} tok/s`
-          : `${speedRange.min}–${speedRange.max} tok/s`
-        : stats.speedTokensPerSec > 0
-          ? `${stats.speedTokensPerSec} tok/s`
-          : null;
+      const speedDisplayValue = getSpeedDisplayValue(model, maxEffort);
+      const speedLabel = speedDisplayValue
+        ? `${speedDisplayValue} tok/s`
+        : null;
 
       return {
         model,

@@ -2,7 +2,11 @@
 import { compareApiPrice, rateLabel } from '../lib/apiPricing';
 import { models } from '../data/models';
 import { categories, metricLabels, type Metric } from '../data/config';
-import { rankModels, getSpeedTokensPerSec } from '../lib/decision';
+import {
+  rankModels,
+  getSpeedDisplayValue,
+  getSpeedTokensPerSec,
+} from '../lib/decision';
 import { ModelMark } from './ModelCard';
 interface Props {
   metric?: Metric;
@@ -84,7 +88,7 @@ const ranked =
             {slug === 'cheap'
               ? rateLabel(model, 'input')
               : metric === 'speed'
-                ? getSpeedTokensPerSec(model)
+                ? (getSpeedDisplayValue(model) ?? '—')
                 : model.scores[metric]}
             <small>
               {slug === 'cheap'

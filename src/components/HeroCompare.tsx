@@ -2,13 +2,17 @@ import { rateLabel } from '../lib/apiPricing';
 import { useState } from 'react';
 import { ArrowRight, ArrowLeftRight } from 'lucide-react';
 import type { CatalogModel } from '../lib/catalogSchema';
-import { getSpeedTokensPerSec } from '../lib/decision';
+import { getSpeedDisplayValue, getSpeedTokensPerSec } from '../lib/decision';
 import { ModelMark } from './ModelCard';
 export default function HeroCompare({ models }: { models: CatalogModel[] }) {
   const [left, setLeft] = useState(models[0].slug);
   const [right, setRight] = useState(models[1].slug);
   const a = models.find((m) => m.slug === left)!;
   const b = models.find((m) => m.slug === right)!;
+  const aSpeed = getSpeedTokensPerSec(a);
+  const bSpeed = getSpeedTokensPerSec(b);
+  const aSpeedDisplay = getSpeedDisplayValue(a);
+  const bSpeedDisplay = getSpeedDisplayValue(b);
   return (
     <div className="hero-comparison">
       <div className="preview-top">
@@ -79,36 +83,20 @@ export default function HeroCompare({ models }: { models: CatalogModel[] }) {
           </strong>
         </div>
         <div>
-          <strong
-            className={
-              getSpeedTokensPerSec(a) >= getSpeedTokensPerSec(b) &&
-              getSpeedTokensPerSec(a) > 0
-                ? 'accent'
-                : ''
-            }
-          >
-            {getSpeedTokensPerSec(a) > 0 ? (
+          <strong className={aSpeed >= bSpeed && aSpeed > 0 ? 'accent' : ''}>
+            {aSpeedDisplay ? (
               <>
-                {getSpeedTokensPerSec(a)}{' '}
-                <small className="micro muted">tok/s</small>
+                {aSpeedDisplay} <small className="micro muted">tok/s</small>
               </>
             ) : (
               '—'
             )}
           </strong>
           <span>Speed</span>
-          <strong
-            className={
-              getSpeedTokensPerSec(b) >= getSpeedTokensPerSec(a) &&
-              getSpeedTokensPerSec(b) > 0
-                ? 'accent'
-                : ''
-            }
-          >
-            {getSpeedTokensPerSec(b) > 0 ? (
+          <strong className={bSpeed >= aSpeed && bSpeed > 0 ? 'accent' : ''}>
+            {bSpeedDisplay ? (
               <>
-                {getSpeedTokensPerSec(b)}{' '}
-                <small className="micro muted">tok/s</small>
+                {bSpeedDisplay} <small className="micro muted">tok/s</small>
               </>
             ) : (
               '—'

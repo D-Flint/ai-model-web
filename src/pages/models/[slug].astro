@@ -10,6 +10,7 @@ import { metricLabels, overallWeights, type Metric } from '../../data/config';
 import {
   contextSize,
   rankModels,
+  getSpeedDisplayValue,
   getSpeedTokensPerSec,
 } from '../../lib/decision';
 import { ArrowRight, ChevronDown } from 'lucide-react';
@@ -22,13 +23,8 @@ export function getStaticPaths() {
 const { model } = Astro.props;
 const speedTps = getSpeedTokensPerSec(model);
 const speedRange = model.facts.speedTokensPerSecRange;
-const speedLabel = speedRange
-  ? speedRange.min === speedRange.max
-    ? `${speedRange.min} tokens/sec`
-    : `${speedRange.min}–${speedRange.max} tokens/sec`
-  : speedTps > 0
-    ? `${speedTps} tokens/sec`
-    : '—';
+const speedDisplayValue = getSpeedDisplayValue(model);
+const speedLabel = speedDisplayValue ? `${speedDisplayValue} tokens/sec` : '—';
 const alternatives = [
   ...new Map(
     [

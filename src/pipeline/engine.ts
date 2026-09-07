@@ -463,6 +463,7 @@ export async function runIngestionPipeline(
           ? {
               min: openRouterThroughput.min,
               max: openRouterThroughput.max,
+              providerCount: openRouterThroughput.providerCount,
               sourceId: openRouterThroughput.sourceId,
               retrievedAt: openRouterThroughput.retrievedAt,
             }

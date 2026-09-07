@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ArrowRight, Layers } from 'lucide-react';
 import type { CatalogModel } from '../lib/catalogSchema';
 import { effortLabels, type ReasoningEffort } from '../data/config';
-import { getModelEffortStats } from '../lib/decision';
+import { getModelEffortStats, getSpeedDisplayValue } from '../lib/decision';
 
 export default function ModelEffortExplorer({
   model,
@@ -33,6 +33,7 @@ export default function ModelEffortExplorer({
 
   const currentStats = getModelEffortStats(model, selectedEffort);
   const baselineStats = getModelEffortStats(model, defaultEffort);
+  const speedDisplayValue = getSpeedDisplayValue(model, selectedEffort);
 
   const overallDelta =
     currentStats.scores.overall !== null &&
@@ -127,10 +128,9 @@ export default function ModelEffortExplorer({
         <div className="effort-stat-card">
           <span className="label">Speed (Throughput)</span>
           <div className="value">
-            {currentStats.speedTokensPerSec > 0 ? (
+            {speedDisplayValue ? (
               <>
-                {currentStats.speedTokensPerSec}{' '}
-                <small className="micro muted">tok/s</small>
+                {speedDisplayValue} <small className="micro muted">tok/s</small>
               </>
             ) : (
               '—'

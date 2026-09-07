@@ -5,6 +5,7 @@ import {
   contextSize,
   getMaxReasoningEffort,
   getModelEffortStats,
+  getSpeedDisplayValue,
 } from '../lib/decision';
 import { ProviderLogo } from './ProviderLogo';
 
@@ -40,15 +41,9 @@ export default function ModelCard({
   const maxEffort = getMaxReasoningEffort(model);
   const isReasoning = maxEffort !== 'none';
   const stats = getModelEffortStats(model, maxEffort);
-  const speedTps = stats.speedTokensPerSec;
   const speedRange = model.facts.speedTokensPerSecRange;
-  const speedLabel = speedRange
-    ? speedRange.min === speedRange.max
-      ? `${speedRange.min} tok/s`
-      : `${speedRange.min}–${speedRange.max} tok/s`
-    : speedTps > 0
-      ? `${speedTps} tok/s`
-      : null;
+  const speedDisplayValue = getSpeedDisplayValue(model, maxEffort);
+  const speedLabel = speedDisplayValue ? `${speedDisplayValue} tok/s` : null;
 
   return (
     <article className={`model-card ${selected ? 'selected' : ''}`.trim()}>

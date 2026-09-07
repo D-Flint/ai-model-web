@@ -79,7 +79,32 @@ describe('OpenRouter Payload Validation', () => {
       min: 20,
       max: 40,
       midpoint: 30,
+      providerCount: 2,
       sourceId: 'openrouter-throughput',
+    });
+  });
+
+  it('collapses repeated endpoints from one provider into one speed value', () => {
+    const throughput = processOpenRouterThroughput([
+      {
+        model_id: 'openai/gpt-5',
+        provider_name: 'OpenAI',
+        status: 0,
+        throughput_last_30m: { p50: 20 },
+      },
+      {
+        model_id: 'openai/gpt-5',
+        provider_name: 'OpenAI',
+        status: 0,
+        throughput_last_30m: { p50: 40 },
+      },
+    ]);
+
+    expect(throughput).toMatchObject({
+      min: 30,
+      max: 30,
+      midpoint: 30,
+      providerCount: 1,
     });
   });
 });

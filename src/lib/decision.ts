@@ -128,6 +128,22 @@ export function getSpeedTokensPerSec(
   return Math.max(10, Math.round(baseTps + delta * 1.8));
 }
 
+export function getSpeedDisplayValue(
+  model: CatalogModel,
+  effort?: ReasoningEffort,
+): string | null {
+  const range = model.facts.speedTokensPerSecRange;
+  const providerCount =
+    range?.providerCount ?? (range && range.min !== range.max ? 2 : 1);
+
+  if (range && providerCount > 1) {
+    return `${range.min}–${range.max}`;
+  }
+
+  const speed = getSpeedTokensPerSec(model, effort);
+  return speed > 0 ? String(speed) : null;
+}
+
 export function getMaxReasoningEffort(model: CatalogModel): ReasoningEffort {
   const isReasoning = Boolean(
     model.facts.reasoningEffort &&

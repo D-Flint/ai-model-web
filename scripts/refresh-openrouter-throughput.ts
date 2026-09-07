@@ -106,6 +106,7 @@ async function main() {
         speedTokensPerSecRange: {
           min: throughput.min,
           max: throughput.max,
+          providerCount: throughput.providerCount,
           sourceId: throughput.sourceId,
           retrievedAt: throughput.retrievedAt,
         },

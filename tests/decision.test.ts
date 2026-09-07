@@ -10,6 +10,7 @@ import {
   taskCost,
   getModelEffortStats,
   getMaxReasoningEffort,
+  getSpeedDisplayValue,
   getSpeedTokensPerSec,
 } from '../src/lib/decision';
 import { validateCatalog } from '../src/lib/importCatalog';
@@ -158,6 +159,28 @@ describe('task cost assumptions and reasoning effort stats', () => {
         expect(model.facts.speedTokensPerSec).toBe(tps);
       }
     }
+  });
+  it('displays one provider speed or a multi-provider speed range', () => {
+    const oneProvider = structuredClone(mockModels[0]);
+    oneProvider.facts.speedTokensPerSec = 30;
+    oneProvider.facts.speedTokensPerSecRange = {
+      min: 30,
+      max: 30,
+      providerCount: 1,
+      sourceId: 'openrouter-throughput',
+      retrievedAt: '2026-09-07',
+    };
+    expect(getSpeedDisplayValue(oneProvider)).toBe('30');
+
+    const twoProviders = structuredClone(oneProvider);
+    twoProviders.facts.speedTokensPerSecRange = {
+      min: 20,
+      max: 40,
+      providerCount: 2,
+      sourceId: 'openrouter-throughput',
+      retrievedAt: '2026-09-07',
+    };
+    expect(getSpeedDisplayValue(twoProviders)).toBe('20–40');
   });
   it('determines the maximum possible effort for any model', () => {
     const multiEffortModel = models.find(

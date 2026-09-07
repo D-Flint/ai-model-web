@@ -11,6 +11,7 @@ import {
 import {
   contextSize,
   getModelEffortStats,
+  getSpeedDisplayValue,
   selectionFromSearch,
   type ModelEffortStats,
 } from '../lib/decision';
@@ -452,6 +453,10 @@ export default function ComparisonBuilder({
                   <th scope="row">Speed (tokens/sec)</th>
                   {selectedItems.map((item) => {
                     const tps = item.stats.speedTokensPerSec;
+                    const speedDisplayValue = getSpeedDisplayValue(
+                      item.model,
+                      item.effort,
+                    );
                     const speedScore = item.stats.scores.speed;
                     const validTps = selectedItems
                       .map((x) => x.stats.speedTokensPerSec)
@@ -464,7 +469,7 @@ export default function ComparisonBuilder({
                         {tps > 0 ? (
                           <>
                             <a href={`/models/${item.model.slug}#score-speed`}>
-                              <strong>{tps}</strong>{' '}
+                              <strong>{speedDisplayValue ?? tps}</strong>{' '}
                               <small className="micro muted">tok/s</small>
                             </a>
                             <div className="micro muted">
@@ -627,7 +632,7 @@ export default function ComparisonBuilder({
                     item: bestSpeed,
                     detail:
                       bestSpeed.stats.speedTokensPerSec > 0
-                        ? `${bestSpeed.stats.speedTokensPerSec} tokens/sec throughput (${bestSpeed.stats.latency}).`
+                        ? `${getSpeedDisplayValue(bestSpeed.model, bestSpeed.effort) ?? bestSpeed.stats.speedTokensPerSec} tokens/sec throughput (${bestSpeed.stats.latency}).`
                         : 'Speed measurements not claimed yet without approved independent benchmark.',
                   },
                   {

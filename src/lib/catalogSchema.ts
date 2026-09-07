@@ -42,6 +42,7 @@ export const catalogModelSchema = z
         .object({
           min: z.number().int().positive(),
           max: z.number().int().positive(),
+          providerCount: z.number().int().positive().optional(),
           sourceId: z.string().min(1),
           retrievedAt: date,
         })
