@@ -1,3 +1,4 @@
+import { MISTRAL_OFFICIAL_SPECS } from './officialMistral';
 import type { OfficialProviderSpec } from '../pipeline/types';
 
 export const OFFICIAL_PROVIDER_SPECS: Record<string, OfficialProviderSpec> = {
@@ -5174,4 +5175,5 @@ export const OFFICIAL_PROVIDER_SPECS: Record<string, OfficialProviderSpec> = {
     sourceUrl: 'https://www.minimax.io/',
     sourceName: 'MiniMax Official Documentation',
   },
+  ...MISTRAL_OFFICIAL_SPECS,
 };
