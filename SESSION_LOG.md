@@ -1218,3 +1218,35 @@
 - Commit hash: `16f680c` (local commit; no remote push).
 - Current state: 77 curated LiveBench-evaluated models visible in v1 catalog, Model Finder, Rankings, and Model Explorer.
 - Exact next step: User verifies catalog count and rankings on `http://localhost:4321/models`.
+## 2026-09-07 — Cap visible catalog at top 30 LiveBench models
+
+- Objective: Replace 77 visible tracked models with exactly 30 models selected from current LiveBench data.
+- Files changed:
+  - `src/lib/livebenchCatalog.ts`: Added validated LiveBench row resolution, newest-row deduplication, eligibility filtering, score ordering, and exact-limit failure.
+  - `src/data/models.ts`: Keeps `allModels` at 282 and exports top 30 LiveBench models for public consumers.
+  - `tests/livebenchCatalog.test.ts`: Added count, provenance, stable order, history preservation, and shortfall tests.
+  - `docs/superpowers/specs/2026-09-07-livebench-top-30-catalog-design.md`: Revised scope from OpenRouter popularity to LiveBench top 30 after user direction.
+- Attempt count: 2 implementation iterations; corrected expected tie ordering and shortfall fixture after focused test failures.
+- Failures and causes: Initial sandboxed build hit Wrangler cache/log `EPERM`; escalated build passed. Full lint still reports six pre-existing Prettier issues outside this change; ESLint and touched-file formatting pass.
+- Tests and results:
+  - `npm test`: 88/88 passed.
+  - Focused `tests/livebenchCatalog.test.ts`: 3/3 passed.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 88 files.
+  - `npm run build`: Passed; generated 30 comparison records and 30 model detail routes.
+  - `npx eslint .`: Passed.
+  - Touched-file Prettier check: Passed.
+- Previous visible model count: 77.
+- New tracked model count: 30.
+- Models kept: `claude-fable-5-1`, `gpt-6-astra`, `claude-opus-5`, `gemini-3-deep-think`, `o3-pro`, `gemini-3-1-pro`, `claude-fable-5`, `gemini-3-8-flash`, `gpt-5-6-sol`, `claude-sonnet-5`, `gemini-3-pro`, `gemini-3-7-flash`, `o3`, `claude-sonnet-4-6`, `claude-opus-4-6`, `gemini-2-5-pro`, `gpt-5-pro`, `o1-pro`, `gpt-5-3-codex`, `claude-opus-4-5`, `gemini-3-6-flash`, `claude-sonnet-4-5`, `o4-mini`, `claude-3-7-sonnet`, `gpt-5-6-terra`, `deepseek-r1`, `gemma-4`, `o1`, `gpt-5`, `gemini-2-0-pro`.
+- Models excluded: 47 former visible models ranked below top 30 or excluded by LiveBench eligibility.
+- Duplicates resolved: 0 duplicate canonical rows in current dataset; selector still retains newest row per canonical identity.
+- Deprecated models hidden: Existing deprecated/legacy eligibility exclusions preserved; no historical rows deleted.
+- Models with incomplete LiveBench data: Excluded from top-30 selection when no eligible current row exists.
+- LiveBench release used: `src/data/livebenchData.json`; selected rows use latest per-model evaluation dates, latest selected date `2026-09-02`.
+- Catalog filtering logic: `selectTopLiveBenchModels(allModels)` with explicit limit 30, canonical alias resolution, eligibility checks, newest-row deduplication, and global-average sorting.
+- Model identity changes: None; existing LiveBench aliases reused.
+- Model Finder changes: None required; it consumes capped `models` export.
+- Ranking changes: None required; rankings consume capped `models` export.
+- Commit hash: `6e16151` (local commit; no remote push).
+- Current state: Top-30 LiveBench catalog complete; full historical verified catalog preserved.
+- Exact next step: User verifies `/models`, `/find`, `/rankings`, and one model detail page locally before next implementation.
