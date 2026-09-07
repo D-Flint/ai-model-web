@@ -263,7 +263,7 @@ try {
   );
 }
 
-import { evaluateModelEligibility } from '../lib/catalogEligibility';
+import { selectTopLiveBenchModels } from '../lib/livebenchCatalog';
 
 // All models (complete database, including legacy/untracked)
 export const allModels: CatalogModel[] =
@@ -289,8 +289,8 @@ export const allModels: CatalogModel[] =
       )
     : mockModels;
 
-// Tracked models: curated LiveBench-backed catalog for v1 (30-80 models)
-export const models: CatalogModel[] = allModels.filter((model) => {
-  const result = evaluateModelEligibility(model);
-  return result.isTracked;
-});
+// Tracked models: top 30 eligible models from current LiveBench data.
+export const models: CatalogModel[] =
+  allModels[0]?.dataKind === 'verified'
+    ? selectTopLiveBenchModels(allModels)
+    : mockModels;
