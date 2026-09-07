@@ -1004,17 +1004,15 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                               >
                                 {row.model.name}
                               </a>
+                              {row.effortLabel && (
+                                <span className="model-effort-badge">
+                                  {row.effortLabel}
+                                </span>
+                              )}
                               {row.isOpenWeights && (
                                 <span className="badge-open">open</span>
                               )}
                             </div>
-                            {row.effortLabel && (
-                              <div className="model-effort-row">
-                                <span className="model-effort-badge">
-                                  {row.effortLabel}
-                                </span>
-                              </div>
-                            )}
                             {showOrg && (
                               <div className="model-org-sub">
                                 <ProviderLogo
@@ -1392,17 +1390,15 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                         >
                           {row.model.name}
                         </a>
+                        {row.effortLabel && (
+                          <span className="model-effort-badge">
+                            {row.effortLabel}
+                          </span>
+                        )}
                         {row.isOpenWeights && (
                           <span className="badge-open">open</span>
                         )}
                       </div>
-                      {row.effortLabel && (
-                        <div className="model-effort-row">
-                          <span className="model-effort-badge">
-                            {row.effortLabel}
-                          </span>
-                        </div>
-                      )}
                       <div className="mobile-model-score-line">
                         <span className="mobile-score-val">
                           {row.scores.overall !== null

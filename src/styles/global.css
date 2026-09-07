@@ -3174,12 +3174,6 @@ table.leaderboard-table td.col-sorted.td-date {
   flex-wrap: wrap;
 }
 
-.model-effort-row {
-  display: flex;
-  align-items: center;
-  margin-top: 5px;
-}
-
 .model-effort-badge {
   display: inline-flex;
   align-items: center;
