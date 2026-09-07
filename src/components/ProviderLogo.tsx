@@ -106,8 +106,9 @@ export function getProviderLogoInfo(provider: string): {
     norm.includes('moonlight')
   ) {
     return {
-      src: '/logos/kimi.svg',
-      alt: 'Moonshot Kimi logo',
+      src: '/logos/moonshot.png',
+      alt: 'Moonshot AI logo',
+      invertOnLight: true,
     };
   }
 
@@ -118,7 +119,7 @@ export function getProviderLogoInfo(provider: string): {
     norm.includes('abab')
   ) {
     return {
-      src: '/logos/minimax.svg',
+      src: '/logos/minimax.png',
       alt: 'MiniMax logo',
     };
   }
@@ -126,7 +127,7 @@ export function getProviderLogoInfo(provider: string): {
   // Tencent / Hunyuan
   if (norm.includes('tencent') || norm.includes('hunyuan')) {
     return {
-      src: '/logos/tencent.svg',
+      src: '/logos/tencent.png',
       alt: 'Tencent logo',
     };
   }
@@ -139,7 +140,7 @@ export function getProviderLogoInfo(provider: string): {
     norm.includes('glm')
   ) {
     return {
-      src: '/logos/zai.svg',
+      src: '/logos/zai.png',
       alt: 'Z.ai logo',
     };
   }
@@ -147,7 +148,7 @@ export function getProviderLogoInfo(provider: string): {
   // Nvidia / Nemotron
   if (norm.includes('nvidia') || norm.includes('nemotron')) {
     return {
-      src: '/logos/nvidia.svg',
+      src: '/logos/nvidia.png',
       alt: 'Nvidia logo',
     };
   }
@@ -155,7 +156,7 @@ export function getProviderLogoInfo(provider: string): {
   // Xiaomi / MiMo
   if (norm.includes('xiaomi') || norm.includes('mimo')) {
     return {
-      src: '/logos/xiaomi.svg',
+      src: '/logos/xiaomi.png',
       alt: 'Xiaomi logo',
     };
   }
@@ -163,13 +164,14 @@ export function getProviderLogoInfo(provider: string): {
   // Poolside / Laguna
   if (norm.includes('poolside') || norm.includes('laguna')) {
     return {
-      src: '/logos/poolside.svg',
+      src: '/logos/poolside.png',
       alt: 'Poolside logo',
+      invertOnLight: true,
     };
   }
 
   return {
-    src: '/logos/generic.svg',
+    src: '/logos/generic.png',
     alt: `${provider || 'AI'} logo`,
   };
 }
