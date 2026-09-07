@@ -57,6 +57,6 @@
 - Attempts: 1 implementation attempt after browser reproduction.
 - Failures/causes: Full lint reports existing formatting warnings in five files, including unrelated catalog/style files; targeted TypeScript, Astro, and component formatting checks pass.
 - Tests: `npm test -- --run tests/decision.test.ts` 17/17; `npm run check` passed with known Wrangler log `EPERM`; browser smoke check shows 4 comparison selectors and 4 detail effort tabs; `git diff --check` passed.
-- Commit: Pending local commit.
+- Commit: `c15c11e` (`fix: show selectable reasoning effort controls`; amended hash may differ).
 - Current state: Mixed `none` plus selectable effort lists now render reasoning controls; standard `none` remains excluded from selector options.
-- Exact next step: Create local commit, then wait for user verification.
+- Exact next step: User verifies comparison and model detail effort controls.
