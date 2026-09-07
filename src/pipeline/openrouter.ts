@@ -67,7 +67,7 @@ export async function fetchOpenRouterModels(options?: {
 
 export async function fetchOpenRouterEndpoints(
   modelId: string,
-  options?: { apiKey?: string; endpoint?: string },
+  options?: { apiKey?: string; endpoint?: string; permaslug?: string },
 ): Promise<OpenRouterEndpoint[]> {
   const [author, ...slugParts] = modelId.split('/');
   const slug = slugParts.join('/');
@@ -84,35 +84,47 @@ export async function fetchOpenRouterEndpoints(
   };
   if (apiKey) headers['Authorization'] = `Bearer ${apiKey}`;
 
-  const url = new URL(endpoint);
-  if (!options?.endpoint) {
-    url.searchParams.set('permaslug', modelId);
-    url.searchParams.set('perfWorkload', 'text_generation');
-    url.searchParams.set('latencyMetric', 'latency');
-  }
+  const fetchStatsForSlug = async (
+    targetSlug: string,
+  ): Promise<OpenRouterEndpoint[]> => {
+    const url = new URL(endpoint);
+    if (!options?.endpoint) {
+      url.searchParams.set('permaslug', targetSlug);
+      url.searchParams.set('perfWorkload', 'text_generation');
+      url.searchParams.set('latencyMetric', 'latency');
+    }
 
-  const response = await fetch(url, { headers });
-  if (!response.ok) {
-    throw new Error(
-      `OpenRouter endpoint fetch failed: HTTP ${response.status} ${response.statusText}`,
-    );
-  }
+    const response = await fetch(url, { headers });
+    if (!response.ok) {
+      throw new Error(
+        `OpenRouter endpoint fetch failed: HTTP ${response.status} ${response.statusText}`,
+      );
+    }
 
-  const json = await response.json();
-  if (options?.endpoint) {
-    const parsed = openRouterEndpointsResponseSchema.safeParse(json);
+    const json = await response.json();
+    if (options?.endpoint) {
+      const parsed = openRouterEndpointsResponseSchema.safeParse(json);
+      if (!parsed.success) {
+        throw new Error('OpenRouter endpoint payload failed schema validation');
+      }
+      return parsed.data.data.endpoints;
+    }
+
+    const parsed =
+      openRouterFrontendEndpointStatsResponseSchema.safeParse(json);
     if (!parsed.success) {
       throw new Error('OpenRouter endpoint payload failed schema validation');
     }
-    return parsed.data.data.endpoints;
-  }
 
-  const parsed = openRouterFrontendEndpointStatsResponseSchema.safeParse(json);
-  if (!parsed.success) {
-    throw new Error('OpenRouter endpoint payload failed schema validation');
-  }
+    return normalizeOpenRouterFrontendEndpointStats(modelId, parsed.data.data);
+  };
 
-  return normalizeOpenRouterFrontendEndpointStats(modelId, parsed.data.data);
+  const primarySlug = options?.permaslug ?? modelId;
+  let endpoints = await fetchStatsForSlug(primarySlug);
+  if (endpoints.length === 0 && primarySlug !== modelId) {
+    endpoints = await fetchStatsForSlug(modelId);
+  }
+  return endpoints;
 }
 
 export function normalizeOpenRouterFrontendEndpointStats(

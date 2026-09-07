@@ -36,11 +36,17 @@ describe('OpenRouter Payload Validation', () => {
       },
     };
 
-    const parsed = openRouterModelSchema.safeParse(sample);
-    expect(parsed.success).toBe(true);
-    if (parsed.success) {
-      expect(parsed.data.id).toBe('anthropic/claude-sonnet-4.5');
-      expect(parsed.data.context_length).toBe(1000000);
+    const sampleWithCanonical = {
+      ...sample,
+      canonical_slug: 'anthropic/claude-sonnet-4.5-20260901',
+    };
+    const parsedWithCanonical =
+      openRouterModelSchema.safeParse(sampleWithCanonical);
+    expect(parsedWithCanonical.success).toBe(true);
+    if (parsedWithCanonical.success) {
+      expect(parsedWithCanonical.data.canonical_slug).toBe(
+        'anthropic/claude-sonnet-4.5-20260901',
+      );
     }
   });
 

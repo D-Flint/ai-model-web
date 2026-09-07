@@ -836,6 +836,7 @@ export const GOOGLE_MODELS: CanonicalModelConfig[] = [
     family: 'Gemma',
     openWeights: true,
     openRouterId: 'google/gemma-4',
+    openRouterAliases: ['google/gemma-4-31b-it', 'google/gemma-4-26b-a4b-it'],
     lmarenaAliases: ['gemma-4', 'google/gemma-4'],
     swebenchAliases: ['gemma-4', 'Google: Gemma 4'],
     livebenchAliases: ['gemma-4'],

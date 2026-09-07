@@ -18,6 +18,9 @@ export class ModelAliasResolver {
       if (model.openRouterId) {
         this.openRouterMap.set(model.openRouterId.toLowerCase(), model);
       }
+      for (const alias of model.openRouterAliases ?? []) {
+        this.openRouterMap.set(alias.toLowerCase().trim(), model);
+      }
 
       for (const alias of model.lmarenaAliases) {
         this.lmarenaMap.set(alias.toLowerCase().trim(), model);

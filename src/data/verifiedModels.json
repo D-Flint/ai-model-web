@@ -26,7 +26,7 @@
     "facts": {
       "context": 1048576,
       "maxOutput": 65536,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 30,
       "vision": true,
       "audio": true,
       "tools": true,
@@ -43,7 +43,14 @@
         "high",
         "max"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 10,
+        "max": 50,
+        "providerCount": 5,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 12,
@@ -62,7 +69,7 @@
       "research": 83,
       "writing": 89,
       "vision": null,
-      "speed": null,
+      "speed": 15,
       "reliability": null,
       "costEfficiency": 19,
       "overall": 70
@@ -137,6 +144,16 @@
         "normalized": 57,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 30,
+        "min": 0,
+        "max": 200,
+        "normalized": 15,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -176,6 +193,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=openai%2Fgpt-6-astra-20260903&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -206,7 +231,7 @@
     "facts": {
       "context": 1048576,
       "maxOutput": 65536,
-      "speedTokensPerSec": 145,
+      "speedTokensPerSec": 41,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -222,7 +247,14 @@
         "low",
         "high"
       ],
-      "defaultEffort": "high"
+      "defaultEffort": "high",
+      "speedTokensPerSecRange": {
+        "min": 41,
+        "max": 41,
+        "providerCount": 1,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.834,
@@ -241,7 +273,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 21,
       "reliability": null,
       "costEfficiency": 57,
       "overall": 78
@@ -265,6 +297,16 @@
         "max": 100,
         "normalized": 57,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 41,
+        "min": 0,
+        "max": 200,
+        "normalized": 21,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
     ],
@@ -297,6 +339,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=tencent%2Fhy4-preview-20260827&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -327,7 +377,7 @@
     "facts": {
       "context": 1310720,
       "maxOutput": 131072,
-      "speedTokensPerSec": 165,
+      "speedTokensPerSec": 76,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -343,7 +393,14 @@
         "high",
         "max"
       ],
-      "defaultEffort": "max"
+      "defaultEffort": "max",
+      "speedTokensPerSecRange": {
+        "min": 19,
+        "max": 133,
+        "providerCount": 24,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.075,
@@ -362,7 +419,7 @@
       "research": 76,
       "writing": 77,
       "vision": 42,
-      "speed": null,
+      "speed": 38,
       "reliability": null,
       "costEfficiency": 88,
       "overall": 71
@@ -467,6 +524,16 @@
         "normalized": 57,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 76,
+        "min": 0,
+        "max": 200,
+        "normalized": 38,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 74,
@@ -506,6 +573,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=z-ai%2Fglm-5.3-flash-20260826&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -535,7 +610,7 @@
     "facts": {
       "context": 2097152,
       "maxOutput": 65536,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 115,
       "vision": true,
       "audio": true,
       "tools": true,
@@ -552,7 +627,14 @@
         "medium",
         "high"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 19,
+        "max": 211,
+        "providerCount": 6,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.15,
@@ -571,7 +653,7 @@
       "research": 54,
       "writing": 88,
       "vision": null,
-      "speed": null,
+      "speed": 57,
       "reliability": null,
       "costEfficiency": 77,
       "overall": 70
@@ -646,6 +728,16 @@
         "normalized": 54,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 115,
+        "min": 0,
+        "max": 200,
+        "normalized": 57,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -685,6 +777,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=google%2Fgemini-3.8-flash-20260902&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -713,7 +813,7 @@
     "facts": {
       "context": 262144,
       "maxOutput": 16384,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 247,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -727,7 +827,14 @@
       "reasoningEffort": [
         "none"
       ],
-      "defaultEffort": "none"
+      "defaultEffort": "none",
+      "speedTokensPerSecRange": {
+        "min": 3,
+        "max": 491,
+        "providerCount": 15,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.15,
@@ -746,7 +853,7 @@
       "research": 73,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 100,
       "reliability": null,
       "costEfficiency": 82,
       "overall": 78
@@ -811,6 +918,16 @@
         "normalized": 73,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-07-28"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 247,
+        "min": 0,
+        "max": 200,
+        "normalized": 100,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -850,6 +967,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=google%2Fgemma-4-31b-it-20260402&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -881,7 +1006,7 @@
     "facts": {
       "context": 1000000,
       "maxOutput": 65536,
-      "speedTokensPerSec": 58,
+      "speedTokensPerSec": 46,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -898,7 +1023,14 @@
         "medium",
         "high"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 8,
+        "max": 83,
+        "providerCount": 18,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.8,
@@ -917,7 +1049,7 @@
       "research": 79,
       "writing": 86,
       "vision": null,
-      "speed": null,
+      "speed": 23,
       "reliability": null,
       "costEfficiency": 57,
       "overall": 73
@@ -992,6 +1124,16 @@
         "normalized": 62,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 46,
+        "min": 0,
+        "max": 200,
+        "normalized": 23,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 48,
@@ -1023,6 +1165,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=moonshotai%2Fkimi-k3-20260715&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -1582,7 +1732,7 @@
     "facts": {
       "context": 2097152,
       "maxOutput": 65536,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 102,
       "vision": true,
       "audio": true,
       "tools": true,
@@ -1599,7 +1749,14 @@
         "medium",
         "high"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 34,
+        "max": 169,
+        "providerCount": 6,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.15,
@@ -1618,7 +1775,7 @@
       "research": 68,
       "writing": 86,
       "vision": null,
-      "speed": null,
+      "speed": 51,
       "reliability": null,
       "costEfficiency": 77,
       "overall": 74
@@ -1693,6 +1850,16 @@
         "normalized": 58,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 102,
+        "min": 0,
+        "max": 200,
+        "normalized": 51,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -1732,6 +1899,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=google%2Fgemini-3.7-flash-20260813&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -1868,7 +2043,7 @@
     "facts": {
       "context": 1000000,
       "maxOutput": 128000,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 27,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -1886,7 +2061,14 @@
         "high",
         "max"
       ],
-      "defaultEffort": "high"
+      "defaultEffort": "high",
+      "speedTokensPerSecRange": {
+        "min": 2,
+        "max": 51,
+        "providerCount": 4,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 10,
@@ -1905,7 +2087,7 @@
       "research": 80,
       "writing": 90,
       "vision": null,
-      "speed": null,
+      "speed": 14,
       "reliability": null,
       "costEfficiency": 20,
       "overall": 72
@@ -1980,6 +2162,16 @@
         "normalized": 66,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 27,
+        "min": 0,
+        "max": 200,
+        "normalized": 14,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -2019,6 +2211,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=anthropic%2Fclaude-fable-5.1-20260831&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -2051,7 +2251,7 @@
     "facts": {
       "context": 1048576,
       "maxOutput": 262144,
-      "speedTokensPerSec": 75,
+      "speedTokensPerSec": 85,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -2068,7 +2268,14 @@
         "medium",
         "high"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 17,
+        "max": 152,
+        "providerCount": 12,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.3,
@@ -2087,7 +2294,7 @@
       "research": 76,
       "writing": 77,
       "vision": 36,
-      "speed": null,
+      "speed": 43,
       "reliability": null,
       "costEfficiency": 68,
       "overall": 62
@@ -2192,6 +2399,16 @@
         "normalized": 41,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 85,
+        "min": 0,
+        "max": 200,
+        "normalized": 43,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 74,
@@ -2231,6 +2448,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=minimax%2Fminimax-m3-20260531&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -2599,7 +2824,7 @@
     "facts": {
       "context": 256000,
       "maxOutput": 32768,
-      "speedTokensPerSec": 68,
+      "speedTokensPerSec": 87,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -2616,7 +2841,14 @@
         "medium",
         "high"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 18,
+        "max": 155,
+        "providerCount": 15,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.6,
@@ -2635,7 +2867,7 @@
       "research": 63,
       "writing": 78,
       "vision": null,
-      "speed": null,
+      "speed": 44,
       "reliability": null,
       "costEfficiency": 60,
       "overall": 62
@@ -2720,6 +2952,16 @@
         "normalized": 46,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 87,
+        "min": 0,
+        "max": 200,
+        "normalized": 44,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 67,
@@ -2759,6 +3001,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=moonshotai%2Fkimi-k2.7-code-20260612&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -2787,7 +3037,7 @@
     "facts": {
       "context": 1048576,
       "maxOutput": 32768,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 65,
       "vision": true,
       "audio": true,
       "tools": true,
@@ -2803,7 +3053,14 @@
         "low",
         "medium"
       ],
-      "defaultEffort": "none"
+      "defaultEffort": "none",
+      "speedTokensPerSecRange": {
+        "min": 1,
+        "max": 128,
+        "providerCount": 6,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.12,
@@ -2822,7 +3079,7 @@
       "research": 63,
       "writing": 84,
       "vision": null,
-      "speed": null,
+      "speed": 33,
       "reliability": null,
       "costEfficiency": 80,
       "overall": 70
@@ -2897,6 +3154,16 @@
         "normalized": 43,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 65,
+        "min": 0,
+        "max": 200,
+        "normalized": 33,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -2936,6 +3203,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=google%2Fgemini-3.6-flash-20260721&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -2964,7 +3239,7 @@
     "facts": {
       "context": 1000000,
       "maxOutput": 64000,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 57,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -2980,7 +3255,14 @@
         "low",
         "medium"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 42,
+        "max": 71,
+        "providerCount": 9,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 2,
@@ -2999,7 +3281,7 @@
       "research": 72,
       "writing": 75,
       "vision": null,
-      "speed": null,
+      "speed": 28,
       "reliability": null,
       "costEfficiency": 41,
       "overall": 68
@@ -3074,6 +3356,16 @@
         "normalized": 59,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 57,
+        "min": 0,
+        "max": 200,
+        "normalized": 28,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -3113,6 +3405,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=anthropic%2Fclaude-sonnet-5-20260630&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -3410,7 +3710,7 @@
     "facts": {
       "context": 256000,
       "maxOutput": 32768,
-      "speedTokensPerSec": 62,
+      "speedTokensPerSec": 76,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -3427,7 +3727,14 @@
         "medium",
         "high"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 14,
+        "max": 137,
+        "providerCount": 20,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.6,
@@ -3446,7 +3753,7 @@
       "research": 65,
       "writing": 75,
       "vision": 40,
-      "speed": null,
+      "speed": 38,
       "reliability": null,
       "costEfficiency": 60,
       "overall": 64
@@ -3551,6 +3858,16 @@
         "normalized": 47,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 76,
+        "min": 0,
+        "max": 200,
+        "normalized": 38,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 74,
@@ -3590,6 +3907,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=moonshotai%2Fkimi-k2.6-20260420&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -3619,7 +3944,7 @@
     "facts": {
       "context": 1000000,
       "maxOutput": 128000,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 82,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -3636,7 +3961,14 @@
         "medium",
         "high"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 46,
+        "max": 117,
+        "providerCount": 9,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 5,
@@ -3655,7 +3987,7 @@
       "research": 75,
       "writing": 89,
       "vision": null,
-      "speed": null,
+      "speed": 41,
       "reliability": null,
       "costEfficiency": 29,
       "overall": 69
@@ -3730,6 +4062,16 @@
         "normalized": 65,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 82,
+        "min": 0,
+        "max": 200,
+        "normalized": 41,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -3769,6 +4111,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=anthropic%2Fclaude-opus-5-20260723&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -3796,7 +4146,7 @@
     "facts": {
       "context": 1048576,
       "maxOutput": 32768,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 105,
       "vision": true,
       "audio": true,
       "tools": true,
@@ -3811,7 +4161,14 @@
         "none",
         "low"
       ],
-      "defaultEffort": "none"
+      "defaultEffort": "none",
+      "speedTokensPerSecRange": {
+        "min": 5,
+        "max": 205,
+        "providerCount": 5,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.1,
@@ -3830,7 +4187,7 @@
       "research": 65,
       "writing": 85,
       "vision": null,
-      "speed": null,
+      "speed": 53,
       "reliability": null,
       "costEfficiency": 82,
       "overall": 71
@@ -3905,6 +4262,16 @@
         "normalized": 49,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 105,
+        "min": 0,
+        "max": 200,
+        "normalized": 53,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -3944,6 +4311,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=google%2Fgemini-3.5-flash-20260519&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -3971,7 +4346,7 @@
     "facts": {
       "context": 1048576,
       "maxOutput": 16384,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 81,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -3985,7 +4360,14 @@
       "reasoningEffort": [
         "none"
       ],
-      "defaultEffort": "none"
+      "defaultEffort": "none",
+      "speedTokensPerSecRange": {
+        "min": 3,
+        "max": 158,
+        "providerCount": 7,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.05,
@@ -4004,7 +4386,7 @@
       "research": 53,
       "writing": 72,
       "vision": 38,
-      "speed": null,
+      "speed": 41,
       "reliability": null,
       "costEfficiency": 92,
       "overall": 63
@@ -4109,6 +4491,16 @@
         "normalized": 45,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 81,
+        "min": 0,
+        "max": 200,
+        "normalized": 41,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 88,
@@ -4156,6 +4548,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=google%2Fgemini-3.5-flash-lite-20260721&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -4528,7 +4928,7 @@
     "facts": {
       "context": 1000000,
       "maxOutput": 128000,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 43,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -4545,7 +4945,14 @@
         "medium",
         "high"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 28,
+        "max": 58,
+        "providerCount": 6,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 10,
@@ -4564,7 +4971,7 @@
       "research": 57,
       "writing": 91,
       "vision": 47,
-      "speed": null,
+      "speed": 22,
       "reliability": null,
       "costEfficiency": 20,
       "overall": 69
@@ -4679,6 +5086,16 @@
         "normalized": 62,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 43,
+        "min": 0,
+        "max": 200,
+        "normalized": 22,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 91,
@@ -4726,6 +5143,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=anthropic%2Fclaude-5-fable-20260609&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -5318,7 +5743,7 @@
     "facts": {
       "context": 204800,
       "maxOutput": 16384,
-      "speedTokensPerSec": 85,
+      "speedTokensPerSec": 156,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -5335,7 +5760,14 @@
         "medium",
         "high"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 16,
+        "max": 295,
+        "providerCount": 10,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.3,
@@ -5354,7 +5786,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 78,
       "reliability": null,
       "costEfficiency": 68,
       "overall": 61
@@ -5378,6 +5810,16 @@
         "max": 100,
         "normalized": 68,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 156,
+        "min": 0,
+        "max": 200,
+        "normalized": 78,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
     ],
@@ -5410,6 +5852,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=minimax%2Fminimax-m2.7-20260318&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -5540,7 +5990,7 @@
     "facts": {
       "context": 204800,
       "maxOutput": 16384,
-      "speedTokensPerSec": 90,
+      "speedTokensPerSec": 87,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -5556,7 +6006,14 @@
         "low",
         "medium"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 23,
+        "max": 151,
+        "providerCount": 9,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.15,
@@ -5575,7 +6032,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 44,
       "reliability": null,
       "costEfficiency": 71,
       "overall": 60
@@ -5599,6 +6056,16 @@
         "max": 100,
         "normalized": 71,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 87,
+        "min": 0,
+        "max": 200,
+        "normalized": 44,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
     ],
@@ -5631,6 +6098,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=minimax%2Fminimax-m2.5-20260211&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -5837,7 +6312,7 @@
     "facts": {
       "context": 1048576,
       "maxOutput": 16384,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 74,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -5851,7 +6326,14 @@
       "reasoningEffort": [
         "none"
       ],
-      "defaultEffort": "none"
+      "defaultEffort": "none",
+      "speedTokensPerSecRange": {
+        "min": 39,
+        "max": 109,
+        "providerCount": 7,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.06,
@@ -5870,7 +6352,7 @@
       "research": 62,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 37,
       "reliability": null,
       "costEfficiency": 89,
       "overall": 69
@@ -5935,6 +6417,16 @@
         "normalized": 62,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-02-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 74,
+        "min": 0,
+        "max": 200,
+        "normalized": 37,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -5974,6 +6466,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=google%2Fgemini-3.1-flash-lite-20260507&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -6438,7 +6938,7 @@
     "facts": {
       "context": 256000,
       "maxOutput": 32768,
-      "speedTokensPerSec": 60,
+      "speedTokensPerSec": 33,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -6455,7 +6955,14 @@
         "medium",
         "high"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 8,
+        "max": 57,
+        "providerCount": 7,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.6,
@@ -6474,7 +6981,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 17,
       "reliability": null,
       "costEfficiency": 60,
       "overall": 60
@@ -6488,6 +6995,16 @@
         "max": 100,
         "normalized": 60,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 33,
+        "min": 0,
+        "max": 200,
+        "normalized": 17,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
     ],
@@ -6512,6 +7029,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=moonshotai%2Fkimi-k2.5-0127&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -6539,7 +7064,7 @@
     "facts": {
       "context": 262144,
       "maxOutput": 16384,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 3,
       "vision": true,
       "audio": true,
       "tools": true,
@@ -6555,7 +7080,14 @@
         "medium",
         "high"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 3,
+        "max": 3,
+        "providerCount": 1,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 8,
@@ -6574,7 +7106,7 @@
       "research": 74,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 2,
       "reliability": null,
       "costEfficiency": 25,
       "overall": 74
@@ -6639,6 +7171,16 @@
         "normalized": 74,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-01-15"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 3,
+        "min": 0,
+        "max": 200,
+        "normalized": 2,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -6678,6 +7220,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=openai%2Fgpt-5-pro-2025-10-06&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -6705,7 +7255,7 @@
     "facts": {
       "context": 262144,
       "maxOutput": 16384,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 73,
       "vision": true,
       "audio": true,
       "tools": true,
@@ -6719,7 +7269,14 @@
       "reasoningEffort": [
         "none"
       ],
-      "defaultEffort": "none"
+      "defaultEffort": "none",
+      "speedTokensPerSecRange": {
+        "min": 64,
+        "max": 82,
+        "providerCount": 3,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 4,
@@ -6738,7 +7295,7 @@
       "research": 72,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 37,
       "reliability": null,
       "costEfficiency": 34,
       "overall": 73
@@ -6813,6 +7370,16 @@
         "normalized": 72,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-01-15"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 73,
+        "min": 0,
+        "max": 200,
+        "normalized": 37,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -6860,6 +7427,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=openai%2Fgpt-5-2025-08-07&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -6887,7 +7462,7 @@
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 69,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -6901,7 +7476,14 @@
       "reasoningEffort": [
         "none"
       ],
-      "defaultEffort": "none"
+      "defaultEffort": "none",
+      "speedTokensPerSecRange": {
+        "min": 38,
+        "max": 100,
+        "providerCount": 4,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.3,
@@ -6920,7 +7502,7 @@
       "research": 62,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 35,
       "reliability": null,
       "costEfficiency": 68,
       "overall": 68
@@ -6985,6 +7567,16 @@
         "normalized": 62,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-01-15"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 69,
+        "min": 0,
+        "max": 200,
+        "normalized": 35,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -7024,6 +7616,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=openai%2Fgpt-5-mini-2025-08-07&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -7050,7 +7650,7 @@
     "facts": {
       "context": 65536,
       "maxOutput": 4096,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 80,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -7064,7 +7664,14 @@
       "reasoningEffort": [
         "none"
       ],
-      "defaultEffort": "none"
+      "defaultEffort": "none",
+      "speedTokensPerSecRange": {
+        "min": 59,
+        "max": 101,
+        "providerCount": 4,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.1,
@@ -7083,7 +7690,7 @@
       "research": 53,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 40,
       "reliability": null,
       "costEfficiency": 82,
       "overall": 61
@@ -7148,6 +7755,16 @@
         "normalized": 53,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-01-15"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 80,
+        "min": 0,
+        "max": 200,
+        "normalized": 40,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -7187,6 +7804,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=openai%2Fgpt-5-nano-2025-08-07&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -7415,7 +8040,7 @@
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
-      "speedTokensPerSec": 95,
+      "speedTokensPerSec": 28,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -7429,7 +8054,14 @@
       "reasoningEffort": [
         "none"
       ],
-      "defaultEffort": "none"
+      "defaultEffort": "none",
+      "speedTokensPerSecRange": {
+        "min": 28,
+        "max": 28,
+        "providerCount": 1,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.2,
@@ -7448,7 +8080,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 14,
       "reliability": null,
       "costEfficiency": 73,
       "overall": 73
@@ -7462,6 +8094,16 @@
         "max": 100,
         "normalized": 73,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 28,
+        "min": 0,
+        "max": 200,
+        "normalized": 14,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
     ],
@@ -7486,6 +8128,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=minimax%2Fminimax-m2-her-20260123&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -7614,7 +8264,7 @@
     "facts": {
       "context": 204800,
       "maxOutput": 16384,
-      "speedTokensPerSec": 40,
+      "speedTokensPerSec": 37,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -7632,8 +8282,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 13,
-        "max": 66,
+        "min": 16,
+        "max": 57,
         "providerCount": 3,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -7656,7 +8306,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 20,
+      "speed": 19,
       "reliability": null,
       "costEfficiency": 71,
       "overall": 71
@@ -7675,10 +8325,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 40,
+        "raw": 37,
         "min": 0,
         "max": 200,
-        "normalized": 20,
+        "normalized": 19,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -7739,7 +8389,7 @@
     "facts": {
       "context": 1000000,
       "maxOutput": 64000,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 76,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -7755,7 +8405,14 @@
         "low",
         "medium"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 6,
+        "max": 145,
+        "providerCount": 9,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 5,
@@ -7774,7 +8431,7 @@
       "research": 48,
       "writing": 80,
       "vision": 41,
-      "speed": null,
+      "speed": 38,
       "reliability": null,
       "costEfficiency": 29,
       "overall": 63
@@ -7889,6 +8546,16 @@
         "normalized": 51,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 76,
+        "min": 0,
+        "max": 200,
+        "normalized": 38,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 91,
@@ -7936,6 +8603,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=anthropic%2Fclaude-4.8-opus-20260528&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -8333,7 +9008,7 @@
     "facts": {
       "context": 1000000,
       "maxOutput": 64000,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 48,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -8349,7 +9024,14 @@
         "low",
         "medium"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 37,
+        "max": 58,
+        "providerCount": 6,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 5,
@@ -8368,7 +9050,7 @@
       "research": 56,
       "writing": 78,
       "vision": 45,
-      "speed": null,
+      "speed": 24,
       "reliability": null,
       "costEfficiency": 29,
       "overall": 64
@@ -8483,6 +9165,16 @@
         "normalized": 51,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 48,
+        "min": 0,
+        "max": 200,
+        "normalized": 24,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 91,
@@ -8530,6 +9222,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=anthropic%2Fclaude-4.7-opus-20260416&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -9237,7 +9937,7 @@
     "facts": {
       "context": 256000,
       "maxOutput": 65536,
-      "speedTokensPerSec": 46,
+      "speedTokensPerSec": 58,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -9251,7 +9951,14 @@
       "reasoningEffort": [
         "fixed"
       ],
-      "defaultEffort": "fixed"
+      "defaultEffort": "fixed",
+      "speedTokensPerSecRange": {
+        "min": 37,
+        "max": 79,
+        "providerCount": 2,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.6,
@@ -9270,7 +9977,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 29,
       "reliability": null,
       "costEfficiency": 60,
       "overall": 60
@@ -9284,6 +9991,16 @@
         "max": 100,
         "normalized": 60,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 58,
+        "min": 0,
+        "max": 200,
+        "normalized": 29,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
     ],
@@ -9308,6 +10025,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=moonshotai%2Fkimi-k2-thinking-20251106&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -9335,7 +10060,7 @@
     "facts": {
       "context": 1000000,
       "maxOutput": 64000,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 35,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -9350,7 +10075,14 @@
         "none",
         "low"
       ],
-      "defaultEffort": "low"
+      "defaultEffort": "low",
+      "speedTokensPerSecRange": {
+        "min": 9,
+        "max": 60,
+        "providerCount": 8,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 3,
@@ -9369,7 +10101,7 @@
       "research": 78,
       "writing": 76,
       "vision": 40,
-      "speed": null,
+      "speed": 18,
       "reliability": null,
       "costEfficiency": 36,
       "overall": 63
@@ -9474,6 +10206,16 @@
         "normalized": 43,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 35,
+        "min": 0,
+        "max": 200,
+        "normalized": 18,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 88,
@@ -9521,6 +10263,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=anthropic%2Fclaude-4.6-sonnet-20260217&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -9549,7 +10299,7 @@
     "facts": {
       "context": 204800,
       "maxOutput": 16384,
-      "speedTokensPerSec": 81,
+      "speedTokensPerSec": 98,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -9567,7 +10317,7 @@
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
         "min": 54,
-        "max": 107,
+        "max": 141,
         "providerCount": 3,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -9590,7 +10340,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 41,
+      "speed": 49,
       "reliability": null,
       "costEfficiency": 70,
       "overall": 70
@@ -9609,10 +10359,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 81,
+        "raw": 98,
         "min": 0,
         "max": 200,
-        "normalized": 41,
+        "normalized": 49,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -9673,7 +10423,7 @@
     "facts": {
       "context": 1000000,
       "maxOutput": 64000,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 43,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -9689,7 +10439,14 @@
         "low",
         "medium"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 36,
+        "max": 49,
+        "providerCount": 6,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 5,
@@ -9708,7 +10465,7 @@
       "research": 70,
       "writing": 83,
       "vision": 44,
-      "speed": null,
+      "speed": 22,
       "reliability": null,
       "costEfficiency": 29,
       "overall": 64
@@ -9813,6 +10570,16 @@
         "normalized": 49,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 43,
+        "min": 0,
+        "max": 200,
+        "normalized": 22,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 88,
@@ -9860,6 +10627,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=anthropic%2Fclaude-4.6-opus-20260205&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -9888,7 +10663,7 @@
     "facts": {
       "context": 200000,
       "maxOutput": 65536,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 90,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -9904,7 +10679,14 @@
         "medium",
         "high"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 90,
+        "max": 90,
+        "providerCount": 1,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 1.2,
@@ -9923,7 +10705,7 @@
       "research": 72,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 45,
       "reliability": null,
       "costEfficiency": 50,
       "overall": 75
@@ -9998,6 +10780,16 @@
         "normalized": 72,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2025-10-15"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 90,
+        "min": 0,
+        "max": 200,
+        "normalized": 45,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -10045,6 +10837,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=openai%2Fo4-mini-2025-04-16&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -10072,7 +10872,7 @@
     "facts": {
       "context": 200000,
       "maxOutput": 32000,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 76,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -10086,7 +10886,14 @@
       "reasoningEffort": [
         "none"
       ],
-      "defaultEffort": "none"
+      "defaultEffort": "none",
+      "speedTokensPerSecRange": {
+        "min": 44,
+        "max": 108,
+        "providerCount": 6,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 1,
@@ -10105,7 +10912,7 @@
       "research": 63,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 38,
       "reliability": null,
       "costEfficiency": 50,
       "overall": 67
@@ -10170,6 +10977,16 @@
         "normalized": 63,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2025-10-15"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 76,
+        "min": 0,
+        "max": 200,
+        "normalized": 38,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -10209,6 +11026,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=anthropic%2Fclaude-4.5-haiku-20251001&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -10238,7 +11063,7 @@
     "facts": {
       "context": 131072,
       "maxOutput": 16384,
-      "speedTokensPerSec": 60,
+      "speedTokensPerSec": 19,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -10254,8 +11079,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 50,
-        "max": 70,
+        "min": 6,
+        "max": 32,
         "providerCount": 2,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -10278,7 +11103,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 30,
+      "speed": 10,
       "reliability": null,
       "costEfficiency": 57,
       "overall": 57
@@ -10297,10 +11122,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 60,
+        "raw": 19,
         "min": 0,
         "max": 200,
-        "normalized": 30,
+        "normalized": 10,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -10361,7 +11186,7 @@
     "facts": {
       "context": 200000,
       "maxOutput": 32000,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 42,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -10376,7 +11201,14 @@
         "none",
         "low"
       ],
-      "defaultEffort": "low"
+      "defaultEffort": "low",
+      "speedTokensPerSecRange": {
+        "min": 33,
+        "max": 51,
+        "providerCount": 6,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 5,
@@ -10395,7 +11227,7 @@
       "research": 74,
       "writing": 81,
       "vision": null,
-      "speed": null,
+      "speed": 21,
       "reliability": null,
       "costEfficiency": 29,
       "overall": 63
@@ -10470,6 +11302,16 @@
         "normalized": 40,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 42,
+        "min": 0,
+        "max": 200,
+        "normalized": 21,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -10509,6 +11351,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=anthropic%2Fclaude-4.5-opus-20251124&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -10733,7 +11583,7 @@
     "facts": {
       "context": 1000000,
       "maxOutput": 64000,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 54,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -10748,7 +11598,14 @@
         "none",
         "low"
       ],
-      "defaultEffort": "low"
+      "defaultEffort": "low",
+      "speedTokensPerSecRange": {
+        "min": 34,
+        "max": 73,
+        "providerCount": 6,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 3,
@@ -10767,7 +11624,7 @@
       "research": 75,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 27,
       "reliability": null,
       "costEfficiency": 36,
       "overall": 75
@@ -10842,6 +11699,16 @@
         "normalized": 75,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2025-09-15"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 54,
+        "min": 0,
+        "max": 200,
+        "normalized": 27,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -10889,6 +11756,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=anthropic%2Fclaude-4.5-sonnet-20250929&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -11121,7 +11996,7 @@
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
-      "speedTokensPerSec": 442,
+      "speedTokensPerSec": 367,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -11137,8 +12012,8 @@
       ],
       "defaultEffort": "fixed",
       "speedTokensPerSecRange": {
-        "min": 19,
-        "max": 865,
+        "min": 9,
+        "max": 724,
         "providerCount": 22,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -11240,7 +12115,7 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 442,
+        "raw": 367,
         "min": 0,
         "max": 200,
         "normalized": 100,
@@ -11329,7 +12204,7 @@
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
-      "speedTokensPerSec": 199,
+      "speedTokensPerSec": 206,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -11345,8 +12220,8 @@
       ],
       "defaultEffort": "fixed",
       "speedTokensPerSecRange": {
-        "min": 27,
-        "max": 371,
+        "min": 24,
+        "max": 387,
         "providerCount": 13,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -11438,7 +12313,7 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 199,
+        "raw": 206,
         "min": 0,
         "max": 200,
         "normalized": 100,
@@ -11681,7 +12556,7 @@
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
-      "speedTokensPerSec": 379,
+      "speedTokensPerSec": 279,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -11697,8 +12572,8 @@
       ],
       "defaultEffort": "fixed",
       "speedTokensPerSecRange": {
-        "min": 379,
-        "max": 379,
+        "min": 279,
+        "max": 279,
         "providerCount": 1,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -11790,7 +12665,7 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 379,
+        "raw": 279,
         "min": 0,
         "max": 200,
         "normalized": 100,
@@ -11873,7 +12748,7 @@
     "facts": {
       "context": 131072,
       "maxOutput": 16384,
-      "speedTokensPerSec": 60,
+      "speedTokensPerSec": 39,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -11890,7 +12765,14 @@
         "medium",
         "high"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 14,
+        "max": 64,
+        "providerCount": 15,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.27,
@@ -11909,7 +12791,7 @@
       "research": 75,
       "writing": 78,
       "vision": null,
-      "speed": null,
+      "speed": 20,
       "reliability": null,
       "costEfficiency": 69,
       "overall": 65
@@ -12004,6 +12886,16 @@
         "normalized": 43,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 39,
+        "min": 0,
+        "max": 200,
+        "normalized": 20,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 71,
@@ -12043,6 +12935,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=deepseek%2Fdeepseek-v4-pro-20260423&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -12370,7 +13270,7 @@
     "facts": {
       "context": 2097152,
       "maxOutput": 65536,
-      "speedTokensPerSec": 96,
+      "speedTokensPerSec": 82,
       "vision": true,
       "audio": true,
       "tools": true,
@@ -12387,8 +13287,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 79,
-        "max": 113,
+        "min": 55,
+        "max": 109,
         "providerCount": 5,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -12411,7 +13311,7 @@
       "research": 75,
       "writing": null,
       "vision": 37,
-      "speed": 48,
+      "speed": 41,
       "reliability": null,
       "costEfficiency": 49,
       "overall": 73
@@ -12500,10 +13400,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 96,
+        "raw": 82,
         "min": 0,
         "max": 200,
-        "normalized": 48,
+        "normalized": 41,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -12588,7 +13488,7 @@
     "facts": {
       "context": 1048576,
       "maxOutput": 32768,
-      "speedTokensPerSec": 51,
+      "speedTokensPerSec": 68,
       "vision": true,
       "audio": true,
       "tools": true,
@@ -12604,8 +13504,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 4,
-        "max": 98,
+        "min": 25,
+        "max": 110,
         "providerCount": 6,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -12628,7 +13528,7 @@
       "research": 66,
       "writing": null,
       "vision": 34,
-      "speed": 26,
+      "speed": 34,
       "reliability": null,
       "costEfficiency": 82,
       "overall": 71
@@ -12707,10 +13607,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 51,
+        "raw": 68,
         "min": 0,
         "max": 200,
-        "normalized": 26,
+        "normalized": 34,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -12795,7 +13695,7 @@
     "facts": {
       "context": 1048576,
       "maxOutput": 16384,
-      "speedTokensPerSec": 86,
+      "speedTokensPerSec": 113,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -12811,8 +13711,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 44,
-        "max": 128,
+        "min": 57,
+        "max": 169,
         "providerCount": 5,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -12835,7 +13735,7 @@
       "research": 60,
       "writing": null,
       "vision": null,
-      "speed": 43,
+      "speed": 56,
       "reliability": null,
       "costEfficiency": 89,
       "overall": 68
@@ -12904,10 +13804,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 86,
+        "raw": 113,
         "min": 0,
         "max": 200,
-        "normalized": 43,
+        "normalized": 56,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -12987,7 +13887,7 @@
     "facts": {
       "context": 131072,
       "maxOutput": 16384,
-      "speedTokensPerSec": 55,
+      "speedTokensPerSec": 47,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -13004,7 +13904,14 @@
         "medium",
         "high"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 20,
+        "max": 73,
+        "providerCount": 20,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.27,
@@ -13023,7 +13930,7 @@
       "research": 79,
       "writing": 82,
       "vision": null,
-      "speed": null,
+      "speed": 24,
       "reliability": null,
       "costEfficiency": 69,
       "overall": 71
@@ -13098,6 +14005,16 @@
         "normalized": 55,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 47,
+        "min": 0,
+        "max": 200,
+        "normalized": 24,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 48,
@@ -13129,6 +14046,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=deepseek%2Fdeepseek-v4-pro-20260813&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -13255,7 +14180,7 @@
     "facts": {
       "context": 200000,
       "maxOutput": 32000,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 16,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -13269,7 +14194,14 @@
       "reasoningEffort": [
         "none"
       ],
-      "defaultEffort": "none"
+      "defaultEffort": "none",
+      "speedTokensPerSecRange": {
+        "min": 10,
+        "max": 22,
+        "providerCount": 2,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 15,
@@ -13288,7 +14220,7 @@
       "research": 73,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 8,
       "reliability": null,
       "costEfficiency": 15,
       "overall": 72
@@ -13353,6 +14285,16 @@
         "normalized": 73,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2025-08-10"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 16,
+        "min": 0,
+        "max": 200,
+        "normalized": 8,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -13392,6 +14334,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=anthropic%2Fclaude-4.1-opus-20250805&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -13522,7 +14472,7 @@
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
-      "speedTokensPerSec": 120,
+      "speedTokensPerSec": 41,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -13536,7 +14486,14 @@
       "reasoningEffort": [
         "none"
       ],
-      "defaultEffort": "none"
+      "defaultEffort": "none",
+      "speedTokensPerSecRange": {
+        "min": 5,
+        "max": 77,
+        "providerCount": 15,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.08,
@@ -13555,7 +14512,7 @@
       "research": 68,
       "writing": 70,
       "vision": null,
-      "speed": null,
+      "speed": 21,
       "reliability": null,
       "costEfficiency": 89,
       "overall": 64
@@ -13640,6 +14597,16 @@
         "normalized": 38,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 41,
+        "min": 0,
+        "max": 200,
+        "normalized": 21,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 68,
@@ -13679,6 +14646,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=deepseek%2Fdeepseek-v4-flash-20260423&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -13807,7 +14782,7 @@
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
-      "speedTokensPerSec": 110,
+      "speedTokensPerSec": 58,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -13821,7 +14796,14 @@
       "reasoningEffort": [
         "none"
       ],
-      "defaultEffort": "none"
+      "defaultEffort": "none",
+      "speedTokensPerSecRange": {
+        "min": 5,
+        "max": 111,
+        "providerCount": 29,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.08,
@@ -13840,7 +14822,7 @@
       "research": 79,
       "writing": 79,
       "vision": null,
-      "speed": null,
+      "speed": 29,
       "reliability": null,
       "costEfficiency": 89,
       "overall": 71
@@ -13915,6 +14897,16 @@
         "normalized": 47,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 58,
+        "min": 0,
+        "max": 200,
+        "normalized": 29,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 48,
@@ -13946,6 +14938,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=deepseek%2Fdeepseek-v4-flash-20260731&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -14269,7 +15269,7 @@
     "facts": {
       "context": 200000,
       "maxOutput": 32000,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 27,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -14283,7 +15283,14 @@
       "reasoningEffort": [
         "none"
       ],
-      "defaultEffort": "none"
+      "defaultEffort": "none",
+      "speedTokensPerSecRange": {
+        "min": 27,
+        "max": 27,
+        "providerCount": 1,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 15,
@@ -14302,7 +15309,7 @@
       "research": 73,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 14,
       "reliability": null,
       "costEfficiency": 15,
       "overall": 71
@@ -14367,6 +15374,16 @@
         "normalized": 73,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2025-07-15"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 27,
+        "min": 0,
+        "max": 200,
+        "normalized": 14,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -14406,6 +15423,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=anthropic%2Fclaude-4-opus-20250522&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -14433,7 +15458,7 @@
     "facts": {
       "context": 1000000,
       "maxOutput": 64000,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 23,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -14447,7 +15472,14 @@
       "reasoningEffort": [
         "none"
       ],
-      "defaultEffort": "none"
+      "defaultEffort": "none",
+      "speedTokensPerSecRange": {
+        "min": 3,
+        "max": 43,
+        "providerCount": 3,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 3,
@@ -14466,7 +15498,7 @@
       "research": 72,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 12,
       "reliability": null,
       "costEfficiency": 36,
       "overall": 72
@@ -14541,6 +15573,16 @@
         "normalized": 72,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2025-07-15"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 23,
+        "min": 0,
+        "max": 200,
+        "normalized": 12,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -14588,6 +15630,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=anthropic%2Fclaude-4-sonnet-20250522&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -14816,7 +15866,7 @@
     "facts": {
       "context": 200000,
       "maxOutput": 100000,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 12,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -14833,7 +15883,14 @@
         "high",
         "max"
       ],
-      "defaultEffort": "high"
+      "defaultEffort": "high",
+      "speedTokensPerSecRange": {
+        "min": 12,
+        "max": 12,
+        "providerCount": 1,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 20,
@@ -14852,7 +15909,7 @@
       "research": 80,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 6,
       "reliability": null,
       "costEfficiency": 13,
       "overall": 77
@@ -14917,6 +15974,16 @@
         "normalized": 80,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2025-06-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 12,
+        "min": 0,
+        "max": 200,
+        "normalized": 6,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -14956,6 +16023,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=openai%2Fo3-pro-2025-06-10&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -15393,7 +16468,7 @@
     "facts": {
       "context": 64000,
       "maxOutput": 16384,
-      "speedTokensPerSec": 34,
+      "speedTokensPerSec": 28,
       "vision": false,
       "audio": false,
       "tools": false,
@@ -15409,8 +16484,8 @@
       ],
       "defaultEffort": "fixed",
       "speedTokensPerSecRange": {
-        "min": 18,
-        "max": 50,
+        "min": 2,
+        "max": 53,
         "providerCount": 4,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -15433,7 +16508,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 17,
+      "speed": 14,
       "reliability": null,
       "costEfficiency": 60,
       "overall": 61
@@ -15462,10 +16537,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 34,
+        "raw": 28,
         "min": 0,
         "max": 200,
-        "normalized": 17,
+        "normalized": 14,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -16561,7 +17636,7 @@
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
-      "speedTokensPerSec": 65,
+      "speedTokensPerSec": 32,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -16575,7 +17650,14 @@
       "reasoningEffort": [
         "none"
       ],
-      "defaultEffort": "none"
+      "defaultEffort": "none",
+      "speedTokensPerSecRange": {
+        "min": 6,
+        "max": 57,
+        "providerCount": 15,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.16,
@@ -16594,7 +17676,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 16,
       "reliability": null,
       "costEfficiency": 81,
       "overall": 69
@@ -16618,6 +17700,16 @@
         "max": 100,
         "normalized": 81,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 32,
+        "min": 0,
+        "max": 200,
+        "normalized": 16,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
     ],
@@ -16650,6 +17742,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=deepseek%2Fdeepseek-v3.2-20251201&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -16776,7 +17876,7 @@
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
-      "speedTokensPerSec": 25,
+      "speedTokensPerSec": 21,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -16792,8 +17892,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 18,
-        "max": 31,
+        "min": 14,
+        "max": 27,
         "providerCount": 3,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -16816,7 +17916,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 13,
+      "speed": 11,
       "reliability": null,
       "costEfficiency": 81,
       "overall": 68
@@ -16845,10 +17945,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 25,
+        "raw": 21,
         "min": 0,
         "max": 200,
-        "normalized": 13,
+        "normalized": 11,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -17018,7 +18118,7 @@
     "facts": {
       "context": 131072,
       "maxOutput": 16384,
-      "speedTokensPerSec": 47,
+      "speedTokensPerSec": 66,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -17034,8 +18134,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 47,
-        "max": 47,
+        "min": 64,
+        "max": 68,
         "providerCount": 2,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -17058,7 +18158,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 24,
+      "speed": 33,
       "reliability": null,
       "costEfficiency": 57,
       "overall": 57
@@ -17077,10 +18177,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 47,
+        "raw": 66,
         "min": 0,
         "max": 200,
-        "normalized": 24,
+        "normalized": 33,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -17341,7 +18441,7 @@
     "facts": {
       "context": 200000,
       "maxOutput": 100000,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 81,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -17357,7 +18457,14 @@
         "medium",
         "high"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 81,
+        "max": 81,
+        "providerCount": 1,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 10,
@@ -17376,7 +18483,7 @@
       "research": 77,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 41,
       "reliability": null,
       "costEfficiency": 22,
       "overall": 73
@@ -17451,6 +18558,16 @@
         "normalized": 77,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2025-04-10"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 81,
+        "min": 0,
+        "max": 200,
+        "normalized": 41,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -17498,6 +18615,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=openai%2Fo3-2025-04-16&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -17923,7 +19048,7 @@
     "facts": {
       "context": 64000,
       "maxOutput": 8192,
-      "speedTokensPerSec": 26,
+      "speedTokensPerSec": 28,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -17939,8 +19064,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 18,
-        "max": 33,
+        "min": 16,
+        "max": 39,
         "providerCount": 4,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -17963,7 +19088,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 13,
+      "speed": 14,
       "reliability": null,
       "costEfficiency": 83,
       "overall": 83
@@ -17982,10 +19107,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 26,
+        "raw": 28,
         "min": 0,
         "max": 200,
-        "normalized": 13,
+        "normalized": 14,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -19203,7 +20328,7 @@
     "facts": {
       "context": 32768,
       "maxOutput": 8192,
-      "speedTokensPerSec": 120,
+      "speedTokensPerSec": 79,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -19217,7 +20342,14 @@
       "reasoningEffort": [
         "none"
       ],
-      "defaultEffort": "none"
+      "defaultEffort": "none",
+      "speedTokensPerSecRange": {
+        "min": 78,
+        "max": 79,
+        "providerCount": 2,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.2,
@@ -19236,7 +20368,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 40,
       "reliability": null,
       "costEfficiency": 76,
       "overall": 76
@@ -19250,6 +20382,16 @@
         "max": 100,
         "normalized": 76,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-07"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 79,
+        "min": 0,
+        "max": 200,
+        "normalized": 40,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
     ],
@@ -19274,6 +20416,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=mistralai%2Fmistral-saba-2502&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -19999,7 +21149,7 @@
     "facts": {
       "context": 200000,
       "maxOutput": 100000,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 113,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -20015,7 +21165,14 @@
         "medium",
         "high"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 113,
+        "max": 113,
+        "providerCount": 1,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 1.1,
@@ -20034,7 +21191,7 @@
       "research": 68,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 56,
       "reliability": null,
       "costEfficiency": 51,
       "overall": 69
@@ -20099,6 +21256,16 @@
         "normalized": 68,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2025-01-31"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 113,
+        "min": 0,
+        "max": 200,
+        "normalized": 56,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -20138,6 +21305,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=openai%2Fo3-mini-2025-01-31&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -20167,7 +21342,7 @@
     "facts": {
       "context": 32768,
       "maxOutput": 8192,
-      "speedTokensPerSec": 47,
+      "speedTokensPerSec": 40,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -20183,8 +21358,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 47,
-        "max": 47,
+        "min": 40,
+        "max": 40,
         "providerCount": 1,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -20207,7 +21382,7 @@
       "research": 55,
       "writing": null,
       "vision": null,
-      "speed": 24,
+      "speed": 20,
       "reliability": null,
       "costEfficiency": 85,
       "overall": 64
@@ -20276,10 +21451,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 47,
+        "raw": 40,
         "min": 0,
         "max": 200,
-        "normalized": 24,
+        "normalized": 20,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -20855,7 +22030,7 @@
     "facts": {
       "context": 64000,
       "maxOutput": 8192,
-      "speedTokensPerSec": 18,
+      "speedTokensPerSec": 17,
       "vision": false,
       "audio": false,
       "tools": false,
@@ -20871,8 +22046,8 @@
       ],
       "defaultEffort": "fixed",
       "speedTokensPerSecRange": {
-        "min": 18,
-        "max": 18,
+        "min": 17,
+        "max": 17,
         "providerCount": 1,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -20964,7 +22139,7 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 18,
+        "raw": 17,
         "min": 0,
         "max": 200,
         "normalized": 9,
@@ -21211,7 +22386,7 @@
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
-      "speedTokensPerSec": 18,
+      "speedTokensPerSec": 14,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -21227,8 +22402,8 @@
       ],
       "defaultEffort": "fixed",
       "speedTokensPerSecRange": {
-        "min": 18,
-        "max": 18,
+        "min": 14,
+        "max": 14,
         "providerCount": 1,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -21251,7 +22426,7 @@
       "research": 63,
       "writing": null,
       "vision": null,
-      "speed": 9,
+      "speed": 7,
       "reliability": null,
       "costEfficiency": 77,
       "overall": 69
@@ -21320,10 +22495,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 18,
+        "raw": 14,
         "min": 0,
         "max": 200,
-        "normalized": 9,
+        "normalized": 7,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -22413,7 +23588,7 @@
     "facts": {
       "context": 4000000,
       "maxOutput": 16384,
-      "speedTokensPerSec": 24,
+      "speedTokensPerSec": 26,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -22429,8 +23604,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 24,
-        "max": 24,
+        "min": 26,
+        "max": 26,
         "providerCount": 1,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -22453,7 +23628,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 12,
+      "speed": 13,
       "reliability": null,
       "costEfficiency": 71,
       "overall": 71
@@ -22472,10 +23647,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 24,
+        "raw": 26,
         "min": 0,
         "max": 200,
-        "normalized": 12,
+        "normalized": 13,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -22704,7 +23879,7 @@
     "facts": {
       "context": 64000,
       "maxOutput": 8192,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 19,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -22718,7 +23893,14 @@
       "reasoningEffort": [
         "none"
       ],
-      "defaultEffort": "none"
+      "defaultEffort": "none",
+      "speedTokensPerSecRange": {
+        "min": 11,
+        "max": 26,
+        "providerCount": 2,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 0.14,
@@ -22737,7 +23919,7 @@
       "research": 61,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 10,
       "reliability": null,
       "costEfficiency": 83,
       "overall": 69
@@ -22802,6 +23984,16 @@
         "normalized": 61,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2024-12-26"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 19,
+        "min": 0,
+        "max": 200,
+        "normalized": 10,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 75,
@@ -22841,6 +24033,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=deepseek%2Fdeepseek-chat-v3&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -23198,7 +24398,7 @@
     "facts": {
       "context": 200000,
       "maxOutput": 100000,
-      "speedTokensPerSec": 9,
+      "speedTokensPerSec": 1,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -23215,8 +24415,8 @@
       ],
       "defaultEffort": "high",
       "speedTokensPerSecRange": {
-        "min": 9,
-        "max": 9,
+        "min": 1,
+        "max": 1,
         "providerCount": 1,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -23239,7 +24439,7 @@
       "research": 73,
       "writing": null,
       "vision": null,
-      "speed": 5,
+      "speed": 1,
       "reliability": null,
       "costEfficiency": 13,
       "overall": 72
@@ -23308,10 +24508,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 9,
+        "raw": 1,
         "min": 0,
         "max": 200,
-        "normalized": 5,
+        "normalized": 1,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -24332,7 +25532,7 @@
     "facts": {
       "context": 128000,
       "maxOutput": 4096,
-      "speedTokensPerSec": 64,
+      "speedTokensPerSec": 68,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -24348,8 +25548,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 64,
-        "max": 64,
+        "min": 68,
+        "max": 68,
         "providerCount": 1,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -24372,7 +25572,7 @@
       "research": 44,
       "writing": null,
       "vision": null,
-      "speed": 32,
+      "speed": 34,
       "reliability": null,
       "costEfficiency": 95,
       "overall": 56
@@ -24441,10 +25641,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 64,
+        "raw": 68,
         "min": 0,
         "max": 200,
-        "normalized": 32,
+        "normalized": 34,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -24522,7 +25722,7 @@
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
-      "speedTokensPerSec": 88,
+      "speedTokensPerSec": 51,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -24538,8 +25738,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 9,
-        "max": 167,
+        "min": 12,
+        "max": 90,
         "providerCount": 13,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -24562,7 +25762,7 @@
       "research": 54,
       "writing": null,
       "vision": null,
-      "speed": 44,
+      "speed": 26,
       "reliability": null,
       "costEfficiency": 65,
       "overall": 60
@@ -24631,10 +25831,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 88,
+        "raw": 51,
         "min": 0,
         "max": 200,
-        "normalized": 44,
+        "normalized": 26,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -24712,7 +25912,7 @@
     "facts": {
       "context": 200000,
       "maxOutput": 100000,
-      "speedTokensPerSec": null,
+      "speedTokensPerSec": 51,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -24728,7 +25928,14 @@
         "medium",
         "high"
       ],
-      "defaultEffort": "medium"
+      "defaultEffort": "medium",
+      "speedTokensPerSecRange": {
+        "min": 51,
+        "max": 51,
+        "providerCount": 1,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-07"
+      }
     },
     "pricing": {
       "input": 15,
@@ -24747,7 +25954,7 @@
       "research": 72,
       "writing": null,
       "vision": 24,
-      "speed": null,
+      "speed": 26,
       "reliability": null,
       "costEfficiency": 17,
       "overall": 64
@@ -24822,6 +26029,16 @@
         "normalized": 72,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2024-12-17"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 51,
+        "min": 0,
+        "max": 200,
+        "normalized": 26,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-07"
       }
     ],
     "confidence": 83,
@@ -24869,6 +26086,14 @@
         "retrievedAt": "2026-09-07",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter provider throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint?permaslug=openai%2Fo1-2024-12-17&perfWorkload=text_generation&latencyMetric=latency",
+        "retrievedAt": "2026-09-07",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -25063,7 +26288,7 @@
     "facts": {
       "context": 300000,
       "maxOutput": 5000,
-      "speedTokensPerSec": 8,
+      "speedTokensPerSec": 63,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -25079,8 +26304,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 7,
-        "max": 9,
+        "min": 46,
+        "max": 79,
         "providerCount": 2,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -25103,7 +26328,7 @@
       "research": 57,
       "writing": null,
       "vision": null,
-      "speed": 4,
+      "speed": 32,
       "reliability": null,
       "costEfficiency": 55,
       "overall": 60
@@ -25172,10 +26397,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 8,
+        "raw": 63,
         "min": 0,
         "max": 200,
-        "normalized": 4,
+        "normalized": 32,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -25254,7 +26479,7 @@
     "facts": {
       "context": 300000,
       "maxOutput": 5000,
-      "speedTokensPerSec": 101,
+      "speedTokensPerSec": 72,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -25270,8 +26495,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 89,
-        "max": 112,
+        "min": 52,
+        "max": 92,
         "providerCount": 2,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -25294,7 +26519,7 @@
       "research": 45,
       "writing": null,
       "vision": null,
-      "speed": 51,
+      "speed": 36,
       "reliability": null,
       "costEfficiency": 89,
       "overall": 56
@@ -25363,10 +26588,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 101,
+        "raw": 72,
         "min": 0,
         "max": 200,
-        "normalized": 51,
+        "normalized": 36,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -25444,7 +26669,7 @@
     "facts": {
       "context": 128000,
       "maxOutput": 5000,
-      "speedTokensPerSec": 59,
+      "speedTokensPerSec": 62,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -25460,8 +26685,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 49,
-        "max": 68,
+        "min": 50,
+        "max": 74,
         "providerCount": 2,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -25484,7 +26709,7 @@
       "research": 38,
       "writing": null,
       "vision": null,
-      "speed": 30,
+      "speed": 31,
       "reliability": null,
       "costEfficiency": 96,
       "overall": 50
@@ -25553,10 +26778,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 59,
+        "raw": 62,
         "min": 0,
         "max": 200,
-        "normalized": 30,
+        "normalized": 31,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -26375,7 +27600,7 @@
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
-      "speedTokensPerSec": 24,
+      "speedTokensPerSec": 28,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -26391,8 +27616,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 24,
-        "max": 24,
+        "min": 28,
+        "max": 28,
         "providerCount": 1,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -26415,7 +27640,7 @@
       "research": 58,
       "writing": null,
       "vision": null,
-      "speed": 12,
+      "speed": 14,
       "reliability": null,
       "costEfficiency": 83,
       "overall": 69
@@ -26484,10 +27709,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 24,
+        "raw": 28,
         "min": 0,
         "max": 200,
-        "normalized": 12,
+        "normalized": 14,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -28009,7 +29234,7 @@
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
-      "speedTokensPerSec": 83,
+      "speedTokensPerSec": 71,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -28025,8 +29250,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 32,
-        "max": 133,
+        "min": 63,
+        "max": 78,
         "providerCount": 2,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -28049,7 +29274,7 @@
       "research": 39,
       "writing": null,
       "vision": null,
-      "speed": 42,
+      "speed": 36,
       "reliability": null,
       "costEfficiency": 100,
       "overall": 51
@@ -28118,10 +29343,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 83,
+        "raw": 71,
         "min": 0,
         "max": 200,
-        "normalized": 42,
+        "normalized": 36,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -28200,7 +29425,7 @@
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
-      "speedTokensPerSec": 55,
+      "speedTokensPerSec": 22,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -28216,8 +29441,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 55,
-        "max": 55,
+        "min": 22,
+        "max": 22,
         "providerCount": 1,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -28240,7 +29465,7 @@
       "research": 33,
       "writing": null,
       "vision": null,
-      "speed": 28,
+      "speed": 11,
       "reliability": null,
       "costEfficiency": 100,
       "overall": 46
@@ -28309,10 +29534,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 55,
+        "raw": 22,
         "min": 0,
         "max": 200,
-        "normalized": 28,
+        "normalized": 11,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -28738,7 +29963,7 @@
     "facts": {
       "context": 131072,
       "maxOutput": 8192,
-      "speedTokensPerSec": 21,
+      "speedTokensPerSec": 19,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -28754,8 +29979,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 14,
-        "max": 27,
+        "min": 17,
+        "max": 20,
         "providerCount": 2,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -28778,7 +30003,7 @@
       "research": 56,
       "writing": null,
       "vision": null,
-      "speed": 11,
+      "speed": 10,
       "reliability": null,
       "costEfficiency": 74,
       "overall": 62
@@ -28847,10 +30072,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 21,
+        "raw": 19,
         "min": 0,
         "max": 200,
-        "normalized": 11,
+        "normalized": 10,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -30131,7 +31356,7 @@
     "facts": {
       "context": 128000,
       "maxOutput": 4096,
-      "speedTokensPerSec": 9,
+      "speedTokensPerSec": 16,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -30147,8 +31372,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 9,
-        "max": 9,
+        "min": 16,
+        "max": 16,
         "providerCount": 1,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -30171,7 +31396,7 @@
       "research": 50,
       "writing": null,
       "vision": null,
-      "speed": 5,
+      "speed": 8,
       "reliability": null,
       "costEfficiency": 40,
       "overall": 55
@@ -30240,10 +31465,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 9,
+        "raw": 16,
         "min": 0,
         "max": 200,
-        "normalized": 5,
+        "normalized": 8,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -30322,7 +31547,7 @@
     "facts": {
       "context": 128000,
       "maxOutput": 16384,
-      "speedTokensPerSec": 30,
+      "speedTokensPerSec": 18,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -30338,8 +31563,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 19,
-        "max": 41,
+        "min": 4,
+        "max": 32,
         "providerCount": 2,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -30362,7 +31587,7 @@
       "research": 56,
       "writing": null,
       "vision": null,
-      "speed": 15,
+      "speed": 9,
       "reliability": null,
       "costEfficiency": 40,
       "overall": 61
@@ -30431,10 +31656,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 30,
+        "raw": 18,
         "min": 0,
         "max": 200,
-        "normalized": 15,
+        "normalized": 9,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -30939,7 +32164,7 @@
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
-      "speedTokensPerSec": 36,
+      "speedTokensPerSec": 24,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -30955,8 +32180,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 27,
-        "max": 45,
+        "min": 3,
+        "max": 44,
         "providerCount": 2,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -30979,7 +32204,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 18,
+      "speed": 12,
       "reliability": null,
       "costEfficiency": 45,
       "overall": 45
@@ -30998,10 +32223,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 36,
+        "raw": 24,
         "min": 0,
         "max": 200,
-        "normalized": 18,
+        "normalized": 12,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -31063,7 +32288,7 @@
     "facts": {
       "context": 128000,
       "maxOutput": 16384,
-      "speedTokensPerSec": 46,
+      "speedTokensPerSec": 51,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -31080,7 +32305,7 @@
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
         "min": 22,
-        "max": 70,
+        "max": 79,
         "providerCount": 3,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -31103,7 +32328,7 @@
       "research": 48,
       "writing": null,
       "vision": null,
-      "speed": 23,
+      "speed": 26,
       "reliability": null,
       "costEfficiency": 77,
       "overall": 58
@@ -31172,10 +32397,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 46,
+        "raw": 51,
         "min": 0,
         "max": 200,
-        "normalized": 23,
+        "normalized": 26,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -31252,7 +32477,7 @@
     "facts": {
       "context": 128000,
       "maxOutput": 8192,
-      "speedTokensPerSec": 26,
+      "speedTokensPerSec": 29,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -31268,8 +32493,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 16,
-        "max": 35,
+        "min": 13,
+        "max": 44,
         "providerCount": 4,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -31292,7 +32517,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 13,
+      "speed": 14,
       "reliability": null,
       "costEfficiency": 86,
       "overall": 86
@@ -31311,10 +32536,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 26,
+        "raw": 29,
         "min": 0,
         "max": 200,
-        "normalized": 13,
+        "normalized": 14,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -31835,7 +33060,7 @@
     "facts": {
       "context": 8192,
       "maxOutput": 4096,
-      "speedTokensPerSec": 13,
+      "speedTokensPerSec": 45,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -31851,8 +33076,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 13,
-        "max": 13,
+        "min": 45,
+        "max": 45,
         "providerCount": 1,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -31875,7 +33100,7 @@
       "research": 59,
       "writing": null,
       "vision": null,
-      "speed": 7,
+      "speed": 23,
       "reliability": null,
       "costEfficiency": 78,
       "overall": 66
@@ -31944,10 +33169,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 13,
+        "raw": 45,
         "min": 0,
         "max": 200,
-        "normalized": 7,
+        "normalized": 23,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -33245,7 +34470,7 @@
     "facts": {
       "context": 128000,
       "maxOutput": 16384,
-      "speedTokensPerSec": 48,
+      "speedTokensPerSec": 44,
       "vision": true,
       "audio": true,
       "tools": true,
@@ -33261,8 +34486,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 47,
-        "max": 49,
+        "min": 40,
+        "max": 48,
         "providerCount": 2,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -33285,7 +34510,7 @@
       "research": 61,
       "writing": null,
       "vision": null,
-      "speed": 24,
+      "speed": 22,
       "reliability": null,
       "costEfficiency": 40,
       "overall": 61
@@ -33364,10 +34589,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 48,
+        "raw": 44,
         "min": 0,
         "max": 200,
-        "normalized": 24,
+        "normalized": 22,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -34183,7 +35408,7 @@
     "facts": {
       "context": 65536,
       "maxOutput": 8192,
-      "speedTokensPerSec": 29,
+      "speedTokensPerSec": 55,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -34199,9 +35424,9 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 21,
-        "max": 37,
-        "providerCount": 3,
+        "min": 29,
+        "max": 80,
+        "providerCount": 2,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
       }
@@ -34223,7 +35448,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 14,
+      "speed": 28,
       "reliability": null,
       "costEfficiency": 62,
       "overall": 62
@@ -34242,10 +35467,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 29,
+        "raw": 55,
         "min": 0,
         "max": 200,
-        "normalized": 14,
+        "normalized": 28,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -34307,7 +35532,7 @@
     "facts": {
       "context": 128000,
       "maxOutput": 4096,
-      "speedTokensPerSec": 38,
+      "speedTokensPerSec": 32,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -34323,8 +35548,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 38,
-        "max": 38,
+        "min": 32,
+        "max": 32,
         "providerCount": 1,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -34347,7 +35572,7 @@
       "research": 53,
       "writing": null,
       "vision": null,
-      "speed": 19,
+      "speed": 16,
       "reliability": null,
       "costEfficiency": 24,
       "overall": 54
@@ -34416,10 +35641,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 38,
+        "raw": 32,
         "min": 0,
         "max": 200,
-        "normalized": 19,
+        "normalized": 16,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -35351,7 +36576,7 @@
     "facts": {
       "context": 200000,
       "maxOutput": 4096,
-      "speedTokensPerSec": 68,
+      "speedTokensPerSec": 59,
       "vision": true,
       "audio": false,
       "tools": true,
@@ -35367,8 +36592,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 68,
-        "max": 68,
+        "min": 59,
+        "max": 59,
         "providerCount": 1,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -35391,7 +36616,7 @@
       "research": 40,
       "writing": null,
       "vision": null,
-      "speed": 34,
+      "speed": 30,
       "reliability": null,
       "costEfficiency": 68,
       "overall": 48
@@ -35460,10 +36685,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 68,
+        "raw": 59,
         "min": 0,
         "max": 200,
-        "normalized": 34,
+        "normalized": 30,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -40336,7 +41561,7 @@
     "facts": {
       "context": 8192,
       "maxOutput": 4096,
-      "speedTokensPerSec": 28,
+      "speedTokensPerSec": 13,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -40352,8 +41577,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 21,
-        "max": 35,
+        "min": 6,
+        "max": 20,
         "providerCount": 2,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -40376,7 +41601,7 @@
       "research": 44,
       "writing": null,
       "vision": null,
-      "speed": 14,
+      "speed": 7,
       "reliability": null,
       "costEfficiency": 12,
       "overall": 46
@@ -40445,10 +41670,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 28,
+        "raw": 13,
         "min": 0,
         "max": 200,
-        "normalized": 14,
+        "normalized": 7,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }
@@ -41342,7 +42567,7 @@
     "facts": {
       "context": 16385,
       "maxOutput": 4096,
-      "speedTokensPerSec": 35,
+      "speedTokensPerSec": 25,
       "vision": false,
       "audio": false,
       "tools": true,
@@ -41358,8 +42583,8 @@
       ],
       "defaultEffort": "none",
       "speedTokensPerSecRange": {
-        "min": 35,
-        "max": 35,
+        "min": 25,
+        "max": 25,
         "providerCount": 1,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-07"
@@ -41382,7 +42607,7 @@
       "research": 34,
       "writing": null,
       "vision": null,
-      "speed": 18,
+      "speed": 13,
       "reliability": null,
       "costEfficiency": 64,
       "overall": 42
@@ -41451,10 +42676,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 35,
+        "raw": 25,
         "min": 0,
         "max": 200,
-        "normalized": 18,
+        "normalized": 13,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-07"
       }

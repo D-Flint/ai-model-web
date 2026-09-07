@@ -62,8 +62,10 @@ async function fetchOpenRouterThroughputByModel(
     while (nextIndex < extracted.length) {
       const item = extracted[nextIndex++];
       try {
+        const permaslug = item.rawModel.canonical_slug || item.rawModel.id;
         const endpoints = await fetchOpenRouterEndpoints(item.rawModel.id, {
           apiKey,
+          permaslug,
         });
         const throughput = processOpenRouterThroughput(endpoints);
         if (throughput) results.set(item.canonicalModel.slug, throughput);

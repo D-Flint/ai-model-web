@@ -18,6 +18,7 @@ async function main() {
     string,
     {
       modelId: string;
+      permaslug: string;
       throughput: NonNullable<ReturnType<typeof processOpenRouterThroughput>>;
     }
   >();
@@ -27,11 +28,15 @@ async function main() {
     while (nextIndex < extracted.length) {
       const item = extracted[nextIndex++];
       try {
-        const endpoints = await fetchOpenRouterEndpoints(item.rawModel.id);
+        const permaslug = item.rawModel.canonical_slug || item.rawModel.id;
+        const endpoints = await fetchOpenRouterEndpoints(item.rawModel.id, {
+          permaslug,
+        });
         const throughput = processOpenRouterThroughput(endpoints);
         if (throughput) {
           throughputBySlug.set(item.canonicalModel.slug, {
             modelId: item.rawModel.id,
+            permaslug,
             throughput,
           });
         }
@@ -65,7 +70,7 @@ async function main() {
     const endpointUrl = new URL(
       'https://openrouter.ai/api/frontend/v1/stats/endpoint',
     );
-    endpointUrl.searchParams.set('permaslug', modelId);
+    endpointUrl.searchParams.set('permaslug', result.permaslug || modelId);
     endpointUrl.searchParams.set('perfWorkload', 'text_generation');
     endpointUrl.searchParams.set('latencyMetric', 'latency');
     const source = {

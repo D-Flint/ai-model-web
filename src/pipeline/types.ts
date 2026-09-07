@@ -20,6 +20,7 @@ export const openRouterArchitectureSchema = z.object({
 export const openRouterModelSchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),
+  canonical_slug: z.string().optional().nullable(),
   created: z.number().optional().nullable(),
   description: z.string().optional().nullable(),
   context_length: z.number().int().nonnegative(),
@@ -199,6 +200,7 @@ export interface CanonicalModelConfig {
   family: string;
   openWeights: boolean;
   openRouterId: string;
+  openRouterAliases?: string[];
   lmarenaAliases: string[];
   swebenchAliases: string[];
   livebenchAliases?: string[];
