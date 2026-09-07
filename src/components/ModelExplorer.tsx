@@ -101,7 +101,7 @@ const ALL_COLUMNS: ColumnDef[] = [
     key: 'speed',
     label: 'SPEED (TOK/S)',
     align: 'center',
-    defaultVisible: false,
+    defaultVisible: true,
   },
 ];
 
