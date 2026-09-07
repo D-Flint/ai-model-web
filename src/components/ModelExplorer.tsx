@@ -14,6 +14,8 @@ import {
   Search,
   LayoutGrid,
   Table as TableIcon,
+  List,
+  SlidersHorizontal,
 } from 'lucide-react';
 import ModelCard from './ModelCard';
 import { ProviderLogo } from './ProviderLogo';
@@ -138,6 +140,26 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
   const [showCompareMenu, setShowCompareMenu] = useState(false);
   const [showColumnsMenu, setShowColumnsMenu] = useState(false);
+  const [showMobileModal, setShowMobileModal] = useState(false);
+  const [mobileModalTab, setMobileModalTab] = useState<'categories' | 'columns'>('categories');
+  const [isMobileView, setIsMobileView] = useState(false);
+  const [tempCategory, setTempCategory] = useState<string>('all');
+  const [tempVisibleColumns, setTempVisibleColumns] = useState<Record<LeaderboardColumnKey, boolean>>(() => {
+    const init: Record<string, boolean> = {};
+    for (const c of ALL_COLUMNS) {
+      init[c.key] = c.defaultVisible;
+    }
+    return init as Record<LeaderboardColumnKey, boolean>;
+  });
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobileView(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const compareMenuRef = useRef<HTMLDivElement>(null);
   const columnsMenuRef = useRef<HTMLDivElement>(null);
@@ -405,6 +427,33 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
     setSortDirection('desc');
   }
 
+  function openMobileModalWithTab(tab: 'categories' | 'columns') {
+    setMobileModalTab(tab);
+    setTempCategory(activeCategory);
+    setTempVisibleColumns({ ...visibleColumns });
+    setShowMobileModal(true);
+  }
+
+  function applyMobileModal() {
+    setActiveCategory(tempCategory);
+    const cat = CATEGORIES.find((c) => c.id === tempCategory);
+    if (cat) {
+      setSortColumn(cat.sortCol);
+      setSortDirection('desc');
+    }
+    setVisibleColumns({ ...tempVisibleColumns });
+    setShowMobileModal(false);
+  }
+
+  function resetMobileModal() {
+    setTempCategory('all');
+    const initCols: Record<string, boolean> = {};
+    for (const c of ALL_COLUMNS) {
+      initCols[c.key] = c.defaultVisible;
+    }
+    setTempVisibleColumns(initCols as Record<LeaderboardColumnKey, boolean>);
+  }
+
   const visibleColumnsCount = useMemo(() => {
     return ALL_COLUMNS.filter((c) => visibleColumns[c.key]).length;
   }, [visibleColumns]);
@@ -568,11 +617,11 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
               type="button"
               className={`view-mode-btn ${viewMode === 'table' ? 'active' : ''}`}
               onClick={() => setViewMode('table')}
-              title="Table View"
-              aria-label="Table View"
+              title={isMobileView ? "List View" : "Table View"}
+              aria-label={isMobileView ? "List View" : "Table View"}
               aria-pressed={viewMode === 'table'}
             >
-              <TableIcon size={16} />
+              {isMobileView ? <List size={16} /> : <TableIcon size={16} />}
             </button>
             <button
               type="button"
@@ -588,43 +637,118 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
         </div>
       </div>
 
-      {/* Category Pills Bar matching Screenshot 2 */}
-      <div
-        className="leaderboard-categories"
-        role="tablist"
-        aria-label="Filter by category"
-      >
-        <span className="category-label">CATEGORY</span>
-        {CATEGORIES.map((cat) => {
-          const isActive = activeCategory === cat.id;
-          const isSortedCol = sortColumn === cat.sortCol;
-          return (
-            <button
-              key={cat.id}
-              type="button"
-              role="tab"
-              aria-selected={isActive}
-              className={`category-pill ${isActive ? 'active' : ''}`}
-              onClick={() => handleCategoryClick(cat)}
-              title={
-                isActive
-                  ? `Currently sorted by ${cat.label} (${sortDirection === 'asc' ? 'ascending' : 'descending'}). Click to toggle.`
-                  : `Sort by ${cat.label}`
-              }
-            >
-              <span>{cat.label}</span>
-              {isActive && isSortedCol && (
-                <span className="category-pill-sort-icon">
-                  {sortDirection === 'asc' ? (
-                    <ArrowUp size={11} strokeWidth={2.5} />
-                  ) : (
-                    <ArrowDown size={11} strokeWidth={2.5} />
-                  )}
-                </span>
-              )}
-            </button>
-          );
-        })}
+      {/* Category Pills Bar matching Screenshot & Mobile Spec */}
+      <div className="leaderboard-categories-container">
+        <div
+          className="leaderboard-categories"
+          role="tablist"
+          aria-label="Filter by category"
+        >
+          <span className="category-label">CATEGORY</span>
+          {CATEGORIES.map((cat) => {
+            const isActive = activeCategory === cat.id;
+            const isSortedCol = sortColumn === cat.sortCol;
+            return (
+              <button
+                key={cat.id}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                className={`category-pill ${isActive ? 'active' : ''}`}
+                onClick={() => handleCategoryClick(cat)}
+                title={
+                  isActive
+                    ? `Currently sorted by ${cat.label} (${sortDirection === 'asc' ? 'ascending' : 'descending'}). Click to toggle.`
+                    : `Sort by ${cat.label}`
+                }
+              >
+                <span>{cat.label}</span>
+                {isActive && isSortedCol && (
+                  <span className="category-pill-sort-icon">
+                    {sortDirection === 'asc' ? (
+                      <ArrowUp size={11} strokeWidth={2.5} />
+                    ) : (
+                      <ArrowDown size={11} strokeWidth={2.5} />
+                    )}
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+        <button
+          type="button"
+          className="mobile-filter-sheet-trigger"
+          onClick={() => openMobileModalWithTab('categories')}
+          aria-label="Open filter and column modal"
+        >
+          <SlidersHorizontal size={15} />
+        </button>
+      </div>
+
+      {/* Mobile Sub-toolbar: Columns trigger, Sort dropdown, and View mode */}
+      <div className="mobile-subtoolbar">
+        <button
+          type="button"
+          className="mobile-columns-btn"
+          onClick={() => openMobileModalWithTab('columns')}
+        >
+          <TableIcon size={14} />
+          <span>Columns</span>
+        </button>
+
+        <div className="mobile-sort-select-wrapper">
+          <label htmlFor="mobile-sort-select" className="sr-only">Sort by</label>
+          <select
+            id="mobile-sort-select"
+            className="mobile-sort-select"
+            value={sortColumn}
+            onChange={(e) => {
+              const val = e.target.value as LeaderboardColumnKey | 'name' | 'releaseDate';
+              setSortColumn(val);
+              setSortDirection(val === 'name' || val === 'cost' ? 'asc' : 'desc');
+              const matchedCat = CATEGORIES.find((c) => c.sortCol === val);
+              if (matchedCat) setActiveCategory(matchedCat.id);
+            }}
+          >
+            <option value="overall">Sort: Overall</option>
+            <option value="releaseDate">Sort: Release Date</option>
+            <option value="reasoning">Sort: Reasoning</option>
+            <option value="coding">Sort: Coding</option>
+            <option value="agentic">Sort: Agentic Coding</option>
+            <option value="mathematics">Sort: Mathematics</option>
+            <option value="dataAnalysis">Sort: Data Analysis</option>
+            <option value="cost">Sort: Lowest Price</option>
+            <option value="speed">Sort: Speed</option>
+            <option value="name">Sort: Model Name</option>
+          </select>
+          <ChevronDown size={13} className="mobile-sort-arrow" />
+        </div>
+
+        <div className="mobile-view-toggle">
+          <button
+            type="button"
+            className={`mobile-view-btn ${viewMode === 'cards' ? 'active' : ''}`}
+            onClick={() => setViewMode('cards')}
+            aria-label="Card Grid View"
+            aria-pressed={viewMode === 'cards'}
+          >
+            <LayoutGrid size={15} />
+          </button>
+          <button
+            type="button"
+            className={`mobile-view-btn ${viewMode === 'table' ? 'active' : ''}`}
+            onClick={() => setViewMode('table')}
+            aria-label="List View"
+            aria-pressed={viewMode === 'table'}
+          >
+            <List size={15} />
+          </button>
+        </div>
+      </div>
+
+      <div className="mobile-model-count">
+        Showing {sortedRows.length} models
       </div>
 
       {/* Main Content: Table or Cards */}
@@ -1129,6 +1253,311 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
               onSelect={() => toggleSelect(row.model.slug)}
             />
           ))}
+        </div>
+      )}
+
+      {/* Mobile-only List View (Rendered directly on mobile when viewMode === 'table') */}
+      {viewMode === 'table' && (
+        <div className="mobile-model-list">
+          {sortedRows.length === 0 ? (
+            <div className="mobile-empty-state">
+              <p>No models match your criteria.</p>
+              <button className="button primary" onClick={resetAll}>
+                Reset filters
+              </button>
+            </div>
+          ) : (
+            sortedRows.map((row, index) => {
+              const isExpanded = Boolean(expandedRows[row.model.slug]);
+              const isSelected = selectedSlugs.includes(row.model.slug);
+
+              // Extract top 3 metrics to display
+              const metricCandidates: Array<{ label: string; val: number | null }> = [
+                { label: 'Reasoning', val: row.scores.reasoning },
+                { label: 'Coding', val: row.scores.coding },
+                { label: 'Agentic', val: row.scores.agentic },
+                { label: 'Mathematics', val: row.scores.mathematics },
+                { label: 'Data Analysis', val: row.scores.dataAnalysis },
+              ];
+              const topMetrics = metricCandidates
+                .filter((m) => m.val !== null && m.val !== undefined && m.val > 0)
+                .slice(0, 3);
+
+              return (
+                <div
+                  key={row.model.slug}
+                  className={`mobile-model-row-card ${isExpanded ? 'is-expanded' : ''} ${isSelected ? 'is-selected' : ''}`}
+                  onClick={() => handleRowClick(row.model.slug)}
+                >
+                  <div className="mobile-card-header">
+                    <button
+                      type="button"
+                      className={`mobile-expand-btn ${isExpanded ? 'rotated' : ''}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleExpand(row.model.slug);
+                      }}
+                      aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${row.displayName}`}
+                    >
+                      <ChevronRight size={16} />
+                    </button>
+
+                    <div className="mobile-title-block">
+                      <div className="mobile-title-line">
+                        <a
+                          href={`/models/${row.model.slug}`}
+                          className="mobile-model-name"
+                          onClick={(e) => {
+                            if (!e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey && e.button === 0) {
+                              e.preventDefault();
+                            }
+                          }}
+                        >
+                          {row.displayName}
+                        </a>
+                        {row.isOpenWeights && (
+                          <span className="badge-open">open</span>
+                        )}
+                      </div>
+                      <div className="mobile-model-score-line">
+                        <span className="mobile-score-val">
+                          {row.scores.overall !== null ? row.scores.overall.toFixed(1) : '—'}
+                        </span>
+                        <span className="mobile-score-lbl">Overall</span>
+                      </div>
+                    </div>
+
+                    <div className="mobile-card-actions">
+                      <span className="mobile-rank-badge">
+                        #{index + 1}
+                      </span>
+                      <a
+                        href={`/models/${row.model.slug}`}
+                        className="mobile-detail-chevron"
+                        aria-label={`View details for ${row.displayName}`}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <ChevronRight size={18} />
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Top 3 metrics row */}
+                  {topMetrics.length > 0 && (
+                    <div className="mobile-metrics-strip">
+                      {topMetrics.map((m) => (
+                        <div key={m.label} className="mobile-metric-item">
+                          <span className="mobile-metric-val">
+                            {m.val !== null ? m.val.toFixed(1) : '—'}
+                          </span>
+                          <span className="mobile-metric-lbl">{m.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Model tag pills */}
+                  <div className="mobile-tags-row">
+                    <span className="mobile-tag-pill provider-pill">
+                      <ProviderLogo provider={row.model.provider} size={13} />
+                      {row.model.provider}
+                    </span>
+                    {row.model.tags.slice(0, 2).map((t) => (
+                      <span key={t} className="mobile-tag-pill">{t}</span>
+                    ))}
+                  </div>
+
+                  {/* Expandable full details row */}
+                  {isExpanded && (
+                    <div
+                      className="mobile-expanded-details"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <p className="mobile-expanded-desc">{row.model.description}</p>
+
+                      <div className="mobile-expanded-specs">
+                        <div>
+                          <span className="spec-label">Speed</span>
+                          <strong>{row.scores.speed > 0 ? `${row.scores.speed} tok/s` : '—'}</strong>
+                        </div>
+                        <div>
+                          <span className="spec-label">Context</span>
+                          <strong>{contextSize(row.model.facts.context)}</strong>
+                        </div>
+                        <div>
+                          <span className="spec-label">Input Price</span>
+                          <strong>{rateLabel(row.model, 'input')} / 1M</strong>
+                        </div>
+                        <div>
+                          <span className="spec-label">Output Price</span>
+                          <strong>{rateLabel(row.model, 'output')} / 1M</strong>
+                        </div>
+                        {row.model.facts.releaseDate && (
+                          <div>
+                            <span className="spec-label">Released</span>
+                            <strong>{row.model.facts.releaseDate}</strong>
+                          </div>
+                        )}
+                        {row.maxEffort !== 'none' && (
+                          <div>
+                            <span className="spec-label">Reasoning Effort</span>
+                            <strong>{row.maxEffort === 'fixed' ? 'Fixed CoT' : row.maxEffort}</strong>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* All visible column scores */}
+                      <div className="mobile-expanded-all-scores">
+                        <span className="spec-label" style={{ marginBottom: '6px' }}>All Scores</span>
+                        <div className="mobile-scores-grid">
+                          {ALL_COLUMNS.filter((c) => c.key !== 'cost' && c.key !== 'speed').map((col) => {
+                            const val = row.scores[col.key];
+                            return (
+                              <div key={col.key} className="mobile-score-cell">
+                                <span className="cell-lbl">{col.label}</span>
+                                <span className="cell-val">{val !== null && val !== undefined ? Number(val).toFixed(1) : '—'}</span>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+
+                      <div className="mobile-expanded-btns">
+                        <button
+                          type="button"
+                          className={`button ${isSelected ? 'primary' : ''}`}
+                          onClick={() => toggleSelect(row.model.slug)}
+                        >
+                          {isSelected ? <Check size={14} /> : <Plus size={14} />}
+                          {isSelected ? 'In Compare' : 'Add to Compare'}
+                        </button>
+                        <a
+                          className="button"
+                          href={`/models/${row.model.slug}`}
+                        >
+                          Model Guide <ExternalLink size={13} />
+                        </a>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })
+          )}
+        </div>
+      )}
+
+      {/* Mobile Filter & Columns Bottom Sheet Modal */}
+      {showMobileModal && (
+        <div
+          className="mobile-modal-overlay"
+          onClick={() => setShowMobileModal(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="mobile-modal-title"
+        >
+          <div
+            className="mobile-modal-sheet"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="mobile-modal-header">
+              <h3 id="mobile-modal-title">Filters &amp; Columns</h3>
+              <button
+                type="button"
+                className="mobile-modal-close"
+                onClick={() => setShowMobileModal(false)}
+                aria-label="Close modal"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <div className="mobile-modal-tabs" role="tablist">
+              <button
+                type="button"
+                role="tab"
+                aria-selected={mobileModalTab === 'categories'}
+                className={`mobile-tab-btn ${mobileModalTab === 'categories' ? 'active' : ''}`}
+                onClick={() => setMobileModalTab('categories')}
+              >
+                Categories
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={mobileModalTab === 'columns'}
+                className={`mobile-tab-btn ${mobileModalTab === 'columns' ? 'active' : ''}`}
+                onClick={() => setMobileModalTab('columns')}
+              >
+                Columns
+              </button>
+            </div>
+
+            <div className="mobile-modal-content">
+              {mobileModalTab === 'categories' ? (
+                <div className="mobile-checkbox-list">
+                  {CATEGORIES.map((cat) => {
+                    const isChecked = tempCategory === cat.id;
+                    return (
+                      <label key={cat.id} className="mobile-checkbox-row">
+                        <input
+                          type="radio"
+                          name="mobile-cat-group"
+                          checked={isChecked}
+                          onChange={() => setTempCategory(cat.id)}
+                        />
+                        <span className="checkbox-custom">
+                          {isChecked && <Check size={12} strokeWidth={3} />}
+                        </span>
+                        <span className="checkbox-text">{cat.label}</span>
+                      </label>
+                    );
+                  })}
+                </div>
+              ) : (
+                <div className="mobile-checkbox-list">
+                  {ALL_COLUMNS.map((col) => {
+                    const isChecked = tempVisibleColumns[col.key];
+                    return (
+                      <label key={col.key} className="mobile-checkbox-row">
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={(e) =>
+                            setTempVisibleColumns({
+                              ...tempVisibleColumns,
+                              [col.key]: e.target.checked,
+                            })
+                          }
+                        />
+                        <span className="checkbox-custom">
+                          {isChecked && <Check size={12} strokeWidth={3} />}
+                        </span>
+                        <span className="checkbox-text">{col.label}</span>
+                      </label>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
+            <div className="mobile-modal-footer">
+              <button
+                type="button"
+                className="mobile-modal-reset"
+                onClick={resetMobileModal}
+              >
+                Reset
+              </button>
+              <button
+                type="button"
+                className="button primary mobile-modal-apply"
+                onClick={applyMobileModal}
+              >
+                Apply ({mobileModalTab === 'categories' ? 1 : Object.values(tempVisibleColumns).filter(Boolean).length})
+              </button>
+            </div>
+          </div>
         </div>
       )}
 

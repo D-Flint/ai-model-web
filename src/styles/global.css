@@ -3369,3 +3369,681 @@ table.leaderboard-table td.col-sorted.td-date {
     text-align: left;
   }
 }
+
+/* ==========================================================================
+   Mobile UI: Model Explorer List View & Filter Bottom Sheet (375px+ Design)
+   ========================================================================== */
+
+.mobile-model-list {
+  display: none;
+}
+
+.mobile-subtoolbar {
+  display: none;
+}
+
+.mobile-filter-sheet-trigger {
+  display: none;
+}
+
+.mobile-model-count {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* Hide heavy desktop table card on mobile */
+  .leaderboard-table-card {
+    display: none;
+  }
+
+  /* Show mobile list view */
+  .mobile-model-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  /* Toolbar search expands full width on mobile */
+  .leaderboard-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .leaderboard-search-wrapper {
+    max-width: 100%;
+    min-width: 100%;
+  }
+
+  /* Desktop controls group hidden or minimized on small mobile screens */
+  .leaderboard-controls-group {
+    display: none;
+  }
+
+  /* Horizontally scrollable category pills container with filter button */
+  .leaderboard-categories-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+    margin-top: 4px;
+  }
+
+  .leaderboard-categories-container .leaderboard-categories {
+    flex: 1 1 0%;
+    min-width: 0;
+    display: flex;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    gap: 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 2px;
+  }
+
+  .leaderboard-categories::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-label {
+    display: none;
+  }
+
+  .category-pill {
+    padding: 6px 14px;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .mobile-filter-sheet-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .mobile-filter-sheet-trigger:hover,
+  .mobile-filter-sheet-trigger:active {
+    background: var(--subtle);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* Mobile Sub-toolbar: Columns, Sort dropdown, and View Mode toggle */
+  .mobile-subtoolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .mobile-columns-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 34px;
+    padding: 0 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .mobile-columns-btn:hover,
+  .mobile-columns-btn:active {
+    background: var(--subtle);
+    border-color: var(--accent);
+  }
+
+  .mobile-sort-select-wrapper {
+    position: relative;
+    flex: 1;
+    max-width: 170px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .mobile-sort-select {
+    width: 100%;
+    height: 34px;
+    padding: 0 24px 0 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+  }
+
+  .mobile-sort-arrow {
+    position: absolute;
+    right: 8px;
+    pointer-events: none;
+    color: var(--muted);
+  }
+
+  .mobile-view-toggle {
+    display: inline-flex;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    height: 34px;
+  }
+
+  .mobile-view-btn {
+    border: none;
+    background: var(--surface);
+    color: var(--muted);
+    padding: 0 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .mobile-view-btn.active {
+    background: var(--subtle);
+    color: var(--accent);
+  }
+
+  .mobile-model-count {
+    display: block;
+    font-size: 11.5px;
+    color: var(--muted);
+    font-weight: 500;
+    margin: 4px 0 2px 2px;
+  }
+
+  /* Mobile Model Row Card */
+  .mobile-model-row-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+    cursor: pointer;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .mobile-model-row-card:hover {
+    border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  }
+
+  .mobile-model-row-card.is-selected {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 3%, var(--surface));
+  }
+
+  .mobile-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .mobile-expand-btn {
+    background: none;
+    border: none;
+    padding: 2px;
+    margin-top: 1px;
+    color: var(--muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, color 0.15s ease;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .mobile-expand-btn.rotated {
+    transform: rotate(90deg);
+    color: var(--accent);
+  }
+
+  .mobile-title-block {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .mobile-title-line {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .mobile-model-name {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .mobile-model-name:hover {
+    color: var(--accent);
+  }
+
+  .mobile-model-score-line {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-top: 3px;
+  }
+
+  .mobile-score-val {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .mobile-score-lbl {
+    font-size: 11.5px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .mobile-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .mobile-rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    background: color-mix(in srgb, var(--accent) 15%, var(--surface));
+    color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .mobile-detail-chevron {
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    transition: color 0.15s ease, transform 0.15s ease;
+  }
+
+  .mobile-detail-chevron:hover {
+    color: var(--accent);
+    transform: translateX(2px);
+  }
+
+  /* Metrics Strip: 3 top metrics horizontally */
+  .mobile-metrics-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 12px;
+    padding: 8px 12px;
+    background: var(--subtle);
+    border-radius: 8px;
+    text-align: left;
+  }
+
+  .mobile-metric-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .mobile-metric-val {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .mobile-metric-lbl {
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: capitalize;
+    font-weight: 500;
+  }
+
+  /* Tag pills */
+  .mobile-tags-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .mobile-tag-pill {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: var(--subtle);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .mobile-tag-pill.provider-pill {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* Expandable full details */
+  .mobile-expanded-details {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .mobile-expanded-desc {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+
+  .mobile-expanded-specs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 12px;
+    padding: 10px;
+    background: var(--subtle);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .mobile-expanded-specs strong {
+    font-size: 12px;
+    color: var(--text);
+  }
+
+  .mobile-expanded-all-scores {
+    padding: 10px;
+    background: var(--subtle);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .mobile-scores-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 12px;
+  }
+
+  .mobile-score-cell {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11.5px;
+    padding: 2px 0;
+  }
+
+  .mobile-score-cell .cell-lbl {
+    color: var(--muted);
+    text-transform: capitalize;
+  }
+
+  .mobile-score-cell .cell-val {
+    font-weight: 700;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .mobile-expanded-btns {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .mobile-expanded-btns .button {
+    flex: 1;
+    justify-content: center;
+    font-size: 12px;
+    height: 36px;
+    padding: 0 10px;
+  }
+
+  .mobile-empty-state {
+    text-align: center;
+    padding: 36px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+}
+
+/* ==========================================================================
+   Mobile Bottom Sheet Modal (Filters & Columns)
+   ========================================================================== */
+
+.mobile-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  animation: modalFadeIn 0.2s ease;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.mobile-modal-sheet {
+  width: 100%;
+  max-width: 480px;
+  max-height: 85vh;
+  background: var(--surface);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modalSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.mobile-modal-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.mobile-modal-close {
+  background: none;
+  border: none;
+  padding: 4px;
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.mobile-modal-close:hover {
+  color: var(--text);
+  background: var(--subtle);
+}
+
+.mobile-modal-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  padding: 0 16px;
+}
+
+.mobile-tab-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 12px 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  text-align: center;
+}
+
+.mobile-tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.mobile-modal-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobile-checkbox-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mobile-checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 4px;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 6px;
+  transition: background 0.12s ease;
+}
+
+.mobile-checkbox-row:hover {
+  background: var(--subtle);
+}
+
+.mobile-checkbox-row input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.checkbox-custom {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-text);
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.mobile-checkbox-row input:checked + .checkbox-custom {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.checkbox-text {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.mobile-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.mobile-modal-reset {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0 16px;
+  height: 40px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.mobile-modal-reset:hover {
+  background: var(--subtle);
+}
+
+.mobile-modal-apply {
+  flex: 1;
+  height: 40px;
+  font-size: 13.5px;
+  font-weight: 650;
+  justify-content: center;
+}

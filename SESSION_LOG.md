@@ -1158,5 +1158,19 @@
 - Current state: 100% of providers in catalog use official PNG brand logos.
 - Exact next step: User verifies PNG logos on `http://localhost:4321`.
 
+## 2026-09-07 — Mobile Model Explorer Redesign (List View & Filter Sheet)
 
-
+- Objective: Implement proposed mobile UI (`propose-mobile-UI.png`) on Model Explorer for mobile viewports (<= 768px / 375px).
+- Files changed:
+  - `src/components/ModelExplorer.tsx`: Added mobile list view cards, top 3 sub-scores preview, expandable full-detail accordion, rank badge, open weights indicator, mobile sub-toolbar (Columns button, Sort dropdown, List/Card view toggle), and bottom sheet modal for Categories & Columns selection with Reset and Apply actions.
+  - `src/styles/global.css`: Added responsive styling for mobile toolbar, single-row horizontal scrolling category pills, mobile filter button, mobile model card rows, metrics strip, bottom sheet modal overlay, tabs, checkboxes, and footer actions.
+- Attempt count: 1.
+- Failures and causes: None.
+- Tests and results:
+  - `npm test`: 85/85 tests passed.
+  - `npm run check`: 0 errors, 0 warnings across 85 files.
+  - `npm run build`: Production build succeeded (120+ pages).
+  - Chrome DevTools emulation verification: Tested at 375x812 mobile viewport, verified list view and bottom sheet modal interaction.
+- Commit hash: `92f8e08` (local commit; no remote push).
+- Current state: Model Explorer list view and bottom sheet filter modal active and styled matching proposed specification on mobile viewports.
+- Exact next step: User verifies mobile UI on `http://localhost:4321/models` in mobile viewport mode.
