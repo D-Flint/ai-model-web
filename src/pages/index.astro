@@ -70,7 +70,7 @@ const costs = models
       >Every score explained <ArrowUpRight size={14} /></a
     >
   </div>
-  <section class="section reveal-section">
+  <section class="section">
     <div class="section-heading">
       <div>
         <h2>What do you want to do?</h2><p>
@@ -97,7 +97,7 @@ const costs = models
       }
     </div>
   </section>
-  <section class="section reveal-section">
+  <section class="section">
     <div class="section-heading">
       <div>
         <h2>Most used on OpenRouter</h2><p>
@@ -121,7 +121,7 @@ const costs = models
       >
     </p>
   </section>
-  <section class="finder-banner reveal-section">
+  <section class="finder-banner">
     <div class="finder-icon">
       <SlidersHorizontal size={28} strokeWidth={1.5} />
     </div><div>
@@ -132,7 +132,7 @@ const costs = models
       >Find my model <ArrowRight size={16} /></a
     >
   </section>
-  <section class="section reveal-section">
+  <section class="section">
     <div class="section-heading">
       <div>
         <h2>Put the tradeoffs side by side</h2><p>
@@ -172,7 +172,7 @@ const costs = models
       }
     </div>
   </section>
-  <section class="bottom-grid reveal-section">
+  <section class="bottom-grid">
     <div class="cost-teaser">
       <span class="eyebrow">API PRICING</span><h2>Compare model pricing</h2><p>
         Compare official API pricing without guessing your monthly usage.
@@ -213,24 +213,4 @@ const costs = models
       >Read the data policy <ArrowUpRight size={14} /></a
     >
   </section>
-
-  <script>
-    if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
-      document.documentElement.classList.add('reveal-enabled');
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-revealed');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { rootMargin: '0px 0px -30px 0px', threshold: 0.05 },
-      );
-      document
-        .querySelectorAll('.reveal-section')
-        .forEach((el) => observer.observe(el));
-    }
-  </script>
 </RootLayout>

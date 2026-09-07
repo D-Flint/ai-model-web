@@ -711,84 +711,6 @@ main {
 .catalog-strip a:hover svg {
   transform: translate(1px, -1px);
 }
-@keyframes cardFadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-html.reveal-enabled .reveal-section {
-  opacity: 0;
-  transform: translateY(14px);
-  transition:
-    opacity 420ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-html.reveal-enabled .reveal-section.is-revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-html.reveal-enabled .reveal-section.is-revealed .use-case-grid > a,
-html.reveal-enabled .reveal-section.is-revealed .model-grid > .model-card,
-html.reveal-enabled .reveal-section.is-revealed .comparison-links > a {
-  animation: cardFadeInUp 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-html.reveal-enabled .reveal-section.is-revealed .use-case-grid > a:nth-child(1),
-html.reveal-enabled
-  .reveal-section.is-revealed
-  .model-grid
-  > .model-card:nth-child(1),
-html.reveal-enabled
-  .reveal-section.is-revealed
-  .comparison-links
-  > a:nth-child(1) {
-  animation-delay: 30ms;
-}
-html.reveal-enabled .reveal-section.is-revealed .use-case-grid > a:nth-child(2),
-html.reveal-enabled
-  .reveal-section.is-revealed
-  .model-grid
-  > .model-card:nth-child(2),
-html.reveal-enabled
-  .reveal-section.is-revealed
-  .comparison-links
-  > a:nth-child(2) {
-  animation-delay: 70ms;
-}
-html.reveal-enabled .reveal-section.is-revealed .use-case-grid > a:nth-child(3),
-html.reveal-enabled
-  .reveal-section.is-revealed
-  .model-grid
-  > .model-card:nth-child(3),
-html.reveal-enabled
-  .reveal-section.is-revealed
-  .comparison-links
-  > a:nth-child(3) {
-  animation-delay: 110ms;
-}
-html.reveal-enabled .reveal-section.is-revealed .use-case-grid > a:nth-child(4),
-html.reveal-enabled
-  .reveal-section.is-revealed
-  .model-grid
-  > .model-card:nth-child(4) {
-  animation-delay: 150ms;
-}
-html.reveal-enabled
-  .reveal-section.is-revealed
-  .use-case-grid
-  > a:nth-child(5) {
-  animation-delay: 190ms;
-}
-html.reveal-enabled
-  .reveal-section.is-revealed
-  .use-case-grid
-  > a:nth-child(6) {
-  animation-delay: 230ms;
-}
 .section {
   margin-top: 55px;
 }
@@ -1907,8 +1829,7 @@ th {
   }
   .hero-copy > *,
   .hero-comparison,
-  .catalog-strip,
-  .reveal-section {
+  .catalog-strip {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
