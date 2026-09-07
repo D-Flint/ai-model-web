@@ -342,7 +342,7 @@ export async function runIngestionPipeline(
       availableSources.set('openrouter-throughput', {
         id: 'openrouter-throughput',
         name: 'OpenRouter recent throughput',
-        url: 'https://openrouter.ai/api/v1/models',
+        url: 'https://openrouter.ai/api/frontend/v1/stats/endpoint',
         retrievedAt: openRouterThroughput.retrievedAt,
         kind: 'public_eval',
         publisher: 'OpenRouter',

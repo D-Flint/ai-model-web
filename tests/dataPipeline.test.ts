@@ -12,7 +12,10 @@ import {
 } from '../src/pipeline/normalization';
 import { calculateConfidence } from '../src/pipeline/confidence';
 import { processOpenRouterModels } from '../src/pipeline/openrouter';
-import { processOpenRouterThroughput } from '../src/pipeline/openrouter';
+import {
+  normalizeOpenRouterFrontendEndpointStats,
+  processOpenRouterThroughput,
+} from '../src/pipeline/openrouter';
 import { processLiveBenchResults } from '../src/pipeline/livebench';
 import { catalogSchema } from '../src/lib/catalogSchema';
 import { validateCatalog } from '../src/lib/importCatalog';
@@ -105,6 +108,31 @@ describe('OpenRouter Payload Validation', () => {
       max: 30,
       midpoint: 30,
       providerCount: 1,
+    });
+  });
+
+  it('normalizes OpenRouter frontend provider stats into throughput endpoints', () => {
+    const endpoints = normalizeOpenRouterFrontendEndpointStats(
+      'openai/gpt-4o',
+      [
+        {
+          provider_slug: 'azure',
+          provider_display_name: 'Azure',
+          stats: { p50_throughput: 47 },
+        },
+        {
+          provider_slug: 'openai',
+          provider_display_name: 'OpenAI',
+          stats: { p50_throughput: 49 },
+        },
+      ],
+    );
+
+    expect(processOpenRouterThroughput(endpoints)).toMatchObject({
+      min: 47,
+      max: 49,
+      midpoint: 48,
+      providerCount: 2,
     });
   });
 });

@@ -62,12 +62,16 @@ async function main() {
     if (!result) return model;
     const { modelId, throughput } = result;
 
-    const [author, ...slugParts] = modelId.split('/');
-    const endpointUrl = `https://openrouter.ai/api/v1/models/${encodeURIComponent(author)}/${encodeURIComponent(slugParts.join('/'))}/endpoints`;
+    const endpointUrl = new URL(
+      'https://openrouter.ai/api/frontend/v1/stats/endpoint',
+    );
+    endpointUrl.searchParams.set('permaslug', modelId);
+    endpointUrl.searchParams.set('perfWorkload', 'text_generation');
+    endpointUrl.searchParams.set('latencyMetric', 'latency');
     const source = {
       id: throughput.sourceId,
-      name: 'OpenRouter endpoint throughput',
-      url: endpointUrl,
+      name: 'OpenRouter provider throughput',
+      url: endpointUrl.toString(),
       retrievedAt,
       kind: 'provider_doc' as const,
       publisher: 'OpenRouter',

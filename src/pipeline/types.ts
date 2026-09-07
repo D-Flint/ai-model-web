@@ -56,6 +56,25 @@ export const openRouterEndpointsResponseSchema = z.object({
   }),
 });
 
+export const openRouterFrontendEndpointStatsSchema = z.object({
+  provider_slug: z.string().min(1),
+  provider_display_name: z.string().min(1).optional().nullable(),
+  stats: z
+    .object({
+      p50_throughput: z.number().nonnegative().optional().nullable(),
+    })
+    .optional()
+    .nullable(),
+});
+
+export const openRouterFrontendEndpointStatsResponseSchema = z.object({
+  data: z.array(openRouterFrontendEndpointStatsSchema),
+});
+
+export type OpenRouterFrontendEndpointStats = z.infer<
+  typeof openRouterFrontendEndpointStatsSchema
+>;
+
 export const openRouterResponseSchema = z.object({
   data: z.array(openRouterModelSchema),
 });

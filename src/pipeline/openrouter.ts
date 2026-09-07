@@ -1,7 +1,9 @@
 import {
+  openRouterFrontendEndpointStatsResponseSchema,
   openRouterEndpointsResponseSchema,
   openRouterResponseSchema,
   type OpenRouterEndpoint,
+  type OpenRouterFrontendEndpointStats,
   type OpenRouterModel,
 } from './types';
 import { defaultAliasResolver, ModelAliasResolver } from './aliasResolver';
@@ -74,8 +76,7 @@ export async function fetchOpenRouterEndpoints(
   }
 
   const endpoint =
-    options?.endpoint ??
-    `https://openrouter.ai/api/v1/models/${encodeURIComponent(author)}/${encodeURIComponent(slug)}/endpoints`;
+    options?.endpoint ?? 'https://openrouter.ai/api/frontend/v1/stats/endpoint';
   const apiKey = options?.apiKey || process.env.OPENROUTER_API_KEY;
   const headers: Record<string, string> = {
     Accept: 'application/json',
@@ -83,20 +84,49 @@ export async function fetchOpenRouterEndpoints(
   };
   if (apiKey) headers['Authorization'] = `Bearer ${apiKey}`;
 
-  const response = await fetch(endpoint, { headers });
+  const url = new URL(endpoint);
+  if (!options?.endpoint) {
+    url.searchParams.set('permaslug', modelId);
+    url.searchParams.set('perfWorkload', 'text_generation');
+    url.searchParams.set('latencyMetric', 'latency');
+  }
+
+  const response = await fetch(url, { headers });
   if (!response.ok) {
     throw new Error(
       `OpenRouter endpoint fetch failed: HTTP ${response.status} ${response.statusText}`,
     );
   }
 
-  const parsed = openRouterEndpointsResponseSchema.safeParse(
-    await response.json(),
-  );
+  const json = await response.json();
+  if (options?.endpoint) {
+    const parsed = openRouterEndpointsResponseSchema.safeParse(json);
+    if (!parsed.success) {
+      throw new Error('OpenRouter endpoint payload failed schema validation');
+    }
+    return parsed.data.data.endpoints;
+  }
+
+  const parsed = openRouterFrontendEndpointStatsResponseSchema.safeParse(json);
   if (!parsed.success) {
     throw new Error('OpenRouter endpoint payload failed schema validation');
   }
-  return parsed.data.data.endpoints;
+
+  return normalizeOpenRouterFrontendEndpointStats(modelId, parsed.data.data);
+}
+
+export function normalizeOpenRouterFrontendEndpointStats(
+  modelId: string,
+  providers: OpenRouterFrontendEndpointStats[],
+): OpenRouterEndpoint[] {
+  return providers.map((provider) => ({
+    model_id: modelId,
+    provider_name: provider.provider_display_name ?? provider.provider_slug,
+    status: 0,
+    throughput_last_30m: {
+      p50: provider.stats?.p50_throughput ?? null,
+    },
+  }));
 }
 
 export function processOpenRouterThroughput(
