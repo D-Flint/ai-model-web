@@ -660,6 +660,14 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
         </div>
       </div>
 
+      {/* Catalog scope indication */}
+      <div className="leaderboard-scope-bar">
+        <span className="scope-badge">LiveBench-evaluated</span>
+        <span className="scope-text">
+          Showing models with official LiveBench benchmark evaluations. Scores replicate LiveBench arithmetic mean across categories.
+        </span>
+      </div>
+
       {/* Category Pills Bar matching Screenshot & Mobile Spec */}
       <div className="leaderboard-categories-container">
         <div

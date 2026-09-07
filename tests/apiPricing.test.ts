@@ -9,7 +9,7 @@ import {
 } from '../src/lib/apiPricing';
 import { apiPricingSchema } from '../src/lib/apiPricingSchema';
 import { verifiedApiPricing } from '../src/data/apiPricing';
-import { models } from '../src/data/models';
+import { models, allModels } from '../src/data/models';
 import { validateCatalog } from '../src/lib/importCatalog';
 
 const now = new Date('2026-09-06T12:00:00Z');
@@ -164,6 +164,6 @@ describe('pricing provenance and comparisons', () => {
     expect(
       Object.values(verifiedApiPricing).every((p) => p.benchmarkCost === null),
     ).toBe(true);
-    expect(models.filter((m) => m.apiPricing)).toHaveLength(12);
+    expect(allModels.filter((m) => m.apiPricing)).toHaveLength(12);
   });
 });

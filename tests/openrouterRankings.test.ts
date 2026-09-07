@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { models } from '../src/data/models';
+import { allModels } from '../src/data/models';
 import {
   OPENROUTER_TOP_MODELS,
   getMostUsedOpenRouterModels,
@@ -21,7 +21,7 @@ describe('openrouterRankings', () => {
   });
 
   it('correctly filters and returns the most used models from the catalog in exact rank order', () => {
-    const featured = getMostUsedOpenRouterModels(models, 4);
+    const featured = getMostUsedOpenRouterModels(allModels, 4);
     expect(featured).toHaveLength(4);
 
     expect(featured[0].ranking.rank).toBe(1);

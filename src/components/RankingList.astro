@@ -9,8 +9,15 @@ interface Props {
   slug?: string;
 }
 const { metric = 'overall', slug = 'overall' } = Astro.props;
+const baseModels = models;
 const eligible =
-  metric === 'vision' ? models.filter((m) => m.facts.vision) : models;
+  slug === 'cheap'
+    ? baseModels
+    : metric === 'vision'
+      ? baseModels.filter((m) => m.facts.vision && m.scores.vision !== null)
+      : metric === 'speed'
+        ? baseModels.filter((m) => getSpeedTokensPerSec(m) > 0)
+        : baseModels.filter((m) => m.scores[metric] !== null);
 const ranked =
   slug === 'cheap'
     ? [...eligible].sort(compareApiPrice)

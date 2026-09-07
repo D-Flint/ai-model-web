@@ -263,7 +263,10 @@ try {
   );
 }
 
-export const models: CatalogModel[] =
+import { evaluateModelEligibility } from '../lib/catalogEligibility';
+
+// All models (complete database, including legacy/untracked)
+export const allModels: CatalogModel[] =
   verifiedModelsList && verifiedModelsList.length > 0
     ? validateCatalog(
         verifiedModelsList.map((model) => ({
@@ -285,3 +288,9 @@ export const models: CatalogModel[] =
         })),
       )
     : mockModels;
+
+// Tracked models: curated LiveBench-backed catalog for v1 (30-80 models)
+export const models: CatalogModel[] = allModels.filter((model) => {
+  const result = evaluateModelEligibility(model);
+  return result.isTracked;
+});
