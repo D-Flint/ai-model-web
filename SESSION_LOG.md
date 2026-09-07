@@ -1133,4 +1133,30 @@
 - Current state: All providers have verified, crisp SVG/PNG logos.
 - Exact next step: User verifies provider logos in UI locally at `http://localhost:4321`.
 
+## 2026-09-07 — Switch Provider Logos to Official PNG Brand Assets
+
+- Objective: Comply with user request to use official `.png` files instead of `.svg` for all company logos across the application.
+- Files changed:
+  - `public/logos/minimax.png`: Official high-res MiniMax PNG brand asset.
+  - `public/logos/moonshot.png`: Official high-res Moonshot AI PNG brand asset.
+  - `public/logos/nvidia.png`: Official Nvidia PNG brand asset.
+  - `public/logos/poolside.png`: Official Poolside PNG brand asset.
+  - `public/logos/tencent.png`: Official Tencent PNG brand asset.
+  - `public/logos/xiaomi.png`: Official Xiaomi PNG brand asset.
+  - `public/logos/zai.png`: Official Z.ai / Zhipu PNG brand asset.
+  - `public/logos/generic.png`: Clean high-res fallback spark PNG.
+  - Removed all temporary SVG logo files in `public/logos/`.
+  - `src/components/ProviderLogo.tsx`: Updated provider mappings to `.png` paths with theme inversion flags for monochrome logos on light mode.
+- Attempt count: 1.
+- Failures and causes: None.
+- Tests and results:
+  - `npm test`: 85/85 tests passed.
+  - `npm run check`: 0 errors, 0 warnings, 0 hints across 85 files.
+  - `npm run lint`: Passed with Prettier code style confirmed.
+  - Validated all 17 catalog providers map to valid PNG files.
+- Commit hash: `7f2a1f1` (local commit; no remote push).
+- Current state: 100% of providers in catalog use official PNG brand logos.
+- Exact next step: User verifies PNG logos on `http://localhost:4321`.
+
+
 
