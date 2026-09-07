@@ -1,8 +1,10 @@
 import type { APIRoute } from 'astro';
 import { models } from '../data/models';
 import { categories } from '../data/config';
+import { getSeoComparisonPairs } from '../lib/seoComparisons';
 export const GET: APIRoute = ({ site }) => {
   // No fictional or invented deployment domain is emitted in local mode.
+  const seoPairs = getSeoComparisonPairs(models);
   const paths = [
     '/',
     '/models',
@@ -14,6 +16,7 @@ export const GET: APIRoute = ({ site }) => {
     '/methodology',
     ...models.map((m) => `/models/${m.slug}`),
     ...categories.map((c) => `/rankings/${c.slug}`),
+    ...seoPairs.map((p) => `/compare/${p.slug}`),
   ];
   const escape = (value: string) =>
     value

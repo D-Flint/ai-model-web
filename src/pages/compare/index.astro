@@ -1,7 +1,11 @@
 ---
 import RootLayout from '../../layouts/RootLayout.astro';
 import ComparisonBuilder from '../../components/ComparisonBuilder';
+import ProviderLogo from '../../components/ProviderLogo.astro';
 import { models } from '../../data/models';
+import { getSeoComparisonPairs } from '../../lib/seoComparisons';
+
+const popularPairs = getSeoComparisonPairs(models).slice(0, 8);
 ---
 
 <RootLayout title="Compare AI models side by side | Synapse"
@@ -12,5 +16,38 @@ import { models } from '../../data/models';
       Compare two to four models on capability, experience, and the cost of
       getting things done.
     </p>
-  </div><ComparisonBuilder models={models} client:load /></RootLayout
+  </div><ComparisonBuilder models={models} client:load /><section
+    class="section"
+    style="margin-top: 3rem;"
+  >
+    <div class="section-heading">
+      <div>
+        <h2>Popular head-to-head comparisons</h2><p>
+          Direct matchups between top frontier and everyday models.
+        </p>
+      </div>
+    </div><div class="comparison-links">
+      {
+        popularPairs.map(({ a, b, slug }) => (
+          <a href={`/compare/${slug}`}>
+            <span>
+              <strong>{a.name}</strong>
+              <small class="provider-sub">
+                <ProviderLogo provider={a.provider} size={12} />
+                {a.provider}
+              </small>
+            </span>
+            <span class="versus">vs</span>
+            <span>
+              <strong>{b.name}</strong>
+              <small class="provider-sub">
+                <ProviderLogo provider={b.provider} size={12} />
+                {b.provider}
+              </small>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </section></RootLayout
 >

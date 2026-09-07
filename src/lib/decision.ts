@@ -282,9 +282,14 @@ export function recommend(
     );
 }
 export function selectionFromSearch(search: string, models: CatalogModel[]) {
-  return [
-    ...new Set(new URLSearchParams(search).get('models')?.split(',') ?? []),
-  ]
+  const params = new URLSearchParams(search);
+  const modelsParam = params.get('models')?.split(',') ?? [];
+  const pairParam = [params.get('a'), params.get('b')].filter(
+    Boolean,
+  ) as string[];
+  const rawList = modelsParam.length > 0 ? modelsParam : pairParam;
+
+  return [...new Set(rawList)]
     .filter((item) => {
       const slug = item.split(':')[0];
       return models.some((m) => m.slug === slug);

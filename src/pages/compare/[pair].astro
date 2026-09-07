@@ -2,13 +2,13 @@
 import RootLayout from '../../layouts/RootLayout.astro';
 import ComparisonBuilder from '../../components/ComparisonBuilder';
 import { models } from '../../data/models';
+import { getSeoComparisonPairs } from '../../lib/seoComparisons';
 export function getStaticPaths() {
-  return models.flatMap((a, i) =>
-    models.slice(i + 1).map((b) => ({
-      params: { pair: `${a.slug}-vs-${b.slug}` },
-      props: { a, b },
-    })),
-  );
+  const pairs = getSeoComparisonPairs(models);
+  return pairs.map(({ a, b, slug }) => ({
+    params: { pair: slug },
+    props: { a, b },
+  }));
 }
 const { a, b } = Astro.props;
 ---
