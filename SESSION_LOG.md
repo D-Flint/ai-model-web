@@ -1174,3 +1174,26 @@
 - Commit hash: `92f8e08` (local commit; no remote push).
 - Current state: Model Explorer list view and bottom sheet filter modal active and styled matching proposed specification on mobile viewports.
 - Exact next step: User verifies mobile UI on `http://localhost:4321/models` in mobile viewport mode.
+
+## 2026-09-07 — Leaderboard Score Source Integrity and Pricing Fallback
+
+- Objective: Enforce user data integrity rules for the model explorer leaderboard:
+  1. All 7 capability columns strictly use the single LiveBench release (`livebenchData.json`); overall is the LiveBench global average.
+  2. Do not fill missing LiveBench Coding or Agentic Coding from SWE-bench, BFCL, LMArena, or estimates; keep missing benchmark values as null (`—`).
+  3. For API pricing only, fall back to verified official-provider `model.pricing.input` and `model.pricing.output` when tiered `apiPricing` is unavailable.
+- Files changed:
+  - `src/components/ModelExplorer.tsx`:
+    - Linked canonical model `livebenchAliases` to resolve versioned LiveBench rows.
+    - Set capability scores strictly from matching LiveBench release row (`lbRow?.reasoning`, `lbRow?.coding`, `null` for agentic, `lbRow?.math`, `lbRow?.data_analysis`, `lbRow?.instruction_following`, averaged language).
+    - If no LiveBench row exists, overall and capability scores remain strictly `null` (`—`).
+    - Added API pricing fallback: `comparablePrice(model) ?? model.pricing?.input ?? null`.
+    - Added helper `getDisplayPriceLabel` for input/output price in expanded table subtask panel and mobile view, falling back to official provider pricing if tiered pricing is unavailable.
+- Attempt count: 1.
+- Failures and causes:
+  - TypeScript caught narrowing of `scores.agentic` as `never` and possible null check on `scores.speed`; fixed explicit typing as `Record<LeaderboardMetricKey, number | null>` and added null-checks before comparison.
+- Tests and results:
+  - `npm run check`: 0 errors, 0 warnings across 85 files.
+  - `npm test`: 85/85 tests passed across 8 test suites.
+- Commit hash: `be39379` (local commit; no remote push).
+- Current state: Leaderboard scores strictly grounded in single LiveBench release, missing values render as `—`, pricing falls back to verified official specs.
+- Exact next step: User verifies leaderboard data and pricing locally at `http://localhost:4321/models`.
