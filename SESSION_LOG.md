@@ -208,3 +208,14 @@
 - Commit: Pending local design commit.
 - Current state: Design approved in conversation and documented; implementation has not started.
 - Exact next step: User reviews the written spec, then implementation planning can begin.
+
+## 2026-09-08 — Repair Chrome DevTools MCP startup
+
+- Objective: Diagnose why the configured Chrome DevTools MCP server was not registering and repair its startup configuration.
+- Files changed: `C:\Users\ASUS Rog\.codex\config.toml`, `SESSION_LOG.md`.
+- Attempts: 1 diagnosis/fix attempt; 2 runtime probes.
+- Failures/causes: The MCP entry omitted npx's non-interactive `--yes` flag, and the bare `npx` command resolved incorrectly under the MCP host, attempting to load npm from the project directory (`node_modules/npm/bin/npx-cli.js`).
+- Tests: Official Chrome DevTools MCP configuration checked; absolute `C:\Program Files\nodejs\npx.cmd --yes chrome-devtools-mcp@latest --version` passed and resolved version 1.8.0; config entry verified with a 120-second startup timeout.
+- Commit: Pending local commit.
+- Current state: The user-level MCP entry now uses the absolute Windows npx path, auto-accepts installation, and allows first-run package startup time.
+- Exact next step: Restart Codex so it reloads `config.toml`, then confirm `chrome-devtools` tools appear and invoke one browser inspection tool.
