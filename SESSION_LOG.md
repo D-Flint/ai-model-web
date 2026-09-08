@@ -263,3 +263,14 @@
 - Commit: Pending local design commit.
 - Current state: Design approved in conversation and documented; implementation has not started.
 - Exact next step: User reviews the written spec, then implementation planning can begin.
+
+## 2026-09-08 — Plan automatic model-data refresh
+
+- Objective: Capture the requirement for automatic model-data refresh without activating automation yet.
+- Files changed: `docs/PLAN_DATA_REFRESH_WORKFLOW.md`, `SESSION_LOG.md`.
+- Attempts: 1 documentation update.
+- Failures/causes: None.
+- Tests: `git diff --check` passed; no runtime checks required for documentation-only changes.
+- Commit: Pending local commit.
+- Current state: The plan documents a scheduled GitHub Actions refresh, validation gate, scoped data commit, automatic redeploy, prerequisites, deferred decisions, acceptance criteria, and non-goals. No workflow is active.
+- Exact next step: Decide hosting target, publish policy, cadence, secrets, and failure notifications before implementation.
