@@ -1,6 +1,6 @@
 ---
 import { compareApiPrice, rateLabel } from '../lib/apiPricing';
-import { models } from '../data/models';
+import { allModels, models } from '../data/models';
 import { categories, metricLabels, type Metric } from '../data/config';
 import {
   rankModels,
@@ -8,12 +8,33 @@ import {
   getSpeedTokensPerSec,
 } from '../lib/decision';
 import { ModelMark } from './ModelCard';
+import IntelligenceRanking from './IntelligenceRanking';
+import { rankIntelligenceModels } from '../lib/rankings';
 interface Props {
   metric?: Metric;
   slug?: string;
 }
 const { metric = 'overall', slug = 'overall' } = Astro.props;
 const baseModels = models;
+const rankingAsOf = new Date().toISOString().slice(0, 10);
+const intelligenceItems =
+  slug === 'intelligence'
+    ? rankIntelligenceModels(allModels, rankingAsOf).map((result) => ({
+        slug: result.model.slug,
+        name: result.model.name,
+        provider: result.model.provider,
+        family: result.model.family,
+        description: result.model.description,
+        tags: result.model.tags,
+        weakness: result.model.weaknesses[0],
+        rank: result.rank,
+        score: result.score,
+        rawScore: result.rawScore,
+        confidence: result.model.confidence,
+        lastVerifiedAt: result.model.lastVerifiedAt ?? '',
+        components: result.components,
+      }))
+    : [];
 const eligible =
   slug === 'cheap'
     ? baseModels
@@ -43,63 +64,71 @@ const ranked =
   }
 </nav>
 <div class="notice">
-  Sample ranking, not a market recommendation. {
-    slug === 'cheap'
-      ? 'Sorted by current standard input API rate. Tiered or unavailable rates sort last; see model details for sources.'
-      : metric === 'speed'
-        ? 'Sorted by generation throughput in tokens/sec.'
-        : `Sorted by ${metricLabels[metric].toLowerCase()} score, with alphabetical ordering for ties.`
+  {
+    slug === 'intelligence'
+      ? 'Current production models verified within 90 days. Intelligence fit combines 80% intelligence, 10% coding, and 10% research.'
+      : `Sample ranking, not a market recommendation. ${
+          slug === 'cheap'
+            ? 'Sorted by current standard input API rate. Tiered or unavailable rates sort last; see model details for sources.'
+            : metric === 'speed'
+              ? 'Sorted by generation throughput in tokens/sec.'
+              : `Sorted by ${metricLabels[metric].toLowerCase()} score, with alphabetical ordering for ties.`
+        }`
   }
   <a href="/methodology">How scoring works</a>.
 </div>
-<div class="ranking-list">
-  {
-    ranked.map((model, index) => (
-      <article class="panel ranking-row">
-        <>
-          <span class="rank-position">
-            {String(index + 1).padStart(2, '0')}
-          </span>
-          <ModelMark model={model} />
-          <div>
-            <>
-              <h3>
-                <a href={`/models/${model.slug}`}>{model.name}</a>
-              </h3>
-              <p>
-                {model.description} Choose it for{' '}
-                {model.tags.slice(0, 2).join(' and ').toLowerCase()} in this
-                sample.
-              </p>
-              <div class="rank-notes">
-                <>
-                  <span>Tradeoff: {model.weaknesses[0].toLowerCase()}</span>
-                  <a href={`/compare?models=${model.slug}`}>
-                    Add to comparison
-                  </a>
-                </>
-              </div>
-            </>
-          </div>
-          <a
-            class="score-number"
-            href={`/models/${model.slug}#score-${metric}`}
-          >
-            {slug === 'cheap'
-              ? rateLabel(model, 'input')
-              : metric === 'speed'
-                ? (getSpeedDisplayValue(model) ?? '—')
-                : model.scores[metric]}
-            <small>
+{
+  slug === 'intelligence' ? (
+    <IntelligenceRanking items={intelligenceItems} client:load />
+  ) : (
+    <div class="ranking-list">
+      {ranked.map((model, index) => (
+        <article class="panel ranking-row">
+          <>
+            <span class="rank-position">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <ModelMark model={model} />
+            <div>
+              <>
+                <h3>
+                  <a href={`/models/${model.slug}`}>{model.name}</a>
+                </h3>
+                <p>
+                  {model.description} Choose it for{' '}
+                  {model.tags.slice(0, 2).join(' and ').toLowerCase()} in this
+                  sample.
+                </p>
+                <div class="rank-notes">
+                  <>
+                    <span>Tradeoff: {model.weaknesses[0].toLowerCase()}</span>
+                    <a href={`/compare?models=${model.slug}`}>
+                      Add to comparison
+                    </a>
+                  </>
+                </div>
+              </>
+            </div>
+            <a
+              class="score-number"
+              href={`/models/${model.slug}#score-${metric}`}
+            >
               {slug === 'cheap'
-                ? 'input / 1M tokens'
+                ? rateLabel(model, 'input')
                 : metric === 'speed'
-                  ? 'tokens/sec'
-                  : `${metricLabels[metric]} / 100`}
-            </small>
-          </a>
-        </>
-      </article>
-    ))
-  }
-</div>
+                  ? (getSpeedDisplayValue(model) ?? '—')
+                  : model.scores[metric]}
+              <small>
+                {slug === 'cheap'
+                  ? 'input / 1M tokens'
+                  : metric === 'speed'
+                    ? 'tokens/sec'
+                    : `${metricLabels[metric]} / 100`}
+              </small>
+            </a>
+          </>
+        </article>
+      ))}
+    </div>
+  )
+}

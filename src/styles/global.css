@@ -1477,6 +1477,25 @@ th {
   display: grid;
   gap: 15px;
 }
+.ranking-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.ranking-controls label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+.ranking-controls select {
+  min-width: 180px;
+}
+.ranking-empty {
+  color: var(--muted);
+  padding: 25px;
+}
 .ranking-row {
   display: grid;
   grid-template-columns: 35px 42px 1fr 100px;

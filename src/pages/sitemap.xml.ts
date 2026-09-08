@@ -1,10 +1,22 @@
 import type { APIRoute } from 'astro';
-import { models } from '../data/models';
+import { allModels, models } from '../data/models';
 import { categories } from '../data/config';
 import { getSeoComparisonPairs } from '../lib/seoComparisons';
+import { rankIntelligenceModels } from '../lib/rankings';
 export const GET: APIRoute = ({ site }) => {
   // No fictional or invented deployment domain is emitted in local mode.
   const seoPairs = getSeoComparisonPairs(models);
+  const rankingAsOf = new Date().toISOString().slice(0, 10);
+  const publishedModels = [
+    ...new Map(
+      [
+        ...models,
+        ...rankIntelligenceModels(allModels, rankingAsOf).map(
+          (result) => result.model,
+        ),
+      ].map((model) => [model.slug, model]),
+    ).values(),
+  ];
   const paths = [
     '/',
     '/models',
@@ -14,7 +26,7 @@ export const GET: APIRoute = ({ site }) => {
     '/find',
     '/cost',
     '/methodology',
-    ...models.map((m) => `/models/${m.slug}`),
+    ...publishedModels.map((m) => `/models/${m.slug}`),
     ...categories.map((c) => `/rankings/${c.slug}`),
     ...seoPairs.map((p) => `/compare/${p.slug}`),
   ];

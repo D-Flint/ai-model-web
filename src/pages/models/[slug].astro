@@ -5,8 +5,9 @@ import { rateLabel, compareApiPrice } from '../../lib/apiPricing';
 import ModelCard from '../../components/ModelCard';
 import ProviderLogo from '../../components/ProviderLogo.astro';
 import ModelEffortExplorer from '../../components/ModelEffortExplorer';
-import { models } from '../../data/models';
+import { allModels, models } from '../../data/models';
 import { metricLabels, overallWeights, type Metric } from '../../data/config';
+import { rankIntelligenceModels } from '../../lib/rankings';
 import {
   contextSize,
   rankModels,
@@ -15,7 +16,17 @@ import {
 } from '../../lib/decision';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 export function getStaticPaths() {
-  return models.map((model) => ({
+  const rankingAsOf = new Date().toISOString().slice(0, 10);
+  const intelligenceModels = rankIntelligenceModels(allModels, rankingAsOf).map(
+    (result) => result.model,
+  );
+  const publishedModels = [
+    ...new Map(
+      [...models, ...intelligenceModels].map((model) => [model.slug, model]),
+    ).values(),
+  ];
+
+  return publishedModels.map((model) => ({
     params: { slug: model.slug },
     props: { model },
   }));

@@ -95,6 +95,15 @@ export const recommendationConfig = {
   budgetLimits: { free: 0, cheap: 1, moderate: 5, any: Infinity },
 } as const;
 
+export const rankingConfig = {
+  maxVerificationAgeDays: 90,
+  intelligence: {
+    intelligence: 0.8,
+    coding: 0.1,
+    research: 0.1,
+  },
+} as const;
+
 // Throughput score ceiling for comparable OpenRouter measurements.
 export const speedScoreMaxTokensPerSec = 200;
 

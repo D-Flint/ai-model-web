@@ -2,10 +2,22 @@
 import RootLayout from '../../layouts/RootLayout.astro';
 import ComparisonBuilder from '../../components/ComparisonBuilder';
 import ProviderLogo from '../../components/ProviderLogo.astro';
-import { models } from '../../data/models';
+import { allModels, models } from '../../data/models';
 import { getSeoComparisonPairs } from '../../lib/seoComparisons';
+import { rankIntelligenceModels } from '../../lib/rankings';
 
 const popularPairs = getSeoComparisonPairs(models).slice(0, 8);
+const rankingAsOf = new Date().toISOString().slice(0, 10);
+const comparisonModels = [
+  ...new Map(
+    [
+      ...models,
+      ...rankIntelligenceModels(allModels, rankingAsOf).map(
+        (result) => result.model,
+      ),
+    ].map((model) => [model.slug, model]),
+  ).values(),
+];
 ---
 
 <RootLayout title="Compare AI models side by side | Synapse"
@@ -16,7 +28,7 @@ const popularPairs = getSeoComparisonPairs(models).slice(0, 8);
       Compare two to four models on capability, experience, and the cost of
       getting things done.
     </p>
-  </div><ComparisonBuilder models={models} client:load /><section
+  </div><ComparisonBuilder models={comparisonModels} client:load /><section
     class="section"
     style="margin-top: 3rem;"
   >
