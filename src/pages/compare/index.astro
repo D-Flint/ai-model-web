@@ -4,7 +4,7 @@ import ComparisonBuilder from '../../components/ComparisonBuilder';
 import ProviderLogo from '../../components/ProviderLogo.astro';
 import { allModels, models } from '../../data/models';
 import { getSeoComparisonPairs } from '../../lib/seoComparisons';
-import { rankIntelligenceModels } from '../../lib/rankings';
+import { rankIntelligenceModels, rankSpeedModels } from '../../lib/rankings';
 
 const popularPairs = getSeoComparisonPairs(models).slice(0, 8);
 const rankingAsOf = new Date().toISOString().slice(0, 10);
@@ -15,6 +15,7 @@ const comparisonModels = [
       ...rankIntelligenceModels(allModels, rankingAsOf).map(
         (result) => result.model,
       ),
+      ...rankSpeedModels(allModels, rankingAsOf).map((result) => result.model),
     ].map((model) => [model.slug, model]),
   ).values(),
 ];

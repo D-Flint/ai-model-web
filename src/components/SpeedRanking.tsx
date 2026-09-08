@@ -1,0 +1,109 @@
+import { useMemo, useState } from 'react';
+import { ProviderLogo } from './ProviderLogo';
+import type { RankingDirection } from '../lib/rankings';
+
+export interface SpeedRankingItem {
+  slug: string;
+  name: string;
+  provider: string;
+  family: string;
+  description: string;
+  tags: string[];
+  weakness: string;
+  rank: number;
+  speedTokensPerSec: number;
+  range: { min: number; max: number } | null;
+  confidence: number;
+  speedVerifiedAt: string;
+}
+
+export function sortSpeedRankingItems(
+  items: SpeedRankingItem[],
+  direction: RankingDirection,
+): SpeedRankingItem[] {
+  return [...items].sort((a, b) => {
+    const speedDifference =
+      direction === 'desc'
+        ? b.speedTokensPerSec - a.speedTokensPerSec
+        : a.speedTokensPerSec - b.speedTokensPerSec;
+    if (speedDifference !== 0) return speedDifference;
+    if (b.confidence !== a.confidence) return b.confidence - a.confidence;
+    const dateDifference = b.speedVerifiedAt.localeCompare(a.speedVerifiedAt);
+    if (dateDifference !== 0) return dateDifference;
+    return a.name.localeCompare(b.name);
+  });
+}
+
+export default function SpeedRanking({ items }: { items: SpeedRankingItem[] }) {
+  const [direction, setDirection] = useState<RankingDirection>('desc');
+  const sortedItems = useMemo(
+    () => sortSpeedRankingItems(items, direction),
+    [items, direction],
+  );
+
+  return (
+    <>
+      <div className="ranking-controls">
+        <label htmlFor="speed-ranking-order">Sort ranking</label>
+        <select
+          id="speed-ranking-order"
+          value={direction}
+          onChange={(event) =>
+            setDirection(event.target.value as RankingDirection)
+          }
+        >
+          <option value="desc">Highest to lowest</option>
+          <option value="asc">Lowest to highest</option>
+        </select>
+      </div>
+
+      {sortedItems.length === 0 ? (
+        <div className="panel ranking-empty" role="status">
+          No current production models have recent verified speed data.
+        </div>
+      ) : (
+        <div className="ranking-list">
+          {sortedItems.map((item) => (
+            <article className="panel ranking-row" key={item.slug}>
+              <span className="rank-position">
+                {String(item.rank).padStart(2, '0')}
+              </span>
+              <span
+                className={`model-mark provider-${item.family.toLowerCase()}`}
+                aria-hidden="true"
+              >
+                <ProviderLogo provider={item.provider} size={18} />
+              </span>
+              <div>
+                <h3>
+                  <a href={`/models/${item.slug}`}>{item.name}</a>
+                </h3>
+                <p>
+                  {item.description} Choose it for{' '}
+                  {item.tags.slice(0, 2).join(' and ').toLowerCase()}.
+                </p>
+                <div className="rank-notes">
+                  <span className="speed-measurement">
+                    {item.range
+                      ? `Measured range: ${item.range.min}–${item.range.max} tokens/sec`
+                      : `Verified speed: ${item.speedTokensPerSec} tokens/sec`}
+                  </span>
+                  <span>Tradeoff: {item.weakness.toLowerCase()}</span>
+                  <a href={`/compare?models=${item.slug}`}>Add to comparison</a>
+                </div>
+              </div>
+              <a
+                className="score-number"
+                href={`/models/${item.slug}#score-speed`}
+                aria-label={`${item.name} peak speed ${item.speedTokensPerSec} tokens per second`}
+              >
+                {item.speedTokensPerSec}
+                <small>{item.range ? 'peak tokens/sec' : 'tokens/sec'}</small>
+              </a>
+            </article>
+          ))}
+        </div>
+      )}
+    </>
+  );
+}

@@ -2,14 +2,11 @@
 import { compareApiPrice, rateLabel } from '../lib/apiPricing';
 import { allModels, models } from '../data/models';
 import { categories, metricLabels, type Metric } from '../data/config';
-import {
-  rankModels,
-  getSpeedDisplayValue,
-  getSpeedTokensPerSec,
-} from '../lib/decision';
+import { rankModels } from '../lib/decision';
 import { ModelMark } from './ModelCard';
 import IntelligenceRanking from './IntelligenceRanking';
-import { rankIntelligenceModels } from '../lib/rankings';
+import SpeedRanking from './SpeedRanking';
+import { rankIntelligenceModels, rankSpeedModels } from '../lib/rankings';
 interface Props {
   metric?: Metric;
   slug?: string;
@@ -35,14 +32,29 @@ const intelligenceItems =
         components: result.components,
       }))
     : [];
+const speedItems =
+  slug === 'speed'
+    ? rankSpeedModels(allModels, rankingAsOf).map((result) => ({
+        slug: result.model.slug,
+        name: result.model.name,
+        provider: result.model.provider,
+        family: result.model.family,
+        description: result.model.description,
+        tags: result.model.tags,
+        weakness: result.model.weaknesses[0],
+        rank: result.rank,
+        speedTokensPerSec: result.speedTokensPerSec,
+        range: result.measurement.range,
+        confidence: result.model.confidence,
+        speedVerifiedAt: result.measurement.verifiedAt,
+      }))
+    : [];
 const eligible =
   slug === 'cheap'
     ? baseModels
     : metric === 'vision'
       ? baseModels.filter((m) => m.facts.vision && m.scores.vision !== null)
-      : metric === 'speed'
-        ? baseModels.filter((m) => getSpeedTokensPerSec(m) > 0)
-        : baseModels.filter((m) => m.scores[metric] !== null);
+      : baseModels.filter((m) => m.scores[metric] !== null);
 const ranked =
   slug === 'cheap'
     ? [...eligible].sort(compareApiPrice)
@@ -67,19 +79,23 @@ const ranked =
   {
     slug === 'intelligence'
       ? 'Current production models verified within 90 days. Intelligence fit combines 80% intelligence, 10% coding, and 10% research.'
-      : `Sample ranking, not a market recommendation. ${
-          slug === 'cheap'
-            ? 'Sorted by current standard input API rate. Tiered or unavailable rates sort last; see model details for sources.'
-            : metric === 'speed'
-              ? 'Sorted by generation throughput in tokens/sec.'
-              : `Sorted by ${metricLabels[metric].toLowerCase()} score, with alphabetical ordering for ties.`
-        }`
+      : slug === 'speed'
+        ? 'Current production models with speed data verified within 90 days. Ranges rank by their highest measured value; single measurements use their only value.'
+        : `Sample ranking, not a market recommendation. ${
+            slug === 'cheap'
+              ? 'Sorted by current standard input API rate. Tiered or unavailable rates sort last; see model details for sources.'
+              : metric === 'speed'
+                ? 'Sorted by generation throughput in tokens/sec.'
+                : `Sorted by ${metricLabels[metric].toLowerCase()} score, with alphabetical ordering for ties.`
+          }`
   }
   <a href="/methodology">How scoring works</a>.
 </div>
 {
   slug === 'intelligence' ? (
     <IntelligenceRanking items={intelligenceItems} client:load />
+  ) : slug === 'speed' ? (
+    <SpeedRanking items={speedItems} client:load />
   ) : (
     <div class="ranking-list">
       {ranked.map((model, index) => (
@@ -115,15 +131,11 @@ const ranked =
             >
               {slug === 'cheap'
                 ? rateLabel(model, 'input')
-                : metric === 'speed'
-                  ? (getSpeedDisplayValue(model) ?? '—')
-                  : model.scores[metric]}
+                : model.scores[metric]}
               <small>
                 {slug === 'cheap'
                   ? 'input / 1M tokens'
-                  : metric === 'speed'
-                    ? 'tokens/sec'
-                    : `${metricLabels[metric]} / 100`}
+                  : `${metricLabels[metric]} / 100`}
               </small>
             </a>
           </>
