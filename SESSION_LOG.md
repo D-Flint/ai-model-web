@@ -197,3 +197,14 @@
 - Commit: Pending local commit.
 - Current state: 27 out of 30 tracked models (and 110 catalog models overall) now have verified OpenRouter speed throughput ranges (GPT-5.6 Sol: 21–81 tok/s, GPT-5.6 Terra: 33–61 tok/s, Gemini 3.1 Pro: 3–102 tok/s, GPT-5.3-Codex: 64–91 tok/s). The remaining 3 tracked models (`gemini-3-deep-think`, `gemini-3-pro`, and `claude-3-7-sonnet`) have no public OpenRouter endpoints and remain unavailable per repository data integrity policy.
 - Exact next step: Create local commit and wait for user verification.
+
+## 2026-09-08 — Design intelligence ranking redesign
+
+- Objective: Define a production-only, evidence-backed intelligence ranking with user-controlled sort direction.
+- Files changed: `docs/superpowers/specs/2026-09-08-intelligence-ranking-design.md`, `SESSION_LOG.md`.
+- Attempts: 1 design attempt.
+- Failures/causes: Product brief is deleted in the working tree, so the committed version was read without restoring the user's deletion.
+- Tests: Design self-review passed; no product code changed.
+- Commit: Pending local design commit.
+- Current state: Design approved in conversation and documented; implementation has not started.
+- Exact next step: User reviews the written spec, then implementation planning can begin.
