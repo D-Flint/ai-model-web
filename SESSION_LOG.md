@@ -10,12 +10,23 @@
 
 ## Current handoff
 
-- Objective: Decouple benchmark aggregations, consolidate model registry & pricing, and eliminate comparison build bottleneck.
-- Last implementation: Implemented discrete `ModelBenchmarks` namespace container, pure unweighted LiveBench 7-category overall, consolidated official provider pricing into `src/data/officialProviders.ts`, removed prebuild comparison matrix generation, and regenerated verified catalog.
-- Tests: `npm test` passed (127/127 tests), `npm run check` passed (97/97 files, 0 errors, 0 warnings), `npm run lint` passed, `npm run build` production build passed.
-- Commits: `301e5bd` (`refactor: decouple pipeline benchmarks and consolidate model pricing`).
-- Current state: Ingestion pipeline decoupled; missing pricing/scores strictly null without synthetic defaults; on-demand SSR enabled for comparison pairs.
-- Exact next step: User verification of pipeline output, catalog, and comparison pages.
+- Objective: Ensure speed metric value in model explorer table remains on a single line so table row heights stay even.
+- Last implementation: Added `.td-speed` and `.th-speed` with `white-space: nowrap; min-width: 112px;` to `src/styles/global.css` and updated `src/components/ModelExplorer.tsx` to include `th-${col.key}` on header and `td-speed` on metric cell.
+- Tests: Browser screenshots verified across desktop viewports, `npm test` 127/127 passed, `astro check` (97 files, 0 errors, 0 warnings), `tsc --noEmit` passed, `npm run lint` clean, `npm run build` production build passed.
+- Commits: `96f619d` (`fix: prevent speed metric wrapping to maintain even table row height`).
+- Current state: Speed values stay strictly single-lined (`12–48 tok/s`, `26–229 tok/s`), table row heights are uniform across the entire explorer table.
+- Exact next step: User verifies the table layout in browser.
+
+## 2026-09-08 — Fix uneven table row heights from speed metric wrap
+
+- Objective: Keep speed metric values on a single line in the Model Explorer table to ensure consistent, even row heights.
+- Files changed: `src/components/ModelExplorer.tsx`, `src/styles/global.css`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: None; browser screenshot confirmed row height asymmetry resolved and all rows are uniform.
+- Tests: Visual browser check via Chrome DevTools screenshot (scrolled and top); `npm test` 127/127 passed; `npx astro check` 0 errors/warnings/hints; `npx tsc --noEmit` passed; `npm run lint` clean; `npm run build` succeeded.
+- Commit: `96f619d` (`fix: prevent speed metric wrapping to maintain even table row height`).
+- Current state: Committed locally; no remote push. Speed values stay single-lined across all rows.
+- Exact next step: User verifies explorer table rows.
 
 ## 2026-09-08 — Decouple pipeline benchmarks and consolidate pricing
 
