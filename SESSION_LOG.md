@@ -260,9 +260,20 @@
 - Attempts: 1 design attempt.
 - Failures/causes: None.
 - Tests: Design self-review passed; no product code changed.
-- Commit: Pending local design commit.
+- Commit: `8925208` (`docs: define remaining ranking sorting`).
 - Current state: Design approved in conversation and documented; implementation has not started.
 - Exact next step: User reviews the written spec, then implementation planning can begin.
+
+## 2026-09-08 — Add sorting to remaining rankings
+
+- Objective: Apply verified, reversible sorting to Best value, Lowest cost, Coding, Agents, Daily use, Research, Writing, and Vision.
+- Files changed: `src/components/MetricRanking.tsx`, `src/components/RankingList.astro`, `src/lib/rankings.ts`, `src/pages/compare/index.astro`, `src/pages/models/[slug].astro`, `src/pages/rankings/[category].astro`, `src/pages/sitemap.xml.ts`, `tests/remainingRankings.test.ts`, `tests/remaining_rankings_browser.py`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: Full `npm run lint` remains blocked by the pre-existing `prefer-const` failure at `src/lib/decision.ts:108`; focused lint passed for every implementation file.
+- Tests: Vitest passed 127/127; `npm run check` passed with 0 errors, warnings, or hints; production build passed; focused ESLint and Prettier checks passed; Playwright verified default and reverse sorting across all eight routes, comparison handoff, and no browser console errors.
+- Commit: `1f620a3` (`feat: add sorting to remaining rankings`).
+- Current state: Seven score rankings default highest-first; Lowest cost defaults lowest-first. All eight allow reversing order and rank only current production models with verified metric data.
+- Exact next step: User verifies the affected ranking pages; Overall remains unchanged.
 
 ## 2026-09-08 — Plan automatic model-data refresh
 
