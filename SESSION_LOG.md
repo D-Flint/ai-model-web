@@ -238,6 +238,17 @@
 - Attempts: 1 design attempt.
 - Failures/causes: None.
 - Tests: Design self-review passed; no product code changed.
-- Commit: Pending local design commit.
+- Commit: `9843951` (`docs: define speed ranking redesign`).
 - Current state: Design approved in conversation and documented; implementation has not started.
 - Exact next step: User reviews the written spec, then implementation planning can begin.
+
+## 2026-09-08 — Rework speed model rankings
+
+- Objective: Rank current production models by maximum verified throughput, include single verified speed values, and support both sort directions.
+- Files changed: `src/components/SpeedRanking.tsx`, `src/components/RankingList.astro`, `src/lib/rankings.ts`, `src/pages/compare/index.astro`, `src/pages/models/[slug].astro`, `src/pages/rankings/[category].astro`, `src/pages/sitemap.xml.ts`, `tests/speedRanking.test.ts`, `tests/speed_ranking_browser.py`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: Full `npm run lint` remains blocked by the pre-existing `prefer-const` failure at `src/lib/decision.ts:108`; focused lint passed for every implementation file.
+- Tests: Vitest passed 112/112; `npm run check` passed with 0 errors, warnings, or hints; production build passed; focused ESLint and Prettier checks passed; Playwright verified peak range selection, default descending sort, ascending sort, comparison handoff, and no browser console errors.
+- Commit: `ccf5d7f` (`feat: rank models by verified peak speed`).
+- Current state: Speed ranks 65 current production models: 61 verified ranges use their maximum value and 4 verified single values use their only value. Default sorting is highest-first; users can reverse it.
+- Exact next step: User verifies `/rankings/speed`; do not change another ranking until requested.
