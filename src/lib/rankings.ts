@@ -1,4 +1,5 @@
 import { rankingConfig } from '../data/config';
+import { priceFreshness, singleRate } from './apiPricing';
 import type { CatalogModel } from './catalogSchema';
 import { evaluateModelEligibility } from './catalogEligibility';
 
@@ -37,6 +38,44 @@ export interface SpeedRankingResult {
   measurement: SpeedMeasurement;
 }
 
+export const scoreRankingMetrics = [
+  'costEfficiency',
+  'coding',
+  'agentic',
+  'dailyUse',
+  'research',
+  'writing',
+  'vision',
+] as const;
+
+export type ScoreRankingMetric = (typeof scoreRankingMetrics)[number];
+
+export const scoreRankingMetricBySlug = {
+  value: 'costEfficiency',
+  coding: 'coding',
+  agents: 'agentic',
+  'daily-use': 'dailyUse',
+  research: 'research',
+  writing: 'writing',
+  vision: 'vision',
+} as const satisfies Record<string, ScoreRankingMetric>;
+
+export type ScoreRankingSlug = keyof typeof scoreRankingMetricBySlug;
+
+export interface ScoreRankingResult {
+  model: CatalogModel;
+  rank: number;
+  score: number;
+  metric: ScoreRankingMetric;
+}
+
+export interface LowestCostRankingResult {
+  model: CatalogModel;
+  rank: number;
+  inputPrice: number;
+  priceVerifiedAt: string;
+}
+
 function parseDate(value: string): number | null {
   const parsed = Date.parse(`${value}T00:00:00Z`);
   return Number.isFinite(parsed) ? parsed : null;
@@ -68,6 +107,11 @@ function isCurrentProductionModel(model: CatalogModel, asOf: string): boolean {
     model.lastVerifiedAt !== null &&
     isFresh(model.lastVerifiedAt, asOf)
   );
+}
+
+function asOfDate(asOf: string): Date | null {
+  const parsed = parseDate(asOf);
+  return parsed === null ? null : new Date(parsed);
 }
 
 function hasRequiredIntelligenceEvidence(model: CatalogModel): boolean {
@@ -260,4 +304,151 @@ export function rankSpeedModels(
       a.speedTokensPerSec - b.speedTokensPerSec ||
       compareSpeedTieBreakers(a, b),
   );
+}
+
+export function getScoreRankingMetric(slug: string): ScoreRankingMetric | null {
+  return Object.hasOwn(scoreRankingMetricBySlug, slug)
+    ? scoreRankingMetricBySlug[slug as ScoreRankingSlug]
+    : null;
+}
+
+export function isScoreRankingEligible(
+  model: CatalogModel,
+  metric: ScoreRankingMetric,
+  asOf: string,
+): boolean {
+  return (
+    isCurrentProductionModel(model, asOf) &&
+    model.scores[metric] !== null &&
+    model.evidence.some((evidence) => evidence.metric === metric) &&
+    (metric !== 'vision' || model.facts.vision)
+  );
+}
+
+function compareScoreTieBreakers(
+  a: Omit<ScoreRankingResult, 'rank'>,
+  b: Omit<ScoreRankingResult, 'rank'>,
+): number {
+  if (b.model.confidence !== a.model.confidence) {
+    return b.model.confidence - a.model.confidence;
+  }
+
+  const dateDifference = (b.model.lastVerifiedAt ?? '').localeCompare(
+    a.model.lastVerifiedAt ?? '',
+  );
+  if (dateDifference !== 0) return dateDifference;
+
+  return a.model.name.localeCompare(b.model.name);
+}
+
+export function rankScoreModels(
+  models: CatalogModel[],
+  metric: ScoreRankingMetric,
+  asOf: string,
+  direction: RankingDirection = 'desc',
+): ScoreRankingResult[] {
+  const candidates = models.flatMap((model) => {
+    if (!isScoreRankingEligible(model, metric, asOf)) return [];
+    const score = model.scores[metric];
+    return score === null ? [] : [{ model, score, metric }];
+  });
+
+  const highestFirst = candidates.sort(
+    (a, b) => b.score - a.score || compareScoreTieBreakers(a, b),
+  );
+  const ranked = highestFirst.map((result, index) => ({
+    ...result,
+    rank: index + 1,
+  }));
+
+  if (direction === 'desc') return ranked;
+  return [...ranked].sort(
+    (a, b) => a.score - b.score || compareScoreTieBreakers(a, b),
+  );
+}
+
+export function getVerifiedInputPrice(
+  model: CatalogModel,
+  asOf: string,
+): { value: number; verifiedAt: string } | null {
+  const date = asOfDate(asOf);
+  const input = singleRate(model, 'input');
+  if (!date || !input || priceFreshness(input, date) !== 'Current') return null;
+  if (!Number.isFinite(input.value) || input.value < 0) return null;
+  return { value: input.value, verifiedAt: input.source.retrievedAt };
+}
+
+export function isLowestCostRankingEligible(
+  model: CatalogModel,
+  asOf: string,
+): boolean {
+  return (
+    isCurrentProductionModel(model, asOf) &&
+    getVerifiedInputPrice(model, asOf) !== null
+  );
+}
+
+function compareCostTieBreakers(
+  a: Omit<LowestCostRankingResult, 'rank'>,
+  b: Omit<LowestCostRankingResult, 'rank'>,
+): number {
+  const aEfficiency = a.model.scores.costEfficiency ?? -1;
+  const bEfficiency = b.model.scores.costEfficiency ?? -1;
+  if (bEfficiency !== aEfficiency) return bEfficiency - aEfficiency;
+
+  const dateDifference = b.priceVerifiedAt.localeCompare(a.priceVerifiedAt);
+  if (dateDifference !== 0) return dateDifference;
+
+  return a.model.name.localeCompare(b.model.name);
+}
+
+export function rankLowestCostModels(
+  models: CatalogModel[],
+  asOf: string,
+  direction: RankingDirection = 'asc',
+): LowestCostRankingResult[] {
+  const candidates = models.flatMap((model) => {
+    if (!isCurrentProductionModel(model, asOf)) return [];
+    const price = getVerifiedInputPrice(model, asOf);
+    return price
+      ? [
+          {
+            model,
+            inputPrice: price.value,
+            priceVerifiedAt: price.verifiedAt,
+          },
+        ]
+      : [];
+  });
+
+  const lowestFirst = candidates.sort(
+    (a, b) => a.inputPrice - b.inputPrice || compareCostTieBreakers(a, b),
+  );
+  const ranked = lowestFirst.map((result, index) => ({
+    ...result,
+    rank: index + 1,
+  }));
+
+  if (direction === 'asc') return ranked;
+  return [...ranked].sort(
+    (a, b) => b.inputPrice - a.inputPrice || compareCostTieBreakers(a, b),
+  );
+}
+
+export function getPublishedRankingModels(
+  models: CatalogModel[],
+  asOf: string,
+): CatalogModel[] {
+  const rankedModels = [
+    ...rankIntelligenceModels(models, asOf),
+    ...rankSpeedModels(models, asOf),
+    ...scoreRankingMetrics.flatMap((metric) =>
+      rankScoreModels(models, metric, asOf),
+    ),
+    ...rankLowestCostModels(models, asOf),
+  ].map((result) => result.model);
+
+  return [
+    ...new Map(rankedModels.map((model) => [model.slug, model])).values(),
+  ];
 }

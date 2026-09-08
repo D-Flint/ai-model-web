@@ -19,11 +19,7 @@ const { category } = Astro.props;
       >
     </div><h1>Find your fit for {category.label.toLowerCase()}.</h1><p>
       {category.description}
-      {
-        category.slug === 'intelligence' || category.slug === 'speed'
-          ? 'Compare current production models and understand each tradeoff.'
-          : 'Compare the sample models and understand each tradeoff.'
-      }
+      Compare current production models and understand each tradeoff.
     </p>
   </div><RankingList
     metric={category.metric}

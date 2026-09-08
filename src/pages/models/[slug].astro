@@ -7,7 +7,7 @@ import ProviderLogo from '../../components/ProviderLogo.astro';
 import ModelEffortExplorer from '../../components/ModelEffortExplorer';
 import { allModels, models } from '../../data/models';
 import { metricLabels, overallWeights, type Metric } from '../../data/config';
-import { rankIntelligenceModels, rankSpeedModels } from '../../lib/rankings';
+import { getPublishedRankingModels } from '../../lib/rankings';
 import {
   contextSize,
   rankModels,
@@ -17,18 +17,10 @@ import {
 import { ArrowRight, ChevronDown } from 'lucide-react';
 export function getStaticPaths() {
   const rankingAsOf = new Date().toISOString().slice(0, 10);
-  const intelligenceModels = rankIntelligenceModels(allModels, rankingAsOf).map(
-    (result) => result.model,
-  );
-  const speedModels = rankSpeedModels(allModels, rankingAsOf).map(
-    (result) => result.model,
-  );
+  const rankingModels = getPublishedRankingModels(allModels, rankingAsOf);
   const publishedModels = [
     ...new Map(
-      [...models, ...intelligenceModels, ...speedModels].map((model) => [
-        model.slug,
-        model,
-      ]),
+      [...models, ...rankingModels].map((model) => [model.slug, model]),
     ).values(),
   ];
 

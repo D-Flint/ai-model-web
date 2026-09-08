@@ -1,19 +1,26 @@
 ---
-import { compareApiPrice, rateLabel } from '../lib/apiPricing';
 import { allModels, models } from '../data/models';
 import { categories, metricLabels, type Metric } from '../data/config';
 import { rankModels } from '../lib/decision';
 import { ModelMark } from './ModelCard';
 import IntelligenceRanking from './IntelligenceRanking';
 import SpeedRanking from './SpeedRanking';
-import { rankIntelligenceModels, rankSpeedModels } from '../lib/rankings';
+import MetricRanking from './MetricRanking';
+import {
+  getScoreRankingMetric,
+  rankIntelligenceModels,
+  rankLowestCostModels,
+  rankScoreModels,
+  rankSpeedModels,
+} from '../lib/rankings';
 interface Props {
   metric?: Metric;
   slug?: string;
 }
-const { metric = 'overall', slug = 'overall' } = Astro.props;
+const { slug = 'overall' } = Astro.props;
 const baseModels = models;
 const rankingAsOf = new Date().toISOString().slice(0, 10);
+const scoreMetric = getScoreRankingMetric(slug);
 const intelligenceItems =
   slug === 'intelligence'
     ? rankIntelligenceModels(allModels, rankingAsOf).map((result) => ({
@@ -49,16 +56,38 @@ const speedItems =
         speedVerifiedAt: result.measurement.verifiedAt,
       }))
     : [];
-const eligible =
+const scoreItems = scoreMetric
+  ? rankScoreModels(allModels, scoreMetric, rankingAsOf).map((result) => ({
+      slug: result.model.slug,
+      name: result.model.name,
+      provider: result.model.provider,
+      family: result.model.family,
+      description: result.model.description,
+      tags: result.model.tags,
+      weakness: result.model.weaknesses[0],
+      rank: result.rank,
+      value: result.score,
+      tieScore: result.model.confidence,
+      verifiedAt: result.model.lastVerifiedAt ?? '',
+    }))
+  : [];
+const costItems =
   slug === 'cheap'
-    ? baseModels
-    : metric === 'vision'
-      ? baseModels.filter((m) => m.facts.vision && m.scores.vision !== null)
-      : baseModels.filter((m) => m.scores[metric] !== null);
-const ranked =
-  slug === 'cheap'
-    ? [...eligible].sort(compareApiPrice)
-    : rankModels(eligible, metric);
+    ? rankLowestCostModels(allModels, rankingAsOf).map((result) => ({
+        slug: result.model.slug,
+        name: result.model.name,
+        provider: result.model.provider,
+        family: result.model.family,
+        description: result.model.description,
+        tags: result.model.tags,
+        weakness: result.model.weaknesses[0],
+        rank: result.rank,
+        value: result.inputPrice,
+        tieScore: result.model.scores.costEfficiency ?? -1,
+        verifiedAt: result.priceVerifiedAt,
+      }))
+    : [];
+const ranked = rankModels(baseModels, 'overall');
 ---
 
 <nav class="ranking-tabs" aria-label="Ranking categories">
@@ -81,13 +110,11 @@ const ranked =
       ? 'Current production models verified within 90 days. Intelligence fit combines 80% intelligence, 10% coding, and 10% research.'
       : slug === 'speed'
         ? 'Current production models with speed data verified within 90 days. Ranges rank by their highest measured value; single measurements use their only value.'
-        : `Sample ranking, not a market recommendation. ${
-            slug === 'cheap'
-              ? 'Sorted by current standard input API rate. Tiered or unavailable rates sort last; see model details for sources.'
-              : metric === 'speed'
-                ? 'Sorted by generation throughput in tokens/sec.'
-                : `Sorted by ${metricLabels[metric].toLowerCase()} score, with alphabetical ordering for ties.`
-          }`
+        : slug === 'cheap'
+          ? 'Current production models with current verified standard input pricing. Tiered and unavailable rates are excluded.'
+          : scoreMetric
+            ? `Current production models verified within 90 days and ranked by evidence-backed ${metricLabels[scoreMetric].toLowerCase()} score.`
+            : 'Sample ranking, not a market recommendation. Sorted by overall score, with alphabetical ordering for ties.'
   }
   <a href="/methodology">How scoring works</a>.
 </div>
@@ -96,6 +123,24 @@ const ranked =
     <IntelligenceRanking items={intelligenceItems} client:load />
   ) : slug === 'speed' ? (
     <SpeedRanking items={speedItems} client:load />
+  ) : slug === 'cheap' ? (
+    <MetricRanking
+      items={costItems}
+      metricLabel="Lowest cost"
+      metricAnchor="pricing"
+      valueKind="price"
+      defaultDirection="asc"
+      client:load
+    />
+  ) : scoreMetric ? (
+    <MetricRanking
+      items={scoreItems}
+      metricLabel={metricLabels[scoreMetric]}
+      metricAnchor={`score-${scoreMetric}`}
+      valueKind="score"
+      defaultDirection="desc"
+      client:load
+    />
   ) : (
     <div class="ranking-list">
       {ranked.map((model, index) => (
@@ -127,16 +172,10 @@ const ranked =
             </div>
             <a
               class="score-number"
-              href={`/models/${model.slug}#score-${metric}`}
+              href={`/models/${model.slug}#score-overall`}
             >
-              {slug === 'cheap'
-                ? rateLabel(model, 'input')
-                : model.scores[metric]}
-              <small>
-                {slug === 'cheap'
-                  ? 'input / 1M tokens'
-                  : `${metricLabels[metric]} / 100`}
-              </small>
+              {model.scores.overall}
+              <small>{metricLabels.overall} / 100</small>
             </a>
           </>
         </article>
