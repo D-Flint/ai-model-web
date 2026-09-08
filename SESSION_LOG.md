@@ -307,3 +307,14 @@
 - Commit: Pending local commit.
 - Current state: The plan documents a scheduled GitHub Actions refresh, validation gate, scoped data commit, automatic redeploy, prerequisites, deferred decisions, acceptance criteria, and non-goals. No workflow is active.
 - Exact next step: Decide hosting target, publish policy, cadence, secrets, and failure notifications before implementation.
+
+## 2026-09-09 — Add data sources to model detail dropdowns
+
+- Objective: Add compact, traceable data-source attribution to every expanded Model Explorer detail on desktop and mobile.
+- Files changed: `docs/superpowers/specs/2026-09-08-model-dropdown-data-sources-design.md`, `src/components/ModelDataSources.tsx`, `src/components/ModelExplorer.tsx`, `src/lib/modelDetailSources.ts`, `src/styles/global.css`, `tests/modelDetailSources.test.ts`, `tests/model_detail_sources_browser.py`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt with 1 test-expectation correction.
+- Failures/causes: The first unit expectation treated a shared OpenAI facts/pricing URL as two entries; corrected to assert the intended deduplicated entry and merged coverage. The first sandboxed build could not write Wrangler profile registry files; the approved rerun passed. Prettier has no Python parser, so only repository-supported TypeScript/CSS formatting ran. The existing broad pricing browser suite stops before this feature because its `hy4-preview` calculator option is absent; a focused dropdown-source browser test passed independently.
+- Tests: Vitest passed 131/131; `npm run check` passed with 0 errors, warnings, or hints; full `npm run lint` passed; production build passed; focused Playwright verified source names, coverage labels, dates, external-link behavior, desktop/mobile rendering, no horizontal overflow, and no browser errors. Impeccable detector reported only pre-existing stylesheet warnings outside this change.
+- Commits: `38748a3` (`docs: define model dropdown data sources`); `478422e` (`feat: add sources to model detail dropdowns`).
+- Current state: Every Model Explorer expanded detail resolves relevant benchmark, speed, pricing, and provider-fact sources; duplicate URLs merge their coverage labels, and desktop/mobile render the same compact source list.
+- Exact next step: User verifies an expanded model row on `/models`; no further implementation is planned.
