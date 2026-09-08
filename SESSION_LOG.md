@@ -205,9 +205,20 @@
 - Attempts: 1 design attempt.
 - Failures/causes: Product brief is deleted in the working tree, so the committed version was read without restoring the user's deletion.
 - Tests: Design self-review passed; no product code changed.
-- Commit: Pending local design commit.
+- Commit: `cbad3b7` (`docs: define intelligence ranking redesign`).
 - Current state: Design approved in conversation and documented; implementation has not started.
 - Exact next step: User reviews the written spec, then implementation planning can begin.
+
+## 2026-09-08 — Rework intelligence model rankings
+
+- Objective: Rank current production models using an evidence-backed intelligence decision score and add high-to-low or low-to-high sorting.
+- Files changed: `src/components/IntelligenceRanking.tsx`, `src/components/RankingList.astro`, `src/data/config.ts`, `src/lib/rankings.ts`, `src/pages/compare/index.astro`, `src/pages/models/[slug].astro`, `src/pages/rankings/[category].astro`, `src/pages/sitemap.xml.ts`, `src/styles/global.css`, `tests/intelligenceRanking.test.ts`, `tests/intelligence_ranking_browser.py`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt with 2 verification corrections.
+- Failures/causes: Initial TypeScript check found an optional test fixture after closure capture; fixture construction now narrows explicitly. Initial browser check used `127.0.0.1` while Astro served on `localhost`; corrected URL passed. Full `npm run lint` remains blocked by pre-existing `prefer-const` failure at `src/lib/decision.ts:108`; focused lint passed for every implementation file.
+- Tests: Vitest passed 105/105; `npm run check` passed with 0 errors, warnings, or hints; production build passed; focused ESLint and Prettier checks passed; Playwright verified default descending sort, ascending sort, no browser console errors, and comparison handoff.
+- Commit: `51e9de6` (`feat: rework intelligence model rankings`).
+- Current state: Intelligence ranks 86 current production models using 80% intelligence, 10% coding, and 10% research. Default sorting is highest-first; users can reverse it. Ranked models have working detail and comparison paths.
+- Exact next step: User verifies `/rankings/intelligence`; after approval, design the speed ranking without changing Overall.
 
 ## 2026-09-08 — Repair Chrome DevTools MCP startup
 
