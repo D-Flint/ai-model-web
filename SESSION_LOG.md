@@ -252,3 +252,14 @@
 - Commit: `ccf5d7f` (`feat: rank models by verified peak speed`).
 - Current state: Speed ranks 65 current production models: 61 verified ranges use their maximum value and 4 verified single values use their only value. Default sorting is highest-first; users can reverse it.
 - Exact next step: User verifies `/rankings/speed`; do not change another ranking until requested.
+
+## 2026-09-08 — Design remaining ranking sorting redesign
+
+- Objective: Define verified, reversible sorting for Best value, Lowest cost, Coding, Agents, Daily use, Research, Writing, and Vision.
+- Files changed: `docs/superpowers/specs/2026-09-08-remaining-ranking-sorting-design.md`, `SESSION_LOG.md`.
+- Attempts: 1 design attempt.
+- Failures/causes: None.
+- Tests: Design self-review passed; no product code changed.
+- Commit: Pending local design commit.
+- Current state: Design approved in conversation and documented; implementation has not started.
+- Exact next step: User reviews the written spec, then implementation planning can begin.
