@@ -230,3 +230,14 @@
 - Commit: Pending local commit.
 - Current state: The user-level MCP entry now uses the absolute Windows npx path, auto-accepts installation, and allows first-run package startup time.
 - Exact next step: Restart Codex so it reloads `config.toml`, then confirm `chrome-devtools` tools appear and invoke one browser inspection tool.
+
+## 2026-09-08 — Design speed ranking redesign
+
+- Objective: Define a current-production Speed ranking that uses maximum verified throughput while supporting single verified speed values.
+- Files changed: `docs/superpowers/specs/2026-09-08-speed-ranking-design.md`, `SESSION_LOG.md`.
+- Attempts: 1 design attempt.
+- Failures/causes: None.
+- Tests: Design self-review passed; no product code changed.
+- Commit: Pending local design commit.
+- Current state: Design approved in conversation and documented; implementation has not started.
+- Exact next step: User reviews the written spec, then implementation planning can begin.
