@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { verifiedApiPricing } from '../src/data/apiPricing';
+import { verifiedApiPricing } from '../src/data/officialProviders';
 import { apiPricingSchema } from '../src/lib/apiPricingSchema';
 import { apiPricingTiers } from '../src/db/schema/index';
 import { connectDatabase } from '../src/db/client';

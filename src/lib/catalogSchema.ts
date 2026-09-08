@@ -22,6 +22,45 @@ export const capabilitySchema = z.object({
   reliability: score.nullable(),
   costEfficiency: score.nullable(),
 });
+export const modelBenchmarksSchema = z
+  .object({
+    livebench: z
+      .object({
+        release: z.string(),
+        overall: score.nullable(),
+        reasoning: score.nullable(),
+        coding: score.nullable(),
+        agenticCoding: score.nullable(),
+        mathematics: score.nullable(),
+        dataAnalysis: score.nullable(),
+        language: score.nullable(),
+        instructionFollowing: score.nullable(),
+      })
+      .nullable(),
+    sweBench: z
+      .object({
+        resolvedRate: score.nullable(),
+        evaluatedDate: z.string(),
+      })
+      .nullable()
+      .optional(),
+    bfcl: z
+      .object({
+        overallAccuracy: score.nullable(),
+      })
+      .nullable()
+      .optional(),
+    lmarena: z
+      .object({
+        elo: z.number().nullable(),
+        category: z.string(),
+      })
+      .nullable()
+      .optional(),
+  })
+  .nullable()
+  .optional();
+
 export const catalogModelSchema = z
   .object({
     slug: z.string().regex(/^[a-z0-9-]+$/),
@@ -33,8 +72,21 @@ export const catalogModelSchema = z
     strengths: z.array(z.string()).min(1),
     weaknesses: z.array(z.string()).min(1),
     tags: z.array(z.string()).min(1),
+    roles: z
+      .array(
+        z.enum([
+          'general-purpose',
+          'reasoning',
+          'coding',
+          'agentic',
+          'vision',
+          'safety-classifier',
+        ]),
+      )
+      .optional(),
     facts: z.object({
       context: z.number().int().positive(),
+      contextWindow: z.number().int().positive().optional(),
       contextSourceId: z.string().min(1).optional(),
       maxOutput: z.number().int().positive(),
       speedTokensPerSec: z.number().int().positive().nullable().optional(),
@@ -49,11 +101,14 @@ export const catalogModelSchema = z
         .nullable()
         .optional(),
       vision: z.boolean(),
+      supportsVision: z.boolean().optional(),
       audio: z.boolean(),
       tools: z.boolean(),
+      supportsTools: z.boolean().optional(),
       structured: z.boolean(),
       api: z.boolean(),
       openWeights: z.boolean(),
+      isOpenWeights: z.boolean().optional(),
       easeOfUse: score.nullable().optional(),
       availability: z.string().min(1),
       releaseDate: date,
@@ -68,15 +123,21 @@ export const catalogModelSchema = z
     apiPricing: apiPricingSchema.nullable().optional(),
     // Legacy ingestion values: not approved for publication or cost calculation.
     pricing: z.object({
-      input: z.number().nonnegative(),
-      output: z.number().nonnegative(),
+      input: z.number().nonnegative().nullable(),
+      output: z.number().nonnegative().nullable(),
       cached: z.number().nonnegative().nullable(),
       currency: z.literal('USD'),
       unit: z.literal('per-million-tokens'),
       sourceId: z.string().min(1),
       updatedAt: date,
+      inputPer1M: z.number().nonnegative().nullable().optional(),
+      outputPer1M: z.number().nonnegative().nullable().optional(),
+      cachedInputPer1M: z.number().nonnegative().nullable().optional(),
+      provenanceUrl: z.string().optional(),
+      verifiedAt: date.optional(),
     }),
     scores: capabilitySchema.extend({ overall: score.nullable() }),
+    benchmarks: modelBenchmarksSchema,
     evidence: z
       .array(
         z.object({
@@ -101,7 +162,7 @@ export const catalogModelSchema = z
           updatedAt: date,
         }),
       )
-      .min(1),
+      .default([]),
     confidence: score,
     methodology: z.string().min(1),
     scoreUpdatedAt: date,

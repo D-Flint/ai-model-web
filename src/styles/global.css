@@ -3623,7 +3623,9 @@ table.leaderboard-table td.col-sorted.td-date {
     padding: 14px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
     cursor: pointer;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
   }
 
   .mobile-model-row-card:hover {
@@ -3651,7 +3653,9 @@ table.leaderboard-table td.col-sorted.td-date {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.2s ease, color 0.15s ease;
+    transition:
+      transform 0.2s ease,
+      color 0.15s ease;
     border-radius: 4px;
     flex-shrink: 0;
   }
@@ -3734,7 +3738,9 @@ table.leaderboard-table td.col-sorted.td-date {
     align-items: center;
     justify-content: center;
     padding: 2px;
-    transition: color 0.15s ease, transform 0.15s ease;
+    transition:
+      color 0.15s ease,
+      transform 0.15s ease;
   }
 
   .mobile-detail-chevron:hover {
@@ -3907,13 +3913,21 @@ table.leaderboard-table td.col-sorted.td-date {
 }
 
 @keyframes modalFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes modalSlideUp {
-  from { transform: translateY(100%); }
-  to { transform: translateY(0); }
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 .mobile-modal-sheet {
@@ -3957,7 +3971,9 @@ table.leaderboard-table td.col-sorted.td-date {
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  transition: color 0.15s ease, background 0.15s ease;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
 }
 
 .mobile-modal-close:hover {
@@ -3981,7 +3997,9 @@ table.leaderboard-table td.col-sorted.td-date {
   color: var(--muted);
   cursor: pointer;
   border-bottom: 2px solid transparent;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
   text-align: center;
 }
 

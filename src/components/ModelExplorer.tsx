@@ -32,6 +32,7 @@ import {
 import livebenchRows from '../data/livebenchData.json';
 import { CANONICAL_MODELS } from '../data/canonicalModels';
 import { defaultAliasResolver } from '../pipeline/aliasResolver';
+import { getModalitiesLabel } from '../lib/modalities';
 
 export type LeaderboardColumnKey =
   | 'overall'
@@ -1275,6 +1276,17 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                                   </div>
                                   <div>
                                     <span className="spec-label">
+                                      Modalities
+                                    </span>
+                                    <strong>
+                                      {getModalitiesLabel({
+                                        vision: row.model.facts.vision,
+                                        audio: row.model.facts.audio,
+                                      })}
+                                    </strong>
+                                  </div>
+                                  <div>
+                                    <span className="spec-label">
                                       Reasoning Tiers
                                     </span>
                                     <strong>
@@ -1478,6 +1490,15 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                           <span className="spec-label">Input Price</span>
                           <strong>
                             {getDisplayPriceLabel(row.model, 'input')} / 1M
+                          </strong>
+                        </div>
+                        <div>
+                          <span className="spec-label">Modalities</span>
+                          <strong>
+                            {getModalitiesLabel({
+                              vision: row.model.facts.vision,
+                              audio: row.model.facts.audio,
+                            })}
                           </strong>
                         </div>
                         <div>

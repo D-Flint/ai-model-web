@@ -5,6 +5,7 @@ import { env } from 'cloudflare:workers';
 import { comparisonSlugs } from '../../lib/comparisonCatalog';
 import { resolveComparisonPair } from '../../lib/comparisonPairs';
 import { loadComparisonModels } from '../../lib/loadComparisonModels';
+import { allModels } from '../../data/models';
 export const prerender = false;
 
 const pair = resolveComparisonPair(Astro.params.pair, comparisonSlugs);
@@ -20,15 +21,27 @@ if (!pair) {
 let records;
 try {
   if (pair) {
-    records = await loadComparisonModels(env.ASSETS, Astro.url, [
-      pair.a,
-      pair.b,
-    ]);
+    if (env?.ASSETS) {
+      records = await loadComparisonModels(env.ASSETS, Astro.url, [
+        pair.a,
+        pair.b,
+      ]);
+    } else {
+      const a = allModels.find((m) => m.slug === pair.a);
+      const b = allModels.find((m) => m.slug === pair.b);
+      if (a && b) records = [a, b];
+    }
   }
 } catch {
-  Astro.response.status = 503;
-  Astro.response.headers.set('Cache-Control', 'no-store');
-  Astro.response.headers.set('Retry-After', '60');
+  const a = allModels.find((m) => m.slug === pair?.a);
+  const b = allModels.find((m) => m.slug === pair?.b);
+  if (a && b) {
+    records = [a, b];
+  } else {
+    Astro.response.status = 503;
+    Astro.response.headers.set('Cache-Control', 'no-store');
+    Astro.response.headers.set('Retry-After', '60');
+  }
 }
 const [a, b] = records ?? [];
 ---

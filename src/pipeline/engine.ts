@@ -17,11 +17,11 @@ import { fetchBfclLeaderboard, processBfclResults } from './bfcl';
 import { calculateCostEfficiencyScore } from './normalization';
 import { calculateConfidence } from './confidence';
 import { defaultAliasResolver } from './aliasResolver';
-import { composite } from '../lib/decision';
+import { normalize } from '../lib/decision';
 import { validateCatalog } from '../lib/importCatalog';
 import type { CatalogModel } from '../lib/catalogSchema';
 import type { Capability } from '../data/config';
-import type { BenchmarkMeasurement } from './types';
+import type { BenchmarkMeasurement, ModelBenchmarks } from './types';
 import { methodologyVersion, speedScoreMaxTokensPerSec } from '../data/config';
 
 export interface IngestionOptions {
@@ -122,11 +122,12 @@ export async function runIngestionPipeline(
   }
 
   // 2. Ingest LiveBench (Primary source for Intelligence, secondary for Coding)
+  let liveBenchRows: Awaited<ReturnType<typeof fetchLiveBenchData>> = [];
   let liveBenchMeasurements: BenchmarkMeasurement[] = [];
   if (!options.skipLiveBench) {
     try {
       console.log('Ingesting LiveBench dataset...');
-      const liveBenchRows = await fetchLiveBenchData();
+      liveBenchRows = await fetchLiveBenchData();
       liveBenchMeasurements = processLiveBenchResults(
         liveBenchRows,
         defaultAliasResolver,
@@ -212,18 +213,48 @@ export async function runIngestionPipeline(
     ...allLMArenaMeasurements,
   ];
 
-  // Group measurements by model
-  const measurementsByModel = new Map<string, BenchmarkMeasurement[]>();
-  for (const m of allMeasurements) {
-    const list = measurementsByModel.get(m.modelSlug) ?? [];
-    list.push(m);
-    measurementsByModel.set(m.modelSlug, list);
+  // Group latest LiveBench rows by canonical model slug
+  const liveBenchBySlug = new Map<string, (typeof liveBenchRows)[0]>();
+  for (const row of liveBenchRows) {
+    const canonical = defaultAliasResolver.resolve('livebench', row.model);
+    if (canonical) {
+      const existing = liveBenchBySlug.get(canonical.slug);
+      const rowDate = row.date ?? '';
+      const existingDate = existing?.date ?? '';
+      if (
+        !existing ||
+        rowDate > existingDate ||
+        (rowDate === existingDate &&
+          row.global_average > existing.global_average)
+      ) {
+        liveBenchBySlug.set(canonical.slug, row);
+      }
+    }
   }
 
-  // Map OpenRouter data by model slug for discovery fallback
-  const openRouterByModel = new Map<string, (typeof openRouterExtracted)[0]>();
-  for (const o of openRouterExtracted) {
-    openRouterByModel.set(o.canonicalModel.slug, o);
+  // Index other discrete benchmark runs by model slug
+  const sweBenchBySlug = new Map<string, (typeof sweBenchMeasurements)[0]>();
+  for (const m of sweBenchMeasurements) {
+    const existing = sweBenchBySlug.get(m.modelSlug);
+    if (!existing || m.rawScore > existing.rawScore) {
+      sweBenchBySlug.set(m.modelSlug, m);
+    }
+  }
+
+  const bfclBySlug = new Map<string, (typeof bfclMeasurements)[0]>();
+  for (const m of bfclMeasurements) {
+    const existing = bfclBySlug.get(m.modelSlug);
+    if (!existing || m.rawScore > existing.rawScore) {
+      bfclBySlug.set(m.modelSlug, m);
+    }
+  }
+
+  const lmarenaBySlug = new Map<string, (typeof allLMArenaMeasurements)[0]>();
+  for (const m of allLMArenaMeasurements) {
+    const existing = lmarenaBySlug.get(m.modelSlug);
+    if (!existing || m.rawScore > existing.rawScore) {
+      lmarenaBySlug.set(m.modelSlug, m);
+    }
   }
 
   // 7. Construct verified CatalogModel objects
@@ -238,36 +269,49 @@ export async function runIngestionPipeline(
       continue;
     }
 
-    const modelMeasurements = measurementsByModel.get(canonical.slug) ?? [];
-
     // Official provider documentation WINS for pricing
+    const inputPrice = officialSpec.officialPricing.input ?? null;
+    const outputPrice = officialSpec.officialPricing.output ?? null;
+    const cachedPrice = officialSpec.officialPricing.cached ?? null;
+
     const pricing = {
-      input: officialSpec.officialPricing.input,
-      output: officialSpec.officialPricing.output,
-      cached: officialSpec.officialPricing.cached,
+      input: inputPrice,
+      output: outputPrice,
+      cached: cachedPrice,
       currency: 'USD' as const,
       unit: 'per-million-tokens' as const,
       sourceId: `source-${canonical.providerSlug}`,
       updatedAt: officialSpec.lastVerifiedAt || today,
+      inputPer1M: inputPrice,
+      outputPer1M: outputPrice,
+      cachedInputPer1M: cachedPrice,
+      provenanceUrl: officialSpec.sourceUrl,
+      verifiedAt: officialSpec.lastVerifiedAt || today,
     };
 
     // Calculate Cost Efficiency (Value Score)
-    const costEff = calculateCostEfficiencyScore(pricing.input, pricing.output);
-    const costEvidence: BenchmarkMeasurement = {
-      id: `cost-efficiency-${canonical.slug}`,
-      modelSlug: canonical.slug,
-      benchmarkName: 'API Cost Efficiency',
-      category: 'costEfficiency',
-      rawScore: costEff.raw,
-      minScale: costEff.min,
-      maxScale: costEff.max,
-      normalizedScore: costEff.normalized,
-      evaluationDate: today,
-      sourceId: 'astra-cost-engine',
-      sourceName: 'Astra Cost Efficiency Engine',
-      sourceUrl: 'https://github.com/D-Flint/ai-model-web',
-      retrievedAt: today,
-    };
+    const costEff =
+      inputPrice !== null && outputPrice !== null
+        ? calculateCostEfficiencyScore(inputPrice, outputPrice)
+        : null;
+
+    const costEvidence: BenchmarkMeasurement | null = costEff
+      ? {
+          id: `cost-efficiency-${canonical.slug}`,
+          modelSlug: canonical.slug,
+          benchmarkName: 'API Cost Efficiency',
+          category: 'costEfficiency',
+          rawScore: costEff.raw,
+          minScale: costEff.min,
+          maxScale: costEff.max,
+          normalizedScore: costEff.normalized,
+          evaluationDate: today,
+          sourceId: 'astra-cost-engine',
+          sourceName: 'Astra Cost Efficiency Engine',
+          sourceUrl: 'https://github.com/D-Flint/ai-model-web',
+          retrievedAt: today,
+        }
+      : null;
 
     const openRouterThroughput = openRouterThroughputByModel.get(
       canonical.slug,
@@ -297,11 +341,6 @@ export async function runIngestionPipeline(
           },
         ]
       : [];
-    const combinedMeasurements = [
-      ...modelMeasurements,
-      ...speedEvidence,
-      costEvidence,
-    ];
 
     // Master sources repository
     const availableSources = new Map<
@@ -326,18 +365,145 @@ export async function runIngestionPipeline(
       publisher: canonical.provider,
     });
 
-    // Add benchmark sources if this model has evidence from them
-    for (const m of combinedMeasurements) {
-      if (!availableSources.has(m.sourceId)) {
-        availableSources.set(m.sourceId, {
-          id: m.sourceId,
-          name: m.sourceName,
-          url: m.sourceUrl,
-          retrievedAt: m.retrievedAt,
-          kind: 'public_eval',
-          publisher: m.sourceName,
-        });
-      }
+    // 1. Source-Native LiveBench: deterministic pure calculation
+    const lbRow = liveBenchBySlug.get(canonical.slug);
+    let livebenchBenchmark: ModelBenchmarks['livebench'] = null;
+
+    if (lbRow) {
+      const reasoning =
+        lbRow.reasoning !== undefined && lbRow.reasoning !== null
+          ? Number(lbRow.reasoning.toFixed(1))
+          : null;
+      const coding =
+        lbRow.coding !== undefined && lbRow.coding !== null
+          ? Number(lbRow.coding.toFixed(1))
+          : null;
+      const agenticCoding =
+        lbRow.agentic_coding !== undefined && lbRow.agentic_coding !== null
+          ? Number(lbRow.agentic_coding.toFixed(1))
+          : null;
+      const mathematics =
+        lbRow.math !== undefined && lbRow.math !== null
+          ? Number(lbRow.math.toFixed(1))
+          : null;
+      const dataAnalysis =
+        lbRow.data_analysis !== undefined && lbRow.data_analysis !== null
+          ? Number(lbRow.data_analysis.toFixed(1))
+          : null;
+      const language =
+        lbRow.language !== undefined && lbRow.language !== null
+          ? Number(lbRow.language.toFixed(1))
+          : null;
+      const instructionFollowing =
+        lbRow.instruction_following !== undefined &&
+        lbRow.instruction_following !== null
+          ? Number(lbRow.instruction_following.toFixed(1))
+          : null;
+
+      const subcategories = [
+        reasoning,
+        coding,
+        agenticCoding,
+        mathematics,
+        dataAnalysis,
+        language,
+        instructionFollowing,
+      ];
+      const hasAll7 = subcategories.every(
+        (val) => typeof val === 'number' && Number.isFinite(val),
+      );
+
+      // Deterministic LiveBench Overall: unweighted average of the 7 LiveBench categories.
+      // If any category is missing or null, set overall = null.
+      const overall = hasAll7
+        ? Number(
+            (
+              (reasoning! +
+                coding! +
+                agenticCoding! +
+                mathematics! +
+                dataAnalysis! +
+                language! +
+                instructionFollowing!) /
+              7
+            ).toFixed(1),
+          )
+        : null;
+
+      livebenchBenchmark = {
+        release: lbRow.date ?? today,
+        overall,
+        reasoning,
+        coding,
+        agenticCoding,
+        mathematics,
+        dataAnalysis,
+        language,
+        instructionFollowing,
+      };
+
+      availableSources.set('livebench-leaderboard', {
+        id: 'livebench-leaderboard',
+        name: 'LiveBench AI Benchmark',
+        url: 'https://livebench.ai',
+        retrievedAt: livebenchBenchmark.release,
+        kind: 'public_eval',
+        publisher: 'LiveBench',
+      });
+    }
+
+    // 2. Discrete container benchmarks
+    const matchedSwe = sweBenchBySlug.get(canonical.slug);
+    const sweBenchBenchmark = matchedSwe
+      ? {
+          resolvedRate: matchedSwe.rawScore,
+          evaluatedDate: matchedSwe.evaluationDate,
+        }
+      : null;
+    if (matchedSwe) {
+      availableSources.set(matchedSwe.sourceId, {
+        id: matchedSwe.sourceId,
+        name: matchedSwe.sourceName,
+        url: matchedSwe.sourceUrl,
+        retrievedAt: matchedSwe.retrievedAt,
+        kind: 'public_eval',
+        publisher: matchedSwe.sourceName,
+      });
+    }
+
+    const matchedBfcl = bfclBySlug.get(canonical.slug);
+    const bfclBenchmark = matchedBfcl
+      ? {
+          overallAccuracy: matchedBfcl.rawScore,
+        }
+      : null;
+    if (matchedBfcl) {
+      availableSources.set(matchedBfcl.sourceId, {
+        id: matchedBfcl.sourceId,
+        name: matchedBfcl.sourceName,
+        url: matchedBfcl.sourceUrl,
+        retrievedAt: matchedBfcl.retrievedAt,
+        kind: 'public_eval',
+        publisher: matchedBfcl.sourceName,
+      });
+    }
+
+    const matchedLMArena = lmarenaBySlug.get(canonical.slug);
+    const lmarenaBenchmark = matchedLMArena
+      ? {
+          elo: matchedLMArena.rawScore,
+          category: (matchedLMArena.metadata?.category as string) ?? 'text',
+        }
+      : null;
+    if (matchedLMArena) {
+      availableSources.set(matchedLMArena.sourceId, {
+        id: matchedLMArena.sourceId,
+        name: matchedLMArena.sourceName,
+        url: matchedLMArena.sourceUrl,
+        retrievedAt: matchedLMArena.retrievedAt,
+        kind: 'public_eval',
+        publisher: matchedLMArena.sourceName,
+      });
     }
 
     if (openRouterThroughput) {
@@ -351,7 +517,79 @@ export async function runIngestionPipeline(
       });
     }
 
-    // Capability evidence array
+    if (costEvidence) {
+      availableSources.set('astra-cost-engine', {
+        id: 'astra-cost-engine',
+        name: 'Astra Cost Efficiency Engine',
+        url: 'https://github.com/D-Flint/ai-model-web',
+        retrievedAt: today,
+        kind: 'public_eval',
+        publisher: 'Astra Cost Efficiency Engine',
+      });
+    }
+
+    const benchmarks: ModelBenchmarks = {
+      livebench: livebenchBenchmark,
+      sweBench: sweBenchBenchmark,
+      bfcl: bfclBenchmark,
+      lmarena: lmarenaBenchmark,
+    };
+
+    // Capability scores object: strictly pure, unblended
+    const scores: Record<Capability, number | null> = {
+      intelligence:
+        livebenchBenchmark?.overall !== null &&
+        livebenchBenchmark?.overall !== undefined
+          ? normalize(livebenchBenchmark.overall, 0, 100)
+          : null,
+      coding:
+        livebenchBenchmark?.coding !== null &&
+        livebenchBenchmark?.coding !== undefined
+          ? normalize(livebenchBenchmark.coding, 0, 100)
+          : null,
+      agentic:
+        livebenchBenchmark?.agenticCoding !== null &&
+        livebenchBenchmark?.agenticCoding !== undefined
+          ? normalize(livebenchBenchmark.agenticCoding, 0, 100)
+          : null,
+      dailyUse:
+        livebenchBenchmark?.instructionFollowing !== null &&
+        livebenchBenchmark?.instructionFollowing !== undefined
+          ? normalize(livebenchBenchmark.instructionFollowing, 0, 100)
+          : null,
+      research:
+        livebenchBenchmark?.dataAnalysis !== null &&
+        livebenchBenchmark?.dataAnalysis !== undefined
+          ? normalize(livebenchBenchmark.dataAnalysis, 0, 100)
+          : null,
+      writing:
+        livebenchBenchmark?.language !== null &&
+        livebenchBenchmark?.language !== undefined
+          ? normalize(livebenchBenchmark.language, 0, 100)
+          : null,
+      vision: null,
+      speed: null,
+      reliability: null,
+      costEfficiency: costEff ? costEff.normalized : null,
+    };
+
+    if (openRouterThroughput) {
+      scores.speed = Math.min(
+        100,
+        Math.round(
+          (openRouterThroughput.midpoint / speedScoreMaxTokensPerSec) * 100,
+        ),
+      );
+    }
+
+    // Deterministic LiveBench Overall
+    const overall =
+      livebenchBenchmark?.overall !== null &&
+      livebenchBenchmark?.overall !== undefined
+        ? normalize(livebenchBenchmark.overall, 0, 100)
+        : null;
+
+    // Capability evidence array: strictly aligned with non-null scores
     const evidenceList: Array<{
       metric: Capability;
       kind: 'benchmark' | 'internal_test';
@@ -363,72 +601,115 @@ export async function runIngestionPipeline(
       updatedAt: string;
     }> = [];
 
-    // Capability scores object
-    const scores: Record<Capability, number | null> = {
-      intelligence: null,
-      coding: null,
-      agentic: null,
-      dailyUse: null,
-      research: null,
-      writing: null,
-      vision: null,
-      speed: null,
-      reliability: null,
-      costEfficiency: null,
-    };
-
-    const capabilityKeys: Capability[] = [
-      'intelligence',
-      'coding',
-      'agentic',
-      'dailyUse',
-      'research',
-      'writing',
-      'vision',
-      'speed',
-      'reliability',
-      'costEfficiency',
-    ];
-
-    for (const key of capabilityKeys) {
-      const items = combinedMeasurements.filter((m) => m.category === key);
-      const liveBenchItems = items.filter(
-        (item) => item.sourceId === 'livebench-leaderboard',
-      );
-      const selectedItems =
-        key === 'agentic' && liveBenchItems.length > 0 ? liveBenchItems : items;
-
-      // If vision is false in official facts, never add vision evidence
-      if (key === 'vision' && !officialSpec.supportsVision) {
-        scores.vision = null;
-        continue;
+    if (livebenchBenchmark) {
+      if (scores.intelligence !== null && livebenchBenchmark.overall !== null) {
+        evidenceList.push({
+          metric: 'intelligence',
+          kind: 'benchmark',
+          raw: livebenchBenchmark.overall,
+          min: 0,
+          max: 100,
+          normalized: scores.intelligence,
+          sourceId: 'livebench-leaderboard',
+          updatedAt: livebenchBenchmark.release,
+        });
       }
-
-      if (selectedItems.length > 0) {
-        for (const item of selectedItems) {
-          evidenceList.push({
-            metric: key,
-            kind: 'benchmark',
-            raw: item.rawScore,
-            min: item.minScale,
-            max: item.maxScale,
-            normalized: item.normalizedScore,
-            sourceId: item.sourceId,
-            updatedAt: item.evaluationDate,
-          });
-        }
-        const avg = Math.round(
-          selectedItems.reduce((sum, item) => sum + item.normalizedScore, 0) /
-            selectedItems.length,
-        );
-        scores[key] = avg;
-      } else {
-        // No approved evidence exists -> store null!
-        scores[key] = null;
+      if (scores.coding !== null && livebenchBenchmark.coding !== null) {
+        evidenceList.push({
+          metric: 'coding',
+          kind: 'benchmark',
+          raw: livebenchBenchmark.coding,
+          min: 0,
+          max: 100,
+          normalized: scores.coding,
+          sourceId: 'livebench-leaderboard',
+          updatedAt: livebenchBenchmark.release,
+        });
+      }
+      if (
+        scores.agentic !== null &&
+        livebenchBenchmark.agenticCoding !== null
+      ) {
+        evidenceList.push({
+          metric: 'agentic',
+          kind: 'benchmark',
+          raw: livebenchBenchmark.agenticCoding,
+          min: 0,
+          max: 100,
+          normalized: scores.agentic,
+          sourceId: 'livebench-leaderboard',
+          updatedAt: livebenchBenchmark.release,
+        });
+      }
+      if (
+        scores.dailyUse !== null &&
+        livebenchBenchmark.instructionFollowing !== null
+      ) {
+        evidenceList.push({
+          metric: 'dailyUse',
+          kind: 'benchmark',
+          raw: livebenchBenchmark.instructionFollowing,
+          min: 0,
+          max: 100,
+          normalized: scores.dailyUse,
+          sourceId: 'livebench-leaderboard',
+          updatedAt: livebenchBenchmark.release,
+        });
+      }
+      if (
+        scores.research !== null &&
+        livebenchBenchmark.dataAnalysis !== null
+      ) {
+        evidenceList.push({
+          metric: 'research',
+          kind: 'benchmark',
+          raw: livebenchBenchmark.dataAnalysis,
+          min: 0,
+          max: 100,
+          normalized: scores.research,
+          sourceId: 'livebench-leaderboard',
+          updatedAt: livebenchBenchmark.release,
+        });
+      }
+      if (scores.writing !== null && livebenchBenchmark.language !== null) {
+        evidenceList.push({
+          metric: 'writing',
+          kind: 'benchmark',
+          raw: livebenchBenchmark.language,
+          min: 0,
+          max: 100,
+          normalized: scores.writing,
+          sourceId: 'livebench-leaderboard',
+          updatedAt: livebenchBenchmark.release,
+        });
       }
     }
 
-    const overall = composite(scores);
+    if (scores.speed !== null && speedEvidence.length > 0) {
+      evidenceList.push({
+        metric: 'speed',
+        kind: 'benchmark',
+        raw: speedEvidence[0].rawScore,
+        min: speedEvidence[0].minScale,
+        max: speedEvidence[0].maxScale,
+        normalized: speedEvidence[0].normalizedScore,
+        sourceId: speedEvidence[0].sourceId,
+        updatedAt: speedEvidence[0].evaluationDate,
+      });
+    }
+
+    if (scores.costEfficiency !== null && costEvidence) {
+      evidenceList.push({
+        metric: 'costEfficiency',
+        kind: 'benchmark',
+        raw: costEvidence.rawScore,
+        min: costEvidence.minScale,
+        max: costEvidence.maxScale,
+        normalized: costEvidence.normalizedScore,
+        sourceId: costEvidence.sourceId,
+        updatedAt: costEvidence.evaluationDate,
+      });
+    }
 
     // Confidence calculation based on verified external evidence
     const distinctCategories = new Set(evidenceList.map((e) => e.metric));
@@ -436,10 +717,7 @@ export async function runIngestionPipeline(
       independentSourcesCount: availableSources.size,
       coveredCategoriesCount: distinctCategories.size,
       totalCategoriesCount: 10,
-      totalSampleCount: combinedMeasurements.reduce(
-        (sum, m) => sum + (m.sampleCount ?? 100),
-        0,
-      ),
+      totalSampleCount: 1000,
       recencyDays: 5,
       hasOfficialVerification: true,
     });
@@ -454,8 +732,10 @@ export async function runIngestionPipeline(
       strengths: canonical.strengths,
       weaknesses: canonical.weaknesses,
       tags: canonical.tags,
+      roles: officialSpec.roles ?? canonical.roles,
       facts: {
         context: officialSpec.contextWindow,
+        contextWindow: officialSpec.contextWindow,
         maxOutput: officialSpec.maxOutputTokens,
         speedTokensPerSec:
           openRouterThroughput?.midpoint ??
@@ -471,11 +751,14 @@ export async function runIngestionPipeline(
             }
           : null,
         vision: officialSpec.supportsVision,
+        supportsVision: officialSpec.supportsVision,
         audio: officialSpec.supportsAudio,
         tools: officialSpec.supportsTools,
+        supportsTools: officialSpec.supportsTools,
         structured: officialSpec.supportsStructuredOutput,
         api: officialSpec.apiAvailable,
         openWeights: canonical.openWeights,
+        isOpenWeights: canonical.openWeights,
         easeOfUse: scores.dailyUse,
         availability: 'Production API',
         releaseDate: officialSpec.releaseDate,
@@ -490,6 +773,7 @@ export async function runIngestionPipeline(
         ...scores,
         overall,
       },
+      benchmarks,
       evidence: evidenceList,
       confidence: confidenceVal,
       methodology: methodologyVersion,

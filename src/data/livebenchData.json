@@ -2068,5 +2068,17 @@
     "agentic_coding": 57.3,
     "language": 89.4,
     "date": "2026-06-25"
+  },
+  {
+    "model": "smaug-flash",
+    "global_average": 77.4,
+    "reasoning": 86.2,
+    "math": 90.1,
+    "coding": 77.1,
+    "data_analysis": 79.1,
+    "instruction_following": 69.3,
+    "agentic_coding": 61.1,
+    "language": 79.2,
+    "date": "2026-06-25"
   }
 ]

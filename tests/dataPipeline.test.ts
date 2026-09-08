@@ -360,9 +360,17 @@ describe('Verified Catalog Integrity', () => {
       expect(model.confidence).toBeGreaterThan(0);
       expect(model.sources.length).toBeGreaterThanOrEqual(2);
       expect(model.facts.context).toBeGreaterThan(0);
-      expect(model.scores.overall).toBeGreaterThan(0);
+      expect(model.scores.overall === null || model.scores.overall > 0).toBe(
+        true,
+      );
       expect(model.methodology).toBe('v1-external-only');
     }
+
+    expect(
+      validated.some(
+        (model) => model.scores.overall !== null && model.scores.overall > 0,
+      ),
+    ).toBe(true);
   });
 
   it('rejects duplicate model slugs in catalog', () => {

@@ -192,6 +192,33 @@ export type BfclRow = z.infer<typeof bfclRowSchema>;
 // ---------------------------------------------------------------------------
 // Canonical & Internal Types
 // ---------------------------------------------------------------------------
+export type ModelRole =
+  | 'general-purpose'
+  | 'reasoning'
+  | 'coding'
+  | 'agentic'
+  | 'vision'
+  | 'safety-classifier';
+
+export interface LiveBenchBenchmark {
+  release: string;
+  overall: number | null;
+  reasoning: number | null;
+  coding: number | null;
+  agenticCoding: number | null;
+  mathematics: number | null;
+  dataAnalysis: number | null;
+  language: number | null;
+  instructionFollowing: number | null;
+}
+
+export interface ModelBenchmarks {
+  livebench: LiveBenchBenchmark | null;
+  sweBench?: { resolvedRate: number | null; evaluatedDate: string } | null;
+  bfcl?: { overallAccuracy: number | null } | null;
+  lmarena?: { elo: number | null; category: string } | null;
+}
+
 export interface CanonicalModelConfig {
   slug: string;
   name: string;
@@ -199,6 +226,7 @@ export interface CanonicalModelConfig {
   providerSlug: string;
   family: string;
   openWeights: boolean;
+  roles?: ModelRole[];
   openRouterId: string;
   openRouterAliases?: string[];
   lmarenaAliases: string[];
@@ -226,10 +254,17 @@ export interface OfficialProviderSpec {
   supportsStructuredOutput: boolean;
   apiAvailable: boolean;
   officialPricing: {
-    input: number;
-    output: number;
+    input: number | null;
+    output: number | null;
     cached: number | null;
   };
+  inputPer1M?: number | null;
+  outputPer1M?: number | null;
+  cachedInputPer1M?: number | null;
+  provenanceUrl?: string;
+  verifiedAt?: string;
+  roles?: ModelRole[];
+  isOpenWeights?: boolean;
   speedTokensPerSec?: number;
   reasoningEffort?: ('none' | 'low' | 'medium' | 'high' | 'max' | 'fixed')[];
   defaultEffort?: 'none' | 'low' | 'medium' | 'high' | 'max' | 'fixed';

@@ -76,6 +76,9 @@ export function taskCost(
     throw new Error(
       'Enter non-negative amounts and a success rate greater than 0 and at most 100%.',
     );
+  if (model.pricing.input === null || model.pricing.output === null) {
+    throw new Error('Pricing unavailable for this model');
+  }
   return (
     ((input * model.pricing.input + output * model.pricing.output) / 1_000_000 +
       toolCalls * toolPrice) /
@@ -105,7 +108,7 @@ export function getSpeedTokensPerSec(
   const range = model.facts.speedTokensPerSecRange;
   if (!hasOpenRouterThroughput(model) || !range) return 0;
 
-  let baseTps =
+  const baseTps =
     model.facts.speedTokensPerSec ?? Math.round((range.min + range.max) / 2);
 
   if (!effort || effort === 'none' || effort === 'fixed') {

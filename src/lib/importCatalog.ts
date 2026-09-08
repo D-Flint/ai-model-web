@@ -28,7 +28,13 @@ export function validateCatalog(value: unknown): CatalogModel[] {
           );
       }
     }
-    const expectedOverall = composite(model.scores);
+    const expectedOverall =
+      model.benchmarks !== undefined && model.benchmarks !== null
+        ? model.benchmarks.livebench?.overall !== null &&
+          model.benchmarks.livebench?.overall !== undefined
+          ? Math.round(model.benchmarks.livebench.overall)
+          : null
+        : composite(model.scores);
     if (expectedOverall !== model.scores.overall)
       throw new Error(`Overall mismatch: ${model.slug}`);
     if (model.dataKind === 'mock' && model.confidence !== 0)

@@ -8,7 +8,7 @@ import {
   type Capability,
 } from './config';
 import type { CatalogModel } from '../lib/catalogSchema';
-import { verifiedApiPricing, reviewedContext } from './apiPricing';
+import { verifiedApiPricing, reviewedContext } from './officialProviders';
 import { choosePricing, reviewedCatalogPricing } from '../lib/apiPricing';
 
 // Fictional providers and model names for fallback fixtures

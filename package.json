@@ -4,9 +4,7 @@
   "type": "module",
   "description": "Astra - Consumer AI Model Decision Engine",
   "scripts": {
-    "predev": "npm run data:prepare-comparisons",
-    "prebuild": "npm run data:prepare-comparisons",
-    "precheck": "npm run data:prepare-comparisons && wrangler types",
+    "precheck": "wrangler types",
     "data:prepare-comparisons": "tsx scripts/prepare-comparisons.ts",
     "deploy": "npm run build && wrangler deploy",
     "test:cloudflare": "python tests/cloudflare_comparisons.py",

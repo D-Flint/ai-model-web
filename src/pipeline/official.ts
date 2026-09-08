@@ -75,17 +75,27 @@ export function verifyAgainstOfficialSpecs(options: {
   }
 
   if (reportedPricing) {
-    const inputDiff = Math.abs(
-      reportedPricing.input - spec.officialPricing.input,
-    );
-    const outputDiff = Math.abs(
-      reportedPricing.output - spec.officialPricing.output,
-    );
-    if (inputDiff > 0.05 || outputDiff > 0.05) {
+    if (
+      spec.officialPricing.input === null ||
+      spec.officialPricing.output === null
+    ) {
       pricingMatch = false;
       discrepancies.push(
-        `Pricing discrepancy: reported $${reportedPricing.input}/$${reportedPricing.output} vs official $${spec.officialPricing.input}/$${spec.officialPricing.output}`,
+        `Pricing discrepancy: reported pricing present but official pricing is unavailable`,
       );
+    } else {
+      const inputDiff = Math.abs(
+        reportedPricing.input - spec.officialPricing.input,
+      );
+      const outputDiff = Math.abs(
+        reportedPricing.output - spec.officialPricing.output,
+      );
+      if (inputDiff > 0.05 || outputDiff > 0.05) {
+        pricingMatch = false;
+        discrepancies.push(
+          `Pricing discrepancy: reported $${reportedPricing.input}/$${reportedPricing.output} vs official $${spec.officialPricing.input}/$${spec.officialPricing.output}`,
+        );
+      }
     }
   }
 

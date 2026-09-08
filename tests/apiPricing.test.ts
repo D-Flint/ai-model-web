@@ -8,7 +8,7 @@ import {
   priceFreshness,
 } from '../src/lib/apiPricing';
 import { apiPricingSchema } from '../src/lib/apiPricingSchema';
-import { verifiedApiPricing } from '../src/data/apiPricing';
+import { verifiedApiPricing } from '../src/data/officialProviders';
 import { models, allModels } from '../src/data/models';
 import { validateCatalog } from '../src/lib/importCatalog';
 

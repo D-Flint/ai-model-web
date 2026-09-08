@@ -120,7 +120,9 @@ export const EXCLUDED_SUB_VARIANTS_AND_OBSCURE = new Set<string>([
  * Configurable eligibility function to determine if a model is part of the
  * curated, LiveBench-backed Synapse v1 catalog.
  */
-export function evaluateModelEligibility(model: CatalogModel): EligibilityResult {
+export function evaluateModelEligibility(
+  model: CatalogModel,
+): EligibilityResult {
   if (model.dataKind === 'mock') {
     return {
       eligible: true,

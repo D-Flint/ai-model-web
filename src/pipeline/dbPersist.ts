@@ -146,8 +146,8 @@ export async function persistIngestionToDatabase(options: {
           id: `pricing-${model.slug}`,
           modelId: model.slug,
           providerName: model.provider,
-          inputPerMillion: model.pricing.input.toString(),
-          outputPerMillion: model.pricing.output.toString(),
+          inputPerMillion: model.pricing.input?.toString() ?? '0',
+          outputPerMillion: model.pricing.output?.toString() ?? '0',
           cachedInputPerMillion: model.pricing.cached?.toString() ?? null,
           currency: model.pricing.currency,
           sourceId: model.pricing.sourceId,
@@ -158,8 +158,8 @@ export async function persistIngestionToDatabase(options: {
         .onConflictDoUpdate({
           target: modelPricing.id,
           set: {
-            inputPerMillion: model.pricing.input.toString(),
-            outputPerMillion: model.pricing.output.toString(),
+            inputPerMillion: model.pricing.input?.toString() ?? '0',
+            outputPerMillion: model.pricing.output?.toString() ?? '0',
             cachedInputPerMillion: model.pricing.cached?.toString() ?? null,
             effectiveFrom: model.pricing.updatedAt,
             lastVerifiedAt: new Date(model.lastVerifiedAt ?? Date.now()),
