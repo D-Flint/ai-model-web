@@ -19,7 +19,9 @@ import {
 } from 'lucide-react';
 import ModelCard from './ModelCard';
 import { ProviderLogo } from './ProviderLogo';
+import { ModelDataSources } from './ModelDataSources';
 import type { CatalogModel } from '../lib/catalogSchema';
+import { getModelDetailSources } from '../lib/modelDetailSources';
 import {
   selectionFromSearch,
   getMaxReasoningEffort,
@@ -305,6 +307,20 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
       const speedLabel = speedDisplayValue
         ? `${speedDisplayValue} tok/s`
         : null;
+      const hasBenchmarkScores = [
+        overallVal,
+        reasoningVal,
+        codingVal,
+        lbRow?.agentic_coding ?? null,
+        mathVal,
+        dataVal,
+        langVal,
+        instVal,
+      ].some((value) => value !== null);
+      const detailSources = getModelDetailSources(model, {
+        hasBenchmarkScores,
+        hasSpeed: speedDisplayValue !== null,
+      });
 
       return {
         model,
@@ -327,6 +343,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
         } as Record<LeaderboardMetricKey, number | null>,
         inputPrice,
         speedLabel,
+        detailSources,
       };
     });
   }, [models, livebenchMap, canonicalBySlug]);
@@ -1296,6 +1313,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                                     </strong>
                                   </div>
                                 </div>
+                                <ModelDataSources sources={row.detailSources} />
                               </div>
                             </td>
                           </tr>
@@ -1551,6 +1569,8 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                           })}
                         </div>
                       </div>
+
+                      <ModelDataSources sources={row.detailSources} />
 
                       <div className="mobile-expanded-btns">
                         <button
