@@ -10,12 +10,23 @@
 
 ## Current handoff
 
-- Objective: Keep repository guidance concise and product-aligned.
-- Last implementation: Refined `AGENTS.md` from `ai-model-guide-gpt6-astra-brief.md`.
-- Tests: `git diff --check` passed.
-- Commits: `9bb516a` (`AGENTS.md`), `ea10e39` (`SESSION_LOG.md`).
-- Current state: Active session log reduced from 133,404 bytes to this concise handoff; original preserved locally.
-- Exact next step: User verifies updated `AGENTS.md` and resumes implementation.
+- Objective: Decouple benchmark aggregations, consolidate model registry & pricing, and eliminate comparison build bottleneck.
+- Last implementation: Implemented discrete `ModelBenchmarks` namespace container, pure unweighted LiveBench 7-category overall, consolidated official provider pricing into `src/data/officialProviders.ts`, removed prebuild comparison matrix generation, and regenerated verified catalog.
+- Tests: `npm test` passed (127/127 tests), `npm run check` passed (97/97 files, 0 errors, 0 warnings), `npm run lint` passed, `npm run build` production build passed.
+- Commits: `301e5bd` (`refactor: decouple pipeline benchmarks and consolidate model pricing`).
+- Current state: Ingestion pipeline decoupled; missing pricing/scores strictly null without synthetic defaults; on-demand SSR enabled for comparison pairs.
+- Exact next step: User verification of pipeline output, catalog, and comparison pages.
+
+## 2026-09-08 — Decouple pipeline benchmarks and consolidate pricing
+
+- Objective: Decouple benchmark aggregations in pipeline, consolidate model registry & pricing into officialProviders, remove comparison static build bottleneck, and update schemas.
+- Files changed: `src/pipeline/types.ts`, `src/pipeline/engine.ts`, `src/lib/catalogSchema.ts`, `src/data/officialProviders.ts`, `src/data/apiPricing.ts` (deleted), `src/data/models.ts`, `src/data/livebenchData.json`, `src/data/verifiedModels.json`, `src/lib/importCatalog.ts`, `src/lib/decision.ts`, `src/pipeline/dbPersist.ts`, `src/pipeline/official.ts`, `package.json`, `src/lib/comparisonCatalog.ts`, `src/pages/compare/[pair].astro`, `scripts/persist-api-pricing.ts`, `tests/apiPricing.test.ts`, `tests/dataPipeline.test.ts`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: Float precision rounding difference between raw `Math.round(val)` and `normalize(val, 0, 100)` caused catalog verification mismatches; resolved by using `normalize(val, 0, 100)` consistently. Initial validation in `importCatalog.ts` failed on models without full LiveBench 7 categories; resolved by supporting nullable `benchmarks.livebench.overall`.
+- Tests: `npm test` 127/127 passed; `npm run check` 97/97 passed (0 errors, 0 warnings); `npm run lint` 0 errors; `npm run build` production build succeeded.
+- Commit: `301e5bd` (`refactor: decouple pipeline benchmarks and consolidate model pricing`).
+- Current state: Benchmark containers decoupled, LiveBench overall purely deterministic across 7 categories or null, pricing consolidated with provenance, comparison matrix prebuild eliminated.
+- Exact next step: User verifies the updated pipeline, models, and comparisons.
 
 ## 2026-09-07 — LiveBench/OpenRouter metrics
 
