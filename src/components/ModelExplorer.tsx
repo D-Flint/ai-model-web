@@ -890,7 +890,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                       return (
                         <th
                           key={col.key}
-                          className={`th-metric th-sortable th-align-${col.align} ${isSorted ? 'col-sorted' : ''}`}
+                          className={`th-metric th-${col.key} th-sortable th-align-${col.align} ${isSorted ? 'col-sorted' : ''}`}
                           scope="col"
                           aria-sort={
                             isSorted
@@ -1170,7 +1170,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.speed && (
                             <td
-                              className={`td-metric td-align-center ${sortColumn === 'speed' ? 'col-sorted' : ''}`}
+                              className={`td-metric td-speed td-align-center ${sortColumn === 'speed' ? 'col-sorted' : ''}`}
                             >
                               {row.scores.speed != null && row.scores.speed > 0
                                 ? row.speedLabel

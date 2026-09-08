@@ -3144,6 +3144,13 @@ table.leaderboard-table tbody tr.leaderboard-row.row-selected {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-weight: 500;
   color: var(--text);
+  white-space: nowrap;
+}
+
+.th-speed,
+.td-speed {
+  min-width: 112px;
+  white-space: nowrap;
 }
 
 .td-date {
