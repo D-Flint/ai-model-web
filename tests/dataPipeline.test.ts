@@ -221,6 +221,18 @@ describe('Model Identity Resolution', () => {
     expect(
       defaultAliasResolver.resolve('openrouter', 'openai/o3-mini')?.slug,
     ).toBe('o3-mini');
+    expect(
+      defaultAliasResolver.resolve('openrouter', 'openai/gpt-5.6-sol')?.slug,
+    ).toBe('gpt-5-6-sol');
+    expect(
+      defaultAliasResolver.resolve('openrouter', 'openai/gpt-5.3-codex')?.slug,
+    ).toBe('gpt-5-3-codex');
+    expect(
+      defaultAliasResolver.resolve(
+        'openrouter',
+        'google/gemini-3.1-pro-preview',
+      )?.slug,
+    ).toBe('gemini-3-1-pro');
 
     expect(defaultAliasResolver.resolve('livebench', 'o3-mini')?.slug).toBe(
       'o3-mini',

@@ -1544,7 +1544,11 @@ export const DEEPSEEK_MODELS: CanonicalModelConfig[] = [
     providerSlug: 'deepseek',
     family: 'DeepSeek V3',
     openWeights: true,
-    openRouterId: 'deepseek/deepseek-v3.1',
+    openRouterId: 'deepseek/deepseek-chat-v3.1',
+    openRouterAliases: [
+      'deepseek/deepseek-v3.1',
+      'deepseek/deepseek-chat-v3.1',
+    ],
     lmarenaAliases: [
       'deepseek-v3.1',
       'deepseek-v3-1',

@@ -171,7 +171,11 @@ export const GOOGLE_MODELS: CanonicalModelConfig[] = [
     providerSlug: 'google',
     family: 'Gemini',
     openWeights: false,
-    openRouterId: 'google/gemini-3.1-pro',
+    openRouterId: 'google/gemini-3.1-pro-preview',
+    openRouterAliases: [
+      'google/gemini-3.1-pro',
+      'google/gemini-3.1-pro-preview',
+    ],
     lmarenaAliases: [
       'gemini-3.1-pro',
       'gemini-3-1-pro',
@@ -263,7 +267,11 @@ export const GOOGLE_MODELS: CanonicalModelConfig[] = [
     providerSlug: 'google',
     family: 'Gemini',
     openWeights: false,
-    openRouterId: 'google/gemini-3-flash',
+    openRouterId: 'google/gemini-3-flash-preview',
+    openRouterAliases: [
+      'google/gemini-3-flash',
+      'google/gemini-3-flash-preview',
+    ],
     lmarenaAliases: [
       'gemini-3-flash',
       'gemini-3.0-flash',

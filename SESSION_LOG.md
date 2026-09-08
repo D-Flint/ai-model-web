@@ -186,3 +186,14 @@
 - Commit: Pending local commit.
 - Current state: 23 out of 30 tracked models (and 87 catalog models total) now display verified throughput ranges, including GPT-6 Astra (10–50 tok/s), Gemini 3.8 Flash (19–211 tok/s), and Gemma 4 (3–491 tok/s).
 - Exact next step: User verifies the leaderboard and model guide pages; no further implementation until requested.
+
+## 2026-09-08 — Fix OpenRouter model identifier mappings for speed throughput
+
+- Objective: Audit and double-check models lacking speed metrics, resolve identifier/alias mismatches, and refresh provider throughput.
+- Files changed: `src/data/models/openai.ts`, `src/data/models/google.ts`, `src/data/models/mistral.ts`, `src/data/models/deepseek.ts`, `src/data/models/moonshot.ts`, `src/data/verifiedModels.json`, `tests/dataPipeline.test.ts`, `SESSION_LOG.md`.
+- Attempts: 1 audit & fix attempt.
+- Failures/causes: Several canonical models had dotted version numbers represented with hyphens in openRouterId (e.g., `openai/gpt-5-6-sol` instead of `openai/gpt-5.6-sol`, `openai/gpt-5-3-codex` instead of `openai/gpt-5.3-codex`) or preview suffixes (e.g., `google/gemini-3.1-pro-preview`), preventing the speed refresh pipeline from matching them.
+- Tests: `npm test` 98/98 passed; `npm run check` passed with 0 errors/warnings/hints; Prettier passed on all modified files; `git diff --check` passed.
+- Commit: Pending local commit.
+- Current state: 27 out of 30 tracked models (and 110 catalog models overall) now have verified OpenRouter speed throughput ranges (GPT-5.6 Sol: 21–81 tok/s, GPT-5.6 Terra: 33–61 tok/s, Gemini 3.1 Pro: 3–102 tok/s, GPT-5.3-Codex: 64–91 tok/s). The remaining 3 tracked models (`gemini-3-deep-think`, `gemini-3-pro`, and `claude-3-7-sonnet`) have no public OpenRouter endpoints and remain unavailable per repository data integrity policy.
+- Exact next step: Create local commit and wait for user verification.

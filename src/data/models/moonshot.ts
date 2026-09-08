@@ -193,7 +193,11 @@ export const MOONSHOT_MODELS: CanonicalModelConfig[] = [
     providerSlug: 'moonshot',
     family: 'Kimi K2',
     openWeights: true,
-    openRouterId: 'moonshotai/kimi-k2-instruct-0905',
+    openRouterId: 'moonshotai/kimi-k2-0905',
+    openRouterAliases: [
+      'moonshotai/kimi-k2-instruct-0905',
+      'moonshotai/kimi-k2-0905',
+    ],
     lmarenaAliases: [
       'kimi-k2-instruct-0905',
       'moonshotai/kimi-k2-instruct-0905',
@@ -227,7 +231,8 @@ export const MOONSHOT_MODELS: CanonicalModelConfig[] = [
     providerSlug: 'moonshot',
     family: 'Kimi K2',
     openWeights: true,
-    openRouterId: 'moonshotai/kimi-k2-instruct',
+    openRouterId: 'moonshotai/kimi-k2',
+    openRouterAliases: ['moonshotai/kimi-k2-instruct', 'moonshotai/kimi-k2'],
     lmarenaAliases: [
       'kimi-k2-instruct',
       'moonshotai/kimi-k2-instruct',
