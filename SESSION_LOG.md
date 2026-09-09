@@ -10,12 +10,23 @@
 
 ## Current handoff
 
-- Objective: Make sure all 3 comparison tradeoff cards have identical size across all viewports.
-- Last implementation: Updated `.comparison-links` with `grid-auto-rows: 1fr`, balanced model container spans with `flex: 1 1 0; min-width: 0;`, added `flex-shrink: 0` to `.versus` and svg icons, adjusted responsive gap to `clamp(12px, 2.5vw, 20px)`, and set block line-height on `strong` titles in `src/styles/global.css`.
-- Tests: Chrome DevTools visual screenshots across mobile (375px, 410px), tablet (768px), and desktop (1280px); `npm run check` (104 files, 0 errors, 0 warnings); `npm test` (15 files, 146 passed); `npm run build` production build succeeded.
-- Commits: `02147f9` (`fix: make tradeoff comparison cards equal size across viewports`).
-- Current state: All 3 comparison cards have the exact same size, height, and balanced alignment across desktop, tablet, and mobile viewports.
-- Exact next step: User verifies the comparison card sizes in browser.
+- Objective: Redesign the sort ranking selection UI in the ranking page.
+- Last implementation: Created reusable `RankingSortControls` component with live verified model count badge, custom-styled accessible select dropdown with directional sort indicator icon (`ArrowDownNarrowWide` / `ArrowUpNarrowWide`), custom chevron (`ChevronDown`), and quick-toggle invert button (`ArrowUpDown`). Integrated across `IntelligenceRanking`, `SpeedRanking`, `MetricRanking`, and `RankingList` overall fallback. Rebuilt `.ranking-controls` styling with theme-aware tokens, responsive mobile stacking, hover/focus rings, and micro-transitions.
+- Tests: Verified Playwright test suites (`tests/intelligence_ranking_browser.py`, `tests/speed_ranking_browser.py`); `npm test` (15 files, 146 passed); `npm run check` (105 files, 0 errors, 0 warnings, 0 hints); `npm run lint` clean; visual screenshots in light and dark mode confirming alignment, typography, and contrast.
+- Commits: `7ab2241` (`feat: redesign sort ranking selection UI on ranking pages`).
+- Current state: Stored locally; no remote push. Ranking page toolbar is responsive, consumer-first, and fully accessible.
+- Exact next step: User verifies the redesigned sort ranking UI in browser.
+
+## 2026-09-09 — Redesign sort ranking selection UI on ranking pages
+
+- Objective: Redesign the sort ranking selection UI on ranking pages to replace the plain native browser select with a polished, accessible, consumer-first ranking toolbar.
+- Files changed: `src/components/RankingSortControls.tsx`, `src/components/IntelligenceRanking.tsx`, `src/components/MetricRanking.tsx`, `src/components/SpeedRanking.tsx`, `src/components/RankingList.astro`, `src/styles/global.css`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: None. Ensured the `<label>` and `<select>` semantics are strictly preserved so existing Playwright browser assertions (`page.get_by_label('Sort ranking')`, `.select_option('asc')`, `.input_value()`) continue to pass seamlessly.
+- Tests: `python tests/intelligence_ranking_browser.py` passed; `python tests/speed_ranking_browser.py` passed; `npm test` 146/146 passed; `npm run check` 0 errors/warnings/hints; `npm run lint` clean; visual screenshot comparisons taken in light and dark mode.
+- Commit: `7ab2241` (`feat: redesign sort ranking selection UI on ranking pages`).
+- Current state: Committed locally; no remote push.
+- Exact next step: User verifies the redesigned sort ranking UI in browser.
 
 ## 2026-09-09 — Make comparison tradeoff cards equal size
 
