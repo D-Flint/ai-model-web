@@ -318,3 +318,14 @@
 - Commits: `38748a3` (`docs: define model dropdown data sources`); `478422e` (`feat: add sources to model detail dropdowns`).
 - Current state: Every Model Explorer expanded detail resolves relevant benchmark, speed, pricing, and provider-fact sources; duplicate URLs merge their coverage labels, and desktop/mobile render the same compact source list.
 - Exact next step: User verifies an expanded model row on `/models`; no further implementation is planned.
+
+## 2026-09-09 — Design the Model Finder decision engine
+
+- Objective: Replace the shallow Model Finder quiz with a deterministic, evidence-aware recommendation design covering multi-use-case intent, priorities, requirements, budgets, eligibility, confidence, and explainable diversified results.
+- Files changed: `docs/superpowers/specs/2026-09-09-model-finder-decision-engine-design.md`, `SESSION_LOG.md`.
+- Attempts: 1 design and self-review pass.
+- Failures/causes: The product brief is deleted in the working tree, so its committed `HEAD` version was used without restoring the user's deletion. Live browser inspection was unavailable because the local Astro dev server exited before becoming ready; the preceding audit used source inspection and direct runtime probes.
+- Tests: Design checked against the approved redesign prompt and current catalog coverage; no production code changed.
+- Commit: Pending local commit.
+- Current state: The approved design now defines exact metric mappings, eligibility rules, missing-data behavior, formulas, result selection, UI states, and tests. Implementation has not started.
+- Exact next step: User reviews the written spec, then implementation planning and implementation can begin.
