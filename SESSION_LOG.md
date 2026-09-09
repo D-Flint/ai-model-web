@@ -417,3 +417,14 @@
 - Commit: Pending for this fix.
 - Current state: `prebuild` runs `data:prepare-comparisons`, generating 30 comparison records in clean Cloudflare environments without tracking derived artifacts.
 - Exact next step: Redeploy from `main` in Cloudflare and verify the deployment preview.
+
+## 2026-09-09 — Refresh README for users and contributors
+
+- Objective: Replace the root README with a detailed, polished Synapse guide that serves both prospective users and contributors.
+- Files changed: `README.md`, `docs/superpowers/specs/2026-09-09-readme-refresh-design.md`, `SESSION_LOG.md`.
+- Attempts: 2 documentation patch attempts; the first combined delete/add patch was rejected by the patch tool, then the README was replaced in two valid patch operations.
+- Failures/causes: The repository product-brief file referenced by prior documentation is absent, so the README removes that broken link and bases its claims on the current application, scripts, configuration, and maintained guides.
+- Tests: `git diff --check` passed; 12 local Markdown links in `README.md` resolve; no application check was needed for this documentation-only change.
+- Commit: Pending local commit.
+- Current state: README now presents the decision journey, feature overview, quick start, data boundaries, architecture, commands, environment variables, data workflows, Cloudflare deployment, and documentation index. The separately approved design note is committed as `64d9e7a`.
+- Exact next step: Commit the README and session-log update locally, then wait for user verification.
