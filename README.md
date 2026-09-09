@@ -1,201 +1,275 @@
+<div align="center">
+
+<a href="https://github.com/D-Flint/ai-model-web">
+  <img src="public/synapse-mark.png" alt="Synapse Logo" width="72" />
+</a>
+
 # Synapse
 
-> A consumer-first AI model decision engine for finding the right model for the work in front of you.
+**A consumer-first AI model decision engine for finding the right model for the work in front of you.**
 
-**Synapse** turns scattered model specifications, public evaluations, pricing, and tradeoffs into guidance people can actually use. It is designed around one journey:
+[![Astro 5](https://img.shields.io/badge/Astro_5-BC52EE?style=flat-square&logo=astro&logoColor=white)](https://astro.build)
+[![React 19](https://img.shields.io/badge/React_19-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev)
+[![TypeScript 5](https://img.shields.io/badge/TypeScript_5-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare_Workers-F38020?style=flat-square&logo=cloudflare&logoColor=white)](https://workers.cloudflare.com/)
+[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg?style=flat-square)](LICENSE)
 
-```text
-Discover → Compare → Understand → Choose
+<p>
+  <a href="#the-decision-journey">Decision Journey</a> &bull;
+  <a href="#features">Features</a> &bull;
+  <a href="#quick-start">Quick Start</a> &bull;
+  <a href="#data-integrity--trust">Data Trust</a> &bull;
+  <a href="#architecture">Architecture</a> &bull;
+  <a href="#development-commands">Commands</a> &bull;
+  <a href="#documentation">Documentation</a>
+</p>
+
+</div>
+
+---
+
+## The Decision Journey
+
+Synapse translates scattered model specifications, public evaluations, pricing, and tradeoffs into guidance people can actually use. Rather than ranking models on an arbitrary score, it organizes around a four-stage decision progression:
+
+```mermaid
+graph LR
+    A["1. Discover<br/><sub>Explore verified catalog</sub>"] --> B["2. Compare<br/><sub>Side-by-side diffs</sub>"]
+    B --> C["3. Understand<br/><sub>Inspect evidence & pricing</sub>"]
+    C --> D["4. Choose<br/><sub>Match work to best model</sub>"]
 ```
 
-The app is built with Astro, selective React islands, strict TypeScript, and an evidence-aware data pipeline. It is not a technical leaderboard: scores, confidence, source freshness, and price are presented as decision inputs—not a substitute for testing a model on your own work.
+> [!IMPORTANT]
+> **A Decision Engine, Not a Leaderboard**
+> Synapse does not reduce AI models to a single deceptive leaderboard rank. Raw benchmarks, derived scores, confidence intervals, source freshness, and reviewed API rates are presented as decision inputs—giving users clear context rather than substituting for testing on their own work.
 
-## Contents
+---
 
-- [What you can do](#what-you-can-do)
-- [Run it locally](#run-it-locally)
-- [Data you can inspect](#data-you-can-inspect)
-- [How the project is organized](#how-the-project-is-organized)
-- [Development commands](#development-commands)
-- [Environment variables](#environment-variables)
-- [Catalog and data workflows](#catalog-and-data-workflows)
-- [Quality and deployment](#quality-and-deployment)
-- [Further reading](#further-reading)
+## Features
 
-## What you can do
+| Capability  | What Synapse Provides                                                                                                               |
+| :---------- | :---------------------------------------------------------------------------------------------------------------------------------- |
+| **Explore** | Search and filter models across providers, capabilities, multimodal modalities, context length, pricing, and release dates.         |
+| **Compare** | Place 2 to 4 models side by side, inspect meaningful parameter differences, and share persistent comparison permalinks.             |
+| **Rank**    | Browse overall and task-focused rankings with transparent sort directions, evidence-aware eligibility, and plain-language guidance. |
+| **Find**    | Answer 3 focused questions to receive an explainable, deterministic shortlist tailored to your use case, priorities, and budget.    |
+| **Price**   | Compare reviewed API rates and calculate exact token workload costs without hidden assumptions or missing-data misrepresentation.   |
+| **Verify**  | Inspect full provenance: source URLs, retrieval dates, confidence tiers, and calculation methodology instead of blind scores.       |
 
-| Start here | What Synapse helps with |
-| --- | --- |
-| **Explore** | Search and filter models by provider, capability, available evidence, price, and practical characteristics. |
-| **Compare** | Put two to four models side by side, inspect the differences that matter, and share a comparison URL. |
-| **Rank** | Browse overall and task-focused rankings with visible sort direction, evidence-aware eligibility, and plain-language guidance. |
-| **Find** | Answer three focused questions to receive a deterministic, explainable shortlist shaped by use case, priorities, requirements, and budget. |
-| **Price** | Compare reviewed API rates and calculate a specific token workload where the required pricing data is available. |
-| **Verify** | Follow sources, retrieval dates, confidence, methodology, and missing-data states instead of treating a score as unquestionable. |
+> [!NOTE]
+> **Accessible, Resilient UI Architecture**
+> The interface is fully responsive, theme-aware (dark/light), keyboard-accessible, and respects `prefers-reduced-motion`. Static content remains complete and readable without JavaScript; interactive filtering, comparisons, recommendations, and calculation controls use focused React islands.
 
-The interface is responsive, theme-aware, keyboard-accessible, and respects reduced-motion preferences. Static content remains useful without JavaScript; interactive filtering, comparisons, recommendations, and calculation controls use focused React islands.
+---
 
-## Run it locally
+## Quick Start
 
-No API key, external account, or database is required to explore the local application. Use Node.js 24 or newer; Node.js 22.13+ is also supported by the app and lint tooling.
+### Prerequisites
+
+- **Node.js**: `24.x` recommended (`>=22.13.0` supported)
+- **npm**: `10.x` or newer
+
+> [!TIP]
+> **Zero Configuration Required**
+> No API keys, cloud accounts, or database connections are needed to run and explore Synapse locally. The app boots immediately with an offline validated catalog.
+
+### Run Locally
 
 ```sh
+# Clone the repository
+git clone https://github.com/D-Flint/ai-model-web.git
+cd ai-model-web
+
+# Install dependencies
 npm install
+
+# Start local Astro development server
 npm run dev
 ```
 
-Open the address Astro prints in the terminal (normally [http://localhost:4321](http://localhost:4321)).
+Open [http://localhost:4321](http://localhost:4321) in your browser to explore the application.
 
-For a production-like local build:
+### Production Build & Preview
 
 ```sh
+# Build static assets and edge worker bundles
 npm run build
+
+# Preview the production build locally
 npm run preview
 ```
 
-`npm run build` automatically prepares the generated comparison artifacts required by the Cloudflare configuration.
+`npm run build` automatically pre-computes comparison artifacts required by the Cloudflare Workers configuration.
 
-## Data you can inspect
+---
 
-Synapse keeps different kinds of information separate so the UI does not blur a fact, a test result, and an estimate into the same claim.
+## Data Integrity & Trust
 
-| Kind | Used for | What is retained |
-| --- | --- | --- |
-| **Provider facts** | Availability, modalities, context, and reviewed API pricing | Source URL, publisher, source type, retrieval date, and verification date where available. |
-| **Public evaluations** | Capability evidence and rankings | Raw value, original scale, normalized 0–100 value, source, and evaluation date. |
-| **Derived scores** | Overall and task-specific comparisons | Methodology version, supporting evidence, update date, and confidence. |
-| **Estimates** | A user-entered API workload | Inputs, pricing scope, and unsupported-rate handling. Missing data stays unavailable. |
+Synapse keeps different kinds of information explicitly partitioned so the interface never blurs a verifiable provider fact, an external evaluation, and an estimated cost into the same claim.
 
-At runtime, the app validates `src/data/verifiedModels.json` and selects its current eligible catalog. If that file is absent, invalid, or empty, it falls back to explicitly fictional local fixtures; those fixtures have mock provenance and zero confidence. The fallback exists to keep development usable, not to make a claim about real AI products.
+| Information Tier       | What It Informs                                                  | Retained Provenance & Guardrails                                                        |
+| :--------------------- | :--------------------------------------------------------------- | :-------------------------------------------------------------------------------------- |
+| **Provider Facts**     | Modalities, context limits, availability, and reviewed API rates | Direct publisher URL, source type, retrieval timestamp, and verification date.          |
+| **Public Evaluations** | Capability evidence and specialized rankings                     | Original benchmark value, native scale, normalized 0–100 score, source, and date.       |
+| **Derived Scores**     | Overall capability and task-specific rankings                    | Methodology version, supporting evidence references, update date, and confidence level. |
+| **Estimates**          | User-entered token workload cost calculations                    | User inputs, pricing scope, and explicit missing-rate indicators. Never assumed free.   |
 
-The pricing interface uses a separate reviewed-pricing boundary. Legacy ingestion prices are not automatically published as current rates, and unavailable pricing is never treated as free. Review the in-app methodology and [pricing methodology](docs/pricing-methodology.md) before using any rate for a purchase decision.
+### Data Provenance Guarantees
 
-## How the project is organized
+- **Runtime Catalog**: At runtime, the application validates `src/data/verifiedModels.json` using strict Zod schemas. If absent, invalid, or empty, it safely falls back to explicitly labeled local fixtures with zero confidence.
+- **Reviewed Pricing Boundary**: Ingestion-stage price hints are not published automatically. The pricing interface requires reviewed rates; unverified pricing is displayed as unavailable rather than zero.
+- **Inspectable Methodology**: See the [Pricing Methodology](docs/pricing-methodology.md) and [Data Pipeline Guide](docs/data-pipeline.md) for full calculation formulas and schemas.
+
+---
+
+## Architecture
+
+Synapse combines the speed and SEO of Astro server-rendered pages with lightweight React 19 islands where interactive client state is needed.
 
 ```text
-src/
-├── pages/       Astro routes, SEO content, and API endpoints
-├── layouts/     Shared document shell and metadata
-├── components/  Domain-focused Astro components and React islands
-├── data/        Validated catalog inputs, scoring configuration, and sources
-├── lib/         Validation, scoring, rankings, comparisons, and recommendations
-├── pipeline/    Source adapters, normalization, confidence, and catalog assembly
-└── db/          Drizzle schema, migrations, and optional PostgreSQL persistence
-
-scripts/         Import, refresh, scoring, persistence, and comparison preparation
-tests/           Vitest domain tests plus Python browser-flow checks
-docs/            Operational guides, methodology, and implementation notes
-public/          Static assets, logos, favicon, and crawler policy
+ai-model-web/
+├── src/
+│   ├── pages/         Astro routes, SEO content, and dynamic comparison endpoints
+│   ├── layouts/       Root HTML shell, navigation, theme switching, and metadata
+│   ├── components/    Astro presentation layouts and interactive React islands
+│   ├── data/          Validated catalog schemas, scoring configurations, and sources
+│   ├── lib/           Scoring algorithms, rankings, comparisons, and recommendations
+│   ├── pipeline/      Source adapters, normalization, confidence scoring, and assembly
+│   └── db/            Drizzle ORM schema, migrations, and PostgreSQL persistence
+├── scripts/           Catalog ingestion, scoring updates, and artifact pre-computation
+├── tests/             Vitest unit/integration suites and Python browser flow checks
+├── docs/              Methodology specifications, operational guides, and architectural notes
+└── public/            Brand assets, provider logos, favicon, and crawler policy
 ```
 
-Astro owns routes, layouts, metadata, and server-rendered content. React is reserved for interaction-heavy islands such as the model explorer, comparison builder, finder, rankings, and cost calculator. Zod schemas validate catalog data before it is selected for display; Drizzle can persist immutable, content-deduplicated snapshots to PostgreSQL when a database is configured.
+### Technology Stack
 
-## Development commands
+| Layer                     | Technologies                                                                       | Role                                                                     |
+| :------------------------ | :--------------------------------------------------------------------------------- | :----------------------------------------------------------------------- |
+| **Core Framework**        | [Astro 5](https://astro.build)                                                     | Route handling, static site generation, metadata, and HTML shells        |
+| **Interactive Islands**   | [React 19](https://react.dev)                                                      | Comparison matrix, filter bars, finder wizard, and price calculator      |
+| **Styling**               | [Tailwind CSS v4](https://tailwindcss.com)                                         | Responsive utility styling and CSS custom property theming               |
+| **Type Safety & Schemas** | [TypeScript 5.7](https://www.typescriptlang.org/), [Zod](https://zod.dev)          | End-to-end type safety and runtime schema validation                     |
+| **Database & ORM**        | [Drizzle ORM](https://orm.drizzle.team), [PostgreSQL](https://www.postgresql.org/) | Immutable snapshot persistence and versioned catalog storage (optional)  |
+| **Edge Deployment**       | [Cloudflare Workers](https://workers.cloudflare.com/)                              | Hybrid rendering for static pages and on-demand `/compare/[pair]` routes |
 
-| Command | Purpose |
-| --- | --- |
-| `npm run dev` | Start the Astro development server. |
-| `npm run build` | Prepare comparison data and create the production build. |
-| `npm run preview` | Serve the production output locally. |
-| `npm run check` | Run Astro and strict TypeScript diagnostics. |
-| `npm run lint` | Run ESLint and the repository Prettier check. |
-| `npm run format` | Format supported source, test, script, and configuration files. |
-| `npm test` | Run the Vitest domain and data-integrity suite. |
-| `npm run test:browser` | Run the Python browser-flow suite against a running local server. |
-| `npm run test:pricing:browser` | Exercise pricing, browse, comparison, finder, and mobile pricing flows. |
-| `npm run test:cloudflare` | Check Cloudflare comparison-route behavior. |
+---
 
-The browser suites require Python, Playwright, a Chromium installation, and a running local server. Install those browser prerequisites with:
+## Development Commands
+
+### Core Workflows
+
+| Command           | Action                                                                 |
+| :---------------- | :--------------------------------------------------------------------- |
+| `npm run dev`     | Start the Astro development server with hot reloading.                 |
+| `npm run build`   | Prepare comparison pre-computations and build for production.          |
+| `npm run preview` | Serve the production build locally for verification.                   |
+| `npm run check`   | Run Astro checks and strict TypeScript type-checking (`tsc --noEmit`). |
+| `npm run lint`    | Run ESLint and Prettier checks across the codebase.                    |
+| `npm run format`  | Auto-format source code, tests, scripts, and configurations.           |
+
+### Testing & Verification
+
+| Command                        | Action                                                                   |
+| :----------------------------- | :----------------------------------------------------------------------- |
+| `npm test`                     | Run the Vitest unit, domain logic, and data-integrity test suite.        |
+| `npm run test:browser`         | Execute Python Playwright browser flow tests against a running server.   |
+| `npm run test:pricing:browser` | Test pricing flows, model comparison, finder wizard, and mobile layouts. |
+| `npm run test:cloudflare`      | Verify Cloudflare Workers comparison route pre-generation behavior.      |
+
+> [!NOTE]
+> Browser test suites require Python, Playwright, and Chromium:
+>
+> ```sh
+> pip install playwright
+> python -m playwright install chromium
+> ```
+
+### Catalog & Ingestion Pipeline
+
+Synapse provides granular ingestion scripts as well as a full pipeline runner:
+
+| Command                          | Target Ingestion Source                                                       |
+| :------------------------------- | :---------------------------------------------------------------------------- |
+| `npm run data:refresh`           | Execute the complete ingestion, normalization, and scoring pipeline.          |
+| `npm run data:openrouter`        | Ingest OpenRouter metadata, modalities, and pricing inputs.                   |
+| `npm run data:lmarena`           | Ingest LMSYS Chatbot Arena human evaluation scores.                           |
+| `npm run data:swebench`          | Ingest SWE-bench coding capability benchmarks.                                |
+| `npm run data:livebench`         | Refresh the LiveBench benchmark evaluation snapshot.                          |
+| `npm run data:catalog:livebench` | Filter and select the eligible LiveBench model catalog.                       |
+| `npm run data:speed`             | Refresh OpenRouter token throughput and latency metrics.                      |
+| `npm run data:official`          | Verify model specifications against official provider documentation.          |
+| `npm run data:scores`            | Recalculate derived scores using current evidence and scoring weights.        |
+| `npm run data:import -- <file>`  | Validate and archive an external catalog JSON snapshot to `src/data/history`. |
+
+### Database Persistence (Optional)
+
+When a PostgreSQL database is configured via `DATABASE_URL`:
 
 ```sh
-pip install playwright
-python -m playwright install chromium
+npm run db:migrate                       # Apply Drizzle migrations
+npm run data:persist -- <catalog.json>   # Persist reviewed catalog snapshot
+npm run data:pricing:persist             # Persist reviewed API pricing snapshot
 ```
 
-Screenshots and generated browser artifacts are written to the ignored `artifacts/` directory. Set `ASTRA_TEST_URL` to point a browser test at a different local address.
+---
 
-## Environment variables
+## Environment Variables
 
-Copy [.env.example](.env.example) to `.env` and set only the values needed for the workflow you are running. Never commit secrets.
+Copy [`.env.example`](.env.example) to `.env` and configure only the variables needed for your specific workflow. Never commit secrets to version control.
 
-| Variable | Required | Purpose |
-| --- | --- | --- |
-| `DATABASE_URL` | No | PostgreSQL connection used only by database migrations and persistence scripts. Workers serve prepared catalog assets rather than connecting to the database per request. |
-| `OPENROUTER_API_KEY` | No | Raises rate limits for the OpenRouter catalog endpoint. |
-| `HF_TOKEN` | No | Enables access to gated Hugging Face datasets or higher access limits where applicable. |
-| `SITE_URL` | Production builds | Actual HTTPS origin used to create canonical URLs and sitemap locations. Leave it unset locally. |
+| Variable             | Required   | Default                 | Purpose                                                                                                  |
+| :------------------- | :--------- | :---------------------- | :------------------------------------------------------------------------------------------------------- |
+| `SITE_URL`           | Production | _None_                  | Canonical origin used to generate sitemaps and metadata tags. Leave unset in local development.          |
+| `DATABASE_URL`       | Optional   | _None_                  | PostgreSQL connection string for Drizzle migrations and immutable persistence. Not needed for local dev. |
+| `OPENROUTER_API_KEY` | Optional   | _None_                  | Authentication key to bypass rate limits during OpenRouter catalog ingestion.                            |
+| `HF_TOKEN`           | Optional   | _None_                  | Hugging Face user token to access gated evaluation datasets.                                             |
+| `ASTRA_TEST_URL`     | Optional   | `http://localhost:4321` | Overrides target address for Playwright browser test suites.                                             |
 
-## Catalog and data workflows
+---
 
-### Validate and archive an import
+## Quality & Deployment
 
-Supply a JSON array that matches `CatalogModel`:
+### Pre-Flight Verification
+
+Before submitting changes or deploying updates, ensure all quality checks pass cleanly:
 
 ```sh
-npm run data:import -- path/to/catalog.json
+npm test          # Vitest domain and data validation
+npm run check     # Astro & TypeScript diagnostic check
+npm run lint      # ESLint and Prettier formatting validation
+npm run build     # Production build & comparison bundle generation
 ```
 
-The import process validates shape, provenance references, evidence coverage, score bounds and consistency, and slug uniqueness. It archives a dated, content-hashed snapshot under `src/data/history` using exclusive creation; it does not overwrite the active catalog or an existing historical snapshot. Structural validation is not a claim that an external source is true—source review remains necessary.
+### Cloudflare Workers Deployment
 
-### Refresh source inputs
-
-The repository includes targeted data commands as well as an end-to-end refresh:
+Synapse is configured for deployment to **Cloudflare Workers**. The static pages are served from the edge, while dynamic comparison pairs (`/compare/[pair]`) are rendered on demand.
 
 ```sh
-npm run data:openrouter          # catalog metadata and available pricing inputs
-npm run data:lmarena             # public LMSYS Chatbot Arena inputs
-npm run data:swebench            # SWE-bench inputs
-npm run data:official            # provider-spec verification workflow
-npm run data:livebench           # LiveBench snapshot refresh
-npm run data:catalog:livebench   # select the eligible LiveBench catalog
-npm run data:speed               # OpenRouter throughput refresh
-npm run data:scores              # derive configured scores
-npm run data:refresh             # run the complete ingestion pipeline
+npm run deploy    # Executes 'npm run build' followed by 'wrangler deploy'
 ```
 
-`npm run data:refresh` writes the validated catalog to `src/data/verifiedModels.json`. If `DATABASE_URL` is set, it also attempts optional PostgreSQL persistence. Refreshing data is a source-review workflow: check provenance, freshness, benchmark compatibility, and resulting diffs before publishing a change.
+> [!CAUTION]
+> **Crawler Indexing Policy**
+> The included `public/robots.txt` disallows search crawler indexing (`User-agent: * Disallow: /`). Do not remove this boundary until catalog data review and claims are formally validated for public release. For configuration details, see the [Cloudflare Workers Guide](docs/cloudflare-workers.md).
 
-### Persist reviewed data
+---
 
-For an explicitly reviewed catalog or pricing snapshot, configure `DATABASE_URL` and run the relevant command:
+## Documentation
 
-```sh
-npm run db:migrate
-npm run data:persist -- path/to/reviewed-catalog.json
-npm run data:pricing:persist
-```
+Detailed architectural and operational documentation is available in [`docs/`](docs/):
 
-The database schema separates providers, models, aliases, sources, benchmark results, current facts and prices, derived scores, score history, and catalog snapshots. See [data-pipeline.md](docs/data-pipeline.md) for source adapters, normalization, schema detail, and troubleshooting.
+- [Architecture & Design](docs/implementation-design.md) — Route map, state boundaries, and UX constraints.
+- [Data Pipeline](docs/data-pipeline.md) — Sources, adapters, normalization formulas, and database schema.
+- [Pricing Methodology](docs/pricing-methodology.md) — Pricing publication boundaries, currency handling, and calculator scope.
+- [Cloudflare Workers Guide](docs/cloudflare-workers.md) — Deployment setup, worker configuration, and rollbacks.
+- [Data Refresh Plan](docs/PLAN_DATA_REFRESH_WORKFLOW.md) — Automation strategy and refresh cycle design.
+- [Verification Record](docs/verification.md) — Test logs, validation benchmarks, and known limitations.
+- [Session Log](SESSION_LOG.md) — Concise log of repository changes, implementation attempts, and handoffs.
 
-## Quality and deployment
-
-Before opening a pull request or publishing refreshed data, run the checks relevant to the change:
-
-```sh
-npm test
-npm run check
-npm run lint
-npm run build
-```
-
-The production target is Cloudflare Workers. `/compare/[pair]` is rendered on demand; the rest of the application is static. Set `SITE_URL` during the build, configure the Worker name in `wrangler.jsonc`, then deploy with:
-
-```sh
-npm run deploy
-```
-
-Deployment authentication and Cloudflare account configuration are intentionally external to this repository. The included crawler policy blocks indexing; do not remove that protection until catalog claims and source review are ready for a public launch. For setup, validation, rollback, and known boundaries, read the [Cloudflare Workers guide](docs/cloudflare-workers.md).
-
-## Further reading
-
-- [Implementation design](docs/implementation-design.md) — route map, interaction boundaries, and original design constraints.
-- [Data pipeline](docs/data-pipeline.md) — sources, ingestion stages, normalization, confidence, and persistence.
-- [Pricing methodology](docs/pricing-methodology.md) — reviewed-rate publication rules and calculator scope.
-- [Cloudflare Workers guide](docs/cloudflare-workers.md) — deployment configuration and rollback.
-- [Data-refresh plan](docs/PLAN_DATA_REFRESH_WORKFLOW.md) — proposed automation; no scheduled refresh is active.
-- [Verification notes](docs/verification.md) — historical local validation record and known limitations.
-- [Session log](SESSION_LOG.md) — concise record of implementation work and handoffs.
+---
 
 ## License
 
-Synapse is licensed under [AGPL-3.0-only](LICENSE). The repository is available at [D-Flint/ai-model-web](https://github.com/D-Flint/ai-model-web).
+Synapse is open-source software licensed under the [AGPL-3.0 License](LICENSE).
+Maintained by [D-Flint](https://github.com/D-Flint) &bull; Repository: [D-Flint/ai-model-web](https://github.com/D-Flint/ai-model-web).
