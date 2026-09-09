@@ -385,3 +385,13 @@
 - Current state: `.model-grid` and `.explorer-grid` render as 1 column on mobile viewports (<= 767px) with comfortable padding and natural text flow.
 - Exact next step: User verifies mobile card layout; wait for user verification.
 
+## 2026-09-09 — Push project to GitHub
+
+- Objective: Push the committed project history to the configured GitHub repository.
+- Files changed: `SESSION_LOG.md`.
+- Attempts: 2 push attempts; the first was blocked by sandbox network policy, and the second succeeded with approved network access.
+- Failures/causes: Initial `git push` could not connect to `github.com:443` from the sandbox.
+- Tests: Not run; this task only synchronized existing commits.
+- Commit: Pending for this session-log update.
+- Current state: `origin/main` is synchronized with local `main`; three pre-existing untracked files remain intentionally untouched.
+- Exact next step: User can verify the repository on GitHub; obtain a domain later if Cloudflare hosting is still desired.
