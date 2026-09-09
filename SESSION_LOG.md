@@ -407,3 +407,13 @@
 - Current state: Clean workspace, expanded .gitignore, clean git status, ready for push to `origin/main`.
 - Exact next step: Complete clean push to GitHub and await user verification.
 
+## 2026-09-09 — Fix Cloudflare clean-build comparison artifact generation
+
+- Objective: Ensure Cloudflare clean builds generate ignored comparison artifacts before Astro resolves imports.
+- Files changed: `package.json`, `SESSION_LOG.md`.
+- Attempts: 1 surgical patch and 2 verification runs.
+- Failures/causes: The first local build reached the fixed code path but was blocked by Wrangler profile-directory permissions; the elevated rerun completed successfully.
+- Tests: `npm run build` passed; `npm run check` passed with 0 errors, warnings, or hints; `git diff --check` passed.
+- Commit: Pending for this fix.
+- Current state: `prebuild` runs `data:prepare-comparisons`, generating 30 comparison records in clean Cloudflare environments without tracking derived artifacts.
+- Exact next step: Redeploy from `main` in Cloudflare and verify the deployment preview.

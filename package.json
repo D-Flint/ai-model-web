@@ -7,6 +7,7 @@
     "precheck": "wrangler types",
     "data:prepare-comparisons": "tsx scripts/prepare-comparisons.ts",
     "deploy": "npm run build && wrangler deploy",
+    "prebuild": "npm run data:prepare-comparisons",
     "test:cloudflare": "python tests/cloudflare_comparisons.py",
     "dev": "astro dev",
     "build": "astro build",
