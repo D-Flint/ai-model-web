@@ -326,6 +326,17 @@
 - Attempts: 1 design and self-review pass.
 - Failures/causes: The product brief is deleted in the working tree, so its committed `HEAD` version was used without restoring the user's deletion. Live browser inspection was unavailable because the local Astro dev server exited before becoming ready; the preceding audit used source inspection and direct runtime probes.
 - Tests: Design checked against the approved redesign prompt and current catalog coverage; no production code changed.
-- Commit: Pending local commit.
+- Commit: `a700483` (`docs: define model finder decision engine`).
 - Current state: The approved design now defines exact metric mappings, eligibility rules, missing-data behavior, formulas, result selection, UI states, and tests. Implementation has not started.
 - Exact next step: User reviews the written spec, then implementation planning and implementation can begin.
+
+## 2026-09-09 — Rebuild the Model Finder decision engine
+
+- Objective: Implement the approved consumer-first Model Finder with multi-use intent, explicit priorities, hard requirements, strict/preferred budgets, evidence-aware scoring, confidence, explainable result roles, and a responsive accessible flow.
+- Files changed: `src/components/ModelFinder.tsx`, `src/data/canonicalModels.ts`, `src/data/modelFinderConfig.ts`, `src/data/modelRoles.ts`, `src/data/models.ts`, `src/lib/catalogSchema.ts`, `src/lib/modelFinder.ts`, `src/pages/find.astro`, `src/pipeline/types.ts`, `src/styles/global.css`, `tests/browser_flows.py`, `tests/modelFinder.test.ts`, `tests/model_finder_browser.py`, `SESSION_LOG.md`.
+- Attempts: 1 implementation pass, 2 interaction corrections, and 1 contrast correction.
+- Failures/causes: Custom checkbox markers initially intercepted pointer input; pointer ownership was corrected. Selected rows initially missed AA text contrast in light mode; their description color was strengthened. Sandboxed Wrangler could not write its profile log, so the approved production build ran outside the sandbox. The static browser harness required `dist/client`; a flaky noninteractive mobile load was stabilized with `domcontentloaded`. Impeccable reported only five pre-existing global stylesheet warnings outside this feature.
+- Tests: Vitest passed 146/146 across 15 files, including 15 focused decision-engine tests; `npm run check` passed with 0 errors, warnings, or hints; `npm run lint` passed; production build passed; Python browser tests compiled; focused Playwright passed selection limits, importance, disabled evidence states, priorities, hard requirements, preferred/free budgets, explanations, comparison handoff, result focus, light/dark WCAG A/AA/2.1 AA checks, and 320–390 px overflow checks; `git diff --check` passed.
+- Commit: `2461245` (`feat: rebuild model finder decision engine`).
+- Current state: The Finder now applies deterministic eligibility gates before scoring, renormalizes around available evidence, excludes candidates below 40% task coverage, derives query confidence from catalog confidence and evidence coverage, and returns Best Match, suitability-safe Best Value, and a measurable Alternative without inventing model facts.
+- Exact next step: User verifies `/find`; do not extend the implementation until requested.
