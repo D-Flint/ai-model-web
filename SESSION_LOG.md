@@ -10,12 +10,23 @@
 
 ## Current handoff
 
-- Objective: Ensure speed metric value in model explorer table remains on a single line so table row heights stay even.
-- Last implementation: Added `.td-speed` and `.th-speed` with `white-space: nowrap; min-width: 112px;` to `src/styles/global.css` and updated `src/components/ModelExplorer.tsx` to include `th-${col.key}` on header and `td-speed` on metric cell.
-- Tests: Browser screenshots verified across desktop viewports, `npm test` 127/127 passed, `astro check` (97 files, 0 errors, 0 warnings), `tsc --noEmit` passed, `npm run lint` clean, `npm run build` production build passed.
-- Commits: `96f619d` (`fix: prevent speed metric wrapping to maintain even table row height`).
-- Current state: Speed values stay strictly single-lined (`12–48 tok/s`, `26–229 tok/s`), table row heights are uniform across the entire explorer table.
-- Exact next step: User verifies the table layout in browser.
+- Objective: Make sure all 3 comparison tradeoff cards have identical size across all viewports.
+- Last implementation: Updated `.comparison-links` with `grid-auto-rows: 1fr`, balanced model container spans with `flex: 1 1 0; min-width: 0;`, added `flex-shrink: 0` to `.versus` and svg icons, adjusted responsive gap to `clamp(12px, 2.5vw, 20px)`, and set block line-height on `strong` titles in `src/styles/global.css`.
+- Tests: Chrome DevTools visual screenshots across mobile (375px, 410px), tablet (768px), and desktop (1280px); `npm run check` (104 files, 0 errors, 0 warnings); `npm test` (15 files, 146 passed); `npm run build` production build succeeded.
+- Commits: `02147f9` (`fix: make tradeoff comparison cards equal size across viewports`).
+- Current state: All 3 comparison cards have the exact same size, height, and balanced alignment across desktop, tablet, and mobile viewports.
+- Exact next step: User verifies the comparison card sizes in browser.
+
+## 2026-09-09 — Make comparison tradeoff cards equal size
+
+- Objective: Ensure the 3 comparison cards under "Put the tradeoffs side by side" have identical size and height across all breakpoints.
+- Files changed: `src/styles/global.css`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: Initial inspect revealed that at <= 1100px mobile/stacked viewport, `gap: 28px` starved model names of horizontal space, causing Card 1 ("Claude Fable 5.1" and "Gemini 3 Deep Think") to wrap to 2 lines (108px height) while Card 2 and 3 remained 1 line (86px height), and CSS Grid rows sized independently to content.
+- Tests: Visual verification in browser via DevTools screenshots at 375px, 410px, 768px, and 1280px; `npm run check` (104 files, 0 errors); `npm test` (146/146 passed); `npm run build` succeeded.
+- Commit: `02147f9` (`fix: make tradeoff comparison cards equal size across viewports`).
+- Current state: Committed locally; no remote push. Comparison cards are guaranteed identical dimensions at all viewports.
+- Exact next step: User verifies the tradeoff cards in browser.
 
 ## 2026-09-08 — Fix uneven table row heights from speed metric wrap
 
@@ -359,7 +370,7 @@
 - Attempts: 1 implementation pass.
 - Failures/causes: None. Previously `.model-grid` and `.explorer-grid` inherited or specified 2 columns at `<= 767px` and only collapsed to 1 column at `<= 380px`, causing all standard mobile devices (390px–430px) to render cards side-by-side with compressed text, wrapped titles, and cramped pricing rows.
 - Tests: Vitest passed 146/146 tests; `npm run check` passed 104 files with 0 errors/warnings/hints; `npm run lint` passed; visual verification via Chrome DevTools confirmed clean, spacious single-column card stacking in both dark and light modes at 390px mobile viewport.
-- Commit: Pending local commit.
+- Commit: `507f727` (`fix: make model cards single column on mobile resolution`).
 - Current state: `.model-grid` and `.explorer-grid` render as 1 column on mobile viewports (<= 767px) with comfortable padding and natural text flow.
 - Exact next step: User verifies mobile card layout; wait for user verification.
 
