@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { ProviderLogo } from './ProviderLogo';
+import { RankingSortControls } from './RankingSortControls';
 import type { RankingDirection } from '../lib/rankings';
 
 export interface IntelligenceRankingItem {
@@ -50,19 +51,12 @@ export default function IntelligenceRanking({
 
   return (
     <>
-      <div className="ranking-controls">
-        <label htmlFor="intelligence-ranking-order">Sort ranking</label>
-        <select
-          id="intelligence-ranking-order"
-          value={direction}
-          onChange={(event) =>
-            setDirection(event.target.value as RankingDirection)
-          }
-        >
-          <option value="desc">Highest to lowest</option>
-          <option value="asc">Lowest to highest</option>
-        </select>
-      </div>
+      <RankingSortControls
+        id="intelligence-ranking-order"
+        direction={direction}
+        onDirectionChange={setDirection}
+        totalCount={sortedItems.length}
+      />
 
       {sortedItems.length === 0 ? (
         <div className="panel ranking-empty" role="status">

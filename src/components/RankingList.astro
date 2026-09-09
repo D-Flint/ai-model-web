@@ -142,44 +142,54 @@ const ranked = rankModels(baseModels, 'overall');
       client:load
     />
   ) : (
-    <div class="ranking-list">
-      {ranked.map((model, index) => (
-        <article class="panel ranking-row">
-          <>
-            <span class="rank-position">
-              {String(index + 1).padStart(2, '0')}
-            </span>
-            <ModelMark model={model} />
-            <div>
-              <>
-                <h3>
-                  <a href={`/models/${model.slug}`}>{model.name}</a>
-                </h3>
-                <p>
-                  {model.description} Choose it for{' '}
-                  {model.tags.slice(0, 2).join(' and ').toLowerCase()} in this
-                  sample.
-                </p>
-                <div class="rank-notes">
-                  <>
-                    <span>Tradeoff: {model.weaknesses[0].toLowerCase()}</span>
-                    <a href={`/compare?models=${model.slug}`}>
-                      Add to comparison
-                    </a>
-                  </>
-                </div>
-              </>
-            </div>
-            <a
-              class="score-number"
-              href={`/models/${model.slug}#score-overall`}
-            >
-              {model.scores.overall}
-              <small>{metricLabels.overall} / 100</small>
-            </a>
-          </>
-        </article>
-      ))}
-    </div>
+    <>
+      <div class="ranking-controls">
+        <div class="ranking-controls-meta">
+          <span class="ranking-count-badge">
+            <span class="ranking-count-dot" aria-hidden="true" />
+            {ranked.length} verified models
+          </span>
+        </div>
+      </div>
+      <div class="ranking-list">
+        {ranked.map((model, index) => (
+          <article class="panel ranking-row">
+            <>
+              <span class="rank-position">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <ModelMark model={model} />
+              <div>
+                <>
+                  <h3>
+                    <a href={`/models/${model.slug}`}>{model.name}</a>
+                  </h3>
+                  <p>
+                    {model.description} Choose it for{' '}
+                    {model.tags.slice(0, 2).join(' and ').toLowerCase()} in this
+                    sample.
+                  </p>
+                  <div class="rank-notes">
+                    <>
+                      <span>Tradeoff: {model.weaknesses[0].toLowerCase()}</span>
+                      <a href={`/compare?models=${model.slug}`}>
+                        Add to comparison
+                      </a>
+                    </>
+                  </div>
+                </>
+              </div>
+              <a
+                class="score-number"
+                href={`/models/${model.slug}#score-overall`}
+              >
+                {model.scores.overall}
+                <small>{metricLabels.overall} / 100</small>
+              </a>
+            </>
+          </article>
+        ))}
+      </div>
+    </>
   )
 }

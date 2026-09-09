@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { ProviderLogo } from './ProviderLogo';
+import { RankingSortControls } from './RankingSortControls';
 import type { RankingDirection } from '../lib/rankings';
 
 export interface SpeedRankingItem {
@@ -43,19 +44,12 @@ export default function SpeedRanking({ items }: { items: SpeedRankingItem[] }) {
 
   return (
     <>
-      <div className="ranking-controls">
-        <label htmlFor="speed-ranking-order">Sort ranking</label>
-        <select
-          id="speed-ranking-order"
-          value={direction}
-          onChange={(event) =>
-            setDirection(event.target.value as RankingDirection)
-          }
-        >
-          <option value="desc">Highest to lowest</option>
-          <option value="asc">Lowest to highest</option>
-        </select>
-      </div>
+      <RankingSortControls
+        id="speed-ranking-order"
+        direction={direction}
+        onDirectionChange={setDirection}
+        totalCount={sortedItems.length}
+      />
 
       {sortedItems.length === 0 ? (
         <div className="panel ranking-empty" role="status">

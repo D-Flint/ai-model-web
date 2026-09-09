@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { formatPrice } from '../lib/apiPricing';
 import type { RankingDirection } from '../lib/rankings';
 import { ProviderLogo } from './ProviderLogo';
+import { RankingSortControls } from './RankingSortControls';
 
 export interface MetricRankingItem {
   slug: string;
@@ -57,28 +58,13 @@ export default function MetricRanking({
 
   return (
     <>
-      <div className="ranking-controls">
-        <label htmlFor={`${metricAnchor}-ranking-order`}>Sort ranking</label>
-        <select
-          id={`${metricAnchor}-ranking-order`}
-          value={direction}
-          onChange={(event) =>
-            setDirection(event.target.value as RankingDirection)
-          }
-        >
-          {isPrice ? (
-            <>
-              <option value="asc">Lowest to highest</option>
-              <option value="desc">Highest to lowest</option>
-            </>
-          ) : (
-            <>
-              <option value="desc">Highest to lowest</option>
-              <option value="asc">Lowest to highest</option>
-            </>
-          )}
-        </select>
-      </div>
+      <RankingSortControls
+        id={`${metricAnchor}-ranking-order`}
+        direction={direction}
+        onDirectionChange={setDirection}
+        totalCount={sortedItems.length}
+        isPrice={isPrice}
+      />
 
       {sortedItems.length === 0 ? (
         <div className="panel ranking-empty" role="status">
