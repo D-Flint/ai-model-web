@@ -425,6 +425,6 @@
 - Attempts: 2 documentation patch attempts; the first combined delete/add patch was rejected by the patch tool, then the README was replaced in two valid patch operations.
 - Failures/causes: The repository product-brief file referenced by prior documentation is absent, so the README removes that broken link and bases its claims on the current application, scripts, configuration, and maintained guides.
 - Tests: `git diff --check` passed; 12 local Markdown links in `README.md` resolve; no application check was needed for this documentation-only change.
-- Commit: Pending local commit.
+- Commit: `6e5a14f` (`docs: refresh project readme`).
 - Current state: README now presents the decision journey, feature overview, quick start, data boundaries, architecture, commands, environment variables, data workflows, Cloudflare deployment, and documentation index. The separately approved design note is committed as `64d9e7a`.
-- Exact next step: Commit the README and session-log update locally, then wait for user verification.
+- Exact next step: User verifies the refreshed README; no further implementation is planned.
