@@ -340,3 +340,14 @@
 - Commit: `2461245` (`feat: rebuild model finder decision engine`).
 - Current state: The Finder now applies deterministic eligibility gates before scoring, renormalizes around available evidence, excludes candidates below 40% task coverage, derives query confidence from catalog confidence and evidence coverage, and returns Best Match, suitability-safe Best Value, and a measurable Alternative without inventing model facts.
 - Exact next step: User verifies `/find`; do not extend the implementation until requested.
+
+## 2026-09-09 — Add verified Google Gemini API pricing and provenance
+
+- Objective: Integrate verified, authoritative per-1M input/output/cached token pricing and context limits for Google Gemini models from Google AI Developer Docs (`https://ai.google.dev/pricing`) into the pricing registry, models catalog, and rankings.
+- Files changed: `src/data/officialProviders.ts`, `src/data/verifiedModels.json`, `tests/apiPricing.test.ts`, `tests/speedRanking.test.ts`, `tests/intelligenceRanking.test.ts`, `tests/remainingRankings.test.ts`, `SESSION_LOG.md`.
+- Attempts: 1 implementation and data-refresh pass.
+- Failures/causes: Prettier flagged formatting in generated `verifiedModels.json` (`npx prettier --write` resolved it); ranking unit tests hardcoded `asOf = '2026-09-08'` which failed the `isFresh` test against newly refreshed data retrieved at `'2026-09-09'` (updated test `asOf` to `'2026-09-09'`).
+- Tests: Vitest passed 146/146 across 15 files; `npx astro check && npx tsc --noEmit` passed 104 files with 0 errors, 0 warnings, 0 hints; `npm run lint` passed; production `npm run build` completed cleanly in 19.93s; static routes pre-rendered successfully.
+- Commit: `8d596f1` (`feat: add verified official Google Gemini API pricing and provenance`).
+- Current state: 11 active Google Gemini models (Gemini 3.8 Flash, 3.7 Flash, 3.6 Flash, 3.5 Flash, 3.5 Flash-Lite, 3.1 Pro, 3.1 Flash-Lite, 3 Flash, 2.5 Pro, 2.5 Flash, 2.5 Flash-Lite) now feature verified official pricing, cache storage rates, tiered context pricing, and authoritative provenance metadata.
+- Exact next step: User verifies the updated Gemini model pricing on `/pricing` and `/models`; wait for user verification before further changes.
