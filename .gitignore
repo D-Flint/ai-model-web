@@ -12,6 +12,13 @@ src/data/generated/
 public/_comparison-data/
 worker-configuration.d.ts
 
+# Local documentation, learning notes, and agent assets
+/docs/
+/.learning/
+/.learnings/
+/.agent/
+/.agents/
+
 # Environment & Secrets
 .env
 .env.*
