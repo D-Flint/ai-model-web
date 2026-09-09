@@ -164,6 +164,6 @@ describe('pricing provenance and comparisons', () => {
     expect(
       Object.values(verifiedApiPricing).every((p) => p.benchmarkCost === null),
     ).toBe(true);
-    expect(allModels.filter((m) => m.apiPricing)).toHaveLength(12);
+    expect(allModels.filter((m) => m.apiPricing)).toHaveLength(20);
   });
 });

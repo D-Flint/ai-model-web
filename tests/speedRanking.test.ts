@@ -14,7 +14,7 @@ import {
   rankSpeedModels,
 } from '../src/lib/rankings';
 
-const asOf = '2026-09-08';
+const asOf = '2026-09-09';
 const baseModel: CatalogModel = (() => {
   const model = allModels.find(
     (candidate) =>
