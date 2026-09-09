@@ -13,6 +13,7 @@ import { MOONSHOT_MODELS } from './models/moonshot';
 import { MINIMAX_MODELS } from './models/minimax';
 import { TENCENT_MODELS } from './models/tencent';
 import { ZAI_MODELS } from './models/zai';
+import { knownModelRoles } from './modelRoles';
 
 export {
   OPENAI_MODELS,
@@ -145,7 +146,7 @@ export const PROVIDERS_CONFIG = [
   },
 ];
 
-export const CANONICAL_MODELS: CanonicalModelConfig[] = [
+const canonicalModels: CanonicalModelConfig[] = [
   ...OPENAI_MODELS,
   ...ANTHROPIC_MODELS,
   ...GOOGLE_MODELS,
@@ -161,3 +162,10 @@ export const CANONICAL_MODELS: CanonicalModelConfig[] = [
   ...TENCENT_MODELS,
   ...ZAI_MODELS,
 ];
+
+export const CANONICAL_MODELS: CanonicalModelConfig[] = canonicalModels.map(
+  (model) => ({
+    ...model,
+    roles: model.roles ?? knownModelRoles[model.slug],
+  }),
+);

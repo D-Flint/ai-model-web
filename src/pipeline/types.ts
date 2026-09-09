@@ -198,7 +198,13 @@ export type ModelRole =
   | 'coding'
   | 'agentic'
   | 'vision'
-  | 'safety-classifier';
+  | 'safety-classifier'
+  | 'moderation'
+  | 'embedding'
+  | 'reranker'
+  | 'image-generation'
+  | 'speech'
+  | 'specialized';
 
 export interface LiveBenchBenchmark {
   release: string;

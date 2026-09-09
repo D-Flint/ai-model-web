@@ -1,88 +1,46 @@
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { ArrowLeft, ArrowRight, Check, ChevronRight, Info } from 'lucide-react';
 import { rateLabel } from '../lib/apiPricing';
-import { useState } from 'react';
-import { ArrowRight, ArrowLeft } from 'lucide-react';
 import type { CatalogModel } from '../lib/catalogSchema';
-import { recommend, type Budget, type Priority } from '../lib/decision';
-import type { Metric } from '../data/config';
+import {
+  defaultModelFinderRequest,
+  recommendModels,
+  type FinderRecommendation,
+  type ModelFinderRequirements,
+  type WeightedSelection,
+} from '../lib/modelFinder';
+import {
+  finderMetricLabels,
+  priorityDefinitions,
+  priorityOrder,
+  useCaseDefinitions,
+  useCaseOrder,
+  type BudgetBehavior,
+  type BudgetTier,
+  type Importance,
+  type PriorityId,
+  type UseCaseId,
+} from '../data/modelFinderConfig';
 import { ModelMark } from './ModelCard';
-const tasks: { value: Metric; label: string; description: string }[] = [
-  {
-    value: 'coding',
-    label: 'Coding',
-    description: 'Build, debug, and understand code',
-  },
-  {
-    value: 'dailyUse',
-    label: 'Daily use',
-    description: 'Questions, planning, and everyday help',
-  },
-  {
-    value: 'intelligence',
-    label: 'Study',
-    description: 'Explain ideas and work through problems',
-  },
-  {
-    value: 'writing',
-    label: 'Writing',
-    description: 'Draft, edit, and find your voice',
-  },
-  {
-    value: 'research',
-    label: 'Research',
-    description: 'Synthesize documents and information',
-  },
-  {
-    value: 'agentic',
-    label: 'Agentic workflows',
-    description: 'Complete multi-step tasks with tools',
-  },
-  {
-    value: 'vision',
-    label: 'Images and vision',
-    description: 'Understand images and charts',
-  },
-  {
-    value: 'overall',
-    label: 'A bit of everything',
-    description: 'A balanced all-round assistant',
-  },
+
+const stepLabels = ['Your work', 'Priorities', 'Requirements', 'Results'];
+const importanceOptions: Array<{ value: Importance; label: string }> = [
+  { value: 'high', label: 'High' },
+  { value: 'medium', label: 'Medium' },
+  { value: 'low', label: 'Low' },
 ];
-const priorities: { value: Priority; label: string; description: string }[] = [
+const budgetOptions: Array<{
+  value: BudgetTier;
+  label: string;
+  description: string;
+}> = [
   {
-    value: 'quality',
-    label: 'Best quality',
-    description: 'Take the time to get a stronger answer',
+    value: 'free',
+    label: 'Free API',
+    description: 'Verified zero-cost input and output',
   },
   {
-    value: 'cost',
-    label: 'Lowest cost',
-    description: 'Keep spending as low as possible',
-  },
-  {
-    value: 'speed',
-    label: 'Fastest answers',
-    description: 'Keep up with my pace',
-  },
-  {
-    value: 'value',
-    label: 'Best value',
-    description: 'Balance useful results and price',
-  },
-  {
-    value: 'reliability',
-    label: 'Most reliable',
-    description: 'Consistent results and fewer corrections',
-  },
-  {
-    value: 'balanced',
-    label: 'A balanced choice',
-    description: 'A little of everything',
-  },
-];
-const budgets: { value: Budget; label: string; description: string }[] = [
-  { value: 'free', label: 'Free', description: 'No paid API usage' },
-  {
-    value: 'cheap',
+    value: 'very-cheap',
     label: 'Very cheap',
     description: 'Up to $1 / 1M input tokens',
   },
@@ -92,210 +50,688 @@ const budgets: { value: Budget; label: string; description: string }[] = [
     description: 'Up to $5 / 1M input tokens',
   },
   {
-    value: 'any',
-    label: 'Cost is flexible',
-    description: 'Show every price range',
+    value: 'flexible',
+    label: 'Flexible',
+    description: 'No price ceiling',
   },
 ];
+const requirementOptions: Array<{
+  key: Exclude<keyof ModelFinderRequirements, 'minimumContext'>;
+  label: string;
+  description: string;
+}> = [
+  {
+    key: 'tools',
+    label: 'Tool calling',
+    description: 'Can use functions and external tools',
+  },
+  {
+    key: 'vision',
+    label: 'Vision input',
+    description: 'Can understand images and charts',
+  },
+  {
+    key: 'api',
+    label: 'API available',
+    description: 'Can be integrated into software',
+  },
+  {
+    key: 'openWeights',
+    label: 'Open weights',
+    description: 'Downloadable model weights',
+  },
+];
+
+function nextSelectionOrder<T>(selections: WeightedSelection<T>[]): number {
+  return (
+    Math.max(-1, ...selections.map((selection) => selection.selectionOrder)) + 1
+  );
+}
+
+function importanceLabel(importance: Importance): string {
+  return importanceOptions.find((option) => option.value === importance)!.label;
+}
+
+function resultLabel(category: FinderRecommendation['category']): string {
+  return {
+    'best-match': 'Best match',
+    'best-value': 'Best value',
+    alternative: 'Alternative',
+  }[category];
+}
+
+function percentWeight(value: number): string {
+  return `${Math.round(value * 100)}%`;
+}
+
 export default function ModelFinder({ models }: { models: CatalogModel[] }) {
   const [step, setStep] = useState(0);
-  const [task, setTask] = useState<Metric>('coding');
-  const [priority, setPriority] = useState<Priority>('balanced');
-  const [budget, setBudget] = useState<Budget>('any');
-  const results = recommend(models, task, priority, budget);
-  const best = results[0];
-  const value = [...results]
-    .filter((r) => r.model.slug !== best?.model.slug)
-    .sort(
-      (a, b) =>
-        (b.model.scores.costEfficiency ?? -1) -
-        (a.model.scores.costEfficiency ?? -1),
-    )[0];
-  const alternative = results.find(
-    (r) =>
-      r.model.slug !== best?.model.slug && r.model.slug !== value?.model.slug,
+  const [useCases, setUseCases] = useState<WeightedSelection<UseCaseId>[]>([
+    { id: 'coding', importance: 'high', selectionOrder: 0 },
+  ]);
+  const [priorities, setPriorities] = useState<WeightedSelection<PriorityId>[]>(
+    [],
   );
-  const picks = [best, value, alternative].filter(
-    (r): r is NonNullable<typeof r> => Boolean(r),
+  const [requirements, setRequirements] = useState<ModelFinderRequirements>({
+    ...defaultModelFinderRequest.requirements,
+  });
+  const [budgetTier, setBudgetTier] = useState<BudgetTier>('flexible');
+  const [budgetBehavior, setBudgetBehavior] =
+    useState<BudgetBehavior>('preferred');
+  const [error, setError] = useState<string | null>(null);
+  const resultHeading = useRef<HTMLHeadingElement>(null);
+
+  const request = useMemo(
+    () => ({
+      useCases,
+      priorities,
+      requirements,
+      budget: { tier: budgetTier, behavior: budgetBehavior },
+    }),
+    [budgetBehavior, budgetTier, priorities, requirements, useCases],
   );
+  const result = useMemo(
+    () => (step === 3 ? recommendModels(models, request) : null),
+    [models, request, step],
+  );
+
+  useEffect(() => {
+    if (step === 3) resultHeading.current?.focus();
+  }, [step]);
+
+  function toggleUseCase(id: UseCaseId): void {
+    setError(null);
+    setUseCases((current) => {
+      if (current.some((selection) => selection.id === id)) {
+        return current.filter((selection) => selection.id !== id);
+      }
+      if (current.length >= 3) {
+        setError('Choose up to 3 use cases. Remove one before adding another.');
+        return current;
+      }
+      return [
+        ...current,
+        {
+          id,
+          importance: 'medium',
+          selectionOrder: nextSelectionOrder(current),
+        },
+      ];
+    });
+  }
+
+  function togglePriority(id: PriorityId): void {
+    setError(null);
+    setPriorities((current) => {
+      if (current.some((selection) => selection.id === id)) {
+        return current.filter((selection) => selection.id !== id);
+      }
+      if (current.length >= 3) {
+        setError(
+          'Choose up to 3 priorities. Remove one before adding another.',
+        );
+        return current;
+      }
+      return [
+        ...current,
+        {
+          id,
+          importance: 'medium',
+          selectionOrder: nextSelectionOrder(current),
+        },
+      ];
+    });
+  }
+
+  function updateImportance<T extends UseCaseId | PriorityId>(
+    id: T,
+    importance: Importance,
+    setter: React.Dispatch<React.SetStateAction<WeightedSelection<T>[]>>,
+  ): void {
+    setter((current) =>
+      current.map((selection) =>
+        selection.id === id ? { ...selection, importance } : selection,
+      ),
+    );
+  }
+
+  function continueFromWork(): void {
+    if (useCases.length === 0) {
+      setError('Choose at least one use case to continue.');
+      return;
+    }
+    setError(null);
+    setStep(1);
+  }
+
+  function chooseBudget(tier: BudgetTier): void {
+    setBudgetTier(tier);
+    if (tier === 'free') setBudgetBehavior('strict');
+  }
+
+  function reset(): void {
+    setUseCases([{ id: 'coding', importance: 'high', selectionOrder: 0 }]);
+    setPriorities([]);
+    setRequirements({ ...defaultModelFinderRequest.requirements });
+    setBudgetTier('flexible');
+    setBudgetBehavior('preferred');
+    setError(null);
+    setStep(0);
+  }
+
   return (
-    <div className="wizard">
-      <div className="wizard-progress">
-        {['Your work', 'Your priority', 'Your budget'].map((label, i) => (
-          <span key={label} className={step >= i ? 'active' : ''}>
+    <div className="wizard finder-wizard">
+      <ol className="wizard-progress" aria-label="Model Finder progress">
+        {stepLabels.map((label, index) => (
+          <li
+            key={label}
+            className={step >= index ? 'active' : ''}
+            aria-current={step === index ? 'step' : undefined}
+          >
+            <span>{index + 1}</span>
             {label}
-          </span>
+          </li>
         ))}
-      </div>
-      <div className="panel">
-        {step < 3 ? (
-          <>
-            <fieldset>
-              <legend>
-                {
-                  [
-                    'What do you mainly want AI for?',
-                    'What matters most to you?',
-                    'What is your budget preference?',
-                  ][step]
-                }
-              </legend>
-              <p className="wizard-description">
-                {
-                  [
-                    'Choose the task you come back to most often.',
-                    'We’ll use this to weigh the tradeoffs.',
-                    'Filter by standard input price per million tokens.',
-                  ][step]
-                }
-              </p>
-              <div className="option-grid">
-                {step === 0
-                  ? tasks.map((option) => (
-                      <label className="option-card" key={option.value}>
-                        <input
-                          type="radio"
-                          name="task"
-                          value={option.value}
-                          checked={task === option.value}
-                          onChange={() => setTask(option.value)}
-                        />
-                        <span>
-                          {option.label}
-                          <small>{option.description}</small>
-                        </span>
-                      </label>
-                    ))
-                  : step === 1
-                    ? priorities.map((option) => (
-                        <label className="option-card" key={option.value}>
-                          <input
-                            type="radio"
-                            name="priority"
-                            value={option.value}
-                            checked={priority === option.value}
-                            onChange={() => setPriority(option.value)}
-                          />
-                          <span>
-                            {option.label}
-                            <small>{option.description}</small>
-                          </span>
-                        </label>
-                      ))
-                    : budgets.map((option) => (
-                        <label className="option-card" key={option.value}>
-                          <input
-                            type="radio"
-                            name="budget"
-                            value={option.value}
-                            checked={budget === option.value}
-                            onChange={() => setBudget(option.value)}
-                          />
-                          <span>
-                            {option.label}
-                            <small>{option.description}</small>
-                          </span>
-                        </label>
-                      ))}
-              </div>
-            </fieldset>
-            <div className="wizard-actions">
-              <button
-                className="button"
-                disabled={step === 0}
-                onClick={() => setStep(step - 1)}
-              >
-                <ArrowLeft size={14} /> Back
-              </button>
-              <button
-                className="button primary"
-                onClick={() => setStep(step + 1)}
-              >
-                {step === 2 ? 'Find my matches' : 'Continue'}
-                <ArrowRight size={14} />
-              </button>
-            </div>
-          </>
-        ) : (
-          <div aria-live="polite">
-            <h2>Your shortlist, with reasons.</h2>
-            <p className="wizard-description">
-              {tasks.find((t) => t.value === task)?.label} ·{' '}
-              {priorities.find((p) => p.value === priority)?.label}. Sample
-              recommendations only.
+      </ol>
+
+      <div className="panel finder-panel">
+        {step === 0 ? (
+          <fieldset>
+            <legend>What do you use AI for?</legend>
+            <p className="wizard-description" id="work-help">
+              Select up to 3. Importance tells us where tradeoffs matter most.
             </p>
-            {!picks.length ? (
-              <div className="empty-state">
-                <h3>No models fit this budget.</h3>
-                <p>
-                  No current, comparable API rate fits this limit. Models with
-                  tiered or unavailable prices are excluded from capped budgets.
+            <div className="finder-option-list" aria-describedby="work-help">
+              {useCaseOrder.map((id) => {
+                const definition = useCaseDefinitions[id];
+                const selection = useCases.find((item) => item.id === id);
+                return (
+                  <div
+                    className={`finder-option-row${selection ? ' selected' : ''}${!definition.available ? ' disabled' : ''}`}
+                    key={id}
+                  >
+                    <label>
+                      <input
+                        type="checkbox"
+                        checked={Boolean(selection)}
+                        disabled={!definition.available}
+                        onChange={() => toggleUseCase(id)}
+                      />
+                      <span className="finder-check" aria-hidden="true">
+                        {selection ? <Check size={14} strokeWidth={3} /> : null}
+                      </span>
+                      <span className="finder-option-copy">
+                        <strong>{definition.label}</strong>
+                        <small>{definition.description}</small>
+                        {!definition.available ? (
+                          <small className="finder-unavailable">
+                            {definition.unavailableReason}
+                          </small>
+                        ) : null}
+                      </span>
+                    </label>
+                    {selection ? (
+                      <select
+                        className="importance-select"
+                        aria-label={`${definition.label} importance`}
+                        value={selection.importance}
+                        onChange={(event) =>
+                          updateImportance(
+                            id,
+                            event.target.value as Importance,
+                            setUseCases,
+                          )
+                        }
+                      >
+                        {importanceOptions.map((option) => (
+                          <option value={option.value} key={option.value}>
+                            {option.label}
+                          </option>
+                        ))}
+                      </select>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+            <p className="finder-note">
+              <Info size={15} /> Daily-use fit currently uses reasoning,
+              language, and instruction-following evidence—not an invented
+              preference score.
+            </p>
+          </fieldset>
+        ) : null}
+
+        {step === 1 ? (
+          <fieldset>
+            <legend>What matters most?</legend>
+            <p className="wizard-description" id="priority-help">
+              Choose up to 3, or leave everything unselected for a balanced
+              recommendation.
+            </p>
+            {priorities.length === 0 ? (
+              <p className="finder-balanced-status">Balanced by default</p>
+            ) : null}
+            <div
+              className="finder-option-list"
+              aria-describedby="priority-help"
+            >
+              {priorityOrder.map((id) => {
+                const definition = priorityDefinitions[id];
+                const selection = priorities.find((item) => item.id === id);
+                return (
+                  <div
+                    className={`finder-option-row${selection ? ' selected' : ''}`}
+                    key={id}
+                  >
+                    <label>
+                      <input
+                        type="checkbox"
+                        checked={Boolean(selection)}
+                        onChange={() => togglePriority(id)}
+                      />
+                      <span className="finder-check" aria-hidden="true">
+                        {selection ? <Check size={14} strokeWidth={3} /> : null}
+                      </span>
+                      <span className="finder-option-copy">
+                        <strong>{definition.label}</strong>
+                        <small>{definition.description}</small>
+                      </span>
+                    </label>
+                    {selection ? (
+                      <select
+                        className="importance-select"
+                        aria-label={`${definition.label} importance`}
+                        value={selection.importance}
+                        onChange={(event) =>
+                          updateImportance(
+                            id,
+                            event.target.value as Importance,
+                            setPriorities,
+                          )
+                        }
+                      >
+                        {importanceOptions.map((option) => (
+                          <option value={option.value} key={option.value}>
+                            {option.label}
+                          </option>
+                        ))}
+                      </select>
+                    ) : null}
+                  </div>
+                );
+              })}
+              <div className="finder-option-row disabled">
+                <div className="finder-disabled-copy">
+                  <span className="finder-check" aria-hidden="true" />
+                  <span className="finder-option-copy">
+                    <strong>Most reliable</strong>
+                    <small>
+                      Unavailable until external reliability evidence exists
+                    </small>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        ) : null}
+
+        {step === 2 ? (
+          <div className="finder-requirements">
+            <fieldset>
+              <legend>Requirements</legend>
+              <p className="wizard-description">
+                These are hard filters. A model must meet every selected item.
+              </p>
+              <div className="finder-requirement-grid">
+                {requirementOptions.map((option) => (
+                  <label className="finder-requirement" key={option.key}>
+                    <input
+                      type="checkbox"
+                      checked={requirements[option.key]}
+                      onChange={(event) =>
+                        setRequirements((current) => ({
+                          ...current,
+                          [option.key]: event.target.checked,
+                        }))
+                      }
+                    />
+                    <span>
+                      <strong>{option.label}</strong>
+                      <small>{option.description}</small>
+                    </span>
+                  </label>
+                ))}
+              </div>
+              <details className="finder-advanced">
+                <summary>
+                  Advanced requirements <ChevronRight size={15} />
+                </summary>
+                <div className="finder-advanced-content">
+                  <label className="finder-requirement">
+                    <input
+                      type="checkbox"
+                      checked={requirements.structuredOutput}
+                      onChange={(event) =>
+                        setRequirements((current) => ({
+                          ...current,
+                          structuredOutput: event.target.checked,
+                        }))
+                      }
+                    />
+                    <span>
+                      <strong>Structured output</strong>
+                      <small>Supports predictable schema-based responses</small>
+                    </span>
+                  </label>
+                  <label className="finder-field">
+                    <span>Minimum context window</span>
+                    <select
+                      value={requirements.minimumContext ?? ''}
+                      onChange={(event) =>
+                        setRequirements((current) => ({
+                          ...current,
+                          minimumContext: event.target.value
+                            ? Number(event.target.value)
+                            : null,
+                        }))
+                      }
+                    >
+                      <option value="">No minimum</option>
+                      <option value="32000">32K or more</option>
+                      <option value="128000">128K or more</option>
+                      <option value="256000">256K or more</option>
+                      <option value="1000000">1M or more</option>
+                    </select>
+                  </label>
+                </div>
+              </details>
+            </fieldset>
+
+            <fieldset className="finder-budget-section">
+              <legend>Budget</legend>
+              <p className="wizard-description">
+                Based on current standard API input price per million tokens.
+              </p>
+              <div className="finder-budget-grid">
+                {budgetOptions.map((option) => (
+                  <label
+                    className={`finder-budget-option${budgetTier === option.value ? ' selected' : ''}`}
+                    key={option.value}
+                  >
+                    <input
+                      type="radio"
+                      name="budget"
+                      value={option.value}
+                      checked={budgetTier === option.value}
+                      onChange={() => chooseBudget(option.value)}
+                    />
+                    <span>
+                      <strong>{option.label}</strong>
+                      <small>{option.description}</small>
+                    </span>
+                  </label>
+                ))}
+              </div>
+              <div className="finder-budget-behavior">
+                <span>Budget behavior</span>
+                <label>
+                  <input
+                    type="radio"
+                    name="budget-behavior"
+                    checked={budgetBehavior === 'strict'}
+                    onChange={() => setBudgetBehavior('strict')}
+                  />
+                  Strict
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="budget-behavior"
+                    checked={budgetBehavior === 'preferred'}
+                    disabled={budgetTier === 'free'}
+                    onChange={() => setBudgetBehavior('preferred')}
+                  />
+                  Preferred
+                </label>
+              </div>
+              {budgetTier === 'free' ? (
+                <p className="finder-note">
+                  <Info size={15} /> Free requires verified zero-cost API input
+                  and output, so it always behaves as a strict limit.
                 </p>
+              ) : null}
+            </fieldset>
+          </div>
+        ) : null}
+
+        {step === 3 && result ? (
+          <section
+            className="finder-results"
+            aria-labelledby="finder-results-heading"
+          >
+            <div className="finder-results-heading">
+              <div>
+                <h2
+                  id="finder-results-heading"
+                  tabIndex={-1}
+                  ref={resultHeading}
+                >
+                  Your evidence-backed shortlist
+                </h2>
+                <p>
+                  {useCases
+                    .map(
+                      (selection) =>
+                        `${useCaseDefinitions[selection.id].label} (${importanceLabel(selection.importance)})`,
+                    )
+                    .join(' · ')}
+                </p>
+              </div>
+              <span className="finder-candidate-count">
+                {result.eligibleCount} of {models.length} models qualified
+              </span>
+            </div>
+
+            {result.recommendations.length === 0 ? (
+              <div className="empty-state finder-empty-state">
+                <h3>No trustworthy match yet</h3>
+                <p>{result.omissions[0]}</p>
                 <button className="button primary" onClick={() => setStep(2)}>
-                  Adjust my budget
+                  Adjust requirements
                 </button>
               </div>
             ) : (
-              picks.map((pick, i) => (
-                <article
-                  className="recommendation-result"
-                  key={pick.model.slug}
-                >
-                  <div className="tags">
-                    <span>
-                      {['Best match', 'Best value choice', 'Alternative'][i]}
-                    </span>
-                    <span>{pick.score}/100 fit score</span>
-                  </div>
-                  <ModelMark model={pick.model} />
-                  <h3>{pick.model.name}</h3>
-                  <p>
-                    {pick.model.description} {pick.model.strengths[0]}
-                  </p>
-                  <p>
-                    <strong>The tradeoff:</strong>{' '}
-                    {pick.model.weaknesses.join('; ')}.
-                  </p>
-                  <p>
-                    <strong>API input / 1M:</strong>{' '}
-                    {rateLabel(pick.model, 'input')} ·{' '}
-                    <a href={`/models/${pick.model.slug}#pricing`}>
-                      Sources and billing details
-                    </a>
-                  </p>
-                  <details className="score-details">
-                    <summary>Why this match?</summary>
-                    <p>
-                      {pick.reason} Budget filtering happens first.{' '}
-                      {i === 1
-                        ? 'The value choice has the highest cost-efficiency score among remaining eligible models.'
-                        : ''}{' '}
-                      Equal fit scores are ordered by lower input API price,
-                      then model slug.
+              <div className="finder-result-list">
+                {result.recommendations.map((recommendation) => (
+                  <article
+                    className={`recommendation-result ${recommendation.category}`}
+                    key={recommendation.category}
+                  >
+                    <div className="finder-result-topline">
+                      <span className="finder-result-category">
+                        {resultLabel(recommendation.category)}
+                      </span>
+                      <span className="finder-confidence">
+                        {recommendation.queryConfidence}% confidence
+                      </span>
+                    </div>
+                    <div className="finder-result-summary">
+                      <div>
+                        <ModelMark model={recommendation.model} />
+                        <h3>{recommendation.model.name}</h3>
+                        <p>{recommendation.model.provider}</p>
+                      </div>
+                      <div className="finder-match-score">
+                        <strong>{recommendation.matchScore}</strong>
+                        <span>match</span>
+                      </div>
+                    </div>
+                    <div className="finder-result-body">
+                      <div>
+                        <h4>Why this matches</h4>
+                        <ul>
+                          {recommendation.reasons.map((reason) => (
+                            <li key={reason}>{reason}</li>
+                          ))}
+                          {recommendation.satisfiedRequirements.map(
+                            (requirement) => (
+                              <li key={requirement}>
+                                Meets {requirement.toLowerCase()}
+                              </li>
+                            ),
+                          )}
+                        </ul>
+                      </div>
+                      <div className="finder-tradeoff">
+                        <span>Tradeoff</span>
+                        <p>{recommendation.tradeoff}</p>
+                      </div>
+                    </div>
+                    <p className="finder-price">
+                      <strong>API input / 1M:</strong>{' '}
+                      {rateLabel(recommendation.model, 'input')}
                     </p>
-                  </details>
-                  <a href={`/models/${pick.model.slug}`} className="button">
-                    Explore {pick.model.name}
-                    <ArrowRight size={14} />
-                  </a>
-                </article>
-              ))
+                    <details className="score-details finder-score-details">
+                      <summary>Why this match?</summary>
+                      <dl className="finder-breakdown">
+                        <div>
+                          <dt>Task fit</dt>
+                          <dd>{recommendation.taskFit}</dd>
+                        </div>
+                        <div>
+                          <dt>Priority fit</dt>
+                          <dd>{recommendation.priorityFit ?? 'Unavailable'}</dd>
+                        </div>
+                        <div>
+                          <dt>Budget / value</dt>
+                          <dd>
+                            {recommendation.economicsFit ?? 'Unavailable'}
+                          </dd>
+                        </div>
+                        <div>
+                          <dt>Evidence confidence</dt>
+                          <dd>{recommendation.queryConfidence}%</dd>
+                        </div>
+                        <div className="finder-breakdown-total">
+                          <dt>Final match</dt>
+                          <dd>{recommendation.matchScore}</dd>
+                        </div>
+                      </dl>
+                      <p>
+                        Evidence coverage: {recommendation.evidenceCoverage}%.
+                        Effective weights: task{' '}
+                        {percentWeight(recommendation.effectiveWeights.taskFit)}
+                        , priority{' '}
+                        {percentWeight(
+                          recommendation.effectiveWeights.priorityFit,
+                        )}
+                        , economics{' '}
+                        {percentWeight(
+                          recommendation.effectiveWeights.economicsFit,
+                        )}
+                        , confidence{' '}
+                        {percentWeight(
+                          recommendation.effectiveWeights.confidence,
+                        )}
+                        .
+                      </p>
+                      <div className="finder-metric-tags">
+                        {Object.entries(recommendation.metricScores).map(
+                          ([metric, score]) => (
+                            <span key={metric}>
+                              {
+                                finderMetricLabels[
+                                  metric as keyof typeof finderMetricLabels
+                                ]
+                              }{' '}
+                              {Math.round(score)}
+                            </span>
+                          ),
+                        )}
+                      </div>
+                    </details>
+                    <div className="finder-result-actions">
+                      <a
+                        href={`/models/${recommendation.model.slug}`}
+                        className="button"
+                      >
+                        Explore {recommendation.model.name}
+                        <ArrowRight size={14} />
+                      </a>
+                      <a
+                        href={`/models/${recommendation.model.slug}#pricing`}
+                        className="text-link"
+                      >
+                        Pricing sources
+                      </a>
+                    </div>
+                  </article>
+                ))}
+              </div>
             )}
-            <div className="wizard-actions">
-              <button className="button" onClick={() => setStep(0)}>
-                Start again
-              </button>
-              {picks.length >= 2 && (
-                <a
-                  className="button primary"
-                  href={`/compare?models=${picks.map((p) => p.model.slug).join(',')}`}
-                >
-                  Compare my matches <ArrowRight size={14} />
-                </a>
-              )}
-            </div>
-          </div>
-        )}
+
+            {result.omissions.length > 0 &&
+            result.recommendations.length > 0 ? (
+              <div className="finder-omissions">
+                {result.omissions.map((omission) => (
+                  <p key={omission}>{omission}</p>
+                ))}
+              </div>
+            ) : null}
+          </section>
+        ) : null}
+
+        {error ? (
+          <p className="finder-error" role="alert">
+            {error}
+          </p>
+        ) : null}
+
+        <div className="wizard-actions">
+          {step > 0 && step < 3 ? (
+            <button
+              className="button"
+              onClick={() => {
+                setError(null);
+                setStep((current) => current - 1);
+              }}
+            >
+              <ArrowLeft size={14} /> Back
+            </button>
+          ) : step === 3 ? (
+            <button className="button" onClick={reset}>
+              Start again
+            </button>
+          ) : (
+            <span />
+          )}
+          {step === 0 ? (
+            <button className="button primary" onClick={continueFromWork}>
+              Continue <ArrowRight size={14} />
+            </button>
+          ) : null}
+          {step === 1 ? (
+            <button className="button primary" onClick={() => setStep(2)}>
+              Continue <ArrowRight size={14} />
+            </button>
+          ) : null}
+          {step === 2 ? (
+            <button className="button primary" onClick={() => setStep(3)}>
+              Find my matches <ArrowRight size={14} />
+            </button>
+          ) : null}
+          {step === 3 && result && result.recommendations.length >= 2 ? (
+            <a
+              className="button primary"
+              href={`/compare?models=${result.recommendations
+                .map((recommendation) => recommendation.model.slug)
+                .join(',')}`}
+            >
+              Compare matches <ArrowRight size={14} />
+            </a>
+          ) : null}
+        </div>
       </div>
     </div>
   );

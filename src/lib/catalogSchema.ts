@@ -81,6 +81,12 @@ export const catalogModelSchema = z
           'agentic',
           'vision',
           'safety-classifier',
+          'moderation',
+          'embedding',
+          'reranker',
+          'image-generation',
+          'speech',
+          'specialized',
         ]),
       )
       .optional(),

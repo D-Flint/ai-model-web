@@ -10,6 +10,7 @@ import {
 import type { CatalogModel } from '../lib/catalogSchema';
 import { verifiedApiPricing, reviewedContext } from './officialProviders';
 import { choosePricing, reviewedCatalogPricing } from '../lib/apiPricing';
+import { knownModelRoles } from './modelRoles';
 
 // Fictional providers and model names for fallback fixtures
 const seeds = [
@@ -186,6 +187,7 @@ export const mockModels: CatalogModel[] = validateCatalog(
       tags,
       weaknesses,
     ] = seed;
+    const seedTags = tags.split(',');
     const scores = Object.fromEntries(
       keys.map((key, i) => [key, normalize(values[i] * 10, 0, 1000)]),
     ) as Record<Capability, number>;
@@ -200,7 +202,13 @@ export const mockModels: CatalogModel[] = validateCatalog(
         .split(',')
         .map((tag) => `Designed in this sample to favor ${tag.toLowerCase()}.`),
       weaknesses: weaknesses.split(';'),
-      tags: tags.split(','),
+      tags: seedTags,
+      roles: [
+        'general-purpose' as const,
+        ...(seedTags.includes('Coding') ? (['coding'] as const) : []),
+        ...(seedTags.includes('Agents') ? (['agentic'] as const) : []),
+        ...(scores.vision > 0 ? (['vision'] as const) : []),
+      ],
       facts: {
         context,
         maxOutput: index % 3 === 0 ? 32000 : 16000,
@@ -305,6 +313,7 @@ export const allModels: CatalogModel[] =
     ? validateCatalog(
         verifiedModelsList.map((model) => ({
           ...model,
+          roles: model.roles ?? knownModelRoles[model.slug],
           ...(reviewedContext[model.slug]
             ? {
                 facts: {
