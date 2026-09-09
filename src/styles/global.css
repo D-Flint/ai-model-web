@@ -1992,10 +1992,14 @@ th {
     gap: 10px;
   }
   .model-grid {
-    gap: 12px;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
   .model-card {
-    padding: 16px 13px 0;
+    padding: 18px 16px 0;
+  }
+  .card-description {
+    min-height: 0;
   }
   .card-top {
     flex-wrap: wrap;
@@ -2095,7 +2099,7 @@ th {
     grid-column: 1/-1;
   }
   .explorer-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
   .compare-tray {
     bottom: 10px;

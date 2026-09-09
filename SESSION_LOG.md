@@ -351,3 +351,15 @@
 - Commit: `8d596f1` (`feat: add verified official Google Gemini API pricing and provenance`).
 - Current state: 11 active Google Gemini models (Gemini 3.8 Flash, 3.7 Flash, 3.6 Flash, 3.5 Flash, 3.5 Flash-Lite, 3.1 Pro, 3.1 Flash-Lite, 3 Flash, 2.5 Pro, 2.5 Flash, 2.5 Flash-Lite) now feature verified official pricing, cache storage rates, tiered context pricing, and authoritative provenance metadata.
 - Exact next step: User verifies the updated Gemini model pricing on `/pricing` and `/models`; wait for user verification before further changes.
+
+## 2026-09-09 — Make model cards single column on mobile resolution
+
+- Objective: Ensure model cards stack into a single full-width column on mobile screens (<= 767px) instead of competing for horizontal space in a cramped 2-column layout.
+- Files changed: `src/styles/global.css`, `SESSION_LOG.md`.
+- Attempts: 1 implementation pass.
+- Failures/causes: None. Previously `.model-grid` and `.explorer-grid` inherited or specified 2 columns at `<= 767px` and only collapsed to 1 column at `<= 380px`, causing all standard mobile devices (390px–430px) to render cards side-by-side with compressed text, wrapped titles, and cramped pricing rows.
+- Tests: Vitest passed 146/146 tests; `npm run check` passed 104 files with 0 errors/warnings/hints; `npm run lint` passed; visual verification via Chrome DevTools confirmed clean, spacious single-column card stacking in both dark and light modes at 390px mobile viewport.
+- Commit: Pending local commit.
+- Current state: `.model-grid` and `.explorer-grid` render as 1 column on mobile viewports (<= 767px) with comfortable padding and natural text flow.
+- Exact next step: User verifies mobile card layout; wait for user verification.
+
