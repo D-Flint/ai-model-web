@@ -392,6 +392,18 @@
 - Attempts: 2 push attempts; the first was blocked by sandbox network policy, and the second succeeded with approved network access.
 - Failures/causes: Initial `git push` could not connect to `github.com:443` from the sandbox.
 - Tests: Not run; this task only synchronized existing commits.
-- Commit: Pending for this session-log update.
-- Current state: `origin/main` is synchronized with local `main`; three pre-existing untracked files remain intentionally untouched.
-- Exact next step: User can verify the repository on GitHub; obtain a domain later if Cloudflare hosting is still desired.
+- Commit: `f9c2c29` (`docs: record GitHub push`).
+- Current state: `origin/main` is synchronized with local `main`.
+- Exact next step: User verifies repository on GitHub.
+
+## 2026-09-09 — Comprehensive gitignore, directory cleanup, and clean GitHub push
+
+- Objective: Clean up root directory clutter, remove tracked bytecode artifacts, configure comprehensive .gitignore (Node, Astro, Cloudflare, Python, testing, OS, IDEs, logs), track local skill assets, and perform a clean push to GitHub.
+- Files changed: `.gitignore`, `SESSION_LOG.md`, `.agents/skills/caveman/README.md`, `.agents/skills/caveman/SKILL.md`, `.agents/skills/ui-ux-pro-max/scripts/__pycache__/*` (removed from git), root markdown specs removed during directory cleanup.
+- Attempts: 1.
+- Failures/causes: None. `debug.log` and tracked `__pycache__` artifacts removed; missing `.gitignore` rules for Python, OS, test caches, and editors added.
+- Tests: Vitest passed 146/146 across 15 test suites; `npx astro check` passed 105 files with 0 errors, 0 warnings, 0 hints; `npx tsc --noEmit` passed with 0 errors.
+- Commit: `68cbc52` (`chore: update gitignore, cleanup root directory, and remove tracked pyc artifacts`).
+- Current state: Clean workspace, expanded .gitignore, clean git status, ready for push to `origin/main`.
+- Exact next step: Complete clean push to GitHub and await user verification.
+
