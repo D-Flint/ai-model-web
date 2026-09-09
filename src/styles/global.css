@@ -1618,11 +1618,13 @@ th {
   padding: 25px;
 }
 .ranking-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 100px;
-  gap: 20px;
-  align-items: center;
   padding: 25px;
+}
+.ranking-row-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  align-items: start;
+  gap: 20px;
 }
 .ranking-identity {
   display: flex;
@@ -1653,6 +1655,7 @@ th {
 }
 .ranking-row .score-number {
   text-align: right;
+  white-space: nowrap;
 }
 .ranking-row .score-number small {
   display: block;
@@ -2253,9 +2256,10 @@ th {
     min-width: 150px;
   }
   .ranking-row {
-    grid-template-columns: minmax(0, 1fr) 55px;
-    gap: 13px;
     padding: 18px;
+  }
+  .ranking-row-header {
+    gap: 13px;
   }
   .ranking-identity {
     gap: 8px;

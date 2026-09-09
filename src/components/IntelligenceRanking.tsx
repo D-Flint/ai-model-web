@@ -67,7 +67,7 @@ export default function IntelligenceRanking({
         <div className="ranking-list">
           {sortedItems.map((item) => (
             <article className="panel ranking-row" key={item.slug}>
-              <div>
+              <div className="ranking-row-header">
                 <div className="ranking-identity">
                   <span className="rank-position">
                     {String(item.rank).padStart(2, '0')}
@@ -82,6 +82,16 @@ export default function IntelligenceRanking({
                     <a href={`/models/${item.slug}`}>{item.name}</a>
                   </h3>
                 </div>
+                <a
+                  className="score-number"
+                  href={`/models/${item.slug}#score-intelligence`}
+                  aria-label={`${item.name} intelligence ranking score ${item.score} out of 100`}
+                >
+                  {item.score}
+                  <small>Intelligence fit / 100</small>
+                </a>
+              </div>
+              <div className="ranking-row-content">
                 <p>
                   {item.description} Choose it for{' '}
                   {item.tags.slice(0, 2).join(' and ').toLowerCase()}.
@@ -96,14 +106,6 @@ export default function IntelligenceRanking({
                   <a href={`/compare?models=${item.slug}`}>Add to comparison</a>
                 </div>
               </div>
-              <a
-                className="score-number"
-                href={`/models/${item.slug}#score-intelligence`}
-                aria-label={`${item.name} intelligence ranking score ${item.score} out of 100`}
-              >
-                {item.score}
-                <small>Intelligence fit / 100</small>
-              </a>
             </article>
           ))}
         </div>
