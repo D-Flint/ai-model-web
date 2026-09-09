@@ -74,19 +74,21 @@ export default function MetricRanking({
         <div className="ranking-list">
           {sortedItems.map((item) => (
             <article className="panel ranking-row" key={item.slug}>
-              <span className="rank-position">
-                {String(item.rank).padStart(2, '0')}
-              </span>
-              <span
-                className={`model-mark provider-${item.family.toLowerCase()}`}
-                aria-hidden="true"
-              >
-                <ProviderLogo provider={item.provider} size={18} />
-              </span>
               <div>
-                <h3>
-                  <a href={`/models/${item.slug}`}>{item.name}</a>
-                </h3>
+                <div className="ranking-identity">
+                  <span className="rank-position">
+                    {String(item.rank).padStart(2, '0')}
+                  </span>
+                  <span
+                    className={`model-mark provider-${item.family.toLowerCase()}`}
+                    aria-hidden="true"
+                  >
+                    <ProviderLogo provider={item.provider} size={18} />
+                  </span>
+                  <h3>
+                    <a href={`/models/${item.slug}`}>{item.name}</a>
+                  </h3>
+                </div>
                 <p>
                   {item.description} Choose it for{' '}
                   {item.tags.slice(0, 2).join(' and ').toLowerCase()}.

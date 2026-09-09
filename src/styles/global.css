@@ -1619,10 +1619,27 @@ th {
 }
 .ranking-row {
   display: grid;
-  grid-template-columns: 35px 42px 1fr 100px;
+  grid-template-columns: minmax(0, 1fr) 100px;
   gap: 20px;
   align-items: center;
   padding: 25px;
+}
+.ranking-identity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ranking-identity .rank-position {
+  width: 35px;
+  flex: 0 0 35px;
+}
+.ranking-identity .model-mark {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+}
+.ranking-identity h3 {
+  min-width: 0;
 }
 .rank-position {
   font-size: 19px;
@@ -2236,12 +2253,21 @@ th {
     min-width: 150px;
   }
   .ranking-row {
-    grid-template-columns: 22px 1fr 55px;
+    grid-template-columns: minmax(0, 1fr) 55px;
     gap: 13px;
     padding: 18px;
   }
-  .ranking-row > .model-mark {
-    display: none;
+  .ranking-identity {
+    gap: 8px;
+  }
+  .ranking-identity .rank-position {
+    width: 22px;
+    flex-basis: 22px;
+  }
+  .ranking-identity .model-mark {
+    width: 24px;
+    height: 24px;
+    flex-basis: 24px;
   }
   .ranking-row h3 {
     font-size: 18px;
