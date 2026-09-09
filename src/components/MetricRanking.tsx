@@ -63,7 +63,6 @@ export default function MetricRanking({
         direction={direction}
         onDirectionChange={setDirection}
         totalCount={sortedItems.length}
-        isPrice={isPrice}
       />
 
       {sortedItems.length === 0 ? (

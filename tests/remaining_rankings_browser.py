@@ -41,24 +41,26 @@ with sync_playwright() as playwright:
     for route in SCORE_ROUTES:
         page.goto(f'http://localhost:4321{route}')
         page.wait_for_load_state('networkidle')
-        order = page.get_by_label('Sort ranking')
-        assert order.input_value() == 'desc', route
+        highest = page.get_by_role('button', name='Highest to lowest')
+        lowest = page.get_by_role('button', name='Lowest to highest')
+        assert highest.get_attribute('aria-pressed') == 'true', route
         descending = score_values(page)
         assert len(descending) > 1, route
         assert descending == sorted(descending, reverse=True), route
-        order.select_option('asc')
+        lowest.click()
         ascending = score_values(page)
         assert ascending == sorted(ascending), route
         assert len(ascending) == len(descending), route
 
     page.goto('http://localhost:4321/rankings/cheap')
     page.wait_for_load_state('networkidle')
-    order = page.get_by_label('Sort ranking')
-    assert order.input_value() == 'asc'
+    highest = page.get_by_role('button', name='Highest to lowest')
+    lowest = page.get_by_role('button', name='Lowest to highest')
+    assert lowest.get_attribute('aria-pressed') == 'true'
     ascending_prices = price_values(page)
     assert len(ascending_prices) > 1
     assert ascending_prices == sorted(ascending_prices)
-    order.select_option('desc')
+    highest.click()
     descending_prices = price_values(page)
     assert descending_prices == sorted(descending_prices, reverse=True)
 

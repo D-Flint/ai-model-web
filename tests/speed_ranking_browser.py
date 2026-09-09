@@ -22,8 +22,9 @@ with sync_playwright() as playwright:
     page.goto('http://localhost:4321/rankings/speed')
     page.wait_for_load_state('networkidle')
 
-    order = page.get_by_label('Sort ranking')
-    assert order.input_value() == 'desc'
+    highest = page.get_by_role('button', name='Highest to lowest')
+    lowest = page.get_by_role('button', name='Lowest to highest')
+    assert highest.get_attribute('aria-pressed') == 'true'
     descending = speeds(page)
     assert len(descending) > 1
     assert descending == sorted(descending, reverse=True)
@@ -41,12 +42,12 @@ with sync_playwright() as playwright:
     )
     assert displayed_peak == int(range_match.group(2))
 
-    order.select_option('asc')
+    lowest.click()
     ascending = speeds(page)
     assert ascending == sorted(ascending)
     assert len(ascending) == len(descending)
 
-    order.select_option('desc')
+    highest.click()
     last_row = page.locator('.ranking-row').last
     model_name = last_row.locator('h3').inner_text()
     last_row.get_by_role('link', name='Add to comparison').click()

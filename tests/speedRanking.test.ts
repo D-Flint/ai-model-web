@@ -224,7 +224,7 @@ describe('speed ranking control', () => {
     expect(html).toContain('Measured range: 90–190 tokens/sec');
     expect(html).toContain('Highest to lowest');
     expect(html).toContain('Lowest to highest');
-    expect(html).toContain('<option value="desc" selected="">');
+    expect(html).toContain('aria-pressed="true"');
   });
 
   it('sorts client items lowest-first when selected', () => {
