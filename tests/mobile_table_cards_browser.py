@@ -69,6 +69,24 @@ with sync_playwright() as playwright:
         'decodeURIComponent(location.search)'
     )
     assert first_metric.inner_text() != intelligence_before
+    page.get_by_role('button', name='Toggle color theme').click()
+    effort_selects.first.focus()
+    focus_style = effort_selects.first.evaluate(
+        """element => {
+            const probe = document.createElement('span');
+            probe.style.color = 'var(--accent)';
+            document.body.appendChild(probe);
+            const result = {
+                accent: getComputedStyle(probe).color,
+                border: getComputedStyle(element).borderTopColor,
+                outline: getComputedStyle(element).outlineStyle,
+            };
+            probe.remove();
+            return result;
+        }"""
+    )
+    assert focus_style['outline'] == 'none'
+    assert focus_style['border'] != focus_style['accent']
     assert page.evaluate('document.documentElement.scrollWidth <= window.innerWidth')
     page.locator('.mobile-compared-models').screenshot(
         path=str(artifacts / 'mobile-effort-selectors-390.png')
