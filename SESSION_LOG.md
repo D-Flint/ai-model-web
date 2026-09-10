@@ -8,14 +8,26 @@
 - Full pre-compression log preserved at `%LOCALAPPDATA%\caveman-compress\backups\ai-model-web\SESSION_LOG.original.md`.
 - Detailed implementation history remains in Git commits.
 
-### Current handoff
+#### Current handoff
 
-- Objective: Make footer navigation links bold.
-- Last implementation: Added `font-weight: 600;` to `.footer-links a` in `src/styles/global.css`.
+- Objective: Make model card "View details" green and bold, and "Compare" button green.
+- Last implementation: Updated `.card-bottom > a:first-child` with `color: var(--accent)`, `font-weight: 600`, and hover underline. Updated `.compare-add` with green border (`var(--accent)`), green text (`var(--accent)`), soft green background (`var(--soft)`), `font-weight: 600`, and active filled state.
 - Tests: `npm run check` (105 files, 0 errors, 0 warnings, 0 hints); `npm test` (15 files, 146 passed); `npm run lint` clean.
-- Commits: `6e7addd` (`style: make footer navigation links bold`).
-- Current state: Stored locally; no remote push. Footer links are green and bold.
-- Exact next step: User verifies bold footer links in browser.
+- Commits: `870cbd6` (`style: make model card view details and compare button green and bold`).
+- Current state: Stored locally; no remote push. Card actions are green, bold, and interactive.
+- Exact next step: User verifies model card actions in browser.
+
+## 2026-09-10 — Style model card View details and Compare button
+
+- Objective: Make "View details" green and bold, and the Compare button green with bold text.
+- Files changed: `src/styles/global.css`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: None.
+- Tests: `npm run check` (105 files, 0 errors); `npm test` (146/146 passed); `npm run lint` clean.
+- Commit: `870cbd6` (`style: make model card view details and compare button green and bold`).
+- Current state: Committed locally; no remote push.
+- Exact next step: User verifies model card actions in browser.
+
 
 ## 2026-09-10 — Make footer navigation links bold
 
