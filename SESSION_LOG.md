@@ -10,12 +10,23 @@
 
 ## Current handoff
 
-- Objective: Redesign the sort ranking selection UI in the ranking page.
-- Last implementation: Created reusable `RankingSortControls` component with live verified model count badge, custom-styled accessible select dropdown with directional sort indicator icon (`ArrowDownNarrowWide` / `ArrowUpNarrowWide`), custom chevron (`ChevronDown`), and quick-toggle invert button (`ArrowUpDown`). Integrated across `IntelligenceRanking`, `SpeedRanking`, `MetricRanking`, and `RankingList` overall fallback. Rebuilt `.ranking-controls` styling with theme-aware tokens, responsive mobile stacking, hover/focus rings, and micro-transitions.
-- Tests: Verified Playwright test suites (`tests/intelligence_ranking_browser.py`, `tests/speed_ranking_browser.py`); `npm test` (15 files, 146 passed); `npm run check` (105 files, 0 errors, 0 warnings, 0 hints); `npm run lint` clean; visual screenshots in light and dark mode confirming alignment, typography, and contrast.
-- Commits: `7ab2241` (`feat: redesign sort ranking selection UI on ranking pages`).
-- Current state: Stored locally; no remote push. Ranking page toolbar is responsive, consumer-first, and fully accessible.
-- Exact next step: User verifies the redesigned sort ranking UI in browser.
+- Objective: Make footer navigation links clickable and green.
+- Last implementation: Updated `.footer-links a` in `src/styles/global.css` to use theme accent color (`var(--accent)`) with hover transition to `var(--bright-accent)` and underline. The links already had semantic `<a href="...">` markup pointing to `/models`, `/methodology`, and `/cost`.
+- Tests: `npm run check` (105 files, 0 errors, 0 warnings, 0 hints); `npm test` (15 files, 146 passed); `npm run lint` clean.
+- Commits: `8097879` (`style: make footer navigation links green`).
+- Current state: Stored locally; no remote push. Footer links are visibly green and clickable.
+- Exact next step: User verifies green footer links in browser.
+
+## 2026-09-10 — Style footer navigation links green
+
+- Objective: Confirm footer words "Explore models", "Our methodology", and "Understand costs" are clickable links and style them green.
+- Files changed: `src/styles/global.css`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: None.
+- Tests: `npm run check` (105 files, 0 errors); `npm test` (146/146 passed); `npm run lint` clean.
+- Commit: `8097879` (`style: make footer navigation links green`).
+- Current state: Committed locally; no remote push.
+- Exact next step: User verifies green footer links in browser.
 
 ## 2026-09-09 — Redesign sort ranking selection UI on ranking pages
 
