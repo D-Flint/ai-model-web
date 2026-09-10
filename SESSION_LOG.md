@@ -10,12 +10,24 @@
 
 #### Current handoff
 
-- Objective: Make model card "View details" green and bold, and "Compare" button green.
-- Last implementation: Updated `.card-bottom > a:first-child` with `color: var(--accent)`, `font-weight: 600`, and hover underline. Updated `.compare-add` with green border (`var(--accent)`), green text (`var(--accent)`), soft green background (`var(--soft)`), `font-weight: 600`, and active filled state.
+- Objective: Make model card "View details" text fully bold (700).
+- Last implementation: Increased `font-weight` from `600` to `700` on `.card-bottom > a:first-child` in `src/styles/global.css` for clear visual weight.
 - Tests: `npm run check` (105 files, 0 errors, 0 warnings, 0 hints); `npm test` (15 files, 146 passed); `npm run lint` clean.
-- Commits: `870cbd6` (`style: make model card view details and compare button green and bold`).
-- Current state: Stored locally; no remote push. Card actions are green, bold, and interactive.
-- Exact next step: User verifies model card actions in browser.
+- Commits: `d9762e9` (`style: set font-weight 700 on model card view details link`).
+- Current state: Stored locally; no remote push. "View details" is bold (700) and green.
+- Exact next step: User verifies in browser.
+
+## 2026-09-10 — Set font-weight 700 on View details link
+
+- Objective: Increase font-weight to bold (700) on model card "View details" link.
+- Files changed: `src/styles/global.css`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: None.
+- Tests: `npm run check` (105 files, 0 errors); `npm test` (146/146 passed); `npm run lint` clean.
+- Commit: `d9762e9` (`style: set font-weight 700 on model card view details link`).
+- Current state: Committed locally; no remote push.
+- Exact next step: User verifies in browser.
+
 
 ## 2026-09-10 — Style model card View details and Compare button
 
