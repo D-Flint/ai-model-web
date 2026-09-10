@@ -937,7 +937,7 @@ main {
   gap: 4px;
   align-items: center;
   color: var(--accent);
-  font-weight: 600;
+  font-weight: 700;
   transition: color 0.15s ease;
 }
 .card-bottom > a:first-child:hover {
