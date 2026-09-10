@@ -8,14 +8,26 @@
 - Full pre-compression log preserved at `%LOCALAPPDATA%\caveman-compress\backups\ai-model-web\SESSION_LOG.original.md`.
 - Detailed implementation history remains in Git commits.
 
-## Current handoff
+### Current handoff
 
-- Objective: Make footer navigation links clickable and green.
-- Last implementation: Updated `.footer-links a` in `src/styles/global.css` to use theme accent color (`var(--accent)`) with hover transition to `var(--bright-accent)` and underline. The links already had semantic `<a href="...">` markup pointing to `/models`, `/methodology`, and `/cost`.
+- Objective: Make footer navigation links bold.
+- Last implementation: Added `font-weight: 600;` to `.footer-links a` in `src/styles/global.css`.
 - Tests: `npm run check` (105 files, 0 errors, 0 warnings, 0 hints); `npm test` (15 files, 146 passed); `npm run lint` clean.
-- Commits: `8097879` (`style: make footer navigation links green`).
-- Current state: Stored locally; no remote push. Footer links are visibly green and clickable.
-- Exact next step: User verifies green footer links in browser.
+- Commits: `6e7addd` (`style: make footer navigation links bold`).
+- Current state: Stored locally; no remote push. Footer links are green and bold.
+- Exact next step: User verifies bold footer links in browser.
+
+## 2026-09-10 — Make footer navigation links bold
+
+- Objective: Make footer navigation links bold for higher visual prominence.
+- Files changed: `src/styles/global.css`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: None.
+- Tests: `npm run check` (105 files, 0 errors); `npm test` (146/146 passed); `npm run lint` clean.
+- Commit: `6e7addd` (`style: make footer navigation links bold`).
+- Current state: Committed locally; no remote push.
+- Exact next step: User verifies bold footer links in browser.
+
 
 ## 2026-09-10 — Style footer navigation links green
 
