@@ -800,6 +800,8 @@ main {
   gap: 17px;
 }
 .model-card {
+  display: flex;
+  flex-direction: column;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -929,7 +931,7 @@ main {
   gap: 5px;
   border-top: 1px solid var(--border);
   padding: 13px 0;
-  margin-top: 15px;
+  margin-top: auto;
   font-size: 10px;
 }
 .card-bottom > a:first-child {
