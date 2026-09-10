@@ -675,3 +675,13 @@
 - Current state: "Add to comparison" renders as a crisp brand green (`var(--accent)`) button with an aligned Plus icon, distinct from the muted tradeoff text, with proper spacing and hover states in both light and dark themes across all ranking cards.
 - Exact next step: Stop and wait for user verification.
 
+## 2026-09-10 — Simplify ranking sort control
+
+- Objective: Replace the two-option sort control on every ranking view with a one-click direction toggle. Keep the desktop label and make the mobile control self-labelled.
+- Files changed: `src/components/RankingSortControls.tsx`, `src/styles/global.css`, `tests/intelligenceRanking.test.ts`, `tests/remainingRankings.test.ts`, `tests/speedRanking.test.ts`, `tests/remaining_rankings_browser.py`, `tests/speed_ranking_browser.py`, and `SESSION_LOG.md`.
+- Attempts: 2 implementation passes.
+- Failures/causes: Existing static tests expected two selected buttons; updated them for the single-toggle state. The existing dev server on port 4321 had a stale Vite optimized dependency error, so browser checks ran against an isolated preview on port 4322. The vision ranking currently has no rows, so its browser assertion now validates the toggle state and empty-list sort behavior without requiring model count. Sandboxed production builds could not write Wrangler files outside the workspace; the approved elevated rerun passed.
+- Tests: `npm run check` passed with 0 errors, warnings, or hints; `npm run lint` passed; Vitest passed 146/146 tests across 15 files; `npm run build` passed; focused Playwright browser tests passed for speed and all other ranking routes, including desktop and 390px mobile control behavior; `git diff --check` passed.
+- Commit: `736f48b` (`feat: simplify ranking sort control`).
+- Current state: Every ranking page now has one accessible button that shows current sort direction and reverses it on click. Desktop retains the `Sort ranking` label. Mobile hides that separate label and uses a full-width self-labelled toggle.
+- Exact next step: User verifies a ranking page at desktop and mobile widths; no further implementation is planned.
