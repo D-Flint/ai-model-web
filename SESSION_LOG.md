@@ -10,12 +10,24 @@
 
 #### Current handoff
 
-- Objective: Make model card "View details" text fully bold (700).
-- Last implementation: Increased `font-weight` from `600` to `700` on `.card-bottom > a:first-child` in `src/styles/global.css` for clear visual weight.
+- Objective: Make model card "View details" and "Compare" button stick to card bottom.
+- Last implementation: Configured `.model-card` as `display: flex; flex-direction: column;` and set `.card-bottom` to `margin-top: auto;` in `src/styles/global.css`, ensuring all card action footers align evenly at the bottom regardless of varying card content heights.
 - Tests: `npm run check` (105 files, 0 errors, 0 warnings, 0 hints); `npm test` (15 files, 146 passed); `npm run lint` clean.
-- Commits: `d9762e9` (`style: set font-weight 700 on model card view details link`).
-- Current state: Stored locally; no remote push. "View details" is bold (700) and green.
-- Exact next step: User verifies in browser.
+- Commits: `352394b` (`fix: pin model card actions to bottom with flex column and auto margin`).
+- Current state: Stored locally; no remote push. Card footers stick to bottom uniformly.
+- Exact next step: User verifies aligned card footers in browser.
+
+## 2026-09-10 — Pin model card actions to bottom
+
+- Objective: Ensure "View details" and "Compare" buttons stick to the card bottom across all model cards.
+- Files changed: `src/styles/global.css`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: None.
+- Tests: `npm run check` (105 files, 0 errors); `npm test` (146/146 passed); `npm run lint` clean.
+- Commit: `352394b` (`fix: pin model card actions to bottom with flex column and auto margin`).
+- Current state: Committed locally; no remote push.
+- Exact next step: User verifies aligned card footers in browser.
+
 
 ## 2026-09-10 — Set font-weight 700 on View details link
 
