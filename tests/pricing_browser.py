@@ -53,6 +53,7 @@ with sync_playwright() as p:
     page.get_by_role('combobox', name='Sort pricing', exact=True).select_option('blended')
     expect(page.get_by_role('columnheader', name='Blended / 1M')).to_be_visible()
     expect(page.locator('tbody tr').last).to_contain_text('Varies by context')
+    expect(page.locator('.mobile-pricing-list')).to_be_hidden()
     page.screenshot(path=str(artifacts / 'pricing-comparison-desktop.png'), full_page=True)
 
     visit('/models/gemini-2-5-pro')
@@ -60,6 +61,7 @@ with sync_playwright() as p:
     expect(page.locator('#pricing')).to_contain_text('Google Gemini API pricing')
     visit('/compare?models=claude-sonnet-5,gemini-2-5-pro')
     expect(page.locator('.comparison-table')).to_contain_text('Varies by context')
+    expect(page.locator('.mobile-comparison')).to_be_hidden()
     assert 'Estimated task cost' not in page.locator('main').inner_text()
     visit('/compare/claude-sonnet-5-vs-gemini-2-5-pro')
     selector = page.get_by_role('combobox', name='Add a model or effort', exact=True)
@@ -84,7 +86,37 @@ with sync_playwright() as p:
     text = page.locator('main').inner_text().lower()
     assert '20 questions' not in text and '/ month' not in text
 
-    for path in ['/pricing', '/cost?models=claude-sonnet-5', '/models/gemini-2-5-pro']:
+    page.set_viewport_size({'width': 390, 'height': 844})
+    visit('/pricing')
+    expect(page.locator('.pricing-desktop-table')).to_be_hidden()
+    expect(page.locator('.mobile-pricing-list')).to_be_visible()
+    assert page.locator('.mobile-pricing-card').count() > 0
+    page.get_by_label('Search model or provider').fill('Gemini 2.5')
+    assert page.locator('.mobile-pricing-card').count() > 0
+    expect(page.locator('.mobile-pricing-card').first).to_contain_text('Gemini 2.5')
+    page.get_by_role('combobox', name='Sort pricing', exact=True).select_option('blended')
+    expect(page.locator('.mobile-pricing-card').first).to_contain_text('Blended / 1M')
+    assert page.evaluate('document.documentElement.scrollWidth <= window.innerWidth')
+    page.screenshot(path=str(artifacts / 'pricing-mobile-pricing.png'), full_page=True)
+
+    visit('/compare?models=claude-sonnet-5,gemini-2-5-pro')
+    expect(page.locator('.comparison-desktop-table')).to_be_hidden()
+    expect(page.locator('.mobile-comparison')).to_be_visible()
+    core_card = page.locator('.mobile-metric-card').first
+    expect(core_card).to_contain_text('Claude Sonnet 5')
+    expect(core_card).to_contain_text('Gemini 2.5 Pro')
+    expect(page.get_by_role('heading', name='Compared models', exact=True)).to_be_visible()
+    assert page.locator('.mobile-effort-control select').count() > 0
+    assert page.evaluate('document.documentElement.scrollWidth <= window.innerWidth')
+    page.screenshot(path=str(artifacts / 'pricing-mobile-compare.png'), full_page=True)
+
+    page.set_viewport_size({'width': 320, 'height': 720})
+    visit('/pricing')
+    assert page.evaluate('document.documentElement.scrollWidth <= window.innerWidth')
+    visit('/compare?models=claude-sonnet-5,gemini-2-5-pro')
+    assert page.evaluate('document.documentElement.scrollWidth <= window.innerWidth')
+
+    for path in ['/cost?models=claude-sonnet-5', '/models/gemini-2-5-pro']:
         page.set_viewport_size({'width': 390, 'height': 844})
         visit(path)
         assert page.evaluate('document.documentElement.scrollWidth <= window.innerWidth'), path

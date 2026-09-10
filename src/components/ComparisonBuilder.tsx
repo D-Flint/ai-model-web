@@ -1,6 +1,6 @@
 import { rateLabel } from '../lib/apiPricing';
 import ApiPricing from './ApiPricing';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { Copy, X, Plus } from 'lucide-react';
 import { catalogSchema, type CatalogModel } from '../lib/catalogSchema';
 import {
@@ -27,6 +27,72 @@ export interface ComparedColumn {
   isReasoning: boolean;
   availableEfforts: ReasoningEffort[];
   stats: ModelEffortStats;
+}
+
+const secondaryMetrics = [
+  'overall',
+  'coding',
+  'agentic',
+  'dailyUse',
+  'writing',
+  'research',
+  'vision',
+  'reliability',
+  'costEfficiency',
+] as const;
+
+function MobileMetricCard({
+  label,
+  items,
+  renderValue,
+  isWinner = () => false,
+  winnerLabel = 'Best',
+  wideValues = false,
+}: {
+  label: string;
+  items: ComparedColumn[];
+  renderValue: (item: ComparedColumn) => ReactNode;
+  isWinner?: (item: ComparedColumn) => boolean;
+  winnerLabel?: string;
+  wideValues?: boolean;
+}) {
+  return (
+    <article
+      className={`mobile-metric-card${wideValues ? ' mobile-metric-card--wide' : ''}`}
+    >
+      <h3>{label}</h3>
+      <div className="mobile-metric-values">
+        {items.map((item) => {
+          const winner = isWinner(item);
+          return (
+            <div
+              className={`mobile-metric-row${winner ? ' mobile-metric-row--winner' : ''}`}
+              key={item.id}
+            >
+              <div className="mobile-metric-model">
+                <ProviderLogo provider={item.model.provider} size={18} />
+                <span>
+                  <a href={`/models/${item.model.slug}`}>{item.model.name}</a>
+                  <small>
+                    {item.model.provider}
+                    {item.isReasoning && item.effort !== 'none'
+                      ? ` · ${effortLabels[item.effort]} effort`
+                      : ''}
+                  </small>
+                </span>
+              </div>
+              <div className="mobile-metric-value">
+                {renderValue(item)}
+                {winner && (
+                  <span className="mobile-winner-label">{winnerLabel}</span>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </article>
+  );
 }
 
 export default function ComparisonBuilder({
@@ -140,6 +206,21 @@ export default function ComparisonBuilder({
   function addEffort(modelSlug: string, newEffort: ReasoningEffort) {
     if (selection.length >= 4) return;
     update([...selection, `${modelSlug}:${newEffort}`]);
+  }
+
+  function nextEffortFor(item: ComparedColumn) {
+    return (
+      item.availableEfforts.find(
+        (effort) =>
+          !selectedItems.some(
+            (selected) =>
+              selected.model.slug === item.model.slug &&
+              selected.effort === effort,
+          ),
+      ) ||
+      item.availableEfforts.find((effort) => effort !== item.effort) ||
+      item.effort
+    );
   }
 
   function removeItem(index: number) {
@@ -318,7 +399,243 @@ export default function ComparisonBuilder({
             does not fill gaps with proxy scores.
           </p>
           <div
-            className="table-scroll"
+            className="mobile-comparison"
+            aria-label="Model comparison cards"
+          >
+            <section
+              className="mobile-compared-models"
+              aria-labelledby="mobile-compared-models-heading"
+            >
+              <header>
+                <h2 id="mobile-compared-models-heading">Compared models</h2>
+                <p>Adjust reasoning effort before comparing results.</p>
+              </header>
+              <div className="mobile-model-settings">
+                {selectedItems.map((item, idx) => (
+                  <div className="mobile-model-setting" key={item.id}>
+                    <div className="mobile-model-setting-identity">
+                      <ProviderLogo provider={item.model.provider} size={22} />
+                      <span>
+                        <a href={`/models/${item.model.slug}`}>
+                          {item.model.name}
+                        </a>
+                        <small>{item.model.provider}</small>
+                      </span>
+                    </div>
+                    {item.isReasoning ? (
+                      item.availableEfforts.length > 1 ? (
+                        <div className="mobile-effort-control">
+                          <label htmlFor={`mobile-effort-select-${item.id}`}>
+                            Reasoning effort
+                          </label>
+                          <select
+                            id={`mobile-effort-select-${item.id}`}
+                            value={item.effort}
+                            onChange={(event) =>
+                              changeEffort(
+                                idx,
+                                event.target.value as ReasoningEffort,
+                              )
+                            }
+                          >
+                            {item.availableEfforts.map((effort) => (
+                              <option key={effort} value={effort}>
+                                {effortLabels[effort]}
+                              </option>
+                            ))}
+                          </select>
+                          {selection.length < 4 && (
+                            <button
+                              type="button"
+                              className="mobile-compare-effort"
+                              onClick={() =>
+                                addEffort(item.model.slug, nextEffortFor(item))
+                              }
+                            >
+                              <Plus size={14} /> Compare another effort
+                            </button>
+                          )}
+                        </div>
+                      ) : (
+                        <span className="mobile-effort-status">Fixed CoT</span>
+                      )
+                    ) : (
+                      <span className="mobile-effort-status">
+                        Standard · Instant
+                      </span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section
+              className="mobile-metric-section"
+              aria-labelledby="mobile-core-metrics-heading"
+            >
+              <div className="mobile-metric-section-heading">
+                <h2 id="mobile-core-metrics-heading">Core focus pillars</h2>
+                <p>Intelligence, speed, and price</p>
+              </div>
+              <MobileMetricCard
+                label="Intelligence / 100"
+                items={selectedItems}
+                isWinner={(item) => {
+                  const score = item.stats.scores.intelligence;
+                  const scores = selectedItems
+                    .map((selected) => selected.stats.scores.intelligence)
+                    .filter((value): value is number => value !== null);
+                  return score !== null && score === Math.max(...scores);
+                }}
+                winnerLabel="Highest"
+                renderValue={(item) => {
+                  const score = item.stats.scores.intelligence;
+                  return score !== null ? (
+                    <a href={`/models/${item.model.slug}#score-intelligence`}>
+                      <strong>{score}</strong>
+                    </a>
+                  ) : (
+                    <span className="muted">Not measured</span>
+                  );
+                }}
+              />
+              <MobileMetricCard
+                label="Speed"
+                items={selectedItems}
+                isWinner={(item) => {
+                  const speeds = selectedItems
+                    .map((selected) => selected.stats.speedTokensPerSec)
+                    .filter((value) => value > 0);
+                  return (
+                    item.stats.speedTokensPerSec > 0 &&
+                    item.stats.speedTokensPerSec === Math.max(...speeds)
+                  );
+                }}
+                winnerLabel="Fastest"
+                renderValue={(item) => {
+                  const speed = item.stats.speedTokensPerSec;
+                  const displaySpeed = getSpeedDisplayValue(
+                    item.model,
+                    item.effort,
+                  );
+                  const speedScore = item.stats.scores.speed;
+                  if (speed > 0) {
+                    return (
+                      <>
+                        <a href={`/models/${item.model.slug}#score-speed`}>
+                          <strong>{displaySpeed ?? speed}</strong>{' '}
+                          <small>tok/s</small>
+                        </a>
+                        <span className="mobile-metric-detail">
+                          {speedScore !== null ? `${speedScore}/100 · ` : ''}
+                          {item.stats.latency}
+                        </span>
+                      </>
+                    );
+                  }
+                  if (speedScore !== null) {
+                    return (
+                      <>
+                        <a href={`/models/${item.model.slug}#score-speed`}>
+                          <strong>{speedScore}</strong> <small>/100</small>
+                        </a>
+                        <span className="mobile-metric-detail">
+                          No throughput claim
+                        </span>
+                      </>
+                    );
+                  }
+                  return (
+                    <span className="muted">
+                      Not measured
+                      <small className="mobile-metric-detail">
+                        No verified speed evidence
+                      </small>
+                    </span>
+                  );
+                }}
+              />
+              <MobileMetricCard
+                label="API pricing"
+                items={selectedItems}
+                wideValues
+                renderValue={(item) => <ApiPricing model={item.model} />}
+              />
+            </section>
+
+            <section
+              className="mobile-metric-section"
+              aria-labelledby="mobile-capability-metrics-heading"
+            >
+              <div className="mobile-metric-section-heading">
+                <h2 id="mobile-capability-metrics-heading">
+                  Capabilities and benchmarks
+                </h2>
+                <p>Scores use available verified evidence</p>
+              </div>
+              {secondaryMetrics.map((metric) => {
+                const validScores = selectedItems
+                  .map((item) => item.stats.scores[metric])
+                  .filter((score): score is number => score !== null);
+                const maximum =
+                  validScores.length > 0 ? Math.max(...validScores) : null;
+                return (
+                  <MobileMetricCard
+                    label={metricLabels[metric]}
+                    items={selectedItems}
+                    key={metric}
+                    isWinner={(item) => {
+                      const score = item.stats.scores[metric];
+                      return score !== null && score === maximum;
+                    }}
+                    renderValue={(item) => {
+                      const score = item.stats.scores[metric];
+                      return score !== null ? (
+                        <a href={`/models/${item.model.slug}#score-${metric}`}>
+                          <strong>{score}</strong>
+                          <small> / 100</small>
+                        </a>
+                      ) : (
+                        <span className="muted">Not measured</span>
+                      );
+                    }}
+                  />
+                );
+              })}
+            </section>
+
+            <section
+              className="mobile-metric-section"
+              aria-labelledby="mobile-technical-metrics-heading"
+            >
+              <div className="mobile-metric-section-heading">
+                <h2 id="mobile-technical-metrics-heading">
+                  Technical and reasoning specs
+                </h2>
+                <p>Configuration and capability details</p>
+              </div>
+              <MobileMetricCard
+                label="Cached input / 1M"
+                items={selectedItems}
+                renderValue={(item) => rateLabel(item.model, 'cached')}
+              />
+              <MobileMetricCard
+                label="Speed latency tier"
+                items={selectedItems}
+                renderValue={(item) => item.stats.latency}
+              />
+              {technicalFacts.map((row) => (
+                <MobileMetricCard
+                  label={row.label}
+                  items={selectedItems}
+                  key={row.label}
+                  renderValue={row.value}
+                />
+              ))}
+            </section>
+          </div>
+          <div
+            className="table-scroll comparison-desktop-table"
             tabIndex={0}
             role="region"
             aria-label="Model comparison table"
@@ -516,19 +833,7 @@ export default function ComparisonBuilder({
                     Secondary Capabilities & Benchmarks
                   </th>
                 </tr>
-                {(
-                  [
-                    'overall',
-                    'coding',
-                    'agentic',
-                    'dailyUse',
-                    'writing',
-                    'research',
-                    'vision',
-                    'reliability',
-                    'costEfficiency',
-                  ] as const
-                ).map((metric) => (
+                {secondaryMetrics.map((metric) => (
                   <tr key={metric}>
                     <th scope="row">{metricLabels[metric]}</th>
                     {selectedItems.map((item) => {
