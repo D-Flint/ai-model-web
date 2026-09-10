@@ -947,6 +947,11 @@ main {
   background: var(--surface);
   font-size: 10px;
 }
+.compare-add:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--soft);
+}
 .compare-add.selected {
   background: var(--soft);
   color: var(--accent);
@@ -1672,11 +1677,71 @@ th {
 }
 .rank-notes {
   display: flex;
-  gap: 20px;
-  margin-top: 9px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 12px;
   flex-wrap: wrap;
   font-size: 11px;
   color: var(--muted);
+}
+.rank-notes-meta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+  flex: 1 1 240px;
+}
+.rank-compare-btn,
+.rank-notes a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 30px;
+  padding: 5px 12px;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  color: var(--accent-text);
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(16, 23, 19, 0.08);
+  transition:
+    transform 160ms cubic-bezier(0.23, 1, 0.32, 1),
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+.rank-compare-btn:hover,
+.rank-notes a:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: var(--accent-text);
+  transform: translateY(-1px);
+  box-shadow:
+    0 3px 10px var(--glow),
+    0 0 0 2px rgba(143, 234, 69, 0.14);
+}
+:root[data-theme='dark'] .rank-compare-btn:hover,
+:root[data-theme='dark'] .rank-notes a:hover {
+  box-shadow:
+    0 3px 10px var(--glow),
+    0 0 0 2px rgba(155, 239, 74, 0.16);
+}
+.rank-compare-btn:active,
+.rank-notes a:active {
+  background: var(--accent);
+  transform: scale(0.97);
+}
+.rank-compare-btn:focus-visible,
+.rank-notes a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 .detail-header {
   display: flex;
@@ -2286,7 +2351,15 @@ th {
     font-size: 18px;
   }
   .rank-notes {
-    gap: 8px;
+    gap: 10px;
+  }
+  .rank-notes-meta {
+    gap: 6px;
+    flex-basis: 100%;
+  }
+  .rank-compare-btn,
+  .rank-notes a {
+    align-self: flex-start;
   }
   .ranking-row .score-number small {
     font-size: 9px;

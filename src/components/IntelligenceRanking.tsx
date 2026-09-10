@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { Plus } from 'lucide-react';
 import { ProviderLogo } from './ProviderLogo';
 import { RankingSortControls } from './RankingSortControls';
 import type { RankingDirection } from '../lib/rankings';
@@ -97,13 +98,21 @@ export default function IntelligenceRanking({
                   {item.tags.slice(0, 2).join(' and ').toLowerCase()}.
                 </p>
                 <div className="rank-notes">
-                  <span>
-                    Components: intelligence {item.components.intelligence},
-                    coding {item.components.coding}, research{' '}
-                    {item.components.research}
-                  </span>
-                  <span>Tradeoff: {item.weakness.toLowerCase()}</span>
-                  <a href={`/compare?models=${item.slug}`}>Add to comparison</a>
+                  <div className="rank-notes-meta">
+                    <span>
+                      Components: intelligence {item.components.intelligence},
+                      coding {item.components.coding}, research{' '}
+                      {item.components.research}
+                    </span>
+                    <span>Tradeoff: {item.weakness.toLowerCase()}</span>
+                  </div>
+                  <a
+                    className="rank-compare-btn"
+                    href={`/compare?models=${item.slug}`}
+                  >
+                    <Plus size={12} strokeWidth={2.5} aria-hidden="true" />
+                    Add to comparison
+                  </a>
                 </div>
               </div>
             </article>

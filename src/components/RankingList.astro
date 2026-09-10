@@ -3,6 +3,7 @@ import { allModels, models } from '../data/models';
 import { categories, metricLabels, type Metric } from '../data/config';
 import { rankModels } from '../lib/decision';
 import { ModelMark } from './ModelCard';
+import { Plus } from 'lucide-react';
 import IntelligenceRanking from './IntelligenceRanking';
 import SpeedRanking from './SpeedRanking';
 import MetricRanking from './MetricRanking';
@@ -179,8 +180,16 @@ const ranked = rankModels(baseModels, 'overall');
                 sample.
               </p>
               <div class="rank-notes">
-                <span>Tradeoff: {model.weaknesses[0].toLowerCase()}</span>
-                <a href={`/compare?models=${model.slug}`}>Add to comparison</a>
+                <div class="rank-notes-meta">
+                  <span>Tradeoff: {model.weaknesses[0].toLowerCase()}</span>
+                </div>
+                <a
+                  class="rank-compare-btn"
+                  href={`/compare?models=${model.slug}`}
+                >
+                  <Plus size={12} strokeWidth={2.5} aria-hidden="true" />
+                  Add to comparison
+                </a>
               </div>
             </div>
           </article>

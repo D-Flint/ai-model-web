@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { Plus } from 'lucide-react';
 import { formatPrice } from '../lib/apiPricing';
 import type { RankingDirection } from '../lib/rankings';
 import { ProviderLogo } from './ProviderLogo';
@@ -106,13 +107,21 @@ export default function MetricRanking({
                   {item.tags.slice(0, 2).join(' and ').toLowerCase()}.
                 </p>
                 <div className="rank-notes">
-                  <span>
-                    {isPrice
-                      ? `Verified input price: ${formatPrice(item.value)} / 1M tokens`
-                      : `Evidence-backed ${metricLabel.toLowerCase()} score: ${item.value}/100`}
-                  </span>
-                  <span>Tradeoff: {item.weakness.toLowerCase()}</span>
-                  <a href={`/compare?models=${item.slug}`}>Add to comparison</a>
+                  <div className="rank-notes-meta">
+                    <span>
+                      {isPrice
+                        ? `Verified input price: ${formatPrice(item.value)} / 1M tokens`
+                        : `Evidence-backed ${metricLabel.toLowerCase()} score: ${item.value}/100`}
+                    </span>
+                    <span>Tradeoff: {item.weakness.toLowerCase()}</span>
+                  </div>
+                  <a
+                    className="rank-compare-btn"
+                    href={`/compare?models=${item.slug}`}
+                  >
+                    <Plus size={12} strokeWidth={2.5} aria-hidden="true" />
+                    Add to comparison
+                  </a>
                 </div>
               </div>
             </article>
