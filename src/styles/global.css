@@ -936,25 +936,38 @@ main {
   display: flex;
   gap: 4px;
   align-items: center;
+  color: var(--accent);
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+.card-bottom > a:first-child:hover {
+  color: var(--bright-accent);
+  text-decoration: underline;
 }
 .compare-add {
   display: inline-flex;
   gap: 4px;
   align-items: center;
-  border: 1px solid var(--border);
+  border: 1px solid var(--accent);
   border-radius: 5px;
   padding: 5px 7px;
-  background: var(--surface);
+  background: var(--soft);
+  color: var(--accent);
   font-size: 10px;
+  font-weight: 600;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
 }
 .compare-add:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: var(--soft);
+  border-color: var(--bright-accent);
+  color: var(--accent-hover);
+  background: var(--subtle);
 }
 .compare-add.selected {
-  background: var(--soft);
-  color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-text);
   border-color: var(--accent);
 }
 .section-note {
