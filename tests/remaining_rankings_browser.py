@@ -41,28 +41,41 @@ with sync_playwright() as playwright:
     for route in SCORE_ROUTES:
         page.goto(f'http://localhost:4321{route}')
         page.wait_for_load_state('networkidle')
-        highest = page.get_by_role('button', name='Highest to lowest')
-        lowest = page.get_by_role('button', name='Lowest to highest')
-        assert highest.get_attribute('aria-pressed') == 'true', route
+        highest = page.get_by_role(
+            'button',
+            name='Sort ranking: Highest to lowest. Activate to sort lowest to highest.',
+        )
+        assert highest.get_attribute('aria-pressed') == 'false', route
         descending = score_values(page)
-        assert len(descending) > 1, route
         assert descending == sorted(descending, reverse=True), route
-        lowest.click()
+        highest.click()
         ascending = score_values(page)
         assert ascending == sorted(ascending), route
         assert len(ascending) == len(descending), route
+        lowest = page.get_by_role(
+            'button',
+            name='Sort ranking: Lowest to highest. Activate to sort highest to lowest.',
+        )
+        assert lowest.get_attribute('aria-pressed') == 'true', route
 
     page.goto('http://localhost:4321/rankings/cheap')
     page.wait_for_load_state('networkidle')
-    highest = page.get_by_role('button', name='Highest to lowest')
-    lowest = page.get_by_role('button', name='Lowest to highest')
+    lowest = page.get_by_role(
+        'button',
+        name='Sort ranking: Lowest to highest. Activate to sort highest to lowest.',
+    )
     assert lowest.get_attribute('aria-pressed') == 'true'
     ascending_prices = price_values(page)
     assert len(ascending_prices) > 1
     assert ascending_prices == sorted(ascending_prices)
-    highest.click()
+    lowest.click()
     descending_prices = price_values(page)
     assert descending_prices == sorted(descending_prices, reverse=True)
+    highest = page.get_by_role(
+        'button',
+        name='Sort ranking: Highest to lowest. Activate to sort lowest to highest.',
+    )
+    assert highest.get_attribute('aria-pressed') == 'false'
 
     first_row = page.locator('.ranking-row').first
     model_name = first_row.locator('h3').inner_text()

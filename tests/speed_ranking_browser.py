@@ -22,9 +22,11 @@ with sync_playwright() as playwright:
     page.goto('http://localhost:4321/rankings/speed')
     page.wait_for_load_state('networkidle')
 
-    highest = page.get_by_role('button', name='Highest to lowest')
-    lowest = page.get_by_role('button', name='Lowest to highest')
-    assert highest.get_attribute('aria-pressed') == 'true'
+    highest = page.get_by_role(
+        'button',
+        name='Sort ranking: Highest to lowest. Activate to sort lowest to highest.',
+    )
+    assert highest.get_attribute('aria-pressed') == 'false'
     descending = speeds(page)
     assert len(descending) > 1
     assert descending == sorted(descending, reverse=True)
@@ -42,12 +44,27 @@ with sync_playwright() as playwright:
     )
     assert displayed_peak == int(range_match.group(2))
 
-    lowest.click()
+    highest.click()
     ascending = speeds(page)
     assert ascending == sorted(ascending)
     assert len(ascending) == len(descending)
 
-    highest.click()
+    lowest = page.get_by_role(
+        'button',
+        name='Sort ranking: Lowest to highest. Activate to sort highest to lowest.',
+    )
+    assert lowest.get_attribute('aria-pressed') == 'true'
+    lowest.click()
+
+    page.set_viewport_size({"width": 390, "height": 844})
+    page.goto('http://localhost:4321/rankings/speed')
+    page.wait_for_load_state('networkidle')
+    assert not page.locator('.ranking-sort-label').is_visible()
+    assert page.get_by_role(
+        'button',
+        name='Sort ranking: Highest to lowest. Activate to sort lowest to highest.',
+    ).is_visible()
+
     last_row = page.locator('.ranking-row').last
     model_name = last_row.locator('h3').inner_text()
     last_row.get_by_role('link', name='Add to comparison').click()

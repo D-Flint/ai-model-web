@@ -186,14 +186,15 @@ describe('intelligence ranking control', () => {
     },
   ];
 
-  it('defaults to highest-first and renders both sort options', () => {
+  it('defaults to highest-first and renders one sort toggle', () => {
     const html = renderToStaticMarkup(
       createElement(IntelligenceRanking, { items }),
     );
     expect(html.indexOf('Higher')).toBeLessThan(html.indexOf('Lower'));
     expect(html).toContain('Highest to lowest');
-    expect(html).toContain('Lowest to highest');
-    expect(html).toContain('aria-pressed="true"');
+    expect(html).toContain('Activate to sort lowest to highest.');
+    expect(html).toContain('class="ranking-sort-toggle"');
+    expect(html).toContain('aria-pressed="false"');
   });
 
   it('sorts client items lowest-first when selected', () => {

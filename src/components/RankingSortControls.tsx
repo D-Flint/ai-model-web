@@ -14,6 +14,14 @@ export function RankingSortControls({
   onDirectionChange,
   totalCount,
 }: Props) {
+  const isAscending = direction === 'asc';
+  const directionLabel = isAscending
+    ? 'Lowest to highest'
+    : 'Highest to lowest';
+  const nextDirectionLabel = isAscending
+    ? 'Highest to lowest'
+    : 'Lowest to highest';
+
   return (
     <div className="ranking-controls">
       <div className="ranking-controls-meta">
@@ -29,34 +37,20 @@ export function RankingSortControls({
         <span id={`${id}-label`} className="ranking-sort-label">
           Sort ranking
         </span>
-        <div
-          className="ranking-sort-options"
-          role="group"
-          aria-labelledby={`${id}-label`}
+        <button
+          type="button"
+          className="ranking-sort-toggle"
+          aria-pressed={isAscending}
+          aria-label={`Sort ranking: ${directionLabel}. Activate to sort ${nextDirectionLabel.toLowerCase()}.`}
+          onClick={() => onDirectionChange(isAscending ? 'desc' : 'asc')}
         >
-          <button
-            type="button"
-            className={`ranking-sort-option ${
-              direction === 'desc' ? 'is-selected' : ''
-            }`}
-            aria-pressed={direction === 'desc'}
-            onClick={() => onDirectionChange('desc')}
-          >
-            <ArrowDownNarrowWide size={14} aria-hidden="true" />
-            Highest to lowest
-          </button>
-          <button
-            type="button"
-            className={`ranking-sort-option ${
-              direction === 'asc' ? 'is-selected' : ''
-            }`}
-            aria-pressed={direction === 'asc'}
-            onClick={() => onDirectionChange('asc')}
-          >
+          {isAscending ? (
             <ArrowUpNarrowWide size={14} aria-hidden="true" />
-            Lowest to highest
-          </button>
-        </div>
+          ) : (
+            <ArrowDownNarrowWide size={14} aria-hidden="true" />
+          )}
+          {directionLabel}
+        </button>
       </div>
     </div>
   );

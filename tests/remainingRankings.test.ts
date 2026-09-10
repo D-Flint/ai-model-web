@@ -263,7 +263,8 @@ describe('shared metric ranking control', () => {
       }),
     );
     expect(html.indexOf('Higher')).toBeLessThan(html.indexOf('Lower'));
-    expect(html).toContain('aria-pressed="true"');
+    expect(html).toContain('class="ranking-sort-toggle"');
+    expect(html).toContain('aria-pressed="false"');
     expect(html).toContain('Highest to lowest');
   });
 
@@ -278,6 +279,7 @@ describe('shared metric ranking control', () => {
       }),
     );
     expect(html.indexOf('Lower')).toBeLessThan(html.indexOf('Higher'));
+    expect(html).toContain('class="ranking-sort-toggle"');
     expect(html).toContain('aria-pressed="true"');
     expect(html).toContain('Lowest to highest');
   });

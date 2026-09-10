@@ -218,13 +218,14 @@ describe('speed ranking control', () => {
     },
   ];
 
-  it('defaults to highest-first and renders both sort options', () => {
+  it('defaults to highest-first and renders one sort toggle', () => {
     const html = renderToStaticMarkup(createElement(SpeedRanking, { items }));
     expect(html.indexOf('Faster')).toBeLessThan(html.indexOf('Slower'));
     expect(html).toContain('Measured range: 90–190 tokens/sec');
     expect(html).toContain('Highest to lowest');
-    expect(html).toContain('Lowest to highest');
-    expect(html).toContain('aria-pressed="true"');
+    expect(html).toContain('Activate to sort lowest to highest.');
+    expect(html).toContain('class="ranking-sort-toggle"');
+    expect(html).toContain('aria-pressed="false"');
   });
 
   it('sorts client items lowest-first when selected', () => {
