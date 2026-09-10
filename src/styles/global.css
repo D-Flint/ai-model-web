@@ -1188,6 +1188,7 @@ main {
 }
 .footer-links a {
   color: var(--accent);
+  font-weight: 600;
   transition: color 0.15s ease;
 }
 .footer-links a:hover {
