@@ -1,7 +1,7 @@
 import { rateLabel } from '../lib/apiPricing';
 import ApiPricing from './ApiPricing';
 import { useEffect, useState, type ReactNode } from 'react';
-import { Copy, X, Plus } from 'lucide-react';
+import { ChevronDown, Copy, X, Plus } from 'lucide-react';
 import { catalogSchema, type CatalogModel } from '../lib/catalogSchema';
 import {
   effortLabels,
@@ -425,25 +425,35 @@ export default function ComparisonBuilder({
                     {item.isReasoning ? (
                       item.availableEfforts.length > 1 ? (
                         <div className="mobile-effort-control">
-                          <label htmlFor={`mobile-effort-select-${item.id}`}>
-                            Reasoning effort
-                          </label>
-                          <select
-                            id={`mobile-effort-select-${item.id}`}
-                            value={item.effort}
-                            onChange={(event) =>
-                              changeEffort(
-                                idx,
-                                event.target.value as ReasoningEffort,
-                              )
-                            }
-                          >
-                            {item.availableEfforts.map((effort) => (
-                              <option key={effort} value={effort}>
-                                {effortLabels[effort]}
-                              </option>
-                            ))}
-                          </select>
+                          <div className="mobile-effort-row">
+                            <label htmlFor={`mobile-effort-select-${item.id}`}>
+                              Reasoning effort
+                            </label>
+                            <div className="control-select-wrapper mobile-effort-select-wrapper">
+                              <select
+                                id={`mobile-effort-select-${item.id}`}
+                                className="control-select mobile-effort-select"
+                                value={item.effort}
+                                onChange={(event) =>
+                                  changeEffort(
+                                    idx,
+                                    event.target.value as ReasoningEffort,
+                                  )
+                                }
+                              >
+                                {item.availableEfforts.map((effort) => (
+                                  <option key={effort} value={effort}>
+                                    {effortLabels[effort]}
+                                  </option>
+                                ))}
+                              </select>
+                              <ChevronDown
+                                className="control-select-arrow"
+                                size={16}
+                                aria-hidden="true"
+                              />
+                            </div>
+                          </div>
                           {selection.length < 4 && (
                             <button
                               type="button"

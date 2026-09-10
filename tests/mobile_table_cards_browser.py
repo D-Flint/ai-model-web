@@ -49,17 +49,30 @@ with sync_playwright() as playwright:
         path=str(artifacts / 'mobile-pricing-cards-390.png'), full_page=True
     )
 
-    visit('/compare?models=claude-sonnet-5,gemini-2-5-pro')
+    visit('/compare?models=claude-fable-5-1:high,gemini-3-deep-think:high')
     expect(page.locator('.comparison-desktop-table')).to_be_hidden()
     expect(page.locator('.mobile-comparison')).to_be_visible()
     expect(
         page.get_by_role('heading', name='Compared models', exact=True)
     ).to_be_visible()
     first_metric = page.locator('.mobile-metric-card').first
-    expect(first_metric).to_contain_text('Claude Sonnet 5')
-    expect(first_metric).to_contain_text('Gemini 2.5 Pro')
-    assert page.locator('.mobile-effort-control select').count() > 0
+    expect(first_metric).to_contain_text('Claude Fable 5.1')
+    expect(first_metric).to_contain_text('Gemini 3 Deep Think')
+    effort_selects = page.locator('.mobile-effort-select')
+    expect(effort_selects).to_have_count(2)
+    select_box = effort_selects.first.bounding_box()
+    assert select_box and select_box['height'] >= 44 and select_box['width'] <= 180
+    intelligence_before = first_metric.inner_text()
+    effort_selects.first.select_option('medium')
+    expect(effort_selects.first).to_have_value('medium')
+    assert 'claude-fable-5-1:medium' in page.evaluate(
+        'decodeURIComponent(location.search)'
+    )
+    assert first_metric.inner_text() != intelligence_before
     assert page.evaluate('document.documentElement.scrollWidth <= window.innerWidth')
+    page.locator('.mobile-compared-models').screenshot(
+        path=str(artifacts / 'mobile-effort-selectors-390.png')
+    )
     page.screenshot(path=str(artifacts / 'mobile-comparison-cards-viewport-390.png'))
     page.screenshot(
         path=str(artifacts / 'mobile-comparison-cards-390.png'), full_page=True
@@ -69,7 +82,7 @@ with sync_playwright() as playwright:
     visit('/pricing')
     expect(page.locator('.mobile-pricing-list')).to_be_visible()
     assert page.evaluate('document.documentElement.scrollWidth <= window.innerWidth')
-    visit('/compare?models=claude-sonnet-5,gemini-2-5-pro')
+    visit('/compare?models=claude-fable-5-1:high,gemini-3-deep-think:high')
     expect(page.locator('.mobile-comparison')).to_be_visible()
     assert page.evaluate('document.documentElement.scrollWidth <= window.innerWidth')
 

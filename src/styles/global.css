@@ -3765,24 +3765,43 @@ table.leaderboard-table td.col-sorted.td-date {
   .mobile-effort-control {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    gap: 7px;
+    gap: 10px;
     margin-top: 14px;
   }
 
-  .mobile-effort-control label {
+  .mobile-effort-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .mobile-effort-row label {
+    min-width: 98px;
     color: var(--muted);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 650;
+    line-height: 1.35;
   }
 
-  .mobile-effort-control select,
-  .mobile-compare-effort {
+  .mobile-effort-select-wrapper {
+    width: min(180px, 100%);
+    flex: 0 1 180px;
+  }
+
+  .mobile-effort-select {
     width: 100%;
-    min-height: 44px;
+    height: 44px;
+    padding: 0 40px 0 13px;
+    border-radius: 9px;
+    background: var(--surface);
+    font-size: 16px;
+    font-weight: 600;
   }
 
-  .mobile-effort-control select {
-    font-size: 16px;
+  .mobile-effort-select-wrapper .control-select-arrow {
+    right: 13px;
   }
 
   .mobile-compare-effort {
@@ -3790,17 +3809,23 @@ table.leaderboard-table td.col-sorted.td-date {
     align-items: center;
     justify-content: center;
     gap: 7px;
-    border: 0;
+    justify-self: start;
+    width: auto;
+    min-height: 44px;
+    padding: 0 12px;
+    border: 1px solid var(--border);
     border-radius: 8px;
-    background: transparent;
+    background: var(--subtle);
     color: var(--accent);
     font: inherit;
     font-size: 12px;
     font-weight: 650;
   }
 
+  .mobile-compare-effort:hover,
   .mobile-compare-effort:active {
     background: var(--soft);
+    border-color: var(--accent);
   }
 
   .mobile-effort-status {
