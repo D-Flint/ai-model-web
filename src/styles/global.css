@@ -110,10 +110,15 @@ a:hover {
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
-select:focus-visible,
 summary:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 4px;
+}
+select:focus,
+select:focus-visible {
+  border-color: var(--text);
+  outline: none;
+  box-shadow: none;
 }
 svg {
   flex-shrink: 0;
@@ -2508,7 +2513,8 @@ th {
 }
 .effort-selector-dropdown:focus {
   outline: none;
-  border-color: var(--accent);
+  border-color: var(--text);
+  box-shadow: none;
 }
 .effort-compare-pill {
   display: inline-flex;
@@ -2839,7 +2845,8 @@ th {
 }
 
 .control-select:focus {
-  border-color: var(--accent);
+  border-color: var(--text);
+  box-shadow: none;
 }
 
 .control-select-arrow {

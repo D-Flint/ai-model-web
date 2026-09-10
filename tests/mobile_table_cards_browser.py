@@ -19,15 +19,43 @@ with sync_playwright() as playwright:
         response = page.goto(base + path, wait_until='networkidle')
         assert response and response.status == 200, path
 
+    def assert_neutral_select_focus():
+        selects = page.locator('select:visible')
+        assert selects.count() > 0, page.url
+        for index in range(selects.count()):
+            select = selects.nth(index)
+            select.focus()
+            focus_style = select.evaluate(
+                """element => {
+                    const probe = document.createElement('span');
+                    probe.style.color = 'var(--accent)';
+                    document.body.appendChild(probe);
+                    const result = {
+                        accent: getComputedStyle(probe).color,
+                        border: getComputedStyle(element).borderTopColor,
+                        outline: getComputedStyle(element).outlineStyle,
+                    };
+                    probe.remove();
+                    return result;
+                }"""
+            )
+            assert focus_style['outline'] == 'none'
+            assert focus_style['border'] != focus_style['accent']
+
     visit('/pricing')
     expect(page.locator('.pricing-desktop-table')).to_be_visible()
     expect(page.locator('.mobile-pricing-list')).to_be_hidden()
+    assert_neutral_select_focus()
     page.screenshot(path=str(artifacts / 'desktop-pricing-table-1024.png'))
 
     visit('/compare?models=claude-sonnet-5,gemini-2-5-pro')
     expect(page.locator('.comparison-desktop-table')).to_be_visible()
     expect(page.locator('.mobile-comparison')).to_be_hidden()
+    assert_neutral_select_focus()
     page.screenshot(path=str(artifacts / 'desktop-comparison-table-1024.png'))
+
+    visit('/models')
+    assert_neutral_select_focus()
 
     page.set_viewport_size({'width': 390, 'height': 844})
     visit('/pricing')
@@ -40,6 +68,7 @@ with sync_playwright() as playwright:
     page.get_by_role('combobox', name='Sort pricing', exact=True).select_option(
         'blended'
     )
+    assert_neutral_select_focus()
     expect(page.locator('.mobile-pricing-card').first).to_contain_text(
         'Blended / 1M'
     )
@@ -70,23 +99,7 @@ with sync_playwright() as playwright:
     )
     assert first_metric.inner_text() != intelligence_before
     page.get_by_role('button', name='Toggle color theme').click()
-    effort_selects.first.focus()
-    focus_style = effort_selects.first.evaluate(
-        """element => {
-            const probe = document.createElement('span');
-            probe.style.color = 'var(--accent)';
-            document.body.appendChild(probe);
-            const result = {
-                accent: getComputedStyle(probe).color,
-                border: getComputedStyle(element).borderTopColor,
-                outline: getComputedStyle(element).outlineStyle,
-            };
-            probe.remove();
-            return result;
-        }"""
-    )
-    assert focus_style['outline'] == 'none'
-    assert focus_style['border'] != focus_style['accent']
+    assert_neutral_select_focus()
     assert page.evaluate('document.documentElement.scrollWidth <= window.innerWidth')
     page.locator('.mobile-compared-models').screenshot(
         path=str(artifacts / 'mobile-effort-selectors-390.png')
