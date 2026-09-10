@@ -1186,6 +1186,15 @@ main {
   font-size: 11px;
   color: var(--muted);
 }
+.footer-links a {
+  color: var(--accent);
+  transition: color 0.15s ease;
+}
+.footer-links a:hover {
+  color: var(--bright-accent);
+  text-decoration: underline;
+}
+
 .footer-bottom {
   display: flex;
   justify-content: space-between;
