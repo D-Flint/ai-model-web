@@ -8,14 +8,26 @@
 - Full pre-compression log preserved at `%LOCALAPPDATA%\caveman-compress\backups\ai-model-web\SESSION_LOG.original.md`.
 - Detailed implementation history remains in Git commits.
 
-#### Current handoff
+##### Current handoff
 
-- Objective: Make model card "View details" and "Compare" button stick to card bottom.
-- Last implementation: Configured `.model-card` as `display: flex; flex-direction: column;` and set `.card-bottom` to `margin-top: auto;` in `src/styles/global.css`, ensuring all card action footers align evenly at the bottom regardless of varying card content heights.
-- Tests: `npm run check` (105 files, 0 errors, 0 warnings, 0 hints); `npm test` (15 files, 146 passed); `npm run lint` clean.
-- Commits: `352394b` (`fix: pin model card actions to bottom with flex column and auto margin`).
-- Current state: Stored locally; no remote push. Card footers stick to bottom uniformly.
-- Exact next step: User verifies aligned card footers in browser.
+- Objective: Formulate architectural plan and refactoring directives for GPT-5.6 to decouple metrics, refactor speed telemetry, format context windows, make tests resilient, and prune catalog from 282 to 30 newest models.
+- Last implementation: Generated and updated comprehensive execution specification in artifact `synapse-data-pipeline-refactor-plan.md` covering Phase 0 (Catalog pruning to 30 newest models with LiveBench limit handling), Phase 1 (LiveBench metric decoupling & source-native schema), Phase 2 (Raw speed telemetry & token context formatting), Phase 3 (Test resilience), and Phase 4 (Verification checklist).
+- Tests: `npm run check` (105 files, 0 errors, 0 warnings, 0 hints); `npm test` (15 files, 146 passed); git working tree clean.
+- Commits: Pending local commit for session log.
+- Current state: Plan artifact completed and aligned with user directives.
+- Exact next step: Hand off to GPT-5.6 to execute Phase 0 through Phase 4.
+
+## 2026-09-11 — Formulate data pipeline refactor & catalog pruning plan for GPT-5.6
+
+- Objective: Formulate architectural plan and refactoring directives for GPT-5.6 covering metric decoupling, speed telemetry, display formatting, test resilience, and pruning the catalog to the 30 newest models.
+- Files changed: `SESSION_LOG.md`, artifact `synapse-data-pipeline-refactor-plan.md`.
+- Attempts: 1 planning & specification pass.
+- Failures/causes: None; audited mathematical constraints between 30 newest models, LiveBench eligibility (23 tracked models), and OpenRouter ranking tests.
+- Tests: `npm run check` (105 files, 0 errors, 0 warnings, 0 hints); `npm test` (15 files, 146/146 passed).
+- Commit: Pending local commit.
+- Current state: Stored locally; no remote push. Refactoring specification ready for GPT-5.6 execution.
+- Exact next step: GPT-5.6 executes Phase 0 through Phase 4 per the plan.
+
 
 ## 2026-09-10 — Pin model card actions to bottom
 
