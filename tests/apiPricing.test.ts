@@ -6,6 +6,7 @@ import {
   comparablePrice,
   formatPrice,
   priceFreshness,
+  pricingSource,
 } from '../src/lib/apiPricing';
 import { apiPricingSchema } from '../src/lib/apiPricingSchema';
 import {
@@ -165,6 +166,31 @@ describe('pricing provenance and comparisons', () => {
     expect(choosePricing(claude, gemini)).toBe(claude);
     expect(choosePricing(null, gemini)).toBe(gemini);
     expect(choosePricing(null, null)).toBeNull();
+  });
+  it('selects one stable pricing source across tiers and scheduled periods', () => {
+    expect(pricingSource(claude)).toBe(claude.tiers[0].input);
+
+    const outputOnly = structuredClone(claude);
+    outputOnly.tiers.forEach((tier) => {
+      tier.input = null;
+      tier.cached = null;
+      tier.cacheWrite5m = null;
+      tier.cacheWrite1h = null;
+      tier.cacheStorage = null;
+      tier.search = null;
+      tier.output = null;
+    });
+    outputOnly.periods = [
+      {
+        id: 'scheduled',
+        label: 'Scheduled rate',
+        input: null,
+        output: claude.tiers[0].output,
+        cached: null,
+      },
+    ];
+    expect(pricingSource(outputOnly)).toBe(claude.tiers[0].output);
+    expect(pricingSource(null)).toBeNull();
   });
   it('rejects negative prices, missing source dates and overlapping tiers', () => {
     const negative = structuredClone(claude);

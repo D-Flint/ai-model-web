@@ -80,6 +80,30 @@ export function choosePricing(
   return official ?? fallback;
 }
 
+/** Select one existing reviewed rate for compact pricing provenance. */
+export function pricingSource(
+  pricing: ApiPricing | null | undefined,
+): PriceValue | null {
+  if (!pricing) return null;
+  const rates = [
+    ...pricing.tiers.flatMap((tier) => [
+      tier.input,
+      tier.output,
+      tier.cached,
+      tier.cacheWrite5m,
+      tier.cacheWrite1h,
+      tier.cacheStorage,
+      tier.search,
+    ]),
+    ...(pricing.periods ?? []).flatMap((period) => [
+      period.input,
+      period.output,
+      period.cached,
+    ]),
+  ];
+  return rates.find((rate): rate is PriceValue => rate !== null) ?? null;
+}
+
 const reviewedPricingHosts: Record<string, string[]> = {
   Anthropic: ['platform.claude.com', 'docs.anthropic.com'],
   'Google DeepMind': ['ai.google.dev', 'cloud.google.com'],

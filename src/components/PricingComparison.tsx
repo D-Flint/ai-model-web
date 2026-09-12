@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { CatalogModel } from '../lib/catalogSchema';
-import { comparablePrice, formatPrice } from '../lib/apiPricing';
+import { comparablePrice, formatPrice, pricingSource } from '../lib/apiPricing';
 import { PriceSource } from './ApiPricing';
 import { ProviderLogo } from './ProviderLogo';
 
@@ -111,7 +111,7 @@ export default function PricingComparison({
                     <a href={`/models/${m.slug}#pricing`}>Details</a>
                   </td>
                   <td>
-                    <PriceSource price={t?.input ?? null} />
+                    <PriceSource price={pricingSource(m.apiPricing)} />
                   </td>
                 </tr>
               );
@@ -168,7 +168,7 @@ export default function PricingComparison({
                 </p>
                 <div className="mobile-pricing-freshness">
                   <span>Source freshness</span>
-                  <PriceSource price={tier?.input ?? null} />
+                  <PriceSource price={pricingSource(model.apiPricing)} />
                 </div>
               </div>
             </article>

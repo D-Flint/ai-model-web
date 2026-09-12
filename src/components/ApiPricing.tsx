@@ -1,6 +1,6 @@
 import type { CatalogModel } from '../lib/catalogSchema';
 import type { PriceValue } from '../lib/apiPricingSchema';
-import { formatPrice, priceFreshness } from '../lib/apiPricing';
+import { formatPrice, priceFreshness, pricingSource } from '../lib/apiPricing';
 
 export function PriceSource({ price }: { price: PriceValue | null }) {
   if (!price) return <span className="micro muted">Unavailable</span>;
@@ -99,7 +99,7 @@ export default function ApiPricing({
               </div>
             )}
           </dl>
-          {!details && <PriceSource price={tier.input ?? tier.output} />}
+          {!details && <PriceSource price={pricingSource(pricing)} />}
         </div>
       ))}
       {details && (
