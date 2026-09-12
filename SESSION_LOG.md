@@ -720,6 +720,17 @@
 - Current state: All remaining comparison defaults committed; Claude Fable 5.1 and GPT-6 Astra share default selection across homepage and compare page. Session record is committed next, then main is pushed to origin.
 - Exact next step: Push main to origin, verify remote HEAD and clean working tree, then wait for user verification.
 
+## 2026-09-12 — Replace three catalog models with DeepSeek variants
+
+- Objective: Delete Claude Haiku 5, GPT-5, and GPT-5 Pro from product data and replace their published catalog positions with DeepSeek V4 Flash 0731, DeepSeek V4.1 Flash, and DeepSeek V4 Pro 0813.
+- Files changed: `src/data/bfclData.json`, `src/data/livebenchData.json`, `src/data/livebenchReleaseAliases.ts`, `src/data/modelRoles.ts`, `src/data/models/anthropic.ts`, `src/data/models/deepseek.ts`, `src/data/models/openai.ts`, `src/data/officialProviders.ts`, `src/data/verifiedModels.json`, `src/lib/importCatalog.ts`, `src/lib/livebenchCatalog.ts`, `tests/dataPipeline.test.ts`, `tests/livebenchCatalog.test.ts`, `tests/speedRanking.test.ts`, `SESSION_LOG.md`.
+- Attempts: 3 implementation and validation passes.
+- Failures/causes: The first full refresh exposed inconsistent half-point rounding between ingestion and validation; validation now uses the shared normalization function. The initial selection admitted only V4.1 Flash because the dated DeepSeek snapshots ranked below the top-30 cutoff; the approved replacements are now explicit curated inclusions. Initial tests exposed an optional benchmark narrowing error and a catalog-dependent speed fixture date; both tests were made explicit. Sandboxed network fetches and Wrangler registry writes required approved elevated reruns. Wrangler emitted non-fatal sandbox log warnings during checks.
+- Tests: Official LiveBench snapshot refresh passed; full data ingestion passed with 280 models ingested and 49 retained records; `npm test` passed 150/150 tests across 16 files; `npm run check` passed with 0 errors, warnings, or hints; `npm run lint` passed; `npm run build` passed and generated all three replacement routes with none of the deleted routes; `git diff --check` passed.
+- Commit: `83b0694` (`feat: replace catalog models with DeepSeek variants`).
+- Current state: The published catalog contains exactly 30 models and includes all three requested DeepSeek variants. The deleted slugs are absent from canonical definitions, official provider records, benchmark fixtures, generated catalog data, selectors, and routes. DeepSeek V4.1 Flash uses official September 10 release facts, 1M context, native vision, and null pricing pending extractable official numeric rates.
+- Exact next step: User verifies the three replacement models in the catalog and comparison flow; no further implementation is planned.
+
 ## 2026-09-12 — Restore LiveBench overall scores from partial snapshots
 
 - Objective: Restore Claude Haiku 5's published LiveBench overall score when its stored row has incomplete category detail.
