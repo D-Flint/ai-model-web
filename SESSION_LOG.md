@@ -719,3 +719,14 @@
 - Commit: 1ec43a1 (feat: set shared default comparison models).
 - Current state: All remaining comparison defaults committed; Claude Fable 5.1 and GPT-6 Astra share default selection across homepage and compare page. Session record is committed next, then main is pushed to origin.
 - Exact next step: Push main to origin, verify remote HEAD and clean working tree, then wait for user verification.
+
+## 2026-09-12 — Restore LiveBench overall scores from partial snapshots
+
+- Objective: Restore Claude Haiku 5's published LiveBench overall score when its stored row has incomplete category detail.
+- Files changed: `src/pipeline/livebench.ts`, `src/data/verifiedModels.json`, `tests/dataPipeline.test.ts`, `SESSION_LOG.md`.
+- Attempts: 1 focused diagnosis and implementation pass.
+- Failures/causes: The initial diagnosis incorrectly treated rendered dashes as proof that LiveBench lacked the data. The pipeline actually discarded the row's native `global_average` whenever any optional category field was absent. The sandboxed build could not write Wrangler's external registry; the approved elevated rerun passed. Wrangler emitted non-fatal log permission warnings during `npm run check`.
+- Tests: `npm test` passed 148/148 tests across 16 files; `npm run check` passed with 0 errors, warnings, or hints; `npm run lint` passed; `npm run build` passed; `git diff --check` passed.
+- Commit: `4038231` (`fix: preserve LiveBench published overall scores`).
+- Current state: Claude Haiku 5 retains LiveBench overall 68.6 and displays rounded intelligence/overall scores of 69. Other unavailable category values remain null. Older partial LiveBench snapshots affected by the same mapping error also regain their published aggregate and provenance evidence.
+- Exact next step: Commit the fix locally, then wait for user verification of Claude Haiku 5 on the models page.
