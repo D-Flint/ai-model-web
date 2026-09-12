@@ -1,4 +1,4 @@
-import { comparablePrice, formatPrice, rateLabel } from '../lib/apiPricing';
+import { formatPrice, rateLabel } from '../lib/apiPricing';
 import React, { useEffect, useState, useMemo, useRef } from 'react';
 import {
   ArrowRight,
@@ -96,7 +96,7 @@ const ALL_COLUMNS: ColumnDef[] = [
   },
   {
     key: 'cost',
-    label: 'INPUT / 1M TOKENS',
+    label: 'COST PER SUCCESSFUL TASK',
     align: 'right',
     defaultVisible: true,
   },
@@ -268,9 +268,6 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
         ? `${model.name} ${effortLabel}`
         : model.name;
 
-      // API pricing fallback: tiered apiPricing or verified official-provider pricing
-      const inputPrice = comparablePrice(model) ?? model.pricing?.input ?? null;
-
       const slugLower = model.slug.toLowerCase();
       const slugStripped = slugLower.replace(/[^a-z0-9]/g, '');
       const canon =
@@ -337,9 +334,9 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
           language: langVal,
           instructionFollowing: instVal,
           speed: getSpeedTokensPerSec(model) || null,
-          cost: inputPrice,
+          cost: lbRow?.cost_per_successful_task ?? null,
         } as Record<LeaderboardMetricKey, number | null>,
-        inputPrice,
+        taskCost: lbRow?.cost_per_successful_task ?? null,
         speedLabel,
         detailSources,
       };
@@ -1176,7 +1173,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                             <td
                               className={`td-metric td-cost td-align-right ${sortColumn === 'cost' ? 'col-sorted' : ''}`}
                             >
-                              {formatPrice(row.inputPrice)}
+                              {formatPrice(row.taskCost)}
                             </td>
                           )}
 
@@ -1334,8 +1331,8 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
             <code>
               // select 1 category for its subtasks, or several to compare
               category averages · shading = top 5 per column · click a row for
-              subtasks · Price = standard input API rate per million tokens.
-              Tiered, stale and unavailable rates are not ranked.
+              subtasks · Cost = LiveBench cost per successful task. Unavailable
+              task costs are not ranked.
             </code>
           </div>
         </div>

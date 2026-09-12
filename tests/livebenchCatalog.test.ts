@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import liveBenchRows from '../src/data/livebenchData.json';
 import { allModels, models } from '../src/data/models';
 import {
   LIVEBENCH_CATALOG_LIMIT,
@@ -9,6 +10,13 @@ import {
 } from '../src/lib/livebenchCatalog';
 
 describe('LiveBench catalog selection', () => {
+  it('retains LiveBench cost per successful task values', () => {
+    const flash = liveBenchRows.find(
+      (row) => row.model === 'deepseek-v4.1-flash-max',
+    );
+    expect(flash?.cost_per_successful_task).toBe(0.0292);
+  });
+
   it('publishes exactly 57 eligible models in LiveBench score order', () => {
     expect(models).toHaveLength(LIVEBENCH_CATALOG_LIMIT);
     expect(models.every((model) => model.dataKind === 'verified')).toBe(true);

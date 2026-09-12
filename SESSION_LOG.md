@@ -1,5 +1,16 @@
 # Session Log
 
+## 2026-09-12 — Use LiveBench cost per successful task in leaderboard
+
+- Objective: Replace the leaderboard input-token price column with LiveBench's official cost per successful task.
+- Files changed: `scripts/refresh-livebench-snapshot.ts`, `src/pipeline/types.ts`, `src/data/livebenchData.json`, `src/components/ModelExplorer.tsx`, `tests/livebenchCatalog.test.ts`, `SESSION_LOG.md`.
+- Attempts: 1 implementation pass.
+- Failures/causes: Direct web opening of the CSV was restricted; the official CSV was fetched through the approved network command and its schema cross-checked against LiveBench's public repository documentation.
+- Tests: `npm run check` passed; `npm run lint` passed; `npm test` passed 152/152; `npm run build` passed; `git diff --check` passed.
+- Commit: Pending local commit.
+- Current state: LiveBench cost rows are stored with release provenance and used for leaderboard display/sorting. No remote push.
+- Exact next step: Run checks, commit locally, and hand off for browser verification.
+
 ## 2026-09-12 — Show cached input price in model detail expansion
 
 - Objective: Ensure every expanded model detail card shows input, cached input, and output API pricing categories.

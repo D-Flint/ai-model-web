@@ -6,10 +6,16 @@ import { defaultAliasResolver } from '../src/pipeline/aliasResolver';
 const releaseDate = '2026-06-25';
 const tableUrl = `https://raw.githubusercontent.com/LiveBench/new-livebench/main/public/table_${releaseDate.replaceAll('-', '_')}.csv`;
 const categoriesUrl = `https://raw.githubusercontent.com/LiveBench/new-livebench/main/public/categories_${releaseDate.replaceAll('-', '_')}.json`;
+const costUrl = `https://livebench.ai/cost_${releaseDate.replaceAll('-', '_')}.csv`;
 
 type TableRow = {
   model: string;
   scores: Map<string, number>;
+};
+
+type CostRow = {
+  model: string;
+  costPerSuccessfulTask: number;
 };
 
 function parseCsvLine(line: string): string[] {
@@ -60,6 +66,25 @@ function parseTable(csv: string): TableRow[] {
   });
 }
 
+function parseCost(csv: string): CostRow[] {
+  const lines = csv.trim().split(/\r?\n/);
+  const headers = parseCsvLine(lines[0] ?? '');
+  const modelIndex = headers.indexOf('model');
+  const costIndex = headers.indexOf('cost_per_successful_task');
+  if (modelIndex < 0 || costIndex < 0)
+    throw new Error('LiveBench cost CSV is missing required columns');
+
+  return lines.slice(1).flatMap((line) => {
+    if (!line.trim()) return [];
+    const cells = parseCsvLine(line);
+    const model = cells[modelIndex]?.trim();
+    const cost = Number(cells[costIndex]);
+    return model && Number.isFinite(cost) && cost >= 0
+      ? [{ model, costPerSuccessfulTask: cost }]
+      : [];
+  });
+}
+
 function average(values: number[]): number | undefined {
   if (values.length === 0) return undefined;
   return Number(
@@ -90,12 +115,16 @@ async function fetchText(url: string): Promise<string> {
 }
 
 async function main() {
-  const [csv, categoriesJson] = await Promise.all([
+  const [csv, categoriesJson, costCsv] = await Promise.all([
     fetchText(tableUrl),
     fetchText(categoriesUrl),
+    fetchText(costUrl),
   ]);
   const categories = JSON.parse(categoriesJson) as Record<string, string[]>;
   const rows = parseTable(csv);
+  const costByModel = new Map(
+    parseCost(costCsv).map((row) => [row.model, row.costPerSuccessfulTask]),
+  );
 
   const refreshedRows = rows.map((row): LiveBenchRow => {
     const scores = {
@@ -118,6 +147,7 @@ async function main() {
       model: row.model,
       global_average: globalAverage,
       ...scores,
+      cost_per_successful_task: costByModel.get(row.model),
       date: releaseDate,
     });
   });

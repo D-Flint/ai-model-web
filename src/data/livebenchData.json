@@ -1389,6 +1389,7 @@
     "instruction_following": 62.5,
     "agentic_coding": 39.7,
     "language": 81.3,
+    "cost_per_successful_task": 0.6104,
     "date": "2026-06-25"
   },
   {
@@ -1401,6 +1402,7 @@
     "instruction_following": 63.3,
     "agentic_coding": 49,
     "language": 83.3,
+    "cost_per_successful_task": 0.4035,
     "date": "2026-06-25"
   },
   {
@@ -1413,6 +1415,7 @@
     "instruction_following": 66.7,
     "agentic_coding": 50.7,
     "language": 77.9,
+    "cost_per_successful_task": 0.5282,
     "date": "2026-06-25"
   },
   {
@@ -1425,6 +1428,7 @@
     "instruction_following": 63.2,
     "agentic_coding": 42.6,
     "language": 76.1,
+    "cost_per_successful_task": 0.3062,
     "date": "2026-06-25"
   },
   {
@@ -1437,6 +1441,7 @@
     "instruction_following": 63.9,
     "agentic_coding": 59.4,
     "language": 75,
+    "cost_per_successful_task": 0.5134,
     "date": "2026-06-25"
   },
   {
@@ -1449,6 +1454,7 @@
     "instruction_following": 63.1,
     "agentic_coding": 37.6,
     "language": 70.1,
+    "cost_per_successful_task": 0.0161,
     "date": "2026-06-25"
   },
   {
@@ -1461,6 +1467,7 @@
     "instruction_following": 62.4,
     "agentic_coding": 42.6,
     "language": 78.1,
+    "cost_per_successful_task": 0.0498,
     "date": "2026-06-25"
   },
   {
@@ -1473,6 +1480,7 @@
     "instruction_following": 79.1,
     "agentic_coding": 44.1,
     "language": 85.4,
+    "cost_per_successful_task": 0.2852,
     "date": "2026-06-25"
   },
   {
@@ -1485,6 +1493,7 @@
     "instruction_following": 75.6,
     "agentic_coding": 49,
     "language": 84.6,
+    "cost_per_successful_task": 0.2489,
     "date": "2026-06-25"
   },
   {
@@ -1497,6 +1506,7 @@
     "instruction_following": 62.3,
     "agentic_coding": 51.8,
     "language": 76.2,
+    "cost_per_successful_task": 0.2246,
     "date": "2026-06-25"
   },
   {
@@ -1509,6 +1519,7 @@
     "instruction_following": 61.8,
     "agentic_coding": 50.3,
     "language": 79.8,
+    "cost_per_successful_task": 0.2336,
     "date": "2026-06-25"
   },
   {
@@ -1521,6 +1532,7 @@
     "instruction_following": 66.4,
     "agentic_coding": 49.4,
     "language": 73.7,
+    "cost_per_successful_task": 0.1874,
     "date": "2026-06-25"
   },
   {
@@ -1533,6 +1545,7 @@
     "instruction_following": 59.8,
     "agentic_coding": 41.7,
     "language": 71,
+    "cost_per_successful_task": 0.3343,
     "date": "2026-06-25"
   },
   {
@@ -1545,6 +1558,7 @@
     "instruction_following": 67.2,
     "agentic_coding": 46.8,
     "language": 62.5,
+    "cost_per_successful_task": 0.0911,
     "date": "2026-06-25"
   },
   {
@@ -1557,6 +1571,7 @@
     "instruction_following": 70.2,
     "agentic_coding": 53.8,
     "language": 82.6,
+    "cost_per_successful_task": 0.3874,
     "date": "2026-06-25"
   },
   {
@@ -1569,6 +1584,7 @@
     "instruction_following": 70.7,
     "agentic_coding": 54,
     "language": 87.4,
+    "cost_per_successful_task": 0.4356,
     "date": "2026-06-25"
   },
   {
@@ -1581,6 +1597,7 @@
     "instruction_following": 62.8,
     "agentic_coding": 18.5,
     "language": 73.6,
+    "cost_per_successful_task": 0.0614,
     "date": "2026-06-25"
   },
   {
@@ -1593,6 +1610,7 @@
     "instruction_following": 71.5,
     "agentic_coding": 56.5,
     "language": 82.8,
+    "cost_per_successful_task": 0.1305,
     "date": "2026-06-25"
   },
   {
@@ -1605,6 +1623,7 @@
     "instruction_following": 65.2,
     "agentic_coding": 45.8,
     "language": 72.5,
+    "cost_per_successful_task": 0.024,
     "date": "2026-06-25"
   },
   {
@@ -1617,6 +1636,7 @@
     "instruction_following": 64.4,
     "agentic_coding": 46.9,
     "language": 75.1,
+    "cost_per_successful_task": 0.1687,
     "date": "2026-06-25"
   },
   {
@@ -1629,6 +1649,7 @@
     "instruction_following": 56.3,
     "agentic_coding": 45.7,
     "language": 77.9,
+    "cost_per_successful_task": 0.1002,
     "date": "2026-06-25"
   },
   {
@@ -1641,6 +1662,7 @@
     "instruction_following": 57.5,
     "agentic_coding": 40.7,
     "language": 76.8,
+    "cost_per_successful_task": 0.0597,
     "date": "2026-06-25"
   },
   {
@@ -1653,6 +1675,7 @@
     "instruction_following": 53.2,
     "agentic_coding": 39.3,
     "language": 63.3,
+    "cost_per_successful_task": 0.2017,
     "date": "2026-06-25"
   },
   {
@@ -1665,6 +1688,7 @@
     "instruction_following": 58.3,
     "agentic_coding": 41.4,
     "language": 75,
+    "cost_per_successful_task": 0.2273,
     "date": "2026-06-25"
   },
   {
@@ -1677,6 +1701,7 @@
     "instruction_following": 74,
     "agentic_coding": 43.6,
     "language": 79.7,
+    "cost_per_successful_task": 0.1816,
     "date": "2026-06-25"
   },
   {
@@ -1689,6 +1714,7 @@
     "instruction_following": 71.8,
     "agentic_coding": 56.2,
     "language": 87.7,
+    "cost_per_successful_task": 0.507,
     "date": "2026-06-25"
   },
   {
@@ -1701,6 +1727,7 @@
     "instruction_following": 64.6,
     "agentic_coding": 54.9,
     "language": 82.9,
+    "cost_per_successful_task": 0.3437,
     "date": "2026-06-25"
   },
   {
@@ -1713,6 +1740,7 @@
     "instruction_following": 60.1,
     "agentic_coding": 48.4,
     "language": 72.6,
+    "cost_per_successful_task": 0.1677,
     "date": "2026-06-25"
   },
   {
@@ -1725,6 +1753,7 @@
     "instruction_following": 75.8,
     "agentic_coding": 62.2,
     "language": 90.7,
+    "cost_per_successful_task": 1.4777,
     "date": "2026-06-25"
   },
   {
@@ -1737,6 +1766,7 @@
     "instruction_following": 69.6,
     "agentic_coding": 58.5,
     "language": 74.3,
+    "cost_per_successful_task": 0.1952,
     "date": "2026-06-25"
   },
   {
@@ -1749,6 +1779,7 @@
     "instruction_following": 71.4,
     "agentic_coding": 62.2,
     "language": 85.5,
+    "cost_per_successful_task": 0.351,
     "date": "2026-06-25"
   },
   {
@@ -1761,6 +1792,7 @@
     "instruction_following": 70.1,
     "agentic_coding": 49.4,
     "language": 73.5,
+    "cost_per_successful_task": 0.311,
     "date": "2026-06-25"
   },
   {
@@ -1773,6 +1805,7 @@
     "instruction_following": 67.2,
     "agentic_coding": 45.3,
     "language": 71.8,
+    "cost_per_successful_task": 0.0686,
     "date": "2026-06-25"
   },
   {
@@ -1785,6 +1818,7 @@
     "instruction_following": 75.4,
     "agentic_coding": 43.4,
     "language": 83.9,
+    "cost_per_successful_task": 0.2353,
     "date": "2026-06-25"
   },
   {
@@ -1797,6 +1831,7 @@
     "instruction_following": 63.8,
     "agentic_coding": 65.2,
     "language": 88.7,
+    "cost_per_successful_task": 0.7067,
     "date": "2026-06-25"
   },
   {
@@ -1809,6 +1844,7 @@
     "instruction_following": 72,
     "agentic_coding": 50.5,
     "language": 79.7,
+    "cost_per_successful_task": 0.9858,
     "date": "2026-06-25"
   },
   {
@@ -1821,6 +1857,7 @@
     "instruction_following": 65.5,
     "agentic_coding": 46.8,
     "language": 79.2,
+    "cost_per_successful_task": 0.0596,
     "date": "2026-06-25"
   },
   {
@@ -1833,6 +1870,7 @@
     "instruction_following": 74.1,
     "agentic_coding": 64.6,
     "language": 79.7,
+    "cost_per_successful_task": 0.275,
     "date": "2026-06-25"
   },
   {
@@ -1845,6 +1883,7 @@
     "instruction_following": 74.3,
     "agentic_coding": 57.6,
     "language": 78.6,
+    "cost_per_successful_task": 0.3753,
     "date": "2026-06-25"
   },
   {
@@ -1857,6 +1896,7 @@
     "instruction_following": 71,
     "agentic_coding": 64.6,
     "language": 84.4,
+    "cost_per_successful_task": 0.3288,
     "date": "2026-06-25"
   },
   {
@@ -1869,6 +1909,7 @@
     "instruction_following": 73.9,
     "agentic_coding": 60.8,
     "language": 77,
+    "cost_per_successful_task": 0.0994,
     "date": "2026-06-25"
   },
   {
@@ -1881,6 +1922,7 @@
     "instruction_following": 67.7,
     "agentic_coding": 54.9,
     "language": 82.1,
+    "cost_per_successful_task": 0.0442,
     "date": "2026-06-25"
   },
   {
@@ -1893,6 +1935,7 @@
     "instruction_following": 71.9,
     "agentic_coding": 57,
     "language": 83.7,
+    "cost_per_successful_task": 0.2068,
     "date": "2026-06-25"
   },
   {
@@ -1905,6 +1948,7 @@
     "instruction_following": 79.9,
     "agentic_coding": 58.3,
     "language": 85.5,
+    "cost_per_successful_task": 0.1571,
     "date": "2026-06-25"
   },
   {
@@ -1917,6 +1961,7 @@
     "instruction_following": 72.7,
     "agentic_coding": 61.4,
     "language": 74.3,
+    "cost_per_successful_task": 0.0939,
     "date": "2026-06-25"
   },
   {
@@ -1929,6 +1974,7 @@
     "instruction_following": 60.3,
     "agentic_coding": 52.6,
     "language": 66.1,
+    "cost_per_successful_task": 0,
     "date": "2026-06-25"
   },
   {
@@ -1941,6 +1987,7 @@
     "instruction_following": 71,
     "agentic_coding": 65.1,
     "language": 80.4,
+    "cost_per_successful_task": 0.0505,
     "date": "2026-06-25"
   },
   {
@@ -1953,6 +2000,7 @@
     "instruction_following": 69.3,
     "agentic_coding": 60.9,
     "language": 79.9,
+    "cost_per_successful_task": 0.4504,
     "date": "2026-06-25"
   },
   {
@@ -1965,6 +2013,7 @@
     "instruction_following": 52.8,
     "agentic_coding": 56.8,
     "language": 77.3,
+    "cost_per_successful_task": 0.0305,
     "date": "2026-06-25"
   },
   {
@@ -1977,6 +2026,7 @@
     "instruction_following": 77.1,
     "agentic_coding": 61.6,
     "language": 74.6,
+    "cost_per_successful_task": 0.0423,
     "date": "2026-06-25"
   },
   {
@@ -1989,6 +2039,7 @@
     "instruction_following": 73.4,
     "agentic_coding": 38.7,
     "language": 70.8,
+    "cost_per_successful_task": 0.3706,
     "date": "2026-06-25"
   },
   {
@@ -2001,6 +2052,7 @@
     "instruction_following": 73,
     "agentic_coding": 66.1,
     "language": 89.5,
+    "cost_per_successful_task": 1.2117,
     "date": "2026-06-25"
   },
   {
@@ -2013,6 +2065,7 @@
     "instruction_following": 81.4,
     "agentic_coding": 54.2,
     "language": 87.8,
+    "cost_per_successful_task": 0.3073,
     "date": "2026-06-25"
   },
   {
@@ -2025,6 +2078,7 @@
     "instruction_following": 78,
     "agentic_coding": 64.1,
     "language": 82.8,
+    "cost_per_successful_task": 0.2192,
     "date": "2026-06-25"
   },
   {
@@ -2037,6 +2091,7 @@
     "instruction_following": 75.6,
     "agentic_coding": 57.3,
     "language": 89.4,
+    "cost_per_successful_task": 0.7359,
     "date": "2026-06-25"
   },
   {
@@ -2049,6 +2104,7 @@
     "instruction_following": 69.3,
     "agentic_coding": 61.1,
     "language": 79.2,
+    "cost_per_successful_task": 0.014,
     "date": "2026-06-25"
   },
   {
@@ -2061,6 +2117,7 @@
     "instruction_following": 70,
     "agentic_coding": 77.3,
     "language": 81.2,
+    "cost_per_successful_task": 0.0292,
     "date": "2026-06-25"
   }
 ]

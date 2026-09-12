@@ -173,6 +173,7 @@ export const liveBenchRowSchema = z.object({
   instruction_following: z.number().min(0).max(100).optional(),
   agentic_coding: z.number().min(0).max(100).optional(),
   language: z.number().min(0).max(100).optional(),
+  cost_per_successful_task: z.number().nonnegative().optional(),
   date: z.string().optional(),
 });
 export type LiveBenchRow = z.infer<typeof liveBenchRowSchema>;
