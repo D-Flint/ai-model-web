@@ -63,7 +63,7 @@ describe('SEO comparison pairs and arbitrary comparisons', () => {
 
   it('filters out unknown slugs in arbitrary searches and limits to 4', () => {
     const search =
-      '?models=non-existent-1,gpt-6-astra,fake-2,claude-sonnet-5,gemini-2-5-pro,gemma-4,kimi-k3';
+      '?models=non-existent-1,gpt-6-astra,fake-2,claude-sonnet-5,gemini-2-5-pro,glm-5-3,kimi-k3';
     const selection = selectionFromSearch(search, models);
     expect(selection).toContain('gpt-6-astra');
     expect(selection).toContain('claude-sonnet-5');

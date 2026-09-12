@@ -17,6 +17,17 @@
 - Current state: Plan artifact completed and aligned with user directives.
 - Exact next step: Hand off to GPT-5.6 to execute Phase 0 through Phase 4.
 
+## 2026-09-12 — Replace Gemini 3 Deep Think and Gemma 4 with GLM 5.3 and GLM 5.3 Flash
+
+- Objective: Remove Gemini 3 Deep Think and Gemma 4 from canonical configs, roles, and verified catalog; add GLM 5.3 and ensure GLM 5.3 Flash are fully configured and ingested.
+- Files changed: `src/data/models/google.ts`, `src/data/models/zai.ts`, `src/data/officialMistral.ts`, `src/data/modelRoles.ts`, `src/lib/seoComparisons.ts`, `tests/seoComparisons.test.ts`, `src/data/verifiedModels.json`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: None.
+- Tests: `npm run check` (107 files, 0 errors, 0 warnings, 0 hints); `npm test` (16 files, 150/150 passed); `npm run lint` (clean); `npm run build` (success).
+- Commit: Pending local commit.
+- Current state: Stored locally; no remote push.
+- Exact next step: User verifies GLM 5.3 and GLM 5.3 Flash on the catalog and leaderboard.
+
 ## 2026-09-12 — Replace GPT-5.3-Codex with Muse Spark 1.3
 
 - Objective: Remove GPT-5.3-Codex from the model catalog and replace it with Moonshot AI's Muse Spark 1.3 across the catalog, alias resolver, official specs, and verified data.

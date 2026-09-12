@@ -15,28 +15,16 @@
       "New release with limited independent production evidence",
       "Large open-weight deployment requires substantial infrastructure"
     ],
-    "tags": [
-      "Fast",
-      "Open weights",
-      "MoE",
-      "Vision",
-      "Large context"
-    ],
-    "roles": [
-      "general-purpose",
-      "reasoning",
-      "coding",
-      "agentic",
-      "vision"
-    ],
+    "tags": ["Fast", "Open weights", "MoE", "Vision", "Large context"],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic", "vision"],
     "facts": {
       "context": 1048576,
       "contextWindow": 1048576,
       "maxOutput": 262144,
-      "speedTokensPerSec": 66,
+      "speedTokensPerSec": 69,
       "speedTokensPerSecRange": {
-        "min": 10,
-        "max": 121,
+        "min": 15,
+        "max": 123,
         "providerCount": 12,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -54,12 +42,7 @@
       "availability": "Production API",
       "releaseDate": "2026-09-10",
       "sourceId": "source-deepseek",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -84,7 +67,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 33,
+      "speed": 35,
       "reliability": null,
       "costEfficiency": null,
       "overall": 81
@@ -139,10 +122,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 66,
+        "raw": 69,
         "min": 0,
         "max": 200,
-        "normalized": 33,
+        "normalized": 35,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
@@ -203,21 +186,15 @@
       "Reasoning",
       "Large context"
     ],
-    "roles": [
-      "general-purpose",
-      "reasoning",
-      "coding",
-      "agentic",
-      "vision"
-    ],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic", "vision"],
     "facts": {
       "context": 1048576,
       "contextWindow": 1048576,
       "maxOutput": 65536,
-      "speedTokensPerSec": 40,
+      "speedTokensPerSec": 33,
       "speedTokensPerSecRange": {
-        "min": 16,
-        "max": 64,
+        "min": 18,
+        "max": 48,
         "providerCount": 5,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -235,12 +212,7 @@
       "availability": "Production API",
       "releaseDate": "2026-09-02",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -265,7 +237,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 20,
+      "speed": 17,
       "reliability": null,
       "costEfficiency": 19,
       "overall": 82
@@ -320,16 +292,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 40,
-        "min": 0,
-        "max": 200,
-        "normalized": 20,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 19,
@@ -337,6 +299,16 @@
         "max": 100,
         "normalized": 19,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 33,
+        "min": 0,
+        "max": 200,
+        "normalized": 17,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -416,10 +388,10 @@
       "context": 1048576,
       "contextWindow": 1048576,
       "maxOutput": 65536,
-      "speedTokensPerSec": 40,
+      "speedTokensPerSec": 41,
       "speedTokensPerSecRange": {
-        "min": 40,
-        "max": 40,
+        "min": 41,
+        "max": 41,
         "providerCount": 1,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -437,11 +409,7 @@
       "availability": "Production API",
       "releaseDate": "2026-08-27",
       "sourceId": "source-tencent",
-      "reasoningEffort": [
-        "none",
-        "low",
-        "high"
-      ],
+      "reasoningEffort": ["none", "low", "high"],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -466,7 +434,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 20,
+      "speed": 21,
       "reliability": null,
       "costEfficiency": 57,
       "overall": null
@@ -482,16 +450,6 @@
     },
     "evidence": [
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 40,
-        "min": 0,
-        "max": 200,
-        "normalized": 20,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 57,
@@ -499,6 +457,16 @@
         "max": 100,
         "normalized": 57,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 41,
+        "min": 0,
+        "max": 200,
+        "normalized": 21,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -573,7 +541,7 @@
       "speedTokensPerSec": 64,
       "speedTokensPerSecRange": {
         "min": 3,
-        "max": 125,
+        "max": 124,
         "providerCount": 26,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -591,11 +559,7 @@
       "availability": "Production API",
       "releaseDate": "2026-08-26",
       "sourceId": "source-z-ai",
-      "reasoningEffort": [
-        "low",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "high", "max"],
       "defaultEffort": "max"
     },
     "pricing": {
@@ -676,16 +640,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 64,
-        "min": 0,
-        "max": 200,
-        "normalized": 32,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 88,
@@ -693,6 +647,16 @@
         "max": 100,
         "normalized": 88,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 64,
+        "min": 0,
+        "max": 200,
+        "normalized": 32,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -745,6 +709,195 @@
     ]
   },
   {
+    "slug": "glm-5-3",
+    "name": "GLM 5.3",
+    "provider": "Z.ai",
+    "family": "GLM",
+    "dataKind": "verified",
+    "description": "Z.ai's flagship dense reasoning and multimodal foundation model, built for complex reasoning, mathematical synthesis, and frontier coding tasks.",
+    "strengths": [
+      "Ranked #9 on OpenRouter with strong dense reasoning throughput",
+      "High reasoning accuracy on mathematical and multi-step logic benchmarks",
+      "1,310,720 token context length with hybrid sparse attention",
+      "Native multimodal comprehension across text, vision, and documents"
+    ],
+    "weaknesses": [
+      "Higher latency than GLM 5.3 Flash during deep reasoning passes",
+      "Requires substantial compute when deployed on-premise"
+    ],
+    "tags": [
+      "Reasoning",
+      "Multimodal",
+      "Coding",
+      "Open weights",
+      "Flagship",
+      "Large context"
+    ],
+    "roles": ["reasoning", "coding", "agentic", "vision"],
+    "facts": {
+      "context": 1310720,
+      "contextWindow": 1310720,
+      "maxOutput": 131072,
+      "speedTokensPerSec": 80,
+      "speedTokensPerSecRange": {
+        "min": 18,
+        "max": 142,
+        "providerCount": 26,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
+      "vision": true,
+      "supportsVision": true,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "isOpenWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-08-26",
+      "sourceId": "source-z-ai",
+      "reasoningEffort": ["low", "high", "max"],
+      "defaultEffort": "max"
+    },
+    "pricing": {
+      "input": 0.5,
+      "output": 1.5,
+      "cached": 0.1,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-z-ai",
+      "updatedAt": "2026-09-05",
+      "inputPer1M": 0.5,
+      "outputPer1M": 1.5,
+      "cachedInputPer1M": 0.1,
+      "provenanceUrl": "https://openrouter.ai/models/z-ai/glm-5.3",
+      "verifiedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 76,
+      "coding": 79,
+      "agentic": 61,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": 40,
+      "reliability": null,
+      "costEfficiency": 64,
+      "overall": 76
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 76.1,
+        "reasoning": 85.8,
+        "coding": 79,
+        "agenticCoding": 60.9,
+        "mathematics": 87.9,
+        "dataAnalysis": 70.2,
+        "language": 79.9,
+        "instructionFollowing": 69.3
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 76.1,
+        "min": 0,
+        "max": 100,
+        "normalized": 76,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 79,
+        "min": 0,
+        "max": 100,
+        "normalized": 79,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 60.9,
+        "min": 0,
+        "max": 100,
+        "normalized": 61,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 64,
+        "min": 0,
+        "max": 100,
+        "normalized": 64,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 80,
+        "min": 0,
+        "max": 200,
+        "normalized": 40,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 80,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-z-ai",
+        "name": "Z.ai Official Documentation & OpenRouter",
+        "url": "https://openrouter.ai/models/z-ai/glm-5.3",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Z.ai"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter recent throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "gemini-3-8-flash",
     "name": "Gemini 3.8 Flash",
     "provider": "Google DeepMind",
@@ -760,27 +913,16 @@
       "Complex reasoning chains require allocating additional thinking token budget",
       "Higher generation cost than lightweight Lite tiers"
     ],
-    "tags": [
-      "Flagship",
-      "Speed",
-      "Multimodal",
-      "Large context",
-      "Vision"
-    ],
-    "roles": [
-      "general-purpose",
-      "reasoning",
-      "agentic",
-      "vision"
-    ],
+    "tags": ["Flagship", "Speed", "Multimodal", "Large context", "Vision"],
+    "roles": ["general-purpose", "reasoning", "agentic", "vision"],
     "facts": {
       "context": 1048576,
       "contextWindow": 1048576,
       "maxOutput": 65536,
-      "speedTokensPerSec": 109,
+      "speedTokensPerSec": 103,
       "speedTokensPerSecRange": {
-        "min": 28,
-        "max": 189,
+        "min": 22,
+        "max": 183,
         "providerCount": 6,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -798,12 +940,7 @@
       "availability": "Production API",
       "releaseDate": "2026-08-20",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "none",
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["none", "low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -828,7 +965,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 55,
+      "speed": 52,
       "reliability": null,
       "costEfficiency": 54,
       "overall": 76
@@ -883,16 +1020,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 109,
-        "min": 0,
-        "max": 200,
-        "normalized": 55,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 54,
@@ -900,6 +1027,16 @@
         "max": 100,
         "normalized": 54,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 103,
+        "min": 0,
+        "max": 200,
+        "normalized": 52,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -922,199 +1059,6 @@
         "name": "LiveBench AI Benchmark",
         "url": "https://livebench.ai",
         "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
-      },
-      {
-        "id": "berkeley-function-calling-leaderboard",
-        "name": "Berkeley Function Calling Leaderboard (BFCL)",
-        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
-      },
-      {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
-        "id": "astra-cost-engine",
-        "name": "Astra Cost Efficiency Engine",
-        "url": "https://github.com/D-Flint/ai-model-web",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "Astra Cost Efficiency Engine"
-      }
-    ]
-  },
-  {
-    "slug": "gemma-4",
-    "name": "Gemma 4",
-    "provider": "Google DeepMind",
-    "family": "Gemma",
-    "dataKind": "verified",
-    "description": "Google's fourth-generation open foundation model family, featuring unified multimodal vision-language weights, native function calling, and 256k context.",
-    "strengths": [
-      "Open-weights with permissive license for commercial use and private hosting",
-      "262k context window with native multimodal image and document understanding",
-      "Top open-weight coding and function-calling reliability"
-    ],
-    "weaknesses": [
-      "Requires high-VRAM dual-GPU or quantized deployment for peak performance",
-      "Output generation speed depends on host hardware"
-    ],
-    "tags": [
-      "Open weights",
-      "Multimodal",
-      "Coding",
-      "Research"
-    ],
-    "roles": [
-      "general-purpose",
-      "coding",
-      "agentic",
-      "vision"
-    ],
-    "facts": {
-      "context": 262144,
-      "contextWindow": 262144,
-      "maxOutput": 16384,
-      "speedTokensPerSec": 67,
-      "speedTokensPerSecRange": {
-        "min": 7,
-        "max": 126,
-        "providerCount": 14,
-        "sourceId": "openrouter-throughput",
-        "retrievedAt": "2026-09-12"
-      },
-      "vision": true,
-      "supportsVision": true,
-      "audio": false,
-      "tools": true,
-      "supportsTools": true,
-      "structured": true,
-      "api": true,
-      "openWeights": true,
-      "isOpenWeights": true,
-      "easeOfUse": null,
-      "availability": "Production API",
-      "releaseDate": "2026-07-28",
-      "sourceId": "source-google",
-      "reasoningEffort": [
-        "none"
-      ],
-      "defaultEffort": "none"
-    },
-    "pricing": {
-      "input": 0.15,
-      "output": 0.3,
-      "cached": null,
-      "currency": "USD",
-      "unit": "per-million-tokens",
-      "sourceId": "source-google",
-      "updatedAt": "2026-09-06",
-      "inputPer1M": 0.15,
-      "outputPer1M": 0.3,
-      "cachedInputPer1M": null,
-      "provenanceUrl": "https://cloud.google.com/vertex-ai/generative-ai/docs/model-garden/explore-models#gemma",
-      "verifiedAt": "2026-09-06"
-    },
-    "scores": {
-      "intelligence": 75,
-      "coding": 74,
-      "agentic": null,
-      "dailyUse": null,
-      "research": null,
-      "writing": null,
-      "vision": null,
-      "speed": 34,
-      "reliability": null,
-      "costEfficiency": 82,
-      "overall": 75
-    },
-    "benchmarks": {
-      "livebench": {
-        "release": "2026-07-28",
-        "overall": 74.5,
-        "reasoning": 81.2,
-        "coding": 74,
-        "agenticCoding": null,
-        "mathematics": 79,
-        "dataAnalysis": 72.5,
-        "language": null,
-        "instructionFollowing": 80
-      },
-      "sweBench": null,
-      "bfcl": {
-        "overallAccuracy": 88.5
-      },
-      "lmarena": null
-    },
-    "evidence": [
-      {
-        "metric": "intelligence",
-        "kind": "benchmark",
-        "raw": 74.5,
-        "min": 0,
-        "max": 100,
-        "normalized": 75,
-        "sourceId": "livebench-leaderboard",
-        "updatedAt": "2026-07-28"
-      },
-      {
-        "metric": "coding",
-        "kind": "benchmark",
-        "raw": 74,
-        "min": 0,
-        "max": 100,
-        "normalized": 74,
-        "sourceId": "livebench-leaderboard",
-        "updatedAt": "2026-07-28"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 67,
-        "min": 0,
-        "max": 200,
-        "normalized": 34,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "costEfficiency",
-        "kind": "benchmark",
-        "raw": 82,
-        "min": 0,
-        "max": 100,
-        "normalized": 82,
-        "sourceId": "astra-cost-engine",
-        "updatedAt": "2026-09-12"
-      }
-    ],
-    "confidence": 77,
-    "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-12",
-    "lastVerifiedAt": "2026-09-06",
-    "sourceUpdatedAt": "2026-09-12",
-    "sources": [
-      {
-        "id": "source-google",
-        "name": "Google Cloud Model Garden Documentation",
-        "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/model-garden/explore-models#gemma",
-        "retrievedAt": "2026-09-06",
-        "kind": "provider_doc",
-        "publisher": "Google DeepMind"
-      },
-      {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-07-28",
         "kind": "public_eval",
         "publisher": "LiveBench"
       },
@@ -1169,21 +1113,15 @@
       "Vision",
       "Flagship"
     ],
-    "roles": [
-      "general-purpose",
-      "reasoning",
-      "coding",
-      "agentic",
-      "vision"
-    ],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic", "vision"],
     "facts": {
       "context": 1000000,
       "contextWindow": 1000000,
       "maxOutput": 65536,
-      "speedTokensPerSec": 40,
+      "speedTokensPerSec": 39,
       "speedTokensPerSecRange": {
         "min": 8,
-        "max": 71,
+        "max": 70,
         "providerCount": 19,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -1201,12 +1139,7 @@
       "availability": "Production API",
       "releaseDate": "2026-07-15",
       "sourceId": "source-moonshot",
-      "reasoningEffort": [
-        "none",
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["none", "low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -1284,16 +1217,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 40,
-        "min": 0,
-        "max": 200,
-        "normalized": 20,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 57,
@@ -1301,6 +1224,16 @@
         "max": 100,
         "normalized": 57,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 39,
+        "min": 0,
+        "max": 200,
+        "normalized": 20,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -1360,28 +1293,17 @@
       "Premium price point for high-volume routine tasks",
       "Longer generation times when thinking depth is set to high"
     ],
-    "tags": [
-      "Flagship",
-      "Coding",
-      "Research",
-      "Reasoning"
-    ],
-    "roles": [
-      "general-purpose",
-      "reasoning",
-      "coding",
-      "agentic",
-      "vision"
-    ],
+    "tags": ["Flagship", "Coding", "Research", "Reasoning"],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic", "vision"],
     "facts": {
       "context": 524288,
       "contextWindow": 524288,
       "maxOutput": 32768,
-      "speedTokensPerSec": 36,
+      "speedTokensPerSec": 29,
       "speedTokensPerSecRange": {
-        "min": 17,
-        "max": 54,
-        "providerCount": 5,
+        "min": 3,
+        "max": 55,
+        "providerCount": 6,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -1398,12 +1320,7 @@
       "availability": "Production API",
       "releaseDate": "2026-07-09",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -1428,7 +1345,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 18,
+      "speed": 14,
       "reliability": null,
       "costEfficiency": 25,
       "overall": 81
@@ -1483,16 +1400,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 36,
-        "min": 0,
-        "max": 200,
-        "normalized": 18,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 25,
@@ -1500,6 +1407,16 @@
         "max": 100,
         "normalized": 25,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 29,
+        "min": 0,
+        "max": 200,
+        "normalized": 14,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -1567,27 +1484,17 @@
       "Lower mathematical rigor than Sol on PhD-level STEM problems",
       "Context window capped at 262k tokens"
     ],
-    "tags": [
-      "Best value",
-      "Daily use",
-      "Multimodal",
-      "Balanced"
-    ],
-    "roles": [
-      "general-purpose",
-      "coding",
-      "agentic",
-      "vision"
-    ],
+    "tags": ["Best value", "Daily use", "Multimodal", "Balanced"],
+    "roles": ["general-purpose", "coding", "agentic", "vision"],
     "facts": {
       "context": 262144,
       "contextWindow": 262144,
       "maxOutput": 16384,
-      "speedTokensPerSec": 75,
+      "speedTokensPerSec": 52,
       "speedTokensPerSecRange": {
-        "min": 42,
-        "max": 107,
-        "providerCount": 6,
+        "min": 4,
+        "max": 100,
+        "providerCount": 7,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -1604,11 +1511,7 @@
       "availability": "Production API",
       "releaseDate": "2026-07-09",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "none",
-        "low",
-        "medium"
-      ],
+      "reasoningEffort": ["none", "low", "medium"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -1633,7 +1536,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 38,
+      "speed": 26,
       "reliability": null,
       "costEfficiency": 40,
       "overall": 78
@@ -1688,16 +1591,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 75,
-        "min": 0,
-        "max": 200,
-        "normalized": 38,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 40,
@@ -1705,6 +1598,16 @@
         "max": 100,
         "normalized": 40,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 52,
+        "min": 0,
+        "max": 200,
+        "normalized": 26,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -1772,20 +1675,15 @@
       "Not designed for deep multi-step algorithmic proofs",
       "Lower code refactoring accuracy than Terra or Sol"
     ],
-    "tags": [
-      "Speed",
-      "Best value",
-      "Daily use",
-      "Fast"
-    ],
+    "tags": ["Speed", "Best value", "Daily use", "Fast"],
     "facts": {
       "context": 131072,
       "contextWindow": 131072,
       "maxOutput": 8192,
-      "speedTokensPerSec": 102,
+      "speedTokensPerSec": 97,
       "speedTokensPerSecRange": {
-        "min": 68,
-        "max": 136,
+        "min": 64,
+        "max": 130,
         "providerCount": 7,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -1803,9 +1701,7 @@
       "availability": "Production API",
       "releaseDate": "2026-07-09",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -1830,7 +1726,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 51,
+      "speed": 49,
       "reliability": null,
       "costEfficiency": 70,
       "overall": 74
@@ -1885,16 +1781,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 102,
-        "min": 0,
-        "max": 200,
-        "normalized": 51,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 70,
@@ -1902,6 +1788,16 @@
         "max": 100,
         "normalized": 70,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 97,
+        "min": 0,
+        "max": 200,
+        "normalized": 49,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -1969,31 +1865,14 @@
       "Higher compute requirements for maximum reasoning depth",
       "Text and code focused with specialized multimodal grounding"
     ],
-    "tags": [
-      "Reasoning",
-      "Open weights",
-      "Coding",
-      "Agents",
-      "Mathematics"
-    ],
-    "roles": [
-      "general-purpose",
-      "reasoning",
-      "coding",
-      "agentic"
-    ],
+    "tags": ["Reasoning", "Open weights", "Coding", "Agents", "Mathematics"],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic"],
     "facts": {
       "context": 262144,
       "contextWindow": 262144,
       "maxOutput": 16384,
-      "speedTokensPerSec": 72,
-      "speedTokensPerSecRange": {
-        "min": 45,
-        "max": 95,
-        "providerCount": 4,
-        "sourceId": "openrouter-throughput",
-        "retrievedAt": "2026-09-12"
-      },
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
       "vision": false,
       "supportsVision": false,
       "audio": false,
@@ -2007,13 +1886,7 @@
       "availability": "Production API",
       "releaseDate": "2026-06-25",
       "sourceId": "source-moonshot",
-      "reasoningEffort": [
-        "none",
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["none", "low", "medium", "high", "max"],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -2038,9 +1911,9 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 36,
+      "speed": null,
       "reliability": null,
-      "costEfficiency": 72,
+      "costEfficiency": 64,
       "overall": 82
     },
     "benchmarks": {
@@ -2056,9 +1929,7 @@
         "instructionFollowing": 78
       },
       "sweBench": null,
-      "bfcl": {
-        "overallAccuracy": 88
-      },
+      "bfcl": null,
       "lmarena": null
     },
     "evidence": [
@@ -2093,27 +1964,17 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 72,
-        "min": 0,
-        "max": 200,
-        "normalized": 36,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
-        "raw": 72,
+        "raw": 64,
         "min": 0,
         "max": 100,
-        "normalized": 72,
+        "normalized": 64,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
       }
     ],
-    "confidence": 80,
+    "confidence": 69,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-12",
     "lastVerifiedAt": "2026-09-12",
@@ -2134,22 +1995,6 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
-      },
-      {
-        "id": "berkeley-function-calling-leaderboard",
-        "name": "Berkeley Function Calling Leaderboard (BFCL)",
-        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
-      },
-      {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
       },
       {
         "id": "astra-cost-engine",
@@ -2177,28 +2022,16 @@
       "Thinking tokens consume output budget and increase generation latency",
       "Complex tool calling chains require explicit schema constraints"
     ],
-    "tags": [
-      "Reasoning",
-      "Speed",
-      "Multimodal",
-      "Coding",
-      "Agents"
-    ],
-    "roles": [
-      "general-purpose",
-      "reasoning",
-      "coding",
-      "agentic",
-      "vision"
-    ],
+    "tags": ["Reasoning", "Speed", "Multimodal", "Coding", "Agents"],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic", "vision"],
     "facts": {
       "context": 1048576,
       "contextWindow": 1048576,
       "maxOutput": 65536,
-      "speedTokensPerSec": 95,
+      "speedTokensPerSec": 93,
       "speedTokensPerSecRange": {
-        "min": 27,
-        "max": 162,
+        "min": 19,
+        "max": 167,
         "providerCount": 6,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -2216,12 +2049,7 @@
       "availability": "Production API",
       "releaseDate": "2026-06-20",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "none",
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["none", "low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -2246,7 +2074,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 48,
+      "speed": 47,
       "reliability": null,
       "costEfficiency": 54,
       "overall": 79
@@ -2301,16 +2129,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 95,
-        "min": 0,
-        "max": 200,
-        "normalized": 48,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 54,
@@ -2318,6 +2136,16 @@
         "max": 100,
         "normalized": 54,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 93,
+        "min": 0,
+        "max": 200,
+        "normalized": 47,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -2413,12 +2241,7 @@
       "availability": "Production API",
       "releaseDate": "2026-06-20",
       "sourceId": "source-minimax",
-      "reasoningEffort": [
-        "none",
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["none", "low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -2515,21 +2338,15 @@
       "Large context",
       "Vision"
     ],
-    "roles": [
-      "general-purpose",
-      "reasoning",
-      "coding",
-      "agentic",
-      "vision"
-    ],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic", "vision"],
     "facts": {
       "context": 1000000,
       "contextWindow": 1000000,
       "maxOutput": 128000,
-      "speedTokensPerSec": 27,
+      "speedTokensPerSec": 43,
       "speedTokensPerSecRange": {
-        "min": 2,
-        "max": 52,
+        "min": 36,
+        "max": 49,
         "providerCount": 4,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -2547,13 +2364,7 @@
       "availability": "Production API",
       "releaseDate": "2026-06-15",
       "sourceId": "source-anthropic",
-      "reasoningEffort": [
-        "none",
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["none", "low", "medium", "high", "max"],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -2578,7 +2389,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 14,
+      "speed": 22,
       "reliability": null,
       "costEfficiency": 20,
       "overall": 83
@@ -2633,16 +2444,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 27,
-        "min": 0,
-        "max": 200,
-        "normalized": 14,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 20,
@@ -2650,6 +2451,16 @@
         "max": 100,
         "normalized": 20,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 43,
+        "min": 0,
+        "max": 200,
+        "normalized": 22,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -2731,10 +2542,10 @@
       "context": 1048576,
       "contextWindow": 1048576,
       "maxOutput": 262144,
-      "speedTokensPerSec": 78,
+      "speedTokensPerSec": 76,
       "speedTokensPerSecRange": {
-        "min": 23,
-        "max": 132,
+        "min": 15,
+        "max": 137,
         "providerCount": 12,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -2752,12 +2563,7 @@
       "availability": "Production API",
       "releaseDate": "2026-06-15",
       "sourceId": "source-minimax",
-      "reasoningEffort": [
-        "none",
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["none", "low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -2782,7 +2588,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 39,
+      "speed": 38,
       "reliability": null,
       "costEfficiency": 68,
       "overall": 67
@@ -2838,16 +2644,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 78,
-        "min": 0,
-        "max": 200,
-        "normalized": 39,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 68,
@@ -2855,6 +2651,16 @@
         "max": 100,
         "normalized": 68,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 76,
+        "min": 0,
+        "max": 200,
+        "normalized": 38,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -2922,19 +2728,15 @@
       "Text only (no image analysis)",
       "Limited complex analytical reasoning"
     ],
-    "tags": [
-      "Speed",
-      "Best value",
-      "Fast"
-    ],
+    "tags": ["Speed", "Best value", "Fast"],
     "facts": {
       "context": 65536,
       "contextWindow": 65536,
       "maxOutput": 4096,
-      "speedTokensPerSec": 47,
+      "speedTokensPerSec": 57,
       "speedTokensPerSecRange": {
-        "min": 31,
-        "max": 63,
+        "min": 32,
+        "max": 81,
         "providerCount": 4,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -2952,9 +2754,7 @@
       "availability": "Production API",
       "releaseDate": "2026-05-18",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -2979,7 +2779,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 24,
+      "speed": 28,
       "reliability": null,
       "costEfficiency": 85,
       "overall": 70
@@ -3034,16 +2834,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 47,
-        "min": 0,
-        "max": 200,
-        "normalized": 24,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 85,
@@ -3051,6 +2841,16 @@
         "max": 100,
         "normalized": 85,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 57,
+        "min": 0,
+        "max": 200,
+        "normalized": 28,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -3119,20 +2919,15 @@
       "Specialized for software development; less tailored for creative and expository prose",
       "Text and code only without image input support"
     ],
-    "tags": [
-      "Coding",
-      "Open weights",
-      "Agents",
-      "Developer"
-    ],
+    "tags": ["Coding", "Open weights", "Agents", "Developer"],
     "facts": {
       "context": 256000,
       "contextWindow": 256000,
       "maxOutput": 32768,
-      "speedTokensPerSec": 84,
+      "speedTokensPerSec": 101,
       "speedTokensPerSecRange": {
-        "min": 14,
-        "max": 153,
+        "min": 16,
+        "max": 185,
         "providerCount": 15,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -3150,12 +2945,7 @@
       "availability": "Production API",
       "releaseDate": "2026-05-18",
       "sourceId": "source-moonshot",
-      "reasoningEffort": [
-        "none",
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["none", "low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -3180,7 +2970,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 42,
+      "speed": 51,
       "reliability": null,
       "costEfficiency": 60,
       "overall": 68
@@ -3236,16 +3026,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 84,
-        "min": 0,
-        "max": 200,
-        "normalized": 42,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 60,
@@ -3253,6 +3033,16 @@
         "max": 100,
         "normalized": 60,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 101,
+        "min": 0,
+        "max": 200,
+        "normalized": 51,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -3320,20 +3110,15 @@
       "Lower maximum reasoning depth than Gemini 3 Pro",
       "Fixed output token ceiling of 32,768 tokens"
     ],
-    "tags": [
-      "Speed",
-      "Multimodal",
-      "Large context",
-      "Best value"
-    ],
+    "tags": ["Speed", "Multimodal", "Large context", "Best value"],
     "facts": {
       "context": 1048576,
       "contextWindow": 1048576,
       "maxOutput": 32768,
-      "speedTokensPerSec": 116,
+      "speedTokensPerSec": 183,
       "speedTokensPerSecRange": {
-        "min": 55,
-        "max": 176,
+        "min": 54,
+        "max": 311,
         "providerCount": 7,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -3351,11 +3136,7 @@
       "availability": "Production API",
       "releaseDate": "2026-05-14",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "none",
-        "low",
-        "medium"
-      ],
+      "reasoningEffort": ["none", "low", "medium"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -3380,7 +3161,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 58,
+      "speed": 92,
       "reliability": null,
       "costEfficiency": 54,
       "overall": 74
@@ -3435,16 +3216,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 116,
-        "min": 0,
-        "max": 200,
-        "normalized": 58,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 54,
@@ -3452,6 +3223,16 @@
         "max": 100,
         "normalized": 54,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 183,
+        "min": 0,
+        "max": 200,
+        "normalized": 92,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -3518,28 +3299,16 @@
     "weaknesses": [
       "Slightly lower complex theoretical math reasoning compared to Opus 5"
     ],
-    "tags": [
-      "Best value",
-      "Daily use",
-      "Coding",
-      "Vision",
-      "Large context"
-    ],
-    "roles": [
-      "general-purpose",
-      "reasoning",
-      "coding",
-      "agentic",
-      "vision"
-    ],
+    "tags": ["Best value", "Daily use", "Coding", "Vision", "Large context"],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic", "vision"],
     "facts": {
       "context": 1000000,
       "contextWindow": 1000000,
       "maxOutput": 64000,
-      "speedTokensPerSec": 64,
+      "speedTokensPerSec": 68,
       "speedTokensPerSecRange": {
-        "min": 38,
-        "max": 89,
+        "min": 40,
+        "max": 95,
         "providerCount": 8,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -3557,11 +3326,7 @@
       "availability": "Production API",
       "releaseDate": "2026-05-02",
       "sourceId": "source-anthropic",
-      "reasoningEffort": [
-        "none",
-        "low",
-        "medium"
-      ],
+      "reasoningEffort": ["none", "low", "medium"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -3586,7 +3351,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 32,
+      "speed": 34,
       "reliability": null,
       "costEfficiency": 41,
       "overall": 76
@@ -3641,16 +3406,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 64,
-        "min": 0,
-        "max": 200,
-        "normalized": 32,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 41,
@@ -3658,6 +3413,16 @@
         "max": 100,
         "normalized": 41,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 68,
+        "min": 0,
+        "max": 200,
+        "normalized": 34,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -3726,21 +3491,15 @@
       "Reduced depth on complex repository-wide software refactoring",
       "Context window limited compared to 1M token alternative architectures"
     ],
-    "tags": [
-      "Open weights",
-      "Vision",
-      "Multimodal",
-      "Fast",
-      "Best value"
-    ],
+    "tags": ["Open weights", "Vision", "Multimodal", "Fast", "Best value"],
     "facts": {
       "context": 131072,
       "contextWindow": 131072,
       "maxOutput": 16384,
-      "speedTokensPerSec": 79,
+      "speedTokensPerSec": 75,
       "speedTokensPerSecRange": {
-        "min": 22,
-        "max": 135,
+        "min": 23,
+        "max": 127,
         "providerCount": 4,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -3758,9 +3517,7 @@
       "availability": "Production API",
       "releaseDate": "2026-04-18",
       "sourceId": "source-mistral",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -3785,7 +3542,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 40,
+      "speed": 38,
       "reliability": null,
       "costEfficiency": 79,
       "overall": null
@@ -3798,16 +3555,6 @@
     },
     "evidence": [
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 79,
-        "min": 0,
-        "max": 200,
-        "normalized": 40,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 79,
@@ -3815,6 +3562,16 @@
         "max": 100,
         "normalized": 79,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 75,
+        "min": 0,
+        "max": 200,
+        "normalized": 38,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -3867,21 +3624,15 @@
       "Large MoE model memory footprint requiring multi-GPU nodes for self-hosting",
       "Does not process raw audio streams"
     ],
-    "tags": [
-      "Agents",
-      "Coding",
-      "Vision",
-      "Open weights",
-      "Reasoning"
-    ],
+    "tags": ["Agents", "Coding", "Vision", "Open weights", "Reasoning"],
     "facts": {
       "context": 256000,
       "contextWindow": 256000,
       "maxOutput": 32768,
-      "speedTokensPerSec": 93,
+      "speedTokensPerSec": 104,
       "speedTokensPerSecRange": {
-        "min": 14,
-        "max": 172,
+        "min": 16,
+        "max": 192,
         "providerCount": 20,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -3899,12 +3650,7 @@
       "availability": "Production API",
       "releaseDate": "2026-04-12",
       "sourceId": "source-moonshot",
-      "reasoningEffort": [
-        "none",
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["none", "low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -3929,7 +3675,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 47,
+      "speed": 52,
       "reliability": null,
       "costEfficiency": 60,
       "overall": 71
@@ -3985,16 +3731,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 93,
-        "min": 0,
-        "max": 200,
-        "normalized": 47,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 60,
@@ -4002,6 +3738,16 @@
         "max": 100,
         "normalized": 60,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 104,
+        "min": 0,
+        "max": 200,
+        "normalized": 52,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -4069,29 +3815,17 @@
       "Higher latency than Sonnet tiers for simple conversational queries",
       "Costly for high-throughput shallow chat applications"
     ],
-    "tags": [
-      "Flagship",
-      "Coding",
-      "Research",
-      "Large context",
-      "Vision"
-    ],
-    "roles": [
-      "general-purpose",
-      "reasoning",
-      "coding",
-      "agentic",
-      "vision"
-    ],
+    "tags": ["Flagship", "Coding", "Research", "Large context", "Vision"],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic", "vision"],
     "facts": {
       "context": 1000000,
       "contextWindow": 1000000,
       "maxOutput": 128000,
-      "speedTokensPerSec": 45,
+      "speedTokensPerSec": 46,
       "speedTokensPerSecRange": {
-        "min": 15,
-        "max": 74,
-        "providerCount": 8,
+        "min": 9,
+        "max": 82,
+        "providerCount": 9,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -4108,12 +3842,7 @@
       "availability": "Production API",
       "releaseDate": "2026-04-10",
       "sourceId": "source-anthropic",
-      "reasoningEffort": [
-        "none",
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["none", "low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -4193,16 +3922,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 45,
-        "min": 0,
-        "max": 200,
-        "normalized": 23,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 29,
@@ -4210,6 +3929,16 @@
         "max": 100,
         "normalized": 29,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 46,
+        "min": 0,
+        "max": 200,
+        "normalized": 23,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -4277,25 +4006,17 @@
       "Less specialized in competitive programming proofs than Pro variants",
       "Output token limit capped at 32k tokens"
     ],
-    "tags": [
-      "Speed",
-      "Multimodal",
-      "Daily use"
-    ],
-    "roles": [
-      "general-purpose",
-      "agentic",
-      "vision"
-    ],
+    "tags": ["Speed", "Multimodal", "Daily use"],
+    "roles": ["general-purpose", "agentic", "vision"],
     "facts": {
       "context": 1048576,
       "contextWindow": 1048576,
       "maxOutput": 32768,
-      "speedTokensPerSec": 90,
+      "speedTokensPerSec": 119,
       "speedTokensPerSecRange": {
-        "min": 5,
-        "max": 174,
-        "providerCount": 6,
+        "min": 27,
+        "max": 211,
+        "providerCount": 5,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -4312,10 +4033,7 @@
       "availability": "Production API",
       "releaseDate": "2026-03-25",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "none",
-        "low"
-      ],
+      "reasoningEffort": ["none", "low"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -4340,7 +4058,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 45,
+      "speed": 60,
       "reliability": null,
       "costEfficiency": 43,
       "overall": 75
@@ -4395,16 +4113,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 90,
-        "min": 0,
-        "max": 200,
-        "normalized": 45,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 43,
@@ -4412,6 +4120,16 @@
         "max": 100,
         "normalized": 43,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 119,
+        "min": 0,
+        "max": 200,
+        "normalized": 60,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -4479,20 +4197,16 @@
       "Reduced capability on intricate algorithmic reasoning and math",
       "Audio input not supported in Lite tier"
     ],
-    "tags": [
-      "Best value",
-      "Speed",
-      "Fast"
-    ],
+    "tags": ["Best value", "Speed", "Fast"],
     "facts": {
       "context": 1048576,
       "contextWindow": 1048576,
       "maxOutput": 16384,
-      "speedTokensPerSec": 63,
+      "speedTokensPerSec": 71,
       "speedTokensPerSecRange": {
         "min": 10,
-        "max": 115,
-        "providerCount": 6,
+        "max": 132,
+        "providerCount": 7,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -4509,9 +4223,7 @@
       "availability": "Production API",
       "releaseDate": "2026-03-25",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -4536,7 +4248,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 32,
+      "speed": 36,
       "reliability": null,
       "costEfficiency": 61,
       "overall": 64
@@ -4594,16 +4306,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 63,
-        "min": 0,
-        "max": 200,
-        "normalized": 32,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 61,
@@ -4611,6 +4313,16 @@
         "max": 100,
         "normalized": 61,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 71,
+        "min": 0,
+        "max": 200,
+        "normalized": 36,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -4686,12 +4398,7 @@
       "Higher latency than standard GPT-5.2",
       "Expensive output rate"
     ],
-    "tags": [
-      "Flagship",
-      "Reasoning",
-      "Vision",
-      "Multimodal"
-    ],
+    "tags": ["Flagship", "Reasoning", "Vision", "Multimodal"],
     "facts": {
       "context": 393216,
       "contextWindow": 393216,
@@ -4717,11 +4424,7 @@
       "availability": "Production API",
       "releaseDate": "2026-03-20",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -4791,16 +4494,6 @@
         "updatedAt": "2026-03-20"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 2,
-        "min": 0,
-        "max": 200,
-        "normalized": 1,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 22,
@@ -4808,6 +4501,16 @@
         "max": 100,
         "normalized": 22,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 2,
+        "min": 0,
+        "max": 200,
+        "normalized": 1,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -4874,20 +4577,15 @@
     "weaknesses": [
       "Superseded in pure reasoning by GPT-5.6 Sol and GPT-6 Astra"
     ],
-    "tags": [
-      "Flagship",
-      "Vision",
-      "Multimodal",
-      "Daily use"
-    ],
+    "tags": ["Flagship", "Vision", "Multimodal", "Daily use"],
     "facts": {
       "context": 262144,
       "contextWindow": 262144,
       "maxOutput": 16384,
-      "speedTokensPerSec": 51,
+      "speedTokensPerSec": 61,
       "speedTokensPerSecRange": {
-        "min": 14,
-        "max": 87,
+        "min": 29,
+        "max": 93,
         "providerCount": 3,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -4905,11 +4603,7 @@
       "availability": "Production API",
       "releaseDate": "2026-03-20",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "none",
-        "low",
-        "medium"
-      ],
+      "reasoningEffort": ["none", "low", "medium"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -4934,7 +4628,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 26,
+      "speed": 31,
       "reliability": null,
       "costEfficiency": 31,
       "overall": 75
@@ -4989,16 +4683,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 51,
-        "min": 0,
-        "max": 200,
-        "normalized": 26,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 31,
@@ -5006,6 +4690,16 @@
         "max": 100,
         "normalized": 31,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 61,
+        "min": 0,
+        "max": 200,
+        "normalized": 31,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -5073,28 +4767,16 @@
       "Premium pricing model for production deployment",
       "Superseded in speed and latency by Claude Fable 5.1"
     ],
-    "tags": [
-      "Flagship",
-      "Reasoning",
-      "Agents",
-      "Large context",
-      "Vision"
-    ],
-    "roles": [
-      "general-purpose",
-      "reasoning",
-      "coding",
-      "agentic",
-      "vision"
-    ],
+    "tags": ["Flagship", "Reasoning", "Agents", "Large context", "Vision"],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic", "vision"],
     "facts": {
       "context": 1000000,
       "contextWindow": 1000000,
       "maxOutput": 128000,
-      "speedTokensPerSec": 29,
+      "speedTokensPerSec": 34,
       "speedTokensPerSecRange": {
-        "min": 11,
-        "max": 47,
+        "min": 16,
+        "max": 52,
         "providerCount": 4,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -5112,12 +4794,7 @@
       "availability": "Production API",
       "releaseDate": "2026-03-20",
       "sourceId": "source-anthropic",
-      "reasoningEffort": [
-        "none",
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["none", "low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -5142,7 +4819,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 14,
+      "speed": 17,
       "reliability": null,
       "costEfficiency": 20,
       "overall": 83
@@ -5200,16 +4877,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 29,
-        "min": 0,
-        "max": 200,
-        "normalized": 14,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 20,
@@ -5217,6 +4884,16 @@
         "max": 100,
         "normalized": 20,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 34,
+        "min": 0,
+        "max": 200,
+        "normalized": 17,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -5293,12 +4970,7 @@
       "Carries a higher token pricing premium over standard M2.7",
       "Does not process image or visual inputs"
     ],
-    "tags": [
-      "Coding",
-      "Agents",
-      "Speed",
-      "Developer"
-    ],
+    "tags": ["Coding", "Agents", "Speed", "Developer"],
     "facts": {
       "context": 204800,
       "contextWindow": 204800,
@@ -5318,11 +4990,7 @@
       "availability": "Production API",
       "releaseDate": "2026-03-15",
       "sourceId": "source-minimax",
-      "reasoningEffort": [
-        "none",
-        "low",
-        "medium"
-      ],
+      "reasoningEffort": ["none", "low", "medium"],
       "defaultEffort": "low"
     },
     "pricing": {
@@ -5410,11 +5078,7 @@
       "Outperformed by larger commercial proprietary models on PhD STEM benchmarks",
       "Requires local GPU acceleration for interactive token rates"
     ],
-    "tags": [
-      "Open weights",
-      "Coding",
-      "Daily use"
-    ],
+    "tags": ["Open weights", "Coding", "Daily use"],
     "facts": {
       "context": 131072,
       "contextWindow": 131072,
@@ -5434,9 +5098,7 @@
       "availability": "Production API",
       "releaseDate": "2026-03-12",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -5572,12 +5234,7 @@
       "32,768 token context window",
       "Not designed for complex multi-step algorithmic proofs"
     ],
-    "tags": [
-      "Open weights",
-      "Fast",
-      "Edge",
-      "Best value"
-    ],
+    "tags": ["Open weights", "Fast", "Edge", "Best value"],
     "facts": {
       "context": 32768,
       "contextWindow": 32768,
@@ -5597,9 +5254,7 @@
       "availability": "Production API",
       "releaseDate": "2026-03-12",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -5735,28 +5390,17 @@
       "Higher API unit pricing than Flash models",
       "Longer latency on full context window queries"
     ],
-    "tags": [
-      "Flagship",
-      "Coding",
-      "Research",
-      "Large context"
-    ],
-    "roles": [
-      "general-purpose",
-      "reasoning",
-      "coding",
-      "agentic",
-      "vision"
-    ],
+    "tags": ["Flagship", "Coding", "Research", "Large context"],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic", "vision"],
     "facts": {
       "context": 1048576,
       "contextWindow": 1048576,
       "maxOutput": 65536,
-      "speedTokensPerSec": 60,
+      "speedTokensPerSec": 92,
       "speedTokensPerSecRange": {
-        "min": 12,
-        "max": 107,
-        "providerCount": 4,
+        "min": 90,
+        "max": 94,
+        "providerCount": 3,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -5773,12 +5417,7 @@
       "availability": "Production API",
       "releaseDate": "2026-02-12",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "none",
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["none", "low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -5803,7 +5442,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 30,
+      "speed": 46,
       "reliability": null,
       "costEfficiency": 39,
       "overall": 77
@@ -5858,16 +5497,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 60,
-        "min": 0,
-        "max": 200,
-        "normalized": 30,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 39,
@@ -5875,6 +5504,16 @@
         "max": 100,
         "normalized": 39,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 92,
+        "min": 0,
+        "max": 200,
+        "normalized": 46,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -5942,19 +5581,8 @@
       "Premium pricing relative to the Flash tier",
       "Higher generation time on complex deep reasoning prompts"
     ],
-    "tags": [
-      "Flagship",
-      "Coding",
-      "Research",
-      "Large context"
-    ],
-    "roles": [
-      "general-purpose",
-      "reasoning",
-      "coding",
-      "agentic",
-      "vision"
-    ],
+    "tags": ["Flagship", "Coding", "Research", "Large context"],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic", "vision"],
     "facts": {
       "context": 2097152,
       "contextWindow": 2097152,
@@ -5974,12 +5602,7 @@
       "availability": "Production API",
       "releaseDate": "2025-11-20",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "none",
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["none", "low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -6111,177 +5734,6 @@
     ]
   },
   {
-    "slug": "gemini-3-deep-think",
-    "name": "Gemini 3 Deep Think",
-    "provider": "Google DeepMind",
-    "family": "Gemini",
-    "dataKind": "verified",
-    "description": "Specialized deep-thinking reasoning architecture with extensive internal reflection, verification passes, and competitive math/coding excellence.",
-    "strengths": [
-      "Top-percentile performance on international math and scientific olympiad benchmarks",
-      "Deep chain-of-thought verification traces for mission-critical engineering logic",
-      "1,048,576 token context support for reasoning over full codebases"
-    ],
-    "weaknesses": [
-      "Higher price point ($2.50 input / $10.00 output)",
-      "Deliberate reasoning generation produces higher overall latency"
-    ],
-    "tags": [
-      "Reasoning",
-      "STEM",
-      "Coding",
-      "Research"
-    ],
-    "roles": [
-      "reasoning",
-      "coding",
-      "agentic",
-      "vision"
-    ],
-    "facts": {
-      "context": 1048576,
-      "contextWindow": 1048576,
-      "maxOutput": 65536,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
-      "vision": true,
-      "supportsVision": true,
-      "audio": false,
-      "tools": true,
-      "supportsTools": true,
-      "structured": true,
-      "api": true,
-      "openWeights": false,
-      "isOpenWeights": false,
-      "easeOfUse": null,
-      "availability": "Production API",
-      "releaseDate": "2025-11-20",
-      "sourceId": "source-google",
-      "reasoningEffort": [
-        "medium",
-        "high",
-        "max"
-      ],
-      "defaultEffort": "high"
-    },
-    "pricing": {
-      "input": 2.5,
-      "output": 10,
-      "cached": 0.625,
-      "currency": "USD",
-      "unit": "per-million-tokens",
-      "sourceId": "source-google",
-      "updatedAt": "2026-09-06",
-      "inputPer1M": 2.5,
-      "outputPer1M": 10,
-      "cachedInputPer1M": 0.625,
-      "provenanceUrl": "https://en.wikipedia.org/wiki/Gemini_(language_model)",
-      "verifiedAt": "2026-09-06"
-    },
-    "scores": {
-      "intelligence": 83,
-      "coding": 85,
-      "agentic": null,
-      "dailyUse": null,
-      "research": null,
-      "writing": null,
-      "vision": null,
-      "speed": null,
-      "reliability": null,
-      "costEfficiency": 40,
-      "overall": 83
-    },
-    "benchmarks": {
-      "livebench": {
-        "release": "2025-11-20",
-        "overall": 83.2,
-        "reasoning": 94,
-        "coding": 85.2,
-        "agenticCoding": null,
-        "mathematics": 93.5,
-        "dataAnalysis": 80.5,
-        "language": null,
-        "instructionFollowing": 84
-      },
-      "sweBench": null,
-      "bfcl": {
-        "overallAccuracy": 90.5
-      },
-      "lmarena": null
-    },
-    "evidence": [
-      {
-        "metric": "intelligence",
-        "kind": "benchmark",
-        "raw": 83.2,
-        "min": 0,
-        "max": 100,
-        "normalized": 83,
-        "sourceId": "livebench-leaderboard",
-        "updatedAt": "2025-11-20"
-      },
-      {
-        "metric": "coding",
-        "kind": "benchmark",
-        "raw": 85.2,
-        "min": 0,
-        "max": 100,
-        "normalized": 85,
-        "sourceId": "livebench-leaderboard",
-        "updatedAt": "2025-11-20"
-      },
-      {
-        "metric": "costEfficiency",
-        "kind": "benchmark",
-        "raw": 40,
-        "min": 0,
-        "max": 100,
-        "normalized": 40,
-        "sourceId": "astra-cost-engine",
-        "updatedAt": "2026-09-12"
-      }
-    ],
-    "confidence": 74,
-    "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-12",
-    "lastVerifiedAt": "2026-09-06",
-    "sourceUpdatedAt": "2026-09-12",
-    "sources": [
-      {
-        "id": "source-google",
-        "name": "Wikipedia: Gemini (language model)",
-        "url": "https://en.wikipedia.org/wiki/Gemini_(language_model)",
-        "retrievedAt": "2026-09-06",
-        "kind": "provider_doc",
-        "publisher": "Google DeepMind"
-      },
-      {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2025-11-20",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
-      },
-      {
-        "id": "berkeley-function-calling-leaderboard",
-        "name": "Berkeley Function Calling Leaderboard (BFCL)",
-        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
-      },
-      {
-        "id": "astra-cost-engine",
-        "name": "Astra Cost Efficiency Engine",
-        "url": "https://github.com/D-Flint/ai-model-web",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "Astra Cost Efficiency Engine"
-      }
-    ]
-  },
-  {
     "slug": "claude-sonnet-4-6",
     "name": "Claude Sonnet 4.6",
     "provider": "Anthropic",
@@ -6296,20 +5748,15 @@
     "weaknesses": [
       "Tiered pricing applies above 200,000 prompt tokens ($6/$22.50 per 1M)"
     ],
-    "tags": [
-      "Coding",
-      "Agents",
-      "Balanced",
-      "Large context"
-    ],
+    "tags": ["Coding", "Agents", "Balanced", "Large context"],
     "facts": {
       "context": 1000000,
       "contextWindow": 1000000,
       "maxOutput": 64000,
-      "speedTokensPerSec": 32,
+      "speedTokensPerSec": 26,
       "speedTokensPerSecRange": {
-        "min": 11,
-        "max": 53,
+        "min": 8,
+        "max": 43,
         "providerCount": 8,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -6327,10 +5774,7 @@
       "availability": "Production API",
       "releaseDate": "2025-11-10",
       "sourceId": "source-anthropic",
-      "reasoningEffort": [
-        "none",
-        "low"
-      ],
+      "reasoningEffort": ["none", "low"],
       "defaultEffort": "low"
     },
     "pricing": {
@@ -6355,7 +5799,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 16,
+      "speed": 13,
       "reliability": null,
       "costEfficiency": 36,
       "overall": 73
@@ -6413,16 +5857,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 32,
-        "min": 0,
-        "max": 200,
-        "normalized": 16,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 36,
@@ -6430,6 +5864,16 @@
         "max": 100,
         "normalized": 36,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 26,
+        "min": 0,
+        "max": 200,
+        "normalized": 13,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -6501,31 +5945,18 @@
       "1,000,000 token context window",
       "Prompt caching discount support"
     ],
-    "weaknesses": [
-      "Premium price point ($5 input / $25 output per 1M)"
-    ],
-    "tags": [
-      "Coding",
-      "Reasoning",
-      "Research",
-      "Vision"
-    ],
-    "roles": [
-      "general-purpose",
-      "reasoning",
-      "coding",
-      "agentic",
-      "vision"
-    ],
+    "weaknesses": ["Premium price point ($5 input / $25 output per 1M)"],
+    "tags": ["Coding", "Reasoning", "Research", "Vision"],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic", "vision"],
     "facts": {
       "context": 1000000,
       "contextWindow": 1000000,
       "maxOutput": 64000,
-      "speedTokensPerSec": 40,
+      "speedTokensPerSec": 42,
       "speedTokensPerSecRange": {
-        "min": 29,
+        "min": 32,
         "max": 51,
-        "providerCount": 6,
+        "providerCount": 5,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -6542,11 +5973,7 @@
       "availability": "Production API",
       "releaseDate": "2025-10-25",
       "sourceId": "source-anthropic",
-      "reasoningEffort": [
-        "none",
-        "low",
-        "medium"
-      ],
+      "reasoningEffort": ["none", "low", "medium"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -6571,7 +5998,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 20,
+      "speed": 21,
       "reliability": null,
       "costEfficiency": 29,
       "overall": 75
@@ -6629,16 +6056,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 40,
-        "min": 0,
-        "max": 200,
-        "normalized": 20,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 29,
@@ -6646,6 +6063,16 @@
         "max": 100,
         "normalized": 29,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 42,
+        "min": 0,
+        "max": 200,
+        "normalized": 21,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -6721,26 +6148,16 @@
     "weaknesses": [
       "Requires thinking token overhead before producing final answer"
     ],
-    "tags": [
-      "Reasoning",
-      "STEM",
-      "Coding",
-      "Best value"
-    ],
-    "roles": [
-      "reasoning",
-      "coding",
-      "agentic",
-      "vision"
-    ],
+    "tags": ["Reasoning", "STEM", "Coding", "Best value"],
+    "roles": ["reasoning", "coding", "agentic", "vision"],
     "facts": {
       "context": 200000,
       "contextWindow": 200000,
       "maxOutput": 65536,
-      "speedTokensPerSec": 111,
+      "speedTokensPerSec": 112,
       "speedTokensPerSecRange": {
-        "min": 111,
-        "max": 111,
+        "min": 112,
+        "max": 112,
         "providerCount": 1,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -6758,11 +6175,7 @@
       "availability": "Production API",
       "releaseDate": "2025-10-15",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -6835,16 +6248,6 @@
         "updatedAt": "2025-10-15"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 111,
-        "min": 0,
-        "max": 200,
-        "normalized": 56,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 50,
@@ -6852,6 +6255,16 @@
         "max": 100,
         "normalized": 50,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 112,
+        "min": 0,
+        "max": 200,
+        "normalized": 56,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -6926,21 +6339,16 @@
     "weaknesses": [
       "200,000 token context window (smaller than 1M Opus 4.6+ series)"
     ],
-    "tags": [
-      "Research",
-      "Deep thinking",
-      "Writing",
-      "Flagship"
-    ],
+    "tags": ["Research", "Deep thinking", "Writing", "Flagship"],
     "facts": {
       "context": 200000,
       "contextWindow": 200000,
       "maxOutput": 32000,
-      "speedTokensPerSec": 41,
+      "speedTokensPerSec": 46,
       "speedTokensPerSecRange": {
-        "min": 26,
-        "max": 56,
-        "providerCount": 5,
+        "min": 36,
+        "max": 55,
+        "providerCount": 4,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -6957,10 +6365,7 @@
       "availability": "Production API",
       "releaseDate": "2025-09-28",
       "sourceId": "source-anthropic",
-      "reasoningEffort": [
-        "none",
-        "low"
-      ],
+      "reasoningEffort": ["none", "low"],
       "defaultEffort": "low"
     },
     "pricing": {
@@ -6985,7 +6390,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 21,
+      "speed": 23,
       "reliability": null,
       "costEfficiency": 29,
       "overall": 73
@@ -7040,16 +6445,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 41,
-        "min": 0,
-        "max": 200,
-        "normalized": 21,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 29,
@@ -7057,6 +6452,16 @@
         "max": 100,
         "normalized": 29,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 46,
+        "min": 0,
+        "max": 200,
+        "normalized": 23,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -7123,28 +6528,17 @@
     "weaknesses": [
       "Pricing tier increases on prompts exceeding 200,000 tokens"
     ],
-    "tags": [
-      "Coding",
-      "Agents",
-      "Computer use",
-      "Vision"
-    ],
-    "roles": [
-      "general-purpose",
-      "reasoning",
-      "coding",
-      "agentic",
-      "vision"
-    ],
+    "tags": ["Coding", "Agents", "Computer use", "Vision"],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic", "vision"],
     "facts": {
       "context": 1000000,
       "contextWindow": 1000000,
       "maxOutput": 64000,
-      "speedTokensPerSec": 24,
+      "speedTokensPerSec": 29,
       "speedTokensPerSecRange": {
-        "min": 12,
-        "max": 36,
-        "providerCount": 5,
+        "min": 3,
+        "max": 55,
+        "providerCount": 7,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -7161,10 +6555,7 @@
       "availability": "Production API",
       "releaseDate": "2025-09-15",
       "sourceId": "source-anthropic",
-      "reasoningEffort": [
-        "none",
-        "low"
-      ],
+      "reasoningEffort": ["none", "low"],
       "defaultEffort": "low"
     },
     "pricing": {
@@ -7189,7 +6580,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 12,
+      "speed": 14,
       "reliability": null,
       "costEfficiency": 36,
       "overall": 76
@@ -7237,16 +6628,6 @@
         "updatedAt": "2025-09-15"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 24,
-        "min": 0,
-        "max": 200,
-        "normalized": 12,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 36,
@@ -7254,6 +6635,16 @@
         "max": 100,
         "normalized": 36,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 29,
+        "min": 0,
+        "max": 200,
+        "normalized": 14,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -7330,20 +6721,15 @@
       "Text and code only (no multimodal vision)",
       "Requires high-end server GPU for local hosting"
     ],
-    "tags": [
-      "Open weights",
-      "Reasoning",
-      "STEM",
-      "Best value"
-    ],
+    "tags": ["Open weights", "Reasoning", "STEM", "Best value"],
     "facts": {
       "context": 131072,
       "contextWindow": 131072,
       "maxOutput": 8192,
-      "speedTokensPerSec": 417,
+      "speedTokensPerSec": 455,
       "speedTokensPerSecRange": {
         "min": 17,
-        "max": 817,
+        "max": 893,
         "providerCount": 22,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -7361,9 +6747,7 @@
       "availability": "Production API",
       "releaseDate": "2025-08-15",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "fixed"
-      ],
+      "reasoningEffort": ["fixed"],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -7436,16 +6820,6 @@
         "updatedAt": "2025-08-15"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 417,
-        "min": 0,
-        "max": 200,
-        "normalized": 100,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 71,
@@ -7453,6 +6827,16 @@
         "max": 100,
         "normalized": 71,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 455,
+        "min": 0,
+        "max": 200,
+        "normalized": 100,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -7528,27 +6912,16 @@
       "Higher token costs than Flash alternatives",
       "Slower time-to-first-token than Flash"
     ],
-    "tags": [
-      "Flagship",
-      "Coding",
-      "Research",
-      "Multimodal"
-    ],
-    "roles": [
-      "general-purpose",
-      "reasoning",
-      "coding",
-      "agentic",
-      "vision"
-    ],
+    "tags": ["Flagship", "Coding", "Research", "Multimodal"],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic", "vision"],
     "facts": {
       "context": 1048576,
       "contextWindow": 1048576,
       "maxOutput": 65536,
       "speedTokensPerSec": 67,
       "speedTokensPerSecRange": {
-        "min": 22,
-        "max": 111,
+        "min": 21,
+        "max": 113,
         "providerCount": 5,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -7566,10 +6939,7 @@
       "availability": "Production API",
       "releaseDate": "2025-08-14",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "none",
-        "medium"
-      ],
+      "reasoningEffort": ["none", "medium"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -7642,16 +7012,6 @@
         "updatedAt": "2025-08-14"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 67,
-        "min": 0,
-        "max": 200,
-        "normalized": 34,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 43,
@@ -7659,6 +7019,16 @@
         "max": 100,
         "normalized": 43,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 67,
+        "min": 0,
+        "max": 200,
+        "normalized": 34,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -7735,27 +7105,16 @@
       "Text-only foundation model without native vision processing",
       "High memory footprint requiring enterprise-grade GPU cluster for full precision"
     ],
-    "tags": [
-      "Flagship",
-      "Open weights",
-      "MoE",
-      "Reasoning",
-      "Snapshot"
-    ],
-    "roles": [
-      "general-purpose",
-      "reasoning",
-      "coding",
-      "agentic"
-    ],
+    "tags": ["Flagship", "Open weights", "MoE", "Reasoning", "Snapshot"],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic"],
     "facts": {
       "context": 131072,
       "contextWindow": 131072,
       "maxOutput": 16384,
-      "speedTokensPerSec": 73,
+      "speedTokensPerSec": 71,
       "speedTokensPerSecRange": {
-        "min": 21,
-        "max": 125,
+        "min": 24,
+        "max": 118,
         "providerCount": 21,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -7773,12 +7132,7 @@
       "availability": "Production API",
       "releaseDate": "2025-08-13",
       "sourceId": "source-deepseek",
-      "reasoningEffort": [
-        "none",
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["none", "low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -7803,7 +7157,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 37,
+      "speed": 36,
       "reliability": null,
       "costEfficiency": 69,
       "overall": 77
@@ -7856,16 +7210,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 73,
-        "min": 0,
-        "max": 200,
-        "normalized": 37,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 69,
@@ -7873,6 +7217,16 @@
         "max": 100,
         "normalized": 69,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 71,
+        "min": 0,
+        "max": 200,
+        "normalized": 36,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -7932,26 +7286,16 @@
       "Text-only model without vision capabilities",
       "Less exhaustive on deeply complex mathematical proofs than V4-Pro"
     ],
-    "tags": [
-      "Fast",
-      "Open weights",
-      "MoE",
-      "Snapshot",
-      "Best value"
-    ],
-    "roles": [
-      "general-purpose",
-      "coding",
-      "agentic"
-    ],
+    "tags": ["Fast", "Open weights", "MoE", "Snapshot", "Best value"],
+    "roles": ["general-purpose", "coding", "agentic"],
     "facts": {
       "context": 131072,
       "contextWindow": 131072,
       "maxOutput": 8192,
-      "speedTokensPerSec": 67,
+      "speedTokensPerSec": 70,
       "speedTokensPerSecRange": {
-        "min": 4,
-        "max": 129,
+        "min": 5,
+        "max": 135,
         "providerCount": 28,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -7969,9 +7313,7 @@
       "availability": "Production API",
       "releaseDate": "2025-07-31",
       "sourceId": "source-deepseek",
-      "reasoningEffort": [
-        "none"
-      ],
+      "reasoningEffort": ["none"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -7996,7 +7338,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 34,
+      "speed": 35,
       "reliability": null,
       "costEfficiency": 89,
       "overall": 74
@@ -8049,16 +7391,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 67,
-        "min": 0,
-        "max": 200,
-        "normalized": 34,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 89,
@@ -8066,6 +7398,16 @@
         "max": 100,
         "normalized": 89,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 70,
+        "min": 0,
+        "max": 200,
+        "normalized": 35,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -8125,26 +7467,16 @@
       "Premium price point ($20 input / $80 output)",
       "High response latency during deep reasoning tasks"
     ],
-    "tags": [
-      "Reasoning",
-      "STEM",
-      "Coding",
-      "Flagship"
-    ],
-    "roles": [
-      "reasoning",
-      "coding",
-      "agentic",
-      "vision"
-    ],
+    "tags": ["Reasoning", "STEM", "Coding", "Flagship"],
+    "roles": ["reasoning", "coding", "agentic", "vision"],
     "facts": {
       "context": 200000,
       "contextWindow": 200000,
       "maxOutput": 100000,
-      "speedTokensPerSec": 2,
+      "speedTokensPerSec": 4,
       "speedTokensPerSecRange": {
-        "min": 2,
-        "max": 2,
+        "min": 4,
+        "max": 4,
         "providerCount": 1,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -8162,12 +7494,7 @@
       "availability": "Production API",
       "releaseDate": "2025-06-12",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["low", "medium", "high", "max"],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -8192,7 +7519,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 1,
+      "speed": 2,
       "reliability": null,
       "costEfficiency": 13,
       "overall": 83
@@ -8237,16 +7564,6 @@
         "updatedAt": "2025-06-12"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 2,
-        "min": 0,
-        "max": 200,
-        "normalized": 1,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 13,
@@ -8254,6 +7571,16 @@
         "max": 100,
         "normalized": 13,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 4,
+        "min": 0,
+        "max": 200,
+        "normalized": 2,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -8321,26 +7648,16 @@
       "Thinking latency before generating user-facing response",
       "Premium pricing compared to o3-mini"
     ],
-    "tags": [
-      "Reasoning",
-      "STEM",
-      "Coding",
-      "Flagship"
-    ],
-    "roles": [
-      "reasoning",
-      "coding",
-      "agentic",
-      "vision"
-    ],
+    "tags": ["Reasoning", "STEM", "Coding", "Flagship"],
+    "roles": ["reasoning", "coding", "agentic", "vision"],
     "facts": {
       "context": 200000,
       "contextWindow": 200000,
       "maxOutput": 100000,
-      "speedTokensPerSec": 116,
+      "speedTokensPerSec": 115,
       "speedTokensPerSecRange": {
-        "min": 116,
-        "max": 116,
+        "min": 115,
+        "max": 115,
         "providerCount": 1,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -8358,11 +7675,7 @@
       "availability": "Production API",
       "releaseDate": "2025-04-10",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -8387,7 +7700,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 58,
+      "speed": 57,
       "reliability": null,
       "costEfficiency": 22,
       "overall": 80
@@ -8435,16 +7748,6 @@
         "updatedAt": "2025-04-10"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 116,
-        "min": 0,
-        "max": 200,
-        "normalized": 58,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 22,
@@ -8452,6 +7755,16 @@
         "max": 100,
         "normalized": 22,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 115,
+        "min": 0,
+        "max": 200,
+        "normalized": 57,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -8528,20 +7841,8 @@
       "Higher latency when extended thinking budget is set to maximum",
       "Premium output pricing ($15.00/1M tokens) during long chain-of-thought generation"
     ],
-    "tags": [
-      "Reasoning",
-      "Coding",
-      "Agentic",
-      "Vision",
-      "Multimodal"
-    ],
-    "roles": [
-      "general-purpose",
-      "reasoning",
-      "coding",
-      "agentic",
-      "vision"
-    ],
+    "tags": ["Reasoning", "Coding", "Agentic", "Vision", "Multimodal"],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic", "vision"],
     "facts": {
       "context": 200000,
       "contextWindow": 200000,
@@ -8561,11 +7862,7 @@
       "availability": "Production API",
       "releaseDate": "2025-02-24",
       "sourceId": "source-anthropic",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -8712,12 +8009,7 @@
       "Higher token cost than Flash models",
       "Slower generation than Flash"
     ],
-    "tags": [
-      "Flagship",
-      "Coding",
-      "Research",
-      "Long context"
-    ],
+    "tags": ["Flagship", "Coding", "Research", "Long context"],
     "facts": {
       "context": 2097152,
       "contextWindow": 2097152,
@@ -8737,10 +8029,7 @@
       "availability": "Production API",
       "releaseDate": "2025-02-05",
       "sourceId": "source-google",
-      "reasoningEffort": [
-        "none",
-        "medium"
-      ],
+      "reasoningEffort": ["none", "medium"],
       "defaultEffort": "none"
     },
     "pricing": {
@@ -8861,6 +8150,162 @@
     ]
   },
   {
+    "slug": "qwen-2-5-max",
+    "name": "Qwen 2.5 Max",
+    "provider": "Alibaba Cloud / Qwen",
+    "family": "Qwen 2.5",
+    "dataKind": "verified",
+    "description": "Alibaba Cloud's flagship proprietary frontier model, delivering frontier reasoning, broad knowledge synthesis, and complex instruction following.",
+    "strengths": [
+      "State-of-the-art multilingual and STEM reasoning",
+      "131,072 token context window with reliable 8k output generation",
+      "Strong function calling and structured JSON schema compliance"
+    ],
+    "weaknesses": [
+      "Proprietary hosted API (not available as open weights)",
+      "Text-only interface without native visual inputs"
+    ],
+    "tags": ["Research", "STEM", "Coding", "Multilingual"],
+    "facts": {
+      "context": 131072,
+      "contextWindow": 131072,
+      "maxOutput": 8192,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": false,
+      "supportsVision": false,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "isOpenWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-01-27",
+      "sourceId": "source-qwen",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 2.8,
+      "output": 8.4,
+      "cached": null,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-qwen",
+      "updatedAt": "2026-09-05",
+      "inputPer1M": 2.8,
+      "outputPer1M": 8.4,
+      "cachedInputPer1M": null,
+      "provenanceUrl": "https://help.aliyun.com/zh/model-studio/developer-reference/what-is-qwen-llm",
+      "verifiedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 72,
+      "coding": 67,
+      "agentic": null,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 41,
+      "overall": 72
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2025-01-27",
+        "overall": 72.4,
+        "reasoning": 81.5,
+        "coding": 66.8,
+        "agenticCoding": null,
+        "mathematics": 78.2,
+        "dataAnalysis": 68.5,
+        "language": null,
+        "instructionFollowing": 74
+      },
+      "sweBench": null,
+      "bfcl": {
+        "overallAccuracy": 88.5
+      },
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 72.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 72,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-01-27"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 66.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 67,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-01-27"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 41,
+        "min": 0,
+        "max": 100,
+        "normalized": 41,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 74,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-qwen",
+        "name": "Alibaba Qwen Official Documentation",
+        "url": "https://help.aliyun.com/zh/model-studio/developer-reference/what-is-qwen-llm",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Alibaba Cloud / Qwen"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2025-01-27",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      },
+      {
+        "id": "berkeley-function-calling-leaderboard",
+        "name": "Berkeley Function Calling Leaderboard (BFCL)",
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "deepseek-r1",
     "name": "DeepSeek R1",
     "provider": "DeepSeek",
@@ -8877,25 +8322,16 @@
       "Text-only model with no native image or audio support",
       "API rate limits and peak-hour queue delays on official hosted endpoints"
     ],
-    "tags": [
-      "Reasoning",
-      "Open weights",
-      "Coding",
-      "Best value",
-      "Flagship"
-    ],
-    "roles": [
-      "reasoning",
-      "coding"
-    ],
+    "tags": ["Reasoning", "Open weights", "Coding", "Best value", "Flagship"],
+    "roles": ["reasoning", "coding"],
     "facts": {
       "context": 64000,
       "contextWindow": 64000,
       "maxOutput": 8192,
-      "speedTokensPerSec": 20,
+      "speedTokensPerSec": 21,
       "speedTokensPerSecRange": {
-        "min": 20,
-        "max": 20,
+        "min": 21,
+        "max": 21,
         "providerCount": 1,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -8913,9 +8349,7 @@
       "availability": "Production API",
       "releaseDate": "2025-01-20",
       "sourceId": "source-deepseek",
-      "reasoningEffort": [
-        "fixed"
-      ],
+      "reasoningEffort": ["fixed"],
       "defaultEffort": "fixed"
     },
     "pricing": {
@@ -8940,7 +8374,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 10,
+      "speed": 11,
       "reliability": null,
       "costEfficiency": 60,
       "overall": 75
@@ -8985,16 +8419,6 @@
         "updatedAt": "2025-01-20"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 20,
-        "min": 0,
-        "max": 200,
-        "normalized": 10,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 60,
@@ -9002,6 +8426,16 @@
         "max": 100,
         "normalized": 60,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 21,
+        "min": 0,
+        "max": 200,
+        "normalized": 11,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],
@@ -9069,16 +8503,8 @@
       "Very expensive ($20 input / $80 output per 1M tokens)",
       "Significant latency on complex queries"
     ],
-    "tags": [
-      "Reasoning",
-      "STEM",
-      "Flagship"
-    ],
-    "roles": [
-      "reasoning",
-      "coding",
-      "vision"
-    ],
+    "tags": ["Reasoning", "STEM", "Flagship"],
+    "roles": ["reasoning", "coding", "vision"],
     "facts": {
       "context": 200000,
       "contextWindow": 200000,
@@ -9098,10 +8524,7 @@
       "availability": "Production API",
       "releaseDate": "2024-12-17",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "high",
-        "max"
-      ],
+      "reasoningEffort": ["high", "max"],
       "defaultEffort": "high"
     },
     "pricing": {
@@ -9237,25 +8660,16 @@
       "Premium pricing ($15 input / $60 output per 1M tokens)",
       "Higher latency due to chain-of-thought token generation before responding"
     ],
-    "tags": [
-      "Reasoning",
-      "Coding",
-      "Flagship",
-      "Vision"
-    ],
-    "roles": [
-      "reasoning",
-      "coding",
-      "vision"
-    ],
+    "tags": ["Reasoning", "Coding", "Flagship", "Vision"],
+    "roles": ["reasoning", "coding", "vision"],
     "facts": {
       "context": 200000,
       "contextWindow": 200000,
       "maxOutput": 100000,
-      "speedTokensPerSec": 13,
+      "speedTokensPerSec": 42,
       "speedTokensPerSecRange": {
-        "min": 13,
-        "max": 13,
+        "min": 42,
+        "max": 42,
         "providerCount": 1,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -9273,11 +8687,7 @@
       "availability": "Production API",
       "releaseDate": "2024-12-05",
       "sourceId": "source-openai",
-      "reasoningEffort": [
-        "low",
-        "medium",
-        "high"
-      ],
+      "reasoningEffort": ["low", "medium", "high"],
       "defaultEffort": "medium"
     },
     "pricing": {
@@ -9302,7 +8712,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 7,
+      "speed": 21,
       "reliability": null,
       "costEfficiency": 17,
       "overall": 74
@@ -9350,16 +8760,6 @@
         "updatedAt": "2024-12-17"
       },
       {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 13,
-        "min": 0,
-        "max": 200,
-        "normalized": 7,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "costEfficiency",
         "kind": "benchmark",
         "raw": 17,
@@ -9367,6 +8767,16 @@
         "max": 100,
         "normalized": 17,
         "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 42,
+        "min": 0,
+        "max": 200,
+        "normalized": 21,
+        "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
     ],

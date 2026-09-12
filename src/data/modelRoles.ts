@@ -12,7 +12,7 @@ export const knownModelRoles: Readonly<Record<string, ModelRole[]>> = {
     'agentic',
     'vision',
   ],
-  'gemini-3-deep-think': ['reasoning', 'coding', 'agentic', 'vision'],
+  'glm-5-3': ['reasoning', 'coding', 'agentic', 'vision'],
   'claude-fable-5': [
     'general-purpose',
     'reasoning',
@@ -108,7 +108,6 @@ export const knownModelRoles: Readonly<Record<string, ModelRole[]>> = {
   ],
   'gemini-3-5-flash': ['general-purpose', 'agentic', 'vision'],
   'deepseek-r1': ['reasoning', 'coding'],
-  'gemma-4': ['general-purpose', 'coding', 'agentic', 'vision'],
   'claude-opus-4-6': [
     'general-purpose',
     'reasoning',

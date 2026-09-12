@@ -670,4 +670,3 @@ export const MOONSHOT_MODELS: CanonicalModelConfig[] = [
     speedTokensPerSec: 72,
   },
 ];
-

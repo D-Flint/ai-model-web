@@ -296,38 +296,6 @@ export const GOOGLE_MODELS: CanonicalModelConfig[] = [
     reasoningEffort: ['none', 'low'],
     defaultEffort: 'none',
   },
-  {
-    slug: 'gemini-3-deep-think',
-    name: 'Gemini 3 Deep Think',
-    provider: 'Google DeepMind',
-    providerSlug: 'google',
-    family: 'Gemini',
-    openWeights: false,
-    openRouterId: 'google/gemini-3-deep-think',
-    lmarenaAliases: [
-      'gemini-3-deep-think',
-      'gemini-3-thinking',
-      'google/gemini-3-deep-think',
-    ],
-    swebenchAliases: ['gemini-3-deep-think', 'Google: Gemini 3 Deep Think'],
-    livebenchAliases: ['gemini-3-deep-think', 'gemini-3-thinking'],
-    bfclAliases: ['gemini-3-deep-think', 'gemini-3-thinking'],
-    officialDocsUrl: 'https://en.wikipedia.org/wiki/Gemini_(language_model)',
-    description:
-      'Specialized deep-thinking reasoning architecture with extensive internal reflection, verification passes, and competitive math/coding excellence.',
-    strengths: [
-      'Top-percentile performance on international math and scientific olympiad benchmarks',
-      'Deep chain-of-thought verification traces for mission-critical engineering logic',
-      '1,048,576 token context support for reasoning over full codebases',
-    ],
-    weaknesses: [
-      'Higher price point ($2.50 input / $10.00 output)',
-      'Deliberate reasoning generation produces higher overall latency',
-    ],
-    tags: ['Reasoning', 'STEM', 'Coding', 'Research'],
-    reasoningEffort: ['medium', 'high', 'max'],
-    defaultEffort: 'high',
-  },
 
   // ==========================================
   // GEMINI 2.5 GENERATION (MID 2025)
@@ -836,36 +804,6 @@ export const GOOGLE_MODELS: CanonicalModelConfig[] = [
   // ==========================================
   // GEMMA OPEN-WEIGHT FOUNDATION MODELS
   // ==========================================
-  {
-    slug: 'gemma-4',
-    name: 'Gemma 4',
-    provider: 'Google DeepMind',
-    providerSlug: 'google',
-    family: 'Gemma',
-    openWeights: true,
-    openRouterId: 'google/gemma-4',
-    openRouterAliases: ['google/gemma-4-31b-it', 'google/gemma-4-26b-a4b-it'],
-    lmarenaAliases: ['gemma-4', 'google/gemma-4'],
-    swebenchAliases: ['gemma-4', 'Google: Gemma 4'],
-    livebenchAliases: ['gemma-4'],
-    bfclAliases: ['gemma-4'],
-    officialDocsUrl:
-      'https://cloud.google.com/vertex-ai/generative-ai/docs/model-garden/explore-models#gemma',
-    description:
-      "Google's fourth-generation open foundation model family, featuring unified multimodal vision-language weights, native function calling, and 256k context.",
-    strengths: [
-      'Open-weights with permissive license for commercial use and private hosting',
-      '262k context window with native multimodal image and document understanding',
-      'Top open-weight coding and function-calling reliability',
-    ],
-    weaknesses: [
-      'Requires high-VRAM dual-GPU or quantized deployment for peak performance',
-      'Output generation speed depends on host hardware',
-    ],
-    tags: ['Open weights', 'Multimodal', 'Coding', 'Research'],
-    reasoningEffort: ['none'],
-    defaultEffort: 'none',
-  },
   {
     slug: 'gemma-3',
     name: 'Gemma 3',

@@ -33,4 +33,3 @@ export const LIVEBENCH_RELEASE_ALIASES: Record<string, string> = {
   'glm-5.3-flash': 'glm-5-3-flash',
   'muse-spark-1.3-xhigh': 'muse-spark-1-3',
 };
-
