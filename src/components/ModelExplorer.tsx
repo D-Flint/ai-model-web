@@ -1026,9 +1026,6 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                                   {row.effortLabel}
                                 </span>
                               )}
-                              {row.isOpenWeights && (
-                                <span className="badge-open">open</span>
-                              )}
                             </div>
                             {showOrg && (
                               <div className="model-org-sub">
@@ -1218,6 +1215,9 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                                           ? 'Fixed CoT'
                                           : `Default Effort: ${row.maxEffort}`}
                                       </span>
+                                    )}
+                                    {row.isOpenWeights && (
+                                      <span className="badge-open">open</span>
                                     )}
                                   </div>
                                   <div className="subtask-buttons">
