@@ -280,6 +280,31 @@ main {
 .skip-link:focus {
   top: 12px;
 }
+.return-to-top {
+  position: fixed;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  z-index: 4;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 18%);
+  cursor: pointer;
+}
+.return-to-top:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.return-to-top:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
 /* Layers: header 2, comparison tray 3, skip link 5. */
 .site-header {
   background: var(--surface);
@@ -1614,6 +1639,10 @@ th {
 }
 
 @media (max-width: 640px) {
+  .return-to-top {
+    right: max(14px, env(safe-area-inset-right));
+    bottom: max(14px, env(safe-area-inset-bottom));
+  }
   .ranking-controls {
     flex-direction: column;
     align-items: stretch;
