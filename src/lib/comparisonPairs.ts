@@ -2,6 +2,12 @@ const modelSlug = /^[a-z0-9-]+$/;
 const legacySeparator = '-vs-';
 const explicitSeparator = '~vs~';
 
+/** Default side-by-side comparison shown on the homepage and compare page. */
+export const DEFAULT_COMPARISON_SLUGS = [
+  'claude-fable-5-1',
+  'gpt-6-astra',
+] as const;
+
 /** Alphabetical ASCII slug order. Tildes disambiguate slugs containing -vs-. */
 export function comparisonPairSlug(a: string, b: string): string {
   const separator =

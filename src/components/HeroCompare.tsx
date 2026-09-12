@@ -4,9 +4,16 @@ import { ArrowRight, ArrowLeftRight } from 'lucide-react';
 import type { CatalogModel } from '../lib/catalogSchema';
 import { getSpeedDisplayValue, getSpeedTokensPerSec } from '../lib/decision';
 import { ModelMark } from './ModelCard';
+import { DEFAULT_COMPARISON_SLUGS } from '../lib/comparisonPairs';
 export default function HeroCompare({ models }: { models: CatalogModel[] }) {
-  const [left, setLeft] = useState(models[0].slug);
-  const [right, setRight] = useState(models[1].slug);
+  const initialLeft =
+    models.find((m) => m.slug === DEFAULT_COMPARISON_SLUGS[0])?.slug ??
+    models[0].slug;
+  const initialRight =
+    models.find((m) => m.slug === DEFAULT_COMPARISON_SLUGS[1])?.slug ??
+    models[1].slug;
+  const [left, setLeft] = useState(initialLeft);
+  const [right, setRight] = useState(initialRight);
   const a = models.find((m) => m.slug === left)!;
   const b = models.find((m) => m.slug === right)!;
   const aSpeed = getSpeedTokensPerSec(a);
