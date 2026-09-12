@@ -67,7 +67,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 35,
+      "speed": null,
       "reliability": null,
       "costEfficiency": null,
       "overall": 81
@@ -118,16 +118,6 @@
         "normalized": 77,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 69,
-        "min": 0,
-        "max": 200,
-        "normalized": 35,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -145,20 +135,20 @@
         "publisher": "DeepSeek"
       },
       {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
-      },
-      {
         "id": "openrouter-throughput",
         "name": "OpenRouter recent throughput",
         "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "OpenRouter"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -237,7 +227,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 17,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 19,
       "overall": 82
@@ -300,16 +290,6 @@
         "normalized": 19,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 33,
-        "min": 0,
-        "max": 200,
-        "normalized": 17,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -325,14 +305,6 @@
         "retrievedAt": "2026-09-05",
         "kind": "provider_doc",
         "publisher": "OpenAI"
-      },
-      {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
       },
       {
         "id": "berkeley-function-calling-leaderboard",
@@ -357,6 +329,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -511,204 +491,6 @@
     ]
   },
   {
-    "slug": "glm-5-3-flash",
-    "name": "GLM 5.3 Flash",
-    "provider": "Z.ai",
-    "family": "GLM",
-    "dataKind": "verified",
-    "description": "Z.ai's native multimodal model engineered for ultra-fast coding, high-volume agent workflows, and cost-efficient long-horizon execution.",
-    "strengths": [
-      "Ranked #2 on OpenRouter with over 12.5T tokens processed weekly",
-      "Ultra-competitive pricing ($0.075/1M input, $0.25/1M output)",
-      "1,310,720 token context length with hybrid sparse attention",
-      "Native multimodal support across text, image, and video inputs"
-    ],
-    "weaknesses": [
-      "Reasoning is mandatory on complex mathematical queries",
-      "Slightly lower general reasoning depth than top-tier flagship frontier models"
-    ],
-    "tags": [
-      "High speed",
-      "Ultra cheap",
-      "OpenRouter #2",
-      "Multimodal",
-      "Coding"
-    ],
-    "facts": {
-      "context": 1310720,
-      "contextWindow": 1310720,
-      "maxOutput": 131072,
-      "speedTokensPerSec": 64,
-      "speedTokensPerSecRange": {
-        "min": 3,
-        "max": 124,
-        "providerCount": 26,
-        "sourceId": "openrouter-throughput",
-        "retrievedAt": "2026-09-12"
-      },
-      "vision": true,
-      "supportsVision": true,
-      "audio": false,
-      "tools": true,
-      "supportsTools": true,
-      "structured": true,
-      "api": true,
-      "openWeights": true,
-      "isOpenWeights": true,
-      "easeOfUse": null,
-      "availability": "Production API",
-      "releaseDate": "2026-08-26",
-      "sourceId": "source-z-ai",
-      "reasoningEffort": ["low", "high", "max"],
-      "defaultEffort": "max"
-    },
-    "pricing": {
-      "input": 0.075,
-      "output": 0.25,
-      "cached": 0.015,
-      "currency": "USD",
-      "unit": "per-million-tokens",
-      "sourceId": "source-z-ai",
-      "updatedAt": "2026-09-05",
-      "inputPer1M": 0.075,
-      "outputPer1M": 0.25,
-      "cachedInputPer1M": 0.015,
-      "provenanceUrl": "https://openrouter.ai/models/z-ai/glm-5.3-flash",
-      "verifiedAt": "2026-09-05"
-    },
-    "scores": {
-      "intelligence": 72,
-      "coding": 79,
-      "agentic": 57,
-      "dailyUse": null,
-      "research": null,
-      "writing": null,
-      "vision": null,
-      "speed": 32,
-      "reliability": null,
-      "costEfficiency": 88,
-      "overall": 72
-    },
-    "benchmarks": {
-      "livebench": {
-        "release": "2026-06-25",
-        "overall": 71.6,
-        "reasoning": 77.6,
-        "coding": 79,
-        "agenticCoding": 56.8,
-        "mathematics": 81.2,
-        "dataAnalysis": 76.4,
-        "language": 77.3,
-        "instructionFollowing": 52.8
-      },
-      "sweBench": null,
-      "bfcl": null,
-      "lmarena": {
-        "elo": 1607,
-        "category": "text"
-      }
-    },
-    "evidence": [
-      {
-        "metric": "intelligence",
-        "kind": "benchmark",
-        "raw": 71.6,
-        "min": 0,
-        "max": 100,
-        "normalized": 72,
-        "sourceId": "livebench-leaderboard",
-        "updatedAt": "2026-06-25"
-      },
-      {
-        "metric": "coding",
-        "kind": "benchmark",
-        "raw": 79,
-        "min": 0,
-        "max": 100,
-        "normalized": 79,
-        "sourceId": "livebench-leaderboard",
-        "updatedAt": "2026-06-25"
-      },
-      {
-        "metric": "agentic",
-        "kind": "benchmark",
-        "raw": 56.8,
-        "min": 0,
-        "max": 100,
-        "normalized": 57,
-        "sourceId": "livebench-leaderboard",
-        "updatedAt": "2026-06-25"
-      },
-      {
-        "metric": "costEfficiency",
-        "kind": "benchmark",
-        "raw": 88,
-        "min": 0,
-        "max": 100,
-        "normalized": 88,
-        "sourceId": "astra-cost-engine",
-        "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 64,
-        "min": 0,
-        "max": 200,
-        "normalized": 32,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
-      }
-    ],
-    "confidence": 80,
-    "methodology": "v1-external-only",
-    "scoreUpdatedAt": "2026-09-12",
-    "lastVerifiedAt": "2026-09-05",
-    "sourceUpdatedAt": "2026-09-12",
-    "sources": [
-      {
-        "id": "source-z-ai",
-        "name": "Z.ai Official Documentation & OpenRouter",
-        "url": "https://openrouter.ai/models/z-ai/glm-5.3-flash",
-        "retrievedAt": "2026-09-05",
-        "kind": "provider_doc",
-        "publisher": "Z.ai"
-      },
-      {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
-      },
-      {
-        "id": "lmarena-leaderboard",
-        "name": "LMSYS Chatbot Arena Leaderboard",
-        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "LMSYS Chatbot Arena Leaderboard"
-      },
-      {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
-        "id": "astra-cost-engine",
-        "name": "Astra Cost Efficiency Engine",
-        "url": "https://github.com/D-Flint/ai-model-web",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "Astra Cost Efficiency Engine"
-      }
-    ]
-  },
-  {
     "slug": "glm-5-3",
     "name": "GLM 5.3",
     "provider": "Z.ai",
@@ -784,7 +566,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 40,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 64,
       "overall": 76
@@ -845,16 +627,6 @@
         "normalized": 64,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 80,
-        "min": 0,
-        "max": 200,
-        "normalized": 40,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -872,12 +644,192 @@
         "publisher": "Z.ai"
       },
       {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter recent throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
         "id": "livebench-leaderboard",
         "name": "LiveBench AI Benchmark",
         "url": "https://livebench.ai",
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      }
+    ]
+  },
+  {
+    "slug": "glm-5-3-flash",
+    "name": "GLM 5.3 Flash",
+    "provider": "Z.ai",
+    "family": "GLM",
+    "dataKind": "verified",
+    "description": "Z.ai's native multimodal model engineered for ultra-fast coding, high-volume agent workflows, and cost-efficient long-horizon execution.",
+    "strengths": [
+      "Ranked #2 on OpenRouter with over 12.5T tokens processed weekly",
+      "Ultra-competitive pricing ($0.075/1M input, $0.25/1M output)",
+      "1,310,720 token context length with hybrid sparse attention",
+      "Native multimodal support across text, image, and video inputs"
+    ],
+    "weaknesses": [
+      "Reasoning is mandatory on complex mathematical queries",
+      "Slightly lower general reasoning depth than top-tier flagship frontier models"
+    ],
+    "tags": [
+      "High speed",
+      "Ultra cheap",
+      "OpenRouter #2",
+      "Multimodal",
+      "Coding"
+    ],
+    "facts": {
+      "context": 1310720,
+      "contextWindow": 1310720,
+      "maxOutput": 131072,
+      "speedTokensPerSec": 64,
+      "speedTokensPerSecRange": {
+        "min": 3,
+        "max": 124,
+        "providerCount": 26,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
+      "vision": true,
+      "supportsVision": true,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "isOpenWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-08-26",
+      "sourceId": "source-z-ai",
+      "reasoningEffort": ["low", "high", "max"],
+      "defaultEffort": "max"
+    },
+    "pricing": {
+      "input": 0.075,
+      "output": 0.25,
+      "cached": 0.015,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-z-ai",
+      "updatedAt": "2026-09-05",
+      "inputPer1M": 0.075,
+      "outputPer1M": 0.25,
+      "cachedInputPer1M": 0.015,
+      "provenanceUrl": "https://openrouter.ai/models/z-ai/glm-5.3-flash",
+      "verifiedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 72,
+      "coding": 79,
+      "agentic": 57,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 88,
+      "overall": 72
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 71.6,
+        "reasoning": 77.6,
+        "coding": 79,
+        "agenticCoding": 56.8,
+        "mathematics": 81.2,
+        "dataAnalysis": 76.4,
+        "language": 77.3,
+        "instructionFollowing": 52.8
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": {
+        "elo": 1607,
+        "category": "text"
+      }
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 71.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 72,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 79,
+        "min": 0,
+        "max": 100,
+        "normalized": 79,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 56.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 57,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 88,
+        "min": 0,
+        "max": 100,
+        "normalized": 88,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 80,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-z-ai",
+        "name": "Z.ai Official Documentation & OpenRouter",
+        "url": "https://openrouter.ai/models/z-ai/glm-5.3-flash",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "Z.ai"
+      },
+      {
+        "id": "lmarena-leaderboard",
+        "name": "LMSYS Chatbot Arena Leaderboard",
+        "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
         "id": "openrouter-throughput",
@@ -894,6 +846,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -965,7 +925,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 52,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 54,
       "overall": 76
@@ -1028,16 +988,6 @@
         "normalized": 54,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 103,
-        "min": 0,
-        "max": 200,
-        "normalized": 52,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -1053,14 +1003,6 @@
         "retrievedAt": "2026-09-09",
         "kind": "provider_doc",
         "publisher": "Google DeepMind"
-      },
-      {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
       },
       {
         "id": "berkeley-function-calling-leaderboard",
@@ -1085,6 +1027,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -1164,7 +1114,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 20,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 57,
       "overall": 79
@@ -1225,16 +1175,6 @@
         "normalized": 57,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 39,
-        "min": 0,
-        "max": 200,
-        "normalized": 20,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -1252,14 +1192,6 @@
         "publisher": "Moonshot AI"
       },
       {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
-      },
-      {
         "id": "openrouter-throughput",
         "name": "OpenRouter recent throughput",
         "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
@@ -1274,6 +1206,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -1345,7 +1285,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 14,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 25,
       "overall": 81
@@ -1408,16 +1348,6 @@
         "normalized": 25,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 29,
-        "min": 0,
-        "max": 200,
-        "normalized": 14,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -1433,14 +1363,6 @@
         "retrievedAt": "2026-09-05",
         "kind": "provider_doc",
         "publisher": "OpenAI"
-      },
-      {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
       },
       {
         "id": "berkeley-function-calling-leaderboard",
@@ -1465,6 +1387,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -1536,7 +1466,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 26,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 40,
       "overall": 78
@@ -1599,16 +1529,6 @@
         "normalized": 40,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 52,
-        "min": 0,
-        "max": 200,
-        "normalized": 26,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -1624,14 +1544,6 @@
         "retrievedAt": "2026-09-05",
         "kind": "provider_doc",
         "publisher": "OpenAI"
-      },
-      {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
       },
       {
         "id": "berkeley-function-calling-leaderboard",
@@ -1656,6 +1568,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -1726,7 +1646,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 49,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 70,
       "overall": 74
@@ -1789,16 +1709,6 @@
         "normalized": 70,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 97,
-        "min": 0,
-        "max": 200,
-        "normalized": 49,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -1814,14 +1724,6 @@
         "retrievedAt": "2026-09-05",
         "kind": "provider_doc",
         "publisher": "OpenAI"
-      },
-      {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
       },
       {
         "id": "berkeley-function-calling-leaderboard",
@@ -1846,6 +1748,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -1989,20 +1899,20 @@
         "publisher": "Moonshot AI"
       },
       {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -2074,7 +1984,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 47,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 54,
       "overall": 79
@@ -2137,16 +2047,6 @@
         "normalized": 54,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 93,
-        "min": 0,
-        "max": 200,
-        "normalized": 47,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -2162,14 +2062,6 @@
         "retrievedAt": "2026-09-09",
         "kind": "provider_doc",
         "publisher": "Google DeepMind"
-      },
-      {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
       },
       {
         "id": "berkeley-function-calling-leaderboard",
@@ -2194,6 +2086,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -2314,6 +2214,163 @@
     ]
   },
   {
+    "slug": "qwen-3-8-max",
+    "name": "Qwen 3.8 Max",
+    "provider": "Alibaba Cloud / Qwen",
+    "family": "Qwen 3",
+    "dataKind": "verified",
+    "description": "Alibaba Cloud's top-tier Qwen 3.8 flagship frontier model, featuring exceptional mathematical reasoning, agentic coding, and long context synthesis.",
+    "strengths": [
+      "Frontier coding and mathematics capabilities",
+      "Strong instruction following across dense prompts",
+      "High reliability on complex tool orchestration"
+    ],
+    "weaknesses": [
+      "Proprietary commercial API (not open weights)",
+      "Higher token pricing than compact open-weight Qwen variants"
+    ],
+    "tags": ["Flagship", "Reasoning", "Coding", "Agentic"],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic", "vision"],
+    "facts": {
+      "context": 524288,
+      "contextWindow": 524288,
+      "maxOutput": 32768,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": true,
+      "supportsVision": true,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "isOpenWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-06-18",
+      "sourceId": "source-qwen",
+      "reasoningEffort": ["none", "low", "medium", "high"],
+      "defaultEffort": "high"
+    },
+    "pricing": {
+      "input": 2.4,
+      "output": 9.6,
+      "cached": 0.6,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-qwen",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 2.4,
+      "outputPer1M": 9.6,
+      "cachedInputPer1M": 0.6,
+      "provenanceUrl": "https://help.aliyun.com/zh/model-studio/developer-reference/what-is-qwen-llm",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 79,
+      "coding": 73,
+      "agentic": 65,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 41,
+      "overall": 79
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 78.5,
+        "reasoning": 88.2,
+        "coding": 72.9,
+        "agenticCoding": 64.6,
+        "mathematics": 91.3,
+        "dataAnalysis": 78.4,
+        "language": 79.7,
+        "instructionFollowing": 74.1
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 78.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 79,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 72.9,
+        "min": 0,
+        "max": 100,
+        "normalized": 73,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 64.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 65,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 41,
+        "min": 0,
+        "max": 100,
+        "normalized": 41,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-qwen",
+        "name": "Alibaba Cloud Model Studio",
+        "url": "https://help.aliyun.com/zh/model-studio/developer-reference/what-is-qwen-llm",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "Alibaba Cloud / Qwen"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "claude-fable-5-1",
     "name": "Claude Fable 5.1",
     "provider": "Anthropic",
@@ -2389,7 +2446,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 22,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 20,
       "overall": 83
@@ -2452,16 +2509,6 @@
         "normalized": 20,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 43,
-        "min": 0,
-        "max": 200,
-        "normalized": 22,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -2479,14 +2526,6 @@
         "publisher": "Anthropic"
       },
       {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
-      },
-      {
         "id": "berkeley-function-calling-leaderboard",
         "name": "Berkeley Function Calling Leaderboard (BFCL)",
         "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
@@ -2501,6 +2540,168 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "OpenRouter"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      }
+    ]
+  },
+  {
+    "slug": "grok-4-6",
+    "name": "Grok 4.6",
+    "provider": "xAI",
+    "family": "Grok",
+    "dataKind": "verified",
+    "description": "xAI's flagship Grok 4.6 model delivering frontier reasoning, fast multi-modal context, and deep code intelligence.",
+    "strengths": [
+      "Frontier reasoning and coding benchmark scores",
+      "Real-time knowledge integration",
+      "High agentic responsiveness"
+    ],
+    "weaknesses": ["Premium enterprise API pricing"],
+    "tags": ["Flagship", "Reasoning", "Coding", "Vision"],
+    "roles": ["general-purpose", "reasoning", "vision", "coding", "agentic"],
+    "facts": {
+      "context": 524288,
+      "contextWindow": 524288,
+      "maxOutput": 32768,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": true,
+      "supportsVision": true,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "isOpenWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-06-15",
+      "sourceId": "source-xai",
+      "reasoningEffort": ["none", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 8,
+      "output": 32,
+      "cached": 2,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-xai",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 8,
+      "outputPer1M": 32,
+      "cachedInputPer1M": 2,
+      "provenanceUrl": "https://docs.x.ai/docs/overview#models",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 78,
+      "coding": 77,
+      "agentic": 57,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 25,
+      "overall": 78
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 78.1,
+        "reasoning": 90.5,
+        "coding": 76.8,
+        "agenticCoding": 57,
+        "mathematics": 92.6,
+        "dataAnalysis": 73.9,
+        "language": 83.7,
+        "instructionFollowing": 71.9
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 78.1,
+        "min": 0,
+        "max": 100,
+        "normalized": 78,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 76.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 57,
+        "min": 0,
+        "max": 100,
+        "normalized": 57,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 25,
+        "min": 0,
+        "max": 100,
+        "normalized": 25,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-xai",
+        "name": "xAI Official Documentation",
+        "url": "https://docs.x.ai/docs/overview#models",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "xAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       },
       {
         "id": "astra-cost-engine",
@@ -2588,7 +2789,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 38,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 68,
       "overall": 67
@@ -2652,16 +2853,6 @@
         "normalized": 68,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 76,
-        "min": 0,
-        "max": 200,
-        "normalized": 38,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -2679,14 +2870,6 @@
         "publisher": "MiniMax"
       },
       {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
-      },
-      {
         "id": "lmarena-leaderboard",
         "name": "LMSYS Chatbot Arena Leaderboard",
         "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
@@ -2701,6 +2884,1558 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "OpenRouter"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      }
+    ]
+  },
+  {
+    "slug": "smaug-flash",
+    "name": "Smaug Flash",
+    "provider": "Abacus AI",
+    "family": "Smaug",
+    "dataKind": "verified",
+    "description": "High-throughput, lightweight Smaug model delivering rapid inference for agent sub-tasks and code completion.",
+    "strengths": [
+      "Low latency and fast token generation",
+      "High cost efficiency in bulk batch execution",
+      "Solid instruction following"
+    ],
+    "weaknesses": ["Lower math score than Smaug Agentic"],
+    "tags": ["Speed", "Fast", "Best value", "Agentic"],
+    "roles": ["agentic"],
+    "facts": {
+      "context": 131072,
+      "contextWindow": 131072,
+      "maxOutput": 8192,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": false,
+      "supportsVision": false,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "isOpenWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-06-12",
+      "sourceId": "source-abacus",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.15,
+      "output": 0.6,
+      "cached": 0.04,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-abacus",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 0.15,
+      "outputPer1M": 0.6,
+      "cachedInputPer1M": 0.04,
+      "provenanceUrl": "https://abacus.ai/",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 77,
+      "coding": 77,
+      "agentic": 61,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 77,
+      "overall": 77
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 77.4,
+        "reasoning": 86.2,
+        "coding": 77.1,
+        "agenticCoding": 61.1,
+        "mathematics": 90.1,
+        "dataAnalysis": 79.1,
+        "language": 79.2,
+        "instructionFollowing": 69.3
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 77.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 77.1,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 61.1,
+        "min": 0,
+        "max": 100,
+        "normalized": 61,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 77,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-abacus",
+        "name": "Abacus AI Documentation",
+        "url": "https://abacus.ai/",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "Abacus AI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "qwen-3-8-flash-next",
+    "name": "Qwen 3.8 Flash Next",
+    "provider": "Alibaba Cloud / Qwen",
+    "family": "Qwen 3",
+    "dataKind": "verified",
+    "description": "High-throughput, ultra-low-latency Qwen architecture built for real-time applications and rapid code intelligence.",
+    "strengths": [
+      "Exceptional speed and throughput",
+      "Cost-effective high-volume API execution",
+      "Solid reasoning across conversational tasks"
+    ],
+    "weaknesses": ["Less deep reasoning on multi-stage math than Qwen 3.8 Max"],
+    "tags": ["Speed", "Fast", "Best value", "Coding"],
+    "roles": ["general-purpose", "coding"],
+    "facts": {
+      "context": 262144,
+      "contextWindow": 262144,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": false,
+      "supportsVision": false,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "isOpenWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-06-10",
+      "sourceId": "source-qwen",
+      "reasoningEffort": ["none", "low"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.1,
+      "output": 0.4,
+      "cached": 0.025,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-qwen",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 0.1,
+      "outputPer1M": 0.4,
+      "cachedInputPer1M": 0.025,
+      "provenanceUrl": "https://qwenlm.github.io/",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 76,
+      "coding": 73,
+      "agentic": 62,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 82,
+      "overall": 76
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 76.2,
+        "reasoning": 87.4,
+        "coding": 72.6,
+        "agenticCoding": 61.6,
+        "mathematics": 85.8,
+        "dataAnalysis": 74.2,
+        "language": 74.6,
+        "instructionFollowing": 77.1
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 76.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 76,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 72.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 73,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 61.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 62,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 82,
+        "min": 0,
+        "max": 100,
+        "normalized": 82,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-qwen",
+        "name": "Qwen Official Documentation",
+        "url": "https://qwenlm.github.io/",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "Alibaba Cloud / Qwen"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "smaug-agentic",
+    "name": "Smaug Agentic",
+    "provider": "Abacus AI",
+    "family": "Smaug",
+    "dataKind": "verified",
+    "description": "Abacus AI's agent-optimized open model trained specifically for deep tool execution, task decomposition, and code synthesis.",
+    "strengths": [
+      "SOTA agentic execution and tool sequencing",
+      "Open model weights with permissive license",
+      "Resilient error recovery in autonomous loops"
+    ],
+    "weaknesses": [
+      "Specialized agent tuning may produce verbose conversational outputs"
+    ],
+    "tags": ["Agentic", "Coding", "Open weights", "Reasoning"],
+    "roles": ["agentic", "coding", "reasoning"],
+    "facts": {
+      "context": 262144,
+      "contextWindow": 262144,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": false,
+      "supportsVision": false,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "isOpenWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-06-08",
+      "sourceId": "source-abacus",
+      "reasoningEffort": ["none", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 0.9,
+      "output": 3.6,
+      "cached": 0.22,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-abacus",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 0.9,
+      "outputPer1M": 3.6,
+      "cachedInputPer1M": 0.22,
+      "provenanceUrl": "https://abacus.ai/",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 80,
+      "coding": 83,
+      "agentic": 65,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 54,
+      "overall": 80
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 79.5,
+        "reasoning": 90.3,
+        "coding": 82.5,
+        "agenticCoding": 64.6,
+        "mathematics": 83.9,
+        "dataAnalysis": 79.9,
+        "language": 84.4,
+        "instructionFollowing": 71
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 79.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 80,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 82.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 83,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 64.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 65,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 54,
+        "min": 0,
+        "max": 100,
+        "normalized": 54,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-abacus",
+        "name": "Abacus AI Documentation",
+        "url": "https://abacus.ai/",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "Abacus AI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-5-5",
+    "name": "GPT-5.5",
+    "provider": "OpenAI",
+    "family": "GPT-5",
+    "dataKind": "verified",
+    "description": "OpenAI's high-tier frontier model with deep reasoning, native multimodal synthesis, and extensive agentic capabilities.",
+    "strengths": [
+      "Top-tier LiveBench reasoning and mathematics score (80.2)",
+      "Excellent agentic tool orchestration",
+      "Wide multimodal support"
+    ],
+    "weaknesses": ["High output token pricing"],
+    "tags": ["Flagship", "Reasoning", "Agentic", "Vision"],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic", "vision"],
+    "facts": {
+      "context": 524288,
+      "contextWindow": 524288,
+      "maxOutput": 65536,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": true,
+      "supportsVision": true,
+      "audio": true,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "isOpenWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-06-05",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["low", "medium", "high", "max"],
+      "defaultEffort": "high"
+    },
+    "pricing": {
+      "input": 12,
+      "output": 48,
+      "cached": 3,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 12,
+      "outputPer1M": 48,
+      "cachedInputPer1M": 3,
+      "provenanceUrl": "https://platform.openai.com/docs/models",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 80,
+      "coding": 82,
+      "agentic": 54,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 19,
+      "overall": 80
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 80.2,
+        "reasoning": 89.7,
+        "coding": 82.1,
+        "agenticCoding": 54,
+        "mathematics": 95.9,
+        "dataAnalysis": 81.6,
+        "language": 87.4,
+        "instructionFollowing": 70.7
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 80.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 80,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 82.1,
+        "min": 0,
+        "max": 100,
+        "normalized": 82,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 54,
+        "min": 0,
+        "max": 100,
+        "normalized": 54,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 19,
+        "min": 0,
+        "max": 100,
+        "normalized": 19,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "smaug-mini",
+    "name": "Smaug Mini",
+    "provider": "Abacus AI",
+    "family": "Smaug",
+    "dataKind": "verified",
+    "description": "Compact version of Smaug optimized for edge computing, local desktop development, and fast tool dispatch.",
+    "strengths": [
+      "Minimal resource requirements",
+      "Fast warm-up time",
+      "Capable baseline agent performance"
+    ],
+    "weaknesses": ["Limited context window depth on multi-file repositories"],
+    "tags": ["Fast", "Open weights", "Best value"],
+    "roles": ["agentic"],
+    "facts": {
+      "context": 65536,
+      "contextWindow": 65536,
+      "maxOutput": 8192,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": false,
+      "supportsVision": false,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "isOpenWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-06-05",
+      "sourceId": "source-abacus",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.08,
+      "output": 0.32,
+      "cached": 0.02,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-abacus",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 0.08,
+      "outputPer1M": 0.32,
+      "cachedInputPer1M": 0.02,
+      "provenanceUrl": "https://abacus.ai/",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 77,
+      "coding": 75,
+      "agentic": 61,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 85,
+      "overall": 77
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 76.9,
+        "reasoning": 82.8,
+        "coding": 75.4,
+        "agenticCoding": 60.8,
+        "mathematics": 89.7,
+        "dataAnalysis": 78.8,
+        "language": 77,
+        "instructionFollowing": 73.9
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 76.9,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 75.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 60.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 61,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 85,
+        "min": 0,
+        "max": 100,
+        "normalized": 85,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-abacus",
+        "name": "Abacus AI Documentation",
+        "url": "https://abacus.ai/",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "Abacus AI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "qwen-3-8-27b",
+    "name": "Qwen 3.8 27B",
+    "provider": "Alibaba Cloud / Qwen",
+    "family": "Qwen 3",
+    "dataKind": "verified",
+    "description": "Alibaba's efficient 27B open weights foundation model, designed for high-density reasoning, coding, and local deployment.",
+    "strengths": [
+      "Efficient 27B parameter footprint with frontier performance",
+      "Open weights with broad deployment compatibility",
+      "Strong STEM and instruction following accuracy"
+    ],
+    "weaknesses": [
+      "Requires quantization for single consumer GPU execution",
+      "Moderate context window compared to 1M flagships"
+    ],
+    "tags": ["Open weights", "Coding", "Reasoning", "Best value"],
+    "roles": ["general-purpose", "coding", "reasoning"],
+    "facts": {
+      "context": 262144,
+      "contextWindow": 262144,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": false,
+      "supportsVision": false,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "isOpenWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-06-01",
+      "sourceId": "source-qwen",
+      "reasoningEffort": ["none", "low", "medium"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.25,
+      "output": 1,
+      "cached": 0.06,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-qwen",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 0.25,
+      "outputPer1M": 1,
+      "cachedInputPer1M": 0.06,
+      "provenanceUrl": "https://qwenlm.github.io/",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 75,
+      "coding": 76,
+      "agentic": 61,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 70,
+      "overall": 75
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 75.3,
+        "reasoning": 80,
+        "coding": 75.7,
+        "agenticCoding": 61.4,
+        "mathematics": 86.2,
+        "dataAnalysis": 76.6,
+        "language": 74.3,
+        "instructionFollowing": 72.7
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 75.3,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 75.7,
+        "min": 0,
+        "max": 100,
+        "normalized": 76,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 61.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 61,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 70,
+        "min": 0,
+        "max": 100,
+        "normalized": 70,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-qwen",
+        "name": "Qwen Official Documentation",
+        "url": "https://qwenlm.github.io/",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "Alibaba Cloud / Qwen"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "inkling",
+    "name": "Inkling",
+    "provider": "Inkling AI",
+    "family": "Inkling",
+    "dataKind": "verified",
+    "description": "Novel reasoning architecture evaluated on LiveBench featuring deep reflection and rigorous logic chains.",
+    "strengths": [
+      "High reasoning depth on symbolic logic and math",
+      "Reflective chain-of-thought verification"
+    ],
+    "weaknesses": ["Extended latency on complex reasoning paths"],
+    "tags": ["Reasoning", "STEM"],
+    "roles": ["reasoning"],
+    "facts": {
+      "context": 131072,
+      "contextWindow": 131072,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": false,
+      "supportsVision": false,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "isOpenWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-06-01",
+      "sourceId": "source-inkling",
+      "reasoningEffort": ["high", "max"],
+      "defaultEffort": "max"
+    },
+    "pricing": {
+      "input": 3,
+      "output": 15,
+      "cached": 1,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-inkling",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 3,
+      "outputPer1M": 15,
+      "cachedInputPer1M": 1,
+      "provenanceUrl": "https://livebench.ai/",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 72,
+      "coding": 71,
+      "agentic": 49,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 36,
+      "overall": 72
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 71.9,
+        "reasoning": 78.3,
+        "coding": 71,
+        "agenticCoding": 49.4,
+        "mathematics": 88.4,
+        "dataAnalysis": 72.8,
+        "language": 73.5,
+        "instructionFollowing": 70.1
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 71.9,
+        "min": 0,
+        "max": 100,
+        "normalized": 72,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 71,
+        "min": 0,
+        "max": 100,
+        "normalized": 71,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 49.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 49,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 36,
+        "min": 0,
+        "max": 100,
+        "normalized": 36,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-inkling",
+        "name": "Inkling Research Evaluation",
+        "url": "https://livebench.ai/",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "Inkling AI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "ox-alpha",
+    "name": "Ox Alpha",
+    "provider": "Ox Labs",
+    "family": "Ox",
+    "dataKind": "verified",
+    "description": "Experimental frontier research model designed for high-precision autonomous code planning and validation.",
+    "strengths": [
+      "Strong autonomous coding plan generation",
+      "Careful multi-step validation"
+    ],
+    "weaknesses": ["Preview access research model"],
+    "tags": ["Coding", "Reasoning", "Experimental"],
+    "roles": ["coding", "reasoning"],
+    "facts": {
+      "context": 131072,
+      "contextWindow": 131072,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": false,
+      "supportsVision": false,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "isOpenWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-06-01",
+      "sourceId": "source-ox",
+      "reasoningEffort": ["max"],
+      "defaultEffort": "max"
+    },
+    "pricing": {
+      "input": 4,
+      "output": 16,
+      "cached": 1,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-ox",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 4,
+      "outputPer1M": 16,
+      "cachedInputPer1M": 1,
+      "provenanceUrl": "https://livebench.ai/",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 69,
+      "coding": 76,
+      "agentic": 53,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 34,
+      "overall": 69
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 69.2,
+        "reasoning": 76.6,
+        "coding": 75.8,
+        "agenticCoding": 52.6,
+        "mathematics": 77.5,
+        "dataAnalysis": 75.8,
+        "language": 66.1,
+        "instructionFollowing": 60.3
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 69.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 69,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 75.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 76,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 52.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 53,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 34,
+        "min": 0,
+        "max": 100,
+        "normalized": 34,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-ox",
+        "name": "Ox Labs Research",
+        "url": "https://livebench.ai/",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "Ox Labs"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "nemotron-3-ultra-550b",
+    "name": "Nemotron 3 Ultra 550B",
+    "provider": "NVIDIA",
+    "family": "Nemotron",
+    "dataKind": "verified",
+    "description": "NVIDIA's massive 550B frontier MoE foundation model, optimized for accelerated GPU clusters and enterprise reasoning.",
+    "strengths": [
+      "Extreme scale MoE architecture with deep world knowledge",
+      "Optimized for TensorRT-LLM cluster deployment",
+      "Strong mathematical and synthetic data reasoning"
+    ],
+    "weaknesses": [
+      "Requires enterprise-scale multi-node infrastructure for local hosting"
+    ],
+    "tags": ["MoE", "Flagship", "Reasoning", "Open weights"],
+    "roles": ["general-purpose", "reasoning", "coding"],
+    "facts": {
+      "context": 262144,
+      "contextWindow": 262144,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": false,
+      "supportsVision": false,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "isOpenWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-05-28",
+      "sourceId": "source-nvidia",
+      "reasoningEffort": ["none", "medium"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 2,
+      "output": 8,
+      "cached": 0.5,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-nvidia",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 2,
+      "outputPer1M": 8,
+      "cachedInputPer1M": 0.5,
+      "provenanceUrl": "https://build.nvidia.com/",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 67,
+      "coding": 71,
+      "agentic": 39,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 43,
+      "overall": 67
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 67.4,
+        "reasoning": 74.7,
+        "coding": 70.7,
+        "agenticCoding": 38.7,
+        "mathematics": 88.7,
+        "dataAnalysis": 54.5,
+        "language": 70.8,
+        "instructionFollowing": 73.4
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 67.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 67,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 70.7,
+        "min": 0,
+        "max": 100,
+        "normalized": 71,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 38.7,
+        "min": 0,
+        "max": 100,
+        "normalized": 39,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 43,
+        "min": 0,
+        "max": 100,
+        "normalized": 43,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-nvidia",
+        "name": "NVIDIA Official Specs",
+        "url": "https://build.nvidia.com/",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "NVIDIA"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "grok-4-5",
+    "name": "Grok 4.5",
+    "provider": "xAI",
+    "family": "Grok",
+    "dataKind": "verified",
+    "description": "xAI's advanced generalist model excelling across reasoning, instruction adherence, and multimodal vision tasks.",
+    "strengths": [
+      "Strong vision and analytical comprehension",
+      "Reliable tool use and JSON schemas"
+    ],
+    "weaknesses": ["Higher latency on long reasoning queries"],
+    "tags": ["Reasoning", "Vision", "Coding"],
+    "roles": ["general-purpose", "reasoning", "vision", "coding"],
+    "facts": {
+      "context": 262144,
+      "contextWindow": 262144,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": true,
+      "supportsVision": true,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "isOpenWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-05-20",
+      "sourceId": "source-xai",
+      "reasoningEffort": ["none", "medium"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 5,
+      "output": 20,
+      "cached": 1.25,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-xai",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 5,
+      "outputPer1M": 20,
+      "cachedInputPer1M": 1.25,
+      "provenanceUrl": "https://docs.x.ai/docs/overview#models",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 76,
+      "coding": 69,
+      "agentic": 56,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 31,
+      "overall": 76
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 75.8,
+        "reasoning": 87.2,
+        "coding": 68.6,
+        "agenticCoding": 56.5,
+        "mathematics": 90.8,
+        "dataAnalysis": 73,
+        "language": 82.8,
+        "instructionFollowing": 71.5
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 75.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 76,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 68.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 69,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 56.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 56,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 31,
+        "min": 0,
+        "max": 100,
+        "normalized": 31,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-xai",
+        "name": "xAI Official Documentation",
+        "url": "https://docs.x.ai/docs/overview#models",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "xAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       },
       {
         "id": "astra-cost-engine",
@@ -2779,7 +4514,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 28,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 85,
       "overall": 70
@@ -2842,16 +4577,6 @@
         "normalized": 85,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 57,
-        "min": 0,
-        "max": 200,
-        "normalized": 28,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -2867,14 +4592,6 @@
         "retrievedAt": "2026-09-05",
         "kind": "provider_doc",
         "publisher": "OpenAI"
-      },
-      {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
       },
       {
         "id": "berkeley-function-calling-leaderboard",
@@ -2899,6 +4616,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -2970,7 +4695,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 51,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 60,
       "overall": 68
@@ -3034,16 +4759,6 @@
         "normalized": 60,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 101,
-        "min": 0,
-        "max": 200,
-        "normalized": 51,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -3061,14 +4776,6 @@
         "publisher": "Moonshot AI"
       },
       {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
-      },
-      {
         "id": "lmarena-leaderboard",
         "name": "LMSYS Chatbot Arena Leaderboard",
         "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
@@ -3083,6 +4790,321 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "OpenRouter"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-5-4-mini",
+    "name": "GPT-5.4 mini",
+    "provider": "OpenAI",
+    "family": "GPT-5",
+    "dataKind": "verified",
+    "description": "Compact GPT-5.4 model designed for high-speed automated workloads, cost-conscious batch tasks, and real-time agents.",
+    "strengths": [
+      "Excellent speed and affordability",
+      "Strong factual accuracy for a lightweight model"
+    ],
+    "weaknesses": ["Lower reasoning depth on intricate logic"],
+    "tags": ["Speed", "Best value", "Daily use"],
+    "roles": ["general-purpose", "coding"],
+    "facts": {
+      "context": 262144,
+      "contextWindow": 262144,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": true,
+      "supportsVision": true,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "isOpenWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-05-18",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["none", "low", "medium"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.8,
+      "output": 3.2,
+      "cached": 0.2,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 0.8,
+      "outputPer1M": 3.2,
+      "cachedInputPer1M": 0.2,
+      "provenanceUrl": "https://platform.openai.com/docs/models",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 66,
+      "coding": 72,
+      "agentic": 42,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 55,
+      "overall": 66
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 66.4,
+        "reasoning": 71.3,
+        "coding": 71.6,
+        "agenticCoding": 41.7,
+        "mathematics": 78.5,
+        "dataAnalysis": 70.8,
+        "language": 71,
+        "instructionFollowing": 59.8
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 66.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 66,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 71.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 72,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 41.7,
+        "min": 0,
+        "max": 100,
+        "normalized": 42,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 55,
+        "min": 0,
+        "max": 100,
+        "normalized": 55,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-5-4",
+    "name": "GPT-5.4",
+    "provider": "OpenAI",
+    "family": "GPT-5",
+    "dataKind": "verified",
+    "description": "Versatile frontier model delivering reliable multi-step analysis, coding, and mathematical reasoning.",
+    "strengths": [
+      "Solid 77.9 LiveBench global average",
+      "Fast latency profile",
+      "Dependable structured output"
+    ],
+    "weaknesses": ["Preceded by GPT-5.6 Sol in pure STEM competitions"],
+    "tags": ["Reasoning", "Coding", "Vision"],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic", "vision"],
+    "facts": {
+      "context": 393216,
+      "contextWindow": 393216,
+      "maxOutput": 32768,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": true,
+      "supportsVision": true,
+      "audio": true,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "isOpenWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-05-15",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["none", "low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 7,
+      "output": 28,
+      "cached": 1.75,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 7,
+      "outputPer1M": 28,
+      "cachedInputPer1M": 1.75,
+      "provenanceUrl": "https://platform.openai.com/docs/models",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 78,
+      "coding": 78,
+      "agentic": 54,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 27,
+      "overall": 78
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 77.9,
+        "reasoning": 88.1,
+        "coding": 77.5,
+        "agenticCoding": 53.8,
+        "mathematics": 94.1,
+        "dataAnalysis": 79.3,
+        "language": 82.6,
+        "instructionFollowing": 70.2
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 77.9,
+        "min": 0,
+        "max": 100,
+        "normalized": 78,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 77.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 78,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 53.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 54,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 27,
+        "min": 0,
+        "max": 100,
+        "normalized": 27,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       },
       {
         "id": "astra-cost-engine",
@@ -3161,7 +5183,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 92,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 54,
       "overall": 74
@@ -3224,16 +5246,6 @@
         "normalized": 54,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 183,
-        "min": 0,
-        "max": 200,
-        "normalized": 92,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -3251,14 +5263,6 @@
         "publisher": "Google DeepMind"
       },
       {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
-      },
-      {
         "id": "berkeley-function-calling-leaderboard",
         "name": "Berkeley Function Calling Leaderboard (BFCL)",
         "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
@@ -3273,6 +5277,475 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "OpenRouter"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      }
+    ]
+  },
+  {
+    "slug": "muse-spark-1-2",
+    "name": "Muse Spark 1.2",
+    "provider": "Moonshot AI",
+    "family": "Muse",
+    "dataKind": "verified",
+    "description": "Moonshot AI's precursor to Muse Spark 1.3, providing high-efficiency creative drafting and reasoning.",
+    "strengths": [
+      "Strong 78.0 LiveBench score",
+      "Expressive creative writing and long context synthesis"
+    ],
+    "weaknesses": ["Superseded by Muse Spark 1.3"],
+    "tags": ["Writing", "Reasoning", "Large context"],
+    "roles": ["general-purpose", "reasoning"],
+    "facts": {
+      "context": 524288,
+      "contextWindow": 524288,
+      "maxOutput": 24576,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": false,
+      "supportsVision": false,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "isOpenWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-05-10",
+      "sourceId": "source-moonshot",
+      "reasoningEffort": ["none", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 1.2,
+      "output": 4.8,
+      "cached": 0.3,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-moonshot",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 1.2,
+      "outputPer1M": 4.8,
+      "cachedInputPer1M": 0.3,
+      "provenanceUrl": "https://platform.moonshot.cn/docs/pricing",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 78,
+      "coding": 78,
+      "agentic": 58,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 50,
+      "overall": 78
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 78,
+        "reasoning": 90,
+        "coding": 77.5,
+        "agenticCoding": 57.6,
+        "mathematics": 91.2,
+        "dataAnalysis": 76.5,
+        "language": 78.6,
+        "instructionFollowing": 74.3
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 78,
+        "min": 0,
+        "max": 100,
+        "normalized": 78,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 77.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 78,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 57.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 58,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 50,
+        "min": 0,
+        "max": 100,
+        "normalized": 50,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-moonshot",
+        "name": "Moonshot AI Official Documentation",
+        "url": "https://platform.moonshot.cn/docs/pricing",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "Moonshot AI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-v4-flash-vision-exp",
+    "name": "DeepSeek V4 Flash Vision Exp",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V4",
+    "dataKind": "verified",
+    "description": "DeepSeek experimental high-throughput multimodal checkpoint with native vision understanding and high FPS video reasoning.",
+    "strengths": [
+      "High multimodal vision and diagram accuracy (76.8 LiveBench average)",
+      "Open weights deployment",
+      "Extremely low token latency"
+    ],
+    "weaknesses": ["Experimental preview release"],
+    "tags": ["Vision", "Fast", "Open weights", "Multimodal"],
+    "roles": ["general-purpose", "vision", "coding"],
+    "facts": {
+      "context": 262144,
+      "contextWindow": 262144,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": true,
+      "supportsVision": true,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "isOpenWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-05-10",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 0.15,
+      "output": 0.6,
+      "cached": 0.04,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 0.15,
+      "outputPer1M": 0.6,
+      "cachedInputPer1M": 0.04,
+      "provenanceUrl": "https://deepseek.com/",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 77,
+      "coding": 68,
+      "agentic": 65,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 77,
+      "overall": 77
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 76.8,
+        "reasoning": 85.4,
+        "coding": 68.2,
+        "agenticCoding": 65.1,
+        "mathematics": 87.8,
+        "dataAnalysis": 79.5,
+        "language": 80.4,
+        "instructionFollowing": 71
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 76.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 68.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 68,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 65.1,
+        "min": 0,
+        "max": 100,
+        "normalized": 65,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 77,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official Documentation",
+        "url": "https://deepseek.com/",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "qwen-3-7-max",
+    "name": "Qwen 3.7 Max",
+    "provider": "Alibaba Cloud / Qwen",
+    "family": "Qwen 3",
+    "dataKind": "verified",
+    "description": "Proprietary frontier model from Alibaba Cloud with balanced reasoning, multimodal capabilities, and deep technical comprehension.",
+    "strengths": [
+      "High performance on standard engineering benchmarks",
+      "Strong language synthesis and domain adaptation",
+      "Structured data output compliance"
+    ],
+    "weaknesses": ["Cloud-only hosted API access"],
+    "tags": ["Reasoning", "Coding", "Research"],
+    "roles": ["general-purpose", "reasoning", "coding", "vision"],
+    "facts": {
+      "context": 262144,
+      "contextWindow": 262144,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": true,
+      "supportsVision": true,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "isOpenWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-05-10",
+      "sourceId": "source-qwen",
+      "reasoningEffort": ["none", "medium"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 1.6,
+      "output": 6.4,
+      "cached": 0.4,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-qwen",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 1.6,
+      "outputPer1M": 6.4,
+      "cachedInputPer1M": 0.4,
+      "provenanceUrl": "https://help.aliyun.com/zh/model-studio/developer-reference/what-is-qwen-llm",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 73,
+      "coding": 74,
+      "agentic": 44,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 46,
+      "overall": 73
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 73.1,
+        "reasoning": 83.3,
+        "coding": 74.2,
+        "agenticCoding": 43.6,
+        "mathematics": 85.2,
+        "dataAnalysis": 71.8,
+        "language": 79.7,
+        "instructionFollowing": 74
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 73.1,
+        "min": 0,
+        "max": 100,
+        "normalized": 73,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 74.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 74,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 43.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 44,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 46,
+        "min": 0,
+        "max": 100,
+        "normalized": 46,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-qwen",
+        "name": "Alibaba Cloud Model Studio",
+        "url": "https://help.aliyun.com/zh/model-studio/developer-reference/what-is-qwen-llm",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "Alibaba Cloud / Qwen"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       },
       {
         "id": "astra-cost-engine",
@@ -3351,7 +5824,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 34,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 41,
       "overall": 76
@@ -3414,16 +5887,6 @@
         "normalized": 41,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 68,
-        "min": 0,
-        "max": 200,
-        "normalized": 34,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -3441,14 +5904,6 @@
         "publisher": "Anthropic"
       },
       {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
-      },
-      {
         "id": "berkeley-function-calling-leaderboard",
         "name": "Berkeley Function Calling Leaderboard (BFCL)",
         "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
@@ -3463,6 +5918,167 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "OpenRouter"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      }
+    ]
+  },
+  {
+    "slug": "grok-build-0-1",
+    "name": "Grok Build 0.1",
+    "provider": "xAI",
+    "family": "Grok",
+    "dataKind": "verified",
+    "description": "Specialized developer preview build engineered specifically for software construction and refactoring.",
+    "strengths": [
+      "Optimized code generation and syntax adherence",
+      "Direct workspace tool integrations"
+    ],
+    "weaknesses": ["Experimental checkpoint release"],
+    "tags": ["Coding", "Experimental", "Agentic"],
+    "roles": ["coding", "agentic"],
+    "facts": {
+      "context": 262144,
+      "contextWindow": 262144,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": false,
+      "supportsVision": false,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "isOpenWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-05-01",
+      "sourceId": "source-xai",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 3,
+      "output": 12,
+      "cached": 0.75,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-xai",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 3,
+      "outputPer1M": 12,
+      "cachedInputPer1M": 0.75,
+      "provenanceUrl": "https://docs.x.ai/docs/overview#models",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 68,
+      "coding": 65,
+      "agentic": 46,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 38,
+      "overall": 68
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 67.8,
+        "reasoning": 76.4,
+        "coding": 65.4,
+        "agenticCoding": 45.8,
+        "mathematics": 78.4,
+        "dataAnalysis": 70.8,
+        "language": 72.5,
+        "instructionFollowing": 65.2
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 67.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 68,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 65.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 65,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 45.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 46,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 38,
+        "min": 0,
+        "max": 100,
+        "normalized": 38,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-xai",
+        "name": "xAI Official Documentation",
+        "url": "https://docs.x.ai/docs/overview#models",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "xAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       },
       {
         "id": "astra-cost-engine",
@@ -3608,6 +6224,313 @@
     ]
   },
   {
+    "slug": "qwen-3-6-plus",
+    "name": "Qwen 3.6 Plus",
+    "provider": "Alibaba Cloud / Qwen",
+    "family": "Qwen 3",
+    "dataKind": "verified",
+    "description": "Alibaba Cloud's balanced generalist model delivering versatile enterprise capabilities at reduced inference cost.",
+    "strengths": [
+      "Great cost-to-performance balance",
+      "Robust tool calling compliance",
+      "Fast token turnaround"
+    ],
+    "weaknesses": ["Superseded by Qwen 3.8 series for cutting-edge coding"],
+    "tags": ["Best value", "Daily use", "Agentic"],
+    "roles": ["general-purpose", "agentic"],
+    "facts": {
+      "context": 262144,
+      "contextWindow": 262144,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": false,
+      "supportsVision": false,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "isOpenWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-04-15",
+      "sourceId": "source-qwen",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.5,
+      "output": 2,
+      "cached": 0.12,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-qwen",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 0.5,
+      "outputPer1M": 2,
+      "cachedInputPer1M": 0.12,
+      "provenanceUrl": "https://help.aliyun.com/zh/model-studio/developer-reference/what-is-qwen-llm",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 69,
+      "coding": 78,
+      "agentic": 41,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 61,
+      "overall": 69
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 68.9,
+        "reasoning": 75.8,
+        "coding": 78.2,
+        "agenticCoding": 41.4,
+        "mathematics": 83.7,
+        "dataAnalysis": 69.9,
+        "language": 75,
+        "instructionFollowing": 58.3
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 68.9,
+        "min": 0,
+        "max": 100,
+        "normalized": 69,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 78.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 78,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 41.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 41,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 61,
+        "min": 0,
+        "max": 100,
+        "normalized": 61,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-qwen",
+        "name": "Alibaba Cloud Model Studio",
+        "url": "https://help.aliyun.com/zh/model-studio/developer-reference/what-is-qwen-llm",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "Alibaba Cloud / Qwen"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "grok-4-3",
+    "name": "Grok 4.3",
+    "provider": "xAI",
+    "family": "Grok",
+    "dataKind": "verified",
+    "description": "Balanced xAI model providing cost-effective generation and fast conversational turnaround.",
+    "strengths": [
+      "Fast token output",
+      "Cost efficiency in high volume queries"
+    ],
+    "weaknesses": ["Lower reasoning depth than Grok 4.6"],
+    "tags": ["Speed", "Best value", "Daily use"],
+    "roles": ["general-purpose"],
+    "facts": {
+      "context": 131072,
+      "contextWindow": 131072,
+      "maxOutput": 8192,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": true,
+      "supportsVision": true,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "isOpenWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-04-15",
+      "sourceId": "source-xai",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 1.5,
+      "output": 6,
+      "cached": 0.4,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-xai",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 1.5,
+      "outputPer1M": 6,
+      "cachedInputPer1M": 0.4,
+      "provenanceUrl": "https://docs.x.ai/docs/overview#models",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 62,
+      "coding": 70,
+      "agentic": 19,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 47,
+      "overall": 62
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 62.2,
+        "reasoning": 70.8,
+        "coding": 69.9,
+        "agenticCoding": 18.5,
+        "mathematics": 84.3,
+        "dataAnalysis": 55.8,
+        "language": 73.6,
+        "instructionFollowing": 62.8
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 62.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 62,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 69.9,
+        "min": 0,
+        "max": 100,
+        "normalized": 70,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 18.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 19,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 47,
+        "min": 0,
+        "max": 100,
+        "normalized": 47,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-xai",
+        "name": "xAI Official Documentation",
+        "url": "https://docs.x.ai/docs/overview#models",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "xAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
     "slug": "kimi-k2-6",
     "name": "Kimi K2.6",
     "provider": "Moonshot AI",
@@ -3675,7 +6598,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 52,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 60,
       "overall": 71
@@ -3739,16 +6662,6 @@
         "normalized": 60,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 104,
-        "min": 0,
-        "max": 200,
-        "normalized": 52,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -3764,14 +6677,6 @@
         "retrievedAt": "2026-09-06",
         "kind": "provider_doc",
         "publisher": "Moonshot AI"
-      },
-      {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
       },
       {
         "id": "lmarena-leaderboard",
@@ -3796,6 +6701,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -3867,7 +6780,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 23,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 29,
       "overall": 80
@@ -3930,16 +6843,6 @@
         "normalized": 29,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 46,
-        "min": 0,
-        "max": 200,
-        "normalized": 23,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -3957,14 +6860,6 @@
         "publisher": "Anthropic"
       },
       {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
-      },
-      {
         "id": "berkeley-function-calling-leaderboard",
         "name": "Berkeley Function Calling Leaderboard (BFCL)",
         "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
@@ -3979,6 +6874,474 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "OpenRouter"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      }
+    ]
+  },
+  {
+    "slug": "glm-5-2",
+    "name": "GLM 5.2",
+    "provider": "Z.ai",
+    "family": "GLM",
+    "dataKind": "verified",
+    "description": "Z.ai's foundation multimodal reasoning model precursor to GLM 5.3, with deep mathematical intuition.",
+    "strengths": [
+      "High mathematics benchmark accuracy (89.8)",
+      "Open weights foundation model",
+      "Multimodal context comprehension"
+    ],
+    "weaknesses": ["Lower agentic coding than GLM 5.3"],
+    "tags": ["Reasoning", "Open weights", "STEM"],
+    "roles": ["general-purpose", "reasoning", "coding"],
+    "facts": {
+      "context": 131072,
+      "contextWindow": 131072,
+      "maxOutput": 8192,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": true,
+      "supportsVision": true,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "isOpenWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-04-10",
+      "sourceId": "source-z-ai",
+      "reasoningEffort": ["low", "high", "max"],
+      "defaultEffort": "max"
+    },
+    "pricing": {
+      "input": 0.5,
+      "output": 2,
+      "cached": 0.15,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-z-ai",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 0.5,
+      "outputPer1M": 2,
+      "cachedInputPer1M": 0.15,
+      "provenanceUrl": "https://z.ai/",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 73,
+      "coding": 80,
+      "agentic": 52,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 61,
+      "overall": 73
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 73.2,
+        "reasoning": 78.6,
+        "coding": 79.7,
+        "agenticCoding": 51.8,
+        "mathematics": 89.8,
+        "dataAnalysis": 73.7,
+        "language": 76.2,
+        "instructionFollowing": 62.3
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 73.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 73,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 79.7,
+        "min": 0,
+        "max": 100,
+        "normalized": 80,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 51.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 52,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 61,
+        "min": 0,
+        "max": 100,
+        "normalized": 61,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-z-ai",
+        "name": "Z.ai Official Documentation",
+        "url": "https://z.ai/",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "Z.ai"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "qwen-3-6-27b",
+    "name": "Qwen 3.6 27B",
+    "provider": "Alibaba Cloud / Qwen",
+    "family": "Qwen 3",
+    "dataKind": "verified",
+    "description": "Predecessor open-weight 27B release providing stable reasoning, math, and code extraction.",
+    "strengths": [
+      "Solid open-weights developer base",
+      "Compact footprint for enterprise clusters"
+    ],
+    "weaknesses": ["Lower agentic score than Qwen 3.8 variants"],
+    "tags": ["Open weights", "Coding", "STEM"],
+    "roles": ["general-purpose", "coding", "reasoning"],
+    "facts": {
+      "context": 131072,
+      "contextWindow": 131072,
+      "maxOutput": 8192,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": false,
+      "supportsVision": false,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "isOpenWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-04-05",
+      "sourceId": "source-qwen",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.2,
+      "output": 0.8,
+      "cached": 0.05,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-qwen",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 0.2,
+      "outputPer1M": 0.8,
+      "cachedInputPer1M": 0.05,
+      "provenanceUrl": "https://qwenlm.github.io/",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 64,
+      "coding": 72,
+      "agentic": 39,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 73,
+      "overall": 64
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 64,
+        "reasoning": 70.3,
+        "coding": 71.8,
+        "agenticCoding": 39.3,
+        "mathematics": 79.9,
+        "dataAnalysis": 70.4,
+        "language": 63.3,
+        "instructionFollowing": 53.2
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 64,
+        "min": 0,
+        "max": 100,
+        "normalized": 64,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 71.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 72,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 39.3,
+        "min": 0,
+        "max": 100,
+        "normalized": 39,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 73,
+        "min": 0,
+        "max": 100,
+        "normalized": 73,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-qwen",
+        "name": "Qwen Official Documentation",
+        "url": "https://qwenlm.github.io/",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "Alibaba Cloud / Qwen"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "muse-spark-1-1",
+    "name": "Muse Spark 1.1",
+    "provider": "Moonshot AI",
+    "family": "Muse",
+    "dataKind": "verified",
+    "description": "Initial release of the Muse Spark long-context reasoning series by Moonshot AI.",
+    "strengths": [
+      "High recall on long-horizon documents",
+      "Approachable API pricing"
+    ],
+    "weaknesses": ["Lower coding depth than version 1.3"],
+    "tags": ["Writing", "Daily use", "Large context"],
+    "roles": ["general-purpose"],
+    "facts": {
+      "context": 524288,
+      "contextWindow": 524288,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": false,
+      "supportsVision": false,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "isOpenWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-04-01",
+      "sourceId": "source-moonshot",
+      "reasoningEffort": ["none", "medium"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.8,
+      "output": 3.2,
+      "cached": 0.2,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-moonshot",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 0.8,
+      "outputPer1M": 3.2,
+      "cachedInputPer1M": 0.2,
+      "provenanceUrl": "https://platform.moonshot.cn/docs/pricing",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 75,
+      "coding": 77,
+      "agentic": 59,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 55,
+      "overall": 75
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 75.3,
+        "reasoning": 87.7,
+        "coding": 77.2,
+        "agenticCoding": 58.5,
+        "mathematics": 87.1,
+        "dataAnalysis": 72.5,
+        "language": 74.3,
+        "instructionFollowing": 69.6
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 75.3,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 77.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 58.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 59,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 55,
+        "min": 0,
+        "max": 100,
+        "normalized": 55,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-moonshot",
+        "name": "Moonshot AI Official Documentation",
+        "url": "https://platform.moonshot.cn/docs/pricing",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "Moonshot AI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       },
       {
         "id": "astra-cost-engine",
@@ -4058,7 +7421,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 60,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 43,
       "overall": 75
@@ -4121,16 +7484,6 @@
         "normalized": 43,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 119,
-        "min": 0,
-        "max": 200,
-        "normalized": 60,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -4148,14 +7501,6 @@
         "publisher": "Google DeepMind"
       },
       {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
-      },
-      {
         "id": "berkeley-function-calling-leaderboard",
         "name": "Berkeley Function Calling Leaderboard (BFCL)",
         "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
@@ -4170,6 +7515,164 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "OpenRouter"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-5-2-codex",
+    "name": "GPT-5.2 Codex",
+    "provider": "OpenAI",
+    "family": "GPT-5",
+    "dataKind": "verified",
+    "description": "Code-specialized milestone checkpoint of GPT-5.2 evaluated on developer benchmarks.",
+    "strengths": ["High code syntax reliability and unit test completion"],
+    "weaknesses": ["Superseded by modern frontier reasoning releases"],
+    "tags": ["Coding", "Specialized"],
+    "roles": ["coding", "agentic"],
+    "facts": {
+      "context": 262144,
+      "contextWindow": 262144,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": false,
+      "supportsVision": false,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "isOpenWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-03-25",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["none", "medium"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 4,
+      "output": 16,
+      "cached": 1,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 4,
+      "outputPer1M": 16,
+      "cachedInputPer1M": 1,
+      "provenanceUrl": "https://platform.openai.com/docs/models",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 74,
+      "coding": 84,
+      "agentic": 49,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 34,
+      "overall": 74
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 74,
+        "reasoning": 77.7,
+        "coding": 83.6,
+        "agenticCoding": 49.4,
+        "mathematics": 88.8,
+        "dataAnalysis": 78.2,
+        "language": 73.7,
+        "instructionFollowing": 66.4
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 74,
+        "min": 0,
+        "max": 100,
+        "normalized": 74,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 83.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 84,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 49.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 49,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 34,
+        "min": 0,
+        "max": 100,
+        "normalized": 34,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       },
       {
         "id": "astra-cost-engine",
@@ -4248,7 +7751,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 36,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 61,
       "overall": 64
@@ -4314,16 +7817,6 @@
         "normalized": 61,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 71,
-        "min": 0,
-        "max": 200,
-        "normalized": 36,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -4339,14 +7832,6 @@
         "retrievedAt": "2026-09-09",
         "kind": "provider_doc",
         "publisher": "Google DeepMind"
-      },
-      {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
       },
       {
         "id": "berkeley-function-calling-leaderboard",
@@ -4379,6 +7864,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -4450,7 +7943,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 17,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 20,
       "overall": 83
@@ -4516,16 +8009,6 @@
         "normalized": 20,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 34,
-        "min": 0,
-        "max": 200,
-        "normalized": 17,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -4541,14 +8024,6 @@
         "retrievedAt": "2026-09-06",
         "kind": "provider_doc",
         "publisher": "Anthropic"
-      },
-      {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
       },
       {
         "id": "berkeley-function-calling-leaderboard",
@@ -4573,6 +8048,167 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "OpenRouter"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      }
+    ]
+  },
+  {
+    "slug": "gpt-5-2",
+    "name": "GPT-5.2",
+    "provider": "OpenAI",
+    "family": "GPT-5",
+    "dataKind": "verified",
+    "description": "OpenAI's foundational 5.2 milestone release bringing enhanced multimodal intuition and expanded tool calling.",
+    "strengths": [
+      "Reliable general performance across diverse tasks",
+      "Multimodal integration"
+    ],
+    "weaknesses": ["Superseded by GPT-5.4 through GPT-6"],
+    "tags": ["Vision", "Daily use"],
+    "roles": ["general-purpose", "vision", "coding"],
+    "facts": {
+      "context": 262144,
+      "contextWindow": 262144,
+      "maxOutput": 16384,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": true,
+      "supportsVision": true,
+      "audio": true,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "isOpenWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2026-03-20",
+      "sourceId": "source-openai",
+      "reasoningEffort": ["none", "low", "medium"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 5,
+      "output": 20,
+      "cached": 1.25,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-openai",
+      "updatedAt": "2026-06-25",
+      "inputPer1M": 5,
+      "outputPer1M": 20,
+      "cachedInputPer1M": 1.25,
+      "provenanceUrl": "https://platform.openai.com/docs/models",
+      "verifiedAt": "2026-06-25"
+    },
+    "scores": {
+      "intelligence": 75,
+      "coding": 76,
+      "agentic": 50,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 31,
+      "overall": 75
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 74.7,
+        "reasoning": 83.2,
+        "coding": 76.1,
+        "agenticCoding": 50.3,
+        "mathematics": 93.2,
+        "dataAnalysis": 78.2,
+        "language": 79.8,
+        "instructionFollowing": 61.8
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 74.7,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 76.1,
+        "min": 0,
+        "max": 100,
+        "normalized": 76,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 50.3,
+        "min": 0,
+        "max": 100,
+        "normalized": 50,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 31,
+        "min": 0,
+        "max": 100,
+        "normalized": 31,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-06-25",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-openai",
+        "name": "OpenAI Official Documentation",
+        "url": "https://platform.openai.com/docs/models",
+        "retrievedAt": "2026-06-25",
+        "kind": "provider_doc",
+        "publisher": "OpenAI"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       },
       {
         "id": "astra-cost-engine",
@@ -4917,7 +8553,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 46,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 39,
       "overall": 77
@@ -4980,16 +8616,6 @@
         "normalized": 39,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 92,
-        "min": 0,
-        "max": 200,
-        "normalized": 46,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -5007,14 +8633,6 @@
         "publisher": "Google DeepMind"
       },
       {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
-      },
-      {
         "id": "berkeley-function-calling-leaderboard",
         "name": "Berkeley Function Calling Leaderboard (BFCL)",
         "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
@@ -5029,6 +8647,322 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "OpenRouter"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      }
+    ]
+  },
+  {
+    "slug": "claude-opus-4-8",
+    "name": "Claude Opus 4.8",
+    "provider": "Anthropic",
+    "family": "Claude 4",
+    "dataKind": "verified",
+    "description": "Refined version of Claude Opus 4 featuring enhanced mathematical rigor, extended 1M context capabilities, and advanced autonomous agent tool chaining.",
+    "strengths": [
+      "Exceptional depth in scientific research and complex algorithms",
+      "1,000,000 token context window with precise instruction following",
+      "Prompt caching discount support for high-context workflows"
+    ],
+    "weaknesses": ["Premium API output pricing tier ($25.00/1M)"],
+    "tags": ["Flagship", "Coding", "Research", "Large context"],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic", "vision"],
+    "facts": {
+      "context": 1000000,
+      "contextWindow": 1000000,
+      "maxOutput": 64000,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": true,
+      "supportsVision": true,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "isOpenWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-12-08",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none", "low", "medium"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 5,
+      "output": 25,
+      "cached": 0.5,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06",
+      "inputPer1M": 5,
+      "outputPer1M": 25,
+      "cachedInputPer1M": 0.5,
+      "provenanceUrl": "https://docs.anthropic.com/en/docs/about-claude/models",
+      "verifiedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 76,
+      "coding": 82,
+      "agentic": 51,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 29,
+      "overall": 76
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 76.2,
+        "reasoning": 89.2,
+        "coding": 81.8,
+        "agenticCoding": 50.5,
+        "mathematics": 94.3,
+        "dataAnalysis": 66,
+        "language": 79.7,
+        "instructionFollowing": 72
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 76.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 76,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 81.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 82,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 50.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 51,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 29,
+        "min": 0,
+        "max": 100,
+        "normalized": 29,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      }
+    ]
+  },
+  {
+    "slug": "claude-opus-4-7",
+    "name": "Claude Opus 4.7",
+    "provider": "Anthropic",
+    "family": "Claude 4",
+    "dataKind": "verified",
+    "description": "High-performance enterprise reasoning model with 1M context, tailored for multi-repo software maintenance, security audits, and formal proofs.",
+    "strengths": [
+      "Comprehensive codebase security review and dependency analysis",
+      "1,000,000 token context window",
+      "Strong long-form structured technical documentation writing"
+    ],
+    "weaknesses": ["Slower inference compared to Claude Sonnet tiers"],
+    "tags": ["Coding", "Reasoning", "Enterprise", "Vision"],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic", "vision"],
+    "facts": {
+      "context": 1000000,
+      "contextWindow": 1000000,
+      "maxOutput": 64000,
+      "speedTokensPerSec": null,
+      "speedTokensPerSecRange": null,
+      "vision": true,
+      "supportsVision": true,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": false,
+      "isOpenWeights": false,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-11-20",
+      "sourceId": "source-anthropic",
+      "reasoningEffort": ["none", "low", "medium"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 5,
+      "output": 25,
+      "cached": 0.5,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-anthropic",
+      "updatedAt": "2026-09-06",
+      "inputPer1M": 5,
+      "outputPer1M": 25,
+      "cachedInputPer1M": 0.5,
+      "provenanceUrl": "https://docs.anthropic.com/en/docs/about-claude/models",
+      "verifiedAt": "2026-09-06"
+    },
+    "scores": {
+      "intelligence": 77,
+      "coding": 82,
+      "agentic": 51,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 29,
+      "overall": 77
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 76.5,
+        "reasoning": 87.2,
+        "coding": 82.1,
+        "agenticCoding": 50.7,
+        "mathematics": 92.9,
+        "dataAnalysis": 78.3,
+        "language": 77.9,
+        "instructionFollowing": 66.7
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 76.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 82.1,
+        "min": 0,
+        "max": 100,
+        "normalized": 82,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 50.7,
+        "min": 0,
+        "max": 100,
+        "normalized": 51,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 29,
+        "min": 0,
+        "max": 100,
+        "normalized": 29,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-09-06",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-anthropic",
+        "name": "Anthropic Official Documentation",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        "retrievedAt": "2026-09-06",
+        "kind": "provider_doc",
+        "publisher": "Anthropic"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       },
       {
         "id": "astra-cost-engine",
@@ -5106,7 +9040,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 13,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 36,
       "overall": 73
@@ -5172,16 +9106,6 @@
         "normalized": 36,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 26,
-        "min": 0,
-        "max": 200,
-        "normalized": 13,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -5197,14 +9121,6 @@
         "retrievedAt": "2026-09-06",
         "kind": "provider_doc",
         "publisher": "Anthropic"
-      },
-      {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
       },
       {
         "id": "berkeley-function-calling-leaderboard",
@@ -5237,6 +9153,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -5305,7 +9229,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 21,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 29,
       "overall": 75
@@ -5371,16 +9295,6 @@
         "normalized": 29,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 42,
-        "min": 0,
-        "max": 200,
-        "normalized": 21,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -5396,14 +9310,6 @@
         "retrievedAt": "2026-09-06",
         "kind": "provider_doc",
         "publisher": "Anthropic"
-      },
-      {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
       },
       {
         "id": "berkeley-function-calling-leaderboard",
@@ -5436,6 +9342,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   },
@@ -5505,7 +9419,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 23,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 29,
       "overall": 73
@@ -5568,16 +9482,6 @@
         "normalized": 29,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 46,
-        "min": 0,
-        "max": 200,
-        "normalized": 23,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -5595,14 +9499,6 @@
         "publisher": "Anthropic"
       },
       {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
-      },
-      {
         "id": "berkeley-function-calling-leaderboard",
         "name": "Berkeley Function Calling Leaderboard (BFCL)",
         "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
@@ -5617,6 +9513,172 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "OpenRouter"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-v4-pro",
+    "name": "DeepSeek V4-Pro",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V4",
+    "dataKind": "verified",
+    "description": "DeepSeek's next-generation flagship Mixture-of-Experts reasoning model, delivering state-of-the-art STEM problem solving, agentic tool workflows, and massive-scale comprehension.",
+    "strengths": [
+      "State-of-the-art multi-step reasoning matching closed frontier labs",
+      "Exceptional price-to-performance for complex agentic workflows",
+      "Native 128k context with multi-token prediction and MLA",
+      "Open weights with permissive licensing for enterprise hosting"
+    ],
+    "weaknesses": [
+      "Text-only model lacking native audio/image modalities",
+      "Requires specialized multi-GPU infrastructure for self-hosting"
+    ],
+    "tags": ["Flagship", "Open weights", "MoE", "Reasoning", "Coding"],
+    "roles": ["general-purpose", "reasoning", "coding", "agentic"],
+    "facts": {
+      "context": 131072,
+      "contextWindow": 131072,
+      "maxOutput": 16384,
+      "speedTokensPerSec": 60,
+      "speedTokensPerSecRange": null,
+      "vision": false,
+      "supportsVision": false,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "isOpenWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-08-15",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none", "low", "medium", "high"],
+      "defaultEffort": "medium"
+    },
+    "pricing": {
+      "input": 0.27,
+      "output": 1.1,
+      "cached": 0.07,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05",
+      "inputPer1M": 0.27,
+      "outputPer1M": 1.1,
+      "cachedInputPer1M": 0.07,
+      "provenanceUrl": "https://api-docs.deepseek.com/quick_start/pricing",
+      "verifiedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 72,
+      "coding": 70,
+      "agentic": 43,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 69,
+      "overall": 72
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 71.6,
+        "reasoning": 82.7,
+        "coding": 70,
+        "agenticCoding": 42.6,
+        "mathematics": 90.7,
+        "dataAnalysis": 74.5,
+        "language": 78.1,
+        "instructionFollowing": 62.4
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 71.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 72,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 70,
+        "min": 0,
+        "max": 100,
+        "normalized": 70,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 42.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 43,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 69,
+        "min": 0,
+        "max": 100,
+        "normalized": 69,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official Documentation",
+        "url": "https://api-docs.deepseek.com/quick_start/pricing",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       },
       {
         "id": "astra-cost-engine",
@@ -5697,7 +9759,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 36,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 69,
       "overall": 77
@@ -5758,19 +9820,175 @@
         "normalized": 69,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 71,
-        "min": 0,
-        "max": 200,
-        "normalized": 36,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
+    "methodology": "v1-external-only",
+    "scoreUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-09-05",
+    "sourceUpdatedAt": "2026-09-12",
+    "sources": [
+      {
+        "id": "source-deepseek",
+        "name": "DeepSeek Official Documentation",
+        "url": "https://api-docs.deepseek.com/quick_start/pricing",
+        "retrievedAt": "2026-09-05",
+        "kind": "provider_doc",
+        "publisher": "DeepSeek"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter recent throughput",
+        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
+      }
+    ]
+  },
+  {
+    "slug": "deepseek-v4-flash",
+    "name": "DeepSeek V4-Flash",
+    "provider": "DeepSeek",
+    "family": "DeepSeek V4",
+    "dataKind": "verified",
+    "description": "DeepSeek's high-efficiency lightweight foundation model engineered for rapid sub-second response times, affordable token pricing, and high concurrency production workloads.",
+    "strengths": [
+      "Exceptional token generation speed (120+ tokens/sec)",
+      "Industry-leading cost efficiency ($0.08 input / $0.20 output)",
+      "Strong instruction following and structured JSON generation",
+      "128k context window with efficient KV caching"
+    ],
+    "weaknesses": [
+      "Text-only model",
+      "Moderate reasoning depth on open-ended STEM competition problems"
+    ],
+    "tags": ["Fast", "Open weights", "MoE", "Best value", "Daily use"],
+    "roles": ["general-purpose", "coding", "agentic"],
+    "facts": {
+      "context": 131072,
+      "contextWindow": 131072,
+      "maxOutput": 8192,
+      "speedTokensPerSec": 120,
+      "speedTokensPerSecRange": null,
+      "vision": false,
+      "supportsVision": false,
+      "audio": false,
+      "tools": true,
+      "supportsTools": true,
+      "structured": true,
+      "api": true,
+      "openWeights": true,
+      "isOpenWeights": true,
+      "easeOfUse": null,
+      "availability": "Production API",
+      "releaseDate": "2025-08-05",
+      "sourceId": "source-deepseek",
+      "reasoningEffort": ["none"],
+      "defaultEffort": "none"
+    },
+    "pricing": {
+      "input": 0.08,
+      "output": 0.2,
+      "cached": 0.02,
+      "currency": "USD",
+      "unit": "per-million-tokens",
+      "sourceId": "source-deepseek",
+      "updatedAt": "2026-09-05",
+      "inputPer1M": 0.08,
+      "outputPer1M": 0.2,
+      "cachedInputPer1M": 0.02,
+      "provenanceUrl": "https://api-docs.deepseek.com/quick_start/pricing",
+      "verifiedAt": "2026-09-05"
+    },
+    "scores": {
+      "intelligence": 66,
+      "coding": 69,
+      "agentic": 38,
+      "dailyUse": null,
+      "research": null,
+      "writing": null,
+      "vision": null,
+      "speed": null,
+      "reliability": null,
+      "costEfficiency": 89,
+      "overall": 66
+    },
+    "benchmarks": {
+      "livebench": {
+        "release": "2026-06-25",
+        "overall": 65.5,
+        "reasoning": 70.6,
+        "coding": 69.2,
+        "agenticCoding": 37.6,
+        "mathematics": 79.6,
+        "dataAnalysis": 68,
+        "language": 70.1,
+        "instructionFollowing": 63.1
+      },
+      "sweBench": null,
+      "bfcl": null,
+      "lmarena": null
+    },
+    "evidence": [
+      {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 65.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 66,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "coding",
+        "kind": "benchmark",
+        "raw": 69.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 69,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "agentic",
+        "kind": "benchmark",
+        "raw": 37.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 38,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 89,
+        "min": 0,
+        "max": 100,
+        "normalized": 89,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
+      }
+    ],
+    "confidence": 69,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-12",
     "lastVerifiedAt": "2026-09-05",
@@ -5791,14 +10009,6 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
-      },
-      {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
       },
       {
         "id": "astra-cost-engine",
@@ -5878,7 +10088,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 35,
+      "speed": null,
       "reliability": null,
       "costEfficiency": 89,
       "overall": 74
@@ -5939,16 +10149,6 @@
         "normalized": 89,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
-      },
-      {
-        "metric": "speed",
-        "kind": "benchmark",
-        "raw": 70,
-        "min": 0,
-        "max": 200,
-        "normalized": 35,
-        "sourceId": "openrouter-throughput",
-        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -5966,14 +10166,6 @@
         "publisher": "DeepSeek"
       },
       {
-        "id": "livebench-leaderboard",
-        "name": "LiveBench AI Benchmark",
-        "url": "https://livebench.ai",
-        "retrievedAt": "2026-06-25",
-        "kind": "public_eval",
-        "publisher": "LiveBench"
-      },
-      {
         "id": "openrouter-throughput",
         "name": "OpenRouter recent throughput",
         "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
@@ -5988,6 +10180,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "livebench-leaderboard",
+        "name": "LiveBench AI Benchmark",
+        "url": "https://livebench.ai",
+        "retrievedAt": "2026-06-25",
+        "kind": "public_eval",
+        "publisher": "LiveBench"
       }
     ]
   }

@@ -1,6 +1,54 @@
 import type { CanonicalModelConfig } from '../../pipeline/types';
 
 export const MOONSHOT_MODELS: CanonicalModelConfig[] = [
+  {
+    slug: 'muse-spark-1-2',
+    name: 'Muse Spark 1.2',
+    provider: 'Moonshot AI',
+    providerSlug: 'moonshot',
+    family: 'Muse',
+    openWeights: false,
+    openRouterId: 'moonshot/muse-spark-1.2',
+    lmarenaAliases: ['muse-spark-1.2', 'muse-spark-1.2-xhigh'],
+    swebenchAliases: ['muse-spark-1.2', 'muse-spark-1.2-xhigh'],
+    livebenchAliases: ['muse-spark-1.2-xhigh', 'muse-spark-1.2'],
+    bfclAliases: ['muse-spark-1.2'],
+    officialDocsUrl: 'https://platform.moonshot.cn/docs/overview',
+    description:
+      "Moonshot AI's precursor to Muse Spark 1.3, providing high-efficiency creative drafting and reasoning.",
+    strengths: [
+      'Strong 78.0 LiveBench score',
+      'Expressive creative writing and long context synthesis',
+    ],
+    weaknesses: ['Superseded by Muse Spark 1.3'],
+    tags: ['Writing', 'Reasoning', 'Large context'],
+    reasoningEffort: ['none', 'medium', 'high'],
+    defaultEffort: 'medium',
+  },
+  {
+    slug: 'muse-spark-1-1',
+    name: 'Muse Spark 1.1',
+    provider: 'Moonshot AI',
+    providerSlug: 'moonshot',
+    family: 'Muse',
+    openWeights: false,
+    openRouterId: 'moonshot/muse-spark-1.1',
+    lmarenaAliases: ['muse-spark-1.1', 'muse-spark-1.1-xhigh'],
+    swebenchAliases: ['muse-spark-1.1', 'muse-spark-1.1-xhigh'],
+    livebenchAliases: ['muse-spark-1.1-xhigh', 'muse-spark-1.1'],
+    bfclAliases: ['muse-spark-1.1'],
+    officialDocsUrl: 'https://platform.moonshot.cn/docs/overview',
+    description:
+      'Initial release of the Muse Spark long-context reasoning series by Moonshot AI.',
+    strengths: [
+      'High recall on long-horizon documents',
+      'Approachable API pricing',
+    ],
+    weaknesses: ['Lower coding depth than version 1.3'],
+    tags: ['Writing', 'Daily use', 'Large context'],
+    reasoningEffort: ['none', 'medium'],
+    defaultEffort: 'none',
+  },
   // ==========================================
   // KIMI K3 FLAGSHIP (2026)
   // ==========================================

@@ -2,6 +2,31 @@ import type { CanonicalModelConfig } from '../../pipeline/types';
 
 export const ZAI_MODELS: CanonicalModelConfig[] = [
   {
+    slug: 'glm-5-2',
+    name: 'GLM 5.2',
+    provider: 'Z.ai',
+    providerSlug: 'z-ai',
+    family: 'GLM',
+    openWeights: true,
+    openRouterId: 'z-ai/glm-5.2',
+    lmarenaAliases: ['z-ai/glm-5.2', 'glm-5.2', 'GLM-5.2'],
+    swebenchAliases: ['glm-5.2'],
+    livebenchAliases: ['glm-5.2'],
+    bfclAliases: ['glm-5.2'],
+    officialDocsUrl: 'https://z.ai/',
+    description:
+      "Z.ai's foundation multimodal reasoning model precursor to GLM 5.3, with deep mathematical intuition.",
+    strengths: [
+      'High mathematics benchmark accuracy (89.8)',
+      'Open weights foundation model',
+      'Multimodal context comprehension',
+    ],
+    weaknesses: ['Lower agentic coding than GLM 5.3'],
+    tags: ['Reasoning', 'Open weights', 'STEM'],
+    reasoningEffort: ['low', 'high', 'max'],
+    defaultEffort: 'max',
+  },
+  {
     slug: 'glm-5-3-flash',
     name: 'GLM 5.3 Flash',
     provider: 'Z.ai',

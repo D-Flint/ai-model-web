@@ -1,6 +1,31 @@
 import type { CanonicalModelConfig } from '../../pipeline/types';
 
 export const DEEPSEEK_MODELS: CanonicalModelConfig[] = [
+  {
+    slug: 'deepseek-v4-flash-vision-exp',
+    name: 'DeepSeek V4 Flash Vision Exp',
+    provider: 'DeepSeek',
+    providerSlug: 'deepseek',
+    family: 'DeepSeek V4',
+    openWeights: true,
+    openRouterId: 'deepseek/deepseek-v4-flash-vision-exp',
+    lmarenaAliases: ['deepseek-v4-flash-vision-exp'],
+    swebenchAliases: ['deepseek-v4-flash-vision-exp'],
+    livebenchAliases: ['deepseek-v4-flash-vision-exp'],
+    bfclAliases: ['deepseek-v4-flash-vision-exp'],
+    officialDocsUrl: 'https://deepseek.com/',
+    description:
+      'DeepSeek experimental high-throughput multimodal checkpoint with native vision understanding and high FPS video reasoning.',
+    strengths: [
+      'High multimodal vision and diagram accuracy (76.8 LiveBench average)',
+      'Open weights deployment',
+      'Extremely low token latency',
+    ],
+    weaknesses: ['Experimental preview release'],
+    tags: ['Vision', 'Fast', 'Open weights', 'Multimodal'],
+    reasoningEffort: ['low', 'medium', 'high'],
+    defaultEffort: 'medium',
+  },
   // ==========================================
   // DEEPSEEK R1 REASONING FAMILY (2025)
   // ==========================================

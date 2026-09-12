@@ -17,6 +17,17 @@
 - Current state: Plan artifact completed and aligned with user directives.
 - Exact next step: Hand off to GPT-5.6 to execute Phase 0 through Phase 4.
 
+## 2026-09-12 — Pull all 57 models from official LiveBench release
+
+- Objective: Ingest and configure all 57 models from the official LiveBench release (2026-06-25 leaderboard) into the canonical registry, official specs, alias resolver, and published catalog list.
+- Files changed: `src/data/canonicalModels.ts`, `src/data/models/qwen.ts`, `src/data/models/abacus.ts`, `src/data/models/nvidia.ts`, `src/data/models/frontier.ts`, `src/data/models/xai.ts`, `src/data/models/openai.ts`, `src/data/models/moonshot.ts`, `src/data/models/zai.ts`, `src/data/models/deepseek.ts`, `src/data/officialProviders.ts`, `src/data/livebenchReleaseAliases.ts`, `src/data/modelRoles.ts`, `src/data/models.ts`, `src/lib/catalogEligibility.ts`, `src/lib/livebenchCatalog.ts`, `src/data/verifiedModels.json`, `tests/livebenchCatalog.test.ts`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: Initial Zod role validation error resolved by standardizing on `ModelRole` literals; preserved LiveBench benchmark overall score in `addVerifiedSpeedScore` inside `models.ts`.
+- Tests: `npm test` (16 files, 150/150 passed); `npm run check` (110 files, 0 errors, 0 warnings, 0 hints); `npm run lint` (clean); `npm run prebuild` (success, 57 comparison records).
+- Commit: Pending local commit.
+- Current state: Stored locally; no remote push.
+- Exact next step: User verification of all 57 LiveBench models on the leaderboard and model explorer.
+
 ## 2026-09-12 — Remove GPT-5.2 and GPT-5.2 Pro
 
 - Objective: Remove GPT-5.2 and GPT-5.2 Pro from canonical OpenAI model configs, official provider specs, verified catalog data, LiveBench aliases, and adjust catalog limits.

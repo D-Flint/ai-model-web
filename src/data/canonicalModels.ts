@@ -12,6 +12,10 @@ import { MOONSHOT_MODELS } from './models/moonshot';
 import { MINIMAX_MODELS } from './models/minimax';
 import { TENCENT_MODELS } from './models/tencent';
 import { ZAI_MODELS } from './models/zai';
+import { QWEN_MODELS } from './models/qwen';
+import { ABACUS_MODELS } from './models/abacus';
+import { NVIDIA_MODELS } from './models/nvidia';
+import { FRONTIER_MODELS } from './models/frontier';
 import { knownModelRoles } from './modelRoles';
 
 export {
@@ -28,6 +32,10 @@ export {
   MINIMAX_MODELS,
   TENCENT_MODELS,
   ZAI_MODELS,
+  QWEN_MODELS,
+  ABACUS_MODELS,
+  NVIDIA_MODELS,
+  FRONTIER_MODELS,
 };
 
 export const PROVIDERS_CONFIG = [
@@ -134,6 +142,46 @@ export const PROVIDERS_CONFIG = [
     description:
       'Zhipu AI research enterprise developing the GLM series of multimodal foundation and agentic models.',
   },
+  {
+    id: 'provider-qwen',
+    slug: 'qwen',
+    name: 'Alibaba Cloud / Qwen',
+    website: 'https://qwenlm.github.io',
+    description:
+      'Alibaba Cloud open and proprietary foundation models with leading STEM and coding capabilities.',
+  },
+  {
+    id: 'provider-abacus',
+    slug: 'abacus',
+    name: 'Abacus AI',
+    website: 'https://abacus.ai',
+    description:
+      'Autonomous AI company behind the agent-specialized Smaug foundation models.',
+  },
+  {
+    id: 'provider-nvidia',
+    slug: 'nvidia',
+    name: 'NVIDIA',
+    website: 'https://build.nvidia.com',
+    description:
+      'Accelerated computing pioneer developing extreme-scale open-weight foundation models.',
+  },
+  {
+    id: 'provider-inkling',
+    slug: 'inkling',
+    name: 'Inkling AI',
+    website: 'https://livebench.ai',
+    description:
+      'Advanced reasoning research laboratory evaluating reflective inference models.',
+  },
+  {
+    id: 'provider-ox',
+    slug: 'ox',
+    name: 'Ox Labs',
+    website: 'https://livebench.ai',
+    description:
+      'Autonomous code synthesis and rigorous logic verification research group.',
+  },
 ];
 
 const canonicalModels: CanonicalModelConfig[] = [
@@ -150,6 +198,10 @@ const canonicalModels: CanonicalModelConfig[] = [
   ...MINIMAX_MODELS,
   ...TENCENT_MODELS,
   ...ZAI_MODELS,
+  ...QWEN_MODELS,
+  ...ABACUS_MODELS,
+  ...NVIDIA_MODELS,
+  ...FRONTIER_MODELS,
 ];
 
 export const CANONICAL_MODELS: CanonicalModelConfig[] = canonicalModels.map(

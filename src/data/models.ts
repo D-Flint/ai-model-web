@@ -287,10 +287,14 @@ function addVerifiedSpeedScore(model: CatalogModel): CatalogModel {
   if (!source) return model;
 
   const normalized = normalize(speed, 0, speedScoreMaxTokensPerSec);
-  const scores = { ...model.scores, speed: normalized };
+  const overall =
+    model.benchmarks?.livebench?.overall != null
+      ? normalize(model.benchmarks.livebench.overall, 0, 100)
+      : composite({ ...model.scores, speed: normalized });
+  const scores = { ...model.scores, speed: normalized, overall };
   return {
     ...model,
-    scores: { ...scores, overall: composite(scores) },
+    scores,
     evidence: [
       ...model.evidence,
       {
