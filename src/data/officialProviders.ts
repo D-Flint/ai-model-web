@@ -5290,6 +5290,8 @@ export const reviewedContext: Record<
 const retrievedAt = '2026-09-06';
 const anthropic = 'https://platform.claude.com/docs/en/about-claude/pricing';
 const google = 'https://ai.google.dev/gemini-api/docs/pricing';
+const deepseekPricing = 'https://api-docs.deepseek.com/quick_start/pricing';
+const apiPricingRecords: Record<string, ApiPricing> = {};
 function price(
   value: number,
   url: string,
@@ -5334,7 +5336,110 @@ function tier(
     search: null,
   };
 }
-const apiPricingRecords: Record<string, ApiPricing> = {};
+function deepseekPrice(value: number): PriceValue {
+  return {
+    value,
+    currency: 'USD',
+    unit: 'per-million-tokens',
+    source: {
+      name: 'DeepSeek API pricing',
+      url: deepseekPricing,
+      type: 'provider_doc',
+      retrievedAt: '2026-09-12',
+      effectiveFrom: '2026-09-10',
+    },
+  };
+}
+const deepseekFlashPricing: ApiPricing = {
+  provider: 'DeepSeek',
+  scope: 'DeepSeek API · V4.1 Flash text and vision pricing',
+  tiers: [
+    {
+      id: 'standard',
+      label: '0–1,048,576 input tokens',
+      minContext: 0,
+      maxContext: 1_048_576,
+      input: deepseekPrice(0.15),
+      output: deepseekPrice(0.6),
+      cached: deepseekPrice(0.003),
+      cacheWrite5m: null,
+      cacheWrite1h: null,
+      cacheStorage: null,
+      search: null,
+    },
+  ],
+  periods: [
+    {
+      id: 'off-peak',
+      label: 'Off-peak',
+      input: deepseekPrice(0.15),
+      output: deepseekPrice(0.6),
+      cached: deepseekPrice(0.003),
+    },
+    {
+      id: 'peak',
+      label: 'Peak',
+      input: deepseekPrice(0.3),
+      output: deepseekPrice(1.2),
+      cached: deepseekPrice(0.006),
+    },
+  ],
+  notes: [
+    'Off-peak hours are 01:00–04:00 and 06:00–10:00 UTC, Monday through Friday; all other hours are off-peak.',
+    'DeepSeek-V4-Flash and DeepSeek-V4-Flash-Vision-Exp are retired and route to V4.1 Flash at Flash rates.',
+  ],
+  benchmarkCost: null,
+};
+for (const slug of [
+  'deepseek-v4-1-flash',
+  'deepseek-v4-flash',
+  'deepseek-v4-flash-0731',
+  'deepseek-v4-flash-vision-exp',
+]) {
+  apiPricingRecords[slug] = deepseekFlashPricing;
+}
+const deepseekProPricing: ApiPricing = {
+  provider: 'DeepSeek',
+  scope: 'DeepSeek API · V4 Pro text pricing',
+  tiers: [
+    {
+      id: 'standard',
+      label: '0–1,048,576 input tokens',
+      minContext: 0,
+      maxContext: 1_048_576,
+      input: deepseekPrice(0.66),
+      output: deepseekPrice(1.98),
+      cached: deepseekPrice(0.022),
+      cacheWrite5m: null,
+      cacheWrite1h: null,
+      cacheStorage: null,
+      search: null,
+    },
+  ],
+  periods: [
+    {
+      id: 'off-peak',
+      label: 'Off-peak',
+      input: deepseekPrice(0.66),
+      output: deepseekPrice(1.98),
+      cached: deepseekPrice(0.022),
+    },
+    {
+      id: 'peak',
+      label: 'Peak',
+      input: deepseekPrice(1.32),
+      output: deepseekPrice(3.96),
+      cached: deepseekPrice(0.044),
+    },
+  ],
+  notes: [
+    'Off-peak hours are 01:00–04:00 and 06:00–10:00 UTC, Monday through Friday; all other hours are off-peak.',
+  ],
+  benchmarkCost: null,
+};
+for (const slug of ['deepseek-v4-pro', 'deepseek-v4-pro-0813']) {
+  apiPricingRecords[slug] = deepseekProPricing;
+}
 for (const [slug, input, output, cached, context] of [
   ['claude-fable-5-1', 10, 50, 0.25, 1_000_000],
   ['claude-fable-5', 10, 50, 1, 1_000_000],

@@ -104,6 +104,37 @@ export default function ApiPricing({
       ))}
       {details && (
         <>
+          {pricing.periods && pricing.periods.length > 0 && (
+            <section
+              className="api-pricing-periods"
+              aria-label="Scheduled API rates"
+            >
+              <h3>Peak and off-peak rates</h3>
+              {pricing.periods.map((period) => (
+                <div key={period.id}>
+                  <h4>{period.label}</h4>
+                  <dl className="api-rate-list">
+                    {(
+                      [
+                        ['Input', period.input],
+                        ['Output', period.output],
+                        ['Cached input', period.cached],
+                      ] as [string, PriceValue | null][]
+                    ).map(([label, rate]) => (
+                      <div key={label}>
+                        <dt>{label}</dt>
+                        <dd>
+                          {formatPrice(rate?.value)}
+                          {rate && <small> / 1M tokens</small>}
+                          <PriceSource price={rate} />
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              ))}
+            </section>
+          )}
           <p>{pricing.scope}</p>
           <p>
             Context window: {model.facts.context.toLocaleString('en-US')} tokens

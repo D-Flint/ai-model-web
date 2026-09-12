@@ -111,6 +111,34 @@ describe('user-provided API workloads', () => {
   });
 });
 describe('pricing provenance and comparisons', () => {
+  it('publishes DeepSeek peak and off-peak API rates', () => {
+    const pricing = verifiedApiPricing['deepseek-v4-1-flash'];
+    const proPricing = verifiedApiPricing['deepseek-v4-pro-0813'];
+
+    expect(pricing.periods).toEqual([
+      expect.objectContaining({
+        id: 'off-peak',
+        input: expect.objectContaining({ value: 0.15 }),
+        output: expect.objectContaining({ value: 0.6 }),
+        cached: expect.objectContaining({ value: 0.003 }),
+      }),
+      expect.objectContaining({
+        id: 'peak',
+        input: expect.objectContaining({ value: 0.3 }),
+        output: expect.objectContaining({ value: 1.2 }),
+        cached: expect.objectContaining({ value: 0.006 }),
+      }),
+    ]);
+    expect(proPricing.periods?.[1]).toEqual(
+      expect.objectContaining({
+        id: 'peak',
+        input: expect.objectContaining({ value: 1.32 }),
+        output: expect.objectContaining({ value: 3.96 }),
+        cached: expect.objectContaining({ value: 0.044 }),
+      }),
+    );
+  });
+
   it('validates the full published catalog after applying pricing snapshots', () => {
     expect(validateCatalog(models)).toHaveLength(models.length);
   });

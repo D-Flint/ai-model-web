@@ -28,6 +28,13 @@ export const priceValueSchema = z.object({
 const tokenPrice = priceValueSchema
   .refine((p) => p.unit === 'per-million-tokens', 'Expected token rate')
   .nullable();
+const pricingPeriodSchema = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+  input: tokenPrice,
+  output: tokenPrice,
+  cached: tokenPrice,
+});
 export const pricingTierSchema = z
   .object({
     id: z.string().min(1),
@@ -51,6 +58,7 @@ export const apiPricingSchema = z
     provider: z.string().min(1),
     scope: z.string().min(1),
     tiers: z.array(pricingTierSchema),
+    periods: z.array(pricingPeriodSchema).optional(),
     notes: z.array(z.string()),
     benchmarkCost: z
       .object({
@@ -65,31 +73,31 @@ export const apiPricingSchema = z
       .nullable(),
   })
   .superRefine((p, ctx) => {
+    const approvedHosts: Record<string, string[]> = {
+      Anthropic: [
+        'platform.claude.com',
+        'docs.anthropic.com',
+        'www.anthropic.com',
+        'claude.com',
+      ],
+      Google: ['ai.google.dev', 'cloud.google.com'],
+      'Google DeepMind': ['ai.google.dev', 'cloud.google.com'],
+      OpenAI: ['platform.openai.com'],
+      DeepSeek: ['api-docs.deepseek.com'],
+      'Moonshot AI': ['platform.moonshot.cn'],
+      'Mistral AI': ['docs.mistral.ai'],
+      'Alibaba Cloud / Qwen': ['help.aliyun.com', 'qwenlm.github.io'],
+      xAI: ['docs.x.ai'],
+      'Amazon AWS': ['aws.amazon.com'],
+      Cohere: ['docs.cohere.com'],
+      MiniMax: ['platform.minimaxi.com'],
+      Tencent: ['hunyuan.tencent.com'],
+      'Z.ai': ['z.ai', 'docs.z.ai'],
+    };
     const tiers = [...p.tiers].sort((a, b) => a.minContext - b.minContext);
     if (new Set(tiers.map((t) => t.id)).size !== tiers.length)
       ctx.addIssue({ code: 'custom', message: 'Duplicate pricing tier' });
     tiers.forEach((t, i) => {
-      const approvedHosts: Record<string, string[]> = {
-        Anthropic: [
-          'platform.claude.com',
-          'docs.anthropic.com',
-          'www.anthropic.com',
-          'claude.com',
-        ],
-        Google: ['ai.google.dev', 'cloud.google.com'],
-        'Google DeepMind': ['ai.google.dev', 'cloud.google.com'],
-        OpenAI: ['platform.openai.com'],
-        DeepSeek: ['api-docs.deepseek.com'],
-        'Moonshot AI': ['platform.moonshot.cn'],
-        'Mistral AI': ['docs.mistral.ai'],
-        'Alibaba Cloud / Qwen': ['help.aliyun.com', 'qwenlm.github.io'],
-        xAI: ['docs.x.ai'],
-        'Amazon AWS': ['aws.amazon.com'],
-        Cohere: ['docs.cohere.com'],
-        MiniMax: ['platform.minimaxi.com'],
-        Tencent: ['hunyuan.tencent.com'],
-        'Z.ai': ['z.ai', 'docs.z.ai'],
-      };
       for (const rate of [
         t.input,
         t.output,
@@ -126,7 +134,24 @@ export const apiPricingSchema = z
           ctx.addIssue({ code: 'custom', message: `Invalid ${key} unit` });
       }
     });
+    for (const period of p.periods ?? []) {
+      for (const rate of [period.input, period.output, period.cached]) {
+        if (!rate) continue;
+        const host = new URL(rate.source.url).hostname;
+        if (
+          rate.source.type === 'public_eval' ||
+          (rate.source.type === 'provider_doc' &&
+            !approvedHosts[p.provider]?.includes(host))
+        )
+          ctx.addIssue({
+            code: 'custom',
+            message:
+              'Pricing requires an approved provider host or OpenRouter fallback',
+          });
+      }
+    }
   });
 export type ApiPricing = z.infer<typeof apiPricingSchema>;
 export type PriceValue = z.infer<typeof priceValueSchema>;
 export type PricingTier = z.infer<typeof pricingTierSchema>;
+export type PricingPeriod = z.infer<typeof pricingPeriodSchema>;

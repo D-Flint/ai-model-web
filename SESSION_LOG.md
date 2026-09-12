@@ -1,5 +1,16 @@
 # Session Log
 
+## 2026-09-12 — Add DeepSeek peak and off-peak API pricing
+
+- Objective: Show official DeepSeek peak and off-peak API rates in model detail pricing.
+- Files changed: `src/components/ApiPricing.tsx`, `src/lib/apiPricingSchema.ts`, `src/data/officialProviders.ts`, `tests/apiPricing.test.ts`, and approved design spec `docs/superpowers/specs/2026-09-12-deepseek-peak-off-peak-pricing-design.md`.
+- Attempts: 2 implementation/validation passes.
+- Failures/causes: Initial schema validation scope left `approvedHosts` inside tier validation; moved it to shared pricing validation. Sandboxed Wrangler build hit its known external registry permission restriction; elevated build passed.
+- Tests: `npm run check` passed; `npm run lint` passed; `npm test` passed 151/151; `npm run build` passed; `git diff --check` passed.
+- Commit: Pending local commit.
+- Current state: DeepSeek Flash and Pro pricing detail sections expose labeled peak/off-peak input, cached-input, and output rates with source links and freshness metadata. No remote push.
+- Exact next step: User verifies a DeepSeek detail page and confirms the scheduled rates presentation.
+
 ## History summary
 
 - 2026-09-05: Repository setup, Astro foundation, real-data pipeline, model catalog expansion, scoring/speed work, leaderboard UI, branding, and theme.
