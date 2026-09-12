@@ -17,6 +17,17 @@
 - Current state: Plan artifact completed and aligned with user directives.
 - Exact next step: Hand off to GPT-5.6 to execute Phase 0 through Phase 4.
 
+## 2026-09-12 — Move open weights indicator into model detail dropdown
+
+- Objective: Move the open weights indicator tag from the table row into the expanded detail dropdown next to the effort badge.
+- Files changed: `src/components/ModelExplorer.tsx`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: None.
+- Tests: `npm run check` (107 files, 0 errors, 0 warnings, 0 hints); `npm test` (16 files, 150/150 passed).
+- Commit: `42f92da` (`refactor(ui): move open weights indicator into model detail dropdown`).
+- Current state: Committed locally; no remote push.
+- Exact next step: User verifies open weights indicator position in browser.
+
 ## 2026-09-11 — Formulate data pipeline refactor & catalog pruning plan for GPT-5.6
 
 - Objective: Formulate architectural plan and refactoring directives for GPT-5.6 covering metric decoupling, speed telemetry, display formatting, test resilience, and pruning the catalog to the 30 newest models.
