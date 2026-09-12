@@ -4,7 +4,7 @@
 
 - Objective: Replace the leaderboard input-token price column with LiveBench's official cost per successful task.
 - Files changed: `scripts/refresh-livebench-snapshot.ts`, `src/pipeline/types.ts`, `src/data/livebenchData.json`, `src/components/ModelExplorer.tsx`, `tests/livebenchCatalog.test.ts`, `SESSION_LOG.md`.
-- Attempts: 1 implementation pass.
+- Attempts: 2 implementation passes.
 - Failures/causes: Direct web opening of the CSV was restricted; the official CSV was fetched through the approved network command and its schema cross-checked against LiveBench's public repository documentation.
 - Tests: `npm run check` passed; `npm run lint` passed; `npm test` passed 152/152; `npm run build` passed; `git diff --check` passed.
 - Commit: Pending local commit.
@@ -851,3 +851,124 @@
 - Commit: `4038231` (`fix: preserve LiveBench published overall scores`).
 - Current state: Claude Haiku 5 retains LiveBench overall 68.6 and displays rounded intelligence/overall scores of 69. Other unavailable category values remain null. Older partial LiveBench snapshots affected by the same mapping error also regain their published aggregate and provenance evidence.
 - Exact next step: Commit the fix locally, then wait for user verification of Claude Haiku 5 on the models page.
+
+## 2026-09-12 — Remove Ox Alpha from the active catalog
+
+- Objective: Remove duplicate Ox Alpha from active model/provider/recommendation data while preserving historical benchmark and provenance records.
+- Files changed: `src/data/canonicalModels.ts`, `src/data/modelRoles.ts`, `src/data/models.ts`, `src/data/models/frontier.ts`, `src/data/officialProviders.ts`, `src/lib/livebenchCatalog.ts`, `tests/livebenchCatalog.test.ts`. Removed stale generated `public/_comparison-data/ox-alpha.json`.
+- Attempts: 2 implementation and validation passes.
+- Failures/causes: Initial validation found the configured LiveBench catalog size still required 57 after the removal; updated active catalog and candidate limits to 56. Sandboxed Wrangler registry/log writes failed; elevated build rerun passed.
+- Tests: `npm test` passed 153/153; `npx astro check` passed with 0 errors, warnings, or hints; `npx tsc --noEmit` passed; `npm run lint` passed; elevated `npm run build` passed with 56 comparison records; `git diff --check` passed.
+- Commit: Not created because this environment denies writes to `.git` (`index.lock` permission denied).
+- Current state: Ox Alpha is absent from active canonical, provider, role, verified-catalog views, generated comparison artifacts, and routes. Historical verified JSON, LiveBench data, and aliases remain.
+- Exact next step: Create the local commit from the working tree, then wait for user verification.
+
+## 2026-09-12 — Map model-detail metrics to their sources
+
+- Objective: Make every model-detail metric traceable through a compact source-coverage map with individual metric links.
+- Files changed: `src/lib/modelDetailSources.ts`, `src/components/ModelDataSources.tsx`, `src/components/ModelExplorer.tsx`, `src/styles/global.css`, `tests/modelDetailSources.test.ts`, `tests/model_detail_sources_browser.py`, `docs/superpowers/specs/2026-09-12-model-detail-source-coverage-design.md`, `SESSION_LOG.md`.
+- Attempts: 1 implementation pass.
+- Failures/causes: Browser verification could not connect because Astro exited before binding on ports 4321 and 4322; the browser assertion remains ready for a running local server.
+- Tests: `npm run check` passed; `npm run lint` passed; `npm test` passed 153/153; `npm run build` passed; focused source test passed 4/4; `git diff --check` pending final check.
+- Commit: Design specification `a5d5c98`; implementation commit pending.
+- Current state: Source groups now list exact covered metrics with individual authoritative links, including cached input price. No remote push.
+- Exact next step: Commit the scoped implementation files, then verify the source map in a running browser session.
+
+## 2026-09-12 — Add speed-source requirements to telemetry prompt
+
+- Objective: Update `prompts/model-speed-telemetry.md` so researched speed values include their source and provenance.
+- Files changed: `prompts/model-speed-telemetry.md`, `SESSION_LOG.md`.
+- Attempts: 1 focused edit and validation pass.
+- Failures/causes: None.
+- Tests: Prompt formatting check passed; `git diff --check` passed.
+- Commit: Not applicable for the prompt because `/prompts/` is intentionally gitignored; repository `.git` writes are also denied.
+- Current state: Prompt lists the 14 unresolved active models and requires exact source URL, publisher, dates, measurement definition, provider coverage, and evidence classification for every future speed value.
+- Exact next step: Use the updated prompt to collect and review authoritative speed sources.
+
+## 2026-09-12 — Apply OpenRouter speed list and remove speedless models
+
+- Objective: Apply the user-gathered OpenRouter throughput values, remove models marked `N/A` from active surfaces, and expose the OpenRouter source in model detail score dropdowns.
+- Files changed: `src/data/verifiedModels.json`, `src/data/models.ts`, `src/components/RankingList.astro`, `src/pages/models/[slug].astro`, `src/pages/compare/index.astro`, `src/pages/sitemap.xml.ts`, `tests/livebenchCatalog.test.ts`, `tests/modelDetailSources.test.ts`, `SESSION_LOG.md`. The ignored prompt remains at `prompts/openrouter-model-speed-telemetry.md`.
+- Attempts: 2 implementation and validation passes.
+- Failures/causes: Initial prompt-to-catalog script needed an explicit DeepSeek name alias; an existing source-label test needed the new OpenRouter model-page label. Sandboxed Wrangler registry writes failed; elevated build passed. Repository-wide lint still reports the unrelated pre-existing formatting issue in `src/components/ModelDataSources.tsx`.
+- Tests: Applied 52 numeric OpenRouter values; removed 4 `N/A` models from the active `models` list. `npm test` passed 153/153; `npx tsc --noEmit` passed; changed-file formatting passed; elevated `npm run build` passed with 52 comparison records and no speedless model routes; `git diff --check` passed.
+- Commit: Not created because this environment denies writes to `.git` (`index.lock` permission denied).
+- Current state: Active explorer, rankings, comparison discovery, model routes, and sitemap contain only the 52 models with numeric OpenRouter speed values. Detail score dropdowns link Speed to OpenRouter model-page throughput source metadata.
+- Exact next step: Create the local commit from the working tree, then wait for user verification.
+
+## 2026-09-12 — Fetch missing model speed telemetry
+
+- Objective: Fill missing active model speed values from current authoritative OpenRouter throughput telemetry.
+- Files changed: `src/data/verifiedModels.json`, `SESSION_LOG.md`; generated comparison artifacts refreshed by the build.
+- Attempts: 1 fetch and validation pass.
+- Failures/causes: OpenRouter had no public throughput telemetry for 14 active models, so those values remain null rather than being estimated.
+- Tests: OpenRouter refresh matched 106 models; 13 previously missing active models received p50 throughput with provider ranges and 2026-09-12 provenance. `npm test` passed 153/153; `npx tsc --noEmit` passed; `npm run lint` passed; elevated `npm run build` passed with 56 comparison records; `git diff --check` passed.
+- Commit: Not created because this environment denies writes to `.git` (`index.lock` permission denied).
+- Current state: Active models with available OpenRouter telemetry now have speed values and source metadata; unresolved models remain explicitly unavailable.
+- Exact next step: Create the local commit from the working tree, then wait for user verification.
+
+## 2026-09-12 — Add score-based model table heatmap
+
+- Objective: Mark model-table benchmark scores of 75 and above with a proportional green gradient.
+- Files changed: `src/components/ModelExplorer.tsx`, `src/styles/global.css`, `docs/superpowers/specs/2026-09-12-score-heatmap-design.md`, `SESSION_LOG.md`.
+- Attempts: 1 implementation pass.
+- Failures/causes: Visual browser verification was blocked because the user-run Astro development server returned a stale Vite optimized-dependency error. It was not restarted, per repository instruction. The initial sandboxed check could not write Wrangler's external diagnostic log; the approved elevated rerun passed.
+- Tests: `npm run check` passed with 0 errors, warnings, or hints; focused Prettier and ESLint checks passed; `npm run build` passed; `git diff --check` passed. Repository-wide lint still reports an unrelated existing Prettier issue in `src/components/ModelDataSources.tsx`.
+- Commit: Design specification `1cb7078`; implementation commit pending.
+- Current state: Reasoning, coding, agentic coding, mathematics, data analysis, language, and instruction-following cells are shaded from 75 through 100 with a stronger green tint for higher scores. Lower and null values remain neutral; overall, cost, and speed retain their existing styling.
+- Exact next step: Create the scoped implementation commit, then wait for user verification after the development server is next restarted.
+
+## 2026-09-12 — Publish MiniMax-M3 API pricing
+
+- Objective: Add verified, tier-aware MiniMax-M3 API pricing and first-party provenance to comparison, detail, pricing, and calculator flows.
+- Files changed: `src/data/officialProviders.ts`, `src/lib/apiPricing.ts`, `src/lib/apiPricingSchema.ts`, `src/components/ApiPricing.tsx`, `tests/apiPricing.test.ts`, `docs/superpowers/specs/2026-09-12-minimax-m3-pricing-design.md`, `SESSION_LOG.md`.
+- Attempts: 1 implementation pass.
+- Failures/causes: The initial `npm run check` was blocked from writing a Wrangler diagnostic log outside the workspace; the approved elevated rerun passed. The local commit remains blocked because `.git/index.lock` cannot be created.
+- Tests: Focused pricing test passed 13/13; full `npm test` passed 155/155; elevated `npm run check` passed with 0 errors, warnings, or hints; elevated `npm run build`, scoped Prettier/ESLint, and `git diff --check` passed.
+- Commit: Pending; the design specification is ignored by default and must be force-added with the scoped implementation files when Git write access is available.
+- Current state: MiniMax-M3 now uses the same aligned Input, Output, and Context tier rows as other comparison entries, with tier ranges and the MiniMax API pricing source below. Detail and calculator flows retain cached-input rates and tier-aware calculations.
+- Exact next step: Create the scoped local commit, then wait for user verification of MiniMax-M3 on the comparison page.
+
+## 2026-09-12 — Restore DeepSeek V4.1 Flash cost efficiency
+
+- Objective: Replace the comparison-table “Not measured” value for DeepSeek V4.1 Flash cost efficiency with a score derived from its existing verified DeepSeek API pricing.
+- Files changed: `src/data/officialProviders.ts`, `src/data/verifiedModels.json`, `tests/dataPipeline.test.ts`, `SESSION_LOG.md`; design note at `docs/superpowers/specs/2026-09-12-deepseek-v4-1-flash-cost-efficiency-design.md` is intentionally ignored by Git.
+- Attempts: 1 implementation pass.
+- Failures/causes: Repository-wide lint is blocked by the unrelated pre-existing Prettier violation in `src/components/ModelDataSources.tsx`; no changed file has a formatting issue.
+- Tests: Focused pipeline test passed 22/22; full `npm test` passed 157/157; elevated `npm run check` passed with 0 errors, warnings, or hints; elevated `npm run build` passed; `git diff --check` passed.
+- Commit: Pending; the shared working tree contains unrelated user changes and this environment previously denied `.git/index.lock` writes.
+- Current state: The official DeepSeek API pricing source ($0.15 input, $0.003 cached input, $0.60 output per million tokens) now yields a 77/100 cost-efficiency score with auditable source evidence.
+- Exact next step: Create a scoped local commit for this fix when Git write access is available, then verify DeepSeek V4.1 Flash in the comparison view.
+
+## 2026-09-12 — Synchronize API pricing sources across views
+
+- Objective: Keep the API pricing page and model pricing presentation aligned on one reviewed pricing source per model.
+- Files changed: `src/lib/apiPricing.ts`, `src/components/ApiPricing.tsx`, `src/components/PricingComparison.tsx`, `tests/apiPricing.test.ts`, `docs/superpowers/specs/2026-09-12-pricing-page-shared-source-design.md`, `SESSION_LOG.md`.
+- Attempts: 1 implementation pass.
+- Failures/causes: Repository-wide lint remains blocked by the unrelated pre-existing Prettier violation in `src/components/ModelDataSources.tsx`. Wrangler's external diagnostic-log writes were denied by the sandbox, while Astro and TypeScript diagnostics completed with zero findings.
+- Tests: Focused pricing test passed 14/14; `npx tsc --noEmit` passed; `npm run check` completed with zero Astro/TypeScript diagnostics; pricing browser flow passed; scoped Prettier passed; `git diff --cached --check` passed.
+- Commit: Design specification `c3c7f10`; implementation `aaff825`.
+- Current state: The pricing comparison desktop table and mobile cards resolve the same representative reviewed rate source as the compact model pricing view. Rates, tiers, sorting, and detailed per-rate provenance remain unchanged.
+- Exact next step: Wait for user verification of the pricing page and a model pricing detail.
+
+## 2026-09-12 — Show tiered API rates in comparisons
+
+- Objective: Replace the opaque “Varies by context” label with the actual rate and long-context threshold.
+- Files changed: `src/lib/apiPricing.ts`, `src/components/PricingComparison.tsx`, `tests/apiPricing.test.ts`, `tests/pricing_browser.py`, `SESSION_LOG.md`.
+- Attempts: 1 implementation pass.
+- Failures/causes: Repository-wide lint remains blocked by the unrelated existing Prettier issue in `src/components/ModelDataSources.tsx`; Wrangler was denied permission to write external diagnostic logs, although Astro and TypeScript diagnostics completed successfully.
+- Tests: Focused pricing tests passed 14/14; pricing browser flow passed; `npm run check` completed with zero Astro/TypeScript diagnostics; scoped Prettier and `git diff --check` passed.
+- Commit: Pending.
+- Current state: Tiered rates now show both prices and the threshold, for example `$2.00 up to 200k · $4.00 above`, across pricing and comparison views.
+- Exact next step: Create the scoped local commit, then wait for user verification.
+
+## 2026-09-12 — Publish sourced missing API prices
+
+- Objective: Publish API pricing page entries for every tracked model with complete catalog rates and a valid existing pricing source.
+- Files changed: `src/lib/apiPricing.ts`, `src/lib/apiPricingSchema.ts`, `tests/apiPricing.test.ts`, `SESSION_LOG.md`; design specification committed separately at `docs/superpowers/specs/2026-09-12-complete-api-pricing-design.md`.
+- Attempts: 1 implementation pass.
+- Failures/causes: The user-run development server did not return `/cost`, so browser verification could not run without restarting it. Wrangler's external log writes required the approved elevated validation run.
+- Tests: Focused pricing tests passed 15/15; full `npm test` passed 159/159; elevated `npm run check` passed with 0 Astro/TypeScript diagnostics; `npm run build` passed; Prettier and `git diff --check` passed.
+- Commit: Design specification `8e3557a`; implementation commit pending.
+- Current state: GLM 5.3 and GLM 5.3 Flash now show their existing OpenRouter-backed rates, and Nemotron 3 Ultra 550B shows its NVIDIA-backed rate. Their existing retrieval dates remain visible for freshness. Inkling remains unavailable because its only linked URL is the LiveBench benchmark, which is not pricing provenance.
+- Exact next step: Create the scoped implementation commit, then wait for user verification of `/pricing`.

@@ -42,15 +42,34 @@ export function singleRate(
   const tiers = model.apiPricing?.tiers;
   return tiers?.length === 1 ? tiers[0][key] : null;
 }
+
+function formatTokenLimit(tokens: number): string {
+  if (tokens >= 1_000_000 && tokens % 1_000_000 === 0)
+    return `${tokens / 1_000_000}M`;
+  if (tokens >= 1_000 && tokens % 1_000 === 0) return `${tokens / 1_000}k`;
+  return tokens.toLocaleString('en-US');
+}
 export function rateLabel(
   model: CatalogModel,
   key: 'input' | 'output' | 'cached',
 ): string {
-  if ((model.apiPricing?.tiers.length ?? 0) > 1) return 'Varies by context';
+  const tiers = model.apiPricing?.tiers ?? [];
+  if (tiers.length > 1) {
+    const [standard, longContext] = tiers;
+    const standardRate = standard[key];
+    const longContextRate = longContext[key];
+    if (
+      standard.maxContext !== null &&
+      standardRate &&
+      longContextRate &&
+      priceFreshness(standardRate) === 'Current' &&
+      priceFreshness(longContextRate) === 'Current'
+    )
+      return `${formatPrice(standardRate.value)} up to ${formatTokenLimit(standard.maxContext)} · ${formatPrice(longContextRate.value)} above`;
+    return 'Tiered pricing — see details';
+  }
   const rate = singleRate(model, key);
-  return priceFreshness(rate) === 'Needs verification'
-    ? 'Needs verification'
-    : formatPrice(rate?.value);
+  return formatPrice(rate?.value);
 }
 export function comparablePrice(
   model: CatalogModel,
@@ -115,9 +134,10 @@ const reviewedPricingHosts: Record<string, string[]> = {
   xAI: ['docs.x.ai'],
   'Amazon AWS': ['aws.amazon.com'],
   Cohere: ['docs.cohere.com'],
-  MiniMax: ['platform.minimaxi.com'],
+  MiniMax: ['platform.minimaxi.com', 'platform.minimax.io'],
   Tencent: ['hunyuan.tencent.com'],
   'Z.ai': ['z.ai', 'docs.z.ai'],
+  NVIDIA: ['build.nvidia.com'],
 };
 
 /** Convert legacy provider pricing only when its source is first-party. */
@@ -133,7 +153,13 @@ export function reviewedCatalogPricing(model: CatalogModel): ApiPricing | null {
   } catch {
     return null;
   }
-  if (!reviewedPricingHosts[model.provider]?.includes(hostname)) return null;
+  const sourceType =
+    hostname === 'openrouter.ai'
+      ? 'openrouter'
+      : reviewedPricingHosts[model.provider]?.includes(hostname)
+        ? 'provider_doc'
+        : null;
+  if (!sourceType) return null;
 
   const makePrice = (value: number | null): PriceValue | null =>
     value === null
@@ -145,7 +171,7 @@ export function reviewedCatalogPricing(model: CatalogModel): ApiPricing | null {
           source: {
             name: source.name,
             url: source.url,
-            type: 'provider_doc',
+            type: sourceType,
             retrievedAt: model.pricing.updatedAt,
             effectiveFrom: null,
           },
@@ -153,7 +179,10 @@ export function reviewedCatalogPricing(model: CatalogModel): ApiPricing | null {
 
   return apiPricingSchema.parse({
     provider: model.provider,
-    scope: `${model.provider} API pricing · reviewed provider documentation`,
+    scope:
+      sourceType === 'openrouter'
+        ? `${model.provider} API pricing · OpenRouter model listing`
+        : `${model.provider} API pricing · reviewed provider documentation`,
     tiers: [
       {
         id: 'standard',

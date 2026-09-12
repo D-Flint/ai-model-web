@@ -7,6 +7,7 @@ import {
   formatPrice,
   priceFreshness,
   pricingSource,
+  rateLabel,
 } from '../src/lib/apiPricing';
 import { apiPricingSchema } from '../src/lib/apiPricingSchema';
 import {
@@ -17,8 +18,10 @@ import { models, allModels } from '../src/data/models';
 import { validateCatalog } from '../src/lib/importCatalog';
 
 const now = new Date('2026-09-06T12:00:00Z');
+const minimaxNow = new Date('2026-09-12T12:00:00Z');
 const claude = verifiedApiPricing['claude-sonnet-5'];
 const gemini = verifiedApiPricing['gemini-3-1-pro'];
+const minimax = verifiedApiPricing['minimax-m3'];
 describe('user-provided API workloads', () => {
   it('multiplies uncached, cached and output categories by requests without double counting', () => {
     const result = calculateApiCost(
@@ -46,6 +49,22 @@ describe('user-provided API workloads', () => {
     expect(high.tier.id).toBe('long-context');
     expect(high.output).toBeCloseTo(0.018);
     expect(high.input).toBeCloseTo((199001 * 4) / 1e6);
+  });
+  it('uses the MiniMax M3 long-context tier only above 512K input tokens', () => {
+    expect(
+      calculateApiCost(
+        minimax,
+        { input: 512000, output: 0, cached: 0, requests: 1 },
+        minimaxNow,
+      ).tier.id,
+    ).toBe('standard');
+    expect(
+      calculateApiCost(
+        minimax,
+        { input: 512001, output: 0, cached: 0, requests: 1 },
+        minimaxNow,
+      ).tier.id,
+    ).toBe('long-context');
   });
   it('adds cache writes and search per request but storage once per workload', () => {
     expect(
@@ -112,6 +131,31 @@ describe('user-provided API workloads', () => {
   });
 });
 describe('pricing provenance and comparisons', () => {
+  it('publishes verified MiniMax M3 context tiers with first-party provenance', () => {
+    expect(minimax.tiers).toEqual([
+      expect.objectContaining({
+        id: 'standard',
+        minContext: 0,
+        maxContext: 512000,
+        input: expect.objectContaining({ value: 0.3 }),
+        output: expect.objectContaining({ value: 1.2 }),
+        cached: expect.objectContaining({ value: 0.06 }),
+      }),
+      expect.objectContaining({
+        id: 'long-context',
+        minContext: 512001,
+        maxContext: 1048576,
+        input: expect.objectContaining({ value: 0.6 }),
+        output: expect.objectContaining({ value: 2.4 }),
+        cached: expect.objectContaining({ value: 0.12 }),
+      }),
+    ]);
+    expect(minimax.tiers[0].input?.source).toMatchObject({
+      name: 'MiniMax API pricing',
+      url: 'https://platform.minimax.io/subscribe/token-plan?tab=api-enterprise',
+      retrievedAt: '2026-09-12',
+    });
+  });
   it('publishes DeepSeek peak and off-peak API rates', () => {
     const pricing = verifiedApiPricing['deepseek-v4-1-flash'];
     const proPricing = verifiedApiPricing['deepseek-v4-pro-0813'];
@@ -142,6 +186,36 @@ describe('pricing provenance and comparisons', () => {
 
   it('validates the full published catalog after applying pricing snapshots', () => {
     expect(validateCatalog(models)).toHaveLength(models.length);
+  });
+  it('publishes sourced catalog rates with their actual source type', () => {
+    const glm = models.find((model) => model.slug === 'glm-5-3')!;
+    const glmFlash = models.find((model) => model.slug === 'glm-5-3-flash')!;
+    const nemotron = models.find(
+      (model) => model.slug === 'nemotron-3-ultra-550b',
+    )!;
+
+    expect(glm.apiPricing?.tiers[0].input).toMatchObject({
+      value: 0.5,
+      source: {
+        type: 'openrouter',
+        url: 'https://openrouter.ai/models/z-ai/glm-5.3',
+      },
+    });
+    expect(rateLabel(glm, 'input')).toBe('$0.50');
+    expect(glmFlash.apiPricing?.tiers[0].output).toMatchObject({
+      value: 0.25,
+      source: {
+        type: 'openrouter',
+        url: 'https://openrouter.ai/models/z-ai/glm-5.3-flash',
+      },
+    });
+    expect(nemotron.apiPricing?.tiers[0].input).toMatchObject({
+      value: 2,
+      source: {
+        type: 'provider_doc',
+        url: 'https://build.nvidia.com/',
+      },
+    });
   });
   it('does not call an API free when only its input is free, or reuse a legacy zero price', () => {
     vi.useFakeTimers();
@@ -211,6 +285,9 @@ describe('pricing provenance and comparisons', () => {
   it('preserves unavailable values and never flattens a tiered model for sorting', () => {
     const model = { ...models[0], apiPricing: gemini };
     expect(comparablePrice(model)).toBeNull();
+    expect(rateLabel(model, 'input')).toBe('$2.00 up to 200k · $4.00 above');
+    expect(rateLabel(model, 'cached')).toBe('$0.20 up to 200k · $0.40 above');
+    expect(rateLabel(model, 'output')).toBe('$12.00 up to 200k · $18.00 above');
     expect(reviewedContext['gemini-3-1-pro'].value).toBe(1_048_576);
     expect(reviewedContext['gemini-3-1-pro'].source.id).toBeTruthy();
     expect(formatPrice(null)).toBe('Unavailable');
