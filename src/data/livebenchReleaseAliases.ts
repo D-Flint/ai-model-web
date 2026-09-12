@@ -31,4 +31,6 @@ export const LIVEBENCH_RELEASE_ALIASES: Record<string, string> = {
   'kimi-k3': 'kimi-k3',
   'minimax-m3': 'minimax-m3',
   'glm-5.3-flash': 'glm-5-3-flash',
+  'muse-spark-1.3-xhigh': 'muse-spark-1-3',
 };
+

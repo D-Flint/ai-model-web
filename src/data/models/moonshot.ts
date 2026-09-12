@@ -627,4 +627,47 @@ export const MOONSHOT_MODELS: CanonicalModelConfig[] = [
     reasoningEffort: ['fixed'],
     defaultEffort: 'fixed',
   },
+
+  // ==========================================
+  // MUSE SPARK SERIES (2026)
+  // ==========================================
+  {
+    slug: 'muse-spark-1-3',
+    name: 'Muse Spark 1.3',
+    provider: 'Moonshot AI',
+    providerSlug: 'moonshot',
+    family: 'Muse Spark',
+    openWeights: true,
+    openRouterId: 'moonshotai/muse-spark-1.3',
+    lmarenaAliases: [
+      'muse-spark-1.3',
+      'muse-spark-1-3',
+      'moonshotai/muse-spark-1.3',
+      'Muse-Spark-1.3',
+    ],
+    swebenchAliases: ['Muse-Spark-1.3', 'muse-spark-1.3'],
+    livebenchAliases: [
+      'muse-spark-1.3-xhigh',
+      'muse-spark-1.3',
+      'muse-spark-1-3',
+    ],
+    bfclAliases: ['Muse-Spark-1.3', 'muse-spark-1.3'],
+    officialDocsUrl: 'https://platform.moonshot.cn/docs/pricing',
+    description:
+      "Moonshot AI's Muse Spark 1.3 high-efficiency reasoning foundation model, engineered for advanced mathematical reasoning, coding synthesis, and agentic workflows.",
+    strengths: [
+      'High-grade reasoning with 89.7 reasoning and 95.9 math scores on LiveBench',
+      'Strong coding performance (81.1) and agentic problem solving',
+      'Open-weights architecture optimized for fast inference throughput',
+    ],
+    weaknesses: [
+      'Higher compute requirements for maximum reasoning depth',
+      'Text and code focused with specialized multimodal grounding',
+    ],
+    tags: ['Reasoning', 'Open weights', 'Coding', 'Agents', 'Mathematics'],
+    reasoningEffort: ['none', 'low', 'medium', 'high', 'max'],
+    defaultEffort: 'high',
+    speedTokensPerSec: 72,
+  },
 ];
+

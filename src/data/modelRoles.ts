@@ -82,7 +82,7 @@ export const knownModelRoles: Readonly<Record<string, ModelRole[]>> = {
     'vision',
   ],
   'o1-pro': ['reasoning', 'coding', 'vision'],
-  'gpt-5-3-codex': ['coding', 'agentic'],
+  'muse-spark-1-3': ['general-purpose', 'reasoning', 'coding', 'agentic'],
   'claude-sonnet-4-5': [
     'general-purpose',
     'reasoning',

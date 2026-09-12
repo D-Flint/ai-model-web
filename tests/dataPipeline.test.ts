@@ -212,8 +212,8 @@ describe('Model Identity Resolution', () => {
       defaultAliasResolver.resolve('openrouter', 'openai/gpt-5.6-sol')?.slug,
     ).toBe('gpt-5-6-sol');
     expect(
-      defaultAliasResolver.resolve('openrouter', 'openai/gpt-5.3-codex')?.slug,
-    ).toBe('gpt-5-3-codex');
+      defaultAliasResolver.resolve('openrouter', 'moonshotai/muse-spark-1.3')?.slug,
+    ).toBe('muse-spark-1-3');
     expect(
       defaultAliasResolver.resolve(
         'openrouter',
