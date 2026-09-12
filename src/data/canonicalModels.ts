@@ -5,7 +5,6 @@ import { GOOGLE_MODELS } from './models/google';
 import { DEEPSEEK_MODELS } from './models/deepseek';
 import { META_MODELS } from './models/meta';
 import { MISTRAL_MODELS } from './models/mistral';
-import { QWEN_MODELS } from './models/qwen';
 import { XAI_MODELS } from './models/xai';
 import { AMAZON_MODELS } from './models/amazon';
 import { COHERE_MODELS } from './models/cohere';
@@ -22,7 +21,6 @@ export {
   DEEPSEEK_MODELS,
   META_MODELS,
   MISTRAL_MODELS,
-  QWEN_MODELS,
   XAI_MODELS,
   AMAZON_MODELS,
   COHERE_MODELS,
@@ -79,14 +77,6 @@ export const PROVIDERS_CONFIG = [
     website: 'https://mistral.ai',
     description:
       'European AI research laboratory developing efficient and frontier models.',
-  },
-  {
-    id: 'provider-qwen',
-    slug: 'qwen',
-    name: 'Alibaba Cloud / Qwen',
-    website: 'https://qwenlm.github.io',
-    description:
-      'Alibaba Cloud AI team building the Qwen series of open foundation models.',
   },
   {
     id: 'provider-xai',
@@ -153,7 +143,6 @@ const canonicalModels: CanonicalModelConfig[] = [
   ...DEEPSEEK_MODELS,
   ...META_MODELS,
   ...MISTRAL_MODELS,
-  ...QWEN_MODELS,
   ...XAI_MODELS,
   ...AMAZON_MODELS,
   ...COHERE_MODELS,

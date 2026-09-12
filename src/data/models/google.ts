@@ -713,35 +713,6 @@ export const GOOGLE_MODELS: CanonicalModelConfig[] = [
   // GEMMA OPEN-WEIGHT FOUNDATION MODELS
   // ==========================================
   {
-    slug: 'gemma-3',
-    name: 'Gemma 3',
-    provider: 'Google DeepMind',
-    providerSlug: 'google',
-    family: 'Gemma',
-    openWeights: true,
-    openRouterId: 'google/gemma-3',
-    lmarenaAliases: ['gemma-3', 'google/gemma-3'],
-    swebenchAliases: ['gemma-3', 'Google: Gemma 3'],
-    livebenchAliases: ['gemma-3'],
-    bfclAliases: ['gemma-3'],
-    officialDocsUrl:
-      'https://cloud.google.com/vertex-ai/generative-ai/docs/model-garden/explore-models#gemma',
-    description:
-      'Third-generation open-weight model with state-of-the-art efficiency, dense parameter scaling, and 128k context window.',
-    strengths: [
-      'Strong open-weights reasoning and instruction-following fidelity',
-      '131,072 token context window with reliable recall',
-      'Excellent balance of resource efficiency and generation quality',
-    ],
-    weaknesses: [
-      'Outperformed by larger commercial proprietary models on PhD STEM benchmarks',
-      'Requires local GPU acceleration for interactive token rates',
-    ],
-    tags: ['Open weights', 'Coding', 'Daily use'],
-    reasoningEffort: ['none'],
-    defaultEffort: 'none',
-  },
-  {
     slug: 'gemma-3n',
     name: 'Gemma 3n',
     provider: 'Google DeepMind',
@@ -756,7 +727,7 @@ export const GOOGLE_MODELS: CanonicalModelConfig[] = [
     officialDocsUrl:
       'https://cloud.google.com/vertex-ai/generative-ai/docs/model-garden/explore-models#gemma',
     description:
-      'Compact nano-tier variant of Gemma 3 engineered for ultra-fast local edge execution on personal workstations and mobile NPUs.',
+      'Compact nano-tier model engineered for ultra-fast local edge execution on personal workstations and mobile NPUs.',
     strengths: [
       'Fits easily into single consumer GPU or high-end laptop RAM',
       'Fast generation speed with instant local latency',

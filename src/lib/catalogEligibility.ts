@@ -107,8 +107,6 @@ export const EXCLUDED_SUB_VARIANTS_AND_OBSCURE = new Set<string>([
   'claude-sonnet-4',
   'claude-opus-4-7',
   'claude-opus-4-8',
-  'gpt-5-2',
-  'gpt-5-2-pro',
   'gemini-3-1-flash-lite',
   'gemini-2-5-flash-lite',
   'gemini-2-0-flash-lite',

@@ -17,6 +17,17 @@
 - Current state: Plan artifact completed and aligned with user directives.
 - Exact next step: Hand off to GPT-5.6 to execute Phase 0 through Phase 4.
 
+## 2026-09-12 — Remove Qwen 2.5, gpt-oss-120b, Claude Sonnet 4.5, and Gemma 3
+
+- Objective: Completely remove Qwen 2.5 family, gpt-oss-120b, Claude Sonnet 4.5, and Gemma 3 across canonical definitions, provider registries, roles, verified data, and tests.
+- Files changed: `src/data/canonicalModels.ts`, `src/data/models/qwen.ts` (deleted), `src/data/models/openai.ts`, `src/data/models/anthropic.ts`, `src/data/models/google.ts`, `src/data/officialProviders.ts`, `src/data/modelRoles.ts`, `src/data/verifiedModels.json`, `src/lib/catalogEligibility.ts`, `src/lib/livebenchCatalog.ts`, `tests/livebenchCatalog.test.ts`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: Removed models dropped LiveBench eligible count to 28 (< 30 limit requirement); unexcluded `gpt-5-2` and `gpt-5-2-pro` to maintain exactly 30 candidate models.
+- Tests: `npm test` (16 files, 150/150 passed); `npm run check` (0 errors, 0 warnings); `npm run lint` (clean); `npm run build` (success).
+- Commit: Pending local commit.
+- Current state: Stored locally; no remote push.
+- Exact next step: User verification of the updated catalog.
+
 ## 2026-09-12 — Purge deprecated and obsolete models (o1, o1-pro, DeepSeek R1, Gemini 2.0 Pro, Claude 3.7 Sonnet, o3, o3-pro, Gemini 2.5 Pro, o4 mini, Gemini 3 Pro)
 
 - Objective: Completely remove o1, o1-pro, DeepSeek R1, Gemini 2.0 Pro, Claude 3.7 Sonnet, o3, o3-pro, Gemini 2.5 Pro, o4 mini, and Gemini 3 Pro from canonical models, provider specs, roles, SEO pairs, verified catalog, and tests.
