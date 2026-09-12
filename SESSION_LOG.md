@@ -1,5 +1,16 @@
 # Session Log
 
+## 2026-09-12 — Standardize API pricing table row heights
+
+- Objective: Ensure every table row on the API pricing page has the exact same row height across all models, viewports, search terms, and sort options.
+- Files changed: `src/components/PricingComparison.tsx`, `src/styles/global.css`, `tests/apiPricingTable.test.tsx`.
+- Attempts: 1 pass with Playwright viewport measurements across 769px–1920px.
+- Failures/causes: Previous table layout had no min-width per column and unconstrained cells, causing tiered rate strings, pricing notes, and source provenance to wrap into 1–6 lines arbitrarily. Reset `.cost-table td:last-child` 18px font size override, established column min-widths, clamped multi-line notes/source/model cells to 2 lines, and standardized row height to 68px.
+- Tests: Verified in Playwright across all 51 models, 7 viewports (769px to 1920px), and all 4 sort modes (input, output, blended, context) with 100% having 68px row height; `tests/apiPricingTable.test.tsx` passed; `npm test` passed 161/161; `npm run check` passed (110 files, 0 errors, 0 warnings, 0 hints).
+- Commit: `0ebacc18a7d6689c590e335e2be03bcadaf3637f`.
+- Current state: Every row in the API pricing desktop table has identical 68px height with clean alignment, consistent padding, and smooth hover feedback.
+- Exact next step: User verification of the API pricing table on `/pricing`.
+
 ## 2026-09-12 — Use LiveBench cost per successful task in leaderboard
 
 - Objective: Replace the leaderboard input-token price column with LiveBench's official cost per successful task.
