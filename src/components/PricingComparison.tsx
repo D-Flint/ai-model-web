@@ -66,25 +66,27 @@ export default function PricingComparison({
         role="region"
         aria-label="API pricing comparison"
       >
-        <table className="cost-table">
+        <table className="cost-table pricing-table">
           <caption>
             Official API pricing, with OpenRouter fallback where verified
           </caption>
           <thead>
             <tr>
               {[
-                'Model',
-                'Provider',
-                'Input / 1M',
-                'Cached / 1M',
-                'Output / 1M',
-                ...(sort === 'blended' ? ['Blended / 1M'] : []),
-                'Context',
-                'Pricing notes',
-                'Source freshness',
-              ].map((s) => (
-                <th scope="col" key={s}>
-                  {s}
+                { title: 'Model', className: 'col-model' },
+                { title: 'Provider', className: 'col-provider' },
+                { title: 'Input / 1M', className: 'col-rate' },
+                { title: 'Cached / 1M', className: 'col-rate' },
+                { title: 'Output / 1M', className: 'col-rate' },
+                ...(sort === 'blended'
+                  ? [{ title: 'Blended / 1M', className: 'col-rate' }]
+                  : []),
+                { title: 'Context', className: 'col-context' },
+                { title: 'Pricing notes', className: 'col-notes' },
+                { title: 'Source freshness', className: 'col-source' },
+              ].map(({ title, className }) => (
+                <th scope="col" key={title} className={className}>
+                  {title}
                 </th>
               ))}
             </tr>
@@ -92,23 +94,31 @@ export default function PricingComparison({
           <tbody>
             {sorted.map((m) => {
               return (
-                <tr key={m.slug}>
-                  <th scope="row">
+                <tr key={m.slug} className="pricing-row">
+                  <th scope="row" className="col-model">
                     <a href={`/models/${m.slug}#pricing`}>{m.name}</a>
                   </th>
-                  <td>{m.provider}</td>
+                  <td className="col-provider">{m.provider}</td>
                   {(['input', 'cached', 'output'] as const).map((key) => (
-                    <td key={key}>{rateLabel(m, key)}</td>
+                    <td key={key} className="col-rate">
+                      {rateLabel(m, key)}
+                    </td>
                   ))}
                   {sort === 'blended' && (
-                    <td>{formatPrice(comparablePrice(m, 'blended'))}</td>
+                    <td className="col-rate">
+                      {formatPrice(comparablePrice(m, 'blended'))}
+                    </td>
                   )}
-                  <td>{m.facts.context.toLocaleString('en-US')}</td>
-                  <td>
-                    {m.apiPricing?.scope ?? 'Awaiting verification'}{' '}
-                    <a href={`/models/${m.slug}#pricing`}>Details</a>
+                  <td className="col-context">
+                    {m.facts.context.toLocaleString('en-US')}
                   </td>
-                  <td>
+                  <td className="col-notes">
+                    <span className="pricing-notes">
+                      {m.apiPricing?.scope ?? 'Awaiting verification'}{' '}
+                      <a href={`/models/${m.slug}#pricing`}>Details</a>
+                    </span>
+                  </td>
+                  <td className="col-source">
                     <PriceSource price={pricingSource(m.apiPricing)} />
                   </td>
                 </tr>
