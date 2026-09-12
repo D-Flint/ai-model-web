@@ -709,3 +709,13 @@
 - Current state: 42 retained models = 35 eligible candidates plus seven recent discovery/excluded models; published leaderboard remains exactly 30. LiveBench seven-category arithmetic is shared unchanged between ingestion and fixture refresh. Unsupported generic scores/evidence are null/removed; native benchmark categories remain available. Existing raw speed fact fields are reused; normalized scores remain 0–100/null. Rankings requiring unsupported research/daily-use/writing evidence can be empty. Prior 282-model snapshot remains in Git at fdb909741c499ddf3c869e9f8301ed971b50c8fa:src/data/verifiedModels.json. User changes to HeroCompare.tsx, comparisonPairs.ts, and compare/index.astro were preserved and excluded from the commit. No push. Isolated preview stopped; user dev server left running.
 - Exact next step: Stop and wait for the user to verify /models desktop/mobile speed and context displays, the 30-model catalog, and comparison flow.
 
+
+## 2026-09-12 — Commit remaining comparison defaults and push
+
+- Objective: Commit all remaining changes and push, explicitly authorized by the user.
+- Files changed: src/components/HeroCompare.tsx, src/lib/comparisonPairs.ts, src/pages/compare/index.astro, SESSION_LOG.md.
+- Attempts: 1. Failures: None during review and commit.
+- Tests: Reused the immediately preceding successful typecheck, lint, 148 unit tests, production build, and Cloudflare/browser checks, which included these unchanged working-tree edits. Reviewed the remaining diff before staging.
+- Commit: 1ec43a1 (feat: set shared default comparison models).
+- Current state: All remaining comparison defaults committed; Claude Fable 5.1 and GPT-6 Astra share default selection across homepage and compare page. Session record is committed next, then main is pushed to origin.
+- Exact next step: Push main to origin, verify remote HEAD and clean working tree, then wait for user verification.
