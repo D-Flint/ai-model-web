@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import type { CatalogModel } from '../lib/catalogSchema';
-import { comparablePrice, formatPrice, pricingSource } from '../lib/apiPricing';
+import {
+  comparablePrice,
+  formatPrice,
+  pricingSource,
+  rateLabel,
+} from '../lib/apiPricing';
 import { PriceSource } from './ApiPricing';
 import { ProviderLogo } from './ProviderLogo';
 
@@ -86,9 +91,6 @@ export default function PricingComparison({
           </thead>
           <tbody>
             {sorted.map((m) => {
-              const tiers = m.apiPricing?.tiers ?? [];
-              const varying = tiers.length > 1;
-              const t = tiers[0];
               return (
                 <tr key={m.slug}>
                   <th scope="row">
@@ -96,11 +98,7 @@ export default function PricingComparison({
                   </th>
                   <td>{m.provider}</td>
                   {(['input', 'cached', 'output'] as const).map((key) => (
-                    <td key={key}>
-                      {varying
-                        ? 'Varies by context'
-                        : formatPrice(t?.[key]?.value)}
-                    </td>
+                    <td key={key}>{rateLabel(m, key)}</td>
                   ))}
                   {sort === 'blended' && (
                     <td>{formatPrice(comparablePrice(m, 'blended'))}</td>
@@ -121,11 +119,8 @@ export default function PricingComparison({
       </div>
       <div className="mobile-pricing-list" aria-label="API pricing cards">
         {sorted.map((model) => {
-          const tiers = model.apiPricing?.tiers ?? [];
-          const varying = tiers.length > 1;
-          const tier = tiers[0];
           const rate = (key: 'input' | 'cached' | 'output') =>
-            varying ? 'Varies by context' : formatPrice(tier?.[key]?.value);
+            rateLabel(model, key);
           return (
             <article className="mobile-pricing-card" key={model.slug}>
               <header className="mobile-pricing-card-header">

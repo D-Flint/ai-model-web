@@ -52,7 +52,7 @@ with sync_playwright() as p:
     expect(page.locator('tbody tr').first).to_contain_text('Gemini 2.5 Flash-Lite')
     page.get_by_role('combobox', name='Sort pricing', exact=True).select_option('blended')
     expect(page.get_by_role('columnheader', name='Blended / 1M')).to_be_visible()
-    expect(page.locator('tbody tr').last).to_contain_text('Varies by context')
+    expect(page.locator('tbody tr').last).to_contain_text('.10 up to 200k · .20 above')
     expect(page.locator('.mobile-pricing-list')).to_be_hidden()
     page.screenshot(path=str(artifacts / 'pricing-comparison-desktop.png'), full_page=True)
 
@@ -60,7 +60,7 @@ with sync_playwright() as p:
     expect(page.locator('#pricing')).to_contain_text('200,001')
     expect(page.locator('#pricing')).to_contain_text('Google Gemini API pricing')
     visit('/compare?models=claude-sonnet-5,gemini-2-5-pro')
-    expect(page.locator('.comparison-table')).to_contain_text('Varies by context')
+    expect(page.locator('.comparison-table')).to_contain_text('.10 up to 200k · .20 above')
     expect(page.locator('.mobile-comparison')).to_be_hidden()
     assert 'Estimated task cost' not in page.locator('main').inner_text()
     visit('/compare/claude-sonnet-5-vs-gemini-2-5-pro')
