@@ -146,12 +146,11 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
   function getDisplayPriceLabel(
     model: CatalogModel,
-    key: 'input' | 'output',
+    key: 'input' | 'cached' | 'output',
   ): string {
     const label = rateLabel(model, key);
     if (label !== 'Unavailable') return label;
-    const fallbackVal =
-      key === 'input' ? model.pricing?.input : model.pricing?.output;
+    const fallbackVal = model.pricing?.[key];
     return fallbackVal != null ? formatPrice(fallbackVal) : 'Unavailable';
   }
 
@@ -1285,6 +1284,18 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                                   </div>
                                   <div>
                                     <span className="spec-label">
+                                      Cached input price
+                                    </span>
+                                    <strong>
+                                      {getDisplayPriceLabel(
+                                        row.model,
+                                        'cached',
+                                      )}{' '}
+                                      / 1M
+                                    </strong>
+                                  </div>
+                                  <div>
+                                    <span className="spec-label">
                                       Modalities
                                     </span>
                                     <strong>
@@ -1511,6 +1522,12 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                           <span className="spec-label">Output Price</span>
                           <strong>
                             {getDisplayPriceLabel(row.model, 'output')} / 1M
+                          </strong>
+                        </div>
+                        <div>
+                          <span className="spec-label">Cached input price</span>
+                          <strong>
+                            {getDisplayPriceLabel(row.model, 'cached')} / 1M
                           </strong>
                         </div>
                         {row.model.facts.releaseDate && (

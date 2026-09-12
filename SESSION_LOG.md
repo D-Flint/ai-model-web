@@ -1,5 +1,16 @@
 # Session Log
 
+## 2026-09-12 — Show cached input price in model detail expansion
+
+- Objective: Ensure every expanded model detail card shows input, cached input, and output API pricing categories.
+- Files changed: `src/components/ModelExplorer.tsx`, `SESSION_LOG.md`.
+- Attempts: 2 implementation/validation passes.
+- Failures/causes: First JSX insertion placed the new mobile card inside the release-date conditional; corrected the grouping before validation.
+- Tests: `npm run check` passed; `npm run lint` passed; `npm test` passed 151/151; `git diff --check` passed.
+- Commit: Pending local commit.
+- Current state: Desktop and mobile expanded model cards include all three pricing categories and fall back to stored model pricing when needed. No remote push.
+- Exact next step: User verifies the expanded model row in the browser.
+
 ## 2026-09-12 — Add DeepSeek peak and off-peak API pricing
 
 - Objective: Show official DeepSeek peak and off-peak API rates in model detail pricing.
