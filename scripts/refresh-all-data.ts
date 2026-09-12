@@ -2,6 +2,7 @@ import { writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { runIngestionPipeline } from '../src/pipeline/engine';
 import { persistIngestionToDatabase } from '../src/pipeline/dbPersist';
+import { curateRecentCatalog } from '../src/lib/livebenchCatalog';
 
 async function main() {
   console.log('====================================================');
@@ -13,9 +14,14 @@ async function main() {
     await runIngestionPipeline();
 
   const outputPath = resolve('src/data/verifiedModels.json');
-  await writeFile(outputPath, JSON.stringify(catalog, null, 2) + '\n', 'utf8');
+  const publishedCatalog = curateRecentCatalog(catalog);
+  await writeFile(
+    outputPath,
+    JSON.stringify(publishedCatalog, null, 2) + '\n',
+    'utf8',
+  );
   console.log(
-    `\n[✓] Saved verified catalog with ${catalog.length} models to: ${outputPath}`,
+    `\n[✓] Saved verified catalog with ${publishedCatalog.length} models to: ${outputPath}`,
   );
 
   if (process.env.DATABASE_URL) {

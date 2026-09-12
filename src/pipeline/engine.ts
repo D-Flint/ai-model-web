@@ -12,7 +12,11 @@ import {
   LMARENA_CONFIGS,
 } from './lmarena';
 import { fetchSweBenchLeaderboard, processSweBenchResults } from './swebench';
-import { fetchLiveBenchData, processLiveBenchResults } from './livebench';
+import {
+  buildLiveBenchBenchmark,
+  fetchLiveBenchData,
+  processLiveBenchResults,
+} from './livebench';
 import { fetchBfclLeaderboard, processBfclResults } from './bfcl';
 import { calculateCostEfficiencyScore } from './normalization';
 import { calculateConfidence } from './confidence';
@@ -370,77 +374,7 @@ export async function runIngestionPipeline(
     let livebenchBenchmark: ModelBenchmarks['livebench'] = null;
 
     if (lbRow) {
-      const reasoning =
-        lbRow.reasoning !== undefined && lbRow.reasoning !== null
-          ? Number(lbRow.reasoning.toFixed(1))
-          : null;
-      const coding =
-        lbRow.coding !== undefined && lbRow.coding !== null
-          ? Number(lbRow.coding.toFixed(1))
-          : null;
-      const agenticCoding =
-        lbRow.agentic_coding !== undefined && lbRow.agentic_coding !== null
-          ? Number(lbRow.agentic_coding.toFixed(1))
-          : null;
-      const mathematics =
-        lbRow.math !== undefined && lbRow.math !== null
-          ? Number(lbRow.math.toFixed(1))
-          : null;
-      const dataAnalysis =
-        lbRow.data_analysis !== undefined && lbRow.data_analysis !== null
-          ? Number(lbRow.data_analysis.toFixed(1))
-          : null;
-      const language =
-        lbRow.language !== undefined && lbRow.language !== null
-          ? Number(lbRow.language.toFixed(1))
-          : null;
-      const instructionFollowing =
-        lbRow.instruction_following !== undefined &&
-        lbRow.instruction_following !== null
-          ? Number(lbRow.instruction_following.toFixed(1))
-          : null;
-
-      const subcategories = [
-        reasoning,
-        coding,
-        agenticCoding,
-        mathematics,
-        dataAnalysis,
-        language,
-        instructionFollowing,
-      ];
-      const hasAll7 = subcategories.every(
-        (val) => typeof val === 'number' && Number.isFinite(val),
-      );
-
-      // Deterministic LiveBench Overall: unweighted average of the 7 LiveBench categories.
-      // If any category is missing or null, set overall = null.
-      const overall = hasAll7
-        ? Number(
-            (
-              (reasoning! +
-                coding! +
-                agenticCoding! +
-                mathematics! +
-                dataAnalysis! +
-                language! +
-                instructionFollowing!) /
-              7
-            ).toFixed(1),
-          )
-        : null;
-
-      livebenchBenchmark = {
-        release: lbRow.date ?? today,
-        overall,
-        reasoning,
-        coding,
-        agenticCoding,
-        mathematics,
-        dataAnalysis,
-        language,
-        instructionFollowing,
-      };
+      livebenchBenchmark = buildLiveBenchBenchmark(lbRow, today);
 
       availableSources.set('livebench-leaderboard', {
         id: 'livebench-leaderboard',
@@ -552,21 +486,9 @@ export async function runIngestionPipeline(
         livebenchBenchmark?.agenticCoding !== undefined
           ? normalize(livebenchBenchmark.agenticCoding, 0, 100)
           : null,
-      dailyUse:
-        livebenchBenchmark?.instructionFollowing !== null &&
-        livebenchBenchmark?.instructionFollowing !== undefined
-          ? normalize(livebenchBenchmark.instructionFollowing, 0, 100)
-          : null,
-      research:
-        livebenchBenchmark?.dataAnalysis !== null &&
-        livebenchBenchmark?.dataAnalysis !== undefined
-          ? normalize(livebenchBenchmark.dataAnalysis, 0, 100)
-          : null,
-      writing:
-        livebenchBenchmark?.language !== null &&
-        livebenchBenchmark?.language !== undefined
-          ? normalize(livebenchBenchmark.language, 0, 100)
-          : null,
+      dailyUse: null,
+      research: null,
+      writing: null,
       vision: null,
       speed: null,
       reliability: null,
@@ -637,48 +559,6 @@ export async function runIngestionPipeline(
           min: 0,
           max: 100,
           normalized: scores.agentic,
-          sourceId: 'livebench-leaderboard',
-          updatedAt: livebenchBenchmark.release,
-        });
-      }
-      if (
-        scores.dailyUse !== null &&
-        livebenchBenchmark.instructionFollowing !== null
-      ) {
-        evidenceList.push({
-          metric: 'dailyUse',
-          kind: 'benchmark',
-          raw: livebenchBenchmark.instructionFollowing,
-          min: 0,
-          max: 100,
-          normalized: scores.dailyUse,
-          sourceId: 'livebench-leaderboard',
-          updatedAt: livebenchBenchmark.release,
-        });
-      }
-      if (
-        scores.research !== null &&
-        livebenchBenchmark.dataAnalysis !== null
-      ) {
-        evidenceList.push({
-          metric: 'research',
-          kind: 'benchmark',
-          raw: livebenchBenchmark.dataAnalysis,
-          min: 0,
-          max: 100,
-          normalized: scores.research,
-          sourceId: 'livebench-leaderboard',
-          updatedAt: livebenchBenchmark.release,
-        });
-      }
-      if (scores.writing !== null && livebenchBenchmark.language !== null) {
-        evidenceList.push({
-          metric: 'writing',
-          kind: 'benchmark',
-          raw: livebenchBenchmark.language,
-          min: 0,
-          max: 100,
-          normalized: scores.writing,
           sourceId: 'livebench-leaderboard',
           updatedAt: livebenchBenchmark.release,
         });

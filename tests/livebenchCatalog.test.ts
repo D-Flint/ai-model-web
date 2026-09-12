@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { allModels, models } from '../src/data/models';
 import {
   LIVEBENCH_CATALOG_LIMIT,
+  LIVEBENCH_CANDIDATE_LIMIT,
+  curateRecentCatalog,
   selectTopLiveBenchModels,
 } from '../src/lib/livebenchCatalog';
 
@@ -30,8 +32,16 @@ describe('LiveBench catalog selection', () => {
     ).toBe(true);
   });
 
-  it('preserves complete verified catalog for history', () => {
-    expect(allModels).toHaveLength(282);
+  it('retains 35 eligible candidates and recent discovery models', () => {
+    expect(
+      selectTopLiveBenchModels(allModels, LIVEBENCH_CANDIDATE_LIMIT),
+    ).toHaveLength(35);
+    expect(allModels.length).toBeGreaterThanOrEqual(LIVEBENCH_CANDIDATE_LIMIT);
+    expect(allModels.length).toBeLessThanOrEqual(
+      LIVEBENCH_CANDIDATE_LIMIT + LIVEBENCH_CATALOG_LIMIT,
+    );
+    expect(curateRecentCatalog(allModels)).toEqual(allModels);
+    expect(allModels.some((model) => model.slug === 'hy4-preview')).toBe(true);
   });
 
   it('fails instead of substituting models when requested limit is unavailable', () => {

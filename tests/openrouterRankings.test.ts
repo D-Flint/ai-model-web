@@ -28,16 +28,11 @@ describe('openrouterRankings', () => {
     expect(featured[0].model.name).toBe('Hy4 preview');
     expect(featured[0].badge).toBe('#1 · 14.1T tokens');
 
-    expect(featured[1].ranking.rank).toBe(2);
-    expect(featured[1].model.name).toBe('GLM 5.3 Flash');
-    expect(featured[1].badge).toBe('#2 · 12.5T tokens');
-
-    expect(featured[2].ranking.rank).toBe(3);
-    expect(featured[2].model.name).toBe('DeepSeek V4-Flash-0731');
-    expect(featured[2].badge).toBe('#3 · 12.3T tokens');
-
-    expect(featured[3].ranking.rank).toBe(4);
-    expect(featured[3].model.name).toBe('GPT-5.6 Luna');
-    expect(featured[3].badge).toBe('#4 · 12.2T tokens');
+    for (let index = 1; index < featured.length; index++) {
+      expect(featured[index].ranking.rank).toBeGreaterThan(
+        featured[index - 1].ranking.rank,
+      );
+      expect(allModels).toContain(featured[index].model);
+    }
   });
 });

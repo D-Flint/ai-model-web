@@ -1,3 +1,4 @@
+import { formatTokenContext } from '../utils/formatters';
 import { comparablePrice, compareApiPrice } from './apiPricing';
 import {
   effortLatency,
@@ -249,7 +250,7 @@ export const money = (value: number, digits = 2) =>
     maximumFractionDigits: digits,
   }).format(value);
 export const contextSize = (value: number) =>
-  value >= 1_000_000 ? `${value / 1_000_000}M` : `${Math.round(value / 1000)}K`;
+  formatTokenContext(value).replace(/ tokens$/, '');
 export function rankModels(models: CatalogModel[], metric: Metric = 'overall') {
   return [...models].sort((a, b) => {
     const aScore =

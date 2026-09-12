@@ -5,6 +5,7 @@ import {
   liveBenchRowSchema,
   type LiveBenchRow,
   type BenchmarkMeasurement,
+  type ModelBenchmarks,
 } from './types';
 import type { ModelAliasResolver } from './aliasResolver';
 import { normalize } from '../lib/decision';
@@ -86,32 +87,6 @@ export function processLiveBenchResults(
       );
     }
 
-    // LiveBench sub-scores map directly to consumer-facing work categories.
-    if (row.instruction_following !== undefined)
-      addMeasurement(
-        canonical.slug,
-        evalDate,
-        'dailyUse',
-        'LiveBench Instruction Following',
-        row.instruction_following,
-      );
-    if (row.data_analysis !== undefined)
-      addMeasurement(
-        canonical.slug,
-        evalDate,
-        'research',
-        'LiveBench Data Analysis',
-        row.data_analysis,
-      );
-    if (row.language !== undefined)
-      addMeasurement(
-        canonical.slug,
-        evalDate,
-        'writing',
-        'LiveBench Language',
-        row.language,
-      );
-
     // LiveBench Agentic Coding is distinct from ordinary coding and BFCL.
     if (
       row.agentic_coding !== undefined &&
@@ -128,4 +103,81 @@ export function processLiveBenchResults(
   }
 
   return measurements;
+}
+
+export function buildLiveBenchBenchmark(
+  lbRow: LiveBenchRow,
+  today: string,
+): NonNullable<ModelBenchmarks['livebench']> {
+  const reasoning =
+    lbRow.reasoning !== undefined && lbRow.reasoning !== null
+      ? Number(lbRow.reasoning.toFixed(1))
+      : null;
+  const coding =
+    lbRow.coding !== undefined && lbRow.coding !== null
+      ? Number(lbRow.coding.toFixed(1))
+      : null;
+  const agenticCoding =
+    lbRow.agentic_coding !== undefined && lbRow.agentic_coding !== null
+      ? Number(lbRow.agentic_coding.toFixed(1))
+      : null;
+  const mathematics =
+    lbRow.math !== undefined && lbRow.math !== null
+      ? Number(lbRow.math.toFixed(1))
+      : null;
+  const dataAnalysis =
+    lbRow.data_analysis !== undefined && lbRow.data_analysis !== null
+      ? Number(lbRow.data_analysis.toFixed(1))
+      : null;
+  const language =
+    lbRow.language !== undefined && lbRow.language !== null
+      ? Number(lbRow.language.toFixed(1))
+      : null;
+  const instructionFollowing =
+    lbRow.instruction_following !== undefined &&
+    lbRow.instruction_following !== null
+      ? Number(lbRow.instruction_following.toFixed(1))
+      : null;
+
+  const subcategories = [
+    reasoning,
+    coding,
+    agenticCoding,
+    mathematics,
+    dataAnalysis,
+    language,
+    instructionFollowing,
+  ];
+  const hasAll7 = subcategories.every(
+    (val) => typeof val === 'number' && Number.isFinite(val),
+  );
+
+  // Deterministic LiveBench Overall: unweighted average of the 7 LiveBench categories.
+  // If any category is missing or null, set overall = null.
+  const overall = hasAll7
+    ? Number(
+        (
+          (reasoning! +
+            coding! +
+            agenticCoding! +
+            mathematics! +
+            dataAnalysis! +
+            language! +
+            instructionFollowing!) /
+          7
+        ).toFixed(1),
+      )
+    : null;
+
+  return {
+    release: lbRow.date ?? today,
+    overall,
+    reasoning,
+    coding,
+    agenticCoding,
+    mathematics,
+    dataAnalysis,
+    language,
+    instructionFollowing,
+  };
 }

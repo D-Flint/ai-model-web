@@ -55,9 +55,10 @@ describe('SEO comparison pairs and arbitrary comparisons', () => {
   });
 
   it('supports arbitrary comparisons via selectionFromSearch with ?a=&b=', () => {
-    const search = '?a=gemini-2-5-pro&b=gpt-6-astra';
+    const [a, b] = models;
+    const search = `?a=${a.slug}&b=${b.slug}`;
     const selection = selectionFromSearch(search, models);
-    expect(selection).toEqual(['gemini-2-5-pro', 'gpt-6-astra']);
+    expect(selection).toEqual([a.slug, b.slug]);
   });
 
   it('filters out unknown slugs in arbitrary searches and limits to 4', () => {

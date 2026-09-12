@@ -15,7 +15,7 @@ import {
   priorityDefinitions,
   useCaseDefinitions,
 } from '../src/data/modelFinderConfig';
-import { allModels, models } from '../src/data/models';
+import { models } from '../src/data/models';
 
 function request(
   overrides: Partial<ModelFinderRequest> = {},
@@ -67,7 +67,11 @@ describe('Model Finder task intent', () => {
 
 describe('Model Finder eligibility gates', () => {
   it('excludes safety classifiers from coding recommendations', () => {
-    const shield = allModels.find((model) => model.slug === 'shieldgemma-2');
+    const shield = {
+      ...structuredClone(models[0]),
+      slug: 'shieldgemma-2',
+      roles: ['safety-classifier' as const],
+    };
     expect(shield).toBeDefined();
     expect(evaluateEligibility(shield!, request())).toContain(
       'Model is specialized for a non-assistant role.',
@@ -187,7 +191,11 @@ describe('Model Finder evidence and shortlist behavior', () => {
   });
 
   it('does not let a cheap unsuitable classifier become Best Value', () => {
-    const shield = allModels.find((model) => model.slug === 'shieldgemma-2')!;
+    const shield = {
+      ...structuredClone(models[0]),
+      slug: 'shieldgemma-2',
+      roles: ['safety-classifier' as const],
+    };
     const suitable = models.find((model) => comparablePrice(model) !== null)!;
     const result = recommendModels([shield, suitable], request());
     expect(result.bestValue?.model.slug).not.toBe(shield.slug);

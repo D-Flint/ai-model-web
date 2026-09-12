@@ -16,7 +16,10 @@ import {
   normalizeOpenRouterFrontendEndpointStats,
   processOpenRouterThroughput,
 } from '../src/pipeline/openrouter';
-import { processLiveBenchResults } from '../src/pipeline/livebench';
+import {
+  buildLiveBenchBenchmark,
+  processLiveBenchResults,
+} from '../src/pipeline/livebench';
 import { catalogSchema } from '../src/lib/catalogSchema';
 import { validateCatalog } from '../src/lib/importCatalog';
 import verifiedModels from '../src/data/verifiedModels.json';
@@ -172,27 +175,11 @@ describe('LiveBench native categories', () => {
       sourceId: 'livebench-leaderboard',
       evaluationDate: '2026-06-25',
     });
-    expect(
-      measurements.find((measurement) => measurement.category === 'dailyUse'),
-    ).toMatchObject({
-      benchmarkName: 'LiveBench Instruction Following',
-      rawScore: 80,
-      normalizedScore: 80,
-    });
-    expect(
-      measurements.find((measurement) => measurement.category === 'research'),
-    ).toMatchObject({
-      benchmarkName: 'LiveBench Data Analysis',
-      rawScore: 79,
-      normalizedScore: 79,
-    });
-    expect(
-      measurements.find((measurement) => measurement.category === 'writing'),
-    ).toMatchObject({
-      benchmarkName: 'LiveBench Language',
-      rawScore: 81,
-      normalizedScore: 81,
-    });
+    expect(measurements.map((measurement) => measurement.category)).toEqual([
+      'intelligence',
+      'coding',
+      'agentic',
+    ]);
   });
 });
 
@@ -356,6 +343,22 @@ describe('Verified Catalog Integrity', () => {
 
     for (const model of validated) {
       expect(model.dataKind).toBe('verified');
+      for (const metric of [
+        'dailyUse',
+        'research',
+        'writing',
+        'vision',
+        'reliability',
+      ] as const) {
+        expect(model.scores[metric]).toBeNull();
+        expect(model.evidence.some((item) => item.metric === metric)).toBe(
+          false,
+        );
+      }
+      expect(
+        model.scores.speed === null ||
+          (model.scores.speed >= 0 && model.scores.speed <= 100),
+      ).toBe(true);
       expect(model.lastVerifiedAt).toBeDefined();
       expect(model.confidence).toBeGreaterThan(0);
       expect(model.sources.length).toBeGreaterThanOrEqual(2);
@@ -379,5 +382,26 @@ describe('Verified Catalog Integrity', () => {
       { ...verifiedModels[0], name: 'Duplicate Slug' },
     ];
     expect(() => catalogSchema.parse(dupes)).toThrow('Duplicate model slugs');
+  });
+});
+
+describe('LiveBench overall invariant', () => {
+  it('uses all seven native categories and rejects incomplete averages', () => {
+    const row = {
+      model: 'o3-mini',
+      global_average: 99,
+      reasoning: 10,
+      coding: 20,
+      agentic_coding: 30,
+      math: 40,
+      data_analysis: 50,
+      language: 60,
+      instruction_following: 70,
+    };
+    expect(buildLiveBenchBenchmark(row, '2026-09-12').overall).toBe(40);
+    expect(
+      buildLiveBenchBenchmark({ ...row, language: undefined }, '2026-09-12')
+        .overall,
+    ).toBeNull();
   });
 });

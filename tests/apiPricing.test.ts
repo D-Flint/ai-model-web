@@ -8,7 +8,10 @@ import {
   priceFreshness,
 } from '../src/lib/apiPricing';
 import { apiPricingSchema } from '../src/lib/apiPricingSchema';
-import { verifiedApiPricing } from '../src/data/officialProviders';
+import {
+  verifiedApiPricing,
+  reviewedContext,
+} from '../src/data/officialProviders';
 import { models, allModels } from '../src/data/models';
 import { validateCatalog } from '../src/lib/importCatalog';
 
@@ -152,18 +155,18 @@ describe('pricing provenance and comparisons', () => {
     expect(apiPricingSchema.safeParse(unapproved).success).toBe(false);
   });
   it('preserves unavailable values and never flattens a tiered model for sorting', () => {
-    const model = models.find((m) => m.slug === 'gemini-2-5-pro')!;
+    const model = { ...models[0], apiPricing: gemini };
     expect(comparablePrice(model)).toBeNull();
-    expect(model.facts.context).toBe(1_048_576);
-    expect(
-      model.sources.some((s) => s.id === model.facts.contextSourceId),
-    ).toBe(true);
+    expect(reviewedContext['gemini-2-5-pro'].value).toBe(1_048_576);
+    expect(reviewedContext['gemini-2-5-pro'].source.id).toBeTruthy();
     expect(formatPrice(null)).toBe('Unavailable');
     expect(formatPrice(0)).toBe('$0.00');
     expect(formatPrice(0.0000001)).toBe('<$0.000001');
     expect(
       Object.values(verifiedApiPricing).every((p) => p.benchmarkCost === null),
     ).toBe(true);
-    expect(allModels.filter((m) => m.apiPricing)).toHaveLength(20);
+    expect(allModels.filter((m) => m.apiPricing).map((m) => m.slug)).toEqual(
+      allModels.filter((m) => verifiedApiPricing[m.slug]).map((m) => m.slug),
+    );
   });
 });

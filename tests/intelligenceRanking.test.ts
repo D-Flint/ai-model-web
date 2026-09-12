@@ -21,11 +21,19 @@ const baseModel: CatalogModel = (() => {
       candidate.facts.api &&
       candidate.facts.availability === 'Production API' &&
       candidate.scores.intelligence !== null &&
-      candidate.scores.coding !== null &&
-      candidate.scores.research !== null,
+      candidate.scores.coding !== null,
   );
   if (!model) throw new Error('Expected intelligence ranking fixture');
-  return model;
+  const fixture = structuredClone(model);
+  // Dedicated research evidence is a test scenario, not a published measurement.
+  fixture.scores.research = 70;
+  fixture.evidence.push({
+    ...fixture.evidence[0],
+    metric: 'research',
+    raw: 70,
+    normalized: 70,
+  });
+  return fixture;
 })();
 
 function copyModel(

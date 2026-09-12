@@ -5,6 +5,7 @@ import type { CatalogModel } from './catalogSchema';
 import { evaluateModelEligibility } from './catalogEligibility';
 
 export const LIVEBENCH_CATALOG_LIMIT = 30;
+export const LIVEBENCH_CANDIDATE_LIMIT = 35;
 
 const liveBenchRows = liveBenchDataRaw.map((row) =>
   liveBenchRowSchema.parse(row),
@@ -33,6 +34,28 @@ function latestLiveBenchRows(): Map<string, LiveBenchRow> {
   }
 
   return latest;
+}
+
+/** Keep recent discovery models and 35 recent eligible candidates for 30 slots. */
+export function curateRecentCatalog(catalog: CatalogModel[]): CatalogModel[] {
+  const rows = latestLiveBenchRows();
+  const recent = [...catalog].sort((a, b) =>
+    b.facts.releaseDate.localeCompare(a.facts.releaseDate),
+  );
+  const candidates = recent
+    .filter(
+      (model) =>
+        rows.has(model.slug) && evaluateModelEligibility(model).isTracked,
+    )
+    .slice(0, LIVEBENCH_CANDIDATE_LIMIT);
+  // Fail before publication if the retained catalog cannot fill the leaderboard.
+  selectTopLiveBenchModels(candidates);
+  const retained = new Set(
+    [...recent.slice(0, LIVEBENCH_CATALOG_LIMIT), ...candidates].map(
+      (model) => model.slug,
+    ),
+  );
+  return recent.filter((model) => retained.has(model.slug));
 }
 
 /** Selects exactly `limit` current, eligible models from LiveBench data. */

@@ -1,113 +1,113 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { composite } from '../src/lib/decision';
+import { normalize } from '../src/lib/decision';
 import { validateCatalog } from '../src/lib/importCatalog';
-import type { CatalogModel } from '../src/lib/catalogSchema';
 import { defaultAliasResolver } from '../src/pipeline/aliasResolver';
-import { processLiveBenchResults } from '../src/pipeline/livebench';
+import {
+  buildLiveBenchBenchmark,
+  fetchLiveBenchData,
+} from '../src/pipeline/livebench';
+import { curateRecentCatalog } from '../src/lib/livebenchCatalog';
 
 async function main() {
-  const catalog = JSON.parse(
-    await readFile(resolve('src/data/verifiedModels.json'), 'utf8'),
-  ) as CatalogModel[];
-  const rawRows = JSON.parse(
-    await readFile(resolve('src/data/livebenchData.json'), 'utf8'),
-  ) as unknown[];
-  const measurements = processLiveBenchResults(rawRows, defaultAliasResolver);
-  const latestByModelMetric = new Map<string, (typeof measurements)[number]>();
-  for (const measurement of measurements) {
-    const key = `${measurement.modelSlug}:${measurement.category}`;
-    const previous = latestByModelMetric.get(key);
+  const catalog = validateCatalog(
+    JSON.parse(await readFile(resolve('src/data/verifiedModels.json'), 'utf8')),
+  );
+  const rows = await fetchLiveBenchData();
+  if (!rows.length)
+    throw new Error('No LiveBench rows; catalog was not changed');
+  const latestRows = new Map<string, (typeof rows)[number]>();
+  for (const row of rows) {
+    const slug = defaultAliasResolver.resolve('livebench', row.model)?.slug;
+    if (!slug) continue;
+    const previous = latestRows.get(slug);
     if (
       !previous ||
-      measurement.evaluationDate > previous.evaluationDate ||
-      (measurement.evaluationDate === previous.evaluationDate &&
-        measurement.normalizedScore > previous.normalizedScore)
+      (row.date ?? '') > (previous.date ?? '') ||
+      (row.date === previous.date &&
+        row.global_average > previous.global_average)
     ) {
-      latestByModelMetric.set(key, measurement);
+      latestRows.set(slug, row);
     }
   }
-
   const updated = catalog.map((model) => {
-    const modelMeasurements = [...latestByModelMetric.entries()]
-      .filter(([key]) => key.startsWith(`${model.slug}:`))
-      .map(([, measurement]) => measurement);
-    if (modelMeasurements.length === 0) return model;
-
-    const measuredMetrics = new Set(modelMeasurements.map((m) => m.category));
+    const row = latestRows.get(model.slug);
+    const livebench = row
+      ? buildLiveBenchBenchmark(row, model.scoreUpdatedAt)
+      : null;
+    const scores = {
+      ...model.scores,
+      dailyUse: null,
+      research: null,
+      writing: null,
+      vision: null,
+      reliability: null,
+    };
     const evidence = model.evidence.filter(
-      (item) =>
-        !(
-          measuredMetrics.has(item.metric) &&
-          (item.sourceId === 'livebench-leaderboard' ||
-            item.metric === 'agentic')
-        ),
+      (item) => item.metric === 'speed' || item.metric === 'costEfficiency',
     );
-    evidence.push(
-      ...modelMeasurements.map((measurement) => ({
-        metric: measurement.category,
-        kind: 'benchmark' as const,
-        raw: measurement.rawScore,
-        min: measurement.minScale,
-        max: measurement.maxScale,
-        normalized: measurement.normalizedScore,
-        sourceId: measurement.sourceId,
-        updatedAt: measurement.evaluationDate,
-      })),
-    );
-    const scores = { ...model.scores };
-    for (const metric of measuredMetrics) {
-      const categoryEvidence = evidence.filter(
-        (item) => item.metric === metric,
-      );
-      scores[metric] = Math.round(
-        categoryEvidence.reduce((sum, item) => sum + item.normalized, 0) /
-          categoryEvidence.length,
-      );
+    const metrics = {
+      intelligence: livebench?.overall,
+      coding: livebench?.coding,
+      agentic: livebench?.agenticCoding,
+    } as const;
+    for (const metric of Object.keys(metrics) as (keyof typeof metrics)[]) {
+      const raw = metrics[metric];
+      scores[metric] = raw == null ? null : normalize(raw, 0, 100);
+      if (raw != null && livebench)
+        evidence.push({
+          metric,
+          kind: 'benchmark',
+          raw,
+          min: 0,
+          max: 100,
+          normalized: scores[metric]!,
+          sourceId: 'livebench-leaderboard',
+          updatedAt: livebench.release,
+        });
     }
-    const latestDate = modelMeasurements.reduce(
-      (latest, measurement) =>
-        measurement.evaluationDate > latest
-          ? measurement.evaluationDate
-          : latest,
-      model.scoreUpdatedAt,
-    );
-    const sources = model.sources.some(
-      (source) => source.id === 'livebench-leaderboard',
-    )
-      ? model.sources
-      : [
-          ...model.sources,
-          {
-            id: 'livebench-leaderboard',
-            name: 'LiveBench AI Benchmark',
-            url: 'https://livebench.ai',
-            retrievedAt: latestDate,
-            kind: 'public_eval' as const,
-            publisher: 'LiveBench',
-          },
-        ];
-
+    scores.overall = scores.intelligence;
+    const sources = [...model.sources];
+    if (
+      livebench &&
+      !sources.some((source) => source.id === 'livebench-leaderboard')
+    ) {
+      sources.push({
+        id: 'livebench-leaderboard',
+        name: 'LiveBench AI Benchmark',
+        url: 'https://livebench.ai',
+        retrievedAt: livebench.release,
+        kind: 'public_eval',
+        publisher: 'LiveBench',
+      });
+    }
+    // Preserve other confidence factors; category coverage contributes 30 / 10 points each.
+    const removedCategories =
+      new Set(model.evidence.map((item) => item.metric)).size -
+      new Set(evidence.map((item) => item.metric)).size;
     return {
       ...model,
-      scores: { ...scores, overall: composite(scores) },
+      scores,
       evidence,
       sources,
-      scoreUpdatedAt: latestDate,
+      confidence: Math.max(
+        0,
+        Math.min(100, model.confidence - removedCategories * 3),
+      ),
+      facts: { ...model.facts, easeOfUse: null },
+      benchmarks: { ...model.benchmarks, livebench },
     };
   });
-
-  validateCatalog(updated);
+  const curated = curateRecentCatalog(validateCatalog(updated));
   await writeFile(
     resolve('src/data/verifiedModels.json'),
-    JSON.stringify(updated, null, 2) + '\n',
+    JSON.stringify(curated, null, 2) + '\n',
     'utf8',
   );
   console.log(
-    `Updated LiveBench capability scores for ${updated.filter((model, index) => model !== catalog[index]).length} catalog models.`,
+    `Updated source-native LiveBench benchmarks; retained ${curated.length} models.`,
   );
 }
-
 main().catch((error: unknown) => {
   console.error(error);
   process.exitCode = 1;

@@ -25,7 +25,7 @@ import { getModelDetailSources } from '../lib/modelDetailSources';
 import {
   selectionFromSearch,
   getMaxReasoningEffort,
-  getModelEffortStats,
+  getSpeedTokensPerSec,
   getSpeedDisplayValue,
   contextSize,
   sortLeaderboardRows,
@@ -252,7 +252,6 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
   const processedModels = useMemo(() => {
     return models.map((model) => {
       const maxEffort = getMaxReasoningEffort(model);
-      const stats = getModelEffortStats(model, maxEffort);
 
       const effortLabel =
         maxEffort === 'none'
@@ -303,7 +302,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
       const instVal = lbRow?.instruction_following ?? null;
       const langVal = lbRow?.language ?? null;
       const overallVal = lbRow ? lbRow.global_average : null;
-      const speedDisplayValue = getSpeedDisplayValue(model, maxEffort);
+      const speedDisplayValue = getSpeedDisplayValue(model);
       const speedLabel = speedDisplayValue
         ? `${speedDisplayValue} tok/s`
         : null;
@@ -338,7 +337,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
           dataAnalysis: dataVal,
           language: langVal,
           instructionFollowing: instVal,
-          speed: stats.speedTokensPerSec,
+          speed: getSpeedTokensPerSec(model) || null,
           cost: inputPrice,
         } as Record<LeaderboardMetricKey, number | null>,
         inputPrice,
@@ -1189,9 +1188,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                             <td
                               className={`td-metric td-speed td-align-center ${sortColumn === 'speed' ? 'col-sorted' : ''}`}
                             >
-                              {row.scores.speed != null && row.scores.speed > 0
-                                ? row.speedLabel
-                                : '—'}
+                              {row.speedLabel ?? '—'}
                             </td>
                           )}
                         </tr>
@@ -1255,12 +1252,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                                 <div className="subtask-spec-grid">
                                   <div>
                                     <span className="spec-label">Speed</span>
-                                    <strong>
-                                      {row.scores.speed != null &&
-                                      row.scores.speed > 0
-                                        ? `${row.scores.speed} tok/s`
-                                        : '—'}
-                                    </strong>
+                                    <strong>{row.speedLabel ?? '—'}</strong>
                                   </div>
                                   <div>
                                     <span className="spec-label">
@@ -1492,11 +1484,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                       <div className="mobile-expanded-specs">
                         <div>
                           <span className="spec-label">Speed</span>
-                          <strong>
-                            {row.scores.speed != null && row.scores.speed > 0
-                              ? row.speedLabel
-                              : '—'}
-                          </strong>
+                          <strong>{row.speedLabel ?? '—'}</strong>
                         </div>
                         <div>
                           <span className="spec-label">Context</span>
