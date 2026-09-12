@@ -386,7 +386,7 @@ describe('Verified Catalog Integrity', () => {
 });
 
 describe('LiveBench overall invariant', () => {
-  it('uses all seven native categories and rejects incomplete averages', () => {
+  it('preserves the published aggregate when category detail is incomplete', () => {
     const row = {
       model: 'o3-mini',
       global_average: 99,
@@ -398,10 +398,10 @@ describe('LiveBench overall invariant', () => {
       language: 60,
       instruction_following: 70,
     };
-    expect(buildLiveBenchBenchmark(row, '2026-09-12').overall).toBe(40);
+    expect(buildLiveBenchBenchmark(row, '2026-09-12').overall).toBe(99);
     expect(
       buildLiveBenchBenchmark({ ...row, language: undefined }, '2026-09-12')
         .overall,
-    ).toBeNull();
+    ).toBe(99);
   });
 });

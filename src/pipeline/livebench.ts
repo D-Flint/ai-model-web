@@ -139,35 +139,9 @@ export function buildLiveBenchBenchmark(
       ? Number(lbRow.instruction_following.toFixed(1))
       : null;
 
-  const subcategories = [
-    reasoning,
-    coding,
-    agenticCoding,
-    mathematics,
-    dataAnalysis,
-    language,
-    instructionFollowing,
-  ];
-  const hasAll7 = subcategories.every(
-    (val) => typeof val === 'number' && Number.isFinite(val),
-  );
-
-  // Deterministic LiveBench Overall: unweighted average of the 7 LiveBench categories.
-  // If any category is missing or null, set overall = null.
-  const overall = hasAll7
-    ? Number(
-        (
-          (reasoning! +
-            coding! +
-            agenticCoding! +
-            mathematics! +
-            dataAnalysis! +
-            language! +
-            instructionFollowing!) /
-          7
-        ).toFixed(1),
-      )
-    : null;
+  // Preserve LiveBench's published aggregate even when an older snapshot does
+  // not include every category column.
+  const overall = Number(lbRow.global_average.toFixed(1));
 
   return {
     release: lbRow.date ?? today,

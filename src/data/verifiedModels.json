@@ -786,7 +786,7 @@
       "verifiedAt": "2026-09-06"
     },
     "scores": {
-      "intelligence": null,
+      "intelligence": 75,
       "coding": 74,
       "agentic": null,
       "dailyUse": null,
@@ -796,12 +796,12 @@
       "speed": 13,
       "reliability": null,
       "costEfficiency": 82,
-      "overall": null
+      "overall": 75
     },
     "benchmarks": {
       "livebench": {
         "release": "2026-07-28",
-        "overall": null,
+        "overall": 74.5,
         "reasoning": 81.2,
         "coding": 74,
         "agenticCoding": null,
@@ -838,6 +838,16 @@
         "updatedAt": "2026-09-09"
       },
       {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 74.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 75,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-07-28"
+      },
+      {
         "metric": "coding",
         "kind": "benchmark",
         "raw": 74,
@@ -848,7 +858,7 @@
         "updatedAt": "2026-07-28"
       }
     ],
-    "confidence": 74,
+    "confidence": 77,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-09",
     "lastVerifiedAt": "2026-09-06",
@@ -2606,7 +2616,7 @@
       "verifiedAt": "2026-09-06"
     },
     "scores": {
-      "intelligence": null,
+      "intelligence": 69,
       "coding": 69,
       "agentic": null,
       "dailyUse": null,
@@ -2616,12 +2626,12 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 59,
-      "overall": null
+      "overall": 69
     },
     "benchmarks": {
       "livebench": {
         "release": "2026-05-18",
-        "overall": null,
+        "overall": 68.6,
         "reasoning": 73.4,
         "coding": 68.5,
         "agenticCoding": null,
@@ -2648,6 +2658,16 @@
         "updatedAt": "2026-09-09"
       },
       {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 68.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 69,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-05-18"
+      },
+      {
         "metric": "coding",
         "kind": "benchmark",
         "raw": 68.5,
@@ -2658,7 +2678,7 @@
         "updatedAt": "2026-05-18"
       }
     ],
-    "confidence": 71,
+    "confidence": 74,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-09",
     "lastVerifiedAt": "2026-09-06",
@@ -3453,7 +3473,7 @@
       "verifiedAt": "2026-09-05"
     },
     "scores": {
-      "intelligence": null,
+      "intelligence": 77,
       "coding": 85,
       "agentic": null,
       "dailyUse": null,
@@ -3463,12 +3483,12 @@
       "speed": 27,
       "reliability": null,
       "costEfficiency": 38,
-      "overall": null
+      "overall": 77
     },
     "benchmarks": {
       "livebench": {
         "release": "2026-04-14",
-        "overall": null,
+        "overall": 76.5,
         "reasoning": 81.2,
         "coding": 85.4,
         "agenticCoding": null,
@@ -3505,6 +3525,16 @@
         "updatedAt": "2026-09-09"
       },
       {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 76.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-04-14"
+      },
+      {
         "metric": "coding",
         "kind": "benchmark",
         "raw": 85.4,
@@ -3515,7 +3545,7 @@
         "updatedAt": "2026-04-14"
       }
     ],
-    "confidence": 74,
+    "confidence": 77,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-09",
     "lastVerifiedAt": "2026-09-05",
@@ -4398,7 +4428,7 @@
       "verifiedAt": "2026-09-05"
     },
     "scores": {
-      "intelligence": null,
+      "intelligence": 79,
       "coding": 82,
       "agentic": null,
       "dailyUse": null,
@@ -4408,12 +4438,12 @@
       "speed": 2,
       "reliability": null,
       "costEfficiency": 22,
-      "overall": null
+      "overall": 79
     },
     "benchmarks": {
       "livebench": {
         "release": "2026-03-20",
-        "overall": null,
+        "overall": 79.4,
         "reasoning": 88,
         "coding": 81.5,
         "agenticCoding": null,
@@ -4450,6 +4480,16 @@
         "updatedAt": "2026-09-09"
       },
       {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 79.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 79,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-03-20"
+      },
+      {
         "metric": "coding",
         "kind": "benchmark",
         "raw": 81.5,
@@ -4460,7 +4500,7 @@
         "updatedAt": "2026-03-20"
       }
     ],
-    "confidence": 74,
+    "confidence": 77,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-09",
     "lastVerifiedAt": "2026-09-05",
@@ -5062,7 +5102,7 @@
       "verifiedAt": "2026-09-06"
     },
     "scores": {
-      "intelligence": null,
+      "intelligence": 68,
       "coding": 66,
       "agentic": null,
       "dailyUse": null,
@@ -5072,12 +5112,12 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 87,
-      "overall": null
+      "overall": 68
     },
     "benchmarks": {
       "livebench": {
         "release": "2026-03-12",
-        "overall": null,
+        "overall": 67.8,
         "reasoning": 73.5,
         "coding": 66,
         "agenticCoding": null,
@@ -5104,6 +5144,16 @@
         "updatedAt": "2026-09-09"
       },
       {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 67.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 68,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-03-12"
+      },
+      {
         "metric": "coding",
         "kind": "benchmark",
         "raw": 66,
@@ -5114,7 +5164,7 @@
         "updatedAt": "2026-03-12"
       }
     ],
-    "confidence": 71,
+    "confidence": 74,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-09",
     "lastVerifiedAt": "2026-09-06",
@@ -5208,7 +5258,7 @@
       "verifiedAt": "2026-09-06"
     },
     "scores": {
-      "intelligence": null,
+      "intelligence": 54,
       "coding": 48,
       "agentic": null,
       "dailyUse": null,
@@ -5218,12 +5268,12 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 100,
-      "overall": null
+      "overall": 54
     },
     "benchmarks": {
       "livebench": {
         "release": "2026-03-12",
-        "overall": null,
+        "overall": 54.2,
         "reasoning": 57,
         "coding": 48.2,
         "agenticCoding": null,
@@ -5250,6 +5300,16 @@
         "updatedAt": "2026-09-09"
       },
       {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 54.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 54,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-03-12"
+      },
+      {
         "metric": "coding",
         "kind": "benchmark",
         "raw": 48.2,
@@ -5260,7 +5320,7 @@
         "updatedAt": "2026-03-12"
       }
     ],
-    "confidence": 71,
+    "confidence": 74,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-09",
     "lastVerifiedAt": "2026-09-06",
@@ -5552,7 +5612,7 @@
       "verifiedAt": "2026-09-05"
     },
     "scores": {
-      "intelligence": null,
+      "intelligence": 77,
       "coding": 79,
       "agentic": null,
       "dailyUse": null,
@@ -5562,12 +5622,12 @@
       "speed": 3,
       "reliability": null,
       "costEfficiency": 25,
-      "overall": null
+      "overall": 77
     },
     "benchmarks": {
       "livebench": {
         "release": "2026-01-15",
-        "overall": null,
+        "overall": 77,
         "reasoning": 85.2,
         "coding": 78.5,
         "agenticCoding": null,
@@ -5604,6 +5664,16 @@
         "updatedAt": "2026-09-09"
       },
       {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 77,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-01-15"
+      },
+      {
         "metric": "coding",
         "kind": "benchmark",
         "raw": 78.5,
@@ -5614,7 +5684,7 @@
         "updatedAt": "2026-01-15"
       }
     ],
-    "confidence": 74,
+    "confidence": 77,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-09",
     "lastVerifiedAt": "2026-09-05",
@@ -5722,7 +5792,7 @@
       "verifiedAt": "2026-09-05"
     },
     "scores": {
-      "intelligence": null,
+      "intelligence": 74,
       "coding": 75,
       "agentic": null,
       "dailyUse": null,
@@ -5732,12 +5802,12 @@
       "speed": 30,
       "reliability": null,
       "costEfficiency": 34,
-      "overall": null
+      "overall": 74
     },
     "benchmarks": {
       "livebench": {
         "release": "2026-01-15",
-        "overall": null,
+        "overall": 74,
         "reasoning": 80.5,
         "coding": 75,
         "agenticCoding": null,
@@ -5777,6 +5847,16 @@
         "updatedAt": "2026-09-09"
       },
       {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 74,
+        "min": 0,
+        "max": 100,
+        "normalized": 74,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-01-15"
+      },
+      {
         "metric": "coding",
         "kind": "benchmark",
         "raw": 75,
@@ -5787,7 +5867,7 @@
         "updatedAt": "2026-01-15"
       }
     ],
-    "confidence": 74,
+    "confidence": 77,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-09",
     "lastVerifiedAt": "2026-09-05",
@@ -5900,7 +5980,7 @@
       "verifiedAt": "2026-09-05"
     },
     "scores": {
-      "intelligence": null,
+      "intelligence": 64,
       "coding": 63,
       "agentic": null,
       "dailyUse": null,
@@ -5910,12 +5990,12 @@
       "speed": 32,
       "reliability": null,
       "costEfficiency": 68,
-      "overall": null
+      "overall": 64
     },
     "benchmarks": {
       "livebench": {
         "release": "2026-01-15",
-        "overall": null,
+        "overall": 64.2,
         "reasoning": 69.5,
         "coding": 63.2,
         "agenticCoding": null,
@@ -5952,6 +6032,16 @@
         "updatedAt": "2026-09-09"
       },
       {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 64.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 64,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2026-01-15"
+      },
+      {
         "metric": "coding",
         "kind": "benchmark",
         "raw": 63.2,
@@ -5962,7 +6052,7 @@
         "updatedAt": "2026-01-15"
       }
     ],
-    "confidence": 74,
+    "confidence": 77,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-09",
     "lastVerifiedAt": "2026-09-05",
@@ -6065,7 +6155,7 @@
       "verifiedAt": "2026-09-06"
     },
     "scores": {
-      "intelligence": null,
+      "intelligence": 81,
       "coding": 82,
       "agentic": null,
       "dailyUse": null,
@@ -6075,12 +6165,12 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 49,
-      "overall": null
+      "overall": 81
     },
     "benchmarks": {
       "livebench": {
         "release": "2025-11-20",
-        "overall": null,
+        "overall": 80.6,
         "reasoning": 89.5,
         "coding": 81.5,
         "agenticCoding": null,
@@ -6110,6 +6200,16 @@
         "updatedAt": "2026-09-09"
       },
       {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 80.6,
+        "min": 0,
+        "max": 100,
+        "normalized": 81,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-11-20"
+      },
+      {
         "metric": "coding",
         "kind": "benchmark",
         "raw": 81.5,
@@ -6120,7 +6220,7 @@
         "updatedAt": "2025-11-20"
       }
     ],
-    "confidence": 71,
+    "confidence": 74,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-09",
     "lastVerifiedAt": "2026-09-06",
@@ -6228,7 +6328,7 @@
       "verifiedAt": "2026-09-09"
     },
     "scores": {
-      "intelligence": null,
+      "intelligence": 72,
       "coding": 71,
       "agentic": null,
       "dailyUse": null,
@@ -6238,12 +6338,12 @@
       "speed": 25,
       "reliability": null,
       "costEfficiency": 58,
-      "overall": null
+      "overall": 72
     },
     "benchmarks": {
       "livebench": {
         "release": "2025-11-20",
-        "overall": null,
+        "overall": 71.5,
         "reasoning": 78,
         "coding": 70.5,
         "agenticCoding": null,
@@ -6283,6 +6383,16 @@
         "updatedAt": "2026-09-09"
       },
       {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 71.5,
+        "min": 0,
+        "max": 100,
+        "normalized": 72,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-11-20"
+      },
+      {
         "metric": "coding",
         "kind": "benchmark",
         "raw": 70.5,
@@ -6293,7 +6403,7 @@
         "updatedAt": "2025-11-20"
       }
     ],
-    "confidence": 74,
+    "confidence": 77,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-09",
     "lastVerifiedAt": "2026-09-09",
@@ -6404,7 +6514,7 @@
       "verifiedAt": "2026-09-06"
     },
     "scores": {
-      "intelligence": null,
+      "intelligence": 83,
       "coding": 85,
       "agentic": null,
       "dailyUse": null,
@@ -6414,12 +6524,12 @@
       "speed": null,
       "reliability": null,
       "costEfficiency": 40,
-      "overall": null
+      "overall": 83
     },
     "benchmarks": {
       "livebench": {
         "release": "2025-11-20",
-        "overall": null,
+        "overall": 83.2,
         "reasoning": 94,
         "coding": 85.2,
         "agenticCoding": null,
@@ -6446,6 +6556,16 @@
         "updatedAt": "2026-09-09"
       },
       {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 83.2,
+        "min": 0,
+        "max": 100,
+        "normalized": 83,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-11-20"
+      },
+      {
         "metric": "coding",
         "kind": "benchmark",
         "raw": 85.2,
@@ -6456,7 +6576,7 @@
         "updatedAt": "2025-11-20"
       }
     ],
-    "confidence": 71,
+    "confidence": 74,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-09",
     "lastVerifiedAt": "2026-09-06",
@@ -6956,7 +7076,7 @@
       "verifiedAt": "2026-09-05"
     },
     "scores": {
-      "intelligence": null,
+      "intelligence": 76,
       "coding": 78,
       "agentic": null,
       "dailyUse": null,
@@ -6966,12 +7086,12 @@
       "speed": 61,
       "reliability": null,
       "costEfficiency": 50,
-      "overall": null
+      "overall": 76
     },
     "benchmarks": {
       "livebench": {
         "release": "2025-10-15",
-        "overall": null,
+        "overall": 75.8,
         "reasoning": 86.2,
         "coding": 78.4,
         "agenticCoding": null,
@@ -7011,6 +7131,16 @@
         "updatedAt": "2026-09-09"
       },
       {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 75.8,
+        "min": 0,
+        "max": 100,
+        "normalized": 76,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-10-15"
+      },
+      {
         "metric": "coding",
         "kind": "benchmark",
         "raw": 78.4,
@@ -7021,7 +7151,7 @@
         "updatedAt": "2025-10-15"
       }
     ],
-    "confidence": 74,
+    "confidence": 77,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-09",
     "lastVerifiedAt": "2026-09-05",
@@ -7134,7 +7264,7 @@
       "verifiedAt": "2026-09-06"
     },
     "scores": {
-      "intelligence": null,
+      "intelligence": 65,
       "coding": 64,
       "agentic": null,
       "dailyUse": null,
@@ -7144,12 +7274,12 @@
       "speed": 40,
       "reliability": null,
       "costEfficiency": 50,
-      "overall": null
+      "overall": 65
     },
     "benchmarks": {
       "livebench": {
         "release": "2025-10-15",
-        "overall": null,
+        "overall": 65.4,
         "reasoning": 70.2,
         "coding": 64,
         "agenticCoding": null,
@@ -7186,6 +7316,16 @@
         "updatedAt": "2026-09-09"
       },
       {
+        "metric": "intelligence",
+        "kind": "benchmark",
+        "raw": 65.4,
+        "min": 0,
+        "max": 100,
+        "normalized": 65,
+        "sourceId": "livebench-leaderboard",
+        "updatedAt": "2025-10-15"
+      },
+      {
         "metric": "coding",
         "kind": "benchmark",
         "raw": 64,
@@ -7196,7 +7336,7 @@
         "updatedAt": "2025-10-15"
       }
     ],
-    "confidence": 74,
+    "confidence": 77,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-09",
     "lastVerifiedAt": "2026-09-06",
