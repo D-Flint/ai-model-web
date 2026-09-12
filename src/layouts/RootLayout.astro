@@ -1,6 +1,13 @@
 ---
 import '../styles/global.css';
-import { ArrowUpRight, Moon, Sun, Menu, ArrowRight } from 'lucide-react';
+import {
+  ArrowUp,
+  ArrowUpRight,
+  Moon,
+  Sun,
+  Menu,
+  ArrowRight,
+} from 'lucide-react';
 interface Props {
   title?: string;
   description?: string;
@@ -113,6 +120,15 @@ const canonical = Astro.site ? new URL(path, Astro.site).href : undefined;
       >
     </div>
     <main id="main" class="container"><slot /></main>
+    <button
+      id="return-to-top"
+      class="return-to-top"
+      type="button"
+      aria-label="Return to top"
+      hidden
+    >
+      <ArrowUp size={18} aria-hidden="true" />
+    </button>
     <footer class="site-footer">
       <div class="container footer-top">
         <div>
@@ -182,6 +198,24 @@ const canonical = Astro.site ? new URL(path, Astro.site).href : undefined;
             nav.hidden ? 'Open navigation' : 'Close navigation',
           );
         }
+      });
+      const returnToTop =
+        document.querySelector<HTMLButtonElement>('#return-to-top');
+      const returnToTopThreshold = 400;
+      function updateReturnToTopVisibility() {
+        if (returnToTop) {
+          returnToTop.hidden = window.scrollY < returnToTopThreshold;
+        }
+      }
+      updateReturnToTopVisibility();
+      window.addEventListener('scroll', updateReturnToTopVisibility, {
+        passive: true,
+      });
+      returnToTop?.addEventListener('click', () => {
+        const reduceMotion = window.matchMedia(
+          '(prefers-reduced-motion: reduce)',
+        ).matches;
+        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
       });
     </script>
   </body>
