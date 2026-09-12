@@ -157,36 +157,6 @@ export const ANTHROPIC_MODELS: CanonicalModelConfig[] = [
     reasoningEffort: ['none', 'low', 'medium'],
     defaultEffort: 'medium',
   },
-  {
-    slug: 'claude-haiku-5',
-    name: 'Claude Haiku 5',
-    provider: 'Anthropic',
-    providerSlug: 'anthropic',
-    family: 'Claude 5',
-    openWeights: false,
-    openRouterId: 'anthropic/claude-haiku-5',
-    lmarenaAliases: [
-      'claude-haiku-5',
-      'claude-haiku-latest',
-      'anthropic/claude-haiku-5',
-    ],
-    swebenchAliases: ['claude-haiku-5', 'Claude Haiku 5'],
-    livebenchAliases: ['claude-haiku-5'],
-    bfclAliases: ['claude-haiku-5'],
-    officialDocsUrl: 'https://docs.anthropic.com/en/docs/about-claude/models',
-    description:
-      "Anthropic's lightning-fast lightweight model of the 5th generation, delivering near-frontier intelligence at sub-second latencies and high throughput.",
-    strengths: [
-      'Sub-second response latencies for interactive real-time applications',
-      'Cost-efficient ($0.50 input / $2.50 output per 1M) for high-scale traffic',
-      '500,000 token context window with rapid structured extraction',
-    ],
-    weaknesses: ['Not intended for complex multi-file architectural refactors'],
-    tags: ['Speed', 'Daily use', 'Agents', 'Vision', 'Cost efficiency'],
-    reasoningEffort: ['none'],
-    defaultEffort: 'none',
-  },
-
   // ==========================================
   // CLAUDE 4.5 & 4 SERIES (2025)
   // ==========================================

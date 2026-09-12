@@ -3,6 +3,7 @@ import { allModels, models } from '../src/data/models';
 import {
   LIVEBENCH_CATALOG_LIMIT,
   LIVEBENCH_CANDIDATE_LIMIT,
+  CURATED_PUBLISHED_MODEL_SLUGS,
   curateRecentCatalog,
   selectTopLiveBenchModels,
 } from '../src/lib/livebenchCatalog';
@@ -22,6 +23,11 @@ describe('LiveBench catalog selection', () => {
       LIVEBENCH_CATALOG_LIMIT,
     );
     expect(
+      [...CURATED_PUBLISHED_MODEL_SLUGS].every((slug) =>
+        models.some((model) => model.slug === slug),
+      ),
+    ).toBe(true);
+    expect(
       models.some((model) =>
         model.evidence.some(
           (evidence) =>
@@ -30,6 +36,11 @@ describe('LiveBench catalog selection', () => {
         ),
       ),
     ).toBe(true);
+  });
+
+  it('fully removes the replaced product records', () => {
+    const removed = new Set(['claude-haiku-5', 'gpt-5', 'gpt-5-pro']);
+    expect(allModels.some((model) => removed.has(model.slug))).toBe(false);
   });
 
   it('retains 35 eligible candidates and recent discovery models', () => {

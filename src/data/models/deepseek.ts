@@ -1351,6 +1351,38 @@ export const DEEPSEEK_MODELS: CanonicalModelConfig[] = [
     speedTokensPerSec: 110,
   },
   {
+    slug: 'deepseek-v4-1-flash',
+    name: 'DeepSeek V4.1 Flash',
+    provider: 'DeepSeek',
+    providerSlug: 'deepseek',
+    family: 'DeepSeek V4.1',
+    openWeights: true,
+    openRouterId: 'deepseek/deepseek-v4.1-flash',
+    lmarenaAliases: ['deepseek-v4.1-flash', 'DeepSeek-V4.1-Flash'],
+    swebenchAliases: ['deepseek-v4.1-flash', 'DeepSeek-V4.1-Flash'],
+    livebenchAliases: [
+      'deepseek-v4.1-flash-max',
+      'deepseek-v4.1-flash',
+      'DeepSeek-V4.1-Flash',
+    ],
+    bfclAliases: ['deepseek-v4.1-flash', 'DeepSeek-V4.1-Flash'],
+    officialDocsUrl: 'https://deepseek.com/en/news/deepseek-v4-1-flash/',
+    description:
+      "DeepSeek's multimodal V4.1 Flash model combines a 1M-token context window with high-throughput inference and a compressed KV cache.",
+    strengths: [
+      'Native text and image understanding',
+      '1,048,576-token context window for long tasks',
+      'High throughput with substantially reduced KV-cache requirements',
+    ],
+    weaknesses: [
+      'New release with limited independent production evidence',
+      'Large open-weight deployment requires substantial infrastructure',
+    ],
+    tags: ['Fast', 'Open weights', 'MoE', 'Vision', 'Large context'],
+    reasoningEffort: ['low', 'medium', 'high', 'max'],
+    defaultEffort: 'medium',
+  },
+  {
     slug: 'deepseek-v4-flash-base',
     name: 'DeepSeek V4-Flash-Base',
     provider: 'DeepSeek',

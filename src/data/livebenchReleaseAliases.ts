@@ -10,6 +10,7 @@ export const LIVEBENCH_RELEASE_ALIASES: Record<string, string> = {
   'claude-opus-4-8-max-effort': 'claude-opus-4-8',
   'claude-fable-5-1-max-effort': 'claude-fable-5-1',
   'deepseek-v4-flash-0731': 'deepseek-v4-flash-0731',
+  'deepseek-v4.1-flash-max': 'deepseek-v4-1-flash',
   'deepseek-v4-pro-0813': 'deepseek-v4-pro-0813',
   'deepseek-v4-flash': 'deepseek-v4-flash',
   'deepseek-v4-pro': 'deepseek-v4-pro',

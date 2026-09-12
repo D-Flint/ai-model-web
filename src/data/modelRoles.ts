@@ -60,6 +60,13 @@ export const knownModelRoles: Readonly<Record<string, ModelRole[]>> = {
   ],
   'gpt-5-6-terra': ['general-purpose', 'coding', 'agentic', 'vision'],
   'deepseek-v4-pro-0813': ['general-purpose', 'reasoning', 'coding', 'agentic'],
+  'deepseek-v4-1-flash': [
+    'general-purpose',
+    'reasoning',
+    'coding',
+    'agentic',
+    'vision',
+  ],
   'gemini-2-5-pro': [
     'general-purpose',
     'reasoning',
@@ -67,7 +74,6 @@ export const knownModelRoles: Readonly<Record<string, ModelRole[]>> = {
     'agentic',
     'vision',
   ],
-  'gpt-5-pro': ['reasoning', 'coding', 'agentic', 'vision'],
   'gemini-3-1-pro': [
     'general-purpose',
     'reasoning',
@@ -112,7 +118,6 @@ export const knownModelRoles: Readonly<Record<string, ModelRole[]>> = {
   ],
   'deepseek-v4-flash-0731': ['general-purpose', 'coding', 'agentic'],
   o1: ['reasoning', 'coding', 'vision'],
-  'gpt-5': ['general-purpose', 'reasoning', 'coding', 'agentic', 'vision'],
   'gpt-oss-safeguard-120b': ['safety-classifier', 'moderation'],
   'gpt-oss-safeguard-20b': ['safety-classifier', 'moderation'],
   shieldgemma: ['safety-classifier', 'moderation'],

@@ -78,6 +78,9 @@ describe('speed ranking', () => {
       speedTokensPerSec: 75,
       speedTokensPerSecRange: undefined,
     };
+    model.sources = model.sources.map((source) =>
+      source.id === sourceId ? { ...source, retrievedAt: asOf } : source,
+    );
 
     expect(getVerifiedSpeedMeasurement(model, asOf)).toMatchObject({
       value: 75,

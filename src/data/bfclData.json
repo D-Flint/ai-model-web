@@ -357,20 +357,6 @@
     "date": "2026-03-20"
   },
   {
-    "model": "gpt-5-pro",
-    "overall_accuracy": 90.2,
-    "ast_summary": 92,
-    "exec_summary": 88.4,
-    "date": "2026-01-15"
-  },
-  {
-    "model": "gpt-5",
-    "overall_accuracy": 88.5,
-    "ast_summary": 90.3,
-    "exec_summary": 86.7,
-    "date": "2026-01-15"
-  },
-  {
     "model": "gpt-5-mini",
     "overall_accuracy": 83.8,
     "ast_summary": 85.6,
@@ -761,13 +747,6 @@
     "ast_summary": 94,
     "exec_summary": 90.4,
     "date": "2026-05-02"
-  },
-  {
-    "model": "claude-haiku-5",
-    "overall_accuracy": 86.8,
-    "ast_summary": 88.5,
-    "exec_summary": 85,
-    "date": "2026-05-18"
   },
   {
     "model": "claude-opus-4-8",

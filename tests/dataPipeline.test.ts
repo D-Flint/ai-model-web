@@ -404,4 +404,28 @@ describe('LiveBench overall invariant', () => {
         .overall,
     ).toBe(99);
   });
+
+  it('validates half-point aggregates with ingestion normalization', () => {
+    const model = catalogSchema.parse([structuredClone(verifiedModels[0])])[0];
+    if (!model.benchmarks?.livebench)
+      throw new Error('Expected LiveBench benchmark fixture');
+    model.benchmarks.livebench.overall = 28.5;
+    model.scores.intelligence = 28;
+    model.scores.overall = 28;
+    model.evidence = model.evidence.filter(
+      (item) => item.metric !== 'intelligence',
+    );
+    model.evidence.push({
+      metric: 'intelligence',
+      kind: 'benchmark',
+      raw: 28.5,
+      min: 0,
+      max: 100,
+      normalized: 28,
+      sourceId: 'livebench-leaderboard',
+      updatedAt: '2026-09-12',
+    });
+
+    expect(validateCatalog([model])).toHaveLength(1);
+  });
 });

@@ -490,26 +490,6 @@
     "date": "2026-03-20"
   },
   {
-    "model": "gpt-5-pro",
-    "global_average": 77,
-    "reasoning": 85.2,
-    "math": 84,
-    "coding": 78.5,
-    "data_analysis": 74.2,
-    "instruction_following": 80.4,
-    "date": "2026-01-15"
-  },
-  {
-    "model": "gpt-5",
-    "global_average": 74,
-    "reasoning": 80.5,
-    "math": 78.4,
-    "coding": 75,
-    "data_analysis": 71.8,
-    "instruction_following": 78.2,
-    "date": "2026-01-15"
-  },
-  {
     "model": "gpt-5-mini",
     "global_average": 64.2,
     "reasoning": 69.5,
@@ -968,16 +948,6 @@
     "data_analysis": 57,
     "instruction_following": 68,
     "date": "2025-05-18"
-  },
-  {
-    "model": "claude-haiku-5",
-    "global_average": 68.6,
-    "reasoning": 73.4,
-    "math": 70.2,
-    "coding": 68.5,
-    "data_analysis": 66.8,
-    "instruction_following": 74.2,
-    "date": "2026-05-18"
   },
   {
     "model": "claude-sonnet-4-5",
@@ -2079,6 +2049,18 @@
     "instruction_following": 69.3,
     "agentic_coding": 61.1,
     "language": 79.2,
+    "date": "2026-06-25"
+  },
+  {
+    "model": "deepseek-v4.1-flash-max",
+    "global_average": 81.1,
+    "reasoning": 86.7,
+    "math": 93.3,
+    "coding": 80,
+    "data_analysis": 79.3,
+    "instruction_following": 70,
+    "agentic_coding": 77.3,
+    "language": 81.2,
     "date": "2026-06-25"
   }
 ]

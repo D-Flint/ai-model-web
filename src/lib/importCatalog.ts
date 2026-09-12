@@ -32,7 +32,7 @@ export function validateCatalog(value: unknown): CatalogModel[] {
       model.benchmarks !== undefined && model.benchmarks !== null
         ? model.benchmarks.livebench?.overall !== null &&
           model.benchmarks.livebench?.overall !== undefined
-          ? Math.round(model.benchmarks.livebench.overall)
+          ? normalize(model.benchmarks.livebench.overall, 0, 100)
           : null
         : composite(model.scores);
     if (expectedOverall !== model.scores.overall)

@@ -6,6 +6,11 @@ import { evaluateModelEligibility } from './catalogEligibility';
 
 export const LIVEBENCH_CATALOG_LIMIT = 30;
 export const LIVEBENCH_CANDIDATE_LIMIT = 35;
+export const CURATED_PUBLISHED_MODEL_SLUGS = new Set([
+  'deepseek-v4-flash-0731',
+  'deepseek-v4-1-flash',
+  'deepseek-v4-pro-0813',
+]);
 
 const liveBenchRows = liveBenchDataRaw.map((row) =>
   liveBenchRowSchema.parse(row),
@@ -42,12 +47,14 @@ export function curateRecentCatalog(catalog: CatalogModel[]): CatalogModel[] {
   const recent = [...catalog].sort((a, b) =>
     b.facts.releaseDate.localeCompare(a.facts.releaseDate),
   );
-  const candidates = recent
-    .filter(
-      (model) =>
-        rows.has(model.slug) && evaluateModelEligibility(model).isTracked,
-    )
-    .slice(0, LIVEBENCH_CANDIDATE_LIMIT);
+  const eligible = recent.filter(
+    (model) =>
+      rows.has(model.slug) && evaluateModelEligibility(model).isTracked,
+  );
+  const candidates = selectTopLiveBenchModels(
+    eligible,
+    LIVEBENCH_CANDIDATE_LIMIT,
+  );
   // Fail before publication if the retained catalog cannot fill the leaderboard.
   selectTopLiveBenchModels(candidates);
   const retained = new Set(
@@ -68,6 +75,13 @@ export function selectTopLiveBenchModels(
   }
 
   const rowsBySlug = latestLiveBenchRows();
+  const compareCandidates = (
+    a: { model: CatalogModel; row: LiveBenchRow },
+    b: { model: CatalogModel; row: LiveBenchRow },
+  ) =>
+    b.row.global_average - a.row.global_average ||
+    dateValue(b.row).localeCompare(dateValue(a.row)) ||
+    a.model.slug.localeCompare(b.model.slug);
   const candidates = catalog
     .map((model) => ({ model, row: rowsBySlug.get(model.slug) }))
     .filter(
@@ -75,12 +89,7 @@ export function selectTopLiveBenchModels(
         candidate.row !== undefined &&
         evaluateModelEligibility(candidate.model).isTracked,
     )
-    .sort(
-      (a, b) =>
-        b.row.global_average - a.row.global_average ||
-        dateValue(b.row).localeCompare(dateValue(a.row)) ||
-        a.model.slug.localeCompare(b.model.slug),
-    );
+    .sort(compareCandidates);
 
   if (candidates.length < limit) {
     throw new Error(
@@ -88,5 +97,17 @@ export function selectTopLiveBenchModels(
     );
   }
 
-  return candidates.slice(0, limit).map(({ model }) => model);
+  const curated = candidates.filter(({ model }) =>
+    CURATED_PUBLISHED_MODEL_SLUGS.has(model.slug),
+  );
+  const selectedCurated = curated.slice(0, limit);
+  const remaining = candidates.filter(
+    ({ model }) => !CURATED_PUBLISHED_MODEL_SLUGS.has(model.slug),
+  );
+  return [
+    ...selectedCurated,
+    ...remaining.slice(0, limit - selectedCurated.length),
+  ]
+    .sort(compareCandidates)
+    .map(({ model }) => model);
 }
