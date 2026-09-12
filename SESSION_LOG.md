@@ -17,6 +17,17 @@
 - Current state: Plan artifact completed and aligned with user directives.
 - Exact next step: Hand off to GPT-5.6 to execute Phase 0 through Phase 4.
 
+## 2026-09-12 — Remove GPT-5.2 and GPT-5.2 Pro
+
+- Objective: Remove GPT-5.2 and GPT-5.2 Pro from canonical OpenAI model configs, official provider specs, verified catalog data, LiveBench aliases, and adjust catalog limits.
+- Files changed: `src/data/models/openai.ts`, `src/data/officialProviders.ts`, `src/data/livebenchReleaseAliases.ts`, `src/data/verifiedModels.json`, `src/lib/catalogEligibility.ts`, `src/lib/livebenchCatalog.ts`, `tests/livebenchCatalog.test.ts`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: None. Adjusted LiveBench catalog and candidate limits from 30 to 28 to match remaining eligible models.
+- Tests: `npm test` (16 files, 150/150 passed); `npm run check` (106 files, 0 errors, 0 warnings, 0 hints); `npm run lint` (clean); `npm run prebuild` (success, 28 records).
+- Commit: Pending local commit.
+- Current state: Stored locally; no remote push.
+- Exact next step: User verification of the updated catalog without GPT-5.2 and GPT-5.2 Pro.
+
 ## 2026-09-12 — Remove Qwen 2.5, gpt-oss-120b, Claude Sonnet 4.5, and Gemma 3
 
 - Objective: Completely remove Qwen 2.5 family, gpt-oss-120b, Claude Sonnet 4.5, and Gemma 3 across canonical definitions, provider registries, roles, verified data, and tests.

@@ -9,7 +9,7 @@ import {
 } from '../src/lib/livebenchCatalog';
 
 describe('LiveBench catalog selection', () => {
-  it('publishes exactly 30 eligible models in LiveBench score order', () => {
+  it('publishes exactly 28 eligible models in LiveBench score order', () => {
     expect(models).toHaveLength(LIVEBENCH_CATALOG_LIMIT);
     expect(models.every((model) => model.dataKind === 'verified')).toBe(true);
     expect(
@@ -39,14 +39,20 @@ describe('LiveBench catalog selection', () => {
   });
 
   it('fully removes the replaced product records', () => {
-    const removed = new Set(['claude-haiku-5', 'gpt-5', 'gpt-5-pro']);
+    const removed = new Set([
+      'claude-haiku-5',
+      'gpt-5',
+      'gpt-5-pro',
+      'gpt-5-2',
+      'gpt-5-2-pro',
+    ]);
     expect(allModels.some((model) => removed.has(model.slug))).toBe(false);
   });
 
-  it('retains 30 eligible candidates and recent discovery models', () => {
+  it('retains 28 eligible candidates and recent discovery models', () => {
     expect(
       selectTopLiveBenchModels(allModels, LIVEBENCH_CANDIDATE_LIMIT),
-    ).toHaveLength(30);
+    ).toHaveLength(28);
     expect(allModels.length).toBeGreaterThanOrEqual(LIVEBENCH_CANDIDATE_LIMIT);
     expect(allModels.length).toBeLessThanOrEqual(
       LIVEBENCH_CANDIDATE_LIMIT + LIVEBENCH_CATALOG_LIMIT,

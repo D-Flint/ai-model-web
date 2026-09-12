@@ -51,6 +51,8 @@ export const EXCLUDED_DEPRECATED_SUPERSEDED = new Set<string>([
   'gpt-4-32k',
   'gpt-4-1106-preview',
   'gpt-4-0125-preview',
+  'gpt-5-2',
+  'gpt-5-2-pro',
   'claude-1-0',
   'claude-1-3',
   'claude-instant-1-0',

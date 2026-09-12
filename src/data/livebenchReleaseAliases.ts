@@ -20,7 +20,6 @@ export const LIVEBENCH_RELEASE_ALIASES: Record<string, string> = {
   'gemini-3.6-flash-high': 'gemini-3-6-flash',
   'gemini-3.7-flash-high': 'gemini-3-7-flash',
   'gemini-3.8-flash-high': 'gemini-3-8-flash',
-  'gpt-5.2-2025-12-11-high': 'gpt-5-2',
   'gpt-5.4-nano-xhigh': 'gpt-5-4-nano',
   'gpt-5.6-sol-max': 'gpt-5-6-sol',
   'gpt-5.6-terra-max': 'gpt-5-6-terra',
