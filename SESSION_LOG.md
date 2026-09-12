@@ -993,3 +993,14 @@
 - Commit: Design specification `b0c7616`; implementation commit pending.
 - Current state: Inkling is absent from `models` and `allModels`, generated detail routes, pricing, comparison, discovery, recommendations, and sitemap. Its raw LiveBench snapshot and alias remain historical evidence only.
 - Exact next step: Create the scoped implementation commit, then wait for user verification.
+
+## 2026-09-12 — Add a shared return-to-top control
+
+- Objective: Provide a return-to-top button on every shared-layout page after a short scroll distance.
+- Files changed: `src/layouts/RootLayout.astro`, `src/styles/global.css`, `docs/superpowers/specs/2026-09-12-return-to-top-design.md`, `SESSION_LOG.md`.
+- Attempts: 3 implementation/staging passes.
+- Failures/causes: The required product brief is absent from this checkout. Browser automation had no available browser surface, so manual browser interaction could not run. The first specification commit unintentionally included two already-staged unrelated files; they were not altered. The first CSS staging patch omitted blank-line context, and the second had context affected by unrelated stylesheet edits; interactive staging selected only the two return-to-top hunks.
+- Tests: `npm run check` passed with 0 Astro/TypeScript diagnostics; focused Prettier passed for both changed files; `npm run build` passed and generated the shared button in all static routes; `git diff --check` passed. Repository-wide lint remains blocked by unrelated existing formatting in `src/components/ModelDataSources.tsx` and `src/data/models/frontier.ts`.
+- Commit: Design `2d6a6cb` (also includes pre-staged unrelated pricing files); implementation `368ce13` and `32635ed`.
+- Current state: The fixed, keyboard-accessible button is hidden until `window.scrollY` reaches 400px, uses reduced-motion-aware scrolling, and renders through `RootLayout` for every page.
+- Exact next step: User verifies the reveal and click behavior in the running development server; no further implementation is planned.
