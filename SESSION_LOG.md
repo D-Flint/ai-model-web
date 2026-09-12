@@ -1,5 +1,16 @@
 # Session Log
 
+## 2026-09-12 — Standardize leaderboard metric column widths
+
+- Objective: Make sure all benchmark capability metric columns in the model explorer table have the exact same width so scores and heatmap cells align uniformly.
+- Files changed: `src/components/ModelExplorer.tsx`, `src/styles/global.css`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: Previous table layout had only `min-width: 82px` on `.th-metric`, causing columns to size unevenly (from 82px for Coding to 118px for Mathematics and 144px for Instruction Following) based on header text length. Standardized all score metric columns (`overall`, `reasoning`, `coding`, `agentic`, `mathematics`, `dataAnalysis`, `language`, `instructionFollowing`) and speed to identical 112px widths with tuned sort button padding (12px 5px, 4px gap), and set cost column to 136px for 2-line header fitting.
+- Tests: Verified in Chrome DevTools on desktop (1920px) in both light and dark mode with all 8 score metric columns measuring exactly 112px width and 66px header height; sorted columns retain exact width; `npm test` passed 161/161; `npm run check` passed (111 files, 0 errors, 0 warnings, 0 hints); Prettier and ESLint passed.
+- Commit: Pending local commit.
+- Current state: Leaderboard metric columns and green heatmap cells have identical widths and symmetrical alignment. No remote push.
+- Exact next step: User verification in the browser on `/models`.
+
 ## 2026-09-12 — Standardize API pricing table row heights
 
 - Objective: Ensure every table row on the API pricing page has the exact same row height across all models, viewports, search terms, and sort options.

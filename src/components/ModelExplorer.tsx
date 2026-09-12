@@ -1041,7 +1041,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.overall && (
                             <td
-                              className={`td-metric td-bold td-align-center ${sortColumn === 'overall' ? 'col-sorted' : ''}`}
+                              className={`td-metric td-overall td-bold td-align-center ${sortColumn === 'overall' ? 'col-sorted' : ''}`}
                             >
                               {row.scores.overall !== null
                                 ? row.scores.overall.toFixed(1)
@@ -1051,7 +1051,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.reasoning && (
                             <td
-                              className={`td-metric td-align-center ${sortColumn === 'reasoning' ? 'col-sorted' : ''} ${row.scores.reasoning !== null && row.scores.reasoning >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
+                              className={`td-metric td-reasoning td-align-center ${sortColumn === 'reasoning' ? 'col-sorted' : ''} ${row.scores.reasoning !== null && row.scores.reasoning >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
                               style={getScoreHeatmapStyle(row.scores.reasoning)}
                             >
                               {row.scores.reasoning !== null
@@ -1062,7 +1062,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.coding && (
                             <td
-                              className={`td-metric td-align-center ${sortColumn === 'coding' ? 'col-sorted' : ''} ${row.scores.coding !== null && row.scores.coding >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
+                              className={`td-metric td-coding td-align-center ${sortColumn === 'coding' ? 'col-sorted' : ''} ${row.scores.coding !== null && row.scores.coding >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
                               style={getScoreHeatmapStyle(row.scores.coding)}
                             >
                               {row.scores.coding !== null
@@ -1073,7 +1073,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.agentic && (
                             <td
-                              className={`td-metric td-align-center ${sortColumn === 'agentic' ? 'col-sorted' : ''} ${row.scores.agentic !== null && row.scores.agentic >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
+                              className={`td-metric td-agentic td-align-center ${sortColumn === 'agentic' ? 'col-sorted' : ''} ${row.scores.agentic !== null && row.scores.agentic >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
                               style={getScoreHeatmapStyle(row.scores.agentic)}
                             >
                               {row.scores.agentic !== null
@@ -1084,7 +1084,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.mathematics && (
                             <td
-                              className={`td-metric td-align-center ${sortColumn === 'mathematics' ? 'col-sorted' : ''} ${row.scores.mathematics !== null && row.scores.mathematics >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
+                              className={`td-metric td-mathematics td-align-center ${sortColumn === 'mathematics' ? 'col-sorted' : ''} ${row.scores.mathematics !== null && row.scores.mathematics >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
                               style={getScoreHeatmapStyle(
                                 row.scores.mathematics,
                               )}
@@ -1097,7 +1097,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.dataAnalysis && (
                             <td
-                              className={`td-metric td-align-center ${sortColumn === 'dataAnalysis' ? 'col-sorted' : ''} ${row.scores.dataAnalysis !== null && row.scores.dataAnalysis >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
+                              className={`td-metric td-dataAnalysis td-align-center ${sortColumn === 'dataAnalysis' ? 'col-sorted' : ''} ${row.scores.dataAnalysis !== null && row.scores.dataAnalysis >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
                               style={getScoreHeatmapStyle(
                                 row.scores.dataAnalysis,
                               )}
@@ -1110,7 +1110,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.language && (
                             <td
-                              className={`td-metric td-align-center ${sortColumn === 'language' ? 'col-sorted' : ''} ${row.scores.language !== null && row.scores.language >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
+                              className={`td-metric td-language td-align-center ${sortColumn === 'language' ? 'col-sorted' : ''} ${row.scores.language !== null && row.scores.language >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
                               style={getScoreHeatmapStyle(row.scores.language)}
                             >
                               {row.scores.language !== null
@@ -1121,7 +1121,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.instructionFollowing && (
                             <td
-                              className={`td-metric td-align-center ${sortColumn === 'instructionFollowing' ? 'col-sorted' : ''} ${row.scores.instructionFollowing !== null && row.scores.instructionFollowing >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
+                              className={`td-metric td-instructionFollowing td-align-center ${sortColumn === 'instructionFollowing' ? 'col-sorted' : ''} ${row.scores.instructionFollowing !== null && row.scores.instructionFollowing >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
                               style={getScoreHeatmapStyle(
                                 row.scores.instructionFollowing,
                               )}

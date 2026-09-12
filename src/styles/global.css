@@ -3335,7 +3335,34 @@ table.leaderboard-table thead th.th-sortable:hover {
 .th-metric,
 .td-metric {
   min-width: 82px;
-  padding: 12px 8px;
+  padding: 12px 6px;
+}
+
+.th-overall,
+.td-overall,
+.th-reasoning,
+.td-reasoning,
+.th-coding,
+.td-coding,
+.th-agentic,
+.td-agentic,
+.th-mathematics,
+.td-mathematics,
+.th-dataAnalysis,
+.td-dataAnalysis,
+.th-language,
+.td-language,
+.th-instructionFollowing,
+.td-instructionFollowing {
+  width: 112px;
+  min-width: 112px;
+  max-width: 112px;
+  box-sizing: border-box;
+}
+
+.th-metric .th-sort-button {
+  padding: 12px 5px;
+  gap: 4px;
 }
 
 .th-align-center,
@@ -3423,6 +3450,17 @@ table.leaderboard-table tbody tr.leaderboard-row.row-selected {
   color: var(--text);
 }
 
+.th-cost,
+.td-cost {
+  min-width: 136px;
+  width: 136px;
+  box-sizing: border-box;
+}
+
+.th-cost .th-sort-button {
+  padding: 12px 14px 12px 4px;
+}
+
 .td-cost {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-weight: 500;
@@ -3432,7 +3470,10 @@ table.leaderboard-table tbody tr.leaderboard-row.row-selected {
 
 .th-speed,
 .td-speed {
+  width: 112px;
   min-width: 112px;
+  max-width: 112px;
+  box-sizing: border-box;
   white-space: nowrap;
 }
 
@@ -3735,6 +3776,9 @@ table.leaderboard-table td.col-sorted.td-date {
   line-height: 1.6;
   overflow-wrap: anywhere;
 }
+.pricing-source time {
+  white-space: nowrap;
+}
 .pricing-controls {
   display: flex;
   gap: 20px;
@@ -3769,6 +3813,86 @@ table.leaderboard-table td.col-sorted.td-date {
   .api-rate-list dd {
     text-align: left;
   }
+}
+
+/* Pricing desktop table with uniform row heights and clear column hierarchy */
+.pricing-desktop-table .pricing-table,
+.pricing-desktop-table .cost-table {
+  min-width: 1040px;
+  width: 100%;
+}
+.pricing-desktop-table .cost-table td:last-child {
+  font-size: 13px;
+  font-weight: normal;
+}
+.pricing-desktop-table thead th {
+  padding: 12px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.pricing-desktop-table tbody tr {
+  height: 68px;
+  transition: background-color 0.15s ease;
+}
+.pricing-desktop-table tbody tr:hover {
+  background-color: color-mix(in srgb, var(--accent) 3%, var(--surface));
+}
+.pricing-desktop-table tbody th,
+.pricing-desktop-table tbody td {
+  height: 68px;
+  padding: 6px 12px;
+  vertical-align: middle;
+  box-sizing: border-box;
+  font-size: 13px;
+  line-height: 1.35;
+}
+.pricing-desktop-table th.col-model,
+.pricing-desktop-table tbody th {
+  min-width: 140px;
+}
+.pricing-desktop-table th.col-model a {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.pricing-desktop-table .col-provider {
+  min-width: 110px;
+}
+.pricing-desktop-table .col-rate {
+  min-width: 130px;
+  font-variant-numeric: tabular-nums;
+}
+.pricing-desktop-table .col-context {
+  min-width: 80px;
+  font-variant-numeric: tabular-nums;
+}
+.pricing-desktop-table .col-notes {
+  min-width: 160px;
+}
+.pricing-desktop-table .col-source {
+  min-width: 160px;
+}
+.pricing-desktop-table .pricing-notes {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.35;
+}
+.pricing-desktop-table .pricing-source {
+  font-size: 11px;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* Mobile comparison and pricing cards replace wide data tables. */
@@ -5462,84 +5586,4 @@ table.leaderboard-table td.col-sorted.td-date {
   .finder-wizard .wizard-actions .button {
     min-height: 44px;
   }
-}
-
-/* Pricing desktop table with uniform row heights and clear column hierarchy */
-.pricing-desktop-table .pricing-table,
-.pricing-desktop-table .cost-table {
-  min-width: 1040px;
-  width: 100%;
-}
-.pricing-desktop-table .cost-table td:last-child {
-  font-size: 13px;
-  font-weight: normal;
-}
-.pricing-desktop-table thead th {
-  padding: 12px 10px;
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--muted);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  border-bottom: 1px solid var(--border);
-  vertical-align: middle;
-  white-space: nowrap;
-}
-.pricing-desktop-table tbody tr {
-  height: 68px;
-  transition: background-color 0.15s ease;
-}
-.pricing-desktop-table tbody tr:hover {
-  background-color: color-mix(in srgb, var(--accent) 3%, var(--surface));
-}
-.pricing-desktop-table tbody th,
-.pricing-desktop-table tbody td {
-  height: 68px;
-  padding: 6px 12px;
-  vertical-align: middle;
-  box-sizing: border-box;
-  font-size: 13px;
-  line-height: 1.35;
-}
-.pricing-desktop-table th.col-model,
-.pricing-desktop-table tbody th {
-  min-width: 140px;
-}
-.pricing-desktop-table th.col-model a {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.pricing-desktop-table .col-provider {
-  min-width: 110px;
-}
-.pricing-desktop-table .col-rate {
-  min-width: 130px;
-  font-variant-numeric: tabular-nums;
-}
-.pricing-desktop-table .col-context {
-  min-width: 80px;
-  font-variant-numeric: tabular-nums;
-}
-.pricing-desktop-table .col-notes {
-  min-width: 160px;
-}
-.pricing-desktop-table .col-source {
-  min-width: 160px;
-}
-.pricing-desktop-table .pricing-notes {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  line-height: 1.35;
-}
-.pricing-desktop-table .pricing-source {
-  font-size: 11px;
-  line-height: 1.3;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
