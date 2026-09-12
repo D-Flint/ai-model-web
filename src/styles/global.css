@@ -3610,6 +3610,22 @@ table.leaderboard-table td.col-sorted.td-date {
   outline-offset: 3px;
 }
 
+.source-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 8px;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 10.5px;
+  line-height: 1.5;
+}
+
+.source-metrics a {
+  font-size: inherit;
+  font-weight: 600;
+}
+
 .model-data-sources small,
 .model-data-sources > p {
   display: block;

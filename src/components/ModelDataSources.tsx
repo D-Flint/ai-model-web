@@ -7,8 +7,8 @@ export function ModelDataSources({
   sources: ModelDetailSource[];
 }) {
   return (
-    <section className="model-data-sources" aria-label="Data sources">
-      <h5>Data sources</h5>
+    <section className="model-data-sources" aria-label="Source coverage">
+      <h5>Source coverage</h5>
       {sources.length === 0 ? (
         <p>Source details are unavailable.</p>
       ) : (
@@ -24,9 +24,22 @@ export function ModelDataSources({
                 <span>{source.name}</span>
                 <ExternalLink size={12} aria-hidden="true" />
               </a>
+              <div className="source-metrics">
+                <span>Used for:</span>
+                {source.coverage.map((metric) => (
+                  <a
+                    key={metric}
+                    href={source.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Open ${source.name} source for ${metric}`}
+                  >
+                    {metric}
+                  </a>
+                ))}
+              </div>
               <small>
-                {source.coverage.join(' · ')} · Retrieved{' '}
-                <time dateTime={source.retrievedAt}>{source.retrievedAt}</time>
+                Retrieved <time dateTime={source.retrievedAt}>{source.retrievedAt}</time>
               </small>
             </li>
           ))}

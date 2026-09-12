@@ -36,7 +36,14 @@ describe('model detail sources', () => {
     expect(
       sources.find((source) => source.name === 'OpenAI Official Documentation')
         ?.coverage,
-    ).toEqual(['API pricing', 'Model facts']);
+    ).toEqual([
+      'Input price',
+      'Output price',
+      'Cached input price',
+      'Release date',
+      'Modalities',
+      'Reasoning tiers',
+    ]);
   });
 
   it('omits benchmark and speed sources when their values are not displayed', () => {

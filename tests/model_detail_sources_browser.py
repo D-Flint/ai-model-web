@@ -22,13 +22,17 @@ with sync_playwright() as playwright:
     page.locator(".leaderboard-row").first.click()
     desktop_sources = page.locator(".subtask-expanded-row .model-data-sources")
     expect(desktop_sources).to_be_visible()
-    expect(desktop_sources.get_by_text("Data sources", exact=True)).to_be_visible()
+    expect(desktop_sources.get_by_text("Source coverage", exact=True)).to_be_visible()
     expect(
         desktop_sources.get_by_role(
             "link", name="Open LiveBench AI Benchmark source"
         )
     ).to_have_attribute("target", "_blank")
-    expect(desktop_sources).to_contain_text("Leaderboard scores")
+    expect(
+        desktop_sources.get_by_role(
+            "link", name="Open LiveBench AI Benchmark source for Overall score"
+        )
+    ).to_have_attribute("target", "_blank")
     expect(desktop_sources).to_contain_text("Retrieved")
     page.screenshot(
         path=str(ARTIFACTS / "model-data-sources-desktop.png"), full_page=True
@@ -42,8 +46,8 @@ with sync_playwright() as playwright:
     ).click()
     mobile_sources = page.locator(".mobile-expanded-details .model-data-sources")
     expect(mobile_sources).to_be_visible()
-    expect(mobile_sources.get_by_text("Data sources", exact=True)).to_be_visible()
-    expect(mobile_sources).to_contain_text("API pricing")
+    expect(mobile_sources.get_by_text("Source coverage", exact=True)).to_be_visible()
+    expect(mobile_sources.get_by_role("link", name="Open OpenRouter recent throughput source for Speed")).to_have_attribute("target", "_blank")
     assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
     page.screenshot(
         path=str(ARTIFACTS / "model-data-sources-mobile.png"), full_page=True

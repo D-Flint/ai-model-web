@@ -312,9 +312,26 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
         langVal,
         instVal,
       ].some((value) => value !== null);
+      const benchmarkCoverage = [
+        overallVal !== null ? 'Overall score' : null,
+        reasoningVal !== null ? 'Reasoning' : null,
+        codingVal !== null ? 'Coding' : null,
+        lbRow?.agentic_coding !== null && lbRow?.agentic_coding !== undefined
+          ? 'Agentic coding'
+          : null,
+        mathVal !== null ? 'Mathematics' : null,
+        dataVal !== null ? 'Data analysis' : null,
+        langVal !== null ? 'Language' : null,
+        instVal !== null ? 'Instruction following' : null,
+        lbRow?.cost_per_successful_task !== null &&
+        lbRow?.cost_per_successful_task !== undefined
+          ? 'Cost per successful task'
+          : null,
+      ].filter((metric): metric is string => metric !== null);
       const detailSources = getModelDetailSources(model, {
         hasBenchmarkScores,
         hasSpeed: speedDisplayValue !== null,
+        benchmarkCoverage,
       });
 
       return {

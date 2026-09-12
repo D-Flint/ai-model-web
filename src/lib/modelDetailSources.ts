@@ -10,6 +10,7 @@ export interface ModelDetailSource {
 interface ModelDetailSourceOptions {
   hasBenchmarkScores: boolean;
   hasSpeed: boolean;
+  benchmarkCoverage?: string[];
 }
 
 interface SourceCandidate {
@@ -42,9 +43,24 @@ function addCatalogSource(
   });
 }
 
+function addPriceSource(
+  candidates: SourceCandidate[],
+  rate: {
+    source: {
+      name: string;
+      url: string;
+      retrievedAt: string;
+    };
+  } | null,
+  coverage: string,
+): void {
+  if (!rate) return;
+  candidates.push({ ...rate.source, coverage });
+}
+
 export function getModelDetailSources(
   model: CatalogModel,
-  { hasBenchmarkScores, hasSpeed }: ModelDetailSourceOptions,
+  { hasBenchmarkScores, hasSpeed, benchmarkCoverage }: ModelDetailSourceOptions,
 ): ModelDetailSource[] {
   const candidates: SourceCandidate[] = [];
 
@@ -55,7 +71,9 @@ export function getModelDetailSources(
         source.name.toLowerCase().includes('livebench') ||
         source.publisher.toLowerCase().includes('livebench'),
     );
-    addCatalogSource(candidates, liveBenchSource, 'Leaderboard scores');
+    for (const metric of benchmarkCoverage ?? ['Leaderboard scores']) {
+      addCatalogSource(candidates, liveBenchSource, metric);
+    }
   }
 
   if (hasSpeed) {
@@ -64,34 +82,45 @@ export function getModelDetailSources(
     addCatalogSource(candidates, sourceById(model, speedSourceId), 'Speed');
   }
 
-  const pricingSources =
-    model.apiPricing?.tiers.flatMap((tier) =>
-      [tier.input, tier.output].flatMap((rate) =>
-        rate
-          ? [
-              {
-                name: rate.source.name,
-                url: rate.source.url,
-                retrievedAt: rate.source.retrievedAt,
-                coverage: 'API pricing',
-              },
-            ]
-          : [],
-      ),
-    ) ?? [];
-  candidates.push(...pricingSources);
-  if (pricingSources.length === 0) {
-    addCatalogSource(
-      candidates,
-      sourceById(model, model.pricing.sourceId),
-      'API pricing',
-    );
+  const pricingCandidates: SourceCandidate[] = [];
+  for (const tier of model.apiPricing?.tiers ?? []) {
+    addPriceSource(pricingCandidates, tier.input, 'Input price');
+    addPriceSource(pricingCandidates, tier.output, 'Output price');
+    addPriceSource(pricingCandidates, tier.cached, 'Cached input price');
+  }
+  for (const period of model.apiPricing?.periods ?? []) {
+    addPriceSource(pricingCandidates, period.input, 'Input price');
+    addPriceSource(pricingCandidates, period.output, 'Output price');
+    addPriceSource(pricingCandidates, period.cached, 'Cached input price');
+  }
+  candidates.push(...pricingCandidates);
+  if (pricingCandidates.length === 0) {
+    const pricingSource = sourceById(model, model.pricing.sourceId);
+    if (model.pricing.input !== null) {
+      addCatalogSource(candidates, pricingSource, 'Input price');
+    }
+    if (model.pricing.output !== null) {
+      addCatalogSource(candidates, pricingSource, 'Output price');
+    }
+    if (model.pricing.cached !== null) {
+      addCatalogSource(candidates, pricingSource, 'Cached input price');
+    }
   }
 
   addCatalogSource(
     candidates,
     sourceById(model, model.facts.sourceId),
-    'Model facts',
+    'Release date',
+  );
+  addCatalogSource(
+    candidates,
+    sourceById(model, model.facts.sourceId),
+    'Modalities',
+  );
+  addCatalogSource(
+    candidates,
+    sourceById(model, model.facts.sourceId),
+    'Reasoning tiers',
   );
   addCatalogSource(
     candidates,
