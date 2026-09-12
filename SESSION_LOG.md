@@ -17,6 +17,17 @@
 - Current state: Plan artifact completed and aligned with user directives.
 - Exact next step: Hand off to GPT-5.6 to execute Phase 0 through Phase 4.
 
+## 2026-09-12 — Replace GPT-5.3-Codex with Muse Spark 1.3
+
+- Objective: Remove GPT-5.3-Codex from the model catalog and replace it with Moonshot AI's Muse Spark 1.3 across the catalog, alias resolver, official specs, and verified data.
+- Files changed: `src/data/models/openai.ts`, `src/data/models/moonshot.ts`, `src/data/verifiedModels.json`, `src/data/officialProviders.ts`, `src/data/livebenchReleaseAliases.ts`, `src/data/modelRoles.ts`, `tests/dataPipeline.test.ts`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: Initial vitest mismatch on catalog ordering resolved by maintaining release date sort in `verifiedModels.json`.
+- Tests: `npm run check` (107 files, 0 errors, 0 warnings, 0 hints); `npm test` (16 files, 150/150 passed).
+- Commit: `ec32746` (`feat(catalog): replace GPT-5.3-Codex with Muse Spark 1.3`).
+- Current state: Committed locally; no remote push.
+- Exact next step: User verifies Muse Spark 1.3 display on leaderboard and model explorer.
+
 ## 2026-09-12 — Move open weights indicator into model detail dropdown
 
 - Objective: Move the open weights indicator tag from the table row into the expanded detail dropdown next to the effort badge.
