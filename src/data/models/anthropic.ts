@@ -425,59 +425,6 @@ export const ANTHROPIC_MODELS: CanonicalModelConfig[] = [
   },
 
   // ==========================================
-  // CLAUDE 3.7 SERIES (EARLY 2025)
-  // ==========================================
-  {
-    slug: 'claude-3-7-sonnet',
-    name: 'Claude 3.7 Sonnet',
-    provider: 'Anthropic',
-    providerSlug: 'anthropic',
-    family: 'Claude 3.7',
-    openWeights: false,
-    openRouterId: 'anthropic/claude-3.7-sonnet',
-    lmarenaAliases: [
-      'claude-3-7-sonnet',
-      'claude-3-7-sonnet-20250219',
-      'claude-3-7-sonnet-thinking',
-      'claude-3.7-sonnet',
-      'anthropic/claude-3.7-sonnet',
-    ],
-    swebenchAliases: [
-      'claude-3-7-sonnet-20250219',
-      'claude-3-7-sonnet',
-      'Claude 3.7 Sonnet',
-      'claude-3.7-sonnet',
-    ],
-    livebenchAliases: [
-      'claude-3-7-sonnet-20250219',
-      'claude-3-7-sonnet',
-      'claude-3.7-sonnet',
-    ],
-    bfclAliases: [
-      'claude-3-7-sonnet-20250219',
-      'claude-3-7-sonnet',
-      'claude-3.7-sonnet',
-    ],
-    officialDocsUrl:
-      'https://docs.anthropic.com/en/docs/about-claude/models#model-comparison-table',
-    description:
-      "Anthropic's flagship hybrid reasoning model, combining instantaneous response generation with extended thinking capabilities for frontier coding and complex reasoning.",
-    strengths: [
-      'State-of-the-art SWE-bench Verified coding performance (70.3% scaffolded)',
-      'Hybrid reasoning architecture with dynamically adjustable thinking tokens',
-      'Frontier Berkeley Function Calling accuracy and agentic tool use',
-      '200,000 token context window with up to 128,000 output tokens',
-    ],
-    weaknesses: [
-      'Higher latency when extended thinking budget is set to maximum',
-      'Premium output pricing ($15.00/1M tokens) during long chain-of-thought generation',
-    ],
-    tags: ['Reasoning', 'Coding', 'Agentic', 'Vision', 'Multimodal'],
-    reasoningEffort: ['none', 'low', 'medium', 'high'],
-    defaultEffort: 'medium',
-  },
-
-  // ==========================================
   // CLAUDE 3.5 SERIES (2024)
   // ==========================================
   {

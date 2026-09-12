@@ -233,34 +233,6 @@ export const GOOGLE_MODELS: CanonicalModelConfig[] = [
     defaultEffort: 'none',
   },
   {
-    slug: 'gemini-3-pro',
-    name: 'Gemini 3 Pro',
-    provider: 'Google DeepMind',
-    providerSlug: 'google',
-    family: 'Gemini',
-    openWeights: false,
-    openRouterId: 'google/gemini-3-pro',
-    lmarenaAliases: ['gemini-3-pro', 'gemini-3.0-pro', 'google/gemini-3-pro'],
-    swebenchAliases: ['gemini-3-pro', 'Google: Gemini 3 Pro'],
-    livebenchAliases: ['gemini-3-pro', 'gemini-3.0-pro'],
-    bfclAliases: ['gemini-3-pro', 'gemini-3.0-pro'],
-    officialDocsUrl: 'https://en.wikipedia.org/wiki/Gemini_(language_model)',
-    description:
-      'Third-generation frontier foundation model excelling in complex programming, scientific analysis, and 2M token context reasoning.',
-    strengths: [
-      'Frontier coding benchmark scores and reliable multi-turn agent execution',
-      '2,097,152 token context window with reliable factual grounding',
-      'Native multimodal analysis of audio streams, video recordings, and diagrams',
-    ],
-    weaknesses: [
-      'Premium pricing relative to the Flash tier',
-      'Higher generation time on complex deep reasoning prompts',
-    ],
-    tags: ['Flagship', 'Coding', 'Research', 'Large context'],
-    reasoningEffort: ['none', 'low', 'medium', 'high'],
-    defaultEffort: 'medium',
-  },
-  {
     slug: 'gemini-3-flash',
     name: 'Gemini 3 Flash',
     provider: 'Google DeepMind',
@@ -300,38 +272,6 @@ export const GOOGLE_MODELS: CanonicalModelConfig[] = [
   // ==========================================
   // GEMINI 2.5 GENERATION (MID 2025)
   // ==========================================
-  {
-    slug: 'gemini-2-5-pro',
-    name: 'Gemini 2.5 Pro',
-    provider: 'Google DeepMind',
-    providerSlug: 'google',
-    family: 'Gemini',
-    openWeights: false,
-    openRouterId: 'google/gemini-2.5-pro',
-    lmarenaAliases: [
-      'gemini-2.5-pro',
-      'gemini-2-5-pro',
-      'google/gemini-2.5-pro',
-    ],
-    swebenchAliases: ['gemini-2.5-pro', 'Google: Gemini 2.5 Pro'],
-    livebenchAliases: ['gemini-2.5-pro', 'gemini-2-5-pro'],
-    bfclAliases: ['gemini-2.5-pro', 'gemini-2-5-pro'],
-    officialDocsUrl: 'https://gradually.ai/models/gemini-2-5-pro',
-    description:
-      "Enhanced 2.5 iteration of Google's flagship Pro tier featuring optimized multi-turn agent workflows and native audio/video processing.",
-    strengths: [
-      '2M token context window with reliable retrieval',
-      'Robust tool execution and agentic error recovery',
-      'Multimodal audio, video, and image support',
-    ],
-    weaknesses: [
-      'Higher token costs than Flash alternatives',
-      'Slower time-to-first-token than Flash',
-    ],
-    tags: ['Flagship', 'Coding', 'Research', 'Multimodal'],
-    reasoningEffort: ['none', 'medium'],
-    defaultEffort: 'none',
-  },
   {
     slug: 'gemini-2-5-flash',
     name: 'Gemini 2.5 Flash',
@@ -400,38 +340,6 @@ export const GOOGLE_MODELS: CanonicalModelConfig[] = [
   // ==========================================
   // GEMINI 2.0 GENERATION (LATE 2024 - EARLY 2025)
   // ==========================================
-  {
-    slug: 'gemini-2-0-pro',
-    name: 'Gemini 2.0 Pro',
-    provider: 'Google DeepMind',
-    providerSlug: 'google',
-    family: 'Gemini',
-    openWeights: false,
-    openRouterId: 'google/gemini-2.0-pro',
-    lmarenaAliases: [
-      'gemini-2.0-pro',
-      'gemini-2-0-pro',
-      'google/gemini-2.0-pro',
-    ],
-    swebenchAliases: ['gemini-2.0-pro', 'Google: Gemini 2.0 Pro'],
-    livebenchAliases: ['gemini-2.0-pro', 'gemini-2-0-pro'],
-    bfclAliases: ['gemini-2.0-pro', 'gemini-2-0-pro'],
-    officialDocsUrl: 'https://gradually.ai/models/gemini-2-0-pro',
-    description:
-      "Google's production 2.0 Pro flagship model, built for complex reasoning, large-scale coding, and multimodal problem solving with a 2M token context window.",
-    strengths: [
-      '2,097,152 token context window with reliable needle retrieval',
-      'Superior coding synthesis and function calling precision',
-      'Native multimodal audio and visual analysis',
-    ],
-    weaknesses: [
-      'Higher token cost than Flash models',
-      'Slower generation than Flash',
-    ],
-    tags: ['Flagship', 'Coding', 'Research', 'Long context'],
-    reasoningEffort: ['none', 'medium'],
-    defaultEffort: 'none',
-  },
   {
     slug: 'gemini-2-0-pro-exp',
     name: 'Gemini 2.0 Pro Exp',

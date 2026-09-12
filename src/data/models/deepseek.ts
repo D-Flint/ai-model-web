@@ -5,41 +5,6 @@ export const DEEPSEEK_MODELS: CanonicalModelConfig[] = [
   // DEEPSEEK R1 REASONING FAMILY (2025)
   // ==========================================
   {
-    slug: 'deepseek-r1',
-    name: 'DeepSeek R1',
-    provider: 'DeepSeek',
-    providerSlug: 'deepseek',
-    family: 'DeepSeek R1',
-    openWeights: true,
-    openRouterId: 'deepseek/deepseek-r1',
-    lmarenaAliases: [
-      'deepseek-r1',
-      'deepseek/deepseek-r1',
-      'deepseek-reasoner',
-      'deepseek r1',
-      'DeepSeek-R1',
-    ],
-    swebenchAliases: ['DeepSeek-R1', 'deepseek-r1', 'deepseek-reasoner'],
-    livebenchAliases: ['DeepSeek-R1', 'deepseek-r1'],
-    bfclAliases: ['DeepSeek-R1', 'deepseek-r1'],
-    officialDocsUrl: 'https://api-docs.deepseek.com/quick_start/pricing',
-    description:
-      "DeepSeek's flagship open-weights reasoning model (671B MoE, 37B active), using large-scale reinforcement learning for complex multi-step reasoning, math, and code generation.",
-    strengths: [
-      'State-of-the-art open reasoning performance matching frontier closed models',
-      'Exceptional performance-to-price ratio for complex STEM workloads',
-      'Open weights available for local deployment and academic research',
-      'Deep step-by-step chain-of-thought problem decomposition',
-    ],
-    weaknesses: [
-      'Text-only model with no native image or audio support',
-      'API rate limits and peak-hour queue delays on official hosted endpoints',
-    ],
-    tags: ['Reasoning', 'Open weights', 'Coding', 'Best value', 'Flagship'],
-    reasoningEffort: ['fixed'],
-    defaultEffort: 'fixed',
-  },
-  {
     slug: 'deepseek-r1-zero',
     name: 'DeepSeek R1 Zero',
     provider: 'DeepSeek',

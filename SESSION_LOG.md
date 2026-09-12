@@ -17,6 +17,17 @@
 - Current state: Plan artifact completed and aligned with user directives.
 - Exact next step: Hand off to GPT-5.6 to execute Phase 0 through Phase 4.
 
+## 2026-09-12 — Purge deprecated and obsolete models (o1, o1-pro, DeepSeek R1, Gemini 2.0 Pro, Claude 3.7 Sonnet, o3, o3-pro, Gemini 2.5 Pro, o4 mini, Gemini 3 Pro)
+
+- Objective: Completely remove o1, o1-pro, DeepSeek R1, Gemini 2.0 Pro, Claude 3.7 Sonnet, o3, o3-pro, Gemini 2.5 Pro, o4 mini, and Gemini 3 Pro from canonical models, provider specs, roles, SEO pairs, verified catalog, and tests.
+- Files changed: `src/data/models/openai.ts`, `src/data/models/google.ts`, `src/data/models/anthropic.ts`, `src/data/models/deepseek.ts`, `src/data/officialProviders.ts`, `src/data/modelRoles.ts`, `src/data/verifiedModels.json`, `src/lib/livebenchCatalog.ts`, `src/lib/seoComparisons.ts`, `tests/apiPricing.test.ts`, `tests/livebenchCatalog.test.ts`, `tests/seoComparisons.test.ts`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: Initial candidate limit mismatch (35 vs 32 eligible models remaining) resolved by updating candidate limit and tests to reflect 32 eligible models; pricing tests transitioned from `gemini-2-5-pro` to `gemini-3-1-pro`.
+- Tests: `npm run check` (107 files, 0 errors, 0 warnings, 0 hints); `npm test` (16 files, 150/150 passed); `npm run lint` (clean); `npm run build` (success).
+- Commit: Pending local commit.
+- Current state: Stored locally; no remote push.
+- Exact next step: User verifies clean catalog without the 10 removed models.
+
 ## 2026-09-12 — Replace Gemini 3 Deep Think and Gemma 4 with GLM 5.3 and GLM 5.3 Flash
 
 - Objective: Remove Gemini 3 Deep Think and Gemma 4 from canonical configs, roles, and verified catalog; add GLM 5.3 and ensure GLM 5.3 Flash are fully configured and ingested.

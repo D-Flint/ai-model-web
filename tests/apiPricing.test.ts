@@ -17,7 +17,7 @@ import { validateCatalog } from '../src/lib/importCatalog';
 
 const now = new Date('2026-09-06T12:00:00Z');
 const claude = verifiedApiPricing['claude-sonnet-5'];
-const gemini = verifiedApiPricing['gemini-2-5-pro'];
+const gemini = verifiedApiPricing['gemini-3-1-pro'];
 describe('user-provided API workloads', () => {
   it('multiplies uncached, cached and output categories by requests without double counting', () => {
     const result = calculateApiCost(
@@ -43,8 +43,8 @@ describe('user-provided API workloads', () => {
     );
     expect(low.tier.id).toBe('standard');
     expect(high.tier.id).toBe('long-context');
-    expect(high.output).toBeCloseTo(0.015);
-    expect(high.input).toBeCloseTo((199001 * 2.5) / 1e6);
+    expect(high.output).toBeCloseTo(0.018);
+    expect(high.input).toBeCloseTo((199001 * 4) / 1e6);
   });
   it('adds cache writes and search per request but storage once per workload', () => {
     expect(
@@ -157,8 +157,8 @@ describe('pricing provenance and comparisons', () => {
   it('preserves unavailable values and never flattens a tiered model for sorting', () => {
     const model = { ...models[0], apiPricing: gemini };
     expect(comparablePrice(model)).toBeNull();
-    expect(reviewedContext['gemini-2-5-pro'].value).toBe(1_048_576);
-    expect(reviewedContext['gemini-2-5-pro'].source.id).toBeTruthy();
+    expect(reviewedContext['gemini-3-1-pro'].value).toBe(1_048_576);
+    expect(reviewedContext['gemini-3-1-pro'].source.id).toBeTruthy();
     expect(formatPrice(null)).toBe('Unavailable');
     expect(formatPrice(0)).toBe('$0.00');
     expect(formatPrice(0.0000001)).toBe('<$0.000001');

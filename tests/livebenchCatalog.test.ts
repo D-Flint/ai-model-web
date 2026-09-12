@@ -43,10 +43,10 @@ describe('LiveBench catalog selection', () => {
     expect(allModels.some((model) => removed.has(model.slug))).toBe(false);
   });
 
-  it('retains 35 eligible candidates and recent discovery models', () => {
+  it('retains 32 eligible candidates and recent discovery models', () => {
     expect(
       selectTopLiveBenchModels(allModels, LIVEBENCH_CANDIDATE_LIMIT),
-    ).toHaveLength(35);
+    ).toHaveLength(32);
     expect(allModels.length).toBeGreaterThanOrEqual(LIVEBENCH_CANDIDATE_LIMIT);
     expect(allModels.length).toBeLessThanOrEqual(
       LIVEBENCH_CANDIDATE_LIMIT + LIVEBENCH_CATALOG_LIMIT,
