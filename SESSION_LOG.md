@@ -972,3 +972,13 @@
 - Commit: Design specification `8e3557a`; implementation commit pending.
 - Current state: GLM 5.3 and GLM 5.3 Flash now show their existing OpenRouter-backed rates, and Nemotron 3 Ultra 550B shows its NVIDIA-backed rate. Their existing retrieval dates remain visible for freshness. Inkling remains unavailable because its only linked URL is the LiveBench benchmark, which is not pricing provenance.
 - Exact next step: Create the scoped implementation commit, then wait for user verification of `/pricing`.
+
+## 2026-09-12 — Remove Inkling from the active catalog
+
+- Objective: Remove Inkling from every published product surface because its provider and API-pricing provenance cannot be verified.
+- Files changed: `src/data/canonicalModels.ts`, `src/data/modelRoles.ts`, `src/data/models/frontier.ts`, `src/data/officialProviders.ts`, `src/data/models.ts`, `src/lib/livebenchCatalog.ts`, `tests/livebenchCatalog.test.ts`, `SESSION_LOG.md`; historical benchmark fixture and alias retained. Design specification committed separately at `docs/superpowers/specs/2026-09-12-remove-inkling-active-catalog-design.md`.
+- Attempts: 2 validation passes. The first found the fixed candidate limit still required 56 eligible models and the published-count test still expected 52 speed-verified models; both were correctly reduced by one after Inkling's removal.
+- Tests: Focused LiveBench tests pass; full `npm test` passed 160/160; elevated `npm run check` passed with 0 Astro/TypeScript diagnostics; `npm run build` passed with 51 comparison records and no Inkling route; `git diff --check` passed.
+- Commit: Design specification `b0c7616`; implementation commit pending.
+- Current state: Inkling is absent from `models` and `allModels`, generated detail routes, pricing, comparison, discovery, recommendations, and sitemap. Its raw LiveBench snapshot and alias remain historical evidence only.
+- Exact next step: Create the scoped implementation commit, then wait for user verification.

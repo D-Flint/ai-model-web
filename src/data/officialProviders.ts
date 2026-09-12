@@ -240,27 +240,6 @@ export const OFFICIAL_PROVIDER_SPECS: Record<string, OfficialProviderSpec> = {
     sourceUrl: 'https://docs.x.ai/docs/overview#models',
     sourceName: 'xAI Official Documentation',
   },
-  inkling: {
-    slug: 'inkling',
-    releaseDate: '2026-06-01',
-    contextWindow: 131072,
-    maxOutputTokens: 16384,
-    supportsVision: false,
-    supportsAudio: false,
-    supportsTools: true,
-    supportsStructuredOutput: true,
-    apiAvailable: true,
-    officialPricing: {
-      input: 3,
-      output: 15,
-      cached: 1,
-    },
-    reasoningEffort: ['high', 'max'],
-    defaultEffort: 'max',
-    lastVerifiedAt: '2026-06-25',
-    sourceUrl: 'https://livebench.ai/',
-    sourceName: 'Inkling Research Evaluation',
-  },
   'muse-spark-1-1': {
     slug: 'muse-spark-1-1',
     releaseDate: '2026-04-01',
@@ -323,27 +302,6 @@ export const OFFICIAL_PROVIDER_SPECS: Record<string, OfficialProviderSpec> = {
     lastVerifiedAt: '2026-06-25',
     sourceUrl: 'https://build.nvidia.com/',
     sourceName: 'NVIDIA Official Specs',
-  },
-  'ox-alpha': {
-    slug: 'ox-alpha',
-    releaseDate: '2026-06-01',
-    contextWindow: 131072,
-    maxOutputTokens: 16384,
-    supportsVision: false,
-    supportsAudio: false,
-    supportsTools: true,
-    supportsStructuredOutput: true,
-    apiAvailable: true,
-    officialPricing: {
-      input: 4,
-      output: 16,
-      cached: 1,
-    },
-    reasoningEffort: ['max'],
-    defaultEffort: 'max',
-    lastVerifiedAt: '2026-06-25',
-    sourceUrl: 'https://livebench.ai/',
-    sourceName: 'Ox Labs Research',
   },
   'qwen-3-6-27b': {
     slug: 'qwen-3-6-27b',
@@ -3673,15 +3631,15 @@ export const OFFICIAL_PROVIDER_SPECS: Record<string, OfficialProviderSpec> = {
     supportsStructuredOutput: true,
     apiAvailable: true,
     officialPricing: {
-      input: null,
-      output: null,
-      cached: null,
+      input: 0.15,
+      output: 0.6,
+      cached: 0.003,
     },
     reasoningEffort: ['low', 'medium', 'high', 'max'],
     defaultEffort: 'medium',
     lastVerifiedAt: '2026-09-12',
-    sourceUrl: 'https://deepseek.com/en/news/deepseek-v4-1-flash/',
-    sourceName: 'DeepSeek Official Announcement',
+    sourceUrl: 'https://api-docs.deepseek.com/quick_start/pricing',
+    sourceName: 'DeepSeek API pricing',
   },
   'deepseek-v4-flash-base': {
     slug: 'deepseek-v4-flash-base',
@@ -5291,6 +5249,8 @@ const retrievedAt = '2026-09-06';
 const anthropic = 'https://platform.claude.com/docs/en/about-claude/pricing';
 const google = 'https://ai.google.dev/gemini-api/docs/pricing';
 const deepseekPricing = 'https://api-docs.deepseek.com/quick_start/pricing';
+const minimaxPricing =
+  'https://platform.minimax.io/subscribe/token-plan?tab=api-enterprise';
 const apiPricingRecords: Record<string, ApiPricing> = {};
 function price(
   value: number,
@@ -5347,6 +5307,20 @@ function deepseekPrice(value: number): PriceValue {
       type: 'provider_doc',
       retrievedAt: '2026-09-12',
       effectiveFrom: '2026-09-10',
+    },
+  };
+}
+function minimaxPrice(value: number): PriceValue {
+  return {
+    value,
+    currency: 'USD',
+    unit: 'per-million-tokens',
+    source: {
+      name: 'MiniMax API pricing',
+      url: minimaxPricing,
+      type: 'provider_doc',
+      retrievedAt: '2026-09-12',
+      effectiveFrom: null,
     },
   };
 }
@@ -5528,6 +5502,43 @@ for (const [slug, input, output, cached, storage] of [
     benchmarkCost: null,
   };
 }
+apiPricingRecords['minimax-m3'] = {
+  provider: 'MiniMax',
+  scope: 'MiniMax API · M3 standard-priority text pricing',
+  tiers: [
+    {
+      id: 'standard',
+      label: '0–512,000 input tokens',
+      minContext: 0,
+      maxContext: 512_000,
+      input: minimaxPrice(0.3),
+      output: minimaxPrice(1.2),
+      cached: minimaxPrice(0.06),
+      cacheWrite5m: null,
+      cacheWrite1h: null,
+      cacheStorage: null,
+      search: null,
+    },
+    {
+      id: 'long-context',
+      label: '512,001–1,048,576 input tokens',
+      minContext: 512_001,
+      maxContext: 1_048_576,
+      input: minimaxPrice(0.6),
+      output: minimaxPrice(2.4),
+      cached: minimaxPrice(0.12),
+      cacheWrite5m: null,
+      cacheWrite1h: null,
+      cacheStorage: null,
+      search: null,
+    },
+  ],
+  notes: [
+    'Displayed rates are the discounted standard-priority pay-as-you-go rates shown by MiniMax.',
+    'Priority-service, media, subscription, and other charges are outside this calculator.',
+  ],
+  benchmarkCost: null,
+};
 export const verifiedApiPricing: Record<string, ApiPricing> =
   Object.fromEntries(
     Object.entries(apiPricingRecords).map(([slug, record]) => [

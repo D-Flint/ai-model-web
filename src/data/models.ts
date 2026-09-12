@@ -267,7 +267,9 @@ export const mockModels: CatalogModel[] = validateCatalog(
 let verifiedModelsList: CatalogModel[] | null = null;
 try {
   if (Array.isArray(verifiedCatalogRaw) && verifiedCatalogRaw.length > 0) {
-    verifiedModelsList = validateCatalog(verifiedCatalogRaw);
+    verifiedModelsList = validateCatalog(verifiedCatalogRaw).filter(
+      (model) => model.slug !== 'ox-alpha' && model.slug !== 'inkling',
+    );
   }
 } catch (err) {
   console.warn(
@@ -340,6 +342,7 @@ export const allModels: CatalogModel[] =
 export const models: CatalogModel[] =
   allModels[0]?.dataKind === 'verified'
     ? selectTopLiveBenchModels(allModels)
+        .filter((model) => model.facts.speedTokensPerSec !== null)
         .map((model) => ({
           ...model,
           apiPricing:

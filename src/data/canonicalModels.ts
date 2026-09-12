@@ -166,22 +166,6 @@ export const PROVIDERS_CONFIG = [
     description:
       'Accelerated computing pioneer developing extreme-scale open-weight foundation models.',
   },
-  {
-    id: 'provider-inkling',
-    slug: 'inkling',
-    name: 'Inkling AI',
-    website: 'https://livebench.ai',
-    description:
-      'Advanced reasoning research laboratory evaluating reflective inference models.',
-  },
-  {
-    id: 'provider-ox',
-    slug: 'ox',
-    name: 'Ox Labs',
-    website: 'https://livebench.ai',
-    description:
-      'Autonomous code synthesis and rigorous logic verification research group.',
-  },
 ];
 
 const canonicalModels: CanonicalModelConfig[] = [

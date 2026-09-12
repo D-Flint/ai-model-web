@@ -17,8 +17,19 @@ describe('LiveBench catalog selection', () => {
     expect(flash?.cost_per_successful_task).toBe(0.0292);
   });
 
-  it('publishes exactly 57 eligible models in LiveBench score order', () => {
-    expect(models).toHaveLength(LIVEBENCH_CATALOG_LIMIT);
+  it('publishes only models with verified speed telemetry', () => {
+    expect(models).toHaveLength(51);
+    expect(
+      models.every((model) => model.facts.speedTokensPerSec !== null),
+    ).toBe(true);
+    expect(models).not.toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ slug: 'qwen-3-8-flash-next' }),
+        expect.objectContaining({ slug: 'smaug-agentic' }),
+        expect.objectContaining({ slug: 'smaug-flash' }),
+        expect.objectContaining({ slug: 'smaug-mini' }),
+      ]),
+    );
     expect(models.every((model) => model.dataKind === 'verified')).toBe(true);
     expect(
       models.every((model) =>
@@ -27,9 +38,7 @@ describe('LiveBench catalog selection', () => {
         ),
       ),
     ).toBe(true);
-    expect(new Set(models.map((model) => model.slug)).size).toBe(
-      LIVEBENCH_CATALOG_LIMIT,
-    );
+    expect(new Set(models.map((model) => model.slug)).size).toBe(51);
     expect(
       [...CURATED_PUBLISHED_MODEL_SLUGS].every((slug) =>
         models.some((model) => model.slug === slug),
@@ -56,10 +65,19 @@ describe('LiveBench catalog selection', () => {
     expect(allModels.some((model) => removed.has(model.slug))).toBe(false);
   });
 
-  it('retains 57 eligible candidates and recent discovery models', () => {
+  it('does not expose Ox Alpha in the active catalog', () => {
+    expect(models.some((model) => model.slug === 'ox-alpha')).toBe(false);
+  });
+
+  it('does not expose Inkling in the active catalog', () => {
+    expect(models.some((model) => model.slug === 'inkling')).toBe(false);
+    expect(allModels.some((model) => model.slug === 'inkling')).toBe(false);
+  });
+
+  it('retains 55 eligible candidates and recent discovery models', () => {
     expect(
       selectTopLiveBenchModels(allModels, LIVEBENCH_CANDIDATE_LIMIT),
-    ).toHaveLength(57);
+    ).toHaveLength(55);
     expect(allModels.length).toBeGreaterThanOrEqual(LIVEBENCH_CANDIDATE_LIMIT);
     expect(allModels.length).toBeLessThanOrEqual(
       LIVEBENCH_CANDIDATE_LIMIT + LIVEBENCH_CATALOG_LIMIT,

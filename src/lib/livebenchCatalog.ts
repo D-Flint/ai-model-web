@@ -4,8 +4,8 @@ import { defaultAliasResolver } from '../pipeline/aliasResolver';
 import type { CatalogModel } from './catalogSchema';
 import { evaluateModelEligibility } from './catalogEligibility';
 
-export const LIVEBENCH_CATALOG_LIMIT = 57;
-export const LIVEBENCH_CANDIDATE_LIMIT = 57;
+export const LIVEBENCH_CATALOG_LIMIT = 55;
+export const LIVEBENCH_CANDIDATE_LIMIT = 55;
 export const CURATED_PUBLISHED_MODEL_SLUGS = new Set([
   'deepseek-v4-flash-0731',
   'deepseek-v4-1-flash',
