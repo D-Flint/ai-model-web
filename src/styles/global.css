@@ -3325,7 +3325,7 @@ table.leaderboard-table thead th.th-sortable:hover {
   text-align: left;
 }
 
-/* Sorted column & top 5 cells */
+/* Sorted columns and score heatmap */
 table.leaderboard-table td.col-sorted {
   background-color: var(--soft);
   font-weight: 600;
@@ -3346,14 +3346,22 @@ table.leaderboard-table th.col-sorted {
   color: var(--accent);
 }
 
-.cell-top5 {
-  background-color: color-mix(in srgb, var(--accent) 14%, var(--soft));
+.cell-score-heatmap {
+  background-color: color-mix(
+    in srgb,
+    var(--accent) var(--score-heatmap-intensity),
+    var(--surface)
+  );
   color: var(--accent-hover);
   font-weight: 600;
 }
 
-:root[data-theme='dark'] .cell-top5 {
-  background-color: color-mix(in srgb, var(--accent) 24%, var(--soft));
+:root[data-theme='dark'] .cell-score-heatmap {
+  background-color: color-mix(
+    in srgb,
+    var(--accent) calc(var(--score-heatmap-intensity) + 10%),
+    var(--surface)
+  );
   color: var(--accent);
 }
 

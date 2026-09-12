@@ -127,6 +127,22 @@ const CATEGORIES = [
   },
 ] as const;
 
+const SCORE_HEATMAP_THRESHOLD = 75;
+
+function getScoreHeatmapStyle(
+  score: number | null,
+): React.CSSProperties | undefined {
+  if (score === null || score < SCORE_HEATMAP_THRESHOLD) return undefined;
+
+  const normalizedScore = Math.min(score, 100);
+  const intensity =
+    14 + ((normalizedScore - SCORE_HEATMAP_THRESHOLD) / 25) * 24;
+
+  return {
+    '--score-heatmap-intensity': `${intensity.toFixed(1)}%`,
+  } as React.CSSProperties;
+}
+
 export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
   const [query, setQuery] = useState('');
   const [selectedOrg, setSelectedOrg] = useState('');
@@ -408,34 +424,6 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
       setTableMaxHeight(undefined);
     }
   }, [sortedRows.length, showOrg, viewMode]);
-
-  const top5Thresholds = useMemo(() => {
-    const metricKeys: LeaderboardMetricKey[] = [
-      'overall',
-      'reasoning',
-      'coding',
-      'agentic',
-      'mathematics',
-      'dataAnalysis',
-      'language',
-      'instructionFollowing',
-    ];
-
-    const thresholds: Partial<Record<LeaderboardMetricKey, number>> = {};
-    for (const k of metricKeys) {
-      const vals = filteredRows
-        .map((r) => r.scores[k])
-        .filter((v): v is number => v !== null && v !== undefined && v > 0)
-        .sort((a, b) => b - a);
-
-      if (vals.length >= 5) {
-        thresholds[k] = vals[4];
-      } else if (vals.length > 0) {
-        thresholds[k] = vals[vals.length - 1];
-      }
-    }
-    return thresholds;
-  }, [filteredRows]);
 
   function handleCategoryClick(cat: (typeof CATEGORIES)[number]) {
     if (activeCategory === cat.id && sortColumn === cat.sortCol) {
@@ -1063,15 +1051,8 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.reasoning && (
                             <td
-                              className={`td-metric td-align-center ${sortColumn === 'reasoning' ? 'col-sorted' : ''} ${
-                                top5Thresholds.reasoning !== undefined &&
-                                row.scores.reasoning !== null &&
-                                row.scores.reasoning >=
-                                  top5Thresholds.reasoning &&
-                                sortColumn !== 'reasoning'
-                                  ? 'cell-top5'
-                                  : ''
-                              }`}
+                              className={`td-metric td-align-center ${sortColumn === 'reasoning' ? 'col-sorted' : ''} ${row.scores.reasoning !== null && row.scores.reasoning >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
+                              style={getScoreHeatmapStyle(row.scores.reasoning)}
                             >
                               {row.scores.reasoning !== null
                                 ? row.scores.reasoning.toFixed(1)
@@ -1081,14 +1062,8 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.coding && (
                             <td
-                              className={`td-metric td-align-center ${sortColumn === 'coding' ? 'col-sorted' : ''} ${
-                                top5Thresholds.coding !== undefined &&
-                                row.scores.coding !== null &&
-                                row.scores.coding >= top5Thresholds.coding &&
-                                sortColumn !== 'coding'
-                                  ? 'cell-top5'
-                                  : ''
-                              }`}
+                              className={`td-metric td-align-center ${sortColumn === 'coding' ? 'col-sorted' : ''} ${row.scores.coding !== null && row.scores.coding >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
+                              style={getScoreHeatmapStyle(row.scores.coding)}
                             >
                               {row.scores.coding !== null
                                 ? row.scores.coding.toFixed(1)
@@ -1098,14 +1073,8 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.agentic && (
                             <td
-                              className={`td-metric td-align-center ${sortColumn === 'agentic' ? 'col-sorted' : ''} ${
-                                top5Thresholds.agentic !== undefined &&
-                                row.scores.agentic !== null &&
-                                row.scores.agentic >= top5Thresholds.agentic &&
-                                sortColumn !== 'agentic'
-                                  ? 'cell-top5'
-                                  : ''
-                              }`}
+                              className={`td-metric td-align-center ${sortColumn === 'agentic' ? 'col-sorted' : ''} ${row.scores.agentic !== null && row.scores.agentic >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
+                              style={getScoreHeatmapStyle(row.scores.agentic)}
                             >
                               {row.scores.agentic !== null
                                 ? row.scores.agentic.toFixed(1)
@@ -1115,15 +1084,10 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.mathematics && (
                             <td
-                              className={`td-metric td-align-center ${sortColumn === 'mathematics' ? 'col-sorted' : ''} ${
-                                top5Thresholds.mathematics !== undefined &&
-                                row.scores.mathematics !== null &&
-                                row.scores.mathematics >=
-                                  top5Thresholds.mathematics &&
-                                sortColumn !== 'mathematics'
-                                  ? 'cell-top5'
-                                  : ''
-                              }`}
+                              className={`td-metric td-align-center ${sortColumn === 'mathematics' ? 'col-sorted' : ''} ${row.scores.mathematics !== null && row.scores.mathematics >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
+                              style={getScoreHeatmapStyle(
+                                row.scores.mathematics,
+                              )}
                             >
                               {row.scores.mathematics !== null
                                 ? row.scores.mathematics.toFixed(1)
@@ -1133,15 +1097,10 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.dataAnalysis && (
                             <td
-                              className={`td-metric td-align-center ${sortColumn === 'dataAnalysis' ? 'col-sorted' : ''} ${
-                                top5Thresholds.dataAnalysis !== undefined &&
-                                row.scores.dataAnalysis !== null &&
-                                row.scores.dataAnalysis >=
-                                  top5Thresholds.dataAnalysis &&
-                                sortColumn !== 'dataAnalysis'
-                                  ? 'cell-top5'
-                                  : ''
-                              }`}
+                              className={`td-metric td-align-center ${sortColumn === 'dataAnalysis' ? 'col-sorted' : ''} ${row.scores.dataAnalysis !== null && row.scores.dataAnalysis >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
+                              style={getScoreHeatmapStyle(
+                                row.scores.dataAnalysis,
+                              )}
                             >
                               {row.scores.dataAnalysis !== null
                                 ? row.scores.dataAnalysis.toFixed(1)
@@ -1151,15 +1110,8 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.language && (
                             <td
-                              className={`td-metric td-align-center ${sortColumn === 'language' ? 'col-sorted' : ''} ${
-                                top5Thresholds.language !== undefined &&
-                                row.scores.language !== null &&
-                                row.scores.language >=
-                                  top5Thresholds.language &&
-                                sortColumn !== 'language'
-                                  ? 'cell-top5'
-                                  : ''
-                              }`}
+                              className={`td-metric td-align-center ${sortColumn === 'language' ? 'col-sorted' : ''} ${row.scores.language !== null && row.scores.language >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
+                              style={getScoreHeatmapStyle(row.scores.language)}
                             >
                               {row.scores.language !== null
                                 ? row.scores.language.toFixed(1)
@@ -1169,16 +1121,10 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.instructionFollowing && (
                             <td
-                              className={`td-metric td-align-center ${sortColumn === 'instructionFollowing' ? 'col-sorted' : ''} ${
-                                top5Thresholds.instructionFollowing !==
-                                  undefined &&
-                                row.scores.instructionFollowing !== null &&
-                                row.scores.instructionFollowing >=
-                                  top5Thresholds.instructionFollowing &&
-                                sortColumn !== 'instructionFollowing'
-                                  ? 'cell-top5'
-                                  : ''
-                              }`}
+                              className={`td-metric td-align-center ${sortColumn === 'instructionFollowing' ? 'col-sorted' : ''} ${row.scores.instructionFollowing !== null && row.scores.instructionFollowing >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
+                              style={getScoreHeatmapStyle(
+                                row.scores.instructionFollowing,
+                              )}
                             >
                               {row.scores.instructionFollowing !== null
                                 ? row.scores.instructionFollowing.toFixed(1)
