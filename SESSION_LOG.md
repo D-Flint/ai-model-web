@@ -1,5 +1,16 @@
 # Session Log
 
+## 2026-09-13 — Increase metric cell widths by 5% to 88px
+
+- Objective: Increase the uniform width of metric cells on the models explorer table by 5%.
+- Files changed: `src/styles/global.css`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: User requested a 5% width increase from 84px. Scaled all metric columns and cells (`.th-metric`, `.td-metric`, and individual column keys) from 84px to 88px (~5% increase: 84 * 1.05 = 88.2px, rounded to 88px), providing extra margin for headers and scores while staying well within the desktop container.
+- Tests: `npm run check` passed (111 files, 0 errors, 0 warnings, 0 hints); `npx prettier --check src/styles/global.css` passed; Vitest `tests/leaderboardSorting.test.ts` passed 11/11.
+- Commit: Pending local commit.
+- Current state: All metric cells on the model explorer table are uniformly sized at 88px.
+- Exact next step: User verification in the browser on `/models`.
+
 ## 2026-09-13 — Standardize metric cell widths on model explorer table
 
 - Objective: Ensure all metric cells and columns have the exact same width on the models explorer leaderboard table.

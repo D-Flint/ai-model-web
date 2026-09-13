@@ -3383,9 +3383,9 @@ table.leaderboard-table thead th.th-sortable:hover {
 
 .th-metric,
 .td-metric {
-  width: 84px;
-  min-width: 84px;
-  max-width: 84px;
+  width: 88px;
+  min-width: 88px;
+  max-width: 88px;
   padding: 8px 4px;
   box-sizing: border-box;
 }
@@ -3410,9 +3410,9 @@ table.leaderboard-table thead th.th-sortable:hover {
 .td-cost,
 .th-speed,
 .td-speed {
-  width: 84px;
-  min-width: 84px;
-  max-width: 84px;
+  width: 88px;
+  min-width: 88px;
+  max-width: 88px;
   box-sizing: border-box;
 }
 
