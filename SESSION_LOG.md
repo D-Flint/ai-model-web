@@ -1,5 +1,16 @@
 # Session Log
 
+## 2026-09-13 — Compact model table cell widths to fit all rows without overflow
+
+- Objective: Decrease cell widths and padding in the model page table so that all rows and columns fit within the container without horizontal overflow or clipping.
+- Files changed: `src/components/ModelExplorer.tsx`, `src/styles/global.css`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: Previous table had fixed 112px width across all 8 metric columns, 136px on cost, 112px on speed, 38px on expand, and a rigid 25% (min-width 250px) on the model column with large cell padding (12px 8px). This totaled over 1432px min-width, overflowing the page container and pushing the cost and speed columns off-screen with horizontal scrollbars. Decreased metric column widths (68px–84px), cost to 80px (`COST / TASK`), speed to 78px (`SPEED (TOK/S)`), expand to 28px, model column min-width to 170px (removing fixed 25%), tightened padding to 8px 4px, reduced sort button height and icon size to 11px, and added styling for the LiveBench scope badge.
+- Tests: `npm run check` passed (111 files, 0 errors, 0 warnings, 0 hints); Vitest leaderboard tests (`leaderboardSorting.test.ts`, `decision.test.ts`) passed 30/30; total width fits cleanly under desktop container without horizontal overflow.
+- Commit: Pending local commit.
+- Current state: Model table fits all columns within standard desktop viewports cleanly and symmetrically with no clipped cells.
+- Exact next step: User verification in the browser on `/models`.
+
 ## 2026-09-13 — Equalize model column widths on comparison page
 
 - Objective: Make sure all model columns in the comparison table are equal in length/width across 2, 3, or 4 models.

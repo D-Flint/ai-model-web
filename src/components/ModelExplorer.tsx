@@ -51,58 +51,79 @@ export type LeaderboardColumnKey =
 interface ColumnDef {
   key: LeaderboardColumnKey;
   label: string;
+  headerLabel?: string;
   align: 'left' | 'center' | 'right';
   defaultVisible: boolean;
 }
 
 const ALL_COLUMNS: ColumnDef[] = [
-  { key: 'overall', label: 'OVERALL', align: 'center', defaultVisible: true },
   {
-    key: 'reasoning',
-    label: 'REASONING',
+    key: 'overall',
+    label: 'Overall',
+    headerLabel: 'OVERALL',
     align: 'center',
     defaultVisible: true,
   },
-  { key: 'coding', label: 'CODING', align: 'center', defaultVisible: true },
+  {
+    key: 'reasoning',
+    label: 'Reasoning',
+    headerLabel: 'REASONING',
+    align: 'center',
+    defaultVisible: true,
+  },
+  {
+    key: 'coding',
+    label: 'Coding',
+    headerLabel: 'CODING',
+    align: 'center',
+    defaultVisible: true,
+  },
   {
     key: 'agentic',
-    label: 'AGENTIC CODING',
+    label: 'Agentic Coding',
+    headerLabel: 'AGENTIC CODING',
     align: 'center',
     defaultVisible: true,
   },
   {
     key: 'mathematics',
-    label: 'MATHEMATICS',
+    label: 'Mathematics',
+    headerLabel: 'MATHEMATICS',
     align: 'center',
     defaultVisible: true,
   },
   {
     key: 'dataAnalysis',
-    label: 'DATA ANALYSIS',
+    label: 'Data Analysis',
+    headerLabel: 'DATA ANALYSIS',
     align: 'center',
     defaultVisible: true,
   },
   {
     key: 'language',
-    label: 'LANGUAGE',
+    label: 'Language',
+    headerLabel: 'LANGUAGE',
     align: 'center',
     defaultVisible: true,
   },
   {
     key: 'instructionFollowing',
-    label: 'INSTRUCTION FOLLOWING',
+    label: 'Instruction Following',
+    headerLabel: 'INSTRUCTION FOLLOWING',
     align: 'center',
     defaultVisible: true,
   },
   {
     key: 'cost',
-    label: 'COST PER SUCCESSFUL TASK',
+    label: 'Cost per successful task',
+    headerLabel: 'COST / TASK',
     align: 'right',
     defaultVisible: true,
   },
   {
     key: 'speed',
-    label: 'SPEED (TOK/S)',
+    label: 'Speed (tok/s)',
+    headerLabel: 'SPEED (TOK/S)',
     align: 'center',
     defaultVisible: true,
   },
@@ -864,20 +885,20 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                         {sortColumn === 'name' ? (
                           sortDirection === 'asc' ? (
                             <ArrowUp
-                              size={13}
+                              size={11}
                               className="sort-icon active"
                               aria-hidden="true"
                             />
                           ) : (
                             <ArrowDown
-                              size={13}
+                              size={11}
                               className="sort-icon active"
                               aria-hidden="true"
                             />
                           )
                         ) : (
                           <ArrowUpDown
-                            size={13}
+                            size={11}
                             className="sort-icon idle"
                             aria-hidden="true"
                           />
@@ -924,27 +945,29 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                             title={`Sort by ${col.label} (click for ${directionHint})`}
                             aria-label={`Sort by ${col.label}${isSorted ? `, currently sorted ${sortDirection === 'asc' ? 'ascending' : 'descending'}` : ''}`}
                           >
-                            <span className="th-label">{col.label}</span>
+                            <span className="th-label">
+                              {col.headerLabel ?? col.label}
+                            </span>
                             <span
                               className={`sort-icon-wrap ${isSorted ? 'active' : 'idle'}`}
                             >
                               {isSorted ? (
                                 sortDirection === 'asc' ? (
                                   <ArrowUp
-                                    size={13}
+                                    size={11}
                                     className="sort-icon active"
                                     aria-hidden="true"
                                   />
                                 ) : (
                                   <ArrowDown
-                                    size={13}
+                                    size={11}
                                     className="sort-icon active"
                                     aria-hidden="true"
                                   />
                                 )
                               ) : (
                                 <ArrowUpDown
-                                  size={13}
+                                  size={11}
                                   className="sort-icon idle"
                                   aria-hidden="true"
                                 />
