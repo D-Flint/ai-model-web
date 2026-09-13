@@ -3383,68 +3383,33 @@ table.leaderboard-table thead th.th-sortable:hover {
 
 .th-metric,
 .td-metric {
+  width: 84px;
+  min-width: 84px;
+  max-width: 84px;
   padding: 8px 4px;
   box-sizing: border-box;
 }
 
 .th-overall,
-.td-overall {
-  width: 72px;
-  min-width: 72px;
-  max-width: 72px;
-  box-sizing: border-box;
-}
-
+.td-overall,
 .th-reasoning,
-.td-reasoning {
-  width: 78px;
-  min-width: 78px;
-  max-width: 78px;
-  box-sizing: border-box;
-}
-
+.td-reasoning,
 .th-coding,
-.td-coding {
-  width: 68px;
-  min-width: 68px;
-  max-width: 68px;
-  box-sizing: border-box;
-}
-
+.td-coding,
 .th-agentic,
-.td-agentic {
-  width: 76px;
-  min-width: 76px;
-  max-width: 76px;
-  box-sizing: border-box;
-}
-
+.td-agentic,
 .th-mathematics,
-.td-mathematics {
-  width: 84px;
-  min-width: 84px;
-  max-width: 84px;
-  box-sizing: border-box;
-}
-
+.td-mathematics,
 .th-dataAnalysis,
-.td-dataAnalysis {
-  width: 76px;
-  min-width: 76px;
-  max-width: 76px;
-  box-sizing: border-box;
-}
-
+.td-dataAnalysis,
 .th-language,
-.td-language {
-  width: 72px;
-  min-width: 72px;
-  max-width: 72px;
-  box-sizing: border-box;
-}
-
+.td-language,
 .th-instructionFollowing,
-.td-instructionFollowing {
+.td-instructionFollowing,
+.th-cost,
+.td-cost,
+.th-speed,
+.td-speed {
   width: 84px;
   min-width: 84px;
   max-width: 84px;
@@ -3543,14 +3508,6 @@ table.leaderboard-table tbody tr.leaderboard-row.row-selected {
   color: var(--text);
 }
 
-.th-cost,
-.td-cost {
-  width: 80px;
-  min-width: 80px;
-  max-width: 80px;
-  box-sizing: border-box;
-}
-
 .th-cost .th-sort-button {
   padding: 8px 6px 8px 2px;
 }
@@ -3563,12 +3520,7 @@ table.leaderboard-table tbody tr.leaderboard-row.row-selected {
   white-space: nowrap;
 }
 
-.th-speed,
 .td-speed {
-  width: 78px;
-  min-width: 78px;
-  max-width: 78px;
-  box-sizing: border-box;
   font-size: 12px;
   white-space: nowrap;
 }

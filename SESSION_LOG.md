@@ -1,5 +1,16 @@
 # Session Log
 
+## 2026-09-13 — Standardize metric cell widths on model explorer table
+
+- Objective: Ensure all metric cells and columns have the exact same width on the models explorer leaderboard table.
+- Files changed: `src/styles/global.css`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: In the previous compacting commit, individual metric columns were assigned staggered widths ranging from 68px to 84px (`overall`: 72px, `reasoning`: 78px, `coding`: 68px, `agentic`: 76px, `mathematics`: 84px, `dataAnalysis`: 76px, `language`: 72px, `instructionFollowing`: 84px, `cost`: 80px, `speed`: 78px). This caused the score cells and green heatmap tiles to appear uneven in width across columns. Standardized all metric column headers and body cells (`.th-metric`, `.td-metric`, and each metric column key) to a uniform 84px width, creating a balanced and symmetrical metric grid across all scores, cost, and speed while remaining within the container.
+- Tests: `npm run check` passed (111 files, 0 errors, 0 warnings, 0 hints); `npx prettier --check src/styles/global.css` passed; Vitest `tests/leaderboardSorting.test.ts` passed 11/11.
+- Commit: Pending local commit.
+- Current state: All metric cells on the models explorer table share an identical 84px width with aligned heatmap tiles and clean header wrapping.
+- Exact next step: User verification in the browser on `/models`.
+
 ## 2026-09-13 — Compact model table cell widths to fit all rows without overflow
 
 - Objective: Decrease cell widths and padding in the model page table so that all rows and columns fit within the container without horizontal overflow or clipping.
