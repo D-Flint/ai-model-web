@@ -1458,23 +1458,41 @@ th {
   font-weight: 600;
 }
 .comparison-table {
-  min-width: 580px;
+  width: 100%;
+  table-layout: fixed;
+  min-width: 680px;
+}
+.comparison-col-label {
+  width: 220px;
+}
+.comparison-col-model {
+  width: auto;
 }
 .comparison-table th:first-child {
   position: sticky;
   left: 0;
   background: var(--surface);
-  min-width: 150px;
+  width: 220px;
+  min-width: 180px;
+  z-index: 2;
+  box-shadow: inset -1px 0 0 var(--border);
 }
 .comparison-table td {
-  min-width: 155px;
+  min-width: 180px;
   text-align: center;
   font-variant-numeric: tabular-nums;
 }
 .comparison-table thead th {
-  min-width: 155px;
+  min-width: 180px;
   text-align: center;
   padding: 25px 16px;
+}
+.comparison-table thead th:first-child {
+  width: 220px;
+  min-width: 180px;
+}
+.comparison-table thead th:not(:first-child) {
+  width: auto;
 }
 .comparison-table thead th .provider-badge {
   display: flex;

@@ -1,5 +1,16 @@
 # Session Log
 
+## 2026-09-13 — Equalize model column widths on comparison page
+
+- Objective: Make sure all model columns in the comparison table are equal in length/width across 2, 3, or 4 models.
+- Files changed: `src/components/ComparisonBuilder.tsx`, `src/styles/global.css`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: The comparison table defaulted to `table-layout: auto`, sizing columns based on variable cell content (API rate strings, citations, latency notes) which made Claude Fable 5.1 (466px) significantly narrower than GPT-6 Astra (533px). Applied `table-layout: fixed`, explicit `<colgroup>` with `.comparison-col-label` and `.comparison-col-model`, dynamic `minWidth` on the table to preserve a comfortable 220px minimum per model column without compression on smaller viewports, and sticky column styling with `box-shadow` divider.
+- Tests: Verified in Chrome DevTools across 2 models (401px each), 3 models (267px each), and 4 models (255px each at 1440px, 220px each with horizontal scroll at 900px); `npm run check` passed (111 files, 0 errors, 0 warnings, 0 hints); Prettier check passed; Vitest comparison test suites (`comparisonPairs`, `decision`, `seoComparisons`) passed 44/44.
+- Commit: Pending local commit.
+- Current state: All model columns in the comparison table are pixel-perfect and equal in width across 2, 3, and 4 models. No remote push.
+- Exact next step: User verification in the browser on `/compare`.
+
 ## 2026-09-12 — Standardize leaderboard metric column widths
 
 - Objective: Make sure all benchmark capability metric columns in the model explorer table have the exact same width so scores and heatmap cells align uniformly.

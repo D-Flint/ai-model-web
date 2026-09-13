@@ -650,10 +650,23 @@ export default function ComparisonBuilder({
             role="region"
             aria-label="Model comparison table"
           >
-            <table className="comparison-table">
+            <table
+              className="comparison-table"
+              style={
+                {
+                  minWidth: `${Math.max(680, 220 + selectedItems.length * 220)}px`,
+                } as React.CSSProperties
+              }
+            >
               <caption className="sr-only">
                 Model comparison, scores out of 100 and USD API prices
               </caption>
+              <colgroup>
+                <col className="comparison-col-label" />
+                {selectedItems.map((item) => (
+                  <col key={item.id} className="comparison-col-model" />
+                ))}
+              </colgroup>
               <thead>
                 <tr>
                   <th scope="col">At a glance</th>
