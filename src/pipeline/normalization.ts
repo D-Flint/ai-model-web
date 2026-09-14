@@ -59,31 +59,4 @@ export function normalizeAgentScore(
   };
 }
 
-/**
- * Calculates a 0-100 cost efficiency score from token pricing.
- * Inverts price so that lower cost equals higher efficiency score.
- */
-export function calculateCostEfficiencyScore(
-  inputPerMillion: number,
-  outputPerMillion: number,
-): { normalized: number; min: number; max: number; raw: number } {
-  const blendedPrice = inputPerMillion * 0.7 + outputPerMillion * 0.3;
-  const minCost = 0.05;
-  const maxCost = 100.0;
-
-  const safePrice = Math.max(minCost, Math.min(maxCost, blendedPrice));
-  const logMin = Math.log10(minCost);
-  const logMax = Math.log10(maxCost);
-  const logPrice = Math.log10(safePrice);
-
-  const calculated = 100 - ((logPrice - logMin) / (logMax - logMin)) * 100;
-  const normalized = Math.round(clamp(calculated, 0, 100));
-
-  // To maintain catalog normalization consistency normalize(raw, min, max) === normalized
-  return {
-    raw: normalized,
-    normalized,
-    min: 0,
-    max: 100,
-  };
-}
+export { calculateCostEfficiencyScore } from '../lib/costEfficiency';

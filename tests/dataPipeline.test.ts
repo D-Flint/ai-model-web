@@ -283,6 +283,19 @@ describe('Benchmark Normalization', () => {
     expect(cheap.normalized).toBeGreaterThanOrEqual(80);
     expect(expensive.normalized).toBeLessThan(35);
   });
+
+  it('calculates the verified DeepSeek V4.1 Flash rate', () => {
+    // Uncached fallback: 84
+    expect(calculateCostEfficiencyScore(0.15, 0.6)).toMatchObject({
+      normalized: 84,
+      raw: 84,
+    });
+    // With official prompt cache discount ($0.003/1M): 97
+    expect(calculateCostEfficiencyScore(0.15, 0.6, 0.003)).toMatchObject({
+      normalized: 97,
+      raw: 97,
+    });
+  });
 });
 
 describe('Confidence Calculation', () => {
@@ -373,6 +386,22 @@ describe('Verified Catalog Integrity', () => {
     expect(
       validated.some(
         (model) => model.scores.overall !== null && model.scores.overall > 0,
+      ),
+    ).toBe(true);
+  });
+
+  it('includes verified cost-efficiency evidence for DeepSeek V4.1 Flash', () => {
+    const model = verifiedModels.find(
+      (candidate) => candidate.slug === 'deepseek-v4-1-flash',
+    );
+
+    expect(model?.pricing).toMatchObject({ input: 0.15, output: 0.6 });
+    expect(model?.scores.costEfficiency).toBe(77);
+    expect(
+      model?.evidence.some(
+        (item) =>
+          item.metric === 'costEfficiency' &&
+          item.sourceId === 'astra-cost-engine',
       ),
     ).toBe(true);
   });

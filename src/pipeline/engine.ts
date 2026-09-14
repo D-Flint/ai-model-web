@@ -296,7 +296,7 @@ export async function runIngestionPipeline(
     // Calculate Cost Efficiency (Value Score)
     const costEff =
       inputPrice !== null && outputPrice !== null
-        ? calculateCostEfficiencyScore(inputPrice, outputPrice)
+        ? calculateCostEfficiencyScore(inputPrice, outputPrice, cachedPrice)
         : null;
 
     const costEvidence: BenchmarkMeasurement | null = costEff

@@ -1,4 +1,4 @@
-import { rateLabel } from '../lib/apiPricing';
+import { formatPrice, rateLabel } from '../lib/apiPricing';
 import ApiPricing from './ApiPricing';
 import { useEffect, useState, type ReactNode } from 'react';
 import { ChevronDown, Copy, X, Plus } from 'lucide-react';
@@ -6,7 +6,9 @@ import { catalogSchema, type CatalogModel } from '../lib/catalogSchema';
 import {
   effortLabels,
   metricLabels,
+  workloadProfiles,
   type ReasoningEffort,
+  type WorkloadProfileId,
 } from '../data/config';
 import {
   contextSize,
@@ -110,6 +112,7 @@ export default function ComparisonBuilder({
   );
   const [add, setAdd] = useState('');
   const [status, setStatus] = useState('');
+  const [workload, setWorkload] = useState<WorkloadProfileId>('agent');
 
   useEffect(() => {
     if (!catalogUrl) return;
@@ -182,7 +185,7 @@ export default function ComparisonBuilder({
         }
       }
 
-      const stats = getModelEffortStats(model, effort);
+      const stats = getModelEffortStats(model, effort, workload);
 
       return {
         id: `${token}-${index}`,
@@ -398,6 +401,34 @@ export default function ComparisonBuilder({
             means no verified evidence exists for that model and metric; Astra
             does not fill gaps with proxy scores.
           </p>
+          <div className="compare-workload-bar">
+            <div className="compare-workload-info">
+              <span className="compare-workload-title">
+                Cost efficiency workload profile
+              </span>
+              <span className="compare-workload-desc">
+                {workloadProfiles[workload].description}
+              </span>
+            </div>
+            <div
+              className="segmented compare-workload-segmented"
+              role="group"
+              aria-label="Workload profile for cost calculation"
+            >
+              {(Object.keys(workloadProfiles) as WorkloadProfileId[]).map(
+                (id) => (
+                  <button
+                    key={id}
+                    type="button"
+                    aria-pressed={workload === id}
+                    onClick={() => setWorkload(id)}
+                  >
+                    {workloadProfiles[id].label}
+                  </button>
+                ),
+              )}
+            </div>
+          </div>
           <div
             className="mobile-comparison"
             aria-label="Model comparison cards"
@@ -569,7 +600,17 @@ export default function ComparisonBuilder({
                 label="API pricing"
                 items={selectedItems}
                 wideValues
-                renderValue={(item) => <ApiPricing model={item.model} />}
+                renderValue={(item) => (
+                  <>
+                    <ApiPricing model={item.model} />
+                    {item.stats.effectivePrice !== null && (
+                      <span className="mobile-metric-detail">
+                        Est. {formatPrice(item.stats.effectivePrice)}/1M blended
+                        ({workloadProfiles[workload].shortLabel})
+                      </span>
+                    )}
+                  </>
+                )}
               />
             </section>
 
@@ -591,7 +632,11 @@ export default function ComparisonBuilder({
                   validScores.length > 0 ? Math.max(...validScores) : null;
                 return (
                   <MobileMetricCard
-                    label={metricLabels[metric]}
+                    label={
+                      metric === 'costEfficiency'
+                        ? `${metricLabels[metric]} (${workloadProfiles[workload].shortLabel})`
+                        : metricLabels[metric]
+                    }
                     items={selectedItems}
                     key={metric}
                     isWinner={(item) => {
@@ -847,6 +892,15 @@ export default function ComparisonBuilder({
                   {selectedItems.map((item) => (
                     <td key={item.id}>
                       <ApiPricing model={item.model} />
+                      {item.stats.effectivePrice !== null && (
+                        <div
+                          className="micro muted"
+                          style={{ marginTop: '4px' }}
+                        >
+                          Est. {formatPrice(item.stats.effectivePrice)}/1M
+                          blended ({workloadProfiles[workload].shortLabel})
+                        </div>
+                      )}
                     </td>
                   ))}
                 </tr>
@@ -858,7 +912,17 @@ export default function ComparisonBuilder({
                 </tr>
                 {secondaryMetrics.map((metric) => (
                   <tr key={metric}>
-                    <th scope="row">{metricLabels[metric]}</th>
+                    <th scope="row">
+                      {metricLabels[metric]}
+                      {metric === 'costEfficiency' && (
+                        <span
+                          className="micro muted"
+                          style={{ display: 'block', fontWeight: 'normal' }}
+                        >
+                          {workloadProfiles[workload].shortLabel} profile
+                        </span>
+                      )}
+                    </th>
                     {selectedItems.map((item) => {
                       const score = item.stats.scores[metric];
                       const validScores = selectedItems

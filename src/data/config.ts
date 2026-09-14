@@ -107,6 +107,53 @@ export const rankingConfig = {
 // Throughput score ceiling for comparable OpenRouter measurements.
 export const speedScoreMaxTokensPerSec = 200;
 
+export type WorkloadProfileId = 'agent' | 'chat' | 'oneshot';
+
+export interface WorkloadProfile {
+  id: WorkloadProfileId;
+  label: string;
+  shortLabel: string;
+  description: string;
+  cachedRatio: number;
+  inputRatio: number;
+  outputRatio: number;
+}
+
+export const workloadProfiles: Record<WorkloadProfileId, WorkloadProfile> = {
+  agent: {
+    id: 'agent',
+    label: 'Agent & Coding',
+    shortLabel: 'Agent',
+    description:
+      'Heavy prompt caching & long context (75% cached, 20% fresh input, 5% output)',
+    cachedRatio: 0.75,
+    inputRatio: 0.2,
+    outputRatio: 0.05,
+  },
+  chat: {
+    id: 'chat',
+    label: 'General Assistant',
+    shortLabel: 'Chat',
+    description:
+      'Multi-turn conversation (50% cached, 40% fresh input, 10% output)',
+    cachedRatio: 0.5,
+    inputRatio: 0.4,
+    outputRatio: 0.1,
+  },
+  oneshot: {
+    id: 'oneshot',
+    label: 'One-Shot & Bulk',
+    shortLabel: 'One-shot',
+    description:
+      'Fresh generation without cache (0% cached, 75% fresh input, 25% output)',
+    cachedRatio: 0.0,
+    inputRatio: 0.75,
+    outputRatio: 0.25,
+  },
+};
+
+export const defaultWorkloadProfile: WorkloadProfileId = 'agent';
+
 export type ReasoningEffort =
   'none' | 'low' | 'medium' | 'high' | 'max' | 'fixed';
 

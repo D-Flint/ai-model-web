@@ -1,16 +1,30 @@
 import { formatTokenContext } from '../utils/formatters';
 import { comparablePrice, compareApiPrice } from './apiPricing';
 import {
+  defaultWorkloadProfile,
   effortLatency,
   effortScoreAdjustments,
   metricLabels,
   overallWeights,
   recommendationConfig,
+  workloadProfiles,
   type Capability,
   type Metric,
   type ReasoningEffort,
+  type WorkloadProfileId,
 } from '../data/config';
 import type { CatalogModel } from './catalogSchema';
+import {
+  calculateCostEfficiencyScore,
+  calculateEffectivePrice,
+  getModelPricingRates,
+} from './costEfficiency';
+
+export {
+  calculateCostEfficiencyScore,
+  calculateEffectivePrice,
+  getModelPricingRates,
+};
 
 export function normalize(raw: number, min: number, max: number): number {
   if (![raw, min, max].every(Number.isFinite) || max <= min)
@@ -92,6 +106,8 @@ export interface ModelEffortStats {
   latency: string;
   speedTokensPerSec: number;
   scores: Record<Capability, number | null> & { overall: number | null };
+  effectivePrice: number | null;
+  workloadProfile: WorkloadProfileId;
 }
 
 const openRouterThroughputSource = 'openrouter-throughput';
@@ -176,6 +192,7 @@ export function getMaxReasoningEffort(model: CatalogModel): ReasoningEffort {
 export function getModelEffortStats(
   model: CatalogModel,
   requestedEffort?: ReasoningEffort,
+  requestedWorkload?: WorkloadProfileId,
 ): ModelEffortStats {
   const isReasoning = Boolean(
     model.facts.reasoningEffort &&
@@ -212,8 +229,42 @@ export function getModelEffortStats(
     : {};
   const targetAdj = isReasoning ? (effortScoreAdjustments[effort] ?? {}) : {};
 
+  const profileId = requestedWorkload ?? defaultWorkloadProfile;
+  const profile =
+    workloadProfiles[profileId] ?? workloadProfiles[defaultWorkloadProfile];
+
+  const rates = getModelPricingRates(model);
+  const effectivePrice = calculateEffectivePrice(rates, profile);
+
+  let dynamicCostEff: number | null = null;
+  if (rates.input !== null && rates.output !== null) {
+    const baseCostEff = calculateCostEfficiencyScore(
+      rates.input,
+      rates.output,
+      rates.cached,
+      profile,
+    ).normalized;
+    const delta =
+      (targetAdj.costEfficiency ?? 0) - (defaultAdj.costEfficiency ?? 0);
+    dynamicCostEff = Math.max(
+      0,
+      Math.min(100, Math.round(baseCostEff + delta)),
+    );
+  } else if (model.scores.costEfficiency !== null) {
+    const delta =
+      (targetAdj.costEfficiency ?? 0) - (defaultAdj.costEfficiency ?? 0);
+    dynamicCostEff = Math.max(
+      0,
+      Math.min(100, Math.round(model.scores.costEfficiency + delta)),
+    );
+  }
+
   const adjustedCapabilities = {} as Record<Capability, number | null>;
   for (const key of Object.keys(overallWeights) as Capability[]) {
+    if (key === 'costEfficiency') {
+      adjustedCapabilities.costEfficiency = dynamicCostEff;
+      continue;
+    }
     const baseScore =
       key === 'speed' && !hasOpenRouterThroughput(model)
         ? null
@@ -235,6 +286,8 @@ export function getModelEffortStats(
     effort,
     latency,
     speedTokensPerSec,
+    effectivePrice,
+    workloadProfile: profileId,
     scores: {
       ...adjustedCapabilities,
       overall,

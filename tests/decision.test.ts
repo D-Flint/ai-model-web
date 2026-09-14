@@ -246,3 +246,38 @@ describe('task cost assumptions and reasoning effort stats', () => {
     }
   });
 });
+
+describe('cost efficiency and workload profiles', () => {
+  it('rewards prompt caching in agent workloads compared to one-shot workloads', () => {
+    const terra = models.find((m) => m.slug === 'gpt-5-6-terra');
+    expect(terra).toBeDefined();
+    if (terra) {
+      const agentStats = getModelEffortStats(terra, 'none', 'agent');
+      const oneshotStats = getModelEffortStats(terra, 'none', 'oneshot');
+
+      expect(agentStats.effectivePrice).toBeDefined();
+      expect(oneshotStats.effectivePrice).toBeDefined();
+      // Agent workload with 75% prompt cache should have a much lower effective price than one-shot
+      expect(agentStats.effectivePrice!).toBeLessThan(
+        oneshotStats.effectivePrice!,
+      );
+      // Cost efficiency score should be noticeably higher in agent workload than one-shot
+      expect(agentStats.scores.costEfficiency!).toBeGreaterThan(
+        oneshotStats.scores.costEfficiency!,
+      );
+    }
+  });
+
+  it('correctly defaults to agent profile when workload is not specified', () => {
+    const terra = models.find((m) => m.slug === 'gpt-5-6-terra');
+    if (terra) {
+      const defaultStats = getModelEffortStats(terra, 'none');
+      const agentStats = getModelEffortStats(terra, 'none', 'agent');
+      expect(defaultStats.workloadProfile).toBe('agent');
+      expect(defaultStats.effectivePrice).toBe(agentStats.effectivePrice);
+      expect(defaultStats.scores.costEfficiency).toBe(
+        agentStats.scores.costEfficiency,
+      );
+    }
+  });
+});
