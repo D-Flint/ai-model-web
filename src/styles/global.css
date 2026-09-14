@@ -1408,6 +1408,13 @@ input[type='radio'] {
   flex: 1;
   min-width: 180px;
 }
+.compare-limit-warning {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
 .selected-models {
   display: flex;
   gap: 10px;

@@ -1115,6 +1115,17 @@
 - Current state: Inkling is absent from `models` and `allModels`, generated detail routes, pricing, comparison, discovery, recommendations, and sitemap. Its raw LiveBench snapshot and alias remain historical evidence only.
 - Exact next step: Create the scoped implementation commit, then wait for user verification.
 
+## 2026-09-14 — Explain compare item limit
+
+- Objective: Tell users why the compare selector is unavailable after four items are selected.
+- Files changed: `src/components/ComparisonBuilder.tsx`, `src/styles/global.css`, `SESSION_LOG.md`.
+- Attempts: 1 implementation pass.
+- Failures/causes: Wrangler emitted the existing external log-file `EPERM` warning; Astro and TypeScript diagnostics completed successfully.
+- Tests: `npm run check` passed with 0 Astro/TypeScript diagnostics; `git diff --check` passed.
+- Commit: Pending.
+- Current state: A visible status warning below the disabled selector explains the four-item limit and tells users to remove an existing item.
+- Exact next step: User verifies the warning on `/compare` with four selected items.
+
 ## 2026-09-14 — Group comparison model dropdown by provider
 
 - Objective: Group models in the comparison add-model dropdown by company, with alphabetical provider and model ordering.

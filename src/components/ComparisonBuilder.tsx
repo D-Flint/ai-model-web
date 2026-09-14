@@ -377,6 +377,11 @@ export default function ComparisonBuilder({
                 );
               })}
           </select>
+          {selection.length >= 4 && (
+            <span className="compare-limit-warning" role="status">
+              You can compare up to 4 items. Remove one above to add another.
+            </span>
+          )}
         </label>
         <button className="button" onClick={copy}>
           <Copy size={15} /> Copy comparison link
