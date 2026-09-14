@@ -41,16 +41,16 @@ export const TOP_SEO_MODEL_SLUGS: readonly string[] = [
  * Curated key rivalries to link when both models exist.
  */
 export const CURATED_SEO_PAIRS: readonly [string, string][] = [
-  ['claude-sonnet-5', 'gemini-3-1-pro'],
+  ['claude-sonnet-5', 'gemini-3-8-flash'],
   ['gpt-6-astra', 'claude-sonnet-5'],
   ['gpt-6-astra', 'claude-opus-5'],
-  ['gpt-6-astra', 'gemini-3-1-pro'],
+  ['gpt-6-astra', 'gemini-3-8-flash'],
   ['gpt-6-astra', 'hy4-preview'],
   ['claude-sonnet-5', 'gpt-5-6-sol'],
   ['gemini-3-8-flash', 'glm-5-3-flash'],
   ['deepseek-v4-pro', 'claude-sonnet-5'],
   ['deepseek-v4-pro', 'gpt-6-astra'],
-  ['claude-opus-5', 'gemini-3-1-pro'],
+  ['claude-opus-5', 'gemini-3-8-flash'],
   ['claude-sonnet-5', 'deepseek-v4-flash'],
   ['gpt-5-6-sol', 'gpt-5-6-luna'],
   ['gemini-3-7-flash', 'gemini-3-8-flash'],

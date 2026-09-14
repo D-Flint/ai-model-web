@@ -41,6 +41,19 @@ describe('SEO comparison pairs and arbitrary comparisons', () => {
     }
   });
 
+  it('uses Gemini 3.8 Flash in the curated Google comparison cards', () => {
+    expect(CURATED_SEO_PAIRS).toEqual(
+      expect.arrayContaining([
+        ['claude-sonnet-5', 'gemini-3-8-flash'],
+        ['gpt-6-astra', 'gemini-3-8-flash'],
+        ['claude-opus-5', 'gemini-3-8-flash'],
+      ]),
+    );
+    expect(
+      CURATED_SEO_PAIRS.filter(([, slug]) => slug === 'gemini-3-1-pro'),
+    ).toHaveLength(0);
+  });
+
   it('works with fallback mock models without exploding', () => {
     const pairs = getSeoComparisonPairs(mockModels);
     expect(pairs.length).toBeGreaterThan(5);
