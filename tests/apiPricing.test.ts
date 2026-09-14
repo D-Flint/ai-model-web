@@ -235,7 +235,7 @@ describe('pricing provenance and comparisons', () => {
         2,
       ]);
       expect(rateLabel(astra, 'cached')).toBe(
-        'Short $1.00 · Long $2.00',
+        '(≤1,048,576: $1.00) (> 1,048,576: $2.00)',
       );
     } finally {
       vi.useRealTimers();
@@ -312,10 +312,10 @@ describe('pricing provenance and comparisons', () => {
     try {
       const model = { ...models[0], apiPricing: gemini };
       expect(comparablePrice(model)).toBeNull();
-      expect(rateLabel(model, 'input')).toBe('Short $2.00 · Long $4.00');
-      expect(rateLabel(model, 'cached')).toBe('Short $0.20 · Long $0.40');
+      expect(rateLabel(model, 'input')).toBe('(≤200k: $2.00) (> 200k: $4.00)');
+      expect(rateLabel(model, 'cached')).toBe('(≤200k: $0.20) (> 200k: $0.40)');
       expect(rateLabel(model, 'output')).toBe(
-        'Short $12.00 · Long $18.00',
+        '(≤200k: $12.00) (> 200k: $18.00)',
       );
       expect(reviewedContext['gemini-3-1-pro'].value).toBe(1_048_576);
       expect(reviewedContext['gemini-3-1-pro'].source.id).toBeTruthy();

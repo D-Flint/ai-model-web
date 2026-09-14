@@ -43,6 +43,13 @@ export function singleRate(
   return tiers?.length === 1 ? tiers[0][key] : null;
 }
 
+function formatTokenLimit(tokens: number): string {
+  if (tokens >= 1_000_000 && tokens % 1_000_000 === 0)
+    return `${tokens / 1_000_000}M`;
+  if (tokens >= 1_000 && tokens % 1_000 === 0) return `${tokens / 1_000}k`;
+  return tokens.toLocaleString('en-US');
+}
+
 export function rateLabel(
   model: CatalogModel,
   key: 'input' | 'output' | 'cached',
@@ -59,7 +66,7 @@ export function rateLabel(
       priceFreshness(standardRate) === 'Current' &&
       priceFreshness(longContextRate) === 'Current'
     )
-      return `Short ${formatPrice(standardRate.value)} · Long ${formatPrice(longContextRate.value)}`;
+      return `(≤${formatTokenLimit(standard.maxContext)}: ${formatPrice(standardRate.value)}) (> ${formatTokenLimit(standard.maxContext)}: ${formatPrice(longContextRate.value)})`;
     return 'Tiered pricing — see details';
   }
   const rate = singleRate(model, key);
