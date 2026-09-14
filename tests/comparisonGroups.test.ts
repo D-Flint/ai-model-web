@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { models } from '../src/data/models';
+import { allModels, models } from '../src/data/models';
 import { groupModelsByProvider } from '../src/lib/comparisonGroups';
 
 describe('comparison provider groups', () => {
@@ -27,5 +27,12 @@ describe('comparison provider groups', () => {
         group.models.every((model) => model.provider === group.provider),
       ),
     ).toBe(true);
+  });
+
+  it('keeps Meta AI models available to the comparison picker', () => {
+    const allGroups = groupModelsByProvider(allModels);
+    expect(
+      allGroups.find((group) => group.provider === 'Meta AI')?.models.length,
+    ).toBeGreaterThan(0);
   });
 });
