@@ -5246,6 +5246,7 @@ export const reviewedContext: Record<
 };
 
 const retrievedAt = '2026-09-06';
+const anthropicRetrievedAt = '2026-09-14';
 const anthropic = 'https://platform.claude.com/docs/en/about-claude/pricing';
 const google = 'https://ai.google.dev/gemini-api/docs/pricing';
 const openaiPricing = 'https://developers.openai.com/api/docs/pricing';
@@ -5272,7 +5273,12 @@ function price(
             : 'Google Gemini API pricing',
       url,
       type: 'provider_doc',
-      retrievedAt: url === openaiPricing ? openaiRetrievedAt : retrievedAt,
+      retrievedAt:
+        url === openaiPricing
+          ? openaiRetrievedAt
+          : url === anthropic
+            ? anthropicRetrievedAt
+            : retrievedAt,
       effectiveFrom: null,
     },
   };
