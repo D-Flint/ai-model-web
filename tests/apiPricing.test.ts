@@ -246,13 +246,12 @@ describe('pricing provenance and comparisons', () => {
         url: 'https://openrouter.ai/models/z-ai/glm-5.3-flash',
       },
     });
-    expect(nemotron.apiPricing?.tiers[0].input).toMatchObject({
-      value: 2,
-      source: {
-        type: 'provider_doc',
-        url: 'https://build.nvidia.com/',
-      },
+    expect(nemotron.apiPricing?.tiers[0]).toMatchObject({
+      input: null,
+      output: null,
+      cached: null,
     });
+    expect(rateLabel(nemotron, 'input')).toBe('Unavailable');
   });
   it('publishes GPT-6 Astra short and long-context cached-input rates', () => {
     vi.useFakeTimers();

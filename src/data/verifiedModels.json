@@ -4447,18 +4447,18 @@
       "defaultEffort": "none"
     },
     "pricing": {
-      "input": 2,
-      "output": 8,
-      "cached": 0.5,
+      "input": null,
+      "output": null,
+      "cached": null,
       "currency": "USD",
       "unit": "per-million-tokens",
       "sourceId": "source-nvidia",
-      "updatedAt": "2026-06-25",
-      "inputPer1M": 2,
-      "outputPer1M": 8,
-      "cachedInputPer1M": 0.5,
-      "provenanceUrl": "https://build.nvidia.com/",
-      "verifiedAt": "2026-06-25"
+      "updatedAt": "2026-09-14",
+      "inputPer1M": null,
+      "outputPer1M": null,
+      "cachedInputPer1M": null,
+      "provenanceUrl": "https://build.nvidia.com/nvidia/nemotron-3-ultra-550b-a55b?nim=hosted",
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 67,
@@ -4470,7 +4470,7 @@
       "vision": null,
       "speed": 100,
       "reliability": null,
-      "costEfficiency": 43,
+      "costEfficiency": null,
       "overall": 67
     },
     "benchmarks": {
@@ -4521,16 +4521,6 @@
         "updatedAt": "2026-06-25"
       },
       {
-        "metric": "costEfficiency",
-        "kind": "benchmark",
-        "raw": 43,
-        "min": 0,
-        "max": 100,
-        "normalized": 43,
-        "sourceId": "astra-cost-engine",
-        "updatedAt": "2026-09-12"
-      },
-      {
         "metric": "speed",
         "kind": "benchmark",
         "raw": 236,
@@ -4544,14 +4534,14 @@
     "confidence": 69,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-12",
-    "lastVerifiedAt": "2026-06-25",
-    "sourceUpdatedAt": "2026-09-12",
+    "lastVerifiedAt": "2026-09-14",
+    "sourceUpdatedAt": "2026-09-14",
     "sources": [
       {
         "id": "source-nvidia",
-        "name": "NVIDIA Official Specs",
-        "url": "https://build.nvidia.com/",
-        "retrievedAt": "2026-06-25",
+        "name": "NVIDIA NIM model availability",
+        "url": "https://build.nvidia.com/nvidia/nemotron-3-ultra-550b-a55b?nim=hosted",
+        "retrievedAt": "2026-09-14",
         "kind": "provider_doc",
         "publisher": "NVIDIA"
       },
@@ -4562,14 +4552,6 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
-      },
-      {
-        "id": "astra-cost-engine",
-        "name": "Astra Cost Efficiency Engine",
-        "url": "https://github.com/D-Flint/ai-model-web",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "Astra Cost Efficiency Engine"
       },
       {
         "id": "openrouter-throughput",
