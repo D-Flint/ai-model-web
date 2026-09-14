@@ -1125,3 +1125,14 @@
 - Commit: Design `4fa8e26`; implementation `7521063`.
 - Current state: Each green score column now highlights its top ten values in the currently displayed rows, including cutoff ties and excluding missing scores. With no filters, displayed rows are the full catalog.
 - Exact next step: User verifies leaderboard filtering and heatmap behavior in the running development server; no further implementation is planned.
+
+## 2026-09-14 — Default comparison models to maximum effort
+
+- Objective: Initialize every selected reasoning model on the comparison page at its maximum supported effort, including shared-link loads, while preserving manual changes.
+- Files changed: `src/lib/decision.ts`, `src/components/ComparisonBuilder.tsx`, `tests/decision.test.ts`, `SESSION_LOG.md`; design specification committed separately at `docs/superpowers/specs/2026-09-14-comparison-max-effort-design.md`.
+- Attempts: 2 implementation passes; first patch failed because test import context differed, then the scoped patch succeeded.
+- Failures/causes: The required product brief is absent from this checkout. Sandboxed Wrangler validation emitted an external log permission warning but completed. Full Vitest has two unrelated failures in existing API-pricing and model-finder areas; scoped checks pass.
+- Tests: Focused decision tests passed 22/22; `npm run check` passed with 0 diagnostics; scoped ESLint and Prettier passed.
+- Commit: Design `b2f3167`; implementation pending.
+- Current state: URL and SSR selections normalize to explicit maximum-effort tokens on load; user-selected effort tokens continue to render unchanged.
+- Exact next step: Create the scoped implementation commit, then wait for user verification.
