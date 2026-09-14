@@ -85,3 +85,6 @@ desktop.ini
 
 # Prompts
 /prompts/
+
+# Agent Memory System
+/memory/
