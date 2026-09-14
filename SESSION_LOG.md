@@ -7,7 +7,7 @@
 - Attempts: 1 implementation attempt.
 - Failures/causes: The previous full-cell 75% opacity backgrounds created harsh, solid neon color blocks across multiple rows that degraded table readability and visual balance. Replaced full-cell coloring with centered, restrained status badges (`fact-badge` with `Check` and `X` icons from Lucide) using subtle theme-adaptive tints (soft green for "Yes", soft muted red for "No") that harmonize with the site's design system in both light and dark themes.
 - Tests: Prettier check on modified files passed; `npm run check` passed (114 files, 0 errors, 0 warnings); verified visually in Chrome across light and dark modes.
-- Commit: Pending local commit.
+- Commit: `15184e9` (`style: refine yes and no indicators into subtle status badges`).
 - Current state: Comparison table renders clean, beautifully proportioned "Yes" (with green checkmark) and "No" (with red cross) status badges that maintain clean grid alignment without bleeding across cells.
 - Exact next step: User verification in the browser on `/compare`.
 
@@ -1090,7 +1090,7 @@
 - Attempts: 1 implementation pass.
 - Failures/causes: Repository-wide lint remains blocked by the unrelated existing Prettier issue in `src/components/ModelDataSources.tsx`; Wrangler was denied permission to write external diagnostic logs, although Astro and TypeScript diagnostics completed successfully.
 - Tests: Focused pricing tests passed 14/14; pricing browser flow passed; `npm run check` completed with zero Astro/TypeScript diagnostics; scoped Prettier and `git diff --check` passed.
-- Commit: Pending.
+- Commit: `1b67e1b`.
 - Current state: Tiered rates now show both prices and the threshold, for example `$2.00 up to 200k · $4.00 above`, across pricing and comparison views.
 - Exact next step: Create the scoped local commit, then wait for user verification.
 

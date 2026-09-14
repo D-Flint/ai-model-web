@@ -1,7 +1,7 @@
 import { formatPrice, rateLabel } from '../lib/apiPricing';
 import ApiPricing from './ApiPricing';
 import { useEffect, useState, type ReactNode } from 'react';
-import { ChevronDown, Copy, X, Plus } from 'lucide-react';
+import { ChevronDown, Copy, X, Plus, Check } from 'lucide-react';
 import { catalogSchema, type CatalogModel } from '../lib/catalogSchema';
 import {
   effortLabels,
@@ -43,6 +43,24 @@ const secondaryMetrics = [
   'reliability',
   'costEfficiency',
 ] as const;
+
+function renderFactBadge(value: string): ReactNode {
+  if (value === 'Yes') {
+    return (
+      <span className="fact-badge fact-badge-yes">
+        <Check size={12} strokeWidth={2.5} aria-hidden="true" /> Yes
+      </span>
+    );
+  }
+  if (value === 'No') {
+    return (
+      <span className="fact-badge fact-badge-no">
+        <X size={12} strokeWidth={2.5} aria-hidden="true" /> No
+      </span>
+    );
+  }
+  return value;
+}
 
 function MobileMetricCard({
   label,
@@ -693,16 +711,7 @@ export default function ComparisonBuilder({
                   label={row.label}
                   items={selectedItems}
                   key={row.label}
-                  renderValue={(item) => {
-                    const value = row.value(item);
-                    if (value === 'Yes') {
-                      return <span className="mobile-fact-yes">{value}</span>;
-                    }
-                    if (value === 'No') {
-                      return <span className="mobile-fact-no">{value}</span>;
-                    }
-                    return value;
-                  }}
+                  renderValue={(item) => renderFactBadge(row.value(item))}
                 />
               ))}
             </section>
@@ -997,21 +1006,9 @@ export default function ComparisonBuilder({
                 {technicalFacts.map((row) => (
                   <tr key={row.label}>
                     <th scope="row">{row.label}</th>
-                    {selectedItems.map((item) => {
-                      const value = row.value(item);
-                      const isYes = value === 'Yes';
-                      const isNo = value === 'No';
-                      const cellClass = isYes
-                        ? 'cell-yes'
-                        : isNo
-                          ? 'cell-no'
-                          : undefined;
-                      return (
-                        <td key={item.id} className={cellClass}>
-                          {value}
-                        </td>
-                      );
-                    })}
+                    {selectedItems.map((item) => (
+                      <td key={item.id}>{renderFactBadge(row.value(item))}</td>
+                    ))}
                   </tr>
                 ))}
               </tbody>
