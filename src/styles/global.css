@@ -1607,6 +1607,30 @@ th {
   font-size: 9px;
   font-weight: 400;
 }
+.comparison-table td.cell-yes,
+.comparison-table td.fact-yes {
+  background-color: rgba(34, 197, 94, 0.75);
+  font-weight: 600;
+}
+.comparison-table td.cell-no,
+.comparison-table td.fact-no {
+  background-color: rgba(239, 68, 68, 0.75);
+  font-weight: 600;
+}
+.mobile-fact-yes {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background-color: rgba(34, 197, 94, 0.75);
+  font-weight: 600;
+}
+.mobile-fact-no {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background-color: rgba(239, 68, 68, 0.75);
+  font-weight: 600;
+}
 .comparison-table a {
   text-decoration: underline;
   text-decoration-color: var(--border);

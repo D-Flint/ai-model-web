@@ -1,5 +1,16 @@
 # Session Log
 
+## 2026-09-14 — Style Yes and No comparison table cells with 75% opacity green and red backgrounds
+
+- Objective: Make "Yes" cells have a green background with 75% opacity and "No" cells have a red background with 75% opacity in the model comparison table.
+- Files changed: `src/components/ComparisonBuilder.tsx`, `src/styles/global.css`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: None. Updated desktop comparison table cells (`technicalFacts` rows including Vision input, Audio input, Tool use, Structured output, API available, and Open weights) to conditionally assign `cell-yes` / `fact-yes` and `cell-no` / `fact-no` classes. Added corresponding `.mobile-fact-yes` and `.mobile-fact-no` badge styling for mobile metric cards. Configured `background-color: rgba(34, 197, 94, 0.75)` for "Yes" and `rgba(239, 68, 68, 0.75)` for "No" with bold readable text contrast in both light and dark themes.
+- Tests: Verified visually via Chrome DevTools across desktop (1440px) in light and dark mode with the exact 4 models (Kimi K3, Gemini 3.7 Flash, Qwen 3.8 Max, Grok 4.6); `npm run check` passed (114 files, 0 errors, 0 warnings); Prettier check passed on modified files.
+- Commit: `887cc4d` (`style: color yes and no cells in comparison table`).
+- Current state: In the comparison table, all "Yes" cells display green with 75% opacity, and all "No" cells display red with 75% opacity.
+- Exact next step: User verification in the browser on `/compare`.
+
 ## 2026-09-14 — Add cache-aware cost efficiency and comparison workload profiles
 
 - Objective: Fix the 70/30 input/output cost efficiency calculation and incorporate prompt caching read discounts alongside selectable workload profiles on the models comparison page.

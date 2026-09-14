@@ -14,6 +14,7 @@ import {
   contextSize,
   getModelEffortStats,
   getSpeedDisplayValue,
+  selectionAtMaximumEffort,
   selectionFromSearch,
   type ModelEffortStats,
 } from '../lib/decision';
@@ -108,7 +109,10 @@ export default function ComparisonBuilder({
 }) {
   const [models, setModels] = useState(initialModels);
   const [selection, setSelection] = useState<string[]>(
-    initial.length ? initial : models.slice(0, 2).map((m) => m.slug),
+    selectionAtMaximumEffort(
+      initial.length ? initial : models.slice(0, 2).map((m) => m.slug),
+      models,
+    ),
   );
   const [add, setAdd] = useState('');
   const [status, setStatus] = useState('');
@@ -140,7 +144,12 @@ export default function ComparisonBuilder({
   useEffect(() => {
     const search = new URLSearchParams(location.search);
     if (search.has('models') || (search.has('a') && search.has('b')))
-      setSelection(selectionFromSearch(location.search, models));
+      setSelection(
+        selectionAtMaximumEffort(
+          selectionFromSearch(location.search, models),
+          models,
+        ),
+      );
   }, [models]);
 
   function update(next: string[]) {
@@ -684,7 +693,16 @@ export default function ComparisonBuilder({
                   label={row.label}
                   items={selectedItems}
                   key={row.label}
-                  renderValue={row.value}
+                  renderValue={(item) => {
+                    const value = row.value(item);
+                    if (value === 'Yes') {
+                      return <span className="mobile-fact-yes">{value}</span>;
+                    }
+                    if (value === 'No') {
+                      return <span className="mobile-fact-no">{value}</span>;
+                    }
+                    return value;
+                  }}
                 />
               ))}
             </section>
@@ -979,9 +997,21 @@ export default function ComparisonBuilder({
                 {technicalFacts.map((row) => (
                   <tr key={row.label}>
                     <th scope="row">{row.label}</th>
-                    {selectedItems.map((item) => (
-                      <td key={item.id}>{row.value(item)}</td>
-                    ))}
+                    {selectedItems.map((item) => {
+                      const value = row.value(item);
+                      const isYes = value === 'Yes';
+                      const isNo = value === 'No';
+                      const cellClass = isYes
+                        ? 'cell-yes'
+                        : isNo
+                          ? 'cell-no'
+                          : undefined;
+                      return (
+                        <td key={item.id} className={cellClass}>
+                          {value}
+                        </td>
+                      );
+                    })}
                   </tr>
                 ))}
               </tbody>
