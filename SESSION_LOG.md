@@ -1126,6 +1126,17 @@
 - Current state: A visible status warning below the disabled selector explains the four-item limit and tells users to remove an existing item.
 - Exact next step: User verifies the warning on `/compare` with four selected items.
 
+## 2026-09-14 — Emphasize compare limit warning
+
+- Objective: Make the compare-limit warning visibly red.
+- Files changed: `src/styles/global.css`, `SESSION_LOG.md`.
+- Attempts: 1 implementation pass.
+- Failures/causes: None.
+- Tests: `git diff --check` passed.
+- Commit: Pending.
+- Current state: The warning uses the theme-aware `--danger` color.
+- Exact next step: Create the local style commit, then wait for user verification.
+
 ## 2026-09-14 — Group comparison model dropdown by provider
 
 - Objective: Group models in the comparison add-model dropdown by company, with alphabetical provider and model ordering.

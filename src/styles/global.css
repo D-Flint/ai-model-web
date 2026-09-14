@@ -1411,7 +1411,7 @@ input[type='radio'] {
 .compare-limit-warning {
   display: block;
   margin-top: 6px;
-  color: var(--muted);
+  color: var(--danger);
   font-size: 12px;
   line-height: 1.4;
 }
