@@ -1443,6 +1443,11 @@ input[type='radio'] {
   border-radius: 12px;
   background: var(--surface);
 }
+.comparison-desktop-table {
+  position: sticky;
+  top: 92px;
+  max-height: calc(100vh - 108px);
+}
 table {
   width: 100%;
   border-collapse: collapse;
@@ -1483,11 +1488,16 @@ th {
   font-variant-numeric: tabular-nums;
 }
 .comparison-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: var(--surface);
   min-width: 180px;
   text-align: center;
   padding: 25px 16px;
 }
 .comparison-table thead th:first-child {
+  z-index: 4;
   width: 220px;
   min-width: 180px;
 }

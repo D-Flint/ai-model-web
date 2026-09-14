@@ -1,5 +1,16 @@
 # Session Log
 
+## 2026-09-14 — Keep comparison headers visible while scrolling
+
+- Objective: Prevent the comparison table's model headings from scrolling behind the sticky site navigation.
+- Files changed: `src/styles/global.css`, `tests/browser_flows.py`, `SESSION_LOG.md`; approved design specification committed separately.
+- Attempts: 1 implementation attempt.
+- Failures/causes: The initial full check could not write Wrangler's external diagnostic log in the sandbox; the approved elevated rerun completed successfully.
+- Tests: Scoped Prettier passed; `tests/browser_flows.py` passed; direct Playwright measurement confirmed a 92px table viewport top below the 77px navigation and a 93px sticky column-header top after internal scrolling; `npm run check` passed; `git diff --check` passed.
+- Commit: Pending local implementation commit.
+- Current state: On desktop, the comparison table becomes a bounded sticky viewport below the navigation, with a vertically sticky header row and preserved horizontal scroll. Mobile cards are unchanged.
+- Exact next step: User verifies a long desktop comparison on `/compare`.
+
 ## 2026-09-14 — Add cost and speed category controls
 
 - Objective: Add Cost / Task and Speed to the model explorer category controls.
