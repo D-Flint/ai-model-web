@@ -235,7 +235,7 @@ describe('pricing provenance and comparisons', () => {
         2,
       ]);
       expect(rateLabel(astra, 'cached')).toBe(
-        '(≤1,048,576: $1.00) (> 1,048,576: $2.00)',
+        '(≤272k: $1.00) (> 272k: $2.00)',
       );
     } finally {
       vi.useRealTimers();

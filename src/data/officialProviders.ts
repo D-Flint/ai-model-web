@@ -5310,8 +5310,8 @@ const gpt6AstraPricing: ApiPricing = {
   provider: 'OpenAI',
   scope: 'OpenAI API · GPT-6 Astra standard text pricing',
   tiers: [
-    tier('standard', 10, 50, 1, openaiPricing, 0, 1_048_576),
-    tier('long-context', 20, 75, 2, openaiPricing, 1_048_577, null),
+    tier('standard', 10, 50, 1, openaiPricing, 0, 272_000),
+    tier('long-context', 20, 75, 2, openaiPricing, 272_001, null),
   ],
   notes: [
     'Standard rates are taken from the linked first-party provider pricing documentation.',
