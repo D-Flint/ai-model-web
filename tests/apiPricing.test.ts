@@ -17,7 +17,7 @@ import {
 import { models, allModels } from '../src/data/models';
 import { validateCatalog } from '../src/lib/importCatalog';
 
-const now = new Date('2026-09-06T12:00:00Z');
+const now = new Date('2026-09-14T12:00:00Z');
 const minimaxNow = new Date('2026-09-12T12:00:00Z');
 const claude = verifiedApiPricing['claude-sonnet-5'];
 const gemini = verifiedApiPricing['gemini-3-1-pro'];
@@ -38,12 +38,12 @@ describe('user-provided API workloads', () => {
     const low = calculateApiCost(
       gemini,
       { input: 199000, cached: 1000, output: 1000, requests: 1 },
-      now,
+      new Date('2026-09-06T12:00:00Z'),
     );
     const high = calculateApiCost(
       gemini,
       { input: 199001, cached: 1000, output: 1000, requests: 1 },
-      now,
+      new Date('2026-09-06T12:00:00Z'),
     );
     expect(low.tier.id).toBe('standard');
     expect(high.tier.id).toBe('long-context');
@@ -92,7 +92,7 @@ describe('user-provided API workloads', () => {
           requests: 10,
           cacheTokenHours: 1000000,
         },
-        now,
+        new Date('2026-09-06T12:00:00Z'),
       ).total,
     ).toBe(4.5);
   });
@@ -101,14 +101,22 @@ describe('user-provided API workloads', () => {
     expect(calculateApiCost(claude, empty, now).total).toBe(0);
     expect(() => calculateApiCost(null, empty, now)).toThrow('unavailable');
     expect(() =>
-      calculateApiCost(gemini, { ...empty, requests: 1, search: 1 }, now),
+      calculateApiCost(
+        gemini,
+        { ...empty, requests: 1, search: 1 },
+        new Date('2026-09-06T12:00:00Z'),
+      ),
     ).toThrow('unavailable');
     for (const input of [-1, 0.5, NaN, Infinity, Number.MAX_SAFE_INTEGER + 1])
       expect(() =>
         calculateApiCost(claude, { ...empty, input }, now),
       ).toThrow();
     expect(() =>
-      calculateApiCost(gemini, { ...empty, input: 1048577 }, now),
+      calculateApiCost(
+        gemini,
+        { ...empty, input: 1048577 },
+        new Date('2026-09-06T12:00:00Z'),
+      ),
     ).toThrow('unavailable');
   });
   it('blocks stale required rates without replacing the retrieval date', () => {
@@ -116,12 +124,12 @@ describe('user-provided API workloads', () => {
       calculateApiCost(
         claude,
         { input: 1000, output: 100, cached: 0, requests: 1 },
-        new Date('2026-09-14'),
+        new Date('2026-09-22'),
       ),
     ).toThrow('verification');
     const rate = claude.tiers[0].input!;
-    expect(priceFreshness(rate, new Date('2026-09-13'))).toBe('Current');
-    expect(priceFreshness(rate, new Date('2026-09-14'))).toBe(
+    expect(priceFreshness(rate, new Date('2026-09-21'))).toBe('Current');
+    expect(priceFreshness(rate, new Date('2026-09-22'))).toBe(
       'Needs verification',
     );
     expect(priceFreshness(rate, new Date('2026-09-05'))).toBe(
@@ -227,7 +235,7 @@ describe('pricing provenance and comparisons', () => {
         2,
       ]);
       expect(rateLabel(astra, 'cached')).toBe(
-        '$1.00 up to 1,048,576 · $2.00 above',
+        'Short $1.00 · Long $2.00',
       );
     } finally {
       vi.useRealTimers();
@@ -300,14 +308,14 @@ describe('pricing provenance and comparisons', () => {
   });
   it('preserves unavailable values and never flattens a tiered model for sorting', () => {
     vi.useFakeTimers();
-    vi.setSystemTime(now);
+    vi.setSystemTime(new Date('2026-09-06T12:00:00Z'));
     try {
       const model = { ...models[0], apiPricing: gemini };
       expect(comparablePrice(model)).toBeNull();
-      expect(rateLabel(model, 'input')).toBe('$2.00 up to 200k · $4.00 above');
-      expect(rateLabel(model, 'cached')).toBe('$0.20 up to 200k · $0.40 above');
+      expect(rateLabel(model, 'input')).toBe('Short $2.00 · Long $4.00');
+      expect(rateLabel(model, 'cached')).toBe('Short $0.20 · Long $0.40');
       expect(rateLabel(model, 'output')).toBe(
-        '$12.00 up to 200k · $18.00 above',
+        'Short $12.00 · Long $18.00',
       );
       expect(reviewedContext['gemini-3-1-pro'].value).toBe(1_048_576);
       expect(reviewedContext['gemini-3-1-pro'].source.id).toBeTruthy();
