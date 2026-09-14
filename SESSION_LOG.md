@@ -1,5 +1,16 @@
 # Session Log
 
+## 2026-09-14 — Add cost and speed category controls
+
+- Objective: Add Cost / Task and Speed to the model explorer category controls.
+- Files changed: `src/components/ModelExplorer.tsx`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: `npm run check` could not complete Astro diagnostics in the sandbox because its Cloudflare integration attempted protected Wrangler log writes; the elevated run generated Wrangler types but did not complete diagnostics.
+- Tests: Prettier check passed; `npx tsc --noEmit` passed; focused `tests/leaderboardSorting.test.ts` passed (11/11); `git diff --check` passed.
+- Commit: Pending local commit.
+- Current state: Cost / Task and Speed appear in the desktop category pills and mobile category sheet. Cost defaults to ascending order (lowest first).
+- Exact next step: User verifies the two controls on `/models`.
+
 ## 2026-09-13 — Increase metric cell widths by 5% to 88px
 
 - Objective: Increase the uniform width of metric cells on the models explorer table by 5%.

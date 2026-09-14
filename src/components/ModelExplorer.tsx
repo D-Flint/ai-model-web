@@ -146,6 +146,8 @@ const CATEGORIES = [
     label: 'Instruction Following',
     sortCol: 'instructionFollowing' as const,
   },
+  { id: 'cost', label: 'Cost / Task', sortCol: 'cost' as const },
+  { id: 'speed', label: 'Speed', sortCol: 'speed' as const },
 ] as const;
 
 const SCORE_HEATMAP_THRESHOLD = 75;
@@ -452,7 +454,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
     } else {
       setActiveCategory(cat.id);
       setSortColumn(cat.sortCol);
-      setSortDirection('desc');
+      setSortDirection(cat.sortCol === 'cost' ? 'asc' : 'desc');
     }
   }
 
@@ -517,7 +519,7 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
     const cat = CATEGORIES.find((c) => c.id === tempCategory);
     if (cat) {
       setSortColumn(cat.sortCol);
-      setSortDirection('desc');
+      setSortDirection(cat.sortCol === 'cost' ? 'asc' : 'desc');
     }
     setVisibleColumns({ ...tempVisibleColumns });
     setShowMobileModal(false);
