@@ -1070,3 +1070,14 @@
 - Commit: Design `2d6a6cb` (also includes pre-staged unrelated pricing files); implementation `368ce13` and `32635ed`.
 - Current state: The fixed, keyboard-accessible button is hidden until `window.scrollY` reaches 400px, uses reduced-motion-aware scrolling, and renders through `RootLayout` for every page.
 - Exact next step: User verifies the reveal and click behavior in the running development server; no further implementation is planned.
+
+## 2026-09-14 — Limit leaderboard heatmaps to top ten scores
+
+- Objective: Apply the green leaderboard gradient only to each metric's top ten displayed values.
+- Files changed: `src/components/ModelExplorer.tsx`, `src/lib/leaderboardHeatmap.ts`, `tests/leaderboardHeatmap.test.ts`, `tests/leaderboard_heatmap_browser.py`, `SESSION_LOG.md`; approved design specification committed separately at `docs/superpowers/specs/2026-09-14-leaderboard-top-ten-heatmap-design.md`.
+- Attempts: 1 implementation pass.
+- Failures/causes: The required product brief is absent from this checkout. Sandboxed Wrangler validation could not write its external diagnostic log; the approved elevated check completed successfully. Repository-wide lint stopped before its formatting phase, while scoped ESLint and Prettier checks for this change passed.
+- Tests: Focused heatmap unit tests passed 3/3; browser verification passed for the complete leaderboard and a filtered GPT-5.6 view; `npm run check` passed with 0 Astro/TypeScript diagnostics; scoped ESLint, Prettier, and `git diff --check` passed.
+- Commit: Design `4fa8e26`; implementation `7521063`.
+- Current state: Each green score column now highlights its top ten values in the currently displayed rows, including cutoff ties and excluding missing scores. With no filters, displayed rows are the full catalog.
+- Exact next step: User verifies leaderboard filtering and heatmap behavior in the running development server; no further implementation is planned.
