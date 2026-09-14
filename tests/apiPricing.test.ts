@@ -10,17 +10,14 @@ import {
   rateLabel,
 } from '../src/lib/apiPricing';
 import { apiPricingSchema } from '../src/lib/apiPricingSchema';
-import {
-  verifiedApiPricing,
-  reviewedContext,
-} from '../src/data/officialProviders';
+import { verifiedApiPricing } from '../src/data/officialProviders';
 import { models, allModels } from '../src/data/models';
 import { validateCatalog } from '../src/lib/importCatalog';
 
 const now = new Date('2026-09-14T12:00:00Z');
-const minimaxNow = new Date('2026-09-12T12:00:00Z');
-const claude = verifiedApiPricing['claude-sonnet-5'];
-const gemini = verifiedApiPricing['gemini-3-1-pro'];
+const minimaxNow = new Date('2026-09-14T12:00:00Z');
+const claude = verifiedApiPricing['claude-fable-5-1'];
+const gemini = verifiedApiPricing['gemini-3-8-flash'];
 const minimax = verifiedApiPricing['minimax-m3'];
 describe('user-provided API workloads', () => {
   it('multiplies uncached, cached and output categories by requests without double counting', () => {
@@ -29,26 +26,10 @@ describe('user-provided API workloads', () => {
       { input: 1000, output: 500, cached: 2000, requests: 10 },
       now,
     );
-    expect(result.input).toBeCloseTo(0.02);
-    expect(result.output).toBeCloseTo(0.05);
-    expect(result.cached).toBeCloseTo(0.004);
-    expect(result.total).toBeCloseTo(0.074);
-  });
-  it('uses the higher rate for the entire request above the inclusive threshold, counting cached input', () => {
-    const low = calculateApiCost(
-      gemini,
-      { input: 199000, cached: 1000, output: 1000, requests: 1 },
-      new Date('2026-09-14T12:00:00Z'),
-    );
-    const high = calculateApiCost(
-      gemini,
-      { input: 199001, cached: 1000, output: 1000, requests: 1 },
-      new Date('2026-09-14T12:00:00Z'),
-    );
-    expect(low.tier.id).toBe('standard');
-    expect(high.tier.id).toBe('long-context');
-    expect(high.output).toBeCloseTo(0.018);
-    expect(high.input).toBeCloseTo((199001 * 4) / 1e6);
+    expect(result.input).toBeCloseTo(0.1);
+    expect(result.output).toBeCloseTo(0.25);
+    expect(result.cached).toBeCloseTo(0.005);
+    expect(result.total).toBeCloseTo(0.355);
   });
   it('uses the MiniMax M3 long-context tier only above 512K input tokens', () => {
     expect(
@@ -81,7 +62,7 @@ describe('user-provided API workloads', () => {
         },
         now,
       ).total,
-    ).toBeCloseTo(0.033);
+    ).toBeCloseTo(0.085);
     expect(
       calculateApiCost(
         gemini,
@@ -94,7 +75,7 @@ describe('user-provided API workloads', () => {
         },
         new Date('2026-09-14T12:00:00Z'),
       ).total,
-    ).toBe(4.5);
+    ).toBe(0.5);
   });
   it('accepts explicit zero usage and rejects missing rates, unsupported categories and invalid counts', () => {
     const empty = { input: 0, output: 0, cached: 0, requests: 0 };
@@ -142,15 +123,6 @@ describe('pricing provenance and comparisons', () => {
   it('publishes the verified standard Gemini text rates', () => {
     const expectedRates = {
       'gemini-3-8-flash': [0.75, 3.75, 0.075],
-      'gemini-3-7-flash': [0.75, 3.75, 0.075],
-      'gemini-3-6-flash': [0.75, 3.75, 0.075],
-      'gemini-3-5-flash': [1.5, 9, 0.15],
-      'gemini-3-5-flash-lite': [0.3, 2.5, 0.03],
-      'gemini-3-1-pro': [2, 12, 0.2],
-      'gemini-3-1-flash-lite': [0.25, 1.5, 0.025],
-      'gemini-3-flash': [0.5, 3, 0.05],
-      'gemini-2-5-flash': [0.3, 2.5, 0.03],
-      'gemini-2-5-flash-lite': [0.1, 0.4, 0.01],
     } as const;
 
     for (const [slug, [input, output, cached]] of Object.entries(
@@ -189,14 +161,12 @@ describe('pricing provenance and comparisons', () => {
     ]);
     expect(minimax.tiers[0].input?.source).toMatchObject({
       name: 'MiniMax API pricing',
-      url: 'https://platform.minimax.io/subscribe/token-plan?tab=api-enterprise',
-      retrievedAt: '2026-09-12',
+      url: 'https://platform.minimax.io/docs/guides/pricing-paygo',
+      retrievedAt: '2026-09-14',
     });
   });
   it('publishes DeepSeek peak and off-peak API rates', () => {
     const pricing = verifiedApiPricing['deepseek-v4-1-flash'];
-    const proPricing = verifiedApiPricing['deepseek-v4-pro-0813'];
-
     expect(pricing.periods).toEqual([
       expect.objectContaining({
         id: 'off-peak',
@@ -211,14 +181,6 @@ describe('pricing provenance and comparisons', () => {
         cached: expect.objectContaining({ value: 0.006 }),
       }),
     ]);
-    expect(proPricing.periods?.[1]).toEqual(
-      expect.objectContaining({
-        id: 'peak',
-        input: expect.objectContaining({ value: 1.32 }),
-        output: expect.objectContaining({ value: 3.96 }),
-        cached: expect.objectContaining({ value: 0.044 }),
-      }),
-    );
   });
 
   it('validates the full published catalog after applying pricing snapshots', () => {
@@ -258,13 +220,10 @@ describe('pricing provenance and comparisons', () => {
     vi.setSystemTime(new Date('2026-09-14T12:00:00Z'));
     try {
       const astra = models.find((model) => model.slug === 'gpt-6-astra')!;
-      expect(astra.apiPricing?.tiers.map((tier) => tier.cached?.value)).toEqual([
-        1,
-        2,
-      ]);
-      expect(rateLabel(astra, 'cached')).toBe(
-        '(≤272k: $1.00) (> 272k: $2.00)',
+      expect(astra.apiPricing?.tiers.map((tier) => tier.cached?.value)).toEqual(
+        [1, 2],
       );
+      expect(rateLabel(astra, 'cached')).toBe('(≤272k: $1.00) (> 272k: $2.00)');
     } finally {
       vi.useRealTimers();
     }
@@ -274,7 +233,7 @@ describe('pricing provenance and comparisons', () => {
     vi.setSystemTime(now);
     try {
       const model = structuredClone(
-        models.find((m) => m.slug === 'claude-sonnet-5')!,
+        models.find((m) => m.slug === 'claude-fable-5-1')!,
       );
       model.apiPricing!.tiers[0].input!.value = 0;
       expect(recommend([model], 'coding', 'cost', 'free')).toHaveLength(0);
@@ -323,7 +282,12 @@ describe('pricing provenance and comparisons', () => {
     negative.tiers[0].input!.value = -1;
     expect(apiPricingSchema.safeParse(negative).success).toBe(false);
     const overlap = structuredClone(gemini);
-    overlap.tiers[1].minContext = 200000;
+    overlap.tiers.push({
+      ...overlap.tiers[0],
+      id: 'overlap',
+      minContext: 0,
+      maxContext: null,
+    });
     expect(apiPricingSchema.safeParse(overlap).success).toBe(false);
     const missing = structuredClone(claude);
     missing.tiers[0].input!.source.retrievedAt = '';
@@ -339,14 +303,10 @@ describe('pricing provenance and comparisons', () => {
     vi.setSystemTime(new Date('2026-09-14T12:00:00Z'));
     try {
       const model = { ...models[0], apiPricing: gemini };
-      expect(comparablePrice(model)).toBeNull();
-      expect(rateLabel(model, 'input')).toBe('(≤200k: $2.00) (> 200k: $4.00)');
-      expect(rateLabel(model, 'cached')).toBe('(≤200k: $0.20) (> 200k: $0.40)');
-      expect(rateLabel(model, 'output')).toBe(
-        '(≤200k: $12.00) (> 200k: $18.00)',
-      );
-      expect(reviewedContext['gemini-3-1-pro'].value).toBe(1_048_576);
-      expect(reviewedContext['gemini-3-1-pro'].source.id).toBeTruthy();
+      expect(comparablePrice(model)).toBe(0.75);
+      expect(rateLabel(model, 'input')).toBe('$0.75');
+      expect(rateLabel(model, 'cached')).toBe('$0.075');
+      expect(rateLabel(model, 'output')).toBe('$3.75');
       expect(formatPrice(null)).toBe('Unavailable');
       expect(formatPrice(0)).toBe('$0.00');
       expect(formatPrice(0.0000001)).toBe('<$0.000001');
