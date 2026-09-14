@@ -31,6 +31,11 @@ import {
   sortLeaderboardRows,
   type LeaderboardMetricKey,
 } from '../lib/decision';
+import {
+  getTopScoreValues,
+  scoreHeatmapMetrics,
+  type ScoreHeatmapMetric,
+} from '../lib/leaderboardHeatmap';
 import livebenchRows from '../data/livebenchData.json';
 import { CANONICAL_MODELS } from '../data/canonicalModels';
 import { defaultAliasResolver } from '../pipeline/aliasResolver';
@@ -150,16 +155,13 @@ const CATEGORIES = [
   { id: 'speed', label: 'Speed', sortCol: 'speed' as const },
 ] as const;
 
-const SCORE_HEATMAP_THRESHOLD = 75;
-
 function getScoreHeatmapStyle(
   score: number | null,
 ): React.CSSProperties | undefined {
-  if (score === null || score < SCORE_HEATMAP_THRESHOLD) return undefined;
+  if (score === null) return undefined;
 
-  const normalizedScore = Math.min(score, 100);
-  const intensity =
-    14 + ((normalizedScore - SCORE_HEATMAP_THRESHOLD) / 25) * 24;
+  const normalizedScore = Math.min(Math.max(score, 75), 100);
+  const intensity = 14 + ((normalizedScore - 75) / 25) * 24;
 
   return {
     '--score-heatmap-intensity': `${intensity.toFixed(1)}%`,
@@ -420,6 +422,19 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
   const sortedRows = useMemo(() => {
     return sortLeaderboardRows(filteredRows, sortColumn, sortDirection);
   }, [filteredRows, sortColumn, sortDirection]);
+
+  const topScoreValues = useMemo(() => {
+    return Object.fromEntries(
+      scoreHeatmapMetrics.map((metric) => [
+        metric,
+        getTopScoreValues(filteredRows, metric),
+      ]),
+    ) as Record<ScoreHeatmapMetric, ReadonlySet<number>>;
+  }, [filteredRows]);
+
+  function isTopScore(metric: ScoreHeatmapMetric, score: number | null) {
+    return score !== null && topScoreValues[metric].has(score);
+  }
 
   useEffect(() => {
     if (
@@ -1076,8 +1091,12 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.reasoning && (
                             <td
-                              className={`td-metric td-reasoning td-align-center ${sortColumn === 'reasoning' ? 'col-sorted' : ''} ${row.scores.reasoning !== null && row.scores.reasoning >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
-                              style={getScoreHeatmapStyle(row.scores.reasoning)}
+                              className={`td-metric td-reasoning td-align-center ${sortColumn === 'reasoning' ? 'col-sorted' : ''} ${isTopScore('reasoning', row.scores.reasoning) ? 'cell-score-heatmap' : ''}`}
+                              style={
+                                isTopScore('reasoning', row.scores.reasoning)
+                                  ? getScoreHeatmapStyle(row.scores.reasoning)
+                                  : undefined
+                              }
                             >
                               {row.scores.reasoning !== null
                                 ? row.scores.reasoning.toFixed(1)
@@ -1087,8 +1106,12 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.coding && (
                             <td
-                              className={`td-metric td-coding td-align-center ${sortColumn === 'coding' ? 'col-sorted' : ''} ${row.scores.coding !== null && row.scores.coding >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
-                              style={getScoreHeatmapStyle(row.scores.coding)}
+                              className={`td-metric td-coding td-align-center ${sortColumn === 'coding' ? 'col-sorted' : ''} ${isTopScore('coding', row.scores.coding) ? 'cell-score-heatmap' : ''}`}
+                              style={
+                                isTopScore('coding', row.scores.coding)
+                                  ? getScoreHeatmapStyle(row.scores.coding)
+                                  : undefined
+                              }
                             >
                               {row.scores.coding !== null
                                 ? row.scores.coding.toFixed(1)
@@ -1098,8 +1121,12 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.agentic && (
                             <td
-                              className={`td-metric td-agentic td-align-center ${sortColumn === 'agentic' ? 'col-sorted' : ''} ${row.scores.agentic !== null && row.scores.agentic >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
-                              style={getScoreHeatmapStyle(row.scores.agentic)}
+                              className={`td-metric td-agentic td-align-center ${sortColumn === 'agentic' ? 'col-sorted' : ''} ${isTopScore('agentic', row.scores.agentic) ? 'cell-score-heatmap' : ''}`}
+                              style={
+                                isTopScore('agentic', row.scores.agentic)
+                                  ? getScoreHeatmapStyle(row.scores.agentic)
+                                  : undefined
+                              }
                             >
                               {row.scores.agentic !== null
                                 ? row.scores.agentic.toFixed(1)
@@ -1109,10 +1136,15 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.mathematics && (
                             <td
-                              className={`td-metric td-mathematics td-align-center ${sortColumn === 'mathematics' ? 'col-sorted' : ''} ${row.scores.mathematics !== null && row.scores.mathematics >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
-                              style={getScoreHeatmapStyle(
-                                row.scores.mathematics,
-                              )}
+                              className={`td-metric td-mathematics td-align-center ${sortColumn === 'mathematics' ? 'col-sorted' : ''} ${isTopScore('mathematics', row.scores.mathematics) ? 'cell-score-heatmap' : ''}`}
+                              style={
+                                isTopScore(
+                                  'mathematics',
+                                  row.scores.mathematics,
+                                )
+                                  ? getScoreHeatmapStyle(row.scores.mathematics)
+                                  : undefined
+                              }
                             >
                               {row.scores.mathematics !== null
                                 ? row.scores.mathematics.toFixed(1)
@@ -1122,10 +1154,17 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.dataAnalysis && (
                             <td
-                              className={`td-metric td-dataAnalysis td-align-center ${sortColumn === 'dataAnalysis' ? 'col-sorted' : ''} ${row.scores.dataAnalysis !== null && row.scores.dataAnalysis >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
-                              style={getScoreHeatmapStyle(
-                                row.scores.dataAnalysis,
-                              )}
+                              className={`td-metric td-dataAnalysis td-align-center ${sortColumn === 'dataAnalysis' ? 'col-sorted' : ''} ${isTopScore('dataAnalysis', row.scores.dataAnalysis) ? 'cell-score-heatmap' : ''}`}
+                              style={
+                                isTopScore(
+                                  'dataAnalysis',
+                                  row.scores.dataAnalysis,
+                                )
+                                  ? getScoreHeatmapStyle(
+                                      row.scores.dataAnalysis,
+                                    )
+                                  : undefined
+                              }
                             >
                               {row.scores.dataAnalysis !== null
                                 ? row.scores.dataAnalysis.toFixed(1)
@@ -1135,8 +1174,12 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.language && (
                             <td
-                              className={`td-metric td-language td-align-center ${sortColumn === 'language' ? 'col-sorted' : ''} ${row.scores.language !== null && row.scores.language >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
-                              style={getScoreHeatmapStyle(row.scores.language)}
+                              className={`td-metric td-language td-align-center ${sortColumn === 'language' ? 'col-sorted' : ''} ${isTopScore('language', row.scores.language) ? 'cell-score-heatmap' : ''}`}
+                              style={
+                                isTopScore('language', row.scores.language)
+                                  ? getScoreHeatmapStyle(row.scores.language)
+                                  : undefined
+                              }
                             >
                               {row.scores.language !== null
                                 ? row.scores.language.toFixed(1)
@@ -1146,10 +1189,17 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
 
                           {visibleColumns.instructionFollowing && (
                             <td
-                              className={`td-metric td-instructionFollowing td-align-center ${sortColumn === 'instructionFollowing' ? 'col-sorted' : ''} ${row.scores.instructionFollowing !== null && row.scores.instructionFollowing >= SCORE_HEATMAP_THRESHOLD ? 'cell-score-heatmap' : ''}`}
-                              style={getScoreHeatmapStyle(
-                                row.scores.instructionFollowing,
-                              )}
+                              className={`td-metric td-instructionFollowing td-align-center ${sortColumn === 'instructionFollowing' ? 'col-sorted' : ''} ${isTopScore('instructionFollowing', row.scores.instructionFollowing) ? 'cell-score-heatmap' : ''}`}
+                              style={
+                                isTopScore(
+                                  'instructionFollowing',
+                                  row.scores.instructionFollowing,
+                                )
+                                  ? getScoreHeatmapStyle(
+                                      row.scores.instructionFollowing,
+                                    )
+                                  : undefined
+                              }
                             >
                               {row.scores.instructionFollowing !== null
                                 ? row.scores.instructionFollowing.toFixed(1)
