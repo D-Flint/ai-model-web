@@ -251,13 +251,13 @@ export const OFFICIAL_PROVIDER_SPECS: Record<string, OfficialProviderSpec> = {
     supportsStructuredOutput: true,
     apiAvailable: true,
     officialPricing: {
-      input: 0.8,
-      output: 3.2,
-      cached: 0.2,
+      input: 1.25,
+      output: 4.25,
+      cached: 0.15,
     },
     reasoningEffort: ['none', 'medium'],
     defaultEffort: 'none',
-    lastVerifiedAt: '2026-06-25',
+    lastVerifiedAt: '2026-09-14',
     sourceUrl: 'https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/',
     sourceName: 'Meta AI Official Documentation',
   },
@@ -272,13 +272,13 @@ export const OFFICIAL_PROVIDER_SPECS: Record<string, OfficialProviderSpec> = {
     supportsStructuredOutput: true,
     apiAvailable: true,
     officialPricing: {
-      input: 1.2,
-      output: 4.8,
-      cached: 0.3,
+      input: 1.25,
+      output: 4.25,
+      cached: 0.15,
     },
     reasoningEffort: ['none', 'medium', 'high'],
     defaultEffort: 'medium',
-    lastVerifiedAt: '2026-06-25',
+    lastVerifiedAt: '2026-09-14',
     sourceUrl: 'https://ai.meta.com/llama/',
     sourceName: 'Meta AI Official Documentation',
   },
@@ -1467,13 +1467,13 @@ export const OFFICIAL_PROVIDER_SPECS: Record<string, OfficialProviderSpec> = {
     supportsStructuredOutput: true,
     apiAvailable: true,
     officialPricing: {
-      input: 0.5,
-      output: 1.5,
-      cached: 0.125,
+      input: 1.25,
+      output: 4.25,
+      cached: 0.15,
     },
     reasoningEffort: ['none', 'low', 'medium', 'high', 'max'],
     defaultEffort: 'high',
-    lastVerifiedAt: '2026-09-12',
+    lastVerifiedAt: '2026-09-14',
     sourceUrl: 'https://ai.meta.com/llama/',
     sourceName: 'Meta AI Official Documentation',
   },
@@ -5254,7 +5254,7 @@ const openaiPricing = 'https://developers.openai.com/api/docs/pricing';
 const openaiRetrievedAt = '2026-09-14';
 const deepseekPricing = 'https://api-docs.deepseek.com/quick_start/pricing';
 const minimaxPricing =
-  'https://platform.minimax.io/subscribe/token-plan?tab=api-enterprise';
+  'https://platform.minimax.io/docs/guides/pricing-paygo';
 const apiPricingRecords: Record<string, ApiPricing> = {};
 function price(
   value: number,
@@ -5377,7 +5377,7 @@ function minimaxPrice(value: number): PriceValue {
       name: 'MiniMax API pricing',
       url: minimaxPricing,
       type: 'provider_doc',
-      retrievedAt: '2026-09-12',
+      retrievedAt: retrievedAt,
       effectiveFrom: null,
     },
   };
@@ -5562,7 +5562,7 @@ for (const [slug, input, output, cached, storage] of [
 }
 apiPricingRecords['minimax-m3'] = {
   provider: 'MiniMax',
-  scope: 'MiniMax API · M3 standard-priority text pricing',
+  scope: 'MiniMax API · M3 standard text pricing',
   tiers: [
     {
       id: 'standard',
@@ -5592,8 +5592,9 @@ apiPricingRecords['minimax-m3'] = {
     },
   ],
   notes: [
-    'Displayed rates are the discounted standard-priority pay-as-you-go rates shown by MiniMax.',
-    'Priority-service, media, subscription, and other charges are outside this calculator.',
+    'Displayed rates are MiniMax standard pay-as-you-go rates; the provider lists permanent 50% promotional pricing for M3.',
+    'Priority service is billed at 1.5× standard rates and is outside this calculator.',
+    'Media, subscription, and other charges are outside this calculator.',
   ],
   benchmarkCost: null,
 };
