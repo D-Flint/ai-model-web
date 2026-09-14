@@ -1,5 +1,16 @@
 # Session Log
 
+## 2026-09-14 — Fix comparison table scroll trap and window sticky headers
+
+- Objective: Remove bounded scroll trapping on the desktop comparison table, fix page content sliding behind the table, and make table headers stick naturally to the window beneath the site navigation.
+- Files changed: `src/styles/global.css`, `tests/browser_flows.py`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: Previous implementation used `position: sticky; top: 92px; max-height: calc(100vh - 108px);` on `.comparison-desktop-table`, creating a nested vertical scroll trap, cutting off 23 of 27 rows, and causing subsequent page sections to scroll underneath the frozen table. Replaced with `overflow: visible;` on `.comparison-desktop-table` and `position: sticky; top: 77px;` on `thead th`, with elevated `z-index: 20` on `.site-header` so the entire table renders naturally and headers stay pinned below navigation during natural page scrolling.
+- Tests: Prettier check on `src/styles/global.css` passed; `npm run check` passed (0 errors, 0 warnings); full-page and scroll visual regression screenshots verified in Chromium; `git diff --check` passed.
+- Commit: `f16802f` (`fix: remove comparison table scroll trap and restore window sticky headers`).
+- Current state: Comparison table renders all 27 rows naturally on the page without nested scrollbars. Header row sticks to `top: 77px` directly below the site header while scrolling through the table, and cleanly scrolls out of view when reaching the verdict sections below.
+- Exact next step: User verifies comparison table scrolling on `/compare`.
+
 ## 2026-09-14 — Keep comparison headers visible while scrolling
 
 - Objective: Prevent the comparison table's model headings from scrolling behind the sticky site navigation.

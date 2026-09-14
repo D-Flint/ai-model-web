@@ -46,14 +46,11 @@ with sync_playwright() as p:
     page.evaluate("""() => {
         const table = document.querySelector('.comparison-desktop-table');
         window.scrollTo(0, table.getBoundingClientRect().top + window.scrollY + 160);
-        table.scrollTop = 160;
     }""")
-    comparison_bounds = page.locator(".comparison-desktop-table").bounding_box()
     header_bounds = page.locator(".site-header").bounding_box()
     column_header_bounds = page.locator(".comparison-table thead th").nth(1).bounding_box()
-    assert comparison_bounds and header_bounds and column_header_bounds
-    assert comparison_bounds["y"] >= header_bounds["y"] + header_bounds["height"]
-    assert column_header_bounds["y"] >= comparison_bounds["y"]
+    assert header_bounds and column_header_bounds
+    assert column_header_bounds["y"] >= header_bounds["y"] + header_bounds["height"] - 1
     page.screenshot(path=str(ARTIFACTS / "compare-desktop.png"), full_page=True)
     page.reload()
     page.wait_for_load_state("networkidle")
