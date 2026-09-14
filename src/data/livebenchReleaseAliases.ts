@@ -24,8 +24,6 @@ export const LIVEBENCH_RELEASE_ALIASES: Record<string, string> = {
   'glm-5.2': 'glm-5-2',
   'glm-5.3': 'glm-5-3',
   'glm-5.3-flash': 'glm-5-3-flash',
-  'gpt-5.2-2025-12-11-high': 'gpt-5-2',
-  'gpt-5.2-codex': 'gpt-5-2-codex',
   'gpt-5.4-mini-xhigh': 'gpt-5-4-mini',
   'gpt-5.4-nano-xhigh': 'gpt-5-4-nano',
   'gpt-5.4-xhigh': 'gpt-5-4',
@@ -54,7 +52,4 @@ export const LIVEBENCH_RELEASE_ALIASES: Record<string, string> = {
   'qwen3.8-27b': 'qwen-3-8-27b',
   'qwen3.8-flash-next': 'qwen-3-8-flash-next',
   'qwen3.8-max': 'qwen-3-8-max',
-  'smaug-agentic': 'smaug-agentic',
-  'smaug-flash': 'smaug-flash',
-  'smaug-mini': 'smaug-mini',
 };

@@ -18,7 +18,7 @@ describe('LiveBench catalog selection', () => {
   });
 
   it('publishes only models with verified speed telemetry', () => {
-    expect(models).toHaveLength(51);
+    expect(models).toHaveLength(49);
     expect(
       models.every((model) => model.facts.speedTokensPerSec !== null),
     ).toBe(true);
@@ -38,7 +38,7 @@ describe('LiveBench catalog selection', () => {
         ),
       ),
     ).toBe(true);
-    expect(new Set(models.map((model) => model.slug)).size).toBe(51);
+    expect(new Set(models.map((model) => model.slug)).size).toBe(49);
     expect(
       [...CURATED_PUBLISHED_MODEL_SLUGS].every((slug) =>
         models.some((model) => model.slug === slug),
@@ -61,6 +61,11 @@ describe('LiveBench catalog selection', () => {
       'gpt-5',
       'gpt-5-pro',
       'gpt-5-2-pro',
+      'gpt-5-2',
+      'gpt-5-2-codex',
+      'smaug-agentic',
+      'smaug-flash',
+      'smaug-mini',
     ]);
     expect(allModels.some((model) => removed.has(model.slug))).toBe(false);
   });
@@ -74,10 +79,10 @@ describe('LiveBench catalog selection', () => {
     expect(allModels.some((model) => model.slug === 'inkling')).toBe(false);
   });
 
-  it('retains 55 eligible candidates and recent discovery models', () => {
+  it('retains 50 eligible candidates and recent discovery models', () => {
     expect(
       selectTopLiveBenchModels(allModels, LIVEBENCH_CANDIDATE_LIMIT),
-    ).toHaveLength(55);
+    ).toHaveLength(50);
     expect(allModels.length).toBeGreaterThanOrEqual(LIVEBENCH_CANDIDATE_LIMIT);
     expect(allModels.length).toBeLessThanOrEqual(
       LIVEBENCH_CANDIDATE_LIMIT + LIVEBENCH_CATALOG_LIMIT,

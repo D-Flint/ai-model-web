@@ -4,8 +4,8 @@ import { defaultAliasResolver } from '../pipeline/aliasResolver';
 import type { CatalogModel } from './catalogSchema';
 import { evaluateModelEligibility } from './catalogEligibility';
 
-export const LIVEBENCH_CATALOG_LIMIT = 55;
-export const LIVEBENCH_CANDIDATE_LIMIT = 55;
+export const LIVEBENCH_CATALOG_LIMIT = 50;
+export const LIVEBENCH_CANDIDATE_LIMIT = 50;
 export const CURATED_PUBLISHED_MODEL_SLUGS = new Set([
   'deepseek-v4-flash-0731',
   'deepseek-v4-1-flash',
@@ -41,7 +41,7 @@ function latestLiveBenchRows(): Map<string, LiveBenchRow> {
   return latest;
 }
 
-/** Keep recent discovery models and 35 recent eligible candidates for 30 slots. */
+/** Keep recent discovery models and 50 current eligible candidates. */
 export function curateRecentCatalog(catalog: CatalogModel[]): CatalogModel[] {
   const rows = latestLiveBenchRows();
   const recent = [...catalog].sort((a, b) =>

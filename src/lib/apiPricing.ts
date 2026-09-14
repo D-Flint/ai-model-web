@@ -149,7 +149,6 @@ const reviewedPricingHosts: Record<string, string[]> = {
   'Z.ai': ['z.ai', 'docs.z.ai'],
   NVIDIA: ['build.nvidia.com'],
   'Meta AI': ['ai.meta.com', 'about.meta.com', 'meta.com'],
-  'Abacus AI': ['abacus.ai', 'www.abacus.ai'],
 };
 
 /** Convert legacy provider pricing only when its source is first-party. */

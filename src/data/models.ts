@@ -11,6 +11,7 @@ import type { CatalogModel } from '../lib/catalogSchema';
 import { verifiedApiPricing, reviewedContext } from './officialProviders';
 import { choosePricing, reviewedCatalogPricing } from '../lib/apiPricing';
 import { knownModelRoles } from './modelRoles';
+import { CANONICAL_MODELS } from './canonicalModels';
 
 // Fictional providers and model names for fallback fixtures
 const seeds = [
@@ -267,8 +268,14 @@ export const mockModels: CatalogModel[] = validateCatalog(
 let verifiedModelsList: CatalogModel[] | null = null;
 try {
   if (Array.isArray(verifiedCatalogRaw) && verifiedCatalogRaw.length > 0) {
+    const activeCanonicalSlugs = new Set(
+      CANONICAL_MODELS.map((model) => model.slug),
+    );
     verifiedModelsList = validateCatalog(verifiedCatalogRaw).filter(
-      (model) => model.slug !== 'ox-alpha' && model.slug !== 'inkling',
+      (model) =>
+        model.slug !== 'ox-alpha' &&
+        model.slug !== 'inkling' &&
+        activeCanonicalSlugs.has(model.slug),
     );
   }
 } catch (err) {

@@ -13,7 +13,6 @@ import { MINIMAX_MODELS } from './models/minimax';
 import { TENCENT_MODELS } from './models/tencent';
 import { ZAI_MODELS } from './models/zai';
 import { QWEN_MODELS } from './models/qwen';
-import { ABACUS_MODELS } from './models/abacus';
 import { NVIDIA_MODELS } from './models/nvidia';
 import { FRONTIER_MODELS } from './models/frontier';
 import { knownModelRoles } from './modelRoles';
@@ -33,7 +32,6 @@ export {
   TENCENT_MODELS,
   ZAI_MODELS,
   QWEN_MODELS,
-  ABACUS_MODELS,
   NVIDIA_MODELS,
   FRONTIER_MODELS,
 };
@@ -151,14 +149,6 @@ export const PROVIDERS_CONFIG = [
       'Alibaba Cloud open and proprietary foundation models with leading STEM and coding capabilities.',
   },
   {
-    id: 'provider-abacus',
-    slug: 'abacus',
-    name: 'Abacus AI',
-    website: 'https://abacus.ai',
-    description:
-      'Autonomous AI company behind the agent-specialized Smaug foundation models.',
-  },
-  {
     id: 'provider-nvidia',
     slug: 'nvidia',
     name: 'NVIDIA',
@@ -183,7 +173,6 @@ const canonicalModels: CanonicalModelConfig[] = [
   ...TENCENT_MODELS,
   ...ZAI_MODELS,
   ...QWEN_MODELS,
-  ...ABACUS_MODELS,
   ...NVIDIA_MODELS,
   ...FRONTIER_MODELS,
 ];
