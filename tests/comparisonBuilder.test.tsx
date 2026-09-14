@@ -5,6 +5,28 @@ import { models } from '../src/data/models';
 import { getMaxReasoningEffort } from '../src/lib/decision';
 
 describe('ComparisonBuilder effort defaults', () => {
+  it('renders the effort selector for a model with one selectable reasoning tier', () => {
+    const museSpark = models.find((model) => model.slug === 'muse-spark-1-1');
+    const secondModel = models.find((model) => model.slug !== 'muse-spark-1-1');
+
+    expect(museSpark).toBeDefined();
+    expect(secondModel).toBeDefined();
+    if (!museSpark || !secondModel) return;
+
+    const html = renderToStaticMarkup(
+      <ComparisonBuilder
+        models={models}
+        initial={[museSpark.slug, secondModel.slug]}
+      />,
+    );
+
+    expect(html).toContain('Reasoning Effort');
+    expect(html).toContain('value="medium" selected=""');
+    expect(html).not.toContain(
+      'Muse Spark 1.1</a><div style="margin-top:6px"><span class="effort-badge effort-fixed">Fixed CoT',
+    );
+  });
+
   it('defaults newly added reasoning models without an effort suffix to maximum possible effort', () => {
     const multiEffortModel = models.find(
       (m) =>

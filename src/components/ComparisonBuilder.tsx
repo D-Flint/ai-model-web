@@ -489,7 +489,7 @@ export default function ComparisonBuilder({
                       </span>
                     </div>
                     {item.isReasoning ? (
-                      item.availableEfforts.length > 1 ? (
+                      item.effort !== 'fixed' ? (
                         <div className="mobile-effort-control">
                           <div className="mobile-effort-row">
                             <label htmlFor={`mobile-effort-select-${item.id}`}>
@@ -520,17 +520,21 @@ export default function ComparisonBuilder({
                               />
                             </div>
                           </div>
-                          {selection.length < 4 && (
-                            <button
-                              type="button"
-                              className="mobile-compare-effort"
-                              onClick={() =>
-                                addEffort(item.model.slug, nextEffortFor(item))
-                              }
-                            >
-                              <Plus size={14} /> Compare another effort
-                            </button>
-                          )}
+                          {item.availableEfforts.length > 1 &&
+                            selection.length < 4 && (
+                              <button
+                                type="button"
+                                className="mobile-compare-effort"
+                                onClick={() =>
+                                  addEffort(
+                                    item.model.slug,
+                                    nextEffortFor(item),
+                                  )
+                                }
+                              >
+                                <Plus size={14} /> Compare another effort
+                              </button>
+                            )}
                         </div>
                       ) : (
                         <span className="mobile-effort-status">Fixed CoT</span>
@@ -766,7 +770,7 @@ export default function ComparisonBuilder({
                         {item.model.name}
                       </a>
                       {item.isReasoning ? (
-                        item.availableEfforts.length > 1 ? (
+                        item.effort !== 'fixed' ? (
                           <div className="effort-selector-cell">
                             <label
                               className="effort-selector-label"
@@ -791,31 +795,33 @@ export default function ComparisonBuilder({
                                 </option>
                               ))}
                             </select>
-                            {selection.length < 4 && (
-                              <button
-                                type="button"
-                                className="effort-compare-pill"
-                                onClick={() => {
-                                  const nextEff =
-                                    item.availableEfforts.find(
-                                      (e) =>
-                                        !selectedItems.some(
-                                          (s) =>
-                                            s.model.slug === item.model.slug &&
-                                            s.effort === e,
-                                        ),
-                                    ) ||
-                                    item.availableEfforts.find(
-                                      (e) => e !== item.effort,
-                                    ) ||
-                                    item.effort;
-                                  addEffort(item.model.slug, nextEff);
-                                }}
-                                title={`Compare ${item.model.name} at another effort`}
-                              >
-                                <Plus size={11} /> Compare effort
-                              </button>
-                            )}
+                            {item.availableEfforts.length > 1 &&
+                              selection.length < 4 && (
+                                <button
+                                  type="button"
+                                  className="effort-compare-pill"
+                                  onClick={() => {
+                                    const nextEff =
+                                      item.availableEfforts.find(
+                                        (e) =>
+                                          !selectedItems.some(
+                                            (s) =>
+                                              s.model.slug ===
+                                                item.model.slug &&
+                                              s.effort === e,
+                                          ),
+                                      ) ||
+                                      item.availableEfforts.find(
+                                        (e) => e !== item.effort,
+                                      ) ||
+                                      item.effort;
+                                    addEffort(item.model.slug, nextEff);
+                                  }}
+                                  title={`Compare ${item.model.name} at another effort`}
+                                >
+                                  <Plus size={11} /> Compare effort
+                                </button>
+                              )}
                           </div>
                         ) : (
                           <div style={{ marginTop: '6px' }}>
