@@ -1,5 +1,5 @@
 ---
-import { allModels, models } from '../data/models';
+import { models } from '../data/models';
 import { categories, metricLabels, type Metric } from '../data/config';
 import { rankModels } from '../lib/decision';
 import { ModelMark } from './ModelCard';
@@ -24,7 +24,7 @@ const rankingAsOf = new Date().toISOString().slice(0, 10);
 const scoreMetric = getScoreRankingMetric(slug);
 const intelligenceItems =
   slug === 'intelligence'
-    ? rankIntelligenceModels(allModels, rankingAsOf).map((result) => ({
+    ? rankIntelligenceModels(models, rankingAsOf).map((result) => ({
         slug: result.model.slug,
         name: result.model.name,
         provider: result.model.provider,
@@ -42,7 +42,7 @@ const intelligenceItems =
     : [];
 const speedItems =
   slug === 'speed'
-    ? rankSpeedModels(allModels, rankingAsOf).map((result) => ({
+    ? rankSpeedModels(models, rankingAsOf).map((result) => ({
         slug: result.model.slug,
         name: result.model.name,
         provider: result.model.provider,
@@ -58,7 +58,7 @@ const speedItems =
       }))
     : [];
 const scoreItems = scoreMetric
-  ? rankScoreModels(allModels, scoreMetric, rankingAsOf).map((result) => ({
+  ? rankScoreModels(models, scoreMetric, rankingAsOf).map((result) => ({
       slug: result.model.slug,
       name: result.model.name,
       provider: result.model.provider,
@@ -74,7 +74,7 @@ const scoreItems = scoreMetric
   : [];
 const costItems =
   slug === 'cheap'
-    ? rankLowestCostModels(allModels, rankingAsOf).map((result) => ({
+    ? rankLowestCostModels(models, rankingAsOf).map((result) => ({
         slug: result.model.slug,
         name: result.model.name,
         provider: result.model.provider,

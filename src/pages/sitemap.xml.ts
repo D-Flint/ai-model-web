@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { allModels, models } from '../data/models';
+import { models } from '../data/models';
 import { categories } from '../data/config';
 import { getSeoComparisonPairs } from '../lib/seoComparisons';
 import { getPublishedRankingModels } from '../lib/rankings';
@@ -9,7 +9,7 @@ export const GET: APIRoute = ({ site }) => {
   const rankingAsOf = new Date().toISOString().slice(0, 10);
   const publishedModels = [
     ...new Map(
-      [...models, ...getPublishedRankingModels(allModels, rankingAsOf)].map(
+      [...models, ...getPublishedRankingModels(models, rankingAsOf)].map(
         (model) => [model.slug, model],
       ),
     ).values(),

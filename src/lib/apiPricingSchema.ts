@@ -90,10 +90,17 @@ export const apiPricingSchema = z
       xAI: ['docs.x.ai'],
       'Amazon AWS': ['aws.amazon.com'],
       Cohere: ['docs.cohere.com'],
-      MiniMax: ['platform.minimaxi.com', 'platform.minimax.io'],
+      MiniMax: [
+        'platform.minimaxi.com',
+        'platform.minimax.io',
+        'www.minimax.io',
+        'minimax.io',
+      ],
       Tencent: ['hunyuan.tencent.com'],
       'Z.ai': ['z.ai', 'docs.z.ai'],
       NVIDIA: ['build.nvidia.com'],
+      'Meta AI': ['ai.meta.com', 'about.meta.com', 'meta.com'],
+      'Abacus AI': ['abacus.ai', 'www.abacus.ai'],
     };
     const tiers = [...p.tiers].sort((a, b) => a.minContext - b.minContext);
     if (new Set(tiers.map((t) => t.id)).size !== tiers.length)

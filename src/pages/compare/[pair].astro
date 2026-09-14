@@ -5,8 +5,22 @@ import { env } from 'cloudflare:workers';
 import { comparisonSlugs } from '../../lib/comparisonCatalog';
 import { resolveComparisonPair } from '../../lib/comparisonPairs';
 import { loadComparisonModels } from '../../lib/loadComparisonModels';
-import { allModels } from '../../data/models';
+import { models, allModels } from '../../data/models';
+import { reviewedCatalogPricing } from '../../lib/apiPricing';
+import type { CatalogModel } from '../../lib/catalogSchema';
 export const prerender = false;
+
+function resolveModel(slug: string): CatalogModel | undefined {
+  const found =
+    models.find((m) => m.slug === slug) ??
+    allModels.find((m) => m.slug === slug);
+  if (!found) return undefined;
+  if (!found.apiPricing) {
+    const reviewed = reviewedCatalogPricing(found);
+    if (reviewed) return { ...found, apiPricing: reviewed };
+  }
+  return found;
+}
 
 const pair = resolveComparisonPair(Astro.params.pair, comparisonSlugs);
 if (!pair) {
@@ -27,14 +41,14 @@ try {
         pair.b,
       ]);
     } else {
-      const a = allModels.find((m) => m.slug === pair.a);
-      const b = allModels.find((m) => m.slug === pair.b);
+      const a = resolveModel(pair.a);
+      const b = resolveModel(pair.b);
       if (a && b) records = [a, b];
     }
   }
 } catch {
-  const a = allModels.find((m) => m.slug === pair?.a);
-  const b = allModels.find((m) => m.slug === pair?.b);
+  const a = resolveModel(pair?.a ?? '');
+  const b = resolveModel(pair?.b ?? '');
   if (a && b) {
     records = [a, b];
   } else {

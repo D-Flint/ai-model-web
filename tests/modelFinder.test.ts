@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { comparablePrice } from '../src/lib/apiPricing';
 import {
   buildEffectiveScoreWeights,
@@ -16,6 +16,15 @@ import {
   useCaseDefinitions,
 } from '../src/data/modelFinderConfig';
 import { models } from '../src/data/models';
+
+beforeEach(() => {
+  vi.useFakeTimers();
+  vi.setSystemTime(new Date('2026-09-12T12:00:00Z'));
+});
+
+afterEach(() => {
+  vi.useRealTimers();
+});
 
 function request(
   overrides: Partial<ModelFinderRequest> = {},

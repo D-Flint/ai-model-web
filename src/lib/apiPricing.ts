@@ -134,10 +134,17 @@ const reviewedPricingHosts: Record<string, string[]> = {
   xAI: ['docs.x.ai'],
   'Amazon AWS': ['aws.amazon.com'],
   Cohere: ['docs.cohere.com'],
-  MiniMax: ['platform.minimaxi.com', 'platform.minimax.io'],
+  MiniMax: [
+    'platform.minimaxi.com',
+    'platform.minimax.io',
+    'www.minimax.io',
+    'minimax.io',
+  ],
   Tencent: ['hunyuan.tencent.com'],
   'Z.ai': ['z.ai', 'docs.z.ai'],
   NVIDIA: ['build.nvidia.com'],
+  'Meta AI': ['ai.meta.com', 'about.meta.com', 'meta.com'],
+  'Abacus AI': ['abacus.ai', 'www.abacus.ai'],
 };
 
 /** Convert legacy provider pricing only when its source is first-party. */

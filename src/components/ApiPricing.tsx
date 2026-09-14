@@ -13,7 +13,10 @@ export function PriceSource({ price }: { price: PriceValue | null }) {
       >
         {priceFreshness(price)}
       </span>{' '}
-      · Verified {price.source.retrievedAt}
+      ·{' '}
+      <time dateTime={price.source.retrievedAt}>
+        Verified {price.source.retrievedAt}
+      </time>
     </small>
   );
 }
@@ -39,8 +42,25 @@ export default function ApiPricing({
     return (
       <div className="api-pricing">
         <strong>API pricing</strong>
-        <p>Pricing varies by context length.</p>
+        <dl className="api-rate-list">
+          {(
+            [
+              ['Input', pricing.tiers[0].input],
+              ['Output', pricing.tiers[0].output],
+              ['Cached input', pricing.tiers[0].cached],
+            ] as [string, PriceValue | null][]
+          ).map(([label, rate]) => (
+            <div key={label}>
+              <dt>{label}</dt>
+              <dd>
+                {formatPrice(rate?.value)}
+                {rate && <small> / 1M tokens</small>}
+              </dd>
+            </div>
+          ))}
+        </dl>
         <a href={`/models/${model.slug}#pricing`}>View pricing details</a>
+        <PriceSource price={pricing.tiers[0].input} />
       </div>
     );
   return (

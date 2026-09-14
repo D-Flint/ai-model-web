@@ -30,7 +30,7 @@ describe('model detail sources', () => {
 
     expect(sources.map((source) => source.name)).toEqual([
       'LiveBench AI Benchmark',
-      'OpenRouter recent throughput',
+      'OpenRouter model-page throughput',
       'OpenAI Official Documentation',
     ]);
     expect(

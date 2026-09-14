@@ -283,21 +283,31 @@ describe('pricing provenance and comparisons', () => {
     expect(apiPricingSchema.safeParse(unapproved).success).toBe(false);
   });
   it('preserves unavailable values and never flattens a tiered model for sorting', () => {
-    const model = { ...models[0], apiPricing: gemini };
-    expect(comparablePrice(model)).toBeNull();
-    expect(rateLabel(model, 'input')).toBe('$2.00 up to 200k · $4.00 above');
-    expect(rateLabel(model, 'cached')).toBe('$0.20 up to 200k · $0.40 above');
-    expect(rateLabel(model, 'output')).toBe('$12.00 up to 200k · $18.00 above');
-    expect(reviewedContext['gemini-3-1-pro'].value).toBe(1_048_576);
-    expect(reviewedContext['gemini-3-1-pro'].source.id).toBeTruthy();
-    expect(formatPrice(null)).toBe('Unavailable');
-    expect(formatPrice(0)).toBe('$0.00');
-    expect(formatPrice(0.0000001)).toBe('<$0.000001');
-    expect(
-      Object.values(verifiedApiPricing).every((p) => p.benchmarkCost === null),
-    ).toBe(true);
-    expect(allModels.filter((m) => m.apiPricing).map((m) => m.slug)).toEqual(
-      allModels.filter((m) => verifiedApiPricing[m.slug]).map((m) => m.slug),
-    );
+    vi.useFakeTimers();
+    vi.setSystemTime(now);
+    try {
+      const model = { ...models[0], apiPricing: gemini };
+      expect(comparablePrice(model)).toBeNull();
+      expect(rateLabel(model, 'input')).toBe('$2.00 up to 200k · $4.00 above');
+      expect(rateLabel(model, 'cached')).toBe('$0.20 up to 200k · $0.40 above');
+      expect(rateLabel(model, 'output')).toBe(
+        '$12.00 up to 200k · $18.00 above',
+      );
+      expect(reviewedContext['gemini-3-1-pro'].value).toBe(1_048_576);
+      expect(reviewedContext['gemini-3-1-pro'].source.id).toBeTruthy();
+      expect(formatPrice(null)).toBe('Unavailable');
+      expect(formatPrice(0)).toBe('$0.00');
+      expect(formatPrice(0.0000001)).toBe('<$0.000001');
+      expect(
+        Object.values(verifiedApiPricing).every(
+          (p) => p.benchmarkCost === null,
+        ),
+      ).toBe(true);
+      expect(allModels.filter((m) => m.apiPricing).map((m) => m.slug)).toEqual(
+        allModels.filter((m) => verifiedApiPricing[m.slug]).map((m) => m.slug),
+      );
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });

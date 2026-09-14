@@ -1,5 +1,16 @@
 # Session Log
 
+## 2026-09-14 — Ensure all comparison models display API pricing
+
+- Objective: Ensure every model in the comparison table displays its verified API pricing in the API pricing column without missing rate details.
+- Files changed: `src/lib/apiPricing.ts`, `src/lib/apiPricingSchema.ts`, `src/pages/compare/[pair].astro`, `tests/apiPricing.test.ts`, `tests/modelFinder.test.ts`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: Meta AI models (e.g. Muse Spark 1.2, 1.1, 1.3) and Abacus AI models were missing from `reviewedPricingHosts` in `src/lib/apiPricing.ts` and `approvedHosts` in `src/lib/apiPricingSchema.ts`, causing `reviewedCatalogPricing` to return null and render "Unavailable — awaiting source verification." in the comparison table despite having documented first-party prices in `verifiedModels.json`. Added `Meta AI` (`ai.meta.com`, `about.meta.com`, `meta.com`), `Abacus AI` (`abacus.ai`), and complete MiniMax hosts (`www.minimax.io`, `minimax.io`) to both approved host maps. Added fallback resolution helper in `src/pages/compare/[pair].astro` to ensure models loaded for head-to-head views have their reviewed API pricing populated. Pinned test timestamps in `tests/apiPricing.test.ts` and `tests/modelFinder.test.ts` to fixture validity window.
+- Tests: `npm test` passed (19 test files, 170 passed); `npm run check` passed (0 errors, 0 warnings, 0 hints); `npm run lint` passed; Playwright visual verification confirmed Muse Spark 1.2, GPT-5.4, GPT-5.6 Terra, and DeepSeek V4-Pro-0813 all display full input/output/cached API rates and sources.
+- Commit: `1c3feba` (`fix: ensure all comparison models display verified API pricing`).
+- Current state: Every model in the comparison table displays full API pricing ($1.20 in / $4.80 out / $0.30 cached for Muse Spark 1.2) with verified provenance.
+- Exact next step: User verification in the browser on `/compare`.
+
 ## 2026-09-14 — Refine Yes and No comparison table indicators into elegant status pills
 
 - Objective: Replace loud full-cell background fills on Yes/No comparison table rows with refined, calm status pills and icons.
