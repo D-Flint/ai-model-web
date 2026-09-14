@@ -1,5 +1,16 @@
 # Session Log
 
+## 2026-09-14 — Add cache-aware cost efficiency and comparison workload profiles
+
+- Objective: Fix the 70/30 input/output cost efficiency calculation and incorporate prompt caching read discounts alongside selectable workload profiles on the models comparison page.
+- Files changed: `src/data/config.ts`, `src/lib/costEfficiency.ts`, `src/lib/decision.ts`, `src/pipeline/normalization.ts`, `src/pipeline/engine.ts`, `src/components/ComparisonBuilder.tsx`, `src/styles/global.css`, `tests/dataPipeline.test.ts`, `tests/decision.test.ts`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: Previous logic assumed a static 70% input / 30% output split with 0% cached tokens, over-penalizing models with high output rates and completely discarding prompt cache discounts (which account for 75%–90%+ of input tokens in real coding and agentic workflows). Created `src/lib/costEfficiency.ts` supporting realistic workload profiles (`agent`: 75% cache, 20% in, 5% out as smart default; `chat`: 50% cache, 40% in, 10% out; `oneshot`: 0% cache, 75% in, 25% out), integrated dynamic cost efficiency and effective blended pricing into `getModelEffortStats`, and added an interactive workload segmented toggle to `ComparisonBuilder.tsx` on desktop and mobile.
+- Tests: `npm run check` passed (114 files, 0 errors, 0 warnings, 0 hints); Vitest `tests/decision.test.ts` passed (21/21); Vitest `tests/dataPipeline.test.ts` passed (22/22); Vitest `tests/comparisonPairs.test.ts` passed (18/18); Prettier formatting check passed.
+- Commit: `8f45dab` (`feat: add cache-aware cost efficiency and comparison workload profiles`).
+- Current state: Comparison page defaults to the modern cache-aware Agent & Coding workload, displays dynamic Cost Efficiency scores and estimated effective $/1M rates, and provides an interactive segmented control to switch between Agent, General Chat, and One-Shot profiles.
+- Exact next step: User verification of the workload profile switcher and cost efficiency metrics on `/compare`.
+
 ## 2026-09-14 — Fix comparison table scroll trap and window sticky headers
 
 - Objective: Remove bounded scroll trapping on the desktop comparison table, fix page content sliding behind the table, and make table headers stick naturally to the window beneath the site navigation.
