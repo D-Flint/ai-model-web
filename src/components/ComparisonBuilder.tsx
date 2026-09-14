@@ -12,6 +12,7 @@ import {
 } from '../data/config';
 import {
   contextSize,
+  getMaxReasoningEffort,
   getModelEffortStats,
   getSpeedDisplayValue,
   selectionAtMaximumEffort,
@@ -203,13 +204,8 @@ export default function ComparisonBuilder({
           model.facts.reasoningEffort.includes(effortSuffix as ReasoningEffort)
         ) {
           effort = effortSuffix as ReasoningEffort;
-        } else if (
-          model.facts.defaultEffort &&
-          model.facts.defaultEffort !== 'none'
-        ) {
-          effort = model.facts.defaultEffort;
         } else {
-          effort = availableEfforts[0] ?? 'medium';
+          effort = getMaxReasoningEffort(model);
         }
       }
 
@@ -315,7 +311,10 @@ export default function ComparisonBuilder({
             onChange={(e) => {
               const val = e.target.value;
               if (val) {
-                update([...selection, val]);
+                const tokenToAdd = val.includes(':')
+                  ? val
+                  : (selectionAtMaximumEffort([val], models)[0] ?? val);
+                update([...selection, tokenToAdd]);
                 setAdd('');
               }
             }}
