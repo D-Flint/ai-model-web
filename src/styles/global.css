@@ -1408,6 +1408,10 @@ input[type='radio'] {
   flex: 1;
   min-width: 180px;
 }
+.compare-controls > .button {
+  align-self: flex-start;
+  margin-top: 24px;
+}
 .compare-limit-warning {
   display: block;
   margin-top: 6px;
@@ -4093,6 +4097,7 @@ table.leaderboard-table td.col-sorted.td-date {
   .compare-controls .button {
     width: 100%;
     min-height: 44px;
+    margin-top: 0;
   }
 
   .selected-models {
