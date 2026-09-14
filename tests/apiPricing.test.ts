@@ -38,12 +38,12 @@ describe('user-provided API workloads', () => {
     const low = calculateApiCost(
       gemini,
       { input: 199000, cached: 1000, output: 1000, requests: 1 },
-      new Date('2026-09-06T12:00:00Z'),
+      new Date('2026-09-14T12:00:00Z'),
     );
     const high = calculateApiCost(
       gemini,
       { input: 199001, cached: 1000, output: 1000, requests: 1 },
-      new Date('2026-09-06T12:00:00Z'),
+      new Date('2026-09-14T12:00:00Z'),
     );
     expect(low.tier.id).toBe('standard');
     expect(high.tier.id).toBe('long-context');
@@ -92,7 +92,7 @@ describe('user-provided API workloads', () => {
           requests: 10,
           cacheTokenHours: 1000000,
         },
-        new Date('2026-09-06T12:00:00Z'),
+        new Date('2026-09-14T12:00:00Z'),
       ).total,
     ).toBe(4.5);
   });
@@ -104,7 +104,7 @@ describe('user-provided API workloads', () => {
       calculateApiCost(
         gemini,
         { ...empty, requests: 1, search: 1 },
-        new Date('2026-09-06T12:00:00Z'),
+        new Date('2026-09-14T12:00:00Z'),
       ),
     ).toThrow('unavailable');
     for (const input of [-1, 0.5, NaN, Infinity, Number.MAX_SAFE_INTEGER + 1])
@@ -115,7 +115,7 @@ describe('user-provided API workloads', () => {
       calculateApiCost(
         gemini,
         { ...empty, input: 1048577 },
-        new Date('2026-09-06T12:00:00Z'),
+        new Date('2026-09-14T12:00:00Z'),
       ),
     ).toThrow('unavailable');
   });
@@ -139,6 +139,35 @@ describe('user-provided API workloads', () => {
   });
 });
 describe('pricing provenance and comparisons', () => {
+  it('publishes the verified standard Gemini text rates', () => {
+    const expectedRates = {
+      'gemini-3-8-flash': [0.75, 3.75, 0.075],
+      'gemini-3-7-flash': [0.75, 3.75, 0.075],
+      'gemini-3-6-flash': [0.75, 3.75, 0.075],
+      'gemini-3-5-flash': [1.5, 9, 0.15],
+      'gemini-3-5-flash-lite': [0.3, 2.5, 0.03],
+      'gemini-3-1-pro': [2, 12, 0.2],
+      'gemini-3-1-flash-lite': [0.25, 1.5, 0.025],
+      'gemini-3-flash': [0.5, 3, 0.05],
+      'gemini-2-5-flash': [0.3, 2.5, 0.03],
+      'gemini-2-5-flash-lite': [0.1, 0.4, 0.01],
+    } as const;
+
+    for (const [slug, [input, output, cached]] of Object.entries(
+      expectedRates,
+    )) {
+      const pricing = verifiedApiPricing[slug]!;
+      expect(pricing.tiers[0]).toMatchObject({
+        input: { value: input },
+        output: { value: output },
+        cached: { value: cached },
+      });
+      expect(pricing.tiers[0].input?.source).toMatchObject({
+        url: 'https://ai.google.dev/gemini-api/docs/pricing',
+        retrievedAt: '2026-09-14',
+      });
+    }
+  });
   it('publishes verified MiniMax M3 context tiers with first-party provenance', () => {
     expect(minimax.tiers).toEqual([
       expect.objectContaining({
@@ -308,7 +337,7 @@ describe('pricing provenance and comparisons', () => {
   });
   it('preserves unavailable values and never flattens a tiered model for sorting', () => {
     vi.useFakeTimers();
-    vi.setSystemTime(new Date('2026-09-06T12:00:00Z'));
+    vi.setSystemTime(new Date('2026-09-14T12:00:00Z'));
     try {
       const model = { ...models[0], apiPricing: gemini };
       expect(comparablePrice(model)).toBeNull();
