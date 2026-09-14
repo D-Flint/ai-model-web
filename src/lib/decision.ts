@@ -381,6 +381,20 @@ export function selectionFromSearch(search: string, models: CatalogModel[]) {
     .slice(0, 4);
 }
 
+export function selectionAtMaximumEffort(
+  selection: string[],
+  models: CatalogModel[],
+): string[] {
+  return selection.map((token) => {
+    const slug = token.split(':')[0];
+    const model = models.find((candidate) => candidate.slug === slug);
+    if (!model) return token;
+
+    const effort = getMaxReasoningEffort(model);
+    return effort === 'none' ? slug : `${slug}:${effort}`;
+  });
+}
+
 export type LeaderboardMetricKey =
   | 'overall'
   | 'reasoning'

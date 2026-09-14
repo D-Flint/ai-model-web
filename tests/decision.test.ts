@@ -6,6 +6,7 @@ import {
   normalize,
   recommend,
   rankModels,
+  selectionAtMaximumEffort,
   selectionFromSearch,
   taskCost,
   getModelEffortStats,
@@ -244,6 +245,21 @@ describe('task cost assumptions and reasoning effort stats', () => {
         maxStats.scores.intelligence,
       );
     }
+  });
+  it('normalizes comparison selections to maximum effort on load', () => {
+    const multiEffortModel = models.find(
+      (m) =>
+        m.facts.reasoningEffort?.includes('max') &&
+        m.facts.reasoningEffort?.includes('low'),
+    );
+    if (!multiEffortModel) return;
+
+    expect(
+      selectionAtMaximumEffort(
+        [`${multiEffortModel.slug}:low`, multiEffortModel.slug],
+        models,
+      ),
+    ).toEqual([`${multiEffortModel.slug}:max`, `${multiEffortModel.slug}:max`]);
   });
 });
 
