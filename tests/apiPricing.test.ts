@@ -217,6 +217,22 @@ describe('pricing provenance and comparisons', () => {
       },
     });
   });
+  it('publishes GPT-6 Astra short and long-context cached-input rates', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-09-14T12:00:00Z'));
+    try {
+      const astra = models.find((model) => model.slug === 'gpt-6-astra')!;
+      expect(astra.apiPricing?.tiers.map((tier) => tier.cached?.value)).toEqual([
+        1,
+        2,
+      ]);
+      expect(rateLabel(astra, 'cached')).toBe(
+        '$1.00 up to 1,048,576 · $2.00 above',
+      );
+    } finally {
+      vi.useRealTimers();
+    }
+  });
   it('does not call an API free when only its input is free, or reuse a legacy zero price', () => {
     vi.useFakeTimers();
     vi.setSystemTime(now);

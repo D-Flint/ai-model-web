@@ -1361,14 +1361,14 @@ export const OFFICIAL_PROVIDER_SPECS: Record<string, OfficialProviderSpec> = {
     supportsStructuredOutput: true,
     apiAvailable: true,
     officialPricing: {
-      input: 12,
-      output: 48,
-      cached: 3,
+      input: 10,
+      output: 50,
+      cached: 1,
     },
     reasoningEffort: ['low', 'medium', 'high', 'max'],
     defaultEffort: 'medium',
-    lastVerifiedAt: '2026-09-05',
-    sourceUrl: 'https://platform.openai.com/docs/models',
+    lastVerifiedAt: '2026-09-14',
+    sourceUrl: 'https://developers.openai.com/api/docs/pricing',
     sourceName: 'OpenAI Official Documentation',
   },
   'gpt-5-6-sol': {
@@ -5248,6 +5248,8 @@ export const reviewedContext: Record<
 const retrievedAt = '2026-09-06';
 const anthropic = 'https://platform.claude.com/docs/en/about-claude/pricing';
 const google = 'https://ai.google.dev/gemini-api/docs/pricing';
+const openaiPricing = 'https://developers.openai.com/api/docs/pricing';
+const openaiRetrievedAt = '2026-09-14';
 const deepseekPricing = 'https://api-docs.deepseek.com/quick_start/pricing';
 const minimaxPricing =
   'https://platform.minimax.io/subscribe/token-plan?tab=api-enterprise';
@@ -5265,10 +5267,12 @@ function price(
       name:
         url === anthropic
           ? 'Anthropic API pricing'
-          : 'Google Gemini API pricing',
+          : url === openaiPricing
+            ? 'OpenAI API pricing'
+            : 'Google Gemini API pricing',
       url,
       type: 'provider_doc',
-      retrievedAt,
+      retrievedAt: url === openaiPricing ? openaiRetrievedAt : retrievedAt,
       effectiveFrom: null,
     },
   };
@@ -5280,11 +5284,11 @@ function tier(
   cached: number,
   url: string,
   minContext: number,
-  maxContext: number,
+  maxContext: number | null,
 ): PricingTier {
   return {
     id,
-    label: `${minContext.toLocaleString('en-US')}–${maxContext.toLocaleString('en-US')} input tokens`,
+    label: `${minContext.toLocaleString('en-US')}–${maxContext === null ? '∞' : maxContext.toLocaleString('en-US')} input tokens`,
     minContext,
     maxContext,
     input: price(input, url),
@@ -5296,6 +5300,20 @@ function tier(
     search: null,
   };
 }
+const gpt6AstraPricing: ApiPricing = {
+  provider: 'OpenAI',
+  scope: 'OpenAI API · GPT-6 Astra standard text pricing',
+  tiers: [
+    tier('standard', 10, 50, 1, openaiPricing, 0, 1_048_576),
+    tier('long-context', 20, 75, 2, openaiPricing, 1_048_577, null),
+  ],
+  notes: [
+    'Standard rates are taken from the linked first-party provider pricing documentation.',
+    'Batch, flex, fast mode, regional processing, media, and tool charges may differ.',
+  ],
+  benchmarkCost: null,
+};
+apiPricingRecords['gpt-6-astra'] = gpt6AstraPricing;
 function deepseekPrice(value: number): PriceValue {
   return {
     value,

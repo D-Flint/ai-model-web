@@ -126,7 +126,7 @@ export function pricingSource(
 const reviewedPricingHosts: Record<string, string[]> = {
   Anthropic: ['platform.claude.com', 'docs.anthropic.com'],
   'Google DeepMind': ['ai.google.dev', 'cloud.google.com'],
-  OpenAI: ['platform.openai.com'],
+  OpenAI: ['platform.openai.com', 'developers.openai.com'],
   DeepSeek: ['api-docs.deepseek.com'],
   'Moonshot AI': ['platform.moonshot.cn'],
   'Mistral AI': ['docs.mistral.ai'],

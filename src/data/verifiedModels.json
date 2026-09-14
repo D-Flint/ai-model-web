@@ -232,18 +232,18 @@
       "defaultEffort": "medium"
     },
     "pricing": {
-      "input": 12,
-      "output": 48,
-      "cached": 3,
+      "input": 10,
+      "output": 50,
+      "cached": 1,
       "currency": "USD",
       "unit": "per-million-tokens",
       "sourceId": "source-openai",
-      "updatedAt": "2026-09-05",
-      "inputPer1M": 12,
-      "outputPer1M": 48,
-      "cachedInputPer1M": 3,
-      "provenanceUrl": "https://platform.openai.com/docs/models",
-      "verifiedAt": "2026-09-05"
+      "updatedAt": "2026-09-14",
+      "inputPer1M": 10,
+      "outputPer1M": 50,
+      "cachedInputPer1M": 1,
+      "provenanceUrl": "https://developers.openai.com/api/docs/pricing",
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 82,

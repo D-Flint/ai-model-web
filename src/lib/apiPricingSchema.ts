@@ -82,7 +82,7 @@ export const apiPricingSchema = z
       ],
       Google: ['ai.google.dev', 'cloud.google.com'],
       'Google DeepMind': ['ai.google.dev', 'cloud.google.com'],
-      OpenAI: ['platform.openai.com'],
+      OpenAI: ['platform.openai.com', 'developers.openai.com'],
       DeepSeek: ['api-docs.deepseek.com'],
       'Moonshot AI': ['platform.moonshot.cn'],
       'Mistral AI': ['docs.mistral.ai'],
