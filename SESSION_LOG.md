@@ -1,5 +1,16 @@
 # Session Log
 
+## 2026-09-14 — Restructure README.md into dedicated User and Developer sections
+
+- Objective: Restructure and expand `README.md` into two distinct, comprehensive, and detailed sections: Part 1 for Users and Part 2 for Developers.
+- Files changed: `README.md`, `SESSION_LOG.md`.
+- Attempts: 1 implementation attempt.
+- Failures/causes: None. Partitioned the documentation into a clear User Guide (covering the 4-stage decision journey, decision engine vs. leaderboard philosophy, catalog exploration, side-by-side comparison, cache-aware workload profiles, guided model finder, real-world token cost calculator, and data trust/provenance) and a Developer Guide (covering the hybrid Astro 5 + React 19 architecture, repository directory tree, prerequisites, zero-config local setup, development commands, Vitest and Playwright test suites, multi-source data ingestion pipeline, optional Drizzle ORM persistence, environment configuration, and Cloudflare Workers edge deployment).
+- Tests: `npx prettier --write README.md` passed; `npm run check` passed (116 files, 0 errors, 0 warnings, 0 hints); `npm test` passed (19 test files, 170 passed).
+- Commit: `8ed52b1` (`docs: split README into dedicated user and developer sections`).
+- Current state: `README.md` is cleanly organized into Part 1 (User Guide) and Part 2 (Developer Guide) with an interactive table of contents, mermaid workflows, and detailed references.
+- Exact next step: User verification of the updated `README.md`.
+
 ## 2026-09-14 — Ensure all comparison models display API pricing
 
 - Objective: Ensure every model in the comparison table displays its verified API pricing in the API pricing column without missing rate details.
