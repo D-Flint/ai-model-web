@@ -1115,6 +1115,28 @@
 - Current state: Inkling is absent from `models` and `allModels`, generated detail routes, pricing, comparison, discovery, recommendations, and sitemap. Its raw LiveBench snapshot and alias remain historical evidence only.
 - Exact next step: Create the scoped implementation commit, then wait for user verification.
 
+## 2026-09-14 — Group comparison model dropdown by provider
+
+- Objective: Group models in the comparison add-model dropdown by company, with alphabetical provider and model ordering.
+- Files changed: `src/lib/comparisonGroups.ts`, `src/components/ComparisonBuilder.tsx`, `tests/comparisonGroups.test.ts`, `SESSION_LOG.md`; design specification committed separately at `docs/superpowers/specs/2026-09-14-comparison-provider-groups-design.md`.
+- Attempts: 1 implementation pass.
+- Failures/causes: The required product brief is absent from this checkout. Wrangler emitted external log permission warnings during checks but completed. Existing unrelated working-tree changes were preserved.
+- Tests: Provider-group and decision tests passed 24/24; `npm run check` passed with 0 diagnostics; scoped ESLint and Prettier passed.
+- Commit: Design `c1a865f`; implementation `1ff6fe6`.
+- Current state: The native add-model select renders alphabetized provider optgroups while preserving model-slug values and effort groups.
+- Exact next step: User verifies provider grouping in the running development server; no further implementation is planned.
+
+## 2026-09-14 — Correct Muse Spark provider attribution
+
+- Objective: Fix Muse Spark's incorrect Moonshot AI attribution in comparison data.
+- Files changed: `src/data/models/moonshot.ts`, `src/data/officialProviders.ts`, `src/data/verifiedModels.json`, `tests/dataPipeline.test.ts`, `SESSION_LOG.md`.
+- Attempts: 2 patch passes; an initial broad replacement temporarily matched unrelated Kimi entries and was corrected before validation.
+- Failures/causes: Product brief is absent from this checkout. Wrangler emitted an external log-file `EPERM` warning; diagnostics completed successfully. Scoped Prettier reports existing differences in the two TypeScript data files.
+- Tests: Focused data-pipeline tests passed 23/23; `npm run check` passed with 0 Astro/TypeScript diagnostics; focused ESLint and `git diff --check` passed.
+- Commit: `1b67e1b`.
+- Current state: Muse Spark 1.1, 1.2, and 1.3 are attributed to Meta AI with Meta provenance; a regression test protects the provider mapping.
+- Exact next step: User verifies Muse Spark 1.2 attribution in the running development server.
+
 ## 2026-09-14 — Correct Muse Spark provider attribution
 
 - Objective: Fix Muse Spark's incorrect Moonshot AI attribution in comparison data.

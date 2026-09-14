@@ -21,6 +21,7 @@ import {
 import { ModelMark } from './ModelCard';
 import { ProviderLogo } from './ProviderLogo';
 import { comparisonSharePath } from '../lib/comparisonPairs';
+import { groupModelsByProvider } from '../lib/comparisonGroups';
 
 export interface ComparedColumn {
   id: string;
@@ -298,6 +299,11 @@ export default function ComparisonBuilder({
     })),
   ];
 
+  const availableModels = models.filter(
+    (model) => !selection.some((item) => item.split(':')[0] === model.slug),
+  );
+  const providerGroups = groupModelsByProvider(availableModels);
+
   return (
     <>
       <div className="compare-controls">
@@ -319,17 +325,15 @@ export default function ComparisonBuilder({
                 ? '4 items selected'
                 : 'Choose a model or effort…'}
             </option>
-            <optgroup label="Add model">
-              {models
-                .filter(
-                  (m) => !selection.some((s) => s.split(':')[0] === m.slug),
-                )
-                .map((m) => (
-                  <option value={m.slug} key={m.slug}>
-                    {m.name}
+            {providerGroups.map((group) => (
+              <optgroup label={group.provider} key={group.provider}>
+                {group.models.map((model) => (
+                  <option value={model.slug} key={model.slug}>
+                    {model.name}
                   </option>
                 ))}
-            </optgroup>
+              </optgroup>
+            ))}
             {selectedItems
               .filter(
                 (item) =>
