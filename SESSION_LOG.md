@@ -7,7 +7,7 @@
 - Attempts: 1 implementation attempt.
 - Failures/causes: `npm run check` could not complete Astro diagnostics in the sandbox because its Cloudflare integration attempted protected Wrangler log writes; the elevated run generated Wrangler types but did not complete diagnostics.
 - Tests: Prettier check passed; `npx tsc --noEmit` passed; focused `tests/leaderboardSorting.test.ts` passed (11/11); `git diff --check` passed.
-- Commit: Pending local commit.
+- Commit: `d0dc292` (`feat: add cost and speed category filters`).
 - Current state: Cost / Task and Speed appear in the desktop category pills and mobile category sheet. Cost defaults to ascending order (lowest first).
 - Exact next step: User verifies the two controls on `/models`.
 
