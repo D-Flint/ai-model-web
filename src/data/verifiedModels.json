@@ -1155,18 +1155,18 @@
       "defaultEffort": "medium"
     },
     "pricing": {
-      "input": 0.8,
-      "output": 2.4,
-      "cached": 0.2,
+      "input": 3,
+      "output": 15,
+      "cached": 0.3,
       "currency": "USD",
       "unit": "per-million-tokens",
       "sourceId": "source-moonshot",
-      "updatedAt": "2026-09-06",
-      "inputPer1M": 0.8,
-      "outputPer1M": 2.4,
-      "cachedInputPer1M": 0.2,
-      "provenanceUrl": "https://platform.moonshot.cn/docs/pricing",
-      "verifiedAt": "2026-09-06"
+      "updatedAt": "2026-09-14",
+      "inputPer1M": 3,
+      "outputPer1M": 15,
+      "cachedInputPer1M": 0.3,
+      "provenanceUrl": "https://platform.kimi.ai/",
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 79,
@@ -1258,8 +1258,8 @@
       {
         "id": "source-moonshot",
         "name": "Moonshot AI Official Documentation",
-        "url": "https://platform.moonshot.cn/docs/pricing",
-        "retrievedAt": "2026-09-06",
+        "url": "https://platform.kimi.ai/",
+        "retrievedAt": "2026-09-14",
         "kind": "provider_doc",
         "publisher": "Moonshot AI"
       },
@@ -4974,18 +4974,18 @@
       "defaultEffort": "medium"
     },
     "pricing": {
-      "input": 0.6,
-      "output": 2,
-      "cached": 0.15,
+      "input": 0.95,
+      "output": 4,
+      "cached": 0.19,
       "currency": "USD",
       "unit": "per-million-tokens",
       "sourceId": "source-moonshot",
-      "updatedAt": "2026-09-06",
-      "inputPer1M": 0.6,
-      "outputPer1M": 2,
-      "cachedInputPer1M": 0.15,
-      "provenanceUrl": "https://platform.moonshot.cn/docs/pricing",
-      "verifiedAt": "2026-09-06"
+      "updatedAt": "2026-09-14",
+      "inputPer1M": 0.95,
+      "outputPer1M": 4,
+      "cachedInputPer1M": 0.19,
+      "provenanceUrl": "https://platform.kimi.ai/",
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 68,
@@ -5080,8 +5080,8 @@
       {
         "id": "source-moonshot",
         "name": "Moonshot AI Official Documentation",
-        "url": "https://platform.moonshot.cn/docs/pricing",
-        "retrievedAt": "2026-09-06",
+        "url": "https://platform.kimi.ai/",
+        "retrievedAt": "2026-09-14",
         "kind": "provider_doc",
         "publisher": "Moonshot AI"
       },
@@ -7088,18 +7088,18 @@
       "defaultEffort": "medium"
     },
     "pricing": {
-      "input": 0.6,
-      "output": 2,
-      "cached": 0.15,
+      "input": 0.95,
+      "output": 4,
+      "cached": 0.16,
       "currency": "USD",
       "unit": "per-million-tokens",
       "sourceId": "source-moonshot",
-      "updatedAt": "2026-09-06",
-      "inputPer1M": 0.6,
-      "outputPer1M": 2,
-      "cachedInputPer1M": 0.15,
-      "provenanceUrl": "https://platform.moonshot.cn/docs/pricing",
-      "verifiedAt": "2026-09-06"
+      "updatedAt": "2026-09-14",
+      "inputPer1M": 0.95,
+      "outputPer1M": 4,
+      "cachedInputPer1M": 0.16,
+      "provenanceUrl": "https://platform.kimi.ai/docs/pricing/chat-k26",
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 71,
@@ -7194,8 +7194,8 @@
       {
         "id": "source-moonshot",
         "name": "Moonshot AI Official Documentation",
-        "url": "https://platform.moonshot.cn/docs/pricing",
-        "retrievedAt": "2026-09-06",
+        "url": "https://platform.kimi.ai/docs/pricing/chat-k26",
+        "retrievedAt": "2026-09-14",
         "kind": "provider_doc",
         "publisher": "Moonshot AI"
       },

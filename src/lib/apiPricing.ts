@@ -129,7 +129,11 @@ const reviewedPricingHosts: Record<string, string[]> = {
   'Google DeepMind': ['ai.google.dev', 'cloud.google.com'],
   OpenAI: ['platform.openai.com', 'developers.openai.com'],
   DeepSeek: ['api-docs.deepseek.com'],
-  'Moonshot AI': ['platform.moonshot.cn'],
+  'Moonshot AI': [
+    'platform.moonshot.cn',
+    'platform.kimi.ai',
+    'platform.kimi.com',
+  ],
   'Mistral AI': ['docs.mistral.ai'],
   'Alibaba Cloud / Qwen': ['help.aliyun.com', 'qwenlm.github.io'],
   xAI: ['docs.x.ai'],
