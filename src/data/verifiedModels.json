@@ -21,11 +21,10 @@
       "context": 1048576,
       "contextWindow": 1048576,
       "maxOutput": 262144,
-      "speedTokensPerSec": 69,
+      "speedTokensPerSec": 136,
       "speedTokensPerSecRange": {
-        "min": 15,
-        "max": 123,
-        "providerCount": 12,
+        "min": 136,
+        "max": 136,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -46,17 +45,17 @@
       "defaultEffort": "medium"
     },
     "pricing": {
-      "input": null,
-      "output": null,
-      "cached": null,
+      "input": 0.15,
+      "output": 0.6,
+      "cached": 0.003,
       "currency": "USD",
       "unit": "per-million-tokens",
       "sourceId": "source-deepseek",
       "updatedAt": "2026-09-12",
-      "inputPer1M": null,
-      "outputPer1M": null,
-      "cachedInputPer1M": null,
-      "provenanceUrl": "https://deepseek.com/en/news/deepseek-v4-1-flash/",
+      "inputPer1M": 0.15,
+      "outputPer1M": 0.6,
+      "cachedInputPer1M": 0.003,
+      "provenanceUrl": "https://api-docs.deepseek.com/quick_start/pricing",
       "verifiedAt": "2026-09-12"
     },
     "scores": {
@@ -67,9 +66,9 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 68,
       "reliability": null,
-      "costEfficiency": null,
+      "costEfficiency": 77,
       "overall": 81
     },
     "benchmarks": {
@@ -118,9 +117,29 @@
         "normalized": 77,
         "sourceId": "livebench-leaderboard",
         "updatedAt": "2026-06-25"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 136,
+        "min": 0,
+        "max": 200,
+        "normalized": 68,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 77,
+        "min": 0,
+        "max": 100,
+        "normalized": 77,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-12"
       }
     ],
-    "confidence": 69,
+    "confidence": 80,
     "methodology": "v1-external-only",
     "scoreUpdatedAt": "2026-09-12",
     "lastVerifiedAt": "2026-09-12",
@@ -128,19 +147,11 @@
     "sources": [
       {
         "id": "source-deepseek",
-        "name": "DeepSeek Official Announcement",
-        "url": "https://deepseek.com/en/news/deepseek-v4-1-flash/",
+        "name": "DeepSeek API pricing",
+        "url": "https://api-docs.deepseek.com/quick_start/pricing",
         "retrievedAt": "2026-09-12",
         "kind": "provider_doc",
         "publisher": "DeepSeek"
-      },
-      {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
       },
       {
         "id": "livebench-leaderboard",
@@ -149,6 +160,22 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
+      },
+      {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
       }
     ]
   },
@@ -181,11 +208,10 @@
       "context": 1048576,
       "contextWindow": 1048576,
       "maxOutput": 65536,
-      "speedTokensPerSec": 33,
+      "speedTokensPerSec": 74,
       "speedTokensPerSecRange": {
-        "min": 18,
-        "max": 48,
-        "providerCount": 5,
+        "min": 74,
+        "max": 74,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -227,7 +253,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 37,
       "reliability": null,
       "costEfficiency": 19,
       "overall": 82
@@ -290,6 +316,16 @@
         "normalized": 19,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 74,
+        "min": 0,
+        "max": 200,
+        "normalized": 37,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -315,14 +351,6 @@
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -337,6 +365,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -520,11 +556,10 @@
       "context": 1310720,
       "contextWindow": 1310720,
       "maxOutput": 131072,
-      "speedTokensPerSec": 80,
+      "speedTokensPerSec": 156,
       "speedTokensPerSecRange": {
-        "min": 18,
-        "max": 142,
-        "providerCount": 26,
+        "min": 156,
+        "max": 156,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -566,7 +601,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 78,
       "reliability": null,
       "costEfficiency": 64,
       "overall": 76
@@ -627,6 +662,16 @@
         "normalized": 64,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 156,
+        "min": 0,
+        "max": 200,
+        "normalized": 78,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -644,14 +689,6 @@
         "publisher": "Z.ai"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -666,6 +703,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -697,11 +742,10 @@
       "context": 1310720,
       "contextWindow": 1310720,
       "maxOutput": 131072,
-      "speedTokensPerSec": 64,
+      "speedTokensPerSec": 118,
       "speedTokensPerSecRange": {
-        "min": 3,
-        "max": 124,
-        "providerCount": 26,
+        "min": 118,
+        "max": 118,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -743,7 +787,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 59,
       "reliability": null,
       "costEfficiency": 88,
       "overall": 72
@@ -807,6 +851,16 @@
         "normalized": 88,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 118,
+        "min": 0,
+        "max": 200,
+        "normalized": 59,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -832,14 +886,6 @@
         "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -854,6 +900,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -879,11 +933,10 @@
       "context": 1048576,
       "contextWindow": 1048576,
       "maxOutput": 65536,
-      "speedTokensPerSec": 103,
+      "speedTokensPerSec": 207,
       "speedTokensPerSecRange": {
-        "min": 22,
-        "max": 183,
-        "providerCount": 6,
+        "min": 207,
+        "max": 207,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -925,7 +978,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 100,
       "reliability": null,
       "costEfficiency": 54,
       "overall": 76
@@ -988,6 +1041,16 @@
         "normalized": 54,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 207,
+        "min": 0,
+        "max": 200,
+        "normalized": 100,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -1013,14 +1076,6 @@
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -1035,6 +1090,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -1068,11 +1131,10 @@
       "context": 1000000,
       "contextWindow": 1000000,
       "maxOutput": 65536,
-      "speedTokensPerSec": 39,
+      "speedTokensPerSec": 119,
       "speedTokensPerSecRange": {
-        "min": 8,
-        "max": 70,
-        "providerCount": 19,
+        "min": 119,
+        "max": 119,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -1114,7 +1176,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 60,
       "reliability": null,
       "costEfficiency": 57,
       "overall": 79
@@ -1175,6 +1237,16 @@
         "normalized": 57,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 119,
+        "min": 0,
+        "max": 200,
+        "normalized": 60,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -1192,14 +1264,6 @@
         "publisher": "Moonshot AI"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -1214,6 +1278,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -1239,11 +1311,10 @@
       "context": 524288,
       "contextWindow": 524288,
       "maxOutput": 32768,
-      "speedTokensPerSec": 29,
+      "speedTokensPerSec": 112,
       "speedTokensPerSecRange": {
-        "min": 3,
-        "max": 55,
-        "providerCount": 6,
+        "min": 112,
+        "max": 112,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -1285,7 +1356,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 56,
       "reliability": null,
       "costEfficiency": 25,
       "overall": 81
@@ -1348,6 +1419,16 @@
         "normalized": 25,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 112,
+        "min": 0,
+        "max": 200,
+        "normalized": 56,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -1373,14 +1454,6 @@
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -1395,6 +1468,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -1420,11 +1501,10 @@
       "context": 262144,
       "contextWindow": 262144,
       "maxOutput": 16384,
-      "speedTokensPerSec": 52,
+      "speedTokensPerSec": 81,
       "speedTokensPerSecRange": {
-        "min": 4,
-        "max": 100,
-        "providerCount": 7,
+        "min": 81,
+        "max": 81,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -1466,7 +1546,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 41,
       "reliability": null,
       "costEfficiency": 40,
       "overall": 78
@@ -1529,6 +1609,16 @@
         "normalized": 40,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 81,
+        "min": 0,
+        "max": 200,
+        "normalized": 41,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -1554,14 +1644,6 @@
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -1576,6 +1658,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -1600,11 +1690,10 @@
       "context": 131072,
       "contextWindow": 131072,
       "maxOutput": 8192,
-      "speedTokensPerSec": 97,
+      "speedTokensPerSec": 128,
       "speedTokensPerSecRange": {
-        "min": 64,
-        "max": 130,
-        "providerCount": 7,
+        "min": 128,
+        "max": 128,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -1646,7 +1735,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 64,
       "reliability": null,
       "costEfficiency": 70,
       "overall": 74
@@ -1709,6 +1798,16 @@
         "normalized": 70,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 128,
+        "min": 0,
+        "max": 200,
+        "normalized": 64,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -1734,14 +1833,6 @@
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -1756,16 +1847,24 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
   {
     "slug": "muse-spark-1-3",
     "name": "Muse Spark 1.3",
-    "provider": "Moonshot AI",
+    "provider": "Meta AI",
     "family": "Muse Spark",
     "dataKind": "verified",
-    "description": "Moonshot AI's Muse Spark 1.3 high-efficiency reasoning foundation model, engineered for advanced mathematical reasoning, coding synthesis, and agentic workflows.",
+    "description": "Meta AI's Muse Spark 1.3 high-efficiency reasoning foundation model, engineered for advanced mathematical reasoning, coding synthesis, and agentic workflows.",
     "strengths": [
       "High-grade reasoning with 89.7 reasoning and 95.9 math scores on LiveBench",
       "Strong coding performance (81.1) and agentic problem solving",
@@ -1781,8 +1880,13 @@
       "context": 262144,
       "contextWindow": 262144,
       "maxOutput": 16384,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 97,
+      "speedTokensPerSecRange": {
+        "min": 97,
+        "max": 97,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": false,
       "supportsVision": false,
       "audio": false,
@@ -1795,7 +1899,7 @@
       "easeOfUse": null,
       "availability": "Production API",
       "releaseDate": "2026-06-25",
-      "sourceId": "source-moonshot",
+      "sourceId": "source-meta",
       "reasoningEffort": ["none", "low", "medium", "high", "max"],
       "defaultEffort": "high"
     },
@@ -1805,12 +1909,12 @@
       "cached": 0.125,
       "currency": "USD",
       "unit": "per-million-tokens",
-      "sourceId": "source-moonshot",
+      "sourceId": "source-meta",
       "updatedAt": "2026-09-12",
       "inputPer1M": 0.5,
       "outputPer1M": 1.5,
       "cachedInputPer1M": 0.125,
-      "provenanceUrl": "https://platform.moonshot.cn/docs/pricing",
+      "provenanceUrl": "https://ai.meta.com/llama/",
       "verifiedAt": "2026-09-12"
     },
     "scores": {
@@ -1821,7 +1925,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 49,
       "reliability": null,
       "costEfficiency": 64,
       "overall": 82
@@ -1882,6 +1986,16 @@
         "normalized": 64,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 97,
+        "min": 0,
+        "max": 200,
+        "normalized": 49,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -1891,12 +2005,12 @@
     "sourceUpdatedAt": "2026-09-12",
     "sources": [
       {
-        "id": "source-moonshot",
-        "name": "Moonshot AI Official Documentation",
-        "url": "https://platform.moonshot.cn/docs/pricing",
+        "id": "source-meta",
+        "name": "Meta AI Official Documentation",
+        "url": "https://ai.meta.com/llama/",
         "retrievedAt": "2026-09-12",
         "kind": "provider_doc",
-        "publisher": "Moonshot AI"
+        "publisher": "Meta AI"
       },
       {
         "id": "astra-cost-engine",
@@ -1913,6 +2027,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -1938,11 +2060,10 @@
       "context": 1048576,
       "contextWindow": 1048576,
       "maxOutput": 65536,
-      "speedTokensPerSec": 93,
+      "speedTokensPerSec": 181,
       "speedTokensPerSecRange": {
-        "min": 19,
-        "max": 167,
-        "providerCount": 6,
+        "min": 181,
+        "max": 181,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -1984,7 +2105,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 91,
       "reliability": null,
       "costEfficiency": 54,
       "overall": 79
@@ -2047,6 +2168,16 @@
         "normalized": 54,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 181,
+        "min": 0,
+        "max": 200,
+        "normalized": 91,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -2072,14 +2203,6 @@
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -2094,6 +2217,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -2235,8 +2366,13 @@
       "context": 524288,
       "contextWindow": 524288,
       "maxOutput": 32768,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 39,
+      "speedTokensPerSecRange": {
+        "min": 39,
+        "max": 39,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": true,
       "supportsVision": true,
       "audio": false,
@@ -2275,7 +2411,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 20,
       "reliability": null,
       "costEfficiency": 41,
       "overall": 79
@@ -2336,6 +2472,16 @@
         "normalized": 41,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 39,
+        "min": 0,
+        "max": 200,
+        "normalized": 20,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -2367,6 +2513,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -2400,11 +2554,10 @@
       "context": 1000000,
       "contextWindow": 1000000,
       "maxOutput": 128000,
-      "speedTokensPerSec": 43,
+      "speedTokensPerSec": 59,
       "speedTokensPerSecRange": {
-        "min": 36,
-        "max": 49,
-        "providerCount": 4,
+        "min": 59,
+        "max": 59,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -2446,7 +2599,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 30,
       "reliability": null,
       "costEfficiency": 20,
       "overall": 83
@@ -2509,6 +2662,16 @@
         "normalized": 20,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 59,
+        "min": 0,
+        "max": 200,
+        "normalized": 30,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -2534,14 +2697,6 @@
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -2556,6 +2711,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -2578,8 +2741,13 @@
       "context": 524288,
       "contextWindow": 524288,
       "maxOutput": 32768,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 52,
+      "speedTokensPerSecRange": {
+        "min": 52,
+        "max": 52,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": true,
       "supportsVision": true,
       "audio": false,
@@ -2618,7 +2786,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 26,
       "reliability": null,
       "costEfficiency": 25,
       "overall": 78
@@ -2679,6 +2847,16 @@
         "normalized": 25,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 52,
+        "min": 0,
+        "max": 200,
+        "normalized": 26,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -2710,6 +2888,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -2743,11 +2929,10 @@
       "context": 1048576,
       "contextWindow": 1048576,
       "maxOutput": 262144,
-      "speedTokensPerSec": 76,
+      "speedTokensPerSec": 148,
       "speedTokensPerSecRange": {
-        "min": 15,
-        "max": 137,
-        "providerCount": 12,
+        "min": 148,
+        "max": 148,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -2789,7 +2974,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 74,
       "reliability": null,
       "costEfficiency": 68,
       "overall": 67
@@ -2853,6 +3038,16 @@
         "normalized": 68,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 148,
+        "min": 0,
+        "max": 200,
+        "normalized": 74,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -2878,14 +3073,6 @@
         "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -2900,6 +3087,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -3386,8 +3581,13 @@
       "context": 524288,
       "contextWindow": 524288,
       "maxOutput": 65536,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 57,
+      "speedTokensPerSecRange": {
+        "min": 57,
+        "max": 57,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": true,
       "supportsVision": true,
       "audio": true,
@@ -3426,7 +3626,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 28,
       "reliability": null,
       "costEfficiency": 19,
       "overall": 80
@@ -3487,6 +3687,16 @@
         "normalized": 19,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 57,
+        "min": 0,
+        "max": 200,
+        "normalized": 28,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -3518,6 +3728,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -3697,8 +3915,13 @@
       "context": 262144,
       "contextWindow": 262144,
       "maxOutput": 16384,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 97,
+      "speedTokensPerSecRange": {
+        "min": 97,
+        "max": 97,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": false,
       "supportsVision": false,
       "audio": false,
@@ -3737,7 +3960,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 49,
       "reliability": null,
       "costEfficiency": 70,
       "overall": 75
@@ -3798,6 +4021,16 @@
         "normalized": 70,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 97,
+        "min": 0,
+        "max": 200,
+        "normalized": 49,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -3829,6 +4062,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -3850,8 +4091,13 @@
       "context": 131072,
       "contextWindow": 131072,
       "maxOutput": 16384,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 204,
+      "speedTokensPerSecRange": {
+        "min": 204,
+        "max": 204,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": false,
       "supportsVision": false,
       "audio": false,
@@ -3890,7 +4136,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 100,
       "reliability": null,
       "costEfficiency": 36,
       "overall": 72
@@ -3951,6 +4197,16 @@
         "normalized": 36,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 204,
+        "min": 0,
+        "max": 200,
+        "normalized": 100,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -3982,6 +4238,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -4159,8 +4423,13 @@
       "context": 262144,
       "contextWindow": 262144,
       "maxOutput": 16384,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 236,
+      "speedTokensPerSecRange": {
+        "min": 236,
+        "max": 236,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": false,
       "supportsVision": false,
       "audio": false,
@@ -4199,7 +4468,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 100,
       "reliability": null,
       "costEfficiency": 43,
       "overall": 67
@@ -4260,6 +4529,16 @@
         "normalized": 43,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 236,
+        "min": 0,
+        "max": 200,
+        "normalized": 100,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -4291,6 +4570,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -4312,8 +4599,13 @@
       "context": 262144,
       "contextWindow": 262144,
       "maxOutput": 16384,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 54,
+      "speedTokensPerSecRange": {
+        "min": 54,
+        "max": 54,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": true,
       "supportsVision": true,
       "audio": false,
@@ -4352,7 +4644,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 27,
       "reliability": null,
       "costEfficiency": 31,
       "overall": 76
@@ -4413,6 +4705,16 @@
         "normalized": 31,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 54,
+        "min": 0,
+        "max": 200,
+        "normalized": 27,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -4444,6 +4746,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -4468,11 +4778,10 @@
       "context": 65536,
       "contextWindow": 65536,
       "maxOutput": 4096,
-      "speedTokensPerSec": 57,
+      "speedTokensPerSec": 70,
       "speedTokensPerSecRange": {
-        "min": 32,
-        "max": 81,
-        "providerCount": 4,
+        "min": 70,
+        "max": 70,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -4514,7 +4823,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 35,
       "reliability": null,
       "costEfficiency": 85,
       "overall": 70
@@ -4577,6 +4886,16 @@
         "normalized": 85,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 70,
+        "min": 0,
+        "max": 200,
+        "normalized": 35,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -4602,14 +4921,6 @@
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -4624,6 +4935,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -4649,11 +4968,10 @@
       "context": 256000,
       "contextWindow": 256000,
       "maxOutput": 32768,
-      "speedTokensPerSec": 101,
+      "speedTokensPerSec": 164,
       "speedTokensPerSecRange": {
-        "min": 16,
-        "max": 185,
-        "providerCount": 15,
+        "min": 164,
+        "max": 164,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -4695,7 +5013,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 82,
       "reliability": null,
       "costEfficiency": 60,
       "overall": 68
@@ -4759,6 +5077,16 @@
         "normalized": 60,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 164,
+        "min": 0,
+        "max": 200,
+        "normalized": 82,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -4784,14 +5112,6 @@
         "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -4806,6 +5126,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -4827,8 +5155,13 @@
       "context": 262144,
       "contextWindow": 262144,
       "maxOutput": 16384,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 72,
+      "speedTokensPerSecRange": {
+        "min": 72,
+        "max": 72,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": true,
       "supportsVision": true,
       "audio": false,
@@ -4867,7 +5200,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 36,
       "reliability": null,
       "costEfficiency": 55,
       "overall": 66
@@ -4928,6 +5261,16 @@
         "normalized": 55,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 72,
+        "min": 0,
+        "max": 200,
+        "normalized": 36,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -4959,6 +5302,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -4981,8 +5332,13 @@
       "context": 393216,
       "contextWindow": 393216,
       "maxOutput": 32768,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 67,
+      "speedTokensPerSecRange": {
+        "min": 67,
+        "max": 67,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": true,
       "supportsVision": true,
       "audio": true,
@@ -5021,7 +5377,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 34,
       "reliability": null,
       "costEfficiency": 27,
       "overall": 78
@@ -5082,6 +5438,16 @@
         "normalized": 27,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 67,
+        "min": 0,
+        "max": 200,
+        "normalized": 34,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -5113,6 +5479,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -5137,11 +5511,10 @@
       "context": 1048576,
       "contextWindow": 1048576,
       "maxOutput": 32768,
-      "speedTokensPerSec": 183,
+      "speedTokensPerSec": 129,
       "speedTokensPerSecRange": {
-        "min": 54,
-        "max": 311,
-        "providerCount": 7,
+        "min": 129,
+        "max": 129,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -5183,7 +5556,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 65,
       "reliability": null,
       "costEfficiency": 54,
       "overall": 74
@@ -5246,6 +5619,16 @@
         "normalized": 54,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 129,
+        "min": 0,
+        "max": 200,
+        "normalized": 65,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -5271,14 +5654,6 @@
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -5293,16 +5668,24 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
   {
     "slug": "muse-spark-1-2",
     "name": "Muse Spark 1.2",
-    "provider": "Moonshot AI",
+    "provider": "Meta AI",
     "family": "Muse",
     "dataKind": "verified",
-    "description": "Moonshot AI's precursor to Muse Spark 1.3, providing high-efficiency creative drafting and reasoning.",
+    "description": "Meta AI's Muse Spark 1.2, providing high-efficiency creative drafting and reasoning.",
     "strengths": [
       "Strong 78.0 LiveBench score",
       "Expressive creative writing and long context synthesis"
@@ -5314,8 +5697,13 @@
       "context": 524288,
       "contextWindow": 524288,
       "maxOutput": 24576,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 150,
+      "speedTokensPerSecRange": {
+        "min": 150,
+        "max": 150,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": false,
       "supportsVision": false,
       "audio": false,
@@ -5328,7 +5716,7 @@
       "easeOfUse": null,
       "availability": "Production API",
       "releaseDate": "2026-05-10",
-      "sourceId": "source-moonshot",
+      "sourceId": "source-meta",
       "reasoningEffort": ["none", "medium", "high"],
       "defaultEffort": "medium"
     },
@@ -5338,12 +5726,12 @@
       "cached": 0.3,
       "currency": "USD",
       "unit": "per-million-tokens",
-      "sourceId": "source-moonshot",
+      "sourceId": "source-meta",
       "updatedAt": "2026-06-25",
       "inputPer1M": 1.2,
       "outputPer1M": 4.8,
       "cachedInputPer1M": 0.3,
-      "provenanceUrl": "https://platform.moonshot.cn/docs/pricing",
+      "provenanceUrl": "https://ai.meta.com/llama/",
       "verifiedAt": "2026-06-25"
     },
     "scores": {
@@ -5354,7 +5742,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 75,
       "reliability": null,
       "costEfficiency": 50,
       "overall": 78
@@ -5415,6 +5803,16 @@
         "normalized": 50,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 150,
+        "min": 0,
+        "max": 200,
+        "normalized": 75,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -5424,12 +5822,12 @@
     "sourceUpdatedAt": "2026-09-12",
     "sources": [
       {
-        "id": "source-moonshot",
-        "name": "Moonshot AI Official Documentation",
-        "url": "https://platform.moonshot.cn/docs/pricing",
+        "id": "source-meta",
+        "name": "Meta AI Official Documentation",
+        "url": "https://ai.meta.com/llama/",
         "retrievedAt": "2026-06-25",
         "kind": "provider_doc",
-        "publisher": "Moonshot AI"
+        "publisher": "Meta AI"
       },
       {
         "id": "livebench-leaderboard",
@@ -5446,6 +5844,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -5468,8 +5874,13 @@
       "context": 262144,
       "contextWindow": 262144,
       "maxOutput": 16384,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 66,
+      "speedTokensPerSecRange": {
+        "min": 66,
+        "max": 66,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": true,
       "supportsVision": true,
       "audio": false,
@@ -5508,7 +5919,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 33,
       "reliability": null,
       "costEfficiency": 77,
       "overall": 77
@@ -5569,6 +5980,16 @@
         "normalized": 77,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 66,
+        "min": 0,
+        "max": 200,
+        "normalized": 33,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -5600,6 +6021,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -5622,8 +6051,13 @@
       "context": 262144,
       "contextWindow": 262144,
       "maxOutput": 16384,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 77,
+      "speedTokensPerSecRange": {
+        "min": 77,
+        "max": 77,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": true,
       "supportsVision": true,
       "audio": false,
@@ -5662,7 +6096,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 39,
       "reliability": null,
       "costEfficiency": 46,
       "overall": 73
@@ -5723,6 +6157,16 @@
         "normalized": 46,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 77,
+        "min": 0,
+        "max": 200,
+        "normalized": 39,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -5754,6 +6198,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -5778,11 +6230,10 @@
       "context": 1000000,
       "contextWindow": 1000000,
       "maxOutput": 64000,
-      "speedTokensPerSec": 68,
+      "speedTokensPerSec": 106,
       "speedTokensPerSecRange": {
-        "min": 40,
-        "max": 95,
-        "providerCount": 8,
+        "min": 106,
+        "max": 106,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -5824,7 +6275,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 53,
       "reliability": null,
       "costEfficiency": 41,
       "overall": 76
@@ -5887,6 +6338,16 @@
         "normalized": 41,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 106,
+        "min": 0,
+        "max": 200,
+        "normalized": 53,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -5912,14 +6373,6 @@
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -5934,6 +6387,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -5955,8 +6416,13 @@
       "context": 262144,
       "contextWindow": 262144,
       "maxOutput": 16384,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 103,
+      "speedTokensPerSecRange": {
+        "min": 103,
+        "max": 103,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": false,
       "supportsVision": false,
       "audio": false,
@@ -5995,7 +6461,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 52,
       "reliability": null,
       "costEfficiency": 38,
       "overall": 68
@@ -6056,6 +6522,16 @@
         "normalized": 38,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 103,
+        "min": 0,
+        "max": 200,
+        "normalized": 52,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -6087,6 +6563,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -6112,10 +6596,10 @@
       "context": 131072,
       "contextWindow": 131072,
       "maxOutput": 16384,
-      "speedTokensPerSec": 75,
+      "speedTokensPerSec": 83,
       "speedTokensPerSecRange": {
-        "min": 23,
-        "max": 127,
+        "min": 27,
+        "max": 138,
         "providerCount": 4,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
@@ -6158,7 +6642,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": 38,
+      "speed": 42,
       "reliability": null,
       "costEfficiency": 79,
       "overall": null
@@ -6183,10 +6667,10 @@
       {
         "metric": "speed",
         "kind": "benchmark",
-        "raw": 75,
+        "raw": 83,
         "min": 0,
         "max": 200,
-        "normalized": 38,
+        "normalized": 42,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
       }
@@ -6242,8 +6726,13 @@
       "context": 262144,
       "contextWindow": 262144,
       "maxOutput": 16384,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 36,
+      "speedTokensPerSecRange": {
+        "min": 36,
+        "max": 36,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": false,
       "supportsVision": false,
       "audio": false,
@@ -6282,7 +6771,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 18,
       "reliability": null,
       "costEfficiency": 61,
       "overall": 69
@@ -6343,6 +6832,16 @@
         "normalized": 61,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 36,
+        "min": 0,
+        "max": 200,
+        "normalized": 18,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -6374,6 +6873,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -6395,8 +6902,13 @@
       "context": 131072,
       "contextWindow": 131072,
       "maxOutput": 8192,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 90,
+      "speedTokensPerSecRange": {
+        "min": 90,
+        "max": 90,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": true,
       "supportsVision": true,
       "audio": false,
@@ -6435,7 +6947,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 45,
       "reliability": null,
       "costEfficiency": 47,
       "overall": 62
@@ -6496,6 +7008,16 @@
         "normalized": 47,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 90,
+        "min": 0,
+        "max": 200,
+        "normalized": 45,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -6527,6 +7049,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -6552,11 +7082,10 @@
       "context": 256000,
       "contextWindow": 256000,
       "maxOutput": 32768,
-      "speedTokensPerSec": 104,
+      "speedTokensPerSec": 125,
       "speedTokensPerSecRange": {
-        "min": 16,
-        "max": 192,
-        "providerCount": 20,
+        "min": 125,
+        "max": 125,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -6598,7 +7127,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 63,
       "reliability": null,
       "costEfficiency": 60,
       "overall": 71
@@ -6662,6 +7191,16 @@
         "normalized": 60,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 125,
+        "min": 0,
+        "max": 200,
+        "normalized": 63,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -6687,14 +7226,6 @@
         "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -6709,6 +7240,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -6734,11 +7273,10 @@
       "context": 1000000,
       "contextWindow": 1000000,
       "maxOutput": 128000,
-      "speedTokensPerSec": 46,
+      "speedTokensPerSec": 70,
       "speedTokensPerSecRange": {
-        "min": 9,
-        "max": 82,
-        "providerCount": 9,
+        "min": 70,
+        "max": 70,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -6780,7 +7318,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 35,
       "reliability": null,
       "costEfficiency": 29,
       "overall": 80
@@ -6843,6 +7381,16 @@
         "normalized": 29,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 70,
+        "min": 0,
+        "max": 200,
+        "normalized": 35,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -6868,14 +7416,6 @@
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -6890,6 +7430,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -6912,8 +7460,13 @@
       "context": 131072,
       "contextWindow": 131072,
       "maxOutput": 8192,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 157,
+      "speedTokensPerSecRange": {
+        "min": 157,
+        "max": 157,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": true,
       "supportsVision": true,
       "audio": false,
@@ -6952,7 +7505,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 79,
       "reliability": null,
       "costEfficiency": 61,
       "overall": 73
@@ -7013,6 +7566,16 @@
         "normalized": 61,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 157,
+        "min": 0,
+        "max": 200,
+        "normalized": 79,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -7044,6 +7607,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -7065,8 +7636,13 @@
       "context": 131072,
       "contextWindow": 131072,
       "maxOutput": 8192,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 58,
+      "speedTokensPerSecRange": {
+        "min": 58,
+        "max": 58,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": false,
       "supportsVision": false,
       "audio": false,
@@ -7105,7 +7681,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 29,
       "reliability": null,
       "costEfficiency": 73,
       "overall": 64
@@ -7166,6 +7742,16 @@
         "normalized": 73,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 58,
+        "min": 0,
+        "max": 200,
+        "normalized": 29,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -7197,16 +7783,24 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
   {
     "slug": "muse-spark-1-1",
     "name": "Muse Spark 1.1",
-    "provider": "Moonshot AI",
+    "provider": "Meta AI",
     "family": "Muse",
     "dataKind": "verified",
-    "description": "Initial release of the Muse Spark long-context reasoning series by Moonshot AI.",
+    "description": "Initial release of the Muse Spark long-context reasoning series by Meta AI.",
     "strengths": [
       "High recall on long-horizon documents",
       "Approachable API pricing"
@@ -7218,8 +7812,13 @@
       "context": 524288,
       "contextWindow": 524288,
       "maxOutput": 16384,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 221,
+      "speedTokensPerSecRange": {
+        "min": 221,
+        "max": 221,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": false,
       "supportsVision": false,
       "audio": false,
@@ -7232,7 +7831,7 @@
       "easeOfUse": null,
       "availability": "Production API",
       "releaseDate": "2026-04-01",
-      "sourceId": "source-moonshot",
+      "sourceId": "source-meta",
       "reasoningEffort": ["none", "medium"],
       "defaultEffort": "none"
     },
@@ -7242,12 +7841,12 @@
       "cached": 0.2,
       "currency": "USD",
       "unit": "per-million-tokens",
-      "sourceId": "source-moonshot",
+      "sourceId": "source-meta",
       "updatedAt": "2026-06-25",
       "inputPer1M": 0.8,
       "outputPer1M": 3.2,
       "cachedInputPer1M": 0.2,
-      "provenanceUrl": "https://platform.moonshot.cn/docs/pricing",
+      "provenanceUrl": "https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/",
       "verifiedAt": "2026-06-25"
     },
     "scores": {
@@ -7258,7 +7857,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 100,
       "reliability": null,
       "costEfficiency": 55,
       "overall": 75
@@ -7319,6 +7918,16 @@
         "normalized": 55,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 221,
+        "min": 0,
+        "max": 200,
+        "normalized": 100,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -7328,12 +7937,12 @@
     "sourceUpdatedAt": "2026-09-12",
     "sources": [
       {
-        "id": "source-moonshot",
-        "name": "Moonshot AI Official Documentation",
-        "url": "https://platform.moonshot.cn/docs/pricing",
+        "id": "source-meta",
+        "name": "Meta AI Official Documentation",
+        "url": "https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/",
         "retrievedAt": "2026-06-25",
         "kind": "provider_doc",
-        "publisher": "Moonshot AI"
+        "publisher": "Meta AI"
       },
       {
         "id": "livebench-leaderboard",
@@ -7350,6 +7959,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -7375,11 +7992,10 @@
       "context": 1048576,
       "contextWindow": 1048576,
       "maxOutput": 32768,
-      "speedTokensPerSec": 119,
+      "speedTokensPerSec": 240,
       "speedTokensPerSecRange": {
-        "min": 27,
-        "max": 211,
-        "providerCount": 5,
+        "min": 240,
+        "max": 240,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -7421,7 +8037,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 100,
       "reliability": null,
       "costEfficiency": 43,
       "overall": 75
@@ -7484,6 +8100,16 @@
         "normalized": 43,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 240,
+        "min": 0,
+        "max": 200,
+        "normalized": 100,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -7509,14 +8135,6 @@
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -7531,6 +8149,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -7549,8 +8175,13 @@
       "context": 262144,
       "contextWindow": 262144,
       "maxOutput": 16384,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 22,
+      "speedTokensPerSecRange": {
+        "min": 22,
+        "max": 22,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": false,
       "supportsVision": false,
       "audio": false,
@@ -7589,7 +8220,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 11,
       "reliability": null,
       "costEfficiency": 34,
       "overall": 74
@@ -7650,6 +8281,16 @@
         "normalized": 34,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 22,
+        "min": 0,
+        "max": 200,
+        "normalized": 11,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -7681,6 +8322,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -7705,11 +8354,10 @@
       "context": 1048576,
       "contextWindow": 1048576,
       "maxOutput": 16384,
-      "speedTokensPerSec": 71,
+      "speedTokensPerSec": 268,
       "speedTokensPerSecRange": {
-        "min": 10,
-        "max": 132,
-        "providerCount": 7,
+        "min": 268,
+        "max": 268,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -7751,7 +8399,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 100,
       "reliability": null,
       "costEfficiency": 61,
       "overall": 64
@@ -7817,6 +8465,16 @@
         "normalized": 61,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 268,
+        "min": 0,
+        "max": 200,
+        "normalized": 100,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -7850,14 +8508,6 @@
         "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -7872,6 +8522,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -7897,11 +8555,10 @@
       "context": 1000000,
       "contextWindow": 1000000,
       "maxOutput": 128000,
-      "speedTokensPerSec": 34,
+      "speedTokensPerSec": 44,
       "speedTokensPerSecRange": {
-        "min": 16,
-        "max": 52,
-        "providerCount": 4,
+        "min": 44,
+        "max": 44,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -7943,7 +8600,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 22,
       "reliability": null,
       "costEfficiency": 20,
       "overall": 83
@@ -8009,6 +8666,16 @@
         "normalized": 20,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 44,
+        "min": 0,
+        "max": 200,
+        "normalized": 22,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -8042,14 +8709,6 @@
         "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -8064,6 +8723,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -8085,8 +8752,13 @@
       "context": 262144,
       "contextWindow": 262144,
       "maxOutput": 16384,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 91,
+      "speedTokensPerSecRange": {
+        "min": 91,
+        "max": 91,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": true,
       "supportsVision": true,
       "audio": true,
@@ -8125,7 +8797,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 46,
       "reliability": null,
       "costEfficiency": 31,
       "overall": 75
@@ -8186,6 +8858,16 @@
         "normalized": 31,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 91,
+        "min": 0,
+        "max": 200,
+        "normalized": 46,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -8217,6 +8899,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -8507,11 +9197,10 @@
       "context": 1048576,
       "contextWindow": 1048576,
       "maxOutput": 65536,
-      "speedTokensPerSec": 92,
+      "speedTokensPerSec": 101,
       "speedTokensPerSecRange": {
-        "min": 90,
-        "max": 94,
-        "providerCount": 3,
+        "min": 101,
+        "max": 101,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -8553,7 +9242,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 51,
       "reliability": null,
       "costEfficiency": 39,
       "overall": 77
@@ -8616,6 +9305,16 @@
         "normalized": 39,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 101,
+        "min": 0,
+        "max": 200,
+        "normalized": 51,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -8641,14 +9340,6 @@
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -8663,6 +9354,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -8685,8 +9384,13 @@
       "context": 1000000,
       "contextWindow": 1000000,
       "maxOutput": 64000,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 143,
+      "speedTokensPerSecRange": {
+        "min": 143,
+        "max": 143,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": true,
       "supportsVision": true,
       "audio": false,
@@ -8725,7 +9429,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 72,
       "reliability": null,
       "costEfficiency": 29,
       "overall": 76
@@ -8786,6 +9490,16 @@
         "normalized": 29,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 143,
+        "min": 0,
+        "max": 200,
+        "normalized": 72,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -8817,6 +9531,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -8839,8 +9561,13 @@
       "context": 1000000,
       "contextWindow": 1000000,
       "maxOutput": 64000,
-      "speedTokensPerSec": null,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 99,
+      "speedTokensPerSecRange": {
+        "min": 99,
+        "max": 99,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": true,
       "supportsVision": true,
       "audio": false,
@@ -8879,7 +9606,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 50,
       "reliability": null,
       "costEfficiency": 29,
       "overall": 77
@@ -8940,6 +9667,16 @@
         "normalized": 29,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 99,
+        "min": 0,
+        "max": 200,
+        "normalized": 50,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -8971,6 +9708,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -8994,11 +9739,10 @@
       "context": 1000000,
       "contextWindow": 1000000,
       "maxOutput": 64000,
-      "speedTokensPerSec": 26,
+      "speedTokensPerSec": 93,
       "speedTokensPerSecRange": {
-        "min": 8,
-        "max": 43,
-        "providerCount": 8,
+        "min": 93,
+        "max": 93,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -9040,7 +9784,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 47,
       "reliability": null,
       "costEfficiency": 36,
       "overall": 73
@@ -9106,6 +9850,16 @@
         "normalized": 36,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 93,
+        "min": 0,
+        "max": 200,
+        "normalized": 47,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -9139,14 +9893,6 @@
         "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -9161,6 +9907,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -9183,11 +9937,10 @@
       "context": 1000000,
       "contextWindow": 1000000,
       "maxOutput": 64000,
-      "speedTokensPerSec": 42,
+      "speedTokensPerSec": 65,
       "speedTokensPerSecRange": {
-        "min": 32,
-        "max": 51,
-        "providerCount": 5,
+        "min": 65,
+        "max": 65,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -9229,7 +9982,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 33,
       "reliability": null,
       "costEfficiency": 29,
       "overall": 75
@@ -9295,6 +10048,16 @@
         "normalized": 29,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 65,
+        "min": 0,
+        "max": 200,
+        "normalized": 33,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -9328,14 +10091,6 @@
         "publisher": "LMSYS Chatbot Arena Leaderboard"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -9350,6 +10105,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -9373,11 +10136,10 @@
       "context": 200000,
       "contextWindow": 200000,
       "maxOutput": 32000,
-      "speedTokensPerSec": 46,
+      "speedTokensPerSec": 83,
       "speedTokensPerSecRange": {
-        "min": 36,
-        "max": 55,
-        "providerCount": 4,
+        "min": 83,
+        "max": 83,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -9419,7 +10181,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 42,
       "reliability": null,
       "costEfficiency": 29,
       "overall": 73
@@ -9482,6 +10244,16 @@
         "normalized": 29,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 83,
+        "min": 0,
+        "max": 200,
+        "normalized": 42,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -9507,14 +10279,6 @@
         "publisher": "Berkeley Function Calling Leaderboard (BFCL)"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -9529,6 +10293,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -9556,7 +10328,12 @@
       "contextWindow": 131072,
       "maxOutput": 16384,
       "speedTokensPerSec": 60,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSecRange": {
+        "min": 60,
+        "max": 60,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": false,
       "supportsVision": false,
       "audio": false,
@@ -9595,7 +10372,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 30,
       "reliability": null,
       "costEfficiency": 69,
       "overall": 72
@@ -9656,6 +10433,16 @@
         "normalized": 69,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 60,
+        "min": 0,
+        "max": 200,
+        "normalized": 30,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -9687,6 +10474,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -9713,11 +10508,10 @@
       "context": 131072,
       "contextWindow": 131072,
       "maxOutput": 16384,
-      "speedTokensPerSec": 71,
+      "speedTokensPerSec": 114,
       "speedTokensPerSecRange": {
-        "min": 24,
-        "max": 118,
-        "providerCount": 21,
+        "min": 114,
+        "max": 114,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -9759,7 +10553,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 57,
       "reliability": null,
       "costEfficiency": 69,
       "overall": 77
@@ -9820,6 +10614,16 @@
         "normalized": 69,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 114,
+        "min": 0,
+        "max": 200,
+        "normalized": 57,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -9837,14 +10641,6 @@
         "publisher": "DeepSeek"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -9859,6 +10655,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -9885,8 +10689,13 @@
       "context": 131072,
       "contextWindow": 131072,
       "maxOutput": 8192,
-      "speedTokensPerSec": 120,
-      "speedTokensPerSecRange": null,
+      "speedTokensPerSec": 83,
+      "speedTokensPerSecRange": {
+        "min": 83,
+        "max": 83,
+        "sourceId": "openrouter-throughput",
+        "retrievedAt": "2026-09-12"
+      },
       "vision": false,
       "supportsVision": false,
       "audio": false,
@@ -9925,7 +10734,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 42,
       "reliability": null,
       "costEfficiency": 89,
       "overall": 66
@@ -9986,6 +10795,16 @@
         "normalized": 89,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 83,
+        "min": 0,
+        "max": 200,
+        "normalized": 42,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 69,
@@ -10017,6 +10836,14 @@
         "retrievedAt": "2026-09-12",
         "kind": "public_eval",
         "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   },
@@ -10042,11 +10869,10 @@
       "context": 131072,
       "contextWindow": 131072,
       "maxOutput": 8192,
-      "speedTokensPerSec": 70,
+      "speedTokensPerSec": 140,
       "speedTokensPerSecRange": {
-        "min": 5,
-        "max": 135,
-        "providerCount": 28,
+        "min": 140,
+        "max": 140,
         "sourceId": "openrouter-throughput",
         "retrievedAt": "2026-09-12"
       },
@@ -10088,7 +10914,7 @@
       "research": null,
       "writing": null,
       "vision": null,
-      "speed": null,
+      "speed": 70,
       "reliability": null,
       "costEfficiency": 89,
       "overall": 74
@@ -10149,6 +10975,16 @@
         "normalized": 89,
         "sourceId": "astra-cost-engine",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "speed",
+        "kind": "benchmark",
+        "raw": 140,
+        "min": 0,
+        "max": 200,
+        "normalized": 70,
+        "sourceId": "openrouter-throughput",
+        "updatedAt": "2026-09-12"
       }
     ],
     "confidence": 80,
@@ -10166,14 +11002,6 @@
         "publisher": "DeepSeek"
       },
       {
-        "id": "openrouter-throughput",
-        "name": "OpenRouter recent throughput",
-        "url": "https://openrouter.ai/api/frontend/v1/stats/endpoint",
-        "retrievedAt": "2026-09-12",
-        "kind": "public_eval",
-        "publisher": "OpenRouter"
-      },
-      {
         "id": "astra-cost-engine",
         "name": "Astra Cost Efficiency Engine",
         "url": "https://github.com/D-Flint/ai-model-web",
@@ -10188,6 +11016,14 @@
         "retrievedAt": "2026-06-25",
         "kind": "public_eval",
         "publisher": "LiveBench"
+      },
+      {
+        "id": "openrouter-throughput",
+        "name": "OpenRouter model-page throughput",
+        "url": "https://openrouter.ai/models",
+        "retrievedAt": "2026-09-12",
+        "kind": "public_eval",
+        "publisher": "OpenRouter"
       }
     ]
   }

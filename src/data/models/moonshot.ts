@@ -4,8 +4,8 @@ export const MOONSHOT_MODELS: CanonicalModelConfig[] = [
   {
     slug: 'muse-spark-1-2',
     name: 'Muse Spark 1.2',
-    provider: 'Moonshot AI',
-    providerSlug: 'moonshot',
+    provider: 'Meta AI',
+    providerSlug: 'meta',
     family: 'Muse',
     openWeights: false,
     openRouterId: 'moonshot/muse-spark-1.2',
@@ -13,9 +13,9 @@ export const MOONSHOT_MODELS: CanonicalModelConfig[] = [
     swebenchAliases: ['muse-spark-1.2', 'muse-spark-1.2-xhigh'],
     livebenchAliases: ['muse-spark-1.2-xhigh', 'muse-spark-1.2'],
     bfclAliases: ['muse-spark-1.2'],
-    officialDocsUrl: 'https://platform.moonshot.cn/docs/overview',
+    officialDocsUrl: 'https://ai.meta.com/llama/',
     description:
-      "Moonshot AI's precursor to Muse Spark 1.3, providing high-efficiency creative drafting and reasoning.",
+      "Meta AI's Muse Spark 1.2, providing high-efficiency creative drafting and reasoning.",
     strengths: [
       'Strong 78.0 LiveBench score',
       'Expressive creative writing and long context synthesis',
@@ -28,8 +28,8 @@ export const MOONSHOT_MODELS: CanonicalModelConfig[] = [
   {
     slug: 'muse-spark-1-1',
     name: 'Muse Spark 1.1',
-    provider: 'Moonshot AI',
-    providerSlug: 'moonshot',
+    provider: 'Meta AI',
+    providerSlug: 'meta',
     family: 'Muse',
     openWeights: false,
     openRouterId: 'moonshot/muse-spark-1.1',
@@ -37,9 +37,9 @@ export const MOONSHOT_MODELS: CanonicalModelConfig[] = [
     swebenchAliases: ['muse-spark-1.1', 'muse-spark-1.1-xhigh'],
     livebenchAliases: ['muse-spark-1.1-xhigh', 'muse-spark-1.1'],
     bfclAliases: ['muse-spark-1.1'],
-    officialDocsUrl: 'https://platform.moonshot.cn/docs/overview',
+    officialDocsUrl: 'https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/',
     description:
-      'Initial release of the Muse Spark long-context reasoning series by Moonshot AI.',
+      'Initial release of the Muse Spark long-context reasoning series by Meta AI.',
     strengths: [
       'High recall on long-horizon documents',
       'Approachable API pricing',
@@ -682,8 +682,8 @@ export const MOONSHOT_MODELS: CanonicalModelConfig[] = [
   {
     slug: 'muse-spark-1-3',
     name: 'Muse Spark 1.3',
-    provider: 'Moonshot AI',
-    providerSlug: 'moonshot',
+    provider: 'Meta AI',
+    providerSlug: 'meta',
     family: 'Muse Spark',
     openWeights: true,
     openRouterId: 'moonshotai/muse-spark-1.3',
@@ -700,9 +700,9 @@ export const MOONSHOT_MODELS: CanonicalModelConfig[] = [
       'muse-spark-1-3',
     ],
     bfclAliases: ['Muse-Spark-1.3', 'muse-spark-1.3'],
-    officialDocsUrl: 'https://platform.moonshot.cn/docs/pricing',
+    officialDocsUrl: 'https://ai.meta.com/llama/',
     description:
-      "Moonshot AI's Muse Spark 1.3 high-efficiency reasoning foundation model, engineered for advanced mathematical reasoning, coding synthesis, and agentic workflows.",
+      "Meta AI's Muse Spark 1.3 high-efficiency reasoning foundation model, engineered for advanced mathematical reasoning, coding synthesis, and agentic workflows.",
     strengths: [
       'High-grade reasoning with 89.7 reasoning and 95.9 math scores on LiveBench',
       'Strong coding performance (81.1) and agentic problem solving',

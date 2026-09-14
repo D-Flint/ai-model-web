@@ -406,6 +406,13 @@ describe('Verified Catalog Integrity', () => {
     ).toBe(true);
   });
 
+  it('attributes the Muse Spark series to Meta AI', () => {
+    for (const slug of ['muse-spark-1-1', 'muse-spark-1-2', 'muse-spark-1-3']) {
+      const model = verifiedModels.find((candidate) => candidate.slug === slug);
+      expect(model?.provider).toBe('Meta AI');
+    }
+  });
+
   it('rejects duplicate model slugs in catalog', () => {
     const dupes = [
       verifiedModels[0],

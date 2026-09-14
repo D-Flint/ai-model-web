@@ -258,8 +258,8 @@ export const OFFICIAL_PROVIDER_SPECS: Record<string, OfficialProviderSpec> = {
     reasoningEffort: ['none', 'medium'],
     defaultEffort: 'none',
     lastVerifiedAt: '2026-06-25',
-    sourceUrl: 'https://platform.moonshot.cn/docs/pricing',
-    sourceName: 'Moonshot AI Official Documentation',
+    sourceUrl: 'https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/',
+    sourceName: 'Meta AI Official Documentation',
   },
   'muse-spark-1-2': {
     slug: 'muse-spark-1-2',
@@ -279,8 +279,8 @@ export const OFFICIAL_PROVIDER_SPECS: Record<string, OfficialProviderSpec> = {
     reasoningEffort: ['none', 'medium', 'high'],
     defaultEffort: 'medium',
     lastVerifiedAt: '2026-06-25',
-    sourceUrl: 'https://platform.moonshot.cn/docs/pricing',
-    sourceName: 'Moonshot AI Official Documentation',
+    sourceUrl: 'https://ai.meta.com/llama/',
+    sourceName: 'Meta AI Official Documentation',
   },
   'nemotron-3-ultra-550b': {
     slug: 'nemotron-3-ultra-550b',
@@ -1473,8 +1473,8 @@ export const OFFICIAL_PROVIDER_SPECS: Record<string, OfficialProviderSpec> = {
     reasoningEffort: ['none', 'low', 'medium', 'high', 'max'],
     defaultEffort: 'high',
     lastVerifiedAt: '2026-09-12',
-    sourceUrl: 'https://platform.moonshot.cn/docs/pricing',
-    sourceName: 'Moonshot AI Official Documentation',
+    sourceUrl: 'https://ai.meta.com/llama/',
+    sourceName: 'Meta AI Official Documentation',
   },
   'gpt-5-mini': {
     slug: 'gpt-5-mini',
