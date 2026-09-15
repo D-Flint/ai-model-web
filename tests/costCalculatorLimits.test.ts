@@ -1,4 +1,7 @@
+import React from 'react';
 import { describe, it, expect } from 'vitest';
+import { renderToStaticMarkup } from 'react-dom/server';
+import CostCalculator from '../src/components/CostCalculator';
 import {
   calculateApiCost,
   validateModelWorkload,
@@ -67,5 +70,12 @@ describe('Cost Calculator Workload Constraints (Issue 4)', () => {
         model,
       ),
     ).toThrow(/maximum output limit|context window/);
+  });
+
+  it('renders form with noValidate to allow custom validation notices instead of browser popups', () => {
+    const html = renderToStaticMarkup(
+      React.createElement(CostCalculator, { models: [model] }),
+    );
+    expect(html).toContain('noValidate=""');
   });
 });

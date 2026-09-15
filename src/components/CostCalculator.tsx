@@ -117,6 +117,7 @@ export default function CostCalculator({ models }: { models: CatalogModel[] }) {
   return (
     <div className="calculator-layout">
       <form
+        noValidate
         className="panel calculator-inputs"
         onSubmit={(event) => {
           event.preventDefault();
