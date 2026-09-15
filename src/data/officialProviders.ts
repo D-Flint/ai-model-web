@@ -466,15 +466,16 @@ export const OFFICIAL_PROVIDER_SPECS: Record<string, OfficialProviderSpec> = {
     supportsStructuredOutput: true,
     apiAvailable: true,
     officialPricing: {
-      input: 0.15,
-      output: 0.6,
-      cached: 0.04,
+      input: 0.22,
+      output: 0.66,
+      cached: 0.007,
     },
     reasoningEffort: ['low', 'medium', 'high'],
     defaultEffort: 'medium',
-    lastVerifiedAt: '2026-06-25',
-    sourceUrl: 'https://deepseek.com/',
-    sourceName: 'DeepSeek Official Documentation',
+    lastVerifiedAt: '2026-09-15',
+    sourceUrl:
+      'https://api-docs.deepseek.com/quick_start/pricing/?article_id=article_1779470751466_8',
+    sourceName: 'DeepSeek API historical pricing',
   },
   'claude-opus-4-7': {
     slug: 'claude-opus-4-7',
@@ -1222,6 +1223,20 @@ function deepseekPrice(value: number): PriceValue {
     },
   };
 }
+function deepseekHistoricalVisionPrice(value: number): PriceValue {
+  return {
+    value,
+    currency: 'USD',
+    unit: 'per-million-tokens',
+    source: {
+      name: 'DeepSeek API historical pricing',
+      url: 'https://api-docs.deepseek.com/quick_start/pricing/?article_id=article_1779470751466_8',
+      type: 'provider_doc',
+      retrievedAt: '2026-09-15',
+      effectiveFrom: '2026-08-16',
+    },
+  };
+}
 function minimaxPrice(value: number): PriceValue {
   return {
     value,
@@ -1277,6 +1292,48 @@ const deepseekFlashPricing: ApiPricing = {
   benchmarkCost: null,
 };
 apiPricingRecords['deepseek-v4-1-flash'] = deepseekFlashPricing;
+const deepseekVisionHistoricalPricing: ApiPricing = {
+  provider: 'DeepSeek',
+  scope: 'DeepSeek API · V4 Flash Vision Exp historical pricing',
+  tiers: [
+    {
+      id: 'standard',
+      label: 'Historical off-peak rate',
+      minContext: 0,
+      maxContext: 1_048_576,
+      input: deepseekHistoricalVisionPrice(0.22),
+      output: deepseekHistoricalVisionPrice(0.66),
+      cached: deepseekHistoricalVisionPrice(0.007),
+      cacheWrite5m: null,
+      cacheWrite1h: null,
+      cacheStorage: null,
+      search: null,
+    },
+  ],
+  periods: [
+    {
+      id: 'off-peak',
+      label: 'Off-peak (historical)',
+      input: deepseekHistoricalVisionPrice(0.22),
+      output: deepseekHistoricalVisionPrice(0.66),
+      cached: deepseekHistoricalVisionPrice(0.007),
+    },
+    {
+      id: 'peak',
+      label: 'Peak (historical)',
+      input: deepseekHistoricalVisionPrice(0.44),
+      output: deepseekHistoricalVisionPrice(1.32),
+      cached: deepseekHistoricalVisionPrice(0.014),
+    },
+  ],
+  notes: [
+    'Historical rate effective from 2026-08-16; images were tokenized and billed as input tokens.',
+    'The model was retired on 2026-09-10; its legacy endpoint now routes to DeepSeek V4.1 Flash at current Flash rates.',
+  ],
+  benchmarkCost: null,
+};
+apiPricingRecords['deepseek-v4-flash-vision-exp'] =
+  deepseekVisionHistoricalPricing;
 for (const [slug, input, output, cached, context] of [
   ['claude-fable-5-1', 10, 50, 0.25, 1_000_000],
 ] as const) {
