@@ -22,19 +22,26 @@ with sync_playwright() as playwright:
     page.goto('http://localhost:4321/rankings/intelligence')
     page.wait_for_load_state('networkidle')
 
-    highest = page.get_by_role('button', name='Highest to lowest')
-    lowest = page.get_by_role('button', name='Lowest to highest')
-    assert highest.get_attribute('aria-pressed') == 'true'
+    highest = page.get_by_role(
+        'button',
+        name='Sort ranking: Highest to lowest. Activate to sort lowest to highest.',
+    )
+    assert highest.get_attribute('aria-pressed') == 'false'
     descending = scores(page)
     assert len(descending) > 1
     assert descending == sorted(descending, reverse=True)
 
-    lowest.click()
+    highest.click()
     ascending = scores(page)
     assert ascending == sorted(ascending)
     assert len(ascending) == len(descending)
+    lowest = page.get_by_role(
+        'button',
+        name='Sort ranking: Lowest to highest. Activate to sort highest to lowest.',
+    )
+    assert lowest.get_attribute('aria-pressed') == 'true'
 
-    highest.click()
+    lowest.click()
     last_row = page.locator('.ranking-row').last
     model_name = last_row.locator('h3').inner_text()
     last_row.get_by_role('link', name='Add to comparison').click()

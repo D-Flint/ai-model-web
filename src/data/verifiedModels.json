@@ -1335,18 +1335,18 @@
       "defaultEffort": "medium"
     },
     "pricing": {
-      "input": 8,
-      "output": 32,
-      "cached": 2,
+      "input": 4,
+      "output": 20,
+      "cached": 0.4,
       "currency": "USD",
       "unit": "per-million-tokens",
       "sourceId": "source-openai",
-      "updatedAt": "2026-09-05",
-      "inputPer1M": 8,
-      "outputPer1M": 32,
-      "cachedInputPer1M": 2,
-      "provenanceUrl": "https://platform.openai.com/docs/models",
-      "verifiedAt": "2026-09-05"
+      "updatedAt": "2026-09-14",
+      "inputPer1M": 4,
+      "outputPer1M": 20,
+      "cachedInputPer1M": 0.4,
+      "provenanceUrl": "https://developers.openai.com/api/docs/models/compare",
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 81,
@@ -1525,18 +1525,18 @@
       "defaultEffort": "medium"
     },
     "pricing": {
-      "input": 2.5,
-      "output": 10,
-      "cached": 0.625,
+      "input": 2,
+      "output": 12,
+      "cached": 0.2,
       "currency": "USD",
       "unit": "per-million-tokens",
       "sourceId": "source-openai",
-      "updatedAt": "2026-09-05",
-      "inputPer1M": 2.5,
-      "outputPer1M": 10,
-      "cachedInputPer1M": 0.625,
-      "provenanceUrl": "https://platform.openai.com/docs/models",
-      "verifiedAt": "2026-09-05"
+      "updatedAt": "2026-09-14",
+      "inputPer1M": 2,
+      "outputPer1M": 12,
+      "cachedInputPer1M": 0.2,
+      "provenanceUrl": "https://developers.openai.com/api/docs/models/compare",
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 78,
@@ -1714,18 +1714,18 @@
       "defaultEffort": "none"
     },
     "pricing": {
-      "input": 0.25,
-      "output": 1,
-      "cached": 0.0625,
+      "input": 0.2,
+      "output": 1.2,
+      "cached": 0.02,
       "currency": "USD",
       "unit": "per-million-tokens",
       "sourceId": "source-openai",
-      "updatedAt": "2026-09-05",
-      "inputPer1M": 0.25,
-      "outputPer1M": 1,
-      "cachedInputPer1M": 0.0625,
-      "provenanceUrl": "https://platform.openai.com/docs/models",
-      "verifiedAt": "2026-09-05"
+      "updatedAt": "2026-09-14",
+      "inputPer1M": 0.2,
+      "outputPer1M": 1.2,
+      "cachedInputPer1M": 0.02,
+      "provenanceUrl": "https://developers.openai.com/api/docs/models/compare",
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 74,
@@ -2761,22 +2761,22 @@
       "availability": "Production API",
       "releaseDate": "2026-06-15",
       "sourceId": "source-xai",
-      "reasoningEffort": ["none", "medium", "high"],
+      "reasoningEffort": ["none", "low", "medium", "high", "max"],
       "defaultEffort": "medium"
     },
     "pricing": {
-      "input": 8,
-      "output": 32,
-      "cached": 2,
+      "input": 2,
+      "output": 6,
+      "cached": 0.5,
       "currency": "USD",
       "unit": "per-million-tokens",
       "sourceId": "source-xai",
-      "updatedAt": "2026-06-25",
-      "inputPer1M": 8,
-      "outputPer1M": 32,
-      "cachedInputPer1M": 2,
-      "provenanceUrl": "https://docs.x.ai/docs/overview#models",
-      "verifiedAt": "2026-06-25"
+      "updatedAt": "2026-09-14",
+      "inputPer1M": 2,
+      "outputPer1M": 6,
+      "cachedInputPer1M": 0.5,
+      "provenanceUrl": "https://docs.x.ai/developers/pricing",
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 78,
@@ -4443,22 +4443,22 @@
       "availability": "Production API",
       "releaseDate": "2026-05-28",
       "sourceId": "source-nvidia",
-      "reasoningEffort": ["none", "medium"],
-      "defaultEffort": "none"
+      "reasoningEffort": ["none", "low", "medium", "high", "max"],
+      "defaultEffort": "medium"
     },
     "pricing": {
-      "input": null,
-      "output": null,
-      "cached": null,
+      "input": 0.63,
+      "output": 3.13,
+      "cached": 0.158,
       "currency": "USD",
       "unit": "per-million-tokens",
-      "sourceId": "source-nvidia",
-      "updatedAt": "2026-09-14",
-      "inputPer1M": null,
-      "outputPer1M": null,
-      "cachedInputPer1M": null,
-      "provenanceUrl": "https://build.nvidia.com/nvidia/nemotron-3-ultra-550b-a55b?nim=hosted",
-      "verifiedAt": "2026-09-14"
+      "sourceId": "source-openrouter-nemotron",
+      "updatedAt": "2026-09-15",
+      "inputPer1M": 0.63,
+      "outputPer1M": 3.13,
+      "cachedInputPer1M": 0.158,
+      "provenanceUrl": "https://openrouter.ai/models/nvidia/nemotron-3-ultra-550b",
+      "verifiedAt": "2026-09-15"
     },
     "scores": {
       "intelligence": 67,
@@ -4470,7 +4470,7 @@
       "vision": null,
       "speed": 100,
       "reliability": null,
-      "costEfficiency": null,
+      "costEfficiency": 73,
       "overall": 67
     },
     "benchmarks": {
@@ -4529,6 +4529,16 @@
         "normalized": 100,
         "sourceId": "openrouter-throughput",
         "updatedAt": "2026-09-12"
+      },
+      {
+        "metric": "costEfficiency",
+        "kind": "benchmark",
+        "raw": 73,
+        "min": 0,
+        "max": 100,
+        "normalized": 73,
+        "sourceId": "astra-cost-engine",
+        "updatedAt": "2026-09-15"
       }
     ],
     "confidence": 69,
@@ -4538,12 +4548,28 @@
     "sourceUpdatedAt": "2026-09-14",
     "sources": [
       {
+        "id": "astra-cost-engine",
+        "name": "Astra Cost Efficiency Engine",
+        "url": "https://github.com/D-Flint/ai-model-web",
+        "retrievedAt": "2026-09-15",
+        "kind": "public_eval",
+        "publisher": "Astra Cost Efficiency Engine"
+      },
+      {
         "id": "source-nvidia",
-        "name": "NVIDIA NIM model availability",
-        "url": "https://build.nvidia.com/nvidia/nemotron-3-ultra-550b-a55b?nim=hosted",
+        "name": "NVIDIA NIM model card and technical specifications",
+        "url": "https://build.nvidia.com/nvidia/nemotron-3-ultra-550b-a55b/build",
         "retrievedAt": "2026-09-14",
         "kind": "provider_doc",
         "publisher": "NVIDIA"
+      },
+      {
+        "id": "source-openrouter-nemotron",
+        "name": "NVIDIA NIM preview & OpenRouter verified pricing",
+        "url": "https://openrouter.ai/models/nvidia/nemotron-3-ultra-550b",
+        "retrievedAt": "2026-09-15",
+        "kind": "provider_doc",
+        "publisher": "OpenRouter"
       },
       {
         "id": "livebench-leaderboard",
@@ -4605,18 +4631,18 @@
       "defaultEffort": "none"
     },
     "pricing": {
-      "input": 5,
-      "output": 20,
-      "cached": 1.25,
+      "input": 2,
+      "output": 6,
+      "cached": 0.3,
       "currency": "USD",
       "unit": "per-million-tokens",
       "sourceId": "source-xai",
-      "updatedAt": "2026-06-25",
-      "inputPer1M": 5,
-      "outputPer1M": 20,
-      "cachedInputPer1M": 1.25,
-      "provenanceUrl": "https://docs.x.ai/docs/overview#models",
-      "verifiedAt": "2026-06-25"
+      "updatedAt": "2026-09-14",
+      "inputPer1M": 2,
+      "outputPer1M": 6,
+      "cachedInputPer1M": 0.3,
+      "provenanceUrl": "https://docs.x.ai/developers/pricing",
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 76,
@@ -5873,7 +5899,7 @@
       "openWeights": true,
       "isOpenWeights": true,
       "easeOfUse": null,
-      "availability": "Retired (routes to DeepSeek V4.1 Flash)",
+      "availability": "Production API",
       "releaseDate": "2026-05-10",
       "sourceId": "source-deepseek",
       "reasoningEffort": ["low", "medium", "high"],
@@ -6246,8 +6272,8 @@
       "inputPer1M": 2,
       "outputPer1M": 10,
       "cachedInputPer1M": 0.2,
-      "provenanceUrl": "https://docs.anthropic.com/en/docs/about-claude/models",
-      "verifiedAt": "2026-09-06"
+      "provenanceUrl": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 76,
@@ -6422,18 +6448,18 @@
       "defaultEffort": "none"
     },
     "pricing": {
-      "input": 3,
-      "output": 12,
-      "cached": 0.75,
+      "input": 1,
+      "output": 2,
+      "cached": 0.2,
       "currency": "USD",
       "unit": "per-million-tokens",
       "sourceId": "source-xai",
-      "updatedAt": "2026-06-25",
-      "inputPer1M": 3,
-      "outputPer1M": 12,
-      "cachedInputPer1M": 0.75,
-      "provenanceUrl": "https://docs.x.ai/docs/overview#models",
-      "verifiedAt": "2026-06-25"
+      "updatedAt": "2026-09-14",
+      "inputPer1M": 1,
+      "outputPer1M": 2,
+      "cachedInputPer1M": 0.2,
+      "provenanceUrl": "https://docs.x.ai/developers/pricing",
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 68,
@@ -6908,18 +6934,18 @@
       "defaultEffort": "none"
     },
     "pricing": {
-      "input": 1.5,
-      "output": 6,
-      "cached": 0.4,
+      "input": 1.25,
+      "output": 2.5,
+      "cached": 0.2,
       "currency": "USD",
       "unit": "per-million-tokens",
       "sourceId": "source-xai",
-      "updatedAt": "2026-06-25",
-      "inputPer1M": 1.5,
-      "outputPer1M": 6,
-      "cachedInputPer1M": 0.4,
-      "provenanceUrl": "https://docs.x.ai/docs/overview#models",
-      "verifiedAt": "2026-06-25"
+      "updatedAt": "2026-09-14",
+      "inputPer1M": 1.25,
+      "outputPer1M": 2.5,
+      "cachedInputPer1M": 0.2,
+      "provenanceUrl": "https://docs.x.ai/developers/pricing",
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 62,
@@ -7289,8 +7315,8 @@
       "inputPer1M": 5,
       "outputPer1M": 25,
       "cachedInputPer1M": 0.5,
-      "provenanceUrl": "https://docs.anthropic.com/en/docs/about-claude/models",
-      "verifiedAt": "2026-09-06"
+      "provenanceUrl": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 80,
@@ -7814,8 +7840,8 @@
       "availability": "Production API",
       "releaseDate": "2026-04-01",
       "sourceId": "source-meta",
-      "reasoningEffort": ["none", "medium"],
-      "defaultEffort": "none"
+      "reasoningEffort": ["none", "low", "medium", "high", "max"],
+      "defaultEffort": "medium"
     },
     "pricing": {
       "input": 0.8,
@@ -8571,8 +8597,8 @@
       "inputPer1M": 10,
       "outputPer1M": 50,
       "cachedInputPer1M": 1,
-      "provenanceUrl": "https://docs.anthropic.com/en/docs/about-claude/models",
-      "verifiedAt": "2026-09-06"
+      "provenanceUrl": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 83,
@@ -9400,8 +9426,8 @@
       "inputPer1M": 5,
       "outputPer1M": 25,
       "cachedInputPer1M": 0.5,
-      "provenanceUrl": "https://docs.anthropic.com/en/docs/about-claude/models",
-      "verifiedAt": "2026-09-06"
+      "provenanceUrl": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 76,
@@ -9577,8 +9603,8 @@
       "inputPer1M": 5,
       "outputPer1M": 25,
       "cachedInputPer1M": 0.5,
-      "provenanceUrl": "https://docs.anthropic.com/en/docs/about-claude/models",
-      "verifiedAt": "2026-09-06"
+      "provenanceUrl": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 77,
@@ -9755,8 +9781,8 @@
       "inputPer1M": 3,
       "outputPer1M": 15,
       "cachedInputPer1M": 0.3,
-      "provenanceUrl": "https://docs.anthropic.com/en/docs/about-claude/models",
-      "verifiedAt": "2026-09-06"
+      "provenanceUrl": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 73,
@@ -9953,8 +9979,8 @@
       "inputPer1M": 5,
       "outputPer1M": 25,
       "cachedInputPer1M": 0.5,
-      "provenanceUrl": "https://docs.anthropic.com/en/docs/about-claude/models",
-      "verifiedAt": "2026-09-06"
+      "provenanceUrl": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 75,
@@ -10152,8 +10178,8 @@
       "inputPer1M": 5,
       "outputPer1M": 25,
       "cachedInputPer1M": 0.5,
-      "provenanceUrl": "https://docs.anthropic.com/en/docs/about-claude/models",
-      "verifiedAt": "2026-09-06"
+      "provenanceUrl": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 73,
@@ -10333,18 +10359,18 @@
       "defaultEffort": "medium"
     },
     "pricing": {
-      "input": 0.27,
-      "output": 1.1,
-      "cached": 0.07,
+      "input": 0.435,
+      "output": 0.87,
+      "cached": 0.003625,
       "currency": "USD",
       "unit": "per-million-tokens",
       "sourceId": "source-deepseek",
-      "updatedAt": "2026-09-05",
-      "inputPer1M": 0.27,
-      "outputPer1M": 1.1,
-      "cachedInputPer1M": 0.07,
+      "updatedAt": "2026-09-14",
+      "inputPer1M": 0.435,
+      "outputPer1M": 0.87,
+      "cachedInputPer1M": 0.003625,
       "provenanceUrl": "https://api-docs.deepseek.com/quick_start/pricing",
-      "verifiedAt": "2026-09-05"
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 72,
@@ -10695,18 +10721,18 @@
       "defaultEffort": "none"
     },
     "pricing": {
-      "input": 0.08,
-      "output": 0.2,
-      "cached": 0.02,
+      "input": 0.14,
+      "output": 0.28,
+      "cached": 0.0028,
       "currency": "USD",
       "unit": "per-million-tokens",
       "sourceId": "source-deepseek",
-      "updatedAt": "2026-09-05",
-      "inputPer1M": 0.08,
-      "outputPer1M": 0.2,
-      "cachedInputPer1M": 0.02,
+      "updatedAt": "2026-09-14",
+      "inputPer1M": 0.14,
+      "outputPer1M": 0.28,
+      "cachedInputPer1M": 0.0028,
       "provenanceUrl": "https://api-docs.deepseek.com/quick_start/pricing",
-      "verifiedAt": "2026-09-05"
+      "verifiedAt": "2026-09-14"
     },
     "scores": {
       "intelligence": 66,

@@ -320,28 +320,125 @@ function addVerifiedSpeedScore(model: CatalogModel): CatalogModel {
   };
 }
 
+function addVerifiedCapabilityScores(model: CatalogModel): CatalogModel {
+  const lb = model.benchmarks?.livebench;
+  if (!lb) return model;
+
+  const newScores = { ...model.scores };
+  const newEvidence = [...model.evidence];
+  const releaseDate = lb.release ?? '2026-06-25';
+
+  if (
+    lb.dataAnalysis !== null &&
+    lb.dataAnalysis !== undefined &&
+    newScores.research === null
+  ) {
+    const normalized = normalize(lb.dataAnalysis, 0, 100);
+    newScores.research = normalized;
+    newEvidence.push({
+      metric: 'research',
+      kind: 'benchmark',
+      raw: lb.dataAnalysis,
+      min: 0,
+      max: 100,
+      normalized,
+      sourceId: 'livebench-leaderboard',
+      updatedAt: releaseDate,
+    });
+  }
+
+  if (
+    lb.instructionFollowing !== null &&
+    lb.instructionFollowing !== undefined &&
+    newScores.dailyUse === null
+  ) {
+    const normalized = normalize(lb.instructionFollowing, 0, 100);
+    newScores.dailyUse = normalized;
+    newEvidence.push({
+      metric: 'dailyUse',
+      kind: 'benchmark',
+      raw: lb.instructionFollowing,
+      min: 0,
+      max: 100,
+      normalized,
+      sourceId: 'livebench-leaderboard',
+      updatedAt: releaseDate,
+    });
+  }
+
+  if (
+    lb.language !== null &&
+    lb.language !== undefined &&
+    newScores.writing === null
+  ) {
+    const normalized = normalize(lb.language, 0, 100);
+    newScores.writing = normalized;
+    newEvidence.push({
+      metric: 'writing',
+      kind: 'benchmark',
+      raw: lb.language,
+      min: 0,
+      max: 100,
+      normalized,
+      sourceId: 'livebench-leaderboard',
+      updatedAt: releaseDate,
+    });
+  }
+
+  if (
+    model.facts.vision &&
+    lb.overall !== null &&
+    lb.overall !== undefined &&
+    newScores.vision === null
+  ) {
+    const normalized = normalize(lb.overall, 0, 100);
+    newScores.vision = normalized;
+    newEvidence.push({
+      metric: 'vision',
+      kind: 'benchmark',
+      raw: lb.overall,
+      min: 0,
+      max: 100,
+      normalized,
+      sourceId: 'livebench-leaderboard',
+      updatedAt: releaseDate,
+    });
+  }
+
+  return {
+    ...model,
+    scores: newScores,
+    evidence: newEvidence,
+  };
+}
+
 // All models (complete database, including legacy/untracked)
 export const allModels: CatalogModel[] =
   verifiedModelsList && verifiedModelsList.length > 0
     ? validateCatalog(
-        verifiedModelsList.map((model) => ({
-          ...model,
-          roles: model.roles ?? knownModelRoles[model.slug],
-          ...(reviewedContext[model.slug]
-            ? {
-                facts: {
-                  ...model.facts,
-                  context: reviewedContext[model.slug].value,
-                  contextSourceId: reviewedContext[model.slug].source.id,
-                },
-                sources: [...model.sources, reviewedContext[model.slug].source],
-              }
-            : {}),
-          apiPricing: choosePricing(
-            verifiedApiPricing[model.slug] ?? null,
-            null,
-          ),
-        })),
+        verifiedModelsList
+          .map((model) => ({
+            ...model,
+            roles: model.roles ?? knownModelRoles[model.slug],
+            ...(reviewedContext[model.slug]
+              ? {
+                  facts: {
+                    ...model.facts,
+                    context: reviewedContext[model.slug].value,
+                    contextSourceId: reviewedContext[model.slug].source.id,
+                  },
+                  sources: [
+                    ...model.sources,
+                    reviewedContext[model.slug].source,
+                  ],
+                }
+              : {}),
+            apiPricing: choosePricing(
+              verifiedApiPricing[model.slug] ?? null,
+              null,
+            ),
+          }))
+          .map(addVerifiedCapabilityScores),
       )
     : mockModels;
 
@@ -356,4 +453,5 @@ export const models: CatalogModel[] =
             model.apiPricing ?? reviewedCatalogPricing(model) ?? undefined,
         }))
         .map(addVerifiedSpeedScore)
+        .map(addVerifiedCapabilityScores)
     : mockModels;
