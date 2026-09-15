@@ -86,7 +86,6 @@ export default function IntelligenceRanking({
                 <a
                   className="score-number"
                   href={`/models/${item.slug}#score-intelligence`}
-                  aria-label={`${item.name} intelligence ranking score ${item.score} out of 100`}
                 >
                   {item.score}
                   <small>Intelligence fit / 100</small>

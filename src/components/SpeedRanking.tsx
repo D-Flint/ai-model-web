@@ -78,7 +78,6 @@ export default function SpeedRanking({ items }: { items: SpeedRankingItem[] }) {
                 <a
                   className="score-number"
                   href={`/models/${item.slug}#score-speed`}
-                  aria-label={`${item.name} peak speed ${item.speedTokensPerSec} tokens per second`}
                 >
                   {item.speedTokensPerSec}
                   <small>{item.range ? 'peak tokens/sec' : 'tokens/sec'}</small>

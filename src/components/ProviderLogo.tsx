@@ -189,6 +189,7 @@ export const ProviderLogo: React.FC<ProviderLogoProps> = ({
       alt={alt}
       width={size}
       height={size}
+      style={{ width: size, height: size, aspectRatio: '1 / 1' }}
       className={`provider-logo-img ${invertOnLight ? 'provider-logo-invert-light' : ''} ${className}`}
       loading="lazy"
       decoding="async"

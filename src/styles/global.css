@@ -2605,6 +2605,7 @@ th {
   vertical-align: middle;
   object-fit: contain;
   flex-shrink: 0;
+  aspect-ratio: 1 / 1;
 }
 :root[data-theme='light'] .provider-logo-invert-light {
   filter: invert(1);

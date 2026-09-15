@@ -16,6 +16,7 @@ const { src, alt, invertOnLight } = getProviderLogoInfo(provider);
   alt={alt}
   width={size}
   height={size}
+  style={`width: ${size}px; height: ${size}px; aspect-ratio: 1 / 1;`}
   class={`provider-logo-img ${invertOnLight ? 'provider-logo-invert-light' : ''} ${className}`.trim()}
   loading="lazy"
   decoding="async"

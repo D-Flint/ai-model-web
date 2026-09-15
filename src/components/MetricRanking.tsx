@@ -93,7 +93,6 @@ export default function MetricRanking({
                 <a
                   className="score-number"
                   href={`/models/${item.slug}#${metricAnchor}`}
-                  aria-label={`${item.name} ${metricLabel.toLowerCase()} ${isPrice ? formatPrice(item.value) : `${item.value} out of 100`}`}
                 >
                   {isPrice ? formatPrice(item.value) : item.value}
                   <small>
