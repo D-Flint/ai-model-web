@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, Check, ChevronRight, Info } from 'lucide-react';
-import { rateLabel } from '../lib/apiPricing';
+import { comparablePrice, rateLabel, standardRate } from '../lib/apiPricing';
 import type { CatalogModel } from '../lib/catalogSchema';
 import {
   defaultModelFinderRequest,
@@ -590,7 +590,11 @@ export default function ModelFinder({ models }: { models: CatalogModel[] }) {
                     </div>
                     <p className="finder-price">
                       <strong>API input / 1M:</strong>{' '}
-                      {rateLabel(recommendation.model, 'input')}
+                      {comparablePrice(recommendation.model, 'input') !== null
+                        ? rateLabel(recommendation.model, 'input')
+                        : standardRate(recommendation.model, 'input')
+                          ? `${rateLabel(recommendation.model, 'input')} (unverified)`
+                          : 'Unavailable'}
                     </p>
                     <details className="score-details finder-score-details">
                       <summary>Why this match?</summary>

@@ -208,12 +208,14 @@ describe('pricing provenance and comparisons', () => {
         url: 'https://openrouter.ai/models/z-ai/glm-5.3-flash',
       },
     });
-    expect(nemotron.apiPricing?.tiers[0]).toMatchObject({
-      input: null,
-      output: null,
-      cached: null,
+    expect(nemotron.apiPricing?.tiers[0].input).toMatchObject({
+      value: 0.63,
+      source: {
+        type: 'openrouter',
+        url: 'https://openrouter.ai/models/nvidia/nemotron-3-ultra-550b',
+      },
     });
-    expect(rateLabel(nemotron, 'input')).toBe('Unavailable');
+    expect(rateLabel(nemotron, 'input')).toBe('$0.63');
   });
   it('publishes GPT-6 Astra short and long-context cached-input rates', () => {
     vi.useFakeTimers();
@@ -310,6 +312,16 @@ describe('pricing provenance and comparisons', () => {
       expect(formatPrice(null)).toBe('Unavailable');
       expect(formatPrice(0)).toBe('$0.00');
       expect(formatPrice(0.0000001)).toBe('<$0.000001');
+
+      // Tiered models sort using their standard context tier rate while preserving detailed label
+      const astra = models.find((m) => m.slug === 'gpt-6-astra')!;
+      expect(comparablePrice(astra, 'input')).toBe(10);
+      expect(comparablePrice(astra, 'output')).toBe(50);
+      expect(rateLabel(astra, 'input')).toBe(
+        '(≤272k: $10.00) (> 272k: $20.00)',
+      );
+      // Cache-aware agent workload: 75% cached ($1), 20% fresh ($10), 5% output ($50) = $5.25
+      expect(comparablePrice(astra, 'blended')).toBe(5.25);
       expect(
         Object.values(verifiedApiPricing).every(
           (p) => p.benchmarkCost === null,

@@ -46,8 +46,8 @@ export const MOONSHOT_MODELS: CanonicalModelConfig[] = [
     ],
     weaknesses: ['Lower coding depth than version 1.3'],
     tags: ['Writing', 'Daily use', 'Large context'],
-    reasoningEffort: ['none', 'medium'],
-    defaultEffort: 'none',
+    reasoningEffort: ['none', 'low', 'medium', 'high', 'max'],
+    defaultEffort: 'medium',
   },
   // ==========================================
   // KIMI K3 FLAGSHIP (2026)

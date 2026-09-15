@@ -114,6 +114,22 @@ describe('recommendation and comparison flows', () => {
   });
 });
 describe('task cost assumptions and reasoning effort stats', () => {
+  it('supports every Muse Spark 1.1 effort level', () => {
+    const museSpark = models.find((m) => m.slug === 'muse-spark-1-1');
+    expect(museSpark?.facts.reasoningEffort).toEqual([
+      'none',
+      'low',
+      'medium',
+      'high',
+      'max',
+    ]);
+
+    if (!museSpark) return;
+    for (const effort of ['none', 'low', 'medium', 'high', 'max'] as const) {
+      expect(getModelEffortStats(museSpark, effort).effort).toBe(effort);
+    }
+  });
+
   it('includes tool overhead in every retried attempt', () => {
     expect(taskCost(mockModels[0], 1000, 500, 0.5, 2, 0.005)).toBeCloseTo(
       0.041,

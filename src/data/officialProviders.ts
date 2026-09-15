@@ -211,16 +211,15 @@ export const OFFICIAL_PROVIDER_SPECS: Record<string, OfficialProviderSpec> = {
     supportsStructuredOutput: true,
     apiAvailable: true,
     officialPricing: {
-      input: null,
-      output: null,
-      cached: null,
+      input: 0.63,
+      output: 3.13,
+      cached: 0.158,
     },
     reasoningEffort: ['none', 'medium'],
     defaultEffort: 'none',
-    lastVerifiedAt: '2026-09-14',
-    sourceUrl:
-      'https://build.nvidia.com/nvidia/nemotron-3-ultra-550b-a55b?nim=hosted',
-    sourceName: 'NVIDIA NIM model availability',
+    lastVerifiedAt: '2026-09-15',
+    sourceUrl: 'https://openrouter.ai/models/nvidia/nemotron-3-ultra-550b',
+    sourceName: 'NVIDIA NIM & OpenRouter verified pricing',
   },
   'glm-5-3': {
     slug: 'glm-5-3',
@@ -604,27 +603,6 @@ export const OFFICIAL_PROVIDER_SPECS: Record<string, OfficialProviderSpec> = {
     sourceUrl: 'https://qwenlm.github.io/',
     sourceName: 'Qwen Official Documentation',
   },
-  'gpt-5-2': {
-    slug: 'gpt-5-2',
-    releaseDate: '2026-03-20',
-    contextWindow: 262144,
-    maxOutputTokens: 16384,
-    supportsVision: true,
-    supportsAudio: true,
-    supportsTools: true,
-    supportsStructuredOutput: true,
-    apiAvailable: true,
-    officialPricing: {
-      input: 1.75,
-      output: 14,
-      cached: 0.175,
-    },
-    reasoningEffort: ['none', 'low', 'medium'],
-    defaultEffort: 'none',
-    lastVerifiedAt: '2026-09-14',
-    sourceUrl: 'https://developers.openai.com/api/docs/models/all',
-    sourceName: 'OpenAI Official Documentation',
-  },
   'gemini-3-5-flash': {
     slug: 'gemini-3-5-flash',
     releaseDate: '2026-03-25',
@@ -688,27 +666,6 @@ export const OFFICIAL_PROVIDER_SPECS: Record<string, OfficialProviderSpec> = {
     lastVerifiedAt: '2026-09-05',
     sourceUrl: 'https://api-docs.deepseek.com/quick_start/pricing',
     sourceName: 'DeepSeek Official Documentation',
-  },
-  'gpt-5-2-codex': {
-    slug: 'gpt-5-2-codex',
-    releaseDate: '2026-03-25',
-    contextWindow: 262144,
-    maxOutputTokens: 16384,
-    supportsVision: false,
-    supportsAudio: false,
-    supportsTools: true,
-    supportsStructuredOutput: true,
-    apiAvailable: true,
-    officialPricing: {
-      input: 1.75,
-      output: 14,
-      cached: 0.175,
-    },
-    reasoningEffort: ['none', 'medium'],
-    defaultEffort: 'none',
-    lastVerifiedAt: '2026-09-14',
-    sourceUrl: 'https://developers.openai.com/api/docs/models/gpt-5.2-codex',
-    sourceName: 'OpenAI Official Documentation',
   },
   'gemini-3-6-flash': {
     slug: 'gemini-3-6-flash',
@@ -1286,7 +1243,7 @@ const deepseekFlashPricing: ApiPricing = {
     },
   ],
   notes: [
-    'Off-peak hours are 01:00–04:00 and 06:00–10:00 UTC, Monday through Friday; all other hours are off-peak.',
+    'Off-peak hours are 01:00–04:00 and 06:00–10:00 UTC, Monday through Friday; all other hours are peak.',
     'DeepSeek-V4-Flash and DeepSeek-V4-Flash-Vision-Exp are retired and route to V4.1 Flash at Flash rates.',
   ],
   benchmarkCost: null,
@@ -1425,6 +1382,144 @@ apiPricingRecords['minimax-m3'] = {
   ],
   benchmarkCost: null,
 };
+
+const currentPricingRetrievedAt = '2026-09-14';
+function currentPrice(
+  value: number,
+  _provider: string,
+  url: string,
+  name: string,
+  unit: PriceValue['unit'] = 'per-million-tokens',
+): PriceValue {
+  return {
+    value,
+    currency: 'USD',
+    unit,
+    source: {
+      name,
+      url,
+      type: 'provider_doc',
+      retrievedAt: currentPricingRetrievedAt,
+      effectiveFrom: null,
+    },
+  };
+}
+
+function addCurrentStandardPricing(
+  slug: string,
+  provider: string,
+  input: number,
+  output: number,
+  cached: number | null,
+  context: number,
+  url: string,
+  name: string,
+): void {
+  apiPricingRecords[slug] = {
+    provider,
+    scope: `${provider} API · current standard text pricing`,
+    tiers: [
+      {
+        id: 'standard',
+        label: `0–${context.toLocaleString('en-US')} input tokens`,
+        minContext: 0,
+        maxContext: context,
+        input: currentPrice(input, provider, url, name),
+        output: currentPrice(output, provider, url, name),
+        cached:
+          cached === null ? null : currentPrice(cached, provider, url, name),
+        cacheWrite5m: null,
+        cacheWrite1h: null,
+        cacheStorage: null,
+        search: null,
+      },
+    ],
+    notes: [
+      'Rates were reviewed against the linked first-party provider pricing documentation.',
+      'Batch, priority, regional, media, tool, and other usage-specific charges may differ.',
+    ],
+    benchmarkCost: null,
+  };
+}
+
+for (const [slug, input, output, cached] of [
+  ['gpt-5-6-sol', 4, 20, 0.4],
+  ['gpt-5-6-terra', 2, 12, 0.2],
+  ['gpt-5-6-luna', 0.2, 1.2, 0.02],
+] as const) {
+  addCurrentStandardPricing(
+    slug,
+    'OpenAI',
+    input,
+    output,
+    cached,
+    1_048_576,
+    'https://platform.openai.com/docs/models',
+    'OpenAI API model pricing',
+  );
+}
+
+for (const [slug, input, output, cached] of [
+  ['claude-fable-5', 10, 50, 1],
+  ['claude-opus-5', 5, 25, 0.5],
+  ['claude-opus-4-8', 5, 25, 0.5],
+  ['claude-opus-4-7', 5, 25, 0.5],
+  ['claude-opus-4-6', 5, 25, 0.5],
+  ['claude-opus-4-5', 5, 25, 0.5],
+  ['claude-sonnet-5', 2, 10, 0.2],
+  ['claude-sonnet-4-6', 3, 15, 0.3],
+] as const) {
+  addCurrentStandardPricing(
+    slug,
+    'Anthropic',
+    input,
+    output,
+    cached,
+    1_000_000,
+    'https://platform.claude.com/docs/en/about-claude/pricing',
+    'Anthropic API pricing',
+  );
+}
+
+for (const [slug, input, output, cached] of [
+  ['grok-4-6', 2, 6, 0.5],
+  ['grok-4-5', 2, 6, 0.3],
+  ['grok-4-3', 1.25, 2.5, 0.2],
+  ['grok-build-0-1', 1, 2, 0.2],
+] as const) {
+  addCurrentStandardPricing(
+    slug,
+    'xAI',
+    input,
+    output,
+    cached,
+    slug === 'grok-4-3' ? 1_000_000 : 500_000,
+    'https://docs.x.ai/developers/pricing',
+    'xAI API pricing',
+  );
+}
+
+addCurrentStandardPricing(
+  'deepseek-v4-flash',
+  'DeepSeek',
+  0.14,
+  0.28,
+  0.0028,
+  1_000_000,
+  'https://api-docs.deepseek.com/quick_start/pricing',
+  'DeepSeek API pricing',
+);
+addCurrentStandardPricing(
+  'deepseek-v4-pro',
+  'DeepSeek',
+  0.435,
+  0.87,
+  0.003625,
+  1_000_000,
+  'https://api-docs.deepseek.com/quick_start/pricing',
+  'DeepSeek API pricing',
+);
+
 export const verifiedApiPricing: Record<string, ApiPricing> =
   Object.fromEntries(
     Object.entries(apiPricingRecords).map(([slug, record]) => [

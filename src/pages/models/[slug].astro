@@ -92,6 +92,7 @@ const orderedMetrics: Metric[] = [
                 <span
                   class={`effort-badge ${model.facts.reasoningEffort.includes('fixed') ? 'effort-fixed' : ''}`}
                   style="margin-left: 6px;"
+                  data-effort-badge
                 >
                   {model.facts.reasoningEffort.includes('fixed')
                     ? 'Fixed CoT'
@@ -122,9 +123,9 @@ const orderedMetrics: Metric[] = [
           >
         </div>
       </div><a class="score-number" href="#score-overall"
-        >{model.scores.overall !== null ? model.scores.overall : '—'}<small
-          >Overall / 100</small
-        ></a
+        ><span data-effort-overall
+          >{model.scores.overall !== null ? model.scores.overall : '—'}</span
+        ><small>Overall / 100</small></a
       >
     </div>
   </div>
@@ -150,7 +151,7 @@ const orderedMetrics: Metric[] = [
   <div class="pillar-summary-bar">
     <div class="pillar-summary-card">
       <span class="pillar-summary-label">Intelligence</span>
-      <strong class="pillar-summary-value"
+      <strong class="pillar-summary-value" data-effort-intelligence
         >{
           model.scores.intelligence !== null ? (
             <>
@@ -172,7 +173,9 @@ const orderedMetrics: Metric[] = [
     </div>
     <div class="pillar-summary-card">
       <span class="pillar-summary-label">Speed</span>
-      <strong class="pillar-summary-value">{speedLabel}</strong>
+      <strong class="pillar-summary-value" data-effort-speed
+        >{speedLabel}</strong
+      >
       <span class="micro muted">
         {
           speedTps > 0
@@ -214,7 +217,9 @@ const orderedMetrics: Metric[] = [
                     <ChevronDown size={13} />
                   </span>
                   <strong>
-                    {scoreVal !== null ? scoreVal : '—'}
+                    <span data-score-value>
+                      {scoreVal !== null ? scoreVal : '—'}
+                    </span>
                     <small class="micro"> / 100</small>
                   </strong>
                 </>
@@ -436,4 +441,66 @@ const orderedMetrics: Metric[] = [
       scores are available for this fictional model.
     </p>
   </section>
+
+  <script>
+    function updateEffortDisplay(detail: {
+      effort: string;
+      stats?: {
+        scores?: Record<string, number | null>;
+        speedTokensPerSec?: number;
+      };
+      speedDisplay?: string | null;
+    }) {
+      if (!detail) return;
+      const { effort, stats, speedDisplay } = detail;
+
+      document
+        .querySelectorAll<HTMLElement>('[data-effort-badge]')
+        .forEach((el) => {
+          el.textContent = `Effort: ${effort}`;
+        });
+
+      const scores = stats?.scores;
+      if (scores) {
+        if (scores.overall !== undefined && scores.overall !== null) {
+          const overallVal = scores.overall;
+          document
+            .querySelectorAll<HTMLElement>('[data-effort-overall]')
+            .forEach((el) => {
+              el.textContent = String(overallVal);
+            });
+        }
+
+        if (scores.intelligence !== undefined && scores.intelligence !== null) {
+          const intelVal = scores.intelligence;
+          document
+            .querySelectorAll<HTMLElement>('[data-effort-intelligence]')
+            .forEach((el) => {
+              el.innerHTML = `${intelVal}<small>/100</small>`;
+            });
+        }
+
+        for (const [metric, val] of Object.entries(scores)) {
+          const scoreElem = document.querySelector<HTMLElement>(
+            `#score-${metric} [data-score-value]`,
+          );
+          if (scoreElem && val !== null) {
+            scoreElem.textContent = String(val);
+          }
+        }
+      }
+
+      if (speedDisplay) {
+        document
+          .querySelectorAll<HTMLElement>('[data-effort-speed]')
+          .forEach((el) => {
+            el.textContent = `${speedDisplay} tokens/sec`;
+          });
+      }
+    }
+
+    window.addEventListener('synapse:effort-change', ((event: CustomEvent) => {
+      updateEffortDisplay(event.detail);
+    }) as EventListener);
+  </script>
 </RootLayout>

@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import type { CatalogModel } from '../lib/catalogSchema';
-import { calculateApiCost, formatPrice } from '../lib/apiPricing';
+import {
+  calculateApiCost,
+  formatPrice,
+  validateModelWorkload,
+} from '../lib/apiPricing';
 import { selectionFromSearch } from '../lib/decision';
 import ApiPricing from './ApiPricing';
 
@@ -68,18 +72,38 @@ export default function CostCalculator({ models }: { models: CatalogModel[] }) {
           enabled.has(key) ? Number(value) : 0,
         ]),
       ) as Record<keyof typeof empty, number>;
-      result = calculateApiCost(model.apiPricing, counts);
+
+      const validation = validateModelWorkload(model, counts);
+      if (!validation.isValid) {
+        throw new Error(validation.errors.join(' '));
+      }
+
+      result = calculateApiCost(model.apiPricing, counts, new Date(), model);
     } catch (e) {
       error = e instanceof Error ? e.message : 'Check your workload.';
     }
   }
   function field(key: keyof typeof empty, label: string) {
+    let max: number | undefined;
+    if (model) {
+      if (key === 'output') {
+        max = model.facts.maxOutput;
+      } else if (
+        key === 'input' ||
+        key === 'cached' ||
+        key === 'cacheWrite5m' ||
+        key === 'cacheWrite1h'
+      ) {
+        max = model.facts.context;
+      }
+    }
     return (
       <label className="field" key={key}>
         {label}
         <input
           type="number"
           min="0"
+          max={max}
           step="1"
           value={fields[key]}
           onChange={(e) => {
@@ -119,6 +143,15 @@ export default function CostCalculator({ models }: { models: CatalogModel[] }) {
             ))}
           </select>
         </label>
+        {model && (
+          <p
+            className="micro muted"
+            style={{ marginTop: '-8px', marginBottom: '14px' }}
+          >
+            Model limits: {model.facts.context.toLocaleString()} tokens context
+            window · {model.facts.maxOutput.toLocaleString()} tokens max output.
+          </p>
+        )}
         {field('input', 'Uncached input tokens per request')}
         {field('output', 'Output tokens per request')}
         {field('requests', 'Number of requests')}

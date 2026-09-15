@@ -21,7 +21,7 @@ describe('ComparisonBuilder effort defaults', () => {
     );
 
     expect(html).toContain('Reasoning Effort');
-    expect(html).toContain('value="medium" selected=""');
+    expect(html).toContain('value="max" selected=""');
     expect(html).not.toContain(
       'Muse Spark 1.1</a><div style="margin-top:6px"><span class="effort-badge effort-fixed">Fixed CoT',
     );

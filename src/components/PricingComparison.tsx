@@ -34,17 +34,21 @@ export default function PricingComparison({
   return (
     <section>
       <div className="pricing-controls">
-        <label className="field">
+        <label className="field" htmlFor="pricing-search">
           Search model or provider
           <input
+            id="pricing-search"
+            name="pricing-search"
             type="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
         </label>
-        <label className="field">
+        <label className="field" htmlFor="pricing-sort">
           Sort pricing
           <select
+            id="pricing-sort"
+            name="pricing-sort"
             value={sort}
             onChange={(e) => setSort(e.target.value as typeof sort)}
           >
@@ -56,9 +60,10 @@ export default function PricingComparison({
         </label>
       </div>
       <p className="micro">
-        USD per 1M tokens. Blended API price = 70% input + 30% output. Tiered,
-        stale and unavailable prices are excluded from price sorting and listed
-        after comparable rates.
+        USD per 1M tokens. Blended API price uses standard cache-aware workload:
+        75% cached input + 20% fresh input + 5% output. Tiered models are sorted
+        by standard context rates. Stale and unavailable prices are listed after
+        comparable rates.
       </p>
       <div
         className="table-scroll pricing-desktop-table"

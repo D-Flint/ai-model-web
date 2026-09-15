@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowRight, Layers } from 'lucide-react';
 import type { CatalogModel } from '../lib/catalogSchema';
 import { effortLabels, type ReasoningEffort } from '../data/config';
@@ -26,6 +26,39 @@ export default function ModelEffortExplorer({
 
   const [selectedEffort, setSelectedEffort] =
     useState<ReasoningEffort>(defaultEffort);
+
+  const handleEffortChange = (effort: ReasoningEffort) => {
+    setSelectedEffort(effort);
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      url.searchParams.set('effort', effort);
+      window.history.replaceState({}, '', url.toString());
+      window.dispatchEvent(
+        new CustomEvent('synapse:effort-change', {
+          detail: {
+            effort,
+            stats: getModelEffortStats(model, effort),
+            speedDisplay: getSpeedDisplayValue(model, effort),
+          },
+        }),
+      );
+    }
+  };
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const url = new URL(window.location.href);
+    const effortParam = url.searchParams.get(
+      'effort',
+    ) as ReasoningEffort | null;
+    if (
+      effortParam &&
+      availableEfforts.includes(effortParam) &&
+      effortParam !== selectedEffort
+    ) {
+      handleEffortChange(effortParam);
+    }
+  }, []);
 
   if (!isReasoning || availableEfforts.length <= 1) {
     return null;
@@ -76,7 +109,7 @@ export default function ModelEffortExplorer({
               role="tab"
               aria-selected={selectedEffort === effort}
               className={`effort-tab ${selectedEffort === effort ? 'active' : ''}`}
-              onClick={() => setSelectedEffort(effort)}
+              onClick={() => handleEffortChange(effort)}
             >
               {effortLabels[effort]}
             </button>

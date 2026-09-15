@@ -8,7 +8,9 @@ import {
 
 export const pricingPolicy = {
   staleAfterDays: 7,
-  inputRatio: 0.7,
+  cachedRatio: 0.75,
+  inputRatio: 0.2,
+  outputRatio: 0.05,
   tokensPerUnit: 1_000_000,
 } as const;
 export function priceFreshness(
@@ -72,18 +74,55 @@ export function rateLabel(
   const rate = singleRate(model, key);
   return formatPrice(rate?.value);
 }
+export function standardRate(
+  model: CatalogModel,
+  key: 'input' | 'output' | 'cached',
+): PriceValue | null {
+  const tiers = model.apiPricing?.tiers;
+  if (!tiers || tiers.length === 0) return null;
+  return tiers[0][key] ?? null;
+}
+
+export function rateDisplayWithStatus(
+  model: CatalogModel,
+  key: 'input' | 'output' | 'cached',
+  now = new Date(),
+): string {
+  const rate = standardRate(model, key);
+  if (!rate) return 'Unavailable';
+  const freshness = priceFreshness(rate, now);
+  if (freshness === 'Needs verification') {
+    return `${formatPrice(rate.value)} (unverified)`;
+  }
+  if (freshness === 'Unavailable') {
+    return 'Unavailable';
+  }
+  return formatPrice(rate.value);
+}
+
 export function comparablePrice(
   model: CatalogModel,
   key: 'input' | 'output' | 'blended' = 'input',
 ): number | null {
-  const input = singleRate(model, 'input');
-  const output = singleRate(model, 'output');
-  if (key === 'blended')
-    return priceFreshness(input) === 'Current' &&
-      priceFreshness(output) === 'Current'
-      ? input!.value * pricingPolicy.inputRatio +
-          output!.value * (1 - pricingPolicy.inputRatio)
-      : null;
+  const input = standardRate(model, 'input');
+  const output = standardRate(model, 'output');
+  const cached = standardRate(model, 'cached');
+  if (key === 'blended') {
+    if (
+      priceFreshness(input) !== 'Current' ||
+      priceFreshness(output) !== 'Current'
+    )
+      return null;
+    const effectiveCached =
+      cached && priceFreshness(cached) === 'Current'
+        ? cached.value
+        : input!.value;
+    const blended =
+      effectiveCached * pricingPolicy.cachedRatio +
+      input!.value * pricingPolicy.inputRatio +
+      output!.value * pricingPolicy.outputRatio;
+    return Number(blended.toFixed(4));
+  }
   const price = key === 'input' ? input : output;
   return priceFreshness(price) === 'Current' ? price!.value : null;
 }
@@ -226,10 +265,49 @@ export interface Workload {
   search?: number;
   cacheTokenHours?: number;
 }
+export interface WorkloadValidationResult {
+  isValid: boolean;
+  errors: string[];
+}
+
+export function validateModelWorkload(
+  model: CatalogModel,
+  work: Workload,
+): WorkloadValidationResult {
+  const errors: string[] = [];
+  const maxOutput = model.facts.maxOutput;
+  const contextWindow = model.facts.context;
+
+  if (maxOutput && work.output > maxOutput) {
+    errors.push(
+      `Output (${work.output.toLocaleString()} tokens) exceeds ${model.name}'s maximum output limit of ${maxOutput.toLocaleString()} tokens.`,
+    );
+  }
+
+  const totalTokensPerRequest =
+    work.input +
+    work.cached +
+    (work.cacheWrite5m ?? 0) +
+    (work.cacheWrite1h ?? 0) +
+    work.output;
+
+  if (contextWindow && totalTokensPerRequest > contextWindow) {
+    errors.push(
+      `Total request tokens (${totalTokensPerRequest.toLocaleString()}) exceed ${model.name}'s context window of ${contextWindow.toLocaleString()} tokens.`,
+    );
+  }
+
+  return {
+    isValid: errors.length === 0,
+    errors,
+  };
+}
+
 export function calculateApiCost(
   pricing: ApiPricing | null | undefined,
   work: Workload,
   now = new Date(),
+  model?: CatalogModel,
 ): {
   total: number;
   input: number;
@@ -241,6 +319,12 @@ export function calculateApiCost(
   for (const [key, value] of Object.entries(work)) {
     if (!Number.isSafeInteger(value) || value < 0)
       throw new Error(`Enter a whole, non-negative ${key} count.`);
+  }
+  if (model) {
+    const validation = validateModelWorkload(model, work);
+    if (!validation.isValid) {
+      throw new Error(validation.errors.join(' '));
+    }
   }
   const context =
     work.input +

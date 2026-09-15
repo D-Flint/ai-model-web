@@ -19,7 +19,7 @@ import { models } from '../src/data/models';
 
 beforeEach(() => {
   vi.useFakeTimers();
-  vi.setSystemTime(new Date('2026-09-12T12:00:00Z'));
+  vi.setSystemTime(new Date('2026-09-15T12:00:00Z'));
 });
 
 afterEach(() => {

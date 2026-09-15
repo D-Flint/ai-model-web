@@ -1,4 +1,4 @@
-import { comparablePrice } from './apiPricing';
+import { comparablePrice, priceFreshness, standardRate } from './apiPricing';
 import type { CatalogModel } from './catalogSchema';
 import {
   finderMetricLabels,
@@ -518,7 +518,13 @@ function candidateTradeoff(
 ): string {
   if (coverage < 1) return 'Some requested benchmark evidence is unavailable.';
   const price = comparablePrice(model);
-  if (price === null) return 'Current API pricing is unavailable.';
+  if (price === null) {
+    const rate = standardRate(model, 'input');
+    if (rate && priceFreshness(rate) === 'Needs verification') {
+      return 'Current API pricing is pending verification.';
+    }
+    return 'Current API pricing is unavailable.';
+  }
   const fastest = Math.max(
     ...eligibleModels.map((candidate) => candidate.scores.speed ?? 0),
   );
