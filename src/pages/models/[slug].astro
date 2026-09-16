@@ -11,6 +11,7 @@ import { getPublishedRankingModels } from '../../lib/rankings';
 import {
   contextSize,
   rankModels,
+  composite,
   getSpeedDisplayValue,
   getSpeedTokensPerSec,
 } from '../../lib/decision';
@@ -30,6 +31,12 @@ export function getStaticPaths() {
   }));
 }
 const { model } = Astro.props;
+const livebenchScore =
+  model.benchmarks?.livebench?.overall != null
+    ? Math.round(model.benchmarks.livebench.overall)
+    : null;
+const synapseCompositeScore = composite(model.scores);
+const heroPrimaryScore = livebenchScore ?? synapseCompositeScore;
 const speedTps = getSpeedTokensPerSec(model);
 const speedRange = model.facts.speedTokensPerSecRange;
 const hasOpenRouterSpeed = speedRange?.sourceId === 'openrouter-throughput';
@@ -122,11 +129,37 @@ const orderedMetrics: Metric[] = [
             >Estimate my cost</a
           >
         </div>
-      </div><a class="score-number" href="#score-overall"
-        ><span data-effort-overall
-          >{model.scores.overall !== null ? model.scores.overall : '—'}</span
-        ><small>Overall / 100</small></a
+      </div><a
+        class="score-number"
+        href="#score-overall"
+        title={livebenchScore !== null
+          ? `LiveBench Overall: ${livebenchScore} · Synapse Composite: ${synapseCompositeScore}`
+          : `Synapse Composite: ${synapseCompositeScore} / 100`}
       >
+        <span
+          data-effort-overall
+          {...livebenchScore === null
+            ? { 'data-effort-overall-dynamic': true }
+            : {}}
+        >
+          {heroPrimaryScore !== null ? heroPrimaryScore : '—'}
+        </span>
+        <small>
+          {
+            livebenchScore !== null ? (
+              <>
+                LiveBench: {livebenchScore} · Composite:{' '}
+                <span data-hero-composite>{synapseCompositeScore}</span>
+              </>
+            ) : (
+              <>
+                Composite:{' '}
+                <span data-hero-composite>{synapseCompositeScore}</span> / 100
+              </>
+            )
+          }
+        </small>
+      </a>
     </div>
   </div>
   {
@@ -202,12 +235,17 @@ const orderedMetrics: Metric[] = [
         Select a score to see how it was calculated.
       </p>{
         orderedMetrics.map((metric) => {
-          const label = metricLabels[metric];
+          const isOverall = metric === 'overall';
+          const label = isOverall
+            ? 'Synapse Weighted Composite'
+            : metricLabels[metric];
           const evidence = model.evidence.find((e) => e.metric === metric);
           const sourceObj = model.sources.find(
             (s) => s.id === evidence?.sourceId,
           );
-          const scoreVal = model.scores[metric];
+          const scoreVal = isOverall
+            ? synapseCompositeScore
+            : model.scores[metric];
           return (
             <details class="score-details" id={`score-${metric}`}>
               <summary>
@@ -465,7 +503,12 @@ const orderedMetrics: Metric[] = [
         if (scores.overall !== undefined && scores.overall !== null) {
           const overallVal = scores.overall;
           document
-            .querySelectorAll<HTMLElement>('[data-effort-overall]')
+            .querySelectorAll<HTMLElement>('[data-hero-composite]')
+            .forEach((el) => {
+              el.textContent = String(overallVal);
+            });
+          document
+            .querySelectorAll<HTMLElement>('[data-effort-overall-dynamic]')
             .forEach((el) => {
               el.textContent = String(overallVal);
             });

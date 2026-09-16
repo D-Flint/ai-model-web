@@ -552,8 +552,11 @@ export default function ModelFinder({ models }: { models: CatalogModel[] }) {
                       <span className="finder-result-category">
                         {resultLabel(recommendation.category)}
                       </span>
-                      <span className="finder-confidence">
-                        {recommendation.queryConfidence}% confidence
+                      <span
+                        className="finder-confidence"
+                        title="Coverage and freshness of verified benchmark evidence"
+                      >
+                        {recommendation.queryConfidence}% evidence coverage
                       </span>
                     </div>
                     <div className="finder-result-summary">
@@ -600,8 +603,8 @@ export default function ModelFinder({ models }: { models: CatalogModel[] }) {
                       <summary>Why this match?</summary>
                       <dl className="finder-breakdown">
                         <div>
-                          <dt>Task fit</dt>
-                          <dd>{recommendation.taskFit}</dd>
+                          <dt>Task fit score</dt>
+                          <dd>{recommendation.taskFit}/100</dd>
                         </div>
                         <div>
                           <dt>Priority fit</dt>
@@ -614,7 +617,7 @@ export default function ModelFinder({ models }: { models: CatalogModel[] }) {
                           </dd>
                         </div>
                         <div>
-                          <dt>Evidence confidence</dt>
+                          <dt>Evidence coverage</dt>
                           <dd>{recommendation.queryConfidence}%</dd>
                         </div>
                         <div className="finder-breakdown-total">

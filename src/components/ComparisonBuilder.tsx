@@ -519,6 +519,16 @@ export default function ComparisonBuilder({
                                 aria-hidden="true"
                               />
                             </div>
+                            {item.stats.isEstimated && (
+                              <div style={{ marginTop: '4px' }}>
+                                <span
+                                  className="estimate-badge"
+                                  title="Scores for this effort level are modeled based on standard reasoning scaling behavior, not an independent LiveBench evaluation run."
+                                >
+                                  Estimated
+                                </span>
+                              </div>
+                            )}
                           </div>
                           {item.availableEfforts.length > 1 &&
                             selection.length < 4 && (
@@ -822,6 +832,16 @@ export default function ComparisonBuilder({
                                   <Plus size={11} /> Compare effort
                                 </button>
                               )}
+                            {item.stats.isEstimated && (
+                              <div style={{ marginTop: '4px' }}>
+                                <span
+                                  className="estimate-badge"
+                                  title="Scores for this effort level are modeled based on standard reasoning scaling behavior, not an independent LiveBench evaluation run."
+                                >
+                                  Estimated
+                                </span>
+                              </div>
+                            )}
                           </div>
                         ) : (
                           <div style={{ marginTop: '6px' }}>
@@ -1073,7 +1093,7 @@ export default function ComparisonBuilder({
                     item: bestOverall,
                     detail:
                       bestOverall.stats.scores.overall !== null
-                        ? `${bestOverall.stats.scores.overall}/100 overall composite across available verified metrics.`
+                        ? `${bestOverall.stats.scores.overall}/100 Synapse composite across available verified metrics.`
                         : 'Overall score pending.',
                   },
                 ];

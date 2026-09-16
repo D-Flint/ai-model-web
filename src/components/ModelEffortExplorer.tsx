@@ -96,6 +96,21 @@ export default function ModelEffortExplorer({
         <div className="effort-explorer-title">
           <Layers size={18} />
           <span>Reasoning Effort Levels & Dynamic Stats</span>
+          {currentStats.isEstimated ? (
+            <span
+              className="estimate-badge"
+              title="Scores for this effort level are modeled based on standard reasoning scaling behavior, not an independent LiveBench evaluation run."
+            >
+              Estimated / Modeled
+            </span>
+          ) : (
+            <span
+              className="measured-badge"
+              title="Scores for this effort level match official measured baseline benchmark runs."
+            >
+              Measured Baseline
+            </span>
+          )}
         </div>
         <div
           className="effort-tabs"
@@ -118,13 +133,27 @@ export default function ModelEffortExplorer({
       </div>
 
       <p className="micro muted" style={{ margin: '0 0 16px' }}>
-        Adjusting reasoning effort allocates more or fewer internal thinking
-        tokens, directly altering intelligence, speed, and cost tradeoffs.
+        {currentStats.isEstimated ? (
+          <>
+            <strong>Modeled Tradeoff:</strong> Scores for{' '}
+            {effortLabels[selectedEffort]} are estimated based on standard
+            reasoning scaling behavior relative to the measured{' '}
+            {effortLabels[defaultEffort]} baseline, not an independent LiveBench
+            evaluation run.
+          </>
+        ) : (
+          <>
+            Adjusting reasoning effort allocates more or fewer internal thinking
+            tokens, directly altering intelligence, speed, and cost tradeoffs.
+            Scores below reflect the official measured baseline benchmark
+            evaluation ({effortLabels[defaultEffort]}).
+          </>
+        )}
       </p>
 
       <div className="effort-stats-grid">
         <div className="effort-stat-card">
-          <span className="label">Overall Score</span>
+          <span className="label">Synapse Composite</span>
           <div className="value">
             {currentStats.scores.overall !== null
               ? `${currentStats.scores.overall}/100`
@@ -135,6 +164,7 @@ export default function ModelEffortExplorer({
               className={`delta ${overallDelta > 0 ? 'delta-positive' : 'delta-negative'}`}
             >
               {overallDelta > 0 ? `+${overallDelta}` : overallDelta} vs default
+              (est.)
             </div>
           )}
         </div>
@@ -153,7 +183,7 @@ export default function ModelEffortExplorer({
               {intelligenceDelta > 0
                 ? `+${intelligenceDelta}`
                 : intelligenceDelta}{' '}
-              pts
+              pts {currentStats.isEstimated ? '(est.)' : ''}
             </div>
           )}
         </div>

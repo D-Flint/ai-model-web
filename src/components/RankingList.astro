@@ -113,9 +113,11 @@ const ranked = rankModels(baseModels, 'overall');
         ? 'Current production models with speed data verified within 90 days. Ranges rank by their highest measured value; single measurements use their only value.'
         : slug === 'cheap'
           ? 'Current production models with current verified standard input pricing. Tiered and unavailable rates are excluded.'
-          : scoreMetric
-            ? `Current production models verified within 90 days and ranked by evidence-backed ${metricLabels[scoreMetric].toLowerCase()} score.`
-            : 'Sample ranking, not a market recommendation. Sorted by overall score, with alphabetical ordering for ties.'
+          : scoreMetric === 'costEfficiency'
+            ? 'Current production models ranked by capability-adjusted value (effective performance per dollar across standard workload profiles).'
+            : scoreMetric
+              ? `Current production models verified within 90 days and ranked by evidence-backed ${metricLabels[scoreMetric].toLowerCase()} score.`
+              : 'Sample ranking, not a market recommendation. Sorted by overall score, with alphabetical ordering for ties.'
   }
   <a href="/methodology">How scoring works</a>.
 </div>
@@ -171,7 +173,12 @@ const ranked = rankModels(baseModels, 'overall');
                 href={`/models/${model.slug}#score-overall`}
               >
                 {model.scores.overall}
-                <small>{metricLabels.overall} / 100</small>
+                <small>
+                  {model.benchmarks?.livebench?.overall != null
+                    ? metricLabels.livebenchOverall
+                    : metricLabels.overall}{' '}
+                  / 100
+                </small>
               </a>
             </div>
             <div class="ranking-row-content">

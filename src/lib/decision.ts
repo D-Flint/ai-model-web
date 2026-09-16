@@ -108,6 +108,8 @@ export interface ModelEffortStats {
   scores: Record<Capability, number | null> & { overall: number | null };
   effectivePrice: number | null;
   workloadProfile: WorkloadProfileId;
+  isMeasured: boolean;
+  isEstimated: boolean;
 }
 
 const openRouterThroughputSource = 'openrouter-throughput';
@@ -281,6 +283,10 @@ export function getModelEffortStats(
   }
 
   const overall = composite(adjustedCapabilities);
+  const isEstimated = Boolean(
+    isReasoning && effort !== 'fixed' && effort !== baseDefault,
+  );
+  const isMeasured = !isEstimated;
 
   return {
     effort,
@@ -288,6 +294,8 @@ export function getModelEffortStats(
     speedTokensPerSec,
     effectivePrice,
     workloadProfile: profileId,
+    isMeasured,
+    isEstimated,
     scores: {
       ...adjustedCapabilities,
       overall,

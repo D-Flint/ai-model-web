@@ -1,5 +1,5 @@
 export const metricLabels = {
-  overall: 'Overall',
+  overall: 'Synapse Composite',
   intelligence: 'Intelligence',
   coding: 'Coding',
   agentic: 'Agentic use',
@@ -10,8 +10,9 @@ export const metricLabels = {
   speed: 'Speed',
   reliability: 'Reliability',
   costEfficiency: 'Cost efficiency',
+  livebenchOverall: 'LiveBench Overall',
 } as const;
-export type Metric = keyof typeof metricLabels;
+export type Metric = Exclude<keyof typeof metricLabels, 'livebenchOverall'>;
 export type Capability = Exclude<Metric, 'overall'>;
 export const overallWeights: Record<Capability, number> = {
   intelligence: 0.25,

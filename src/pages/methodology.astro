@@ -62,8 +62,25 @@ import { metricLabels, overallWeights } from '../data/config';
       </div><p>
         These are provisional product weights, version <code>sample-1.0</code>.
         They live in one configuration file and are exposed on model detail
-        pages. Cost efficiency is a synthetic capability in this edition, not a
-        measured economic advantage.
+        pages.
+      </p>
+      <p>
+        <strong>Cost efficiency</strong> in Synapse evaluates capability-adjusted
+        economic value by mapping effective blended token pricing (accounting for
+        cached input discounts across standard workload profiles) to an inverted logarithmic
+        0–100 scale ($0.05/1M to $100/1M tokens):
+      </p>
+      <p class="micro muted">
+        Effective Blended Price = Cached Rate × Cached Ratio + Input Rate ×
+        Input Ratio + Output Rate × Output Ratio.<br />
+        Score = 100 − ((log10(Effective Price) − log10(0.05)) / (log10(100) − log10(0.05)))
+        × 100.
+      </p>
+      <p>
+        This models pricing efficiency per token across prompt caching
+        workloads, in contrast to LiveBench's independent "Cost / task" metric
+        which evaluates execution token expenditure per successful benchmark
+        problem.
       </p>
     </section>
     <section>

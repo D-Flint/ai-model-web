@@ -64,8 +64,8 @@ interface ColumnDef {
 const ALL_COLUMNS: ColumnDef[] = [
   {
     key: 'overall',
-    label: 'Overall',
-    headerLabel: 'OVERALL',
+    label: 'LiveBench Overall',
+    headerLabel: 'LIVEBENCH OVERALL',
     align: 'center',
     defaultVisible: true,
   },
