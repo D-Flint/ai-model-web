@@ -26,6 +26,8 @@ export interface IntelligenceRankingResult {
 
 export interface SpeedMeasurement {
   value: number;
+  peakValue?: number;
+  medianValue?: number;
   range: { min: number; max: number } | null;
   sourceId: string;
   verifiedAt: string;
@@ -140,6 +142,7 @@ export function getVerifiedSpeedMeasurement(
   if (range) {
     const min = Math.min(range.min, range.max);
     const max = Math.max(range.min, range.max);
+    const median = Math.round((min + max) / 2);
     const sourceExists = model.sources.some(
       (source) => source.id === range.sourceId,
     );
@@ -153,6 +156,8 @@ export function getVerifiedSpeedMeasurement(
       return null;
     return {
       value: max,
+      peakValue: max,
+      medianValue: median,
       range: { min, max },
       sourceId: range.sourceId,
       verifiedAt: range.retrievedAt,
@@ -175,6 +180,8 @@ export function getVerifiedSpeedMeasurement(
 
   return {
     value: speed,
+    peakValue: speed,
+    medianValue: speed,
     range: null,
     sourceId: source.id,
     verifiedAt: source.retrievedAt,

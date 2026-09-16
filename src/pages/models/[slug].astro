@@ -75,6 +75,16 @@ const orderedMetrics: Metric[] = [
   'reliability',
   'costEfficiency',
 ];
+const verifiedEvidenceMetrics = orderedMetrics.filter(
+  (m) =>
+    m !== 'overall' &&
+    model.scores[m] !== null &&
+    model.evidence.some((e) => e.metric === m && e.normalized !== null),
+);
+const verifiedCapabilityCount = verifiedEvidenceMetrics.length;
+const totalCapabilityCount = orderedMetrics.filter(
+  (m) => m !== 'overall',
+).length;
 ---
 
 <RootLayout
@@ -165,13 +175,19 @@ const orderedMetrics: Metric[] = [
   {
     model.dataKind === 'verified' ? (
       <div class="notice">
-        Verified external data tracking {model.sources.length} authoritative
-        sources. Last verified: {model.lastVerifiedAt}.
+        <span>
+          Verified evidence available for {verifiedCapabilityCount} of{' '}
+          {totalCapabilityCount} capability domains across{' '}
+          {model.sources.length} authoritative sources. Last verified:{' '}
+          {model.lastVerifiedAt}.
+        </span>
       </div>
     ) : (
       <div class="notice">
-        Sample data created September 5, 2026. No real model evaluations or
-        provider verification are claimed.
+        <span>
+          Preview fixture data for architecture and evaluation demonstration. No
+          real model evaluations or provider verification are claimed.
+        </span>
       </div>
     )
   }
@@ -251,7 +267,14 @@ const orderedMetrics: Metric[] = [
               <summary>
                 <>
                   <span>
-                    {label}
+                    <span>{label}</span>
+                    {isOverall ? (
+                      <span class="estimate-badge">Composite</span>
+                    ) : scoreVal !== null && evidence?.normalized !== null ? (
+                      <span class="measured-badge">Verified</span>
+                    ) : (
+                      <span class="estimate-badge">Pending</span>
+                    )}
                     <ChevronDown size={13} />
                   </span>
                   <strong>

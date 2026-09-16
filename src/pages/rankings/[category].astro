@@ -9,15 +9,22 @@ export function getStaticPaths() {
   }));
 }
 const { category } = Astro.props;
+const pageTitle =
+  category.slug === 'speed'
+    ? 'Best AI models for peak speed | Synapse'
+    : `Best AI models for ${category.label.toLowerCase()} | Synapse`;
+const headingText =
+  category.slug === 'speed'
+    ? 'Find your fit for peak generation speed.'
+    : `Find your fit for ${category.label.toLowerCase()}.`;
 ---
 
-<RootLayout
-  title={`Best AI models for ${category.label.toLowerCase()} | Synapse`}
+<RootLayout title={pageTitle}
   ><div class="page-heading">
     <div class="breadcrumbs">
       <a href="/rankings">Rankings</a><span>/</span><span>{category.label}</span
       >
-    </div><h1>Find your fit for {category.label.toLowerCase()}.</h1><p>
+    </div><h1>{headingText}</h1><p>
       {category.description}
       Compare current production models and understand each tradeoff.
     </p>

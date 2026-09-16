@@ -62,6 +62,8 @@ describe('speed ranking', () => {
 
     expect(getVerifiedSpeedMeasurement(model, asOf)).toEqual({
       value: 120,
+      peakValue: 120,
+      medianValue: 80,
       range: { min: 40, max: 120 },
       sourceId,
       verifiedAt: asOf,

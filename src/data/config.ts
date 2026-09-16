@@ -2,7 +2,7 @@ export const metricLabels = {
   overall: 'Synapse Composite',
   intelligence: 'Intelligence',
   coding: 'Coding',
-  agentic: 'Agentic use',
+  agentic: 'Agentic coding',
   dailyUse: 'Daily use',
   research: 'Research',
   writing: 'Writing',
@@ -14,6 +14,68 @@ export const metricLabels = {
 } as const;
 export type Metric = Exclude<keyof typeof metricLabels, 'livebenchOverall'>;
 export type Capability = Exclude<Metric, 'overall'>;
+
+export interface CapabilityTaxonomyEntry {
+  benchmarkLabel: string;
+  rankingLabel: string;
+  fullDescription: string;
+}
+
+export const capabilityTaxonomy: Record<Capability, CapabilityTaxonomyEntry> = {
+  intelligence: {
+    benchmarkLabel: 'Reasoning',
+    rankingLabel: 'Intelligence',
+    fullDescription: 'Frontier reasoning, complex logic, and benchmark depth.',
+  },
+  coding: {
+    benchmarkLabel: 'Coding',
+    rankingLabel: 'Coding',
+    fullDescription: 'From finding a bug to building something new.',
+  },
+  agentic: {
+    benchmarkLabel: 'Agentic Coding',
+    rankingLabel: 'Agents',
+    fullDescription: 'Multi-step work, tools, and fewer interventions.',
+  },
+  dailyUse: {
+    benchmarkLabel: 'Daily Use',
+    rankingLabel: 'Daily use',
+    fullDescription: 'A helpful partner for everyday questions.',
+  },
+  research: {
+    benchmarkLabel: 'Research',
+    rankingLabel: 'Research',
+    fullDescription: 'Make sense of documents and complex topics.',
+  },
+  writing: {
+    benchmarkLabel: 'Writing',
+    rankingLabel: 'Writing',
+    fullDescription: 'Find the words, refine a draft, shape an idea.',
+  },
+  vision: {
+    benchmarkLabel: 'Vision',
+    rankingLabel: 'Vision',
+    fullDescription: 'Understand images, charts, and visual context.',
+  },
+  speed: {
+    benchmarkLabel: 'Speed (tok/s)',
+    rankingLabel: 'Speed',
+    fullDescription:
+      'Peak generation speed measured in tokens/sec and fast generation.',
+  },
+  reliability: {
+    benchmarkLabel: 'Reliability',
+    rankingLabel: 'Reliability',
+    fullDescription: 'Output consistency and adherence to constraints.',
+  },
+  costEfficiency: {
+    benchmarkLabel: 'Cost / Task',
+    rankingLabel: 'Best value',
+    fullDescription:
+      'Capability-adjusted economic value across standard workloads.',
+  },
+} as const;
+
 export const overallWeights: Record<Capability, number> = {
   intelligence: 0.25,
   coding: 0.2,
@@ -38,7 +100,7 @@ export const categories = [
     label: 'Speed',
     metric: 'speed',
     description:
-      'High throughput measured in tokens/sec, ultra-low latency, and fast generation.',
+      'Peak throughput measured in tokens/sec, ultra-low latency, and fast generation.',
   },
   {
     slug: 'value',

@@ -1,6 +1,23 @@
 ---
 import RootLayout from '../layouts/RootLayout.astro';
 import { metricLabels, overallWeights } from '../data/config';
+import { models } from '../data/models';
+
+const totalModelsCount = models.length;
+const uniqueProviders = Array.from(new Set(models.map((m) => m.provider)));
+const totalProvidersCount = uniqueProviders.length;
+const modelsWithReviewedPricing = models.filter(
+  (m) => m.apiPricing !== null && m.apiPricing !== undefined,
+).length;
+const reviewedProviders = Array.from(
+  new Set(
+    models
+      .filter((m) => m.apiPricing !== null && m.apiPricing !== undefined)
+      .map((m) => m.provider),
+  ),
+);
+const reviewedProviderCount = reviewedProviders.length;
+const isVerifiedEdition = models.some((m) => m.dataKind === 'verified');
 ---
 
 <RootLayout title="How Synapse scores and recommends AI models | Methodology"
@@ -14,20 +31,39 @@ import { metricLabels, overallWeights } from '../data/config';
   </div>
   <article class="prose">
     <section id="sample-data">
-      <h2>First, a note about this edition.</h2><p>
-        This local edition contains 12 fictional models from fictional
-        providers. Every score, price, capability, release date, and model
-        description is an illustrative fixture created on September 5, 2026.
-        None is a claim about an available AI product. The catalog is
-        deliberately excluded from search indexing.
-      </p><p>
-        The fixture source is <code>src/data/models.ts</code>. Synthetic inputs
-        demonstrate the calculation pipeline; they are not public benchmarks or
-        internal evaluation runs. Evidence confidence is 0% because these
-        fixtures have no real supporting measurements.
-      </p><p>
-        Recommendations and cost estimates let you test the complete experience.
-        Do not use them to make a real purchasing decision.
+      <h2>First, a note about this edition.</h2>
+      {
+        isVerifiedEdition ? (
+          <>
+            <p>
+              This edition evaluates {totalModelsCount} production and frontier
+              AI models across {totalProvidersCount} providers, sourced from
+              authoritative public benchmarks including LiveBench, LMSYS Chatbot
+              Arena, and provider-published technical specifications.
+            </p>
+            <p>
+              Every score reflects normalized empirical evaluations or
+              documented pricing structures. Where live or official data is
+              unavailable, fields remain unverified or marked as estimates
+              rather than populated with speculative figures.
+            </p>
+          </>
+        ) : (
+          <>
+            <p>
+              This local edition contains {totalModelsCount} illustrative model
+              fixtures. Synthetic inputs demonstrate the calculation pipeline;
+              they are not public benchmarks or internal evaluation runs.
+              Evidence confidence is 0% because these fixtures have no real
+              supporting measurements.
+            </p>
+          </>
+        )
+      }
+      <p>
+        Recommendations and cost estimates let you explore tradeoffs across
+        standard workloads. Always verify current provider terms before making
+        production commitments.
       </p>
     </section>
     <section>
@@ -126,9 +162,12 @@ import { metricLabels, overallWeights } from '../data/config';
         provider supplies one. A missing rate is never treated as free.
       </p>
       <p>
-        Reviewed standard text rates currently cover 12 models from Anthropic
-        and Google. Other pricing awaits verification. Historical ingestion
-        prices are not used for published rates or estimates.
+        Reviewed standard text rates currently cover {modelsWithReviewedPricing} models
+        across {reviewedProviderCount} official provider domains (including {
+          reviewedProviders.slice(0, 4).join(', ')
+        }{reviewedProviders.length > 4 ? ', and others' : ''}). Other pricing
+        awaits verification. Historical ingestion prices are not used for
+        published rates or estimates.
       </p>
       <p>
         Input, output and cached reads are distinct. Context tiers stay
@@ -161,11 +200,23 @@ import { metricLabels, overallWeights } from '../data/config';
         require their own reviewed billing rules.
       </p>
       <p>
-        <a href="https://platform.claude.com/docs/en/about-claude/pricing"
-          >Anthropic pricing</a
-        > * <a href="https://ai.google.dev/gemini-api/docs/pricing"
-          >Google pricing</a
-        > * <a href="/pricing">Compare rates</a> * <a href="/cost"
+        <a
+          href="https://platform.claude.com/docs/en/about-claude/pricing"
+          target="_blank"
+          rel="noopener noreferrer">Anthropic pricing</a
+        > · <a
+          href="https://ai.google.dev/gemini-api/docs/pricing"
+          target="_blank"
+          rel="noopener noreferrer">Google pricing</a
+        > · <a
+          href="https://openai.com/api/pricing/"
+          target="_blank"
+          rel="noopener noreferrer">OpenAI pricing</a
+        > · <a
+          href="https://api-docs.deepseek.com/quick_start/pricing"
+          target="_blank"
+          rel="noopener noreferrer">DeepSeek pricing</a
+        > · <a href="/pricing">Compare rates</a> · <a href="/cost"
           >Calculate your workload</a
         >
       </p>

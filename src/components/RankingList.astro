@@ -110,7 +110,7 @@ const ranked = rankModels(baseModels, 'overall');
     slug === 'intelligence'
       ? 'Current production models verified within 90 days. Intelligence fit combines 80% intelligence, 10% coding, and 10% research.'
       : slug === 'speed'
-        ? 'Current production models with speed data verified within 90 days. Ranges rank by their highest measured value; single measurements use their only value.'
+        ? 'Current production models with speed data verified within 90 days. Ranked by peak generation speed (highest measured throughput in tokens/sec); single measurements use their only value.'
         : slug === 'cheap'
           ? 'Current production models with current verified standard input pricing. Tiered and unavailable rates are excluded.'
           : scoreMetric === 'costEfficiency'
