@@ -5,6 +5,20 @@ import type { CatalogModel } from '../lib/catalogSchema';
 import { getSpeedDisplayValue, getSpeedTokensPerSec } from '../lib/decision';
 import { ModelMark } from './ModelCard';
 import { DEFAULT_COMPARISON_SLUGS } from '../lib/comparisonPairs';
+function getModelComparisonToken(model: CatalogModel): string {
+  const isReasoning = Boolean(
+    model.facts.reasoningEffort &&
+    model.facts.reasoningEffort.length > 0 &&
+    model.facts.reasoningEffort.some((effort) => effort !== 'none'),
+  );
+  if (!isReasoning) return model.slug;
+  const effort =
+    model.facts.defaultEffort && model.facts.defaultEffort !== 'none'
+      ? model.facts.defaultEffort
+      : 'medium';
+  return `${model.slug}:${effort}`;
+}
+
 export default function HeroCompare({ models }: { models: CatalogModel[] }) {
   const initialLeft =
     models.find((m) => m.slug === DEFAULT_COMPARISON_SLUGS[0])?.slug ??
@@ -116,7 +130,10 @@ export default function HeroCompare({ models }: { models: CatalogModel[] }) {
           <strong>{rateLabel(b, 'input')}</strong>
         </div>
       </div>
-      <a className="preview-link" href={`/compare?models=${left},${right}`}>
+      <a
+        className="preview-link"
+        href={`/compare?models=${getModelComparisonToken(a)},${getModelComparisonToken(b)}`}
+      >
         See the full comparison <ArrowRight size={16} />
       </a>
     </div>

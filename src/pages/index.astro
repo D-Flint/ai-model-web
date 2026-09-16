@@ -41,7 +41,7 @@ const costs = models
         Synapse helps you compare AI models with clear, reliable data — so you
         can understand faster and choose with confidence.
       </p>
-      <form class="hero-search" action="/models">
+      <form class="hero-search" action="/models/">
         <Search size={20} /><label class="sr-only" for="home-search"
           >Search models</label
         ><input
@@ -102,8 +102,8 @@ const costs = models
     <div class="section-heading">
       <div>
         <h2>Most used on OpenRouter</h2><p>
-          The most popular models ranked by real-world token volume processed
-          through the OpenRouter API.
+          The most popular verified models ranked by real-world token volume
+          processed through the OpenRouter API.
         </p>
       </div><a class="text-link" href="/models"
         >Explore all models <ArrowRight size={16} /></a
@@ -115,7 +115,9 @@ const costs = models
         ))
       }
     </div><p class="section-note">
-      Usage volume sourced directly from OpenRouter LLM rankings. <a
+      Usage volume sourced directly from OpenRouter LLM rankings. Showing top
+      verified catalog models (unverified preview models such as #1 Hy4 preview
+      are excluded). <a
         href="https://openrouter.ai/rankings"
         target="_blank"
         rel="noopener noreferrer">View live OpenRouter rankings</a

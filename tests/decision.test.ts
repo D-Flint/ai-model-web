@@ -6,6 +6,7 @@ import {
   normalize,
   recommend,
   rankModels,
+  selectionAtDefaultEffort,
   selectionAtMaximumEffort,
   selectionFromSearch,
   taskCost,
@@ -276,6 +277,54 @@ describe('task cost assumptions and reasoning effort stats', () => {
         models,
       ),
     ).toEqual([`${multiEffortModel.slug}:max`, `${multiEffortModel.slug}:max`]);
+  });
+
+  it('preserves explicit effort and defaults unadorned slugs to default baseline in selectionAtDefaultEffort', () => {
+    const multiEffortModel = models.find(
+      (m) =>
+        m.facts.reasoningEffort?.includes('low') &&
+        m.facts.reasoningEffort?.includes('medium'),
+    );
+    const nonReasoningModel = models.find(
+      (m) =>
+        !m.facts.reasoningEffort ||
+        m.facts.reasoningEffort.length === 0 ||
+        m.facts.reasoningEffort.every((e) => e === 'none'),
+    );
+    if (!multiEffortModel || !nonReasoningModel) return;
+
+    const expectedDefault =
+      multiEffortModel.facts.defaultEffort &&
+      multiEffortModel.facts.defaultEffort !== 'none'
+        ? multiEffortModel.facts.defaultEffort
+        : 'medium';
+
+    expect(
+      selectionAtDefaultEffort(
+        [
+          `${multiEffortModel.slug}:low`,
+          multiEffortModel.slug,
+          nonReasoningModel.slug,
+        ],
+        models,
+      ),
+    ).toEqual([
+      `${multiEffortModel.slug}:low`,
+      `${multiEffortModel.slug}:${expectedDefault}`,
+      nonReasoningModel.slug,
+    ]);
+  });
+
+  it('extracts models from search params supporting both models and model', () => {
+    const m1 = models[0].slug;
+    const m2 = models[1].slug;
+
+    expect(selectionFromSearch(`?models=${m1},${m2}`, models)).toEqual([
+      m1,
+      m2,
+    ]);
+    expect(selectionFromSearch(`?model=${m1}`, models)).toEqual([m1]);
+    expect(selectionFromSearch(`?a=${m1}&b=${m2}`, models)).toEqual([m1, m2]);
   });
 });
 

@@ -19,14 +19,34 @@ const empty = {
   cacheTokenHours: '',
 };
 export default function CostCalculator({ models }: { models: CatalogModel[] }) {
-  const [slug, setSlug] = useState('');
+  const [slug, setSlug] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const direct = params.get('model');
+      if (direct && models.some((m) => m.slug === direct)) return direct;
+      const fromSearch = selectionFromSearch(
+        window.location.search,
+        models,
+      )[0]?.split(':')[0];
+      if (fromSearch) return fromSearch;
+    }
+    return '';
+  });
   const [fields, setFields] = useState(empty);
   const [submitted, setSubmitted] = useState(false);
   const model = models.find((m) => m.slug === slug);
   useEffect(() => {
-    const selected = selectionFromSearch(location.search, models)[0]?.split(
-      ':',
-    )[0];
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const direct = params.get('model');
+    if (direct && models.some((m) => m.slug === direct)) {
+      setSlug(direct);
+      return;
+    }
+    const selected = selectionFromSearch(
+      window.location.search,
+      models,
+    )[0]?.split(':')[0];
     if (selected) setSlug(selected);
   }, [models]);
   const tiers = model?.apiPricing?.tiers ?? [];
@@ -130,9 +150,23 @@ export default function CostCalculator({ models }: { models: CatalogModel[] }) {
           <select
             value={slug}
             onChange={(e) => {
-              setSlug(e.target.value);
+              const newSlug = e.target.value;
+              setSlug(newSlug);
               setFields(empty);
               setSubmitted(false);
+              if (typeof window !== 'undefined') {
+                const url = new URL(window.location.href);
+                if (newSlug) {
+                  url.searchParams.set('models', newSlug);
+                  url.searchParams.delete('model');
+                } else {
+                  url.searchParams.delete('models');
+                  url.searchParams.delete('model');
+                }
+                if (url.search !== window.location.search) {
+                  window.history.replaceState(null, '', url);
+                }
+              }
             }}
           >
             <option value="">Choose a model</option>

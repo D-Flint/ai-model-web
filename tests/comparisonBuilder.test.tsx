@@ -5,7 +5,7 @@ import { models } from '../src/data/models';
 import { getMaxReasoningEffort } from '../src/lib/decision';
 
 describe('ComparisonBuilder effort defaults', () => {
-  it('renders the effort selector for a model with one selectable reasoning tier', () => {
+  it('renders the effort selector for a model with selectable reasoning tiers at default effort', () => {
     const museSpark = models.find((model) => model.slug === 'muse-spark-1-1');
     const secondModel = models.find((model) => model.slug !== 'muse-spark-1-1');
 
@@ -21,13 +21,13 @@ describe('ComparisonBuilder effort defaults', () => {
     );
 
     expect(html).toContain('Reasoning Effort');
-    expect(html).toContain('value="max" selected=""');
+    expect(html).toContain('value="medium" selected=""');
     expect(html).not.toContain(
       'Muse Spark 1.1</a><div style="margin-top:6px"><span class="effort-badge effort-fixed">Fixed CoT',
     );
   });
 
-  it('defaults newly added reasoning models without an effort suffix to maximum possible effort', () => {
+  it('defaults newly added reasoning models without an effort suffix to default baseline effort', () => {
     const multiEffortModel = models.find(
       (m) =>
         m.facts.reasoningEffort &&
@@ -37,9 +37,11 @@ describe('ComparisonBuilder effort defaults', () => {
     expect(multiEffortModel).toBeDefined();
     if (!multiEffortModel) return;
 
-    const maxEffort = getMaxReasoningEffort(multiEffortModel);
-    expect(maxEffort).not.toBe('none');
-    expect(maxEffort).not.toBe('fixed');
+    const expectedEffort =
+      multiEffortModel.facts.defaultEffort &&
+      multiEffortModel.facts.defaultEffort !== 'none'
+        ? multiEffortModel.facts.defaultEffort
+        : 'medium';
 
     // Pick a second model for side-by-side comparison
     const secondModel = models.find((m) => m.slug !== multiEffortModel.slug)!;
@@ -52,12 +54,35 @@ describe('ComparisonBuilder effort defaults', () => {
       />,
     );
 
-    // The selection chip should show the max effort label
+    // The selection chip should show the default effort label
     expect(html).toContain(
-      `(${maxEffort.charAt(0).toUpperCase() + maxEffort.slice(1)} effort)`,
+      `(${expectedEffort.charAt(0).toUpperCase() + expectedEffort.slice(1)} effort)`,
     );
 
-    // The dropdown option for the max effort should be selected
-    expect(html).toContain(`value="${maxEffort}" selected=""`);
+    // The dropdown option for the default effort should be selected
+    expect(html).toContain(`value="${expectedEffort}" selected=""`);
+  });
+
+  it('preserves explicit reasoning effort suffix when provided in initial selection', () => {
+    const multiEffortModel = models.find(
+      (m) =>
+        m.facts.reasoningEffort &&
+        m.facts.reasoningEffort.includes('low') &&
+        m.facts.reasoningEffort.includes('high'),
+    );
+    expect(multiEffortModel).toBeDefined();
+    if (!multiEffortModel) return;
+
+    const secondModel = models.find((m) => m.slug !== multiEffortModel.slug)!;
+
+    const html = renderToStaticMarkup(
+      <ComparisonBuilder
+        models={models}
+        initial={[`${multiEffortModel.slug}:low`, secondModel.slug]}
+      />,
+    );
+
+    expect(html).toContain('(Low effort)');
+    expect(html).toContain('value="low" selected=""');
   });
 });

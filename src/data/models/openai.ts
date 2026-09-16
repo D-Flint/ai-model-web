@@ -98,7 +98,7 @@ export const OPENAI_MODELS: CanonicalModelConfig[] = [
       'Adjustable thinking budget up to maximum depth',
     ],
     weaknesses: [
-      'High output token pricing ($48/1M) on maximum reasoning depth',
+      'High output token pricing ($50–$75/1M) on extended context and reasoning depth',
       'Requires tier-5 API access for full multimodal concurrency',
     ],
     tags: [

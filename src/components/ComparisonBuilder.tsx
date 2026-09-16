@@ -15,6 +15,7 @@ import {
   getMaxReasoningEffort,
   getModelEffortStats,
   getSpeedDisplayValue,
+  selectionAtDefaultEffort,
   selectionAtMaximumEffort,
   selectionFromSearch,
   type ModelEffortStats,
@@ -129,7 +130,7 @@ export default function ComparisonBuilder({
 }) {
   const [models, setModels] = useState(initialModels);
   const [selection, setSelection] = useState<string[]>(
-    selectionAtMaximumEffort(
+    selectionAtDefaultEffort(
       initial.length ? initial : models.slice(0, 2).map((m) => m.slug),
       models,
     ),
@@ -165,7 +166,7 @@ export default function ComparisonBuilder({
     const search = new URLSearchParams(location.search);
     if (search.has('models') || (search.has('a') && search.has('b')))
       setSelection(
-        selectionAtMaximumEffort(
+        selectionAtDefaultEffort(
           selectionFromSearch(location.search, models),
           models,
         ),
@@ -205,7 +206,14 @@ export default function ComparisonBuilder({
         ) {
           effort = effortSuffix as ReasoningEffort;
         } else {
-          effort = getMaxReasoningEffort(model);
+          effort =
+            model.facts.defaultEffort &&
+            model.facts.defaultEffort !== 'none' &&
+            model.facts.reasoningEffort.includes(model.facts.defaultEffort)
+              ? model.facts.defaultEffort
+              : model.facts.reasoningEffort.includes('medium')
+                ? 'medium'
+                : getMaxReasoningEffort(model);
         }
       }
 
@@ -313,7 +321,7 @@ export default function ComparisonBuilder({
               if (val) {
                 const tokenToAdd = val.includes(':')
                   ? val
-                  : (selectionAtMaximumEffort([val], models)[0] ?? val);
+                  : (selectionAtDefaultEffort([val], models)[0] ?? val);
                 update([...selection, tokenToAdd]);
                 setAdd('');
               }

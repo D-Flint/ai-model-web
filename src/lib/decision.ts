@@ -376,10 +376,16 @@ export function recommend(
 export function selectionFromSearch(search: string, models: CatalogModel[]) {
   const params = new URLSearchParams(search);
   const modelsParam = params.get('models')?.split(',') ?? [];
+  const singleModelParam = params.get('model') ? [params.get('model')!] : [];
   const pairParam = [params.get('a'), params.get('b')].filter(
     Boolean,
   ) as string[];
-  const rawList = modelsParam.length > 0 ? modelsParam : pairParam;
+  const rawList =
+    modelsParam.length > 0
+      ? modelsParam
+      : singleModelParam.length > 0
+        ? singleModelParam
+        : pairParam;
 
   return [...new Set(rawList)]
     .filter((item) => {
@@ -387,6 +393,45 @@ export function selectionFromSearch(search: string, models: CatalogModel[]) {
       return models.some((m) => m.slug === slug);
     })
     .slice(0, 4);
+}
+
+export function selectionAtDefaultEffort(
+  selection: string[],
+  models: CatalogModel[],
+): string[] {
+  return selection.map((token) => {
+    const [slug, effortSuffix] = token.split(':');
+    const model = models.find((candidate) => candidate.slug === slug);
+    if (!model) return token;
+
+    const isReasoning = Boolean(
+      model.facts.reasoningEffort &&
+      model.facts.reasoningEffort.length > 0 &&
+      model.facts.reasoningEffort.some((effort) => effort !== 'none'),
+    );
+
+    if (!isReasoning) return slug;
+
+    // If an explicit valid effort was provided in the token, preserve it
+    if (
+      effortSuffix &&
+      model.facts.reasoningEffort.includes(effortSuffix as ReasoningEffort)
+    ) {
+      return token;
+    }
+
+    // Default to the model's defaultEffort if specified, or medium if available, or first available reasoning effort
+    const defaultEffort: ReasoningEffort =
+      model.facts.defaultEffort &&
+      model.facts.defaultEffort !== 'none' &&
+      model.facts.reasoningEffort.includes(model.facts.defaultEffort)
+        ? model.facts.defaultEffort
+        : model.facts.reasoningEffort.includes('medium')
+          ? 'medium'
+          : getMaxReasoningEffort(model);
+
+    return `${slug}:${defaultEffort}`;
+  });
 }
 
 export function selectionAtMaximumEffort(
