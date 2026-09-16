@@ -67,7 +67,7 @@ export const catalogModelSchema = z
     name: z.string().min(1),
     provider: z.string().min(1),
     family: z.string().min(1),
-    dataKind: z.enum(['mock', 'verified']),
+    dataKind: z.enum(['mock', 'verified', 'preview', 'synthetic']),
     description: z.string().min(1),
     strengths: z.array(z.string()).min(1),
     weaknesses: z.array(z.string()).min(1),

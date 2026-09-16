@@ -30,7 +30,17 @@ describe('LiveBench catalog selection', () => {
         expect.objectContaining({ slug: 'smaug-mini' }),
       ]),
     );
-    expect(models.every((model) => model.dataKind === 'verified')).toBe(true);
+    expect(
+      models.every((model) =>
+        ['verified', 'synthetic', 'preview'].includes(model.dataKind),
+      ),
+    ).toBe(true);
+    expect(models.find((model) => model.slug === 'gpt-6-astra')?.dataKind).toBe(
+      'synthetic',
+    );
+    expect(
+      models.find((model) => model.slug === 'claude-fable-5-1')?.dataKind,
+    ).toBe('synthetic');
     expect(
       models.every((model) =>
         model.evidence.some(

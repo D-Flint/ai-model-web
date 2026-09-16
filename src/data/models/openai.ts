@@ -81,6 +81,7 @@ export const OPENAI_MODELS: CanonicalModelConfig[] = [
     provider: 'OpenAI',
     providerSlug: 'openai',
     family: 'GPT-6',
+    dataKind: 'synthetic',
     openWeights: false,
     openRouterId: 'openai/gpt-6-astra',
     lmarenaAliases: ['gpt-6-astra', 'openai/gpt-6-astra'],

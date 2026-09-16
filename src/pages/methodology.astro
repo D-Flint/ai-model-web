@@ -171,9 +171,13 @@ const isVerifiedEdition = models.some((m) => m.dataKind === 'verified');
       </p>
       <p>
         Input, output and cached reads are distinct. Context tiers stay
-        separate. Comparison sorting uses current single-tier rates; blended API
-        price explicitly uses 70% input and 30% output. Neither determines a
-        user's bill.
+        separate. Comparison sorting and cost efficiency evaluate cache-aware
+        workload profiles: <strong>Agent & Coding</strong> (75% cached input, 20%
+        fresh input, 5% output),
+        <strong>General Assistant</strong> (50% cached, 40% fresh input, 10% output),
+        and
+        <strong>One-Shot & Bulk</strong> (0% cached, 75% fresh input, 25% output).
+        None of these determines a user's final bill.
       </p>
       <p>
         The calculator starts empty. Total = requests * (uncached input * input

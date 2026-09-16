@@ -607,7 +607,7 @@ export async function runIngestionPipeline(
       name: canonical.name,
       provider: canonical.provider,
       family: canonical.family,
-      dataKind: 'verified',
+      dataKind: canonical.dataKind ?? 'verified',
       description: canonical.description,
       strengths: canonical.strengths,
       weaknesses: canonical.weaknesses,

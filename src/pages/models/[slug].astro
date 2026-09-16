@@ -12,6 +12,7 @@ import {
   contextSize,
   rankModels,
   composite,
+  getModelEffortStats,
   getSpeedDisplayValue,
   getSpeedTokensPerSec,
 } from '../../lib/decision';
@@ -31,11 +32,18 @@ export function getStaticPaths() {
   }));
 }
 const { model } = Astro.props;
+const defaultEffort =
+  model.facts.defaultEffort && model.facts.defaultEffort !== 'none'
+    ? model.facts.defaultEffort
+    : 'medium';
+const defaultStats = getModelEffortStats(model, defaultEffort);
+const canonicalComposite =
+  defaultStats.scores.overall ?? composite(model.scores);
 const livebenchScore =
   model.benchmarks?.livebench?.overall != null
     ? Math.round(model.benchmarks.livebench.overall)
     : null;
-const synapseCompositeScore = composite(model.scores);
+const synapseCompositeScore = canonicalComposite;
 const heroPrimaryScore = livebenchScore ?? synapseCompositeScore;
 const speedTps = getSpeedTokensPerSec(model);
 const speedRange = model.facts.speedTokensPerSecRange;
@@ -158,13 +166,23 @@ const totalCapabilityCount = orderedMetrics.filter(
           {
             livebenchScore !== null ? (
               <>
-                LiveBench Overall: {livebenchScore} · Synapse Composite:{' '}
-                <span data-hero-composite>{synapseCompositeScore}</span>
+                LiveBench Overall: {livebenchScore} · Synapse Composite{' '}
+                {model.facts.reasoningEffort &&
+                model.facts.reasoningEffort.filter((e) => e !== 'none').length >
+                  1 ? (
+                  <span data-hero-effort-label>({defaultEffort} effort)</span>
+                ) : null}
+                : <span data-hero-composite>{synapseCompositeScore}</span>
               </>
             ) : (
               <>
-                Synapse Composite:{' '}
-                <span data-hero-composite>{synapseCompositeScore}</span> / 100
+                Synapse Composite{' '}
+                {model.facts.reasoningEffort &&
+                model.facts.reasoningEffort.filter((e) => e !== 'none').length >
+                  1 ? (
+                  <span data-hero-effort-label>({defaultEffort} effort)</span>
+                ) : null}
+                : <span data-hero-composite>{synapseCompositeScore}</span> / 100
               </>
             )
           }
@@ -183,10 +201,12 @@ const totalCapabilityCount = orderedMetrics.filter(
         </span>
       </div>
     ) : (
-      <div class="notice">
+      <div class="notice notice-preview">
+        <strong>Demonstration Fixture:</strong>{' '}
         <span>
-          Preview fixture data for architecture and evaluation demonstration. No
-          real model evaluations or provider verification are claimed.
+          This model is a forward-looking architecture and evaluation
+          demonstration. Scores reflect modeled baseline estimates, not
+          independent benchmark verification.
         </span>
       </div>
     )
@@ -271,7 +291,11 @@ const totalCapabilityCount = orderedMetrics.filter(
                     {isOverall ? (
                       <span class="estimate-badge">Composite</span>
                     ) : scoreVal !== null && evidence?.normalized !== null ? (
-                      <span class="measured-badge">Verified</span>
+                      model.dataKind === 'verified' ? (
+                        <span class="measured-badge">Verified</span>
+                      ) : (
+                        <span class="estimate-badge">Illustrative</span>
+                      )
                     ) : (
                       <span class="estimate-badge">Pending</span>
                     )}
@@ -486,21 +510,34 @@ const totalCapabilityCount = orderedMetrics.filter(
     </div>
   </section>
   <section class="section panel">
-    <h2>Evidence & freshness</h2><p class="section-note">
+    <h2>Evidence & freshness</h2>
+    <p class="section-note">
       Source updated: {model.sourceUpdatedAt}. Scores calculated: {
         model.scoreUpdatedAt
-      }. Provider verification: not performed.
-    </p>{
+      }. Provider verification: {
+        model.dataKind === 'verified'
+          ? (model.lastVerifiedAt ?? 'Verified')
+          : 'Demonstration / unverified'
+      }.
+    </p>
+    {
       model.sources.map((source) => (
         <p class="section-note">
-          <a href={source.url}>{source.name}</a> · {source.publisher} · Fixture
-          date {source.retrievedAt}
+          <a href={source.url}>{source.name}</a> · {source.publisher} ·{' '}
+          {model.dataKind === 'verified'
+            ? `Retrieved ${source.retrievedAt}`
+            : `Fixture date ${source.retrievedAt}`}
         </p>
       ))
-    }<p class="section-note">
-      No public benchmark results, internal test runs, or historical real-world
-      scores are available for this fictional model.
-    </p>
+    }
+    {
+      model.dataKind !== 'verified' && (
+        <p class="section-note">
+          No public benchmark results, internal test runs, or historical
+          real-world scores are available for this fictional model.
+        </p>
+      )
+    }
   </section>
 
   <script>
@@ -519,6 +556,12 @@ const totalCapabilityCount = orderedMetrics.filter(
         .querySelectorAll<HTMLElement>('[data-effort-badge]')
         .forEach((el) => {
           el.textContent = `Effort: ${effort}`;
+        });
+
+      document
+        .querySelectorAll<HTMLElement>('[data-hero-effort-label]')
+        .forEach((el) => {
+          el.textContent = `(${effort} effort)`;
         });
 
       const scores = stats?.scores;

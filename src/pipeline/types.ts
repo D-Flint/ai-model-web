@@ -248,6 +248,7 @@ export interface CanonicalModelConfig {
   reasoningEffort?: ('none' | 'low' | 'medium' | 'high' | 'max' | 'fixed')[];
   defaultEffort?: 'none' | 'low' | 'medium' | 'high' | 'max' | 'fixed';
   speedTokensPerSec?: number;
+  dataKind?: 'verified' | 'preview' | 'synthetic' | 'mock';
 }
 
 export interface OfficialProviderSpec {

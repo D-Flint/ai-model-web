@@ -1284,6 +1284,12 @@ main {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+.notice.notice-preview {
+  border-left-color: #d97706;
+}
+:root[data-theme='dark'] .notice.notice-preview {
+  border-left-color: #f59e0b;
+}
 .toolbar {
   display: flex;
   gap: 14px;

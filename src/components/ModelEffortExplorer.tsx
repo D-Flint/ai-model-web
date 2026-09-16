@@ -106,9 +106,15 @@ export default function ModelEffortExplorer({
           ) : (
             <span
               className="measured-badge"
-              title="Scores for this effort level match official measured baseline benchmark runs."
+              title={
+                model.dataKind === 'verified'
+                  ? 'Scores for this effort level match official measured baseline benchmark runs.'
+                  : 'Scores for this effort level reflect the modeled demo baseline estimates.'
+              }
             >
-              Measured Baseline
+              {model.dataKind === 'verified'
+                ? 'Measured Baseline'
+                : 'Demo Baseline'}
             </span>
           )}
         </div>
@@ -137,7 +143,8 @@ export default function ModelEffortExplorer({
           <>
             <strong>Modeled Tradeoff:</strong> Scores for{' '}
             {effortLabels[selectedEffort]} are estimated based on standard
-            reasoning scaling behavior relative to the measured{' '}
+            reasoning scaling behavior relative to the{' '}
+            {model.dataKind === 'verified' ? 'measured' : 'demo'}{' '}
             {effortLabels[defaultEffort]} baseline, not an independent LiveBench
             evaluation run.
           </>
@@ -145,8 +152,11 @@ export default function ModelEffortExplorer({
           <>
             Adjusting reasoning effort allocates more or fewer internal thinking
             tokens, directly altering intelligence, speed, and cost tradeoffs.
-            Scores below reflect the official measured baseline benchmark
-            evaluation ({effortLabels[defaultEffort]}).
+            Scores below reflect the{' '}
+            {model.dataKind === 'verified'
+              ? 'official measured baseline benchmark evaluation'
+              : 'synthetic / demo baseline estimate'}{' '}
+            ({effortLabels[defaultEffort]}).
           </>
         )}
       </p>

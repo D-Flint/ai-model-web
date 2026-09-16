@@ -444,7 +444,7 @@ export const allModels: CatalogModel[] =
 
 // Tracked models: top 30 eligible models from current LiveBench data.
 export const models: CatalogModel[] =
-  allModels[0]?.dataKind === 'verified'
+  allModels.length > 0 && allModels[0]?.dataKind !== 'mock'
     ? selectTopLiveBenchModels(allModels)
         .filter((model) => model.facts.speedTokensPerSec !== null)
         .map((model) => ({
