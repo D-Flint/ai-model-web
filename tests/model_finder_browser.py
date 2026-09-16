@@ -73,11 +73,11 @@ with sync_playwright() as playwright:
     expect(page.get_by_text("Best match", exact=True)).to_be_visible()
     expect(page.get_by_text("Best value", exact=True)).to_be_visible()
     expect(page.get_by_text("Alternative", exact=True)).to_be_visible()
-    expect(page.locator(".finder-confidence").first).to_contain_text("evidence coverage")
+    expect(page.locator(".finder-confidence").first).to_contain_text("evidence confidence")
     page.get_by_text("Why this match?", exact=True).first.click()
     expect(page.locator(".finder-breakdown").first).to_contain_text("Task fit")
     expect(page.locator(".finder-score-details").first).to_contain_text(
-        "Evidence coverage"
+        "Task evidence coverage"
     )
     result_violations = page.evaluate(
         """async () => (await axe.run(document, {

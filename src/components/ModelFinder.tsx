@@ -554,9 +554,9 @@ export default function ModelFinder({ models }: { models: CatalogModel[] }) {
                       </span>
                       <span
                         className="finder-confidence"
-                        title="Coverage and freshness of verified benchmark evidence"
+                        title="Model confidence score based on verified benchmark coverage and recency"
                       >
-                        {recommendation.queryConfidence}% evidence coverage
+                        {recommendation.queryConfidence}% evidence confidence
                       </span>
                     </div>
                     <div className="finder-result-summary">
