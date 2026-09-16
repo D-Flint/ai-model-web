@@ -139,7 +139,11 @@ const ranked = rankModels(baseModels, 'overall');
   ) : scoreMetric ? (
     <MetricRanking
       items={scoreItems}
-      metricLabel={metricLabels[scoreMetric]}
+      metricLabel={
+        slug === 'value'
+          ? 'Capability-adjusted value'
+          : metricLabels[scoreMetric]
+      }
       metricAnchor={`score-${scoreMetric}`}
       valueKind="score"
       defaultDirection="desc"

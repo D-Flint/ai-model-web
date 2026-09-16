@@ -617,7 +617,7 @@ export default function ModelFinder({ models }: { models: CatalogModel[] }) {
                           </dd>
                         </div>
                         <div>
-                          <dt>Evidence coverage</dt>
+                          <dt>Evidence confidence</dt>
                           <dd>{recommendation.queryConfidence}%</dd>
                         </div>
                         <div className="finder-breakdown-total">
@@ -626,8 +626,9 @@ export default function ModelFinder({ models }: { models: CatalogModel[] }) {
                         </div>
                       </dl>
                       <p>
-                        Evidence coverage: {recommendation.evidenceCoverage}%.
-                        Effective weights: task{' '}
+                        Task evidence coverage:{' '}
+                        {recommendation.evidenceCoverage}%. Effective weights:
+                        task{' '}
                         {percentWeight(recommendation.effectiveWeights.taskFit)}
                         , priority{' '}
                         {percentWeight(

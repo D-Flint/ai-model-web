@@ -110,7 +110,9 @@ export default function MetricRanking({
                     <span>
                       {isPrice
                         ? `Verified input price: ${formatPrice(item.value)} / 1M tokens`
-                        : `Evidence-backed ${metricLabel.toLowerCase()} score: ${item.value}/100`}
+                        : metricLabel === 'Capability-adjusted value'
+                          ? `Capability-adjusted value score: ${item.value}/100`
+                          : `Evidence-backed ${metricLabel.toLowerCase()} score: ${item.value}/100`}
                     </span>
                     <span>Tradeoff: {item.weakness.toLowerCase()}</span>
                   </div>
