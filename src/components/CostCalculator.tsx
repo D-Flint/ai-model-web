@@ -19,19 +19,7 @@ const empty = {
   cacheTokenHours: '',
 };
 export default function CostCalculator({ models }: { models: CatalogModel[] }) {
-  const [slug, setSlug] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const params = new URLSearchParams(window.location.search);
-      const direct = params.get('model');
-      if (direct && models.some((m) => m.slug === direct)) return direct;
-      const fromSearch = selectionFromSearch(
-        window.location.search,
-        models,
-      )[0]?.split(':')[0];
-      if (fromSearch) return fromSearch;
-    }
-    return '';
-  });
+  const [slug, setSlug] = useState('');
   const [fields, setFields] = useState(empty);
   const [submitted, setSubmitted] = useState(false);
   const model = models.find((m) => m.slug === slug);

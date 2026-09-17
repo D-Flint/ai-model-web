@@ -169,12 +169,8 @@ function getScoreHeatmapStyle(
 }
 
 export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
-  const [query, setQuery] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return new URLSearchParams(window.location.search).get('q') || '';
-    }
-    return '';
-  });
+  const [query, setQuery] = useState('');
+  const isHydratedRef = useRef(false);
   const [selectedOrg, setSelectedOrg] = useState('');
   const [openWeightsOnly, setOpenWeightsOnly] = useState(false);
   const [includeFinetunes, setIncludeFinetunes] = useState(false);
@@ -248,14 +244,16 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
     if (typeof window === 'undefined') return;
     const params = new URLSearchParams(window.location.search);
     const paramQ = params.get('q');
-    if (paramQ !== null && paramQ !== query) {
+    if (paramQ && paramQ !== query) {
       setQuery(paramQ);
     }
     setSelectedSlugs(selectionFromSearch(window.location.search, models));
+    isHydratedRef.current = true;
   }, [models]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    if (!isHydratedRef.current) return;
     const url = new URL(window.location.href);
     const trimmed = query.trim();
     if (trimmed) {
