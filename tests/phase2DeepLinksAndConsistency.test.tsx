@@ -1,9 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
-import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { models } from '../src/data/models';
+import { models, publishedModels } from '../src/data/models';
 import HeroCompare from '../src/components/HeroCompare';
 import {
   selectionFromSearch,
@@ -23,25 +22,27 @@ describe('Phase 2: Deep Links & Primary Flow State Restoration', () => {
     });
 
     it('parses both single model and multiple models query parameters in selectionFromSearch', () => {
-      const sample1 = models[0].slug;
-      const sample2 = models[1].slug;
+      const sample1 = publishedModels[0].slug;
+      const sample2 = publishedModels[1].slug;
 
       // Both ?models= and ?model= are correctly recognized
       expect(
-        selectionFromSearch(`?models=${sample1},${sample2}`, models),
+        selectionFromSearch(`?models=${sample1},${sample2}`, publishedModels),
       ).toEqual([sample1, sample2]);
-      expect(selectionFromSearch(`?model=${sample1}`, models)).toEqual([
-        sample1,
-      ]);
-      expect(selectionFromSearch(`?models=${sample1}:high`, models)).toEqual([
-        `${sample1}:high`,
-      ]);
+      expect(selectionFromSearch(`?model=${sample1}`, publishedModels)).toEqual(
+        [sample1],
+      );
+      expect(
+        selectionFromSearch(`?models=${sample1}:high`, publishedModels),
+      ).toEqual([`${sample1}:high`]);
     });
   });
 
   describe('P1-01: Homepage Comparison Link Semantics & Effort Preservation', () => {
     it('generates comparison links with explicit default effort in HeroCompare', () => {
-      const html = renderToStaticMarkup(<HeroCompare models={models} />);
+      const html = renderToStaticMarkup(
+        <HeroCompare models={publishedModels} />,
+      );
       // Should contain /compare?models= with explicit effort suffix for reasoning models
       expect(html).toContain('href="/compare?models=');
       const match = html.match(/href="\/compare\?models=([^"]+)"/);
@@ -51,7 +52,7 @@ describe('Phase 2: Deep Links & Primary Flow State Restoration', () => {
         expect(queryModels.length).toBe(2);
         for (const token of queryModels) {
           const [slug, effort] = token.split(':');
-          const m = models.find((item) => item.slug === slug);
+          const m = publishedModels.find((item) => item.slug === slug);
           expect(m).toBeDefined();
           if (
             m?.facts.reasoningEffort &&

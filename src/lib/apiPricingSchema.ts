@@ -5,6 +5,7 @@ export const pricingSourceSchema = z
     name: z.string().min(1),
     url: z.url().refine((url) => url.startsWith('https://')),
     type: z.enum(['provider_doc', 'openrouter', 'public_eval']),
+    lifecycle: z.enum(['current', 'historical']).optional(),
     retrievedAt: z.iso.date(),
     effectiveFrom: z.iso.date().nullable(),
   })

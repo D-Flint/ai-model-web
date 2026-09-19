@@ -11,10 +11,12 @@ import {
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
 }
 const {
   title = 'Synapse | Find the right AI model',
   description = 'Find an AI model that fits your work. Explore capabilities, compare tradeoffs, and estimate costs with an explainable model guide.',
+  image = '/logo.png',
 } = Astro.props;
 const links = [
   ['/models', 'Models'],
@@ -25,7 +27,22 @@ const links = [
   ['/cost', 'Cost Calculator'],
 ];
 const path = Astro.url.pathname;
+const isIndexingEnabled = import.meta.env.ENABLE_INDEXING === 'true';
+if (isIndexingEnabled && !Astro.site) {
+  throw new Error('SITE_URL is required when ENABLE_INDEXING=true');
+}
 const canonical = Astro.site ? new URL(path, Astro.site).href : undefined;
+const socialImage = Astro.site ? new URL(image, Astro.site).href : undefined;
+const structuredData =
+  Astro.site && canonical
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'Synapse',
+        url: Astro.site.href,
+        description,
+      }
+    : undefined;
 ---
 
 <!doctype html>
@@ -38,13 +55,34 @@ const canonical = Astro.site ? new URL(path, Astro.site).href : undefined;
     <link rel="icon" type="image/png" href="/logo.png" />
     <link rel="apple-touch-icon" href="/logo.png" />
     <title>{title}</title><meta name="description" content={description} />
-    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="robots"
+      content={isIndexingEnabled ? 'index, follow' : 'noindex, nofollow'}
+    />
     {canonical && <link rel="canonical" href={canonical} />}
     <meta property="og:title" content={title} /><meta
       property="og:description"
       content={description}
-    /><meta property="og:type" content="website" />
+    /><meta property="og:type" content="website" /><meta
+      property="og:site_name"
+      content="Synapse"
+    /><meta property="og:locale" content="en_US" />
     {canonical && <meta property="og:url" content={canonical} />}
+    {socialImage && <meta property="og:image" content={socialImage} />}
+    <meta name="twitter:card" content="summary" /><meta
+      name="twitter:title"
+      content={title}
+    /><meta name="twitter:description" content={description} />
+    {socialImage && <meta name="twitter:image" content={socialImage} />}
+    {
+      structuredData && (
+        <script
+          type="application/ld+json"
+          is:inline
+          set:html={JSON.stringify(structuredData)}
+        />
+      )
+    }
     <meta name="theme-color" content="#0D120F" />
     <script is:inline>
       try {
@@ -161,16 +199,19 @@ const canonical = Astro.site ? new URL(path, Astro.site).href : undefined;
         document
           .querySelectorAll<HTMLElement>('[data-price-date]')
           .forEach((node) => {
+            if (node.closest('astro-island')) return;
             const date = Date.parse(node.dataset.priceDate ?? '');
             const effective = Date.parse(node.dataset.effectiveDate ?? '');
             const age = Date.now() - date;
             node.textContent =
-              !Number.isFinite(date) ||
-              age < 0 ||
-              age > pricingPolicy.staleAfterDays * 86_400_000 ||
-              effective > Date.now()
-                ? 'Needs verification'
-                : 'Current';
+              node.dataset.priceLifecycle === 'historical'
+                ? 'Historical'
+                : !Number.isFinite(date) ||
+                    age < 0 ||
+                    age > pricingPolicy.staleAfterDays * 86_400_000 ||
+                    effective > Date.now()
+                  ? 'Needs verification'
+                  : 'Current';
           });
       }
       refreshPricingDates();

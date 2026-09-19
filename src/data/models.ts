@@ -455,3 +455,12 @@ export const models: CatalogModel[] =
         .map(addVerifiedSpeedScore)
         .map(addVerifiedCapabilityScores)
     : mockModels;
+
+/**
+ * Models allowed on consumer-facing routes and generated public artifacts.
+ * Synthetic catalog records remain available to ingestion and fixture tests,
+ * but can never inherit the trust language used by verified surfaces.
+ */
+export const publishedModels: CatalogModel[] = models.filter(
+  (model) => model.dataKind === 'verified',
+);

@@ -2,7 +2,6 @@ import { describe, it, expect } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
 import ComparisonBuilder from '../src/components/ComparisonBuilder';
 import { models } from '../src/data/models';
-import { getMaxReasoningEffort } from '../src/lib/decision';
 
 describe('ComparisonBuilder effort defaults', () => {
   it('renders the effort selector for a model with selectable reasoning tiers at default effort', () => {

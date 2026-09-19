@@ -1520,9 +1520,13 @@ input[type='radio'] {
   }
   .compare-workload-segmented button {
     flex: 1;
+    min-width: 0;
+    min-height: 44px;
     text-align: center;
     padding: 6px 8px;
     font-size: 11px;
+    line-height: 1.25;
+    white-space: normal;
   }
 }
 .table-scroll {

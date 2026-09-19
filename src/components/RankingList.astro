@@ -1,5 +1,5 @@
 ---
-import { models } from '../data/models';
+import { publishedModels } from '../data/models';
 import { categories, metricLabels, type Metric } from '../data/config';
 import { rankModels } from '../lib/decision';
 import { ModelMark } from './ModelCard';
@@ -19,12 +19,12 @@ interface Props {
   slug?: string;
 }
 const { slug = 'overall' } = Astro.props;
-const baseModels = models;
+const baseModels = publishedModels;
 const rankingAsOf = new Date().toISOString().slice(0, 10);
 const scoreMetric = getScoreRankingMetric(slug);
 const intelligenceItems =
   slug === 'intelligence'
-    ? rankIntelligenceModels(models, rankingAsOf).map((result) => ({
+    ? rankIntelligenceModels(publishedModels, rankingAsOf).map((result) => ({
         slug: result.model.slug,
         name: result.model.name,
         provider: result.model.provider,
@@ -42,7 +42,7 @@ const intelligenceItems =
     : [];
 const speedItems =
   slug === 'speed'
-    ? rankSpeedModels(models, rankingAsOf).map((result) => ({
+    ? rankSpeedModels(publishedModels, rankingAsOf).map((result) => ({
         slug: result.model.slug,
         name: result.model.name,
         provider: result.model.provider,
@@ -58,23 +58,25 @@ const speedItems =
       }))
     : [];
 const scoreItems = scoreMetric
-  ? rankScoreModels(models, scoreMetric, rankingAsOf).map((result) => ({
-      slug: result.model.slug,
-      name: result.model.name,
-      provider: result.model.provider,
-      family: result.model.family,
-      description: result.model.description,
-      tags: result.model.tags,
-      weakness: result.model.weaknesses[0],
-      rank: result.rank,
-      value: result.score,
-      tieScore: result.model.confidence,
-      verifiedAt: result.model.lastVerifiedAt ?? '',
-    }))
+  ? rankScoreModels(publishedModels, scoreMetric, rankingAsOf).map(
+      (result) => ({
+        slug: result.model.slug,
+        name: result.model.name,
+        provider: result.model.provider,
+        family: result.model.family,
+        description: result.model.description,
+        tags: result.model.tags,
+        weakness: result.model.weaknesses[0],
+        rank: result.rank,
+        value: result.score,
+        tieScore: result.model.confidence,
+        verifiedAt: result.model.lastVerifiedAt ?? '',
+      }),
+    )
   : [];
 const costItems =
   slug === 'cheap'
-    ? rankLowestCostModels(models, rankingAsOf).map((result) => ({
+    ? rankLowestCostModels(publishedModels, rankingAsOf).map((result) => ({
         slug: result.model.slug,
         name: result.model.name,
         provider: result.model.provider,

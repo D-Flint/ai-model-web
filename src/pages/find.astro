@@ -1,7 +1,7 @@
 ---
 import RootLayout from '../layouts/RootLayout.astro';
 import ModelFinder from '../components/ModelFinder';
-import { models } from '../data/models';
+import { publishedModels } from '../data/models';
 ---
 
 <RootLayout title="Find the right AI model for your work | Synapse"
@@ -10,5 +10,5 @@ import { models } from '../data/models';
       Combine what you do, what matters, and what you require. Synapse checks
       the evidence before it builds your shortlist.
     </p>
-  </div><ModelFinder models={models} client:load /></RootLayout
+  </div><ModelFinder models={publishedModels} client:load /></RootLayout
 >

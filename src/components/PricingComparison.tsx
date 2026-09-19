@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { CatalogModel } from '../lib/catalogSchema';
 import {
   comparablePrice,
@@ -11,22 +11,36 @@ import { ProviderLogo } from './ProviderLogo';
 
 export default function PricingComparison({
   models,
+  initialPricingAsOf,
 }: {
   models: CatalogModel[];
+  initialPricingAsOf: string;
 }) {
   const [sort, setSort] = useState<'input' | 'output' | 'blended' | 'context'>(
     'input',
   );
   const [search, setSearch] = useState('');
+  const [pricingAsOf, setPricingAsOf] = useState(
+    () => new Date(initialPricingAsOf),
+  );
+
+  useEffect(() => {
+    setPricingAsOf(new Date());
+  }, []);
+
   const sorted = models
     .filter((m) =>
       `${m.name} ${m.provider}`.toLowerCase().includes(search.toLowerCase()),
     )
     .sort((a, b) => {
       const av =
-        sort === 'context' ? -a.facts.context : comparablePrice(a, sort);
+        sort === 'context'
+          ? -a.facts.context
+          : comparablePrice(a, sort, pricingAsOf);
       const bv =
-        sort === 'context' ? -b.facts.context : comparablePrice(b, sort);
+        sort === 'context'
+          ? -b.facts.context
+          : comparablePrice(b, sort, pricingAsOf);
       return (
         (av ?? Infinity) - (bv ?? Infinity) || a.name.localeCompare(b.name)
       );
@@ -106,12 +120,12 @@ export default function PricingComparison({
                   <td className="col-provider">{m.provider}</td>
                   {(['input', 'cached', 'output'] as const).map((key) => (
                     <td key={key} className="col-rate">
-                      {rateLabel(m, key)}
+                      {rateLabel(m, key, pricingAsOf)}
                     </td>
                   ))}
                   {sort === 'blended' && (
                     <td className="col-rate">
-                      {formatPrice(comparablePrice(m, 'blended'))}
+                      {formatPrice(comparablePrice(m, 'blended', pricingAsOf))}
                     </td>
                   )}
                   <td className="col-context">
@@ -124,7 +138,10 @@ export default function PricingComparison({
                     </span>
                   </td>
                   <td className="col-source">
-                    <PriceSource price={pricingSource(m.apiPricing)} />
+                    <PriceSource
+                      price={pricingSource(m.apiPricing)}
+                      now={pricingAsOf}
+                    />
                   </td>
                 </tr>
               );
@@ -135,7 +152,7 @@ export default function PricingComparison({
       <div className="mobile-pricing-list" aria-label="API pricing cards">
         {sorted.map((model) => {
           const rate = (key: 'input' | 'cached' | 'output') =>
-            rateLabel(model, key);
+            rateLabel(model, key, pricingAsOf);
           return (
             <article className="mobile-pricing-card" key={model.slug}>
               <header className="mobile-pricing-card-header">
@@ -167,7 +184,11 @@ export default function PricingComparison({
                 {sort === 'blended' && (
                   <div className="mobile-pricing-blended">
                     <dt>Blended / 1M</dt>
-                    <dd>{formatPrice(comparablePrice(model, 'blended'))}</dd>
+                    <dd>
+                      {formatPrice(
+                        comparablePrice(model, 'blended', pricingAsOf),
+                      )}
+                    </dd>
                   </div>
                 )}
               </dl>
@@ -178,7 +199,10 @@ export default function PricingComparison({
                 </p>
                 <div className="mobile-pricing-freshness">
                   <span>Source freshness</span>
-                  <PriceSource price={pricingSource(model.apiPricing)} />
+                  <PriceSource
+                    price={pricingSource(model.apiPricing)}
+                    now={pricingAsOf}
+                  />
                 </div>
               </div>
             </article>

@@ -19,6 +19,7 @@ const minimaxNow = new Date('2026-09-14T12:00:00Z');
 const claude = verifiedApiPricing['claude-fable-5-1'];
 const gemini = verifiedApiPricing['gemini-3-8-flash'];
 const minimax = verifiedApiPricing['minimax-m3'];
+const historicalDeepSeek = verifiedApiPricing['deepseek-v4-flash-vision-exp'];
 describe('user-provided API workloads', () => {
   it('multiplies uncached, cached and output categories by requests without double counting', () => {
     const result = calculateApiCost(
@@ -117,6 +118,26 @@ describe('user-provided API workloads', () => {
       'Needs verification',
     );
     expect(priceFreshness(null, now)).toBe('Unavailable');
+  });
+
+  it('never treats explicitly historical rates as current pricing', () => {
+    const historicalInput = historicalDeepSeek.tiers[0].input!;
+    const historicalModel = models.find(
+      (model) => model.slug === 'deepseek-v4-flash-vision-exp',
+    )!;
+
+    expect(priceFreshness(historicalInput, new Date('2026-09-16'))).toBe(
+      'Historical',
+    );
+    expect(rateLabel(historicalModel, 'input', now)).toContain('(historical)');
+    expect(comparablePrice(historicalModel, 'input', now)).toBeNull();
+    expect(() =>
+      calculateApiCost(
+        historicalDeepSeek,
+        { input: 1, output: 0, cached: 0, requests: 1 },
+        now,
+      ),
+    ).toThrow('Historical pricing');
   });
 });
 describe('pricing provenance and comparisons', () => {

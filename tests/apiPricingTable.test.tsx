@@ -6,7 +6,10 @@ import { models } from '../src/data/models';
 describe('PricingComparison table structure', () => {
   it('renders table rows with uniform semantic classes and clamped containers', () => {
     const html = renderToStaticMarkup(
-      <PricingComparison models={models.slice(0, 5)} />,
+      <PricingComparison
+        models={models.slice(0, 5)}
+        initialPricingAsOf="2026-09-19T00:00:00.000Z"
+      />,
     );
     expect(html).toContain('class="cost-table pricing-table"');
     expect(html).toContain('class="pricing-row"');

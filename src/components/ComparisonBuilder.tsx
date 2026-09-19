@@ -16,7 +16,6 @@ import {
   getModelEffortStats,
   getSpeedDisplayValue,
   selectionAtDefaultEffort,
-  selectionAtMaximumEffort,
   selectionFromSearch,
   type ModelEffortStats,
 } from '../lib/decision';

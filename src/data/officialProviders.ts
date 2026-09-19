@@ -1189,6 +1189,7 @@ function deepseekHistoricalVisionPrice(value: number): PriceValue {
       name: 'DeepSeek API historical pricing',
       url: 'https://api-docs.deepseek.com/quick_start/pricing/?article_id=article_1779470751466_8',
       type: 'provider_doc',
+      lifecycle: 'historical',
       retrievedAt: '2026-09-15',
       effectiveFrom: '2026-08-16',
     },

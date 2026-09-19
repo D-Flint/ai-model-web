@@ -68,7 +68,7 @@ with sync_playwright() as playwright:
     page.get_by_role("radio", name="Preferred").check()
     page.get_by_role("button", name="Find my matches").click()
 
-    expect(page.get_by_role("heading", name="Your evidence-backed shortlist")).to_be_focused()
+    expect(page.get_by_role("heading", name="Your evidence-aware shortlist")).to_be_focused()
     expect(page.locator(".recommendation-result")).to_have_count(3)
     expect(page.get_by_text("Best match", exact=True)).to_be_visible()
     expect(page.get_by_text("Best value", exact=True)).to_be_visible()

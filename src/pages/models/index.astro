@@ -1,7 +1,7 @@
 ---
 import RootLayout from '../../layouts/RootLayout.astro';
 import ModelExplorer from '../../components/ModelExplorer';
-import { models } from '../../data/models';
+import { publishedModels } from '../../data/models';
 ---
 
 <RootLayout title="Explore AI models | Synapse">
@@ -13,5 +13,5 @@ import { models } from '../../data/models';
       pricing, and key tradeoffs.
     </p>
   </div>
-  <ModelExplorer models={models} client:load />
+  <ModelExplorer models={publishedModels} client:load />
 </RootLayout>

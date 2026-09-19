@@ -2,18 +2,19 @@
 import RootLayout from '../../layouts/RootLayout.astro';
 import ComparisonBuilder from '../../components/ComparisonBuilder';
 import ProviderLogo from '../../components/ProviderLogo.astro';
-import { allModels, models } from '../../data/models';
+import { publishedModels } from '../../data/models';
 import { getSeoComparisonPairs } from '../../lib/seoComparisons';
 import { getPublishedRankingModels } from '../../lib/rankings';
 import { DEFAULT_COMPARISON_SLUGS } from '../../lib/comparisonPairs';
 
-const popularPairs = getSeoComparisonPairs(models).slice(0, 8);
+const popularPairs = getSeoComparisonPairs(publishedModels).slice(0, 8);
 const rankingAsOf = new Date().toISOString().slice(0, 10);
 const comparisonModels = [
   ...new Map(
-    [...allModels, ...getPublishedRankingModels(models, rankingAsOf)].map(
-      (model) => [model.slug, model],
-    ),
+    [
+      ...publishedModels,
+      ...getPublishedRankingModels(publishedModels, rankingAsOf),
+    ].map((model) => [model.slug, model]),
   ).values(),
 ];
 ---

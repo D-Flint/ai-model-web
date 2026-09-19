@@ -520,8 +520,14 @@ function candidateTradeoff(
   const price = comparablePrice(model);
   if (price === null) {
     const rate = standardRate(model, 'input');
-    if (rate && priceFreshness(rate) === 'Needs verification') {
-      return 'Current API pricing is pending verification.';
+    if (rate) {
+      const freshness = priceFreshness(rate);
+      if (freshness === 'Historical') {
+        return 'Only historical API pricing is available.';
+      }
+      if (freshness === 'Needs verification') {
+        return 'Current API pricing is pending verification.';
+      }
     }
     return 'Current API pricing is unavailable.';
   }

@@ -2,7 +2,13 @@ import type { CatalogModel } from '../lib/catalogSchema';
 import type { PriceValue } from '../lib/apiPricingSchema';
 import { formatPrice, priceFreshness, pricingSource } from '../lib/apiPricing';
 
-export function PriceSource({ price }: { price: PriceValue | null }) {
+export function PriceSource({
+  price,
+  now,
+}: {
+  price: PriceValue | null;
+  now?: Date;
+}) {
   if (!price) return <span className="micro muted">Unavailable</span>;
   return (
     <small className="pricing-source">
@@ -10,8 +16,9 @@ export function PriceSource({ price }: { price: PriceValue | null }) {
       <span
         data-price-date={price.source.retrievedAt}
         data-effective-date={price.source.effectiveFrom ?? ''}
+        data-price-lifecycle={price.source.lifecycle ?? 'current'}
       >
-        {priceFreshness(price)}
+        {priceFreshness(price, now)}
       </span>{' '}
       ·{' '}
       <time dateTime={price.source.retrievedAt}>

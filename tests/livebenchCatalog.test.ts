@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import liveBenchRows from '../src/data/livebenchData.json';
-import { allModels, models } from '../src/data/models';
+import { allModels, models, publishedModels } from '../src/data/models';
 import {
   LIVEBENCH_CATALOG_LIMIT,
   LIVEBENCH_CANDIDATE_LIMIT,
@@ -63,6 +63,19 @@ describe('LiveBench catalog selection', () => {
         ),
       ),
     ).toBe(true);
+  });
+
+  it('keeps synthetic fixtures outside the consumer catalog', () => {
+    expect(publishedModels).toHaveLength(46);
+    expect(
+      publishedModels.every((model) => model.dataKind === 'verified'),
+    ).toBe(true);
+    expect(publishedModels.some((model) => model.slug === 'gpt-6-astra')).toBe(
+      false,
+    );
+    expect(
+      publishedModels.some((model) => model.slug === 'claude-fable-5-1'),
+    ).toBe(false);
   });
 
   it('fully removes the replaced product records', () => {

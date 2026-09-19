@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { models, mockModels } from '../src/data/models';
+import { mockModels, publishedModels } from '../src/data/models';
 import {
   getSeoComparisonPairs,
   CURATED_SEO_PAIRS,
@@ -8,13 +8,13 @@ import { selectionFromSearch } from '../src/lib/decision';
 
 describe('SEO comparison pairs and arbitrary comparisons', () => {
   it('generates a bounded, finite set of SEO comparison pairs', () => {
-    const pairs = getSeoComparisonPairs(models);
+    const pairs = getSeoComparisonPairs(publishedModels);
     expect(pairs.length).toBeGreaterThan(10);
     expect(pairs.length).toBeLessThanOrEqual(100);
   });
 
   it('contains unique pairs with no inverted duplicates', () => {
-    const pairs = getSeoComparisonPairs(models);
+    const pairs = getSeoComparisonPairs(publishedModels);
     const seenNormalized = new Set<string>();
 
     for (const pair of pairs) {
@@ -26,8 +26,8 @@ describe('SEO comparison pairs and arbitrary comparisons', () => {
   });
 
   it('includes key curated rivalries if both models exist in catalog', () => {
-    const pairs = getSeoComparisonPairs(models);
-    const modelSlugs = new Set(models.map((m) => m.slug));
+    const pairs = getSeoComparisonPairs(publishedModels);
+    const modelSlugs = new Set(publishedModels.map((model) => model.slug));
 
     for (const [slugA, slugB] of CURATED_SEO_PAIRS) {
       if (modelSlugs.has(slugA) && modelSlugs.has(slugB)) {
@@ -45,7 +45,6 @@ describe('SEO comparison pairs and arbitrary comparisons', () => {
     expect(CURATED_SEO_PAIRS).toEqual(
       expect.arrayContaining([
         ['claude-sonnet-5', 'gemini-3-8-flash'],
-        ['gpt-6-astra', 'gemini-3-8-flash'],
         ['claude-opus-5', 'gemini-3-8-flash'],
       ]),
     );
@@ -62,23 +61,23 @@ describe('SEO comparison pairs and arbitrary comparisons', () => {
   });
 
   it('supports arbitrary comparisons via selectionFromSearch with ?models=', () => {
-    const search = '?models=gpt-6-astra,claude-sonnet-5';
-    const selection = selectionFromSearch(search, models);
-    expect(selection).toEqual(['gpt-6-astra', 'claude-sonnet-5']);
+    const search = '?models=claude-sonnet-5,gemini-3-8-flash';
+    const selection = selectionFromSearch(search, publishedModels);
+    expect(selection).toEqual(['claude-sonnet-5', 'gemini-3-8-flash']);
   });
 
   it('supports arbitrary comparisons via selectionFromSearch with ?a=&b=', () => {
-    const [a, b] = models;
+    const [a, b] = publishedModels;
     const search = `?a=${a.slug}&b=${b.slug}`;
-    const selection = selectionFromSearch(search, models);
+    const selection = selectionFromSearch(search, publishedModels);
     expect(selection).toEqual([a.slug, b.slug]);
   });
 
   it('filters out unknown slugs in arbitrary searches and limits to 4', () => {
     const search =
       '?models=non-existent-1,gpt-6-astra,fake-2,claude-sonnet-5,gemini-3-1-pro,glm-5-3,kimi-k3';
-    const selection = selectionFromSearch(search, models);
-    expect(selection).toContain('gpt-6-astra');
+    const selection = selectionFromSearch(search, publishedModels);
+    expect(selection).not.toContain('gpt-6-astra');
     expect(selection).toContain('claude-sonnet-5');
     expect(selection.includes('non-existent-1')).toBe(false);
     expect(selection.length).toBeLessThanOrEqual(4);

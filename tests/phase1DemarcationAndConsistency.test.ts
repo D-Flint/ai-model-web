@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { models, allModels } from '../src/data/models';
+import { models } from '../src/data/models';
 import verifiedModels from '../src/data/verifiedModels.json';
 import { catalogModelSchema } from '../src/lib/catalogSchema';
-import { getModelEffortStats, composite } from '../src/lib/decision';
+import { getModelEffortStats } from '../src/lib/decision';
 import { workloadProfiles, defaultWorkloadProfile } from '../src/data/config';
 import fs from 'node:fs';
 import path from 'node:path';

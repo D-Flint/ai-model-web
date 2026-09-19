@@ -3,7 +3,7 @@ import RootLayout from '../layouts/RootLayout.astro';
 import HeroCompare from '../components/HeroCompare';
 import ModelCard from '../components/ModelCard';
 import ProviderLogo from '../components/ProviderLogo.astro';
-import { models } from '../data/models';
+import { publishedModels } from '../data/models';
 import { comparisonPairSlug } from '../lib/comparisonPairs';
 import { categories } from '../data/config';
 import ApiPricing from '../components/ApiPricing';
@@ -21,13 +21,13 @@ import {
   SlidersHorizontal,
 } from 'lucide-react';
 const icons = [Brain, Zap, BadgeDollarSign, BadgeDollarSign, Code2, Bot];
-const featured = getMostUsedOpenRouterModels(models, 4);
+const featured = getMostUsedOpenRouterModels(publishedModels, 4);
 const pairs = [
-  [models[0], models[1]],
-  [models[3], models[4]],
-  [models[2], models[5]],
+  [publishedModels[0], publishedModels[1]],
+  [publishedModels[3], publishedModels[4]],
+  [publishedModels[2], publishedModels[5]],
 ];
-const costs = models
+const costs = publishedModels
   .filter((m) => m.apiPricing?.tiers.length === 1)
   .slice(0, 3);
 ---
@@ -59,12 +59,16 @@ const costs = models
           href="/rankings/value">Price & Value <ArrowUpRight size={12} /></a
         >
       </div>
-    </div><HeroCompare models={models.slice(0, 5)} client:load />
+    </div><HeroCompare models={publishedModels} client:load />
   </section>
   <div class="catalog-strip">
     <span>A common language for comparing models</span><div>
-      <strong>{models.length}</strong>{' '}
-      {models[0]?.dataKind === 'verified' ? 'verified models' : 'sample models'}
+      <strong>{publishedModels.length}</strong>{' '}
+      {
+        publishedModels[0]?.dataKind === 'verified'
+          ? 'verified models'
+          : 'sample models'
+      }
     </div><div>
       <strong>3 core states:</strong> Intelligence · Speed · Price
     </div><a href="/methodology"
@@ -211,8 +215,8 @@ const costs = models
     </div>
   </section>
   <section class="recent-row">
-    <h3>Catalog notes</h3><span>Sample fixtures created September 5, 2026</span
-    ><a href="/methodology#sample-data"
+    <h3>Catalog notes</h3><span>Only verified models are published</span><a
+      href="/methodology#sample-data"
       >Read the data policy <ArrowUpRight size={14} /></a
     >
   </section>

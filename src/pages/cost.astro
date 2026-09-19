@@ -1,7 +1,7 @@
 ---
 import RootLayout from '../layouts/RootLayout.astro';
 import CostCalculator from '../components/CostCalculator';
-import { models } from '../data/models';
+import { publishedModels } from '../data/models';
 ---
 
 <RootLayout title="AI model cost calculator | Synapse"
@@ -12,5 +12,5 @@ import { models } from '../data/models';
       Enter your token counts and number of requests. Every estimate is based on
       your inputs.
     </p>
-  </div><CostCalculator models={models} client:load /></RootLayout
+  </div><CostCalculator models={publishedModels} client:load /></RootLayout
 >

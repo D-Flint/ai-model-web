@@ -517,7 +517,7 @@ export default function ModelFinder({ models }: { models: CatalogModel[] }) {
                   tabIndex={-1}
                   ref={resultHeading}
                 >
-                  Your evidence-backed shortlist
+                  Your evidence-aware shortlist
                 </h2>
                 <p>
                   {useCases

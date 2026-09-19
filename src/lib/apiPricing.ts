@@ -13,11 +13,14 @@ export const pricingPolicy = {
   outputRatio: 0.05,
   tokensPerUnit: 1_000_000,
 } as const;
+export type PriceFreshness =
+  'Current' | 'Historical' | 'Needs verification' | 'Unavailable';
 export function priceFreshness(
   price: PriceValue | null | undefined,
   now = new Date(),
-): 'Current' | 'Needs verification' | 'Unavailable' {
+): PriceFreshness {
   if (!price) return 'Unavailable';
+  if (price.source.lifecycle === 'historical') return 'Historical';
   const age = now.getTime() - Date.parse(price.source.retrievedAt);
   return !Number.isFinite(age) ||
     age < 0 ||
@@ -55,6 +58,7 @@ function formatTokenLimit(tokens: number): string {
 export function rateLabel(
   model: CatalogModel,
   key: 'input' | 'output' | 'cached',
+  now = new Date(),
 ): string {
   const tiers = model.apiPricing?.tiers ?? [];
   if (tiers.length > 1) {
@@ -65,13 +69,16 @@ export function rateLabel(
       standard.maxContext !== null &&
       standardRate &&
       longContextRate &&
-      priceFreshness(standardRate) === 'Current' &&
-      priceFreshness(longContextRate) === 'Current'
+      priceFreshness(standardRate, now) === 'Current' &&
+      priceFreshness(longContextRate, now) === 'Current'
     )
       return `(≤${formatTokenLimit(standard.maxContext)}: ${formatPrice(standardRate.value)}) (> ${formatTokenLimit(standard.maxContext)}: ${formatPrice(longContextRate.value)})`;
     return 'Tiered pricing — see details';
   }
   const rate = singleRate(model, key);
+  if (priceFreshness(rate, now) === 'Historical') {
+    return `${formatPrice(rate?.value)} (historical)`;
+  }
   return formatPrice(rate?.value);
 }
 export function standardRate(
@@ -91,6 +98,9 @@ export function rateDisplayWithStatus(
   const rate = standardRate(model, key);
   if (!rate) return 'Unavailable';
   const freshness = priceFreshness(rate, now);
+  if (freshness === 'Historical') {
+    return `${formatPrice(rate.value)} (historical)`;
+  }
   if (freshness === 'Needs verification') {
     return `${formatPrice(rate.value)} (unverified)`;
   }
@@ -103,18 +113,19 @@ export function rateDisplayWithStatus(
 export function comparablePrice(
   model: CatalogModel,
   key: 'input' | 'output' | 'blended' = 'input',
+  now = new Date(),
 ): number | null {
   const input = standardRate(model, 'input');
   const output = standardRate(model, 'output');
   const cached = standardRate(model, 'cached');
   if (key === 'blended') {
     if (
-      priceFreshness(input) !== 'Current' ||
-      priceFreshness(output) !== 'Current'
+      priceFreshness(input, now) !== 'Current' ||
+      priceFreshness(output, now) !== 'Current'
     )
       return null;
     const effectiveCached =
-      cached && priceFreshness(cached) === 'Current'
+      cached && priceFreshness(cached, now) === 'Current'
         ? cached.value
         : input!.value;
     const blended =
@@ -124,7 +135,7 @@ export function comparablePrice(
     return Number(blended.toFixed(4));
   }
   const price = key === 'input' ? input : output;
-  return priceFreshness(price) === 'Current' ? price!.value : null;
+  return priceFreshness(price, now) === 'Current' ? price!.value : null;
 }
 export function compareApiPrice(a: CatalogModel, b: CatalogModel): number {
   return (
@@ -344,7 +355,10 @@ export function calculateApiCost(
   ): number => {
     if (count === 0) return 0;
     if (!price) throw new Error('A required rate is unavailable.');
-    if (priceFreshness(price, now) !== 'Current')
+    const freshness = priceFreshness(price, now);
+    if (freshness === 'Historical')
+      throw new Error('Historical pricing cannot be used for estimates.');
+    if (freshness !== 'Current')
       throw new Error('Pricing needs verification before calculating.');
     return (count / divisor) * price.value;
   };

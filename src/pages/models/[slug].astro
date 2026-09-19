@@ -5,7 +5,7 @@ import { rateLabel, compareApiPrice } from '../../lib/apiPricing';
 import ModelCard from '../../components/ModelCard';
 import ProviderLogo from '../../components/ProviderLogo.astro';
 import ModelEffortExplorer from '../../components/ModelEffortExplorer';
-import { models } from '../../data/models';
+import { publishedModels } from '../../data/models';
 import { metricLabels, overallWeights, type Metric } from '../../data/config';
 import { getPublishedRankingModels } from '../../lib/rankings';
 import {
@@ -19,14 +19,17 @@ import {
 import { ArrowRight, ChevronDown } from 'lucide-react';
 export function getStaticPaths() {
   const rankingAsOf = new Date().toISOString().slice(0, 10);
-  const rankingModels = getPublishedRankingModels(models, rankingAsOf);
-  const publishedModels = [
+  const rankingModels = getPublishedRankingModels(publishedModels, rankingAsOf);
+  const routeModels = [
     ...new Map(
-      [...models, ...rankingModels].map((model) => [model.slug, model]),
+      [...publishedModels, ...rankingModels].map((model) => [
+        model.slug,
+        model,
+      ]),
     ).values(),
   ];
 
-  return publishedModels.map((model) => ({
+  return routeModels.map((model) => ({
     params: { slug: model.slug },
     props: { model },
   }));
@@ -54,17 +57,19 @@ const speedLabel = speedDisplayValue ? `${speedDisplayValue} tokens/sec` : '—'
 const alternatives = [
   ...new Map(
     [
-      [...models].filter((m) => m.slug !== model.slug).sort(compareApiPrice)[0],
+      [...publishedModels]
+        .filter((candidate) => candidate.slug !== model.slug)
+        .sort(compareApiPrice)[0],
       rankModels(
-        models.filter((m) => m.slug !== model.slug),
+        publishedModels.filter((candidate) => candidate.slug !== model.slug),
         'speed',
       )[0],
       rankModels(
-        models.filter((m) => m.slug !== model.slug),
+        publishedModels.filter((candidate) => candidate.slug !== model.slug),
         'overall',
       )[0],
       rankModels(
-        models.filter((m) => m.slug !== model.slug),
+        publishedModels.filter((candidate) => candidate.slug !== model.slug),
         'dailyUse',
       )[0],
     ].map((m) => [m.slug, m]),

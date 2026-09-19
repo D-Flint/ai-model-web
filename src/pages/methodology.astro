@@ -1,23 +1,27 @@
 ---
 import RootLayout from '../layouts/RootLayout.astro';
 import { metricLabels, overallWeights } from '../data/config';
-import { models } from '../data/models';
+import { publishedModels } from '../data/models';
 
-const totalModelsCount = models.length;
-const uniqueProviders = Array.from(new Set(models.map((m) => m.provider)));
+const totalModelsCount = publishedModels.length;
+const uniqueProviders = Array.from(
+  new Set(publishedModels.map((model) => model.provider)),
+);
 const totalProvidersCount = uniqueProviders.length;
-const modelsWithReviewedPricing = models.filter(
+const modelsWithReviewedPricing = publishedModels.filter(
   (m) => m.apiPricing !== null && m.apiPricing !== undefined,
 ).length;
 const reviewedProviders = Array.from(
   new Set(
-    models
+    publishedModels
       .filter((m) => m.apiPricing !== null && m.apiPricing !== undefined)
       .map((m) => m.provider),
   ),
 );
 const reviewedProviderCount = reviewedProviders.length;
-const isVerifiedEdition = models.some((m) => m.dataKind === 'verified');
+const isVerifiedEdition = publishedModels.some(
+  (model) => model.dataKind === 'verified',
+);
 ---
 
 <RootLayout title="How Synapse scores and recommends AI models | Methodology"
