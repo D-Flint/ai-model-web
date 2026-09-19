@@ -10,7 +10,7 @@ export const ANTHROPIC_MODELS: CanonicalModelConfig[] = [
     provider: 'Anthropic',
     providerSlug: 'anthropic',
     family: 'Claude 5',
-    dataKind: 'synthetic',
+    dataKind: 'verified',
     openWeights: false,
     openRouterId: 'anthropic/claude-fable-5.1',
     lmarenaAliases: [
@@ -57,7 +57,7 @@ export const ANTHROPIC_MODELS: CanonicalModelConfig[] = [
     provider: 'Anthropic',
     providerSlug: 'anthropic',
     family: 'Claude 5',
-    dataKind: 'synthetic',
+    dataKind: 'verified',
     openWeights: false,
     openRouterId: 'anthropic/claude-fable-5',
     lmarenaAliases: [

@@ -8,7 +8,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 describe('Phase 1: Trust & Semantic Integrity', () => {
-  describe('P0-01: Synthetic Fixture Demarcation', () => {
+  describe('P0-01: LiveBench Evidence Classification', () => {
     it('supports preview and synthetic in catalogModelSchema', () => {
       const sample = {
         ...verifiedModels[0],
@@ -24,24 +24,24 @@ describe('Phase 1: Trust & Semantic Integrity', () => {
       expect(catalogModelSchema.safeParse(previewSample).success).toBe(true);
     });
 
-    it('demarcates forward-looking fixtures as synthetic in verifiedModels.json', () => {
+    it('classifies the LiveBench-backed records as verified', () => {
       const gpt6 = verifiedModels.find((m) => m.slug === 'gpt-6-astra');
       expect(gpt6).toBeDefined();
-      expect(gpt6?.dataKind).toBe('synthetic');
+      expect(gpt6?.dataKind).toBe('verified');
 
       const fable51 = verifiedModels.find((m) => m.slug === 'claude-fable-5-1');
       expect(fable51).toBeDefined();
-      expect(fable51?.dataKind).toBe('synthetic');
+      expect(fable51?.dataKind).toBe('verified');
 
       const fable5 = verifiedModels.find((m) => m.slug === 'claude-fable-5');
       expect(fable5).toBeDefined();
-      expect(fable5?.dataKind).toBe('synthetic');
+      expect(fable5?.dataKind).toBe('verified');
     });
 
-    it('retains synthetic models in the published catalog with correct dataKind', () => {
+    it('retains the LiveBench-backed models in the published catalog', () => {
       const gpt6 = models.find((m) => m.slug === 'gpt-6-astra');
       expect(gpt6).toBeDefined();
-      expect(gpt6?.dataKind).toBe('synthetic');
+      expect(gpt6?.dataKind).toBe('verified');
 
       const realModel = models.find((m) => m.slug === 'deepseek-v4-1-flash');
       expect(realModel).toBeDefined();

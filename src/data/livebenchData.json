@@ -1753,7 +1753,7 @@
     "instruction_following": 75.8,
     "agentic_coding": 62.2,
     "language": 90.7,
-    "cost_per_successful_task": 1.4777,
+    "cost_per_successful_task": 1.439,
     "date": "2026-06-25"
   },
   {
@@ -2052,7 +2052,6 @@
     "instruction_following": 73,
     "agentic_coding": 66.1,
     "language": 89.5,
-    "cost_per_successful_task": 1.2117,
     "date": "2026-06-25"
   },
   {
@@ -2091,7 +2090,6 @@
     "instruction_following": 75.6,
     "agentic_coding": 57.3,
     "language": 89.4,
-    "cost_per_successful_task": 0.7359,
     "date": "2026-06-25"
   },
   {

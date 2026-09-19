@@ -64,7 +64,7 @@ with sync_playwright() as p:
     visit("/models/quill-pro")
     page.locator("#score-coding summary").click()
     expect(page.locator("#score-coding")).to_have_attribute("open", "")
-    expect(page.locator("#score-coding")).to_contain_text("Synthetic fixture input 960")
+    expect(page.locator("#score-coding")).to_contain_text("Public benchmark dataset")
     visit("/rankings/coding")
     expect(page.locator(".ranking-row h3").first).to_have_text("Quill Pro")
     visit("/rankings/cheap")

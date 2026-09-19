@@ -13,7 +13,7 @@ with sync_playwright() as p:
     catalog = api.get(BASE + "/catalog.json").json()
     assert len(catalog) == 49
     synthetic = {model["slug"] for model in catalog if model["dataKind"] == "synthetic"}
-    assert synthetic == {"claude-fable-5", "claude-fable-5-1", "gpt-6-astra"}
+    assert synthetic == set()
     a, b = sorted(catalog[-2:], key=lambda model: model["slug"])
     separator = "~vs~" if any("-vs-" in m["slug"] for m in [a, b]) else "-vs-"
     pair = separator.join([a["slug"], b["slug"]])
@@ -39,9 +39,9 @@ with sync_playwright() as p:
         result = api.get(BASE + "/compare/" + invalid, max_redirects=0)
         assert result.status == 404, (invalid, result.status)
         assert "window.location.replace" not in result.text()
-    synthetic_detail = api.get(BASE + "/models/gpt-6-astra")
-    assert synthetic_detail.status == 200
-    assert "Demonstration Fixture" in synthetic_detail.text()
+    verified_detail = api.get(BASE + "/models/gpt-6-astra")
+    assert verified_detail.status == 200
+    assert "Public benchmark dataset" in verified_detail.text()
     assert api.get(BASE + "/compare/claude-fable-5-1-vs-gpt-6-astra", max_redirects=0).status == 200
 
     for static in ["/", "/models", "/models/" + a["slug"], "/rankings", "/methodology", "/compare", "/find", "/cost", "/pricing"]:
@@ -78,8 +78,8 @@ with sync_playwright() as p:
     expect(page.locator(".selection-chip").first).to_contain_text(a["name"])
     page.goto(BASE + "/models/")
     page.get_by_role("searchbox", name="Search models").fill("GPT-6 Astra")
-    synthetic_row = page.locator("tbody tr", has_text="GPT-6 Astra").first
-    expect(synthetic_row).to_contain_text("Synthetic")
+    verified_row = page.locator("tbody tr", has_text="GPT-6 Astra").first
+    expect(verified_row).not_to_contain_text("Synthetic")
     Path("artifacts").mkdir(exist_ok=True)
     page.screenshot(path="artifacts/cloudflare-comparison.png", full_page=True)
     assert not errors, errors

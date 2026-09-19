@@ -456,20 +456,6 @@ export const models: CatalogModel[] =
         .map(addVerifiedCapabilityScores)
     : mockModels;
 
-/**
- * Models allowed on consumer-facing routes and generated public artifacts.
- * These explicitly requested synthetic models remain labeled as synthetic and
- * are still excluded from verified-only rankings and evidence claims.
- */
-export const PUBLIC_SYNTHETIC_MODEL_SLUGS = [
-  'claude-fable-5',
-  'claude-fable-5-1',
-  'gpt-6-astra',
-] as const;
-
-const publicSyntheticModelSlugs = new Set<string>(PUBLIC_SYNTHETIC_MODEL_SLUGS);
-
 export const publishedModels: CatalogModel[] = models.filter(
-  (model) =>
-    model.dataKind === 'verified' || publicSyntheticModelSlugs.has(model.slug),
+  (model) => model.dataKind === 'verified',
 );

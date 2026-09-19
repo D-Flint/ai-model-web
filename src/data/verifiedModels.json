@@ -184,7 +184,7 @@
     "name": "GPT-6 Astra",
     "provider": "OpenAI",
     "family": "GPT-6",
-    "dataKind": "synthetic",
+    "dataKind": "verified",
     "description": "OpenAI's generational leap in intelligence, delivering autonomous computer operation, 1M+ token context, and critical-level cybersecurity reasoning.",
     "strengths": [
       "Autonomous software interaction and environment navigation",
@@ -2529,7 +2529,7 @@
     "name": "Claude Fable 5.1",
     "provider": "Anthropic",
     "family": "Claude 5",
-    "dataKind": "synthetic",
+    "dataKind": "verified",
     "description": "Anthropic's frontier flagship model designed for the most demanding long-horizon agentic workflows, autonomous software engineering, and deep reflective reasoning with 1M context.",
     "strengths": [
       "Frontier SWE-bench and autonomous agentic task performance",
@@ -8546,7 +8546,7 @@
     "name": "Claude Fable 5",
     "provider": "Anthropic",
     "family": "Claude 5",
-    "dataKind": "synthetic",
+    "dataKind": "verified",
     "description": "The pioneer of the Claude Fable tier, introducing Mythos-class reasoning depth, autonomous multi-step reasoning, and 1M token context for enterprise environments.",
     "strengths": [
       "Frontier autonomous reasoning and multi-step plan decomposition",

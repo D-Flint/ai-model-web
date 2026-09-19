@@ -22,9 +22,6 @@ const reviewedProviderCount = reviewedProviders.length;
 const verifiedModelsCount = publishedModels.filter(
   (model) => model.dataKind === 'verified',
 ).length;
-const syntheticModelsCount = publishedModels.filter(
-  (model) => model.dataKind === 'synthetic',
-).length;
 ---
 
 <RootLayout title="How Synapse scores and recommends AI models | Methodology"
@@ -44,13 +41,12 @@ const syntheticModelsCount = publishedModels.filter(
         records across {totalProvidersCount} providers: {verifiedModelsCount}{
           ' '
         }
-        verified models and {syntheticModelsCount} clearly labeled synthetic previews.
+        verified models with source-backed benchmark and pricing evidence.
       </p>
       <p>
         Verified scores reflect normalized empirical evaluations or documented
-        pricing structures. Synthetic preview scores are modeled demonstrations,
-        not independent benchmark verification, and remain excluded from
-        verified-only rankings.
+        pricing structures. Benchmark records include their release date and
+        source so the evidence can be checked independently.
       </p>
       <p>
         Recommendations and cost estimates let you explore tradeoffs across
@@ -64,9 +60,9 @@ const syntheticModelsCount = publishedModels.filter(
         raw measurement, its scale, its source, and its date. Normalization
         converts it to a common range:
       </p><p><code>100 × (raw − minimum) / (maximum − minimum)</code></p><p>
-        Values are clamped to 0-100 and rounded to whole numbers. In this
-        sample, each capability uses one synthetic input on a 0-1,000 scale.
-        Real benchmarks need documented bounds, direction, task comparability,
+        Values are clamped to 0-100 and rounded to whole numbers. LiveBench
+        records use the benchmark's published 0-100 category measurements. Real
+        benchmarks still need documented bounds, direction, task comparability,
         and validation before they can contribute. Normalization alone does not
         make incompatible tests comparable.
       </p>
@@ -120,9 +116,9 @@ const syntheticModelsCount = publishedModels.filter(
         over 25 points.
       </p><p>
         This is an evidence-coverage heuristic, not a statistical probability
-        that a score is correct. All fictional fixture scores have 0%
-        confidence. No number of synthetic measurements can establish real-world
-        confidence.
+        that a score is correct. Confidence increases with independent, dated,
+        source-backed measurements and cannot be established by repeating the
+        same measurement.
       </p>
     </section>
     <section>

@@ -36,11 +36,11 @@ describe('LiveBench catalog selection', () => {
       ),
     ).toBe(true);
     expect(models.find((model) => model.slug === 'gpt-6-astra')?.dataKind).toBe(
-      'synthetic',
+      'verified',
     );
     expect(
       models.find((model) => model.slug === 'claude-fable-5-1')?.dataKind,
-    ).toBe('synthetic');
+    ).toBe('verified');
     expect(
       models.every((model) =>
         model.evidence.some(
@@ -65,11 +65,11 @@ describe('LiveBench catalog selection', () => {
     ).toBe(true);
   });
 
-  it('keeps only the requested synthetic fixtures in the consumer catalog', () => {
+  it('keeps the LiveBench-backed models in the consumer catalog', () => {
     expect(publishedModels).toHaveLength(49);
     expect(
       publishedModels.filter((model) => model.dataKind === 'synthetic'),
-    ).toHaveLength(3);
+    ).toHaveLength(0);
     expect(publishedModels.some((model) => model.slug === 'gpt-6-astra')).toBe(
       true,
     );

@@ -1,10 +1,7 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import {
-  PUBLIC_SYNTHETIC_MODEL_SLUGS,
-  publishedModels,
-} from '../src/data/models';
+import { publishedModels } from '../src/data/models';
 import { DEFAULT_COMPARISON_SLUGS } from '../src/lib/comparisonPairs';
 import { getSeoComparisonPairs } from '../src/lib/seoComparisons';
 import { GET as getRobots } from '../src/pages/robots.txt';
@@ -17,17 +14,14 @@ afterEach(() => {
 });
 
 describe('public catalog boundary', () => {
-  it('publishes verified models plus the explicit synthetic exceptions', () => {
+  it('publishes the verified catalog', () => {
     expect(publishedModels).toHaveLength(49);
     expect(
       publishedModels.filter((model) => model.dataKind === 'verified'),
-    ).toHaveLength(46);
+    ).toHaveLength(49);
     expect(
-      publishedModels
-        .filter((model) => model.dataKind === 'synthetic')
-        .map((model) => model.slug)
-        .sort(),
-    ).toEqual([...PUBLIC_SYNTHETIC_MODEL_SLUGS].sort());
+      publishedModels.some((model) => model.dataKind === 'synthetic'),
+    ).toBe(false);
     expect(DEFAULT_COMPARISON_SLUGS).toEqual([
       'claude-sonnet-5',
       'gemini-3-8-flash',
@@ -39,11 +33,7 @@ describe('public catalog boundary', () => {
     ).toBe(true);
   });
 
-  it('keeps every synthetic publication exception available to comparisons', () => {
-    const publicSlugs = new Set(publishedModels.map((model) => model.slug));
-    expect(
-      PUBLIC_SYNTHETIC_MODEL_SLUGS.every((slug) => publicSlugs.has(slug)),
-    ).toBe(true);
+  it('keeps the published catalog available to comparisons', () => {
     expect(getSeoComparisonPairs(publishedModels).length).toBeLessThanOrEqual(
       100,
     );
