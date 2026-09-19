@@ -65,17 +65,20 @@ describe('LiveBench catalog selection', () => {
     ).toBe(true);
   });
 
-  it('keeps synthetic fixtures outside the consumer catalog', () => {
-    expect(publishedModels).toHaveLength(46);
+  it('keeps only the requested synthetic fixtures in the consumer catalog', () => {
+    expect(publishedModels).toHaveLength(49);
     expect(
-      publishedModels.every((model) => model.dataKind === 'verified'),
-    ).toBe(true);
+      publishedModels.filter((model) => model.dataKind === 'synthetic'),
+    ).toHaveLength(3);
     expect(publishedModels.some((model) => model.slug === 'gpt-6-astra')).toBe(
-      false,
+      true,
     );
     expect(
       publishedModels.some((model) => model.slug === 'claude-fable-5-1'),
-    ).toBe(false);
+    ).toBe(true);
+    expect(
+      publishedModels.some((model) => model.slug === 'claude-fable-5'),
+    ).toBe(true);
   });
 
   it('fully removes the replaced product records', () => {

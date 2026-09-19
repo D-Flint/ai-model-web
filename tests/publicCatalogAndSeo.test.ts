@@ -1,7 +1,10 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { publishedModels } from '../src/data/models';
+import {
+  PUBLIC_SYNTHETIC_MODEL_SLUGS,
+  publishedModels,
+} from '../src/data/models';
 import { DEFAULT_COMPARISON_SLUGS } from '../src/lib/comparisonPairs';
 import { getSeoComparisonPairs } from '../src/lib/seoComparisons';
 import { GET as getRobots } from '../src/pages/robots.txt';
@@ -14,11 +17,17 @@ afterEach(() => {
 });
 
 describe('public catalog boundary', () => {
-  it('publishes verified models only and uses a verified default comparison', () => {
-    expect(publishedModels).toHaveLength(46);
+  it('publishes verified models plus the explicit synthetic exceptions', () => {
+    expect(publishedModels).toHaveLength(49);
     expect(
-      publishedModels.every((model) => model.dataKind === 'verified'),
-    ).toBe(true);
+      publishedModels.filter((model) => model.dataKind === 'verified'),
+    ).toHaveLength(46);
+    expect(
+      publishedModels
+        .filter((model) => model.dataKind === 'synthetic')
+        .map((model) => model.slug)
+        .sort(),
+    ).toEqual([...PUBLIC_SYNTHETIC_MODEL_SLUGS].sort());
     expect(DEFAULT_COMPARISON_SLUGS).toEqual([
       'claude-sonnet-5',
       'gemini-3-8-flash',
@@ -30,20 +39,14 @@ describe('public catalog boundary', () => {
     ).toBe(true);
   });
 
-  it('never creates public discovery pairs for synthetic fixtures', () => {
-    const syntheticSlugs = new Set([
-      'claude-fable-5-1',
-      'claude-fable-5',
-      'gpt-6-astra',
-    ]);
-    const pairs = getSeoComparisonPairs(publishedModels);
-
+  it('keeps every synthetic publication exception available to comparisons', () => {
+    const publicSlugs = new Set(publishedModels.map((model) => model.slug));
     expect(
-      pairs.every(
-        ({ a, b }) =>
-          !syntheticSlugs.has(a.slug) && !syntheticSlugs.has(b.slug),
-      ),
+      PUBLIC_SYNTHETIC_MODEL_SLUGS.every((slug) => publicSlugs.has(slug)),
     ).toBe(true);
+    expect(getSeoComparisonPairs(publishedModels).length).toBeLessThanOrEqual(
+      100,
+    );
   });
 });
 
@@ -69,8 +72,10 @@ describe('indexing policy', () => {
     expect(robotsText).toContain('Allow: /');
     expect(robotsText).toContain('https://synapse.example/sitemap.xml');
     expect(sitemapText).toContain('https://synapse.example/models');
-    expect(sitemapText).not.toContain('gpt-6-astra');
-    expect(sitemapText).not.toContain('claude-fable-5-1');
+    expect(sitemapText).toContain('https://synapse.example/models/gpt-6-astra');
+    expect(sitemapText).toContain(
+      'https://synapse.example/models/claude-fable-5-1',
+    );
   });
 
   it('keeps social metadata and the explicit indexing safety gate in layout', () => {

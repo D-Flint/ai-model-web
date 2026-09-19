@@ -74,7 +74,9 @@ export default function ModelCard({
         ) : model.dataKind === 'verified' ? (
           <span className="sample-label verified-label">Verified</span>
         ) : (
-          <span className="sample-label">Sample</span>
+          <span className="sample-label">
+            {model.dataKind === 'synthetic' ? 'Synthetic' : 'Sample'}
+          </span>
         )}
       </div>
       <div className="model-title">

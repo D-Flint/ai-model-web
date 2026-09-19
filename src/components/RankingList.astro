@@ -19,12 +19,14 @@ interface Props {
   slug?: string;
 }
 const { slug = 'overall' } = Astro.props;
-const baseModels = publishedModels;
+const baseModels = publishedModels.filter(
+  (model) => model.dataKind === 'verified',
+);
 const rankingAsOf = new Date().toISOString().slice(0, 10);
 const scoreMetric = getScoreRankingMetric(slug);
 const intelligenceItems =
   slug === 'intelligence'
-    ? rankIntelligenceModels(publishedModels, rankingAsOf).map((result) => ({
+    ? rankIntelligenceModels(baseModels, rankingAsOf).map((result) => ({
         slug: result.model.slug,
         name: result.model.name,
         provider: result.model.provider,
@@ -42,7 +44,7 @@ const intelligenceItems =
     : [];
 const speedItems =
   slug === 'speed'
-    ? rankSpeedModels(publishedModels, rankingAsOf).map((result) => ({
+    ? rankSpeedModels(baseModels, rankingAsOf).map((result) => ({
         slug: result.model.slug,
         name: result.model.name,
         provider: result.model.provider,
@@ -58,25 +60,23 @@ const speedItems =
       }))
     : [];
 const scoreItems = scoreMetric
-  ? rankScoreModels(publishedModels, scoreMetric, rankingAsOf).map(
-      (result) => ({
-        slug: result.model.slug,
-        name: result.model.name,
-        provider: result.model.provider,
-        family: result.model.family,
-        description: result.model.description,
-        tags: result.model.tags,
-        weakness: result.model.weaknesses[0],
-        rank: result.rank,
-        value: result.score,
-        tieScore: result.model.confidence,
-        verifiedAt: result.model.lastVerifiedAt ?? '',
-      }),
-    )
+  ? rankScoreModels(baseModels, scoreMetric, rankingAsOf).map((result) => ({
+      slug: result.model.slug,
+      name: result.model.name,
+      provider: result.model.provider,
+      family: result.model.family,
+      description: result.model.description,
+      tags: result.model.tags,
+      weakness: result.model.weaknesses[0],
+      rank: result.rank,
+      value: result.score,
+      tieScore: result.model.confidence,
+      verifiedAt: result.model.lastVerifiedAt ?? '',
+    }))
   : [];
 const costItems =
   slug === 'cheap'
-    ? rankLowestCostModels(publishedModels, rankingAsOf).map((result) => ({
+    ? rankLowestCostModels(baseModels, rankingAsOf).map((result) => ({
         slug: result.model.slug,
         name: result.model.name,
         provider: result.model.provider,

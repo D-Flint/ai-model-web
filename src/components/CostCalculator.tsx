@@ -161,6 +161,7 @@ export default function CostCalculator({ models }: { models: CatalogModel[] }) {
             {models.map((m) => (
               <option key={m.slug} value={m.slug}>
                 {m.name}
+                {m.dataKind === 'synthetic' ? ' — synthetic preview' : ''}
                 {!m.apiPricing ? ' — pricing unavailable' : ''}
               </option>
             ))}

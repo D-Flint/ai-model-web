@@ -19,9 +19,12 @@ const reviewedProviders = Array.from(
   ),
 );
 const reviewedProviderCount = reviewedProviders.length;
-const isVerifiedEdition = publishedModels.some(
+const verifiedModelsCount = publishedModels.filter(
   (model) => model.dataKind === 'verified',
-);
+).length;
+const syntheticModelsCount = publishedModels.filter(
+  (model) => model.dataKind === 'synthetic',
+).length;
 ---
 
 <RootLayout title="How Synapse scores and recommends AI models | Methodology"
@@ -36,34 +39,19 @@ const isVerifiedEdition = publishedModels.some(
   <article class="prose">
     <section id="sample-data">
       <h2>First, a note about this edition.</h2>
-      {
-        isVerifiedEdition ? (
-          <>
-            <p>
-              This edition evaluates {totalModelsCount} production and frontier
-              AI models across {totalProvidersCount} providers, sourced from
-              authoritative public benchmarks including LiveBench, LMSYS Chatbot
-              Arena, and provider-published technical specifications.
-            </p>
-            <p>
-              Every score reflects normalized empirical evaluations or
-              documented pricing structures. Where live or official data is
-              unavailable, fields remain unverified or marked as estimates
-              rather than populated with speculative figures.
-            </p>
-          </>
-        ) : (
-          <>
-            <p>
-              This local edition contains {totalModelsCount} illustrative model
-              fixtures. Synthetic inputs demonstrate the calculation pipeline;
-              they are not public benchmarks or internal evaluation runs.
-              Evidence confidence is 0% because these fixtures have no real
-              supporting measurements.
-            </p>
-          </>
-        )
-      }
+      <p>
+        This edition publishes {totalModelsCount} production and frontier AI model
+        records across {totalProvidersCount} providers: {verifiedModelsCount}{
+          ' '
+        }
+        verified models and {syntheticModelsCount} clearly labeled synthetic previews.
+      </p>
+      <p>
+        Verified scores reflect normalized empirical evaluations or documented
+        pricing structures. Synthetic preview scores are modeled demonstrations,
+        not independent benchmark verification, and remain excluded from
+        verified-only rankings.
+      </p>
       <p>
         Recommendations and cost estimates let you explore tradeoffs across
         standard workloads. Always verify current provider terms before making

@@ -867,6 +867,22 @@ main {
   font-size: 9px;
   color: var(--muted);
 }
+.synthetic-badge {
+  display: inline-flex;
+  width: fit-content;
+  margin-left: 6px;
+  padding: 2px 5px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--subtle);
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
 .model-title {
   display: flex;
   align-items: center;

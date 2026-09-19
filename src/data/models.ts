@@ -458,9 +458,18 @@ export const models: CatalogModel[] =
 
 /**
  * Models allowed on consumer-facing routes and generated public artifacts.
- * Synthetic catalog records remain available to ingestion and fixture tests,
- * but can never inherit the trust language used by verified surfaces.
+ * These explicitly requested synthetic models remain labeled as synthetic and
+ * are still excluded from verified-only rankings and evidence claims.
  */
+export const PUBLIC_SYNTHETIC_MODEL_SLUGS = [
+  'claude-fable-5',
+  'claude-fable-5-1',
+  'gpt-6-astra',
+] as const;
+
+const publicSyntheticModelSlugs = new Set<string>(PUBLIC_SYNTHETIC_MODEL_SLUGS);
+
 export const publishedModels: CatalogModel[] = models.filter(
-  (model) => model.dataKind === 'verified',
+  (model) =>
+    model.dataKind === 'verified' || publicSyntheticModelSlugs.has(model.slug),
 );

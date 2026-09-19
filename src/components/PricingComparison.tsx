@@ -116,6 +116,9 @@ export default function PricingComparison({
                 <tr key={m.slug} className="pricing-row">
                   <th scope="row" className="col-model">
                     <a href={`/models/${m.slug}#pricing`}>{m.name}</a>
+                    {m.dataKind === 'synthetic' && (
+                      <span className="synthetic-badge">Synthetic</span>
+                    )}
                   </th>
                   <td className="col-provider">{m.provider}</td>
                   {(['input', 'cached', 'output'] as const).map((key) => (
@@ -162,6 +165,9 @@ export default function PricingComparison({
                   <h2>
                     <a href={`/models/${model.slug}#pricing`}>{model.name}</a>
                   </h2>
+                  {model.dataKind === 'synthetic' && (
+                    <span className="synthetic-badge">Synthetic</span>
+                  )}
                 </div>
               </header>
               <dl className="mobile-pricing-rate-grid">

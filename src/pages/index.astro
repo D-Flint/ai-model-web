@@ -63,12 +63,7 @@ const costs = publishedModels
   </section>
   <div class="catalog-strip">
     <span>A common language for comparing models</span><div>
-      <strong>{publishedModels.length}</strong>{' '}
-      {
-        publishedModels[0]?.dataKind === 'verified'
-          ? 'verified models'
-          : 'sample models'
-      }
+      <strong>{publishedModels.length}</strong> active models
     </div><div>
       <strong>3 core states:</strong> Intelligence · Speed · Price
     </div><a href="/methodology"
@@ -215,8 +210,9 @@ const costs = publishedModels
     </div>
   </section>
   <section class="recent-row">
-    <h3>Catalog notes</h3><span>Only verified models are published</span><a
-      href="/methodology#sample-data"
+    <h3>Catalog notes</h3><span
+      >Verified models plus clearly labeled synthetic previews</span
+    ><a href="/methodology#sample-data"
       >Read the data policy <ArrowUpRight size={14} /></a
     >
   </section>

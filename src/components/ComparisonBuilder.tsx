@@ -492,6 +492,9 @@ export default function ComparisonBuilder({
                         <a href={`/models/${item.model.slug}`}>
                           {item.model.name}
                         </a>
+                        {item.model.dataKind === 'synthetic' && (
+                          <span className="synthetic-badge">Synthetic</span>
+                        )}
                         <small>{item.model.provider}</small>
                       </span>
                     </div>
@@ -786,6 +789,9 @@ export default function ComparisonBuilder({
                       <a href={`/models/${item.model.slug}`}>
                         {item.model.name}
                       </a>
+                      {item.model.dataKind === 'synthetic' && (
+                        <span className="synthetic-badge">Synthetic</span>
+                      )}
                       {item.isReasoning ? (
                         item.effort !== 'fixed' ? (
                           <div className="effort-selector-cell">

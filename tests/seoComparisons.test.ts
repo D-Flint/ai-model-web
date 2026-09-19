@@ -77,7 +77,7 @@ describe('SEO comparison pairs and arbitrary comparisons', () => {
     const search =
       '?models=non-existent-1,gpt-6-astra,fake-2,claude-sonnet-5,gemini-3-1-pro,glm-5-3,kimi-k3';
     const selection = selectionFromSearch(search, publishedModels);
-    expect(selection).not.toContain('gpt-6-astra');
+    expect(selection).toContain('gpt-6-astra');
     expect(selection).toContain('claude-sonnet-5');
     expect(selection.includes('non-existent-1')).toBe(false);
     expect(selection.length).toBeLessThanOrEqual(4);

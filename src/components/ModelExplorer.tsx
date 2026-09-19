@@ -1083,6 +1083,11 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                               >
                                 {row.model.name}
                               </a>
+                              {row.model.dataKind === 'synthetic' && (
+                                <span className="synthetic-badge">
+                                  Synthetic
+                                </span>
+                              )}
                               {row.effortLabel && (
                                 <span className="model-effort-badge">
                                   {row.effortLabel}
@@ -1479,6 +1484,9 @@ export default function ModelExplorer({ models }: { models: CatalogModel[] }) {
                         >
                           {row.model.name}
                         </a>
+                        {row.model.dataKind === 'synthetic' && (
+                          <span className="synthetic-badge">Synthetic</span>
+                        )}
                         {row.effortLabel && (
                           <span className="model-effort-badge">
                             {row.effortLabel}
